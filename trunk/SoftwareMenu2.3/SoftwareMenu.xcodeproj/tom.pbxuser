@@ -3,7 +3,7 @@
 	089C1669FE841209C02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E2A35FE90EAE02B900FB6FD7 /* installHelper */;
-		activeTarget = E2A35FE70EAE02B900FB6FD7 /* installHelper */;
+		activeTarget = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
 		addToTargets = (
 			8D5B49AC048680CD000E48DA /* SoftwareMenu */,
 		);
@@ -138,6 +138,14 @@
 			E236D4600F640895003C02CA = E236D4600F640895003C02CA /* PBXTextBookmark */;
 			E236D4880F640A15003C02CA = E236D4880F640A15003C02CA /* PBXTextBookmark */;
 			E236D4B70F640DC5003C02CA /* PBXTextBookmark */ = E236D4B70F640DC5003C02CA /* PBXTextBookmark */;
+			E236D4F70F64100A003C02CA /* PBXTextBookmark */ = E236D4F70F64100A003C02CA /* PBXTextBookmark */;
+			E236D4F80F64100A003C02CA /* PBXTextBookmark */ = E236D4F80F64100A003C02CA /* PBXTextBookmark */;
+			E236D4F90F64100A003C02CA /* PBXTextBookmark */ = E236D4F90F64100A003C02CA /* PBXTextBookmark */;
+			E236D4FA0F64100A003C02CA /* PBXTextBookmark */ = E236D4FA0F64100A003C02CA /* PBXTextBookmark */;
+			E236D4FB0F64100A003C02CA /* PBXTextBookmark */ = E236D4FB0F64100A003C02CA /* PBXTextBookmark */;
+			E236D4FC0F64100A003C02CA /* PBXTextBookmark */ = E236D4FC0F64100A003C02CA /* PBXTextBookmark */;
+			E236D4FD0F64100A003C02CA /* PBXTextBookmark */ = E236D4FD0F64100A003C02CA /* PBXTextBookmark */;
+			E236D5020F641223003C02CA /* PBXTextBookmark */ = E236D5020F641223003C02CA /* PBXTextBookmark */;
 			E24524760EABD5FF00E4127B = E24524760EABD5FF00E4127B /* PBXTextBookmark */;
 			E24524770EABD5FF00E4127B = E24524770EABD5FF00E4127B /* PBXTextBookmark */;
 			E24525280EABDF9100E4127B = E24525280EABDF9100E4127B /* PBXBookmark */;
@@ -1081,6 +1089,86 @@
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 3158;
+	};
+	E236D4F70F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */;
+		name = "SMUpdater.m: 119";
+		rLen = 0;
+		rLoc = 3691;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 3158;
+	};
+	E236D4F80F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A35FF00EAE030700FB6FD7 /* installHelperClass.h */;
+		name = "installHelperClass.h: 25";
+		rLen = 0;
+		rLoc = 452;
+		rType = 0;
+		vrLen = 952;
+		vrLoc = 0;
+	};
+	E236D4F90F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A35FEF0EAE030700FB6FD7 /* installHelper.m */;
+		name = "installHelper.m: 214";
+		rLen = 0;
+		rLoc = 5846;
+		rType = 0;
+		vrLen = 1183;
+		vrLoc = 5081;
+	};
+	E236D4FA0F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */;
+		name = "SMUpdater.m: 119";
+		rLen = 0;
+		rLoc = 3691;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 3158;
+	};
+	E236D4FB0F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A35FF00EAE030700FB6FD7 /* installHelperClass.h */;
+		name = "installHelperClass.h: 25";
+		rLen = 0;
+		rLoc = 452;
+		rType = 0;
+		vrLen = 952;
+		vrLoc = 0;
+	};
+	E236D4FC0F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A35FEF0EAE030700FB6FD7 /* installHelper.m */;
+		name = "installHelper.m: 214";
+		rLen = 0;
+		rLoc = 5846;
+		rType = 0;
+		vrLen = 1183;
+		vrLoc = 5081;
+	};
+	E236D4FD0F64100A003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
+		name = "installHelperClass.m: 557";
+		rLen = 0;
+		rLoc = 21137;
+		rType = 0;
+		vrLen = 1538;
+		vrLoc = 20047;
+	};
+	E236D5020F641223003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
+		name = "installHelperClass.m: 564";
+		rLen = 0;
+		rLoc = 20906;
+		rType = 0;
+		vrLen = 1692;
+		vrLoc = 19963;
 	};
 	E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {
 		uiCtxt = {
@@ -2193,9 +2281,9 @@
 	};
 	E2A35FEF0EAE030700FB6FD7 /* installHelper.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1021, 3570}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1021, 3632}}";
 			sepNavSelRange = "{5846, 0}";
-			sepNavVisRange = "{4854, 1410}";
+			sepNavVisRange = "{5177, 1236}";
 			sepNavWindowFrame = "{{15, 8}, {981, 865}}";
 		};
 	};
@@ -2209,9 +2297,9 @@
 	};
 	E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2214, 13286}}";
-			sepNavSelRange = "{20213, 0}";
-			sepNavVisRange = "{19759, 1132}";
+			sepNavIntBoundsRect = "{{0, 0}, {2214, 13356}}";
+			sepNavSelRange = "{20906, 0}";
+			sepNavVisRange = "{19963, 1692}";
 			sepNavWindowFrame = "{{769, 4}, {890, 874}}";
 		};
 	};
@@ -2230,7 +2318,7 @@
 		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
 		name = "installHelperClass.m: 109";
 		rLen = 0;
-		rLoc = 23292;
+		rLoc = 24058;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 2518;

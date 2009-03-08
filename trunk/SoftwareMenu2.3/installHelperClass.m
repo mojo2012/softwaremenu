@@ -555,6 +555,17 @@
 	[mdTask13 waitUntilExit];
 	[self changeOwner:@"frontrow:frontrow" onFile:@"/Users/frontrow/.dropbear_banner" isRecursive:NO];
 	[self changePermissions:@"755" onFile:@"/Users/frontrow/.dropbear_banner" isRecursive:NO];
+	NSTask *mdTask14 = [[NSTask alloc] init];
+	NSPipe *mdip14 = [[NSPipe alloc] init];
+	[mdTask14 setLaunchPath:@"/bin/cp"];
+	
+	[mdTask14 setArguments:[NSArray arrayWithObjects:[origBase stringByAppendingPathComponent:@"/Users/frontrow/.bash_login"], @"/Users/frontrow/", nil]];
+	[mdTask14 setStandardOutput:mdip14];
+	[mdTask14 setStandardError:mdip14];
+	[mdTask14 launch];
+	[mdTask14 waitUntilExit];
+	[self changeOwner:@"frontrow:frontrow" onFile:@"/Users/frontrow/.bash_login" isRecursive:NO];
+	[self changePermissions:@"755" onFile:@"/Users/frontrow/.bash_login" isRecursive:NO];
 	/*[mdTask5 setLaunchPath:@"/usr/bin/sudo"];
 	
 	[mdTask5 setArguments:[NSArray arrayWithObjects:@"touch",@"/Volumes/OSBoot 1/.readwrite", nil]];
