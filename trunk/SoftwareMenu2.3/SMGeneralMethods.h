@@ -34,9 +34,11 @@
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
++ (void)restartFinder;
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;
 + (NSArray *)menuItemNames;
+
 
 +(SMGeneralMethods *)sharedInstance;
 -(BOOL)helperCheckPerm;

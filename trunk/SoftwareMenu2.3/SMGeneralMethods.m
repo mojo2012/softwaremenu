@@ -97,6 +97,10 @@ static SMGeneralMethods *sharedInstance = nil;
 {
     return sharedInstance ? sharedInstance : [[self alloc] init];
 }
++ (void)restartFinder
+{
+	[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
+}
 - (BOOL)helperCheckPerm
 {
 	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];

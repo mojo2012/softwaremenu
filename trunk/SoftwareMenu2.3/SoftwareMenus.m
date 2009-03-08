@@ -233,7 +233,7 @@
 	}
 	else if([fp8 isEqualToString:@"reboot"])
 	{
-		[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
+		[SMGeneralMethods restartFinder];
 	}
 	else if([fp8 isEqualToString:@"downloadable"])
 	{
