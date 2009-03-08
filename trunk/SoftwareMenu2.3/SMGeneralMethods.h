@@ -21,9 +21,10 @@
 #define SM_KEY						@"software_menu_key_image"
 #define LAYER_TYPE					@"layer_type"
 #define LAYER_NAME					@"layer_name"
+#define UPDATE_URL			@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
 
 @interface SMGeneralMethods : NSObject {
-
+	
 }
 + (int)integerForKey:(NSString *)theKey;
 + (BOOL)boolForKey:(NSString *)theKey;
@@ -34,11 +35,9 @@
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
-+ (void)restartFinder;
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;
 + (NSArray *)menuItemNames;
-
 
 +(SMGeneralMethods *)sharedInstance;
 -(BOOL)helperCheckPerm;

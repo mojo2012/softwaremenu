@@ -21,7 +21,7 @@
 	NSString	   *	_displays;
 	int					_downloadnumber;
 	NSMutableArray *	_builtinfraps;
-
+	
 }
 -(int)getValueMinusOne;
 -(void)moveFiles;

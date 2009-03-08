@@ -30,6 +30,8 @@
 		E224B56C0EC2827100D9D783 /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = E224B56B0EC2827100D9D783 /* internet.png */; };
 		E236D4AE0F640DAB003C02CA /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E236D4AC0F640DAB003C02CA /* BackRow.framework */; };
 		E236D4AF0F640DAB003C02CA /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */; };
+		E236D51A0F643617003C02CA /* SoftwareMenu_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236D5190F643617003C02CA /* SoftwareMenu_Prefix.pch */; };
+		E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */; };
 		E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E245235F0EABCAE600E4127B /* SoftwareUpdater.m */; };
 		E24524B70EABD98700E4127B /* perian_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B40EABD98700E4127B /* perian_logo.png */; };
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
@@ -82,7 +84,6 @@
 
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		32DBCF630370AF2F00C91783 /* QuDownloader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuDownloader_Prefix.pch; sourceTree = "<group>"; };
 		3802E5830BD7E65C00B6DA5A /* SoftwareMenus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareMenus.m; sourceTree = "<group>"; };
 		3802E5880BD7E8C300B6DA5A /* SMProgressBarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProgressBarControl.h; sourceTree = "<group>"; };
 		3802E5890BD7E8C300B6DA5A /* SMProgressBarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProgressBarControl.m; sourceTree = "<group>"; };
@@ -114,6 +115,8 @@
 		E224B56B0EC2827100D9D783 /* internet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internet.png; sourceTree = "<group>"; };
 		E236D4AC0F640DAB003C02CA /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = "../Desktop/TV/2.3 frameworks/BackRow.framework"; sourceTree = SOURCE_ROOT; };
 		E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "../Desktop/TV/2.3 frameworks/iPhotoAccess.framework"; sourceTree = SOURCE_ROOT; };
+		E236D5190F643617003C02CA /* SoftwareMenu_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareMenu_Prefix.pch; sourceTree = "<group>"; };
+		E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuDownloader_Prefix.pch; sourceTree = "<group>"; };
 		E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdater.h; sourceTree = "<group>"; };
 		E245235F0EABCAE600E4127B /* SoftwareUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdater.m; sourceTree = "<group>"; };
 		E24524B40EABD98700E4127B /* perian_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = perian_logo.png; sourceTree = "<group>"; };
@@ -309,8 +312,9 @@
 		32C88E010371C26100C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */,
 				3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */,
-				32DBCF630370AF2F00C91783 /* QuDownloader_Prefix.pch */,
+				E236D5190F643617003C02CA /* SoftwareMenu_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -400,6 +404,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AD8DA70F630681003907EF /* BackRow.h in Headers */,
+				E236D51A0F643617003C02CA /* SoftwareMenu_Prefix.pch in Headers */,
+				E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

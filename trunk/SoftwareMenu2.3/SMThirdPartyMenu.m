@@ -57,7 +57,6 @@
 	if(![man fileExistsAtPath:[@"~/Documents" stringByExpandingTildeInPath]])
 	{
 		[man createDirectoryAtPath:[@"~/Documents" stringByExpandingTildeInPath] attributes:nil];
-		
 	}
 	if(![man fileExistsAtPath:[@"~/Documents/Backups" stringByExpandingTildeInPath]])
 	{

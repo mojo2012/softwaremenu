@@ -123,11 +123,11 @@
 	[self drawSelf];
 	
 	
-
+	
 	
     [self processFiles];
 	[super controlWasActivated];
-
+	
 	
 }
 -(void)initCustom
@@ -151,12 +151,12 @@
     [_header setTitle: title];
 }
 /*-(void)wasPushed;
-{
-	NSLog(@"was Pushed");
-	[self processFiles];
-	[super wasPushed];
-
-}*/
+ {
+ NSLog(@"was Pushed");
+ [self processFiles];
+ [super wasPushed];
+ 
+ }*/
 
 - (NSString *) title
 {
@@ -256,6 +256,7 @@
 	NSString *thestatus = [[NSString alloc] initWithString:@"OK"];
 	[self appendSourceText:BRLocalizedString(@"*Step 1/9: Checking Permissions on Helper",@"*Step 1/9: Checking Permissions on Helper")];
 	BOOL update_status=YES;
+	BOOL original_status=[self returnBoolValue:[_updateData valueForKey:@"original"]];
 	
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	if(![[SMGeneralMethods sharedInstance] helperCheckPerm])
@@ -266,10 +267,10 @@
 	else
 	{
 		[self appendSourceText:BRLocalizedString(@"	Permissions OK",@"	Permissions OK")];
-;
+		;
 	}
 	
-	if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"] && update_status)
+	if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"] && update_status && !original_status)
 	{
 		NSTask *task8 = [[NSTask alloc] init];
 		[self appendSourceText:@"*Step -/- Unmounting volume at /Volumes/OSBBoot 1/"];
@@ -287,7 +288,7 @@
 	}
 	
 	
-	if([[SMGeneralMethods sharedInstance] checkblocker] && update_status){
+	if([[SMGeneralMethods sharedInstance] checkblocker] && update_status && !original_status){
 		[self appendSourceText:BRLocalizedString(@"*Step 1.5/9 Blocking mesu.apple.com",@"*Step 1.5/9 Blocking mesu.apple.com")];
 		[[SMGeneralMethods sharedInstance] toggleUpdate];
 	}
@@ -307,10 +308,10 @@
 			[self appendSourceText:BRLocalizedString(@"	Conversion Done",@"	Conversion Done")];
 		}
 	}
-
 	
 	
-	if(update_status)
+	
+	if(update_status && !original_status)
 	{
 		[self appendSourceText:BRLocalizedString(@"*Step 3/9: Mount the .dmg",@"*Step 3/9: Mount the .dmg")];
 		NSTask *task3 = [[NSTask alloc] init];
@@ -331,8 +332,8 @@
 			
 		}
 	}
-
-	if(update_status)
+	
+	if(update_status && !original_status)
 	{
 		
 		[self appendSourceText:BRLocalizedString(@"*Step 4/9: add the SSH and SoftwareMenu",@"*Step 4/9: add the SSH and SoftwareMenu")];
@@ -352,8 +353,8 @@
 			[self appendSourceText:BRLocalizedString(@"	copied",@"	copied")];
 		}
 	}
-
-	if(update_status)
+	
+	if(update_status && !original_status)
 	{
 		[self appendSourceText:BRLocalizedString(@"*Step 5/9 Unmounting",@"*Step 5/9 Unmounting")];
 		NSTask *task5 = [[NSTask alloc] init];
@@ -374,10 +375,10 @@
 			[self appendSourceText:BRLocalizedString(@"	unmounted",@"	unmounted")];
 		}
 	}
-
-	if(update_status)
+	
+	if(update_status && !original_status)
 	{
-
+		
 		[self appendSourceText:BRLocalizedString(@"*Step 6/9 makeRO",@"*Step 6/9 makeRO")];
 		[self makeDMGRO:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]];
 		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/final.dmg",[_updateData valueForKey:@"displays"],nil]])
@@ -390,12 +391,20 @@
 			[self appendSourceText:@"Conversion was successful"];
 		}
 	}
-
+	
 	if(update_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"*Step 7/9 Moving Files to ~/Updates",@"*Step 7/9 Moving Files to ~/Updates")];
+		if(!original_status)
+		{
+			[self appendSourceText:BRLocalizedString(@"*Step 7/9 Moving Files to ~/Updates",@"*Step 7/9 Moving Files to ~/Updates")];
+		}
+		else
+		{
+			[self appendSourceText:BRLocalizedString(@"*Step 2/3 Moving Files to ~/Updates",@"*Step 2/3 Moving Files to ~/Updates")];
+		}
+		
 		[self appendSourceText:[NSString stringWithFormat:BRLocalizedString(@"	Preserve: %@",@"	Preserve: %@"),[_updateData valueForKey:@"preserve"],nil]];
-		[self moveFiles2];
+		[self moveFiles2:original_status];
 		//[self appendSourceText:@"	"];
 		if(![man fileExistsAtPath:[@"~/Updates/final.dmg" stringByExpandingTildeInPath]])
 		{
@@ -450,12 +459,12 @@
 		[task7 setLaunchPath:helperLaunchPath];
 		[task7 launch];
 		[task7 waitUntilExit];
-
+		
 	}
 	else if(update_status)
 	{
 		[self appendSourceText:BRLocalizedString(@"*Press Menu and launch the Update from the menu item",@"*Press Menu and launch the Update from the menu item")];
-
+		
 	}
 	else if(!update_status)
 	{
@@ -476,22 +485,22 @@
 }
 - (int)makeASRscan:(NSString *)drivepath
 {
-	 NSLog(@"starting ASR");
-	 NSTask *mdTask2 = [[NSTask alloc] init];
-	 NSPipe *mdip2 = [[NSPipe alloc] init];
-	 NSFileHandle *hdih = [mdip2 fileHandleForReading];
-	 [mdTask2 setLaunchPath:@"/usr/sbin/asr"];
-	 [mdTask2 setArguments:[NSArray arrayWithObjects:@"-imagescan", drivepath, nil]];
-	 [mdTask2 setStandardOutput:mdip2];
-	 [mdTask2 setStandardError:mdip2];
-	 [mdTask2 launch];
-	 [mdTask2 waitUntilExit];
-	 int termStatus = [mdTask2 terminationStatus];
-	 NSData *outData;
-	 outData = [hdih readDataToEndOfFile];
-	 NSString *string = [[NSString alloc] initWithData: outData encoding: NSUTF8StringEncoding];
-	 NSLog(@"%@ status: %i",string, termStatus);
-	 return termStatus;
+	NSLog(@"starting ASR");
+	NSTask *mdTask2 = [[NSTask alloc] init];
+	NSPipe *mdip2 = [[NSPipe alloc] init];
+	NSFileHandle *hdih = [mdip2 fileHandleForReading];
+	[mdTask2 setLaunchPath:@"/usr/sbin/asr"];
+	[mdTask2 setArguments:[NSArray arrayWithObjects:@"-imagescan", drivepath, nil]];
+	[mdTask2 setStandardOutput:mdip2];
+	[mdTask2 setStandardError:mdip2];
+	[mdTask2 launch];
+	[mdTask2 waitUntilExit];
+	int termStatus = [mdTask2 terminationStatus];
+	NSData *outData;
+	outData = [hdih readDataToEndOfFile];
+	NSString *string = [[NSString alloc] initWithData: outData encoding: NSUTF8StringEncoding];
+	NSLog(@"%@ status: %i",string, termStatus);
+	return termStatus;
 }
 -(void)cleanstuff
 {
@@ -511,9 +520,9 @@
 	{
 		[man removeFileAtPath:@"/Users/frontrow/dropbear/" handler:nil];
 	}
-		
+	
 }
--(void)moveFiles2
+-(void)moveFiles2:(BOOL)original_status
 {
 	NSLog(@"MoveFiles");
 	NSFileManager *man =[NSFileManager defaultManager];
@@ -552,11 +561,11 @@
 		}
 		else
 		{
-			if(![self returnBoolValue:[_updateData valueForKey:@"original"]])
+			if(!original_status)
 			{
-			
-					[man movePath:[basename stringByAppendingPathComponent:@"final.dmg"] toPath:[updatename stringByAppendingPathComponent:@"final.dmg"] handler:nil];
-			
+				
+				[man movePath:[basename stringByAppendingPathComponent:@"final.dmg"] toPath:[updatename stringByAppendingPathComponent:@"final.dmg"] handler:nil];
+				
 			}
 			else
 			{

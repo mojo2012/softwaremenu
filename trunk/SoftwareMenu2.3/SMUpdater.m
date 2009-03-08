@@ -9,15 +9,14 @@
 #import "SMUpdater.h"
 #import "SMDownloaderSTD.h"
 #import "SMUpdaterProcess.h"
-#import "SMGeneralMethods.h"
-#define UPDATE_URL			@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
+
 
 
 @implementation SMUpdater
 
 -(id)getChoices:(NSString *)URL
 {
-
+	
 	NSData *outData = [NSData dataWithContentsOfURL:[NSURL URLWithString:URL]];
 	NSString *error;
 	NSPropertyListFormat format;
@@ -28,60 +27,42 @@
 
 -(id)initCustom
 {
-	NSLog(@"hello");
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: BRLocalizedString(@"Settings",@"Settings")];
+	[self setListTitle: BRLocalizedString(@"Update",@"Update")];
 	
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	NSArray *values=[[NSArray alloc] initWithArray:[self getChoices:UPDATE_URL]];
 	id item1 = [[BRTextMenuItemLayer alloc] init];
 	[_options addObject:[[NSArray alloc] initWithObjects:@"README",nil]];
-	[item1 setTitle:BRLocalizedString(@"README FIRST",@"README FIRST")];
+	[item1 setTitle:[[BRLocalizedString(@"Readme",@"readme") stringByAppendingString:@"/"]stringByAppendingString:BRLocalizedString(@"Disclaimer",@"Disclaimer")]];
 	[_items addObject:item1];
+	int optionsSeparator=[_items count];
 	
+	NSArray *optionKeys  = [NSArray arrayWithObjects:@"preserve",@"updatenow",@"originalupdate",nil];
+	NSArray *optionNames = [NSArray arrayWithObjects:BRLocalizedString(@"Preserve Files",@"Preserve Files"),BRLocalizedString(@"Update Immediatly",@"Update Immediatly"),BRLocalizedString(@"Keep Unpatched",@"Keep Unpatched"),nil];
+	int ii, counterr;
+	ii=[optionKeys count];
+	for(counterr=0;counterr<ii;counterr++)
+	{
+		id item2 = [[BRTextMenuItemLayer alloc] init];
+		NSString *optionKey=[optionKeys objectAtIndex:counterr];
+		[_options addObject:[NSArray arrayWithObjects:@"options",optionKey,nil]];
+		[item2 setTitle:[optionNames objectAtIndex:counterr]];
+		if([SMGeneralMethods boolForKey:optionKey])
+		{
+			[item2 setRightJustifiedText:BRLocalizedString(@"YES",@"YES")];
+		}
+		else
+		{
+			[item2 setRightJustifiedText:BRLocalizedString(@"NO",@"NO")];
+			[SMGeneralMethods setBool:NO forKey:optionKey];
+		}
+		[_items addObject:item2];
+		
+	}
 	
-	id item2 = [[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"preserve",nil]];
-	[item2 setTitle:@"Preserve Files"];
-	if([SMGeneralMethods boolForKey:@"preserve"])
-	{
-		[item2 setRightJustifiedText:@"YES"];
-	}
-	else
-	{
-		[item2 setRightJustifiedText:@"NO"];
-		[SMGeneralMethods setBool:NO forKey:@"preserve"];
-	}
-	[_items addObject:item2];
-	
-	id item4 = [[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"updatenow",nil]];
-	[item4 setTitle:@"Update Immediatly"];
-	if([SMGeneralMethods boolForKey:@"updatenow"])
-	{
-		[item4 setRightJustifiedText:@"YES"];
-	}
-	else
-	{
-		[item4 setRightJustifiedText:@"NO"];
-		[SMGeneralMethods setBool:NO forKey:@"updatenow"];
-	}
-	[_items addObject:item4];
-	
-	id item5 = [[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"original",nil]];
-	[item5 setTitle:@"Original OS?"];
-	if([SMGeneralMethods boolForKey:@"originalupdate"])
-	{
-		[item5 setRightJustifiedText:@"YES"];
-	}
-	else
-	{
-		[item5 setRightJustifiedText:@"NO"];
-		[SMGeneralMethods setBool:NO forKey:@"originalupdate"];
-	}
-	[_items addObject:item5];
+	int updateSeperator=[_items count];
 	
 	NSFileManager *man = [NSFileManager defaultManager];
 	if([man fileExistsAtPath:@"/Users/frontrow/Updates/final.dmg"])
@@ -92,10 +73,10 @@
 		[_items addObject:item3];
 		
 	}
-	int i;
-	i=[_items count];
+	
+	int updateListSeperator=[_items count];
+	
 	NSDictionary *atv_framework_plist = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/version.plist"];
-	NSLog(@"ATV_plist:%@",atv_framework_plist);
 	NSString *atv_version = [atv_framework_plist valueForKey:@"CFBundleVersion"];
 	NSEnumerator *enumeratorToo = [values objectEnumerator];
 	id obje;
@@ -105,17 +86,14 @@
 		NSString *thename=[[NSString alloc] initWithString:[NSString stringWithFormat:@"Upgrade/Downgrade to %@",[obje valueForKey:@"display"],nil]];
 		if([atv_version compare:[obje valueForKey:@"display"]]==NSOrderedSame)
 		{
-			NSLog(@"same");
 			thename=@"RePatch to:";
 		}
 		else if([atv_version compare:[obje valueForKey:@"display"]]==NSOrderedAscending)
 		{
-			NSLog(@"Ascending");
 			thename=@"Upgrade to:";
 		}
 		else
 		{
-			NSLog(@"Descending");
 			thename=@"Downgrade to:";
 		}
 		NSArray *option = [[NSArray alloc] initWithObjects:@"updating",[obje valueForKey:@"atv_version"],[obje valueForKey:@"xml_location"],[obje valueForKey:@"display"],nil];
@@ -127,12 +105,12 @@
 	}
 	id list = [self list];
 	[list setDatasource: self];
-	[[self list] addDividerAtIndex:i withLabel:BRLocalizedString(@"Updates",@"Updates")];
+	[[self list] addDividerAtIndex:updateListSeperator withLabel:BRLocalizedString(@"Updates",@"Updates")];
 	if([man fileExistsAtPath:@"/Users/frontrow/Updates/final.dmg"])
 	{
-		[[self list] addDividerAtIndex:1 withLabel:BRLocalizedString(@"Update NOW",@"Update Now")];
+		[[self list] addDividerAtIndex:updateSeperator withLabel:BRLocalizedString(@"Update Now",@"Update Now")];
 	}
-	NSLog(@"bye");
+	[[self list] addDividerAtIndex:optionsSeparator withLabel:BRLocalizedString(@"Options",@"Options")];
 	return self;
 	
 }
@@ -149,33 +127,17 @@
 		[task7 launch];
 		[task7 waitUntilExit];
 	}
-	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"preserve"])
+	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"options"])
 	{
-		[SMGeneralMethods switchBoolforKey:@"preserve"];
+		[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		[self initCustom];
 	}
-	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"updatenow"])
-	{
-		[SMGeneralMethods switchBoolforKey:@"updatenow"];
-		[self initCustom];
-	}
-	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"original"])
-	{
-		[SMGeneralMethods switchBoolforKey:@"originalupdate"];
-		[self initCustom];
-	}
-	else if(![[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"README"])
+	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"updating"])
 	{
 		_displays=[[_options objectAtIndex:fp8] objectAtIndex:3];
 		[self start_updating:[[_options objectAtIndex:fp8] objectAtIndex:2]];
 	}
-	/*id newController = nil;
-	newController =[[SMDownloaderSTD alloc] init];
-	[newController setdownloadTitle:@"ATV2.1"];
-	[newController setFileURL:@"http://mesu.apple.com/data/EFI/061-3046.20080212.U7tgG/AppleCapsule.efi"];
-	[newController setFileText:@"hello hello"];
-	//[newController initCustom:[self getChoices:@"http://web.me.com/tomcool420/SoftwareMenu/ATV21.xml"] withName:@"2.whatever"];
-	[[self stack] pushController: newController];*/
+	
 	
 }
 
@@ -187,6 +149,13 @@
 }
 - (void)dealloc
 {
+	[_items release];
+	[_options release];
+	[_dlinks release];
+	[_dlinks2 release];
+	[_md5s release];
+	[_displays release];
+	[_builtinfraps release];
 	[super dealloc];  
 }
 - (int)getSelection
@@ -212,18 +181,7 @@
 {
 	return 0;
 }
--(void)willBeBuried
-{
-	//NSLog(@"willBuried");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBeBuried];
-}
 
--(void)willBePushed
-{
-	//NSLog(@"willBePushed");
-	[super willBePushed];
-}
 
 -(void)willBePopped
 {
@@ -365,7 +323,7 @@
 	else
 	{
 		[self downloadthemalready];
-
+		
 	}
 	
 }
@@ -375,20 +333,20 @@
 	//NSArray *titles=[[NSArray alloc] initWithObjects:@"OS",@"EFI Installer","EFI Updater","IR Installer","IR Updater","SI Installer",@"SI Updater",nil];
 	
 	//NSArray * thetitles = [[NSArray alloc] initWithObjects:@"OS",@"EFI Installer","EFI Updater","IR Installer","IR Updater","SI Installer",@"SI Updater",nil];
-
+	
 	NSLog(@"%@",_builtinfraps);
 	//int thenumber=[_dlinks count];
 	//NSLog(@"%i",thenumber);
 	//if (_downloadnumber<7)
 	//{
-		
-		NSLog(@"in if loop");
+	
+	NSLog(@"in if loop");
 	id newController2 = nil;
 	newController2 =[[SMDownloaderSTD alloc] init];
 	//NSString *hello=[_builtinfraps objectAtIndex:_downloadnumber];
-		NSLog(@"%@",[NSString stringWithFormat:BRLocalizedString(@"%@ for ATV%@",@"%@ for ATV%@"),[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil]);
+	NSLog(@"%@",[NSString stringWithFormat:BRLocalizedString(@"%@ for ATV%@",@"%@ for ATV%@"),[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil]);
 	//[newController2 setdownloadTitle:[NSString stringWithFormat:@"%@ for ATV%@",[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil]];
-		NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
+	NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
 	//[newController2 setFileURL:[_dlinks objectAtIndex:_downloadnumber]];
 	NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
 	NSLog(@"%@",[NSString stringWithFormat:@"downloading file %d/%d\n URL: \n %@",_downloadnumber+1,[_dlinks count],[_dlinks objectAtIndex:_downloadnumber],nil]);
@@ -398,7 +356,7 @@
 									[NSString stringWithFormat:BRLocalizedString(@"downloading file %d/%d\n URL: \n %@",@"downloading file %d/%d\n URL: \n %@"),_downloadnumber+1,[_dlinks count],[_dlinks objectAtIndex:_downloadnumber],nil],@"downloadtext",nil];
 	NSLog(@"hellotwo: %@",hellotwo);
 	[newController2 setInformationDict:hellotwo];
-				
+	
 	//[newController initCustom:[self getChoices:@"http://web.me.com/tomcool420/SoftwareMenu/ATV21.xml"] withName:@"2.whatever"];
 	[[self stack] pushController: newController2];
 	//}
@@ -408,7 +366,7 @@
 - (void)wasExhumedByPoppingController:(id)fp8
 {
 	NSLog(@"was Exhumed");
-
+	
 	//NSLog(@"builtinfrapscount %d",[_builtinfraps count]);
 	if(_downloadnumber==10)
 	{
@@ -427,7 +385,7 @@
 -(void)wasExhumed
 {
 	NSLog(@"was Exhumed");
-
+	
 	//NSLog(@"builtinfrapscount %d",[_builtinfraps count]);
 	if(_downloadnumber==10)
 	{
@@ -468,10 +426,10 @@
 		[man createDirectoryAtPath:atvpath attributes:nil];
 	}
 	/*else
-	{
-		[man removeFileAtPath:atvpath handler:NULL];
-		[man createDirectoryAtPath:atvpath attributes:nil];
-	}*/
+	 {
+	 [man removeFileAtPath:atvpath handler:NULL];
+	 [man createDirectoryAtPath:atvpath attributes:nil];
+	 }*/
 	
 	int counter,i;
 	i=[_dlinks count];
@@ -490,7 +448,7 @@
 		path_init = [path_init stringByAppendingPathComponent:thefolder];
 		path_init = [path_init stringByAppendingPathComponent:[obje lastPathComponent]];
 		NSLog(@"%@",path_init);
-
+		
 		[man movePath:path_init toPath:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]] handler:nil];
 		if (![self checkmd5:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]]withmd5:md5])
 		{
@@ -502,7 +460,7 @@
 		{
 			[man movePath:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]] toPath:[atvpath stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
 		}
-	
+		
 	}
 	if(!CONTINUE)
 	{
@@ -520,116 +478,44 @@
 {
 	
 	
-        //NSLog(@"%@ %s", self, _cmd);
-        NSTask *mdTask = [[NSTask alloc] init];
-        NSPipe *mdip = [[NSPipe alloc] init];
-        NSString *fullPath = path;
-        NSFileHandle *mdih = [mdip fileHandleForReading];
-        [mdTask setLaunchPath:@"/sbin/md5"];
+	//NSLog(@"%@ %s", self, _cmd);
+	NSTask *mdTask = [[NSTask alloc] init];
+	NSPipe *mdip = [[NSPipe alloc] init];
+	NSString *fullPath = path;
+	NSFileHandle *mdih = [mdip fileHandleForReading];
+	[mdTask setLaunchPath:@"/sbin/md5"];
+	
+	[mdTask setArguments:[NSArray arrayWithObjects:@"-q", fullPath, nil]];
+	[mdTask setStandardOutput:mdip];
+	[mdTask setStandardError:mdip];
+	[mdTask launch];
+	[mdTask waitUntilExit];
+	NSData *outData;
+	outData = [mdih readDataToEndOfFile];
+	NSString *temp = [[NSString alloc] initWithData:outData encoding:NSASCIIStringEncoding];
+	temp = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	//int theTerm = [mdTask terminationStatus];
+	//NSLog(@"md5: %@", temp);
+	if ([temp isEqualToString:md5])
+	{
+		NSLog(@"file at %@ is OK", path);
+		return YES;
 		
-        [mdTask setArguments:[NSArray arrayWithObjects:@"-q", fullPath, nil]];
-        [mdTask setStandardOutput:mdip];
-        [mdTask setStandardError:mdip];
-        [mdTask launch];
-        [mdTask waitUntilExit];
-        NSData *outData;
-        outData = [mdih readDataToEndOfFile];
-        NSString *temp = [[NSString alloc] initWithData:outData encoding:NSASCIIStringEncoding];
-        temp = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        //int theTerm = [mdTask terminationStatus];
-        //NSLog(@"md5: %@", temp);
-        if ([temp isEqualToString:md5])
-        {
-			NSLog(@"file at %@ is OK", path);
-			return YES;
-			
-        }
-		
-        return NO;
+	}
+	
+	return NO;
 }
 -(void)patchOSdmg
 {
 	
-	NSLog(@"patchOS");
-	if(![SMGeneralMethods boolForKey:@"originalupdate"])
-	{
-		id newController = nil;
-		newController =[[SMUpdaterProcess alloc] init];
-		NSLog(@"before dict");
-		NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
-		NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
-		NSLog(@"%@",thedict);
-		[newController setUpdateData:thedict];
-		[[self stack] pushController: newController];
-	}
-	else
-	{
-		NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
-		[self moveFiles2:thedict];
-		[self initCustom];
-	}
-	
-}
--(void)moveFiles2:(NSDictionary *)_updateData
-{
-	NSLog(@"MoveFiles2");
-	NSFileManager *man =[NSFileManager defaultManager];
-	if([man fileExistsAtPath:@"/Users/frontrow/Updates"])
-	{
-		[man removeFileAtPath:@"/Users/frontrow/Updates" handler:nil];
-	}
-	[man createDirectoryAtPath:@"/Users/frontrow/Updates" attributes:nil];
-	
-	
-	NSArray *dlinks=[_updateData valueForKey:@"dlinks"];
-	NSLog(@"dlinks: %@",dlinks);
-	//NSString *original=[_updateData valueForKey:@"original"];
-	NSEnumerator *enum2 = [dlinks objectEnumerator];
-	id obje;
-	while((obje = [enum2 nextObject]) != nil)
-	{
-		
-		//NSString *thefilename=[obje lastPathComponent];
-		NSString *basename= [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil];
-		NSString *updatename= @"/Users/frontrow/Updates";
-		if(![[obje pathExtension] isEqualToString:@"dmg"])
-		{
-			NSString *obje2=[obje lastPathComponent];
-			if([self returnBoolValue:[_updateData valueForKey:@"preserve"]])
-			{
-				NSLog(@"copying %@ to %@",[basename stringByAppendingPathComponent:obje2],[updatename stringByAppendingPathComponent:obje2]);
-				[man copyPath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
-				
-			}
-			else
-			{
-				[man movePath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
-			}
-		}
-		else
-		{
-			
-				if([self returnBoolValue:[_updateData valueForKey:@"preserve"]])
-				{
-					[man copyPath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
-				}
-				else
-				{
-					[man movePath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
-				}
-			
-		}
-		
-	}
-}
--(BOOL)returnBoolValue:(NSString *)thevalue
-{
-	if([thevalue isEqualToString:@"YES"])
-	{
-		return YES;
-	}
-	else
-		return NO;
+	id newController = nil;
+	newController =[[SMUpdaterProcess alloc] init];
+	NSLog(@"before dict");
+	NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
+	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
+	NSLog(@"%@",thedict);
+	[newController setUpdateData:thedict];
+	[[self stack] pushController: newController];	
 }
 
 

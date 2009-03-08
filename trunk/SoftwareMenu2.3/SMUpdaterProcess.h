@@ -46,7 +46,7 @@
 - (void) willBePopped;
 - (BOOL) isNetworkDependent;
 -(void)initCustom;
-- (void)moveFiles2;
+- (void)moveFiles2:(BOOL)original_status;
 - (void)setUpdateData:(NSDictionary *)updatedata;
 - (void) setFileURL:(NSString *)downloadURL;
 -(BOOL)returnBoolValue:(NSString *)thevalue;
