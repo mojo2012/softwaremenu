@@ -28,6 +28,8 @@
 		E20C1CE70EA983AA00739E75 /* Populate.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C1CE40EA983AA00739E75 /* Populate.sh */; };
 		E20C1CEB0EA9841100739E75 /* Scripts.plist in Resources */ = {isa = PBXBuildFile; fileRef = E20C1CEA0EA9841100739E75 /* Scripts.plist */; };
 		E224B56C0EC2827100D9D783 /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = E224B56B0EC2827100D9D783 /* internet.png */; };
+		E236D4AE0F640DAB003C02CA /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E236D4AC0F640DAB003C02CA /* BackRow.framework */; };
+		E236D4AF0F640DAB003C02CA /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */; };
 		E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E245235F0EABCAE600E4127B /* SoftwareUpdater.m */; };
 		E24524B70EABD98700E4127B /* perian_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B40EABD98700E4127B /* perian_logo.png */; };
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
@@ -67,8 +69,6 @@
 		E2A961A10F6302D9000509A8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961970F6302D9000509A8 /* OpenGL.framework */; };
 		E2A961A20F6302D9000509A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961980F6302D9000509A8 /* Foundation.framework */; };
 		E2A961AC0F630405000509A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961AB0F630405000509A8 /* Cocoa.framework */; };
-		E2A9627F0F6312CC000509A8 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A9627E0F6312CC000509A8 /* iPhotoAccess.framework */; };
-		E2A9628E0F631424000509A8 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A9628D0F631424000509A8 /* BackRow.framework */; };
 		E2A9631B0F63787A000509A8 /* dropbear.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E2A9631A0F63787A000509A8 /* dropbear.tar.gz */; };
 		E2ABC0010ECFDE44004771BB /* SoftwareManualInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */; };
 		E2CFDDCA0EAFD51B00BC03AB /* FixPerm.sh in Resources */ = {isa = PBXBuildFile; fileRef = E2CFDDC90EAFD51B00BC03AB /* FixPerm.sh */; };
@@ -112,6 +112,8 @@
 		E20C1CEA0EA9841100739E75 /* Scripts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Scripts.plist; sourceTree = "<group>"; };
 		E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRowUtilstwo.h; sourceTree = "<group>"; };
 		E224B56B0EC2827100D9D783 /* internet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internet.png; sourceTree = "<group>"; };
+		E236D4AC0F640DAB003C02CA /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = "../Desktop/TV/2.3 frameworks/BackRow.framework"; sourceTree = SOURCE_ROOT; };
+		E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "../Desktop/TV/2.3 frameworks/iPhotoAccess.framework"; sourceTree = SOURCE_ROOT; };
 		E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdater.h; sourceTree = "<group>"; };
 		E245235F0EABCAE600E4127B /* SoftwareUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdater.m; sourceTree = "<group>"; };
 		E24524B40EABD98700E4127B /* perian_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = perian_logo.png; sourceTree = "<group>"; };
@@ -162,8 +164,6 @@
 		E2A961970F6302D9000509A8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = ../../../../Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = SOURCE_ROOT; };
 		E2A961980F6302D9000509A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = ../../../../System/Library/Frameworks/Foundation.framework; sourceTree = SOURCE_ROOT; };
 		E2A961AB0F630405000509A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		E2A9627E0F6312CC000509A8 /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "../TV/2.3 frameworks/iPhotoAccess.framework"; sourceTree = SOURCE_ROOT; };
-		E2A9628D0F631424000509A8 /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = ../BackRow.framework; sourceTree = SOURCE_ROOT; };
 		E2A9631A0F63787A000509A8 /* dropbear.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = dropbear.tar.gz; sourceTree = SOURCE_ROOT; };
 		E2ABBFFF0ECFDE44004771BB /* SoftwareManualInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareManualInfo.h; sourceTree = "<group>"; };
 		E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareManualInfo.m; sourceTree = "<group>"; };
@@ -193,8 +193,8 @@
 				E2A961A10F6302D9000509A8 /* OpenGL.framework in Frameworks */,
 				E2A961A20F6302D9000509A8 /* Foundation.framework in Frameworks */,
 				E2A961AC0F630405000509A8 /* Cocoa.framework in Frameworks */,
-				E2A9627F0F6312CC000509A8 /* iPhotoAccess.framework in Frameworks */,
-				E2A9628E0F631424000509A8 /* BackRow.framework in Frameworks */,
+				E236D4AE0F640DAB003C02CA /* BackRow.framework in Frameworks */,
+				E236D4AF0F640DAB003C02CA /* iPhotoAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,8 +223,8 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				E2A9628D0F631424000509A8 /* BackRow.framework */,
-				E2A9627E0F6312CC000509A8 /* iPhotoAccess.framework */,
+				E236D4AC0F640DAB003C02CA /* BackRow.framework */,
+				E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */,
 				E2A961AB0F630405000509A8 /* Cocoa.framework */,
 				E2A961900F6302D9000509A8 /* ApplicationServices.framework */,
 				E2A961920F6302D9000509A8 /* CoreData.framework */,
@@ -603,6 +603,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../CustomControllerExample\"";
@@ -622,6 +623,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../Projects/nitoTV/trunk/resources/take_two\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_21 = "\"$(SRCROOT)/../TV/2.3 frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_22 = "\"$(SRCROOT)/..\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_23 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Desktop/Store/frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../Desktop\"";
@@ -676,6 +678,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../Projects/nitoTV/trunk/resources/take_two\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
@@ -694,6 +697,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../Projects/nitoTV/trunk/resources/take_two\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_21 = "\"$(SRCROOT)/../TV/2.3 frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_22 = "\"$(SRCROOT)/..\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_23 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Desktop/Store/frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../Desktop\"";

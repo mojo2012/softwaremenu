@@ -234,8 +234,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBottomSmartGroupGIDs</key>
@@ -320,6 +318,8 @@
 							<string>386pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBottomSmartGroupGIDs</key>
@@ -377,7 +377,7 @@
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 954}, {336, 91}}</string>
+									<string>{{0, 982}, {336, 91}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -514,7 +514,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E236D4880F640A15003C02CA</string>
+										<string>E236D4B70F640DC5003C02CA</string>
 										<key>history</key>
 										<array>
 											<string>E2A3ADB30E9ABB4C00F49308</string>
@@ -651,7 +651,7 @@
 											<string>E2A963EF0F63A9A0000509A8</string>
 											<string>E2A963FB0F63ADB3000509A8</string>
 											<string>E2A963FC0F63ADB3000509A8</string>
-											<string>E236D4600F640895003C02CA</string>
+											<string>E236D4880F640A15003C02CA</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -850,12 +850,12 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E236D4890F640A15003C02CA</string>
-				<string>E236D48A0F640A15003C02CA</string>
+				<string>E236D4B80F640DC5003C02CA</string>
+				<string>E236D4B90F640DC5003C02CA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E236D48B0F640A15003C02CA</string>
+				<string>E236D4BA0F640DC5003C02CA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -989,8 +989,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/tom/Desktop/SoftwareMenu2.3/SoftwareMenu.xcodeproj</string>
+		<string>E2C71D840E95B7F800572BD6</string>
+		<string>/Users/tom/SoftwareMenu2.3/SoftwareMenu.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>-7 59 1440 819 0 0 1440 878 </string>
@@ -1014,7 +1014,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SMUpdater.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -1072,7 +1072,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E2C71D840E95B7F800572BD6</string>
-				<string>E2A962880F6312EA000509A8</string>
+				<string>E236D4B50F640DBA003C02CA</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -1083,7 +1083,7 @@
 			<key>WindowToolGUID</key>
 			<string>E2C71D840E95B7F800572BD6</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

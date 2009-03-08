@@ -549,13 +549,12 @@
 	[mdTask13 setLaunchPath:@"/bin/cp"];
 	
 	[mdTask13 setArguments:[NSArray arrayWithObjects:[origBase stringByAppendingPathComponent:@"/Users/frontrow/.dropbear_banner"], @"/Users/frontrow/", nil]];
-	
-	
 	[mdTask13 setStandardOutput:mdip13];
 	[mdTask13 setStandardError:mdip13];
 	[mdTask13 launch];
 	[mdTask13 waitUntilExit];
-	
+	[self changeOwner:@"frontrow:frontrow" onFile:@"/Users/frontrow/.dropbear_banner" isRecursive:NO];
+	[self changePermissions:@"755" onFile:@"/Users/frontrow/.dropbear_banner" isRecursive:NO];
 	/*[mdTask5 setLaunchPath:@"/usr/bin/sudo"];
 	
 	[mdTask5 setArguments:[NSArray arrayWithObjects:@"touch",@"/Volumes/OSBoot 1/.readwrite", nil]];

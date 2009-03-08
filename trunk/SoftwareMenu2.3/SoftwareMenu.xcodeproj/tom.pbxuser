@@ -3,7 +3,7 @@
 	089C1669FE841209C02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E2A35FE90EAE02B900FB6FD7 /* installHelper */;
-		activeTarget = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
+		activeTarget = E2A35FE70EAE02B900FB6FD7 /* installHelper */;
 		addToTargets = (
 			8D5B49AC048680CD000E48DA /* SoftwareMenu */,
 		);
@@ -74,8 +74,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 258214407;
-			PBXWorkspaceStateSaveDate = 258214407;
+			PBXPerProjectTemplateStateSaveDate = 258215323;
+			PBXWorkspaceStateSaveDate = 258215323;
 		};
 		perUserProjectItems = {
 			E20406640F5A66A0008F2DF7 = E20406640F5A66A0008F2DF7 /* PBXTextBookmark */;
@@ -136,7 +136,8 @@
 			E21731960ECBDC45009E5364 = E21731960ECBDC45009E5364 /* PBXTextBookmark */;
 			E224B6020EC286BC00D9D783 = E224B6020EC286BC00D9D783 /* PBXBookmark */;
 			E236D4600F640895003C02CA = E236D4600F640895003C02CA /* PBXTextBookmark */;
-			E236D4880F640A15003C02CA /* PBXTextBookmark */ = E236D4880F640A15003C02CA /* PBXTextBookmark */;
+			E236D4880F640A15003C02CA = E236D4880F640A15003C02CA /* PBXTextBookmark */;
+			E236D4B70F640DC5003C02CA /* PBXTextBookmark */ = E236D4B70F640DC5003C02CA /* PBXTextBookmark */;
 			E24524760EABD5FF00E4127B = E24524760EABD5FF00E4127B /* PBXTextBookmark */;
 			E24524770EABD5FF00E4127B = E24524770EABD5FF00E4127B /* PBXTextBookmark */;
 			E24525280EABDF9100E4127B = E24525280EABDF9100E4127B /* PBXBookmark */;
@@ -1071,6 +1072,16 @@
 		vrLen = 1247;
 		vrLoc = 3158;
 	};
+	E236D4B70F640DC5003C02CA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */;
+		name = "SMUpdater.m: 119";
+		rLen = 0;
+		rLoc = 3691;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 3158;
+	};
 	E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1021, 1050}}";
@@ -1714,7 +1725,7 @@
 	};
 	E29FA09D0F585603002BE2B0 /* SMUpdater.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1062, 9114}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1062, 9044}}";
 			sepNavSelRange = "{3691, 0}";
 			sepNavVisRange = "{3158, 1247}";
 			sepNavWindowFrame = "{{288, 13}, {981, 865}}";
