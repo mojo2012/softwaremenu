@@ -251,7 +251,9 @@
 		CFPreferencesSetAppValue(CFSTR("option"), (CFNumberRef)[NSNumber numberWithLong:fp8],kCFPreferencesCurrentApplication);
 		//NSLog(@"theNumber : %@",(CFNumberRef)[NSNumber numberWithLong:fp8]);
 		BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
-		[textinput setTitle:@"Number"];
+		[textinput setTitle:[NSString stringWithFormat:@"Order Number for Frappliance: %@",[option valueForKey:@"name"]]];
+		[textinput setInitialTextEntryText:[option valueForKey:@"order"]];
+		[textinput setPromptText:@"enter a number"];
 		[textinput setTextEntryCompleteDelegate:self];
 		[[self stack] pushController:textinput];
 		//[self setOrder];
