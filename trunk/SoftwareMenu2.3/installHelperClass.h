@@ -35,7 +35,8 @@
 - (void)makeASRscan:(NSString *)drivepath;
 - (void)copySSHFiles;
 - (void)OSUpdate;
--(int)toggleUpdate;
+- (int)toggleUpdate;
+- (int)blockUpdate;
 
 - (BOOL)wasWritable;
 

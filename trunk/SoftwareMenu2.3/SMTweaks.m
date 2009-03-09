@@ -33,13 +33,24 @@
 	{
 		BRTextMenuItemLayer *item =[[BRTextMenuItemLayer alloc] init];
 		[item setTitle:[settingDisplays objectAtIndex:counter]];
-		[_options addObjects:@"settingType",@"settingNames",nil];
+		[_options addObject:[NSArray arrayWithObjects:@"settingType",@"settingNames",nil]];
 		[_items addObject:item];
 		
 		
 	}
-	
-		
+	id list = [self list];
+	[list setDatasource: self];
+	return self;
 }
+-(void)itemSelected:(long)fp8
+{
+	
+	NSArray *option = [_options objectAtIndex:fp8];
+	if([[option objectAtIndex:0] isEqualToString:@"download"])
+	{
+		
+	}
+}
+
 		
 @end

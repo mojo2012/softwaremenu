@@ -24,7 +24,7 @@
 	{
 		theBackupVersion =@"0.0 -- Not Backed up";
 	}
-	NSLog(@"%@,%@,%@",theOnlineVersion,theBackupVersion,theInstalledVersion);
+	//NSLog(@"%@,%@,%@",theOnlineVersion,theBackupVersion,theInstalledVersion);
 	_theVersions=[[NSArray alloc] initWithObjects:theOnlineVersion,theBackupVersion,theInstalledVersion,nil];
 	[_theVersions retain];
 }
@@ -37,13 +37,31 @@
 	}
 	else
 	{
-		NSString *downloadedDescription = [[NSString alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:theDescriptionURL] encoding:NSUTF8StringEncoding error:NULL];
-		if([downloadedDescription length]==0)
+		hello = [[NSString alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:theDescriptionURL] encoding:NSUTF8StringEncoding error:NULL];
+		if([hello length]==0)
 		{
 			hello=@"The info file posted at the following URL does not exist";
 		}
 	}
-	
+	//NSLog(@"hello:%@",hello);
+	[self setDescription:hello];
+}
+-(void)setDescriptionWithFile:(NSString *)theDescriptionFile
+{
+	NSString *hello=[[NSString alloc] init];
+	if([theDescriptionFile isEqualToString:@"No description added"])
+	{
+		hello=@"No description added";
+	}
+	else
+	{
+		hello = [[NSString alloc] initWithContentsOfFile:theDescriptionFile];
+		if([hello length]==0)
+		{
+			hello=@"The info file posted at the following path does not exist";
+		}
+	}
+	//NSLog(@"hello:%@",hello);
 	[self setDescription:hello];
 }
 -(void)setDescription:(NSString *)theDescription
@@ -85,15 +103,16 @@
 	[self setSourceImage: _theName];
 	
 	//[self setSourceText: @"hello"];   // this lays itself out
-
-	
+	[self setSourceText:@"hello"];
+	//NSLog(@"theDescription:%@",_theDescription);
 	[self appendSourceText: _theDescription];
 	
 	// add the controls
-	[self addControl: _sourceText];
-	[self addControl: _sourceImage];
-	[self customStuff];
 	[self addControl: _header];
+	[self addControl: _sourceImage];
+	[self addControl: _sourceText];
+
+	//[self customStuff];
 
 
 	
@@ -108,7 +127,7 @@
 }
 -(void)customStuff
 {
-	_currentvers = [[BRTextControl alloc] init];
+	/*_currentvers = [[BRTextControl alloc] init];
 	_onlinevers = [[BRTextControl alloc] init];
 	_bakvers = [[BRTextControl alloc] init];
 	[self setBakVers: [_theVersions objectAtIndex:1]];
@@ -116,7 +135,7 @@
 	[self setOnlineVers:[_theVersions objectAtIndex:0]];
 	[self addControl:_bakvers];
 	[self addControl:_currentvers];
-	[self addControl:_onlinevers];
+	[self addControl:_onlinevers];*/
 	
 }
 
@@ -163,6 +182,10 @@
 	NSString *appPng = nil;
 	
 	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
+	if([name isEqualToString:@"README"])
+	{
+		appPng = @"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/appleTVImage.png";
+	}
 	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
 	
@@ -204,8 +227,8 @@
     frame.origin.x = masterFrame.size.width  * 0.05f;
     frame.origin.y = (masterFrame.size.height * 0.05);// - txtSize.height;
     //frame.size = txtSize;
-    frame.size.width = masterFrame.size.width*0.7f;
-	frame.size.height = masterFrame.size.height*0.9f;
+    frame.size.width = masterFrame.size.width*0.65f;
+	frame.size.height = masterFrame.size.height*0.75f;
 	//struct CGSize shrinksize;
 	//shrinksize.width=
 	//[_sourceText shrinkTextToFitInBounds:{masterFrame.size.width*0.4f;masterFrame.size.height*0.45f;};]

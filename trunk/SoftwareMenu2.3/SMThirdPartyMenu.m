@@ -117,7 +117,7 @@
 	[_options addObject:[[NSArray alloc] initWithObjects:@"2",@"SoftwareMenu",nil]];
 	[item90 setTitle:@"Software Menu"];
 	
-	if (![current_soft_version isEqualToString:SoftVers])	
+	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
 	{
 		if(versLength != 0)
 		{
@@ -184,7 +184,8 @@
 				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
 				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
 				//NSLog(@"%@ %@", current_version,onlineVersion);
-				if ([current_version isEqualToString:onlineVersion])
+				//if ([current_version isEqualToString:onlineVersion])
+				if([current_version compare:onlineVersion]==NSOrderedAscending)
 				{
 					[item setRightJustifiedText:@"Up to Date"];
 					//NSLog(@"Up to Date");
@@ -323,7 +324,8 @@
 		[list setDatasource: self];
 	[file setValue:@"NO" forKey:@"Update"];
 	[file writeToFile:[@"~/Library/Application Support/SoftwareMenu/log2.plist" stringByExpandingTildeInPath] atomically:YES];
-	if (![current_soft_version isEqualToString:SoftVers])
+	//if (![current_soft_version isEqualToString:SoftVers])
+	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
 	{
 		[[self list] addDividerAtIndex:sep1 withLabel:@"Important - SoftwareMenu"];
 
@@ -437,10 +439,10 @@
 						thelicense = @"No License added";
 					}
 				}
-				NSLog(@"before starting");
+				//NSLog(@"before starting");
 				NSMutableDictionary *theInformation = [[NSMutableDictionary alloc] initWithObjectsAndKeys:thename,@"name",theversion,@"version",thescript,@"script",thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
 				newController = [[SMInstallMenu alloc] init];
-				NSLog(@"gonna send");
+				//NSLog(@"gonna send");
 				[newController setInformationDictionary:theInformation];
 				[newController initCustom];
 				[[self stack] pushController: newController];
@@ -648,9 +650,9 @@
     // inform the user
 	i=i+1;
 	[self writeToLog:@"error"];
-    NSLog(@"Download failed! Error - %@ %@",
+    /*NSLog(@"Download failed! Error - %@ %@",
           [error localizedDescription],
-          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);*/
 	
 }
 - (void)downloadDidFinish:(NSURLDownload *)download

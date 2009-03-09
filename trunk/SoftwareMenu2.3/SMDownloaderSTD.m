@@ -33,21 +33,21 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 - (void) setFileURL:(NSString *)downloadURL
 {
 	_downloadURL=[downloadURL retain];
-	NSLog(@"downloadURL:%@",_downloadURL);
+	//NSLog(@"downloadURL:%@",_downloadURL);
 }
 - (void) setFileText:(NSString *)downloadText
 {
 	_downloadText=[downloadText retain];
-	NSLog(@"downloadText:%@",_downloadText);
+	//NSLog(@"downloadText:%@",_downloadText);
 }
 - (void) setdownloadTitle:(NSString *)downloadName
 {
 	_downloadTitle=[downloadName retain];
-	NSLog(@"downloadName:%@",_downloadTitle);
+	//NSLog(@"downloadName:%@",_downloadTitle);
 }
 -(void)setInformationDict:(NSMutableDictionary *)infoDict
 {
-	NSLog(@"infoDict");
+	//NSLog(@"infoDict");
 	_theInformation=infoDict;
 	[_theInformation retain];
 }
@@ -95,8 +95,8 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	
     NSString * folder = [[name stringByDeletingPathExtension]
                          stringByAppendingPathExtension: @"download"];
-	NSLog(@"output path: %@",[NSString pathWithComponents: [NSArray arrayWithObjects: cache,
-															folder, name, nil]]);
+	//NSLog(@"output path: %@",[NSString pathWithComponents: [NSArray arrayWithObjects: cache,
+														//	folder, name, nil]]);
     return ( [NSString pathWithComponents: [NSArray arrayWithObjects: cache,
 											folder, name, nil]] );
 }
@@ -105,8 +105,8 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 
 {
 	[self disableScreenSaver];
-	NSLog(@"downloadURL1:%@",[_theInformation valueForKey:@"url"]);
-	NSLog(@"downloadTitle:%@",[_theInformation valueForKey:@"name"]);
+	//NSLog(@"downloadURL1:%@",[_theInformation valueForKey:@"url"]);
+	//NSLog(@"downloadTitle:%@",[_theInformation valueForKey:@"name"]);
 	NSString *urlstr=[_theInformation valueForKey:@"url"];
 	_theSourceText = [[NSMutableString alloc] initWithString:@"Starting Download"];
 	//_theSourceText = @"starting Download:";
@@ -117,11 +117,11 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	[self addControl: _sourceImage];
 	// work out our desired output path
 	_outputPath = [[SMDownloaderSTD outputPathForURLString: urlstr] retain];
-		  NSLog(@"downloadURL2:%@",[_theInformation valueForKey:@"url"]);
+		  //NSLog(@"downloadURL2:%@",[_theInformation valueForKey:@"url"]);
 	// lay out our UI
-	NSLog(@"hello");
+	//NSLog(@"hello");
 	NSRect masterFrame = [[self parent] frame];
-	NSLog(@"hello2");
+	//NSLog(@"hello2");
 	NSRect frame = masterFrame;
 	
 	// header goes in a specific location
@@ -137,7 +137,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	frame.origin.y = masterFrame.origin.y + (masterFrame.size.height * (1.0f / 8.0f));
 	[_progressBar setFrame: frame];
 		  NSString *name =  [_theInformation valueForKey:@"name"];
-	NSLog(@"Download Title:%@",name);
+	//NSLog(@"Download Title:%@",name);
 	if (name == nil)
 	{
 		name = @"Download Test";
@@ -156,7 +156,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	[self addControl: _sourceText];
 	[self addControl: _progressBar];
 	
-	NSLog(@"hello Final");
+	//NSLog(@"hello Final");
 	
 }
 
@@ -204,7 +204,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 		urlstr = kDefaultURLString;
 	//[self disableScreenSaver];
 	
-	NSLog(@"urlstr in beginDownload: %@",urlstr);
+	//NSLog(@"urlstr in beginDownload: %@",urlstr);
     NSURL * url = [NSURL URLWithString: urlstr];
     if ( url == nil )
         return ( NO );
@@ -319,7 +319,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
 	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
-	NSLog(@"appPng: %@",appPng);
+	//NSLog(@"appPng: %@",appPng);
 	id sp= [BRImage imageWithPath:appPng];
 	[_sourceImage setImage:sp];
 	[_sourceImage setAutomaticDownsample:YES];
@@ -413,8 +413,8 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
 {
     [self storeResumeData];
 	
-    NSLog( @"Download encountered error '%d' (%@)", [error code],
-		  [error localizedDescription] );
+    //NSLog( @"Download encountered error '%d' (%@)", [error code],
+		 // [error localizedDescription] );
 	
     // show an alert for the returned error (hopefully it has nice
     // localized reasons & such...)
@@ -488,8 +488,8 @@ willResumeWithResponse: (NSURLResponse *) response
     // the total here seems to be the amount *remaining*, not the
     // complete total
 	
-    NSLog( @"Resumed download at byte %lld, remaining is %lld",
-		  _gotLength, [response expectedContentLength] );
+    //NSLog( @"Resumed download at byte %lld, remaining is %lld",
+		 // _gotLength, [response expectedContentLength] );
 	
     if ( [response expectedContentLength] != NSURLResponseUnknownLength )
     {

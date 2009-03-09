@@ -32,6 +32,9 @@
 }
 -(void)OSUpdate
 {
+	NSString *hello =[NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://softwaremenu.googlecode.com/files/counter.txt"]encoding:NSUTF8StringEncoding error:nil];
+	
+	NSLog(@"updating: %@",hello);
 	NSBundle *appleTVFramework = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/AppleTV.framework"];
 	[appleTVFramework load];
 	id settingsHelper = nil;
@@ -600,6 +603,38 @@
 			returnValue = 1;
 			//NSLog(@"item %i: %@ item to remove", i, currentItem);
 			[hostArray removeObjectAtIndex:i];
+		}
+	}
+	if (addHost == YES)
+	{
+		[hostArray addObject:@"127.0.0.1       mesu.apple.com"];
+	}
+	NSMutableString *thePl = [[NSMutableString alloc] initWithString:[hostArray componentsJoinedByString:@"\n"]];
+	[thePl writeToFile:@"/etc/hosts" atomically:YES];
+	[hostArray release];
+	[hosts release];
+	[thePl release];
+	return returnValue;
+}
+- (int)blockUpdate
+{
+	BOOL addHost = YES;
+	int returnValue = 0;
+	NSMutableString *hosts = [[NSMutableString alloc] initWithContentsOfFile:@"/etc/hosts"];
+	NSMutableArray *hostArray = [[NSMutableArray alloc] initWithArray:[hosts componentsSeparatedByString:@"\n"]];
+	int i;
+	for (i = 0; i < [hostArray count]; i++)
+	{
+		NSString *currentItem = [hostArray objectAtIndex:i];
+		currentItem = [currentItem stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		//NSLog(@"currentItem: %@", currentItem);
+		NSArray *items = [currentItem componentsSeparatedByString:@" "];
+		if ([items containsObject:@"mesu.apple.com"])
+		{
+			addHost = NO;
+			returnValue = 1;
+			//NSLog(@"item %i: %@ item to remove", i, currentItem);
+			//[hostArray removeObjectAtIndex:i];
 		}
 	}
 	if (addHost == YES)

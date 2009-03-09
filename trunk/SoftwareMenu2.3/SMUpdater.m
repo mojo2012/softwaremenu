@@ -9,6 +9,7 @@
 #import "SMUpdater.h"
 #import "SMDownloaderSTD.h"
 #import "SMUpdaterProcess.h"
+#import "SMInfo.h"
 
 
 
@@ -34,8 +35,8 @@
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	NSArray *values=[[NSArray alloc] initWithArray:[self getChoices:UPDATE_URL]];
 	id item1 = [[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"README",nil]];
-	[item1 setTitle:[[BRLocalizedString(@"Readme",@"readme") stringByAppendingString:@"/"]stringByAppendingString:BRLocalizedString(@"Disclaimer",@"Disclaimer")]];
+	[_options addObject:[[NSArray alloc] initWithObjects:@"readme",nil]];
+	[item1 setTitle:[[BRLocalizedString(@"Readme",@"Readme") stringByAppendingString:@"/"]stringByAppendingString:BRLocalizedString(@"Disclaimer",@"Disclaimer")]];
 	[_items addObject:item1];
 	int optionsSeparator=[_items count];
 	
@@ -101,6 +102,7 @@
 		id item = [[BRTextMenuItemLayer alloc] init];
 		[item setTitle:thename];
 		[item setRightJustifiedText:[obje valueForKey:@"display"]];
+
 		[_items addObject:item];
 	}
 	id list = [self list];
@@ -127,8 +129,24 @@
 		[task7 launch];
 		[task7 waitUntilExit];
 	}
+	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"readme"])
+	{
+		//NSString *readmepath=[[NSBundle bundleForClass:[self class]] pathForResource:@"readmeupd" ofType:@"txt"];
+		NSString *downloadedDescription = [NSString  stringWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"readmeupd" ofType:@"txt"] encoding:NSUTF8StringEncoding error:NULL];
+		_downloadnumber=10;
+		id newController=[[SMInfo alloc] init];
+		[newController setDescription:downloadedDescription];
+
+		//id newController = [[SMLog alloc] init];
+		
+		//[newController setDescription:downloadedDescription];
+		[newController setTheName:@"README"];
+		[[self stack] pushController:newController];
+		
+	}
 	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"options"])
 	{
+		_downloadnumber=10;
 		[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		[self initCustom];
 	}
@@ -192,7 +210,7 @@
 
 -(void)start_updating:(NSString *)xml_location
 {
-	NSLog(@"start updating");
+	//NSLog(@"start updating");
 	NSMutableArray *dLinks = [[NSMutableArray alloc] init];
 	NSMutableArray *md5s   = [[NSMutableArray alloc] init];
 	NSData *outData = [NSData dataWithContentsOfURL:[NSURL
@@ -240,8 +258,8 @@
 	
 	_downloadnumber=0;
 	//[dLinks autorelease];
-	NSLog(@"%@",_dlinks);
-	NSLog(@"end updating");
+	//NSLog(@"%@",_dlinks);
+	//NSLog(@"end updating");
 	NSMutableArray * builtinfraps = [[NSMutableArray alloc] initWithObjects:@"OS",@"EFI Installer",@"EFI Updater",@"IR Installer",@"IR Updater",@"SI Installer",@"SI Updater",nil];
 	
 	
@@ -261,15 +279,15 @@
 		for( counter=0; counter < i-1 ; counter++)
 		{
 			NSString *itemName=[[dLinks objectAtIndex:counter] lastPathComponent];
-			NSLog(@"itemName: %@",itemName);
-			NSLog(@"itemPath: %@",[atvpath stringByAppendingPathComponent:itemName]);
+			//NSLog(@"itemName: %@",itemName);
+			//NSLog(@"itemPath: %@",[atvpath stringByAppendingPathComponent:itemName]);
 			if([[itemName pathExtension]isEqualToString:@"dmg"])
 			{
 				
 				OSISRIGHT=[self checkmd5:[atvpath stringByAppendingPathComponent:@"OS.dmg"] withmd5:[md5s objectAtIndex:0]];
 				if(OSISRIGHT)
 				{
-					NSLog(@"OS.dmg has correct MD5");
+					//NSLog(@"OS.dmg has correct MD5");
 				}
 				else
 				{
@@ -284,7 +302,7 @@
 				OSISRIGHT=[self checkmd5:[atvpath stringByAppendingPathComponent:itemName] withmd5:[md5s objectAtIndex:counter]];
 				if(OSISRIGHT)
 				{
-					NSLog(@"%@ has correct MD5",itemName);
+					//NSLog(@"%@ has correct MD5",itemName);
 				}
 				else
 				{
@@ -329,32 +347,32 @@
 }
 -(void)downloadthemalready;
 {
-	NSLog(@"downloadthemalready");
+	//NSLog(@"downloadthemalready");
 	//NSArray *titles=[[NSArray alloc] initWithObjects:@"OS",@"EFI Installer","EFI Updater","IR Installer","IR Updater","SI Installer",@"SI Updater",nil];
 	
 	//NSArray * thetitles = [[NSArray alloc] initWithObjects:@"OS",@"EFI Installer","EFI Updater","IR Installer","IR Updater","SI Installer",@"SI Updater",nil];
 	
-	NSLog(@"%@",_builtinfraps);
+	//NSLog(@"%@",_builtinfraps);
 	//int thenumber=[_dlinks count];
 	//NSLog(@"%i",thenumber);
 	//if (_downloadnumber<7)
 	//{
 	
-	NSLog(@"in if loop");
+	//NSLog(@"in if loop");
 	id newController2 = nil;
 	newController2 =[[SMDownloaderSTD alloc] init];
 	//NSString *hello=[_builtinfraps objectAtIndex:_downloadnumber];
-	NSLog(@"%@",[NSString stringWithFormat:BRLocalizedString(@"%@ for ATV%@",@"%@ for ATV%@"),[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil]);
+	//NSLog(@"%@",[NSString stringWithFormat:BRLocalizedString(@"%@ for ATV%@",@"%@ for ATV%@"),[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil]);
 	//[newController2 setdownloadTitle:[NSString stringWithFormat:@"%@ for ATV%@",[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil]];
-	NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
+	//NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
 	//[newController2 setFileURL:[_dlinks objectAtIndex:_downloadnumber]];
-	NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
-	NSLog(@"%@",[NSString stringWithFormat:@"downloading file %d/%d\n URL: \n %@",_downloadnumber+1,[_dlinks count],[_dlinks objectAtIndex:_downloadnumber],nil]);
+	//NSLog(@"%@",[_dlinks objectAtIndex:_downloadnumber]);
+	//NSLog(@"%@",[NSString stringWithFormat:@"downloading file %d/%d\n URL: \n %@",_downloadnumber+1,[_dlinks count],[_dlinks objectAtIndex:_downloadnumber],nil]);
 	//[newController2 setFileText:[NSString stringWithFormat:@"downloading file %d/7\n URL: \n %@",_downloadnumber+1,[_dlinks objectAtIndex:_downloadnumber],nil]];
 	NSMutableDictionary *hellotwo =[[NSMutableDictionary alloc] initWithObjectsAndKeys:[_dlinks objectAtIndex:_downloadnumber],@"url",
 									[NSString stringWithFormat:BRLocalizedString(@"%@ for ATV%@",@"%@ for ATV%@"),[_builtinfraps objectAtIndex:_downloadnumber],_displays,nil],@"name",
 									[NSString stringWithFormat:BRLocalizedString(@"downloading file %d/%d\n URL: \n %@",@"downloading file %d/%d\n URL: \n %@"),_downloadnumber+1,[_dlinks count],[_dlinks objectAtIndex:_downloadnumber],nil],@"downloadtext",nil];
-	NSLog(@"hellotwo: %@",hellotwo);
+	//NSLog(@"hellotwo: %@",hellotwo);
 	[newController2 setInformationDict:hellotwo];
 	
 	//[newController initCustom:[self getChoices:@"http://web.me.com/tomcool420/SoftwareMenu/ATV21.xml"] withName:@"2.whatever"];
@@ -365,7 +383,7 @@
 }
 - (void)wasExhumedByPoppingController:(id)fp8
 {
-	NSLog(@"was Exhumed");
+	//NSLog(@"was Exhumed");
 	
 	//NSLog(@"builtinfrapscount %d",[_builtinfraps count]);
 	if(_downloadnumber==10)
@@ -384,7 +402,7 @@
 }
 -(void)wasExhumed
 {
-	NSLog(@"was Exhumed");
+	//NSLog(@"was Exhumed");
 	
 	//NSLog(@"builtinfrapscount %d",[_builtinfraps count]);
 	if(_downloadnumber==10)
@@ -447,7 +465,7 @@
 		NSString * thefolder = [[[obje lastPathComponent] stringByDeletingPathExtension] stringByAppendingPathExtension:@"download"];
 		path_init = [path_init stringByAppendingPathComponent:thefolder];
 		path_init = [path_init stringByAppendingPathComponent:[obje lastPathComponent]];
-		NSLog(@"%@",path_init);
+		//NSLog(@"%@",path_init);
 		
 		[man movePath:path_init toPath:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]] handler:nil];
 		if (![self checkmd5:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]]withmd5:md5])
@@ -498,7 +516,7 @@
 	//NSLog(@"md5: %@", temp);
 	if ([temp isEqualToString:md5])
 	{
-		NSLog(@"file at %@ is OK", path);
+		//NSLog(@"file at %@ is OK", path);
 		return YES;
 		
 	}
@@ -510,10 +528,10 @@
 	
 	id newController = nil;
 	newController =[[SMUpdaterProcess alloc] init];
-	NSLog(@"before dict");
-	NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
-	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
-	NSLog(@"%@",thedict);
+	//NSLog(@"before dict");
+	//NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
+	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
+	//NSLog(@"%@",thedict);
 	[newController setUpdateData:thedict];
 	[[self stack] pushController: newController];	
 }

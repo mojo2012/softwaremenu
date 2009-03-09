@@ -30,7 +30,6 @@
 		E224B56C0EC2827100D9D783 /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = E224B56B0EC2827100D9D783 /* internet.png */; };
 		E236D4AE0F640DAB003C02CA /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E236D4AC0F640DAB003C02CA /* BackRow.framework */; };
 		E236D4AF0F640DAB003C02CA /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */; };
-		E236D51A0F643617003C02CA /* SoftwareMenu_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236D5190F643617003C02CA /* SoftwareMenu_Prefix.pch */; };
 		E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */; };
 		E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E245235F0EABCAE600E4127B /* SoftwareUpdater.m */; };
 		E24524B70EABD98700E4127B /* perian_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B40EABD98700E4127B /* perian_logo.png */; };
@@ -49,6 +48,7 @@
 		E25576D80EBE53DC002B6313 /* reset.sh in Resources */ = {isa = PBXBuildFile; fileRef = E25576D70EBE53DC002B6313 /* reset.sh */; };
 		E2587A940F55980600671F59 /* SMFrappMover.m in Sources */ = {isa = PBXBuildFile; fileRef = E2587A930F55980600671F59 /* SMFrappMover.m */; };
 		E25CC0910F6228B00024A371 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E25CC08F0F6228B00024A371 /* Localizable.strings */; };
+		E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */ = {isa = PBXBuildFile; fileRef = E273B2420F647CAC00E516B5 /* readmeupd.txt */; };
 		E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */; };
 		E29FA09E0F585603002BE2B0 /* SMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */; };
 		E29FA39B0F58A7AB002BE2B0 /* SMDownloaderSTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */; };
@@ -115,8 +115,7 @@
 		E224B56B0EC2827100D9D783 /* internet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internet.png; sourceTree = "<group>"; };
 		E236D4AC0F640DAB003C02CA /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = "../Desktop/TV/2.3 frameworks/BackRow.framework"; sourceTree = SOURCE_ROOT; };
 		E236D4AD0F640DAB003C02CA /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "../Desktop/TV/2.3 frameworks/iPhotoAccess.framework"; sourceTree = SOURCE_ROOT; };
-		E236D5190F643617003C02CA /* SoftwareMenu_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareMenu_Prefix.pch; sourceTree = "<group>"; };
-		E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuDownloader_Prefix.pch; sourceTree = "<group>"; };
+		E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = QuDownloader_Prefix.pch; sourceTree = "<group>"; };
 		E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdater.h; sourceTree = "<group>"; };
 		E245235F0EABCAE600E4127B /* SoftwareUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdater.m; sourceTree = "<group>"; };
 		E24524B40EABD98700E4127B /* perian_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = perian_logo.png; sourceTree = "<group>"; };
@@ -136,6 +135,8 @@
 		E2587A920F55980600671F59 /* SMFrappMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFrappMover.h; sourceTree = "<group>"; };
 		E2587A930F55980600671F59 /* SMFrappMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFrappMover.m; sourceTree = "<group>"; };
 		E25CC0900F6228B00024A371 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E273B2420F647CAC00E516B5 /* readmeupd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readmeupd.txt; sourceTree = "<group>"; };
+		E273B3490F648DEE00E516B5 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInstallMenu.h; sourceTree = "<group>"; };
 		E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallMenu.m; sourceTree = "<group>"; };
 		E2954F3A0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E273B2420F647CAC00E516B5 /* readmeupd.txt */,
 				E2A9631A0F63787A000509A8 /* dropbear.tar.gz */,
 				87AD8E4D0F630B68003907EF /* selsettings.png */,
 				87AD8E060F630AAF003907EF /* SoftwareMenu.png */,
@@ -314,7 +316,6 @@
 			children = (
 				E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */,
 				3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */,
-				E236D5190F643617003C02CA /* SoftwareMenu_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -344,9 +345,9 @@
 			isa = PBXGroup;
 			children = (
 				E20C1B830EA92CED00739E75 /* SoftwareBuiltInMenu.h */,
+				E20C1B840EA92CED00739E75 /* SoftwareBuiltInMenu.m */,
 				E2E0F5D60F5EFC41002EAE7F /* SMTweaks.h */,
 				E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */,
-				E20C1B840EA92CED00739E75 /* SoftwareBuiltInMenu.m */,
 				E20C1CCA0EA980B900739E75 /* SoftwareScriptsMenu.h */,
 				E20C1CCB0EA980B900739E75 /* SoftwareScriptsMenu.m */,
 				E2587A920F55980600671F59 /* SMFrappMover.h */,
@@ -404,7 +405,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AD8DA70F630681003907EF /* BackRow.h in Headers */,
-				E236D51A0F643617003C02CA /* SoftwareMenu_Prefix.pch in Headers */,
 				E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +510,7 @@
 				87AD8E070F630AAF003907EF /* SoftwareMenu.png in Resources */,
 				87AD8E4E0F630B68003907EF /* selsettings.png in Resources */,
 				E2A9631B0F63787A000509A8 /* dropbear.tar.gz in Resources */,
+				E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +570,7 @@
 			children = (
 				E25CC0900F6228B00024A371 /* English */,
 				E2954F3B0F622A5000E3A1C2 /* French */,
+				E273B3490F648DEE00E516B5 /* German */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

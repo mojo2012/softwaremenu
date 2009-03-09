@@ -33,7 +33,7 @@
 }
 -(void)setUpdateData:(NSDictionary *)updatedata
 {
-	NSLog(@"updatedata");
+	//NSLog(@"updatedata");
 	_updateData=updatedata;
 	[_updateData retain];
 }
@@ -42,7 +42,7 @@
 - (void) drawSelf
 
 {
-	NSLog(@"drawSelf");
+	//NSLog(@"drawSelf");
 	[self disableScreenSaver];
 	//NSString *urlstr=_downloadURL;
 	_theSourceText = [[NSMutableString alloc] initWithString:BRLocalizedString(@"Starting Update Processing",@"Starting Update Processing")];
@@ -54,9 +54,9 @@
 	[self addControl: _sourceImage];
 	// work out our desired output path	
 	// lay out our UI
-	NSLog(@"hello");
+	//NSLog(@"hello");
 	NSRect masterFrame = [[self parent] frame];
-	NSLog(@"hello2");
+	//NSLog(@"hello2");
 	NSRect frame = masterFrame;
 	
 	// header goes in a specific location
@@ -119,14 +119,10 @@
 
 - (void)controlWasActivated
 {
-	NSLog(@"was Activated");
+	//NSLog(@"was Activated");
 	[self drawSelf];
-	
-	
-	
-	
-    [self processFiles];
 	[super controlWasActivated];
+	[self startDownloadingURL];
 	
 	
 }
@@ -142,7 +138,7 @@
 
 - (BOOL) isNetworkDependent
 {
-    return ( YES );
+    return ( NO );
 }
 
 
@@ -152,7 +148,7 @@
 }
 /*-(void)wasPushed;
  {
- NSLog(@"was Pushed");
+ //NSLog(@"was Pushed");
  [self processFiles];
  [super wasPushed];
  
@@ -166,10 +162,10 @@
 {
 	NSString *appPng = nil;
 	
-	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
+	appPng = @"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/appleTVImage.png";
 	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
-	NSLog(@"appPng: %@",appPng);
+	//NSLog(@"appPng: %@",appPng);
 	id sp= [BRImage imageWithPath:appPng];
 	[_sourceImage setImage:sp];
 	[_sourceImage setAutomaticDownsample:YES];
@@ -178,7 +174,7 @@
 	frame.origin.x = masterFrame.size.width *0.7f;
 	frame.origin.y = masterFrame.size.height *0.3f;
 	frame.size.width = masterFrame.size.height*0.4f; 
-	frame.size.height= masterFrame.size.height*0.4f;
+	frame.size.height= masterFrame.size.height*0.3f;
 	[_sourceImage setFrame: frame];
 	
 }
@@ -256,7 +252,7 @@
 	NSString *thestatus = [[NSString alloc] initWithString:@"OK"];
 	[self appendSourceText:BRLocalizedString(@"*Step 1/9: Checking Permissions on Helper",@"*Step 1/9: Checking Permissions on Helper")];
 	BOOL update_status=YES;
-	BOOL original_status=[self returnBoolValue:[_updateData valueForKey:@"original"]];
+	BOOL original_status=[[_updateData valueForKey:@"original"] boolValue];
 	
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	if(![[SMGeneralMethods sharedInstance] helperCheckPerm])
@@ -288,13 +284,13 @@
 	}
 	
 	
-	if([[SMGeneralMethods sharedInstance] checkblocker] && update_status && !original_status){
+	if(update_status){
 		[self appendSourceText:BRLocalizedString(@"*Step 1.5/9 Blocking mesu.apple.com",@"*Step 1.5/9 Blocking mesu.apple.com")];
-		[[SMGeneralMethods sharedInstance] toggleUpdate];
+		[[SMGeneralMethods sharedInstance] blockUpdate];
 	}
 	
 	
-	if(update_status)
+	if(update_status && !original_status)
 	{
 		[self appendSourceText:BRLocalizedString(@"*Step 2/9: Make the .dmg writable",@"*Step 2/9: Make the .dmg writable")];
 		[self makeDMGRW:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",[_updateData valueForKey:@"displays"],nil]];
@@ -320,7 +316,7 @@
 		[task3 setLaunchPath:helperLaunchPath];
 		[task3 launch];
 		[task3 waitUntilExit];
-		NSLog(@"mounted");
+		//NSLog(@"mounted");
 		if(![man fileExistsAtPath:@"/Volumes/OSBoot 1/"])
 		{
 			[self appendSourceText:@"Was Not Mounted"];
@@ -358,13 +354,13 @@
 	{
 		[self appendSourceText:BRLocalizedString(@"*Step 5/9 Unmounting",@"*Step 5/9 Unmounting")];
 		NSTask *task5 = [[NSTask alloc] init];
-		NSLog(@"unmounting");
+		//NSLog(@"unmounting");
 		NSArray *args5 = [NSArray arrayWithObjects:@"-unmount",@"0",@"0",nil];
 		[task5 setArguments:args5];
 		[task5 setLaunchPath:helperLaunchPath];
 		[task5 launch];
 		[task5 waitUntilExit];
-		NSLog(@"unmounted");
+		//NSLog(@"unmounted");
 		if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"])
 		{
 			[self appendSourceText:@"Was not Unmounted"];
@@ -431,16 +427,16 @@
 	if(update_status)
 	{
 		int i;
-		NSLog(@"making scan");
+		//NSLog(@"making scan");
 		[self appendSourceText:BRLocalizedString(@"*Step 8/9 Doing ASR scan",@"*Step 8/9 Doing ASR scan")];
 		i=[self makeASRscan:@"/Users/frontrow/Updates/final.dmg"];
-		NSLog(@"term status:%d",i);
+		//NSLog(@"term status:%d",i);
 		if (i != 0)
 		{
 			
 			
 			[self appendSourceText:@"error"];
-			NSLog(@"error");
+			//NSLog(@"error");
 			update_status=NO;	
 		}
 		else
@@ -450,7 +446,7 @@
 		
 	}
 	
-	if(update_status && [self returnBoolValue:[_updateData valueForKey:@"now"]])
+	if(update_status && [[_updateData valueForKey:@"now"]boolValue])
 	{
 		[self appendSourceText:@"*Step 9/9 Launching OSUpdate, Please wait"];
 		NSTask *task7 = [[NSTask alloc] init];
@@ -485,7 +481,7 @@
 }
 - (int)makeASRscan:(NSString *)drivepath
 {
-	NSLog(@"starting ASR");
+	//NSLog(@"starting ASR");
 	NSTask *mdTask2 = [[NSTask alloc] init];
 	NSPipe *mdip2 = [[NSPipe alloc] init];
 	NSFileHandle *hdih = [mdip2 fileHandleForReading];
@@ -499,14 +495,14 @@
 	NSData *outData;
 	outData = [hdih readDataToEndOfFile];
 	NSString *string = [[NSString alloc] initWithData: outData encoding: NSUTF8StringEncoding];
-	NSLog(@"%@ status: %i",string, termStatus);
+	//NSLog(@"%@ status: %i",string, termStatus);
 	return termStatus;
 }
 -(void)cleanstuff
 {
 	NSFileManager *man =[NSFileManager defaultManager];
-	NSLog(@"preserve: %d",[self returnBoolValue:[_updateData valueForKey:@"preserve"]]);
-	if(![self returnBoolValue:[_updateData valueForKey:@"preserve"]])
+	//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"]boolValue]);
+	if(![[_updateData valueForKey:@"preserve"] boolValue])
 	{
 		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil] handler:nil];
 		
@@ -524,7 +520,7 @@
 }
 -(void)moveFiles2:(BOOL)original_status
 {
-	NSLog(@"MoveFiles");
+	//NSLog(@"MoveFiles");
 	NSFileManager *man =[NSFileManager defaultManager];
 	if([man fileExistsAtPath:@"/Users/frontrow/Updates"])
 	{
@@ -534,7 +530,7 @@
 	
 	
 	NSArray *dlinks=[_updateData valueForKey:@"dlinks"];
-	NSLog(@"dlinks: %@",dlinks);
+	//NSLog(@"dlinks: %@",dlinks);
 	//NSString *original=[_updateData valueForKey:@"original"];
 	NSEnumerator *enum2 = [dlinks objectEnumerator];
 	id obje;
@@ -547,10 +543,10 @@
 		if(![[obje pathExtension] isEqualToString:@"dmg"])
 		{
 			NSString *obje2=[obje lastPathComponent];
-			NSLog(@"preserve: %d",[self returnBoolValue:[_updateData valueForKey:@"preserve"]]);
-			if([self returnBoolValue:[_updateData valueForKey:@"preserve"]])
+			//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"] boolValue]);
+			if([[_updateData valueForKey:@"preserve"] boolValue])
 			{
-				NSLog(@"copying %@ to %@",[basename stringByAppendingPathComponent:obje2],[updatename stringByAppendingPathComponent:obje2]);
+				//NSLog(@"copying %@ to %@",[basename stringByAppendingPathComponent:obje2],[updatename stringByAppendingPathComponent:obje2]);
 				[man copyPath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
 				
 			}
@@ -569,7 +565,7 @@
 			}
 			else
 			{
-				if([self returnBoolValue:[_updateData valueForKey:@"preserve"]])
+				if([[_updateData valueForKey:@"preserve"] boolValue])
 				{
 					[man copyPath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
 				}
@@ -599,7 +595,7 @@
 }
 - (void) makeDMGRW:(NSString *)drivepath
 {
-	NSLog(@"converting");
+	//NSLog(@"converting");
 	NSTask *mdTask = [[NSTask alloc] init];
 	NSPipe *mdip = [[NSPipe alloc] init];
 	[mdTask setLaunchPath:@"/usr/bin/hdiutil"];
@@ -614,7 +610,7 @@
 
 -(void)wasPushed
 {
-	NSLog(@"wasPushed");
+	//NSLog(@"wasPushed");
 	[super wasPushed];
 }
 -(BOOL)returnBoolValue:(NSString *)thevalue
@@ -629,6 +625,52 @@
 	}
 	else
 		return NO;
+}
+- (void)startDownloadingURL;
+{
+    // create the request
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"selsettings" ofType:@"png"]]
+                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                          timeoutInterval:60.0];
+    // create the connection with the request
+    // and start loading the data
+	NSURLDownload  *theDownload=[[NSURLDownload alloc] initWithRequest:theRequest delegate:self];
+    if (!theDownload) {
+        // inform the user that the download could not be made
+    }
+}
+
+- (void)download:(NSURLDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename
+{
+    NSString *destinationFilename;
+    NSString *homeDirectory=NSHomeDirectory();
+	
+    destinationFilename=[[homeDirectory stringByAppendingPathComponent:@"Library/Caches/Softdownloads/"]
+						 stringByAppendingPathComponent:filename];
+    [download setDestination:destinationFilename allowOverwrite:YES];
+}
+
+
+- (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error
+{
+    // release the connection
+    [download release];
+	
+    // inform the user
+    //NSLog(@"Download failed! Error - %@ %@",
+        //  [error localizedDescription],
+        //  [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+	
+	[self processFiles];
+}
+
+- (void)downloadDidFinish:(NSURLDownload *)download
+{
+    // release the connection
+    [download release];
+	[self processFiles];
+	
+    // do something with the data
 }
 
 @end

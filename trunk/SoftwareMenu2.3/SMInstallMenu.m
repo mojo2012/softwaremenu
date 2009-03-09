@@ -73,9 +73,9 @@ static NSString  * _current_vers= nil;
 	NSString *name=[[NSString alloc] initWithString:[_theInformation valueForKey:@"name"]];
 	NSString *version=[_theInformation valueForKey:@"version"];
 	NSString *thelicense =[[NSString alloc] initWithString:[_theInformation valueForKey:@"license"]];
-	NSLog(@"after allocations");
+	//NSLog(@"after allocations");
 	[self checkVarious];
-	NSLog(@"after checkvarious");
+	//NSLog(@"after checkvarious");
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	[self setListTitle: name];
 	
@@ -88,7 +88,7 @@ static NSString  * _current_vers= nil;
 	id item1 = [[BRTextMenuItemLayer alloc] init];
 	[item1 setTitle:@"Info"];
 	[_items addObject: item1];
-	NSLog(@"after 1");
+	//NSLog(@"after 1");
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Info",LAYER_TYPE,@"License",LAYER_NAME,MISC_KEY,TYPE_KEY,@"license",NAME_KEY,nil]];
 	id item2 = [[BRTextMenuItemLayer alloc] init];
 	[item2 setTitle:@"License"];
@@ -106,7 +106,7 @@ static NSString  * _current_vers= nil;
 	
 	int iii = [_options count];
 	
-	NSLog(@"after seperator");
+	//NSLog(@"after seperator");
 	if(EXISTS==false)
 	{
 		//download and install plugin
@@ -147,7 +147,7 @@ static NSString  * _current_vers= nil;
 			[_items addObject:item5];
 		}
 	}
-	NSLog(@"before BAK_EXISTS");
+	//NSLog(@"before BAK_EXISTS");
 	if (BAK_EXISTS)
 	{		
 		/***********
@@ -171,7 +171,7 @@ static NSString  * _current_vers= nil;
 	}
 	
 	
-	NSLog(@"at end of init");
+	//NSLog(@"at end of init");
 	id list = [self list];
 	[list setDatasource: self];
 	//NSLog(@"%@",_current_vers);
@@ -201,7 +201,9 @@ static NSString  * _current_vers= nil;
 		
 		//NSLog(@"version: %@ is installed; version %@ is most recent", _current_vers, version);
 		
-		if([_current_vers isEqualToString:[_theInformation valueForKey:@"version"]])
+		//if([_current_vers isEqualToString:[_theInformation valueForKey:@"version"]])
+		if([_current_vers compare:[_theInformation valueForKey:@"version"]]!=NSOrderedAscending)
+
 		{
 			
 			
@@ -290,6 +292,7 @@ static NSString  * _current_vers= nil;
 		{
 			[_theInformation setObject:@"YES" forKey:@"update"];
 		}
+		[_theInformation setObject:[_theInformation valueForKey:@"url"] forKey:@"downloadtext"];
 		[downloadController setInformationDict:_theInformation];
 		[[self stack] pushController: downloadController];
 		return;
@@ -424,17 +427,9 @@ static NSString  * _current_vers= nil;
 	}
 		
 	[helperTask launch];
-	int theTerm=[helperTask terminationStatus];
+	//int theTerm=[helperTask terminationStatus];
 	[helperTask waitUntilExit];
 	[helperTask release];
-	if(theTerm!=0)
-	{
-		[self appendSourceText:@"there was an error somewhere"];
-	}
-	else
-	{
-		[self appendSourceText:@"done installing"];
-	}
 	[self appendSourceText:@"Press Menu When you are done"];
 
 

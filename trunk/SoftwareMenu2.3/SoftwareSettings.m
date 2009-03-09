@@ -51,7 +51,7 @@ static NSDate *lastFilterChangeDate = nil;
 		return nil;
 	else
 	{
-		NSLog(@"in preview loop");
+		//NSLog(@"in preview loop");
 		//NSArray *names = [[NSArray alloc] initWithObjects:       BRLocalizedString(@"  Populate File Data", @"Populate File Data menu item"),BRLocalizedString(@"  Fetch TV Show Data", @"Fetch TV Show Data menu item"),nil];
 		/* Get setting name & kill the gem cushion  */
 		NSString *settingName = @"hello";
@@ -130,7 +130,7 @@ static NSDate *lastFilterChangeDate = nil;
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"atv_info",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
 	[item1 setTitle:@"ATV Version:"];
 	NSDictionary *atv_framework_plist = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/version.plist"];
-	NSLog(@"ATV_plist:%@",atv_framework_plist);
+	//NSLog(@"ATV_plist:%@",atv_framework_plist);
 	NSString *atv_version = [atv_framework_plist valueForKey:@"CFBundleVersion"];
 	[item1 setRightJustifiedText:atv_version];
 	[_items addObject:item1];
@@ -139,7 +139,7 @@ static NSDate *lastFilterChangeDate = nil;
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SM_info",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
 	[item2 setTitle:@"Software Menu Version:"];
 	NSDictionary *sm_info_plist = [[NSBundle bundleForClass:[self class]] infoDictionary];
-	NSLog(@"Software Menu Version:",sm_info_plist);
+	//NSLog(@"Software Menu Version:",sm_info_plist);
 	NSString *sm_version = [sm_info_plist valueForKey:@"CFBundleVersion"];
 	[item2 setRightJustifiedText:sm_version];
 	[_items addObject:item2];
@@ -251,7 +251,7 @@ static NSDate *lastFilterChangeDate = nil;
 	j=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
 	[item3 setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] airportImageForSignalStrength:j], @"BRMenuIconImageKey",nil]];
 	
-	if([SMGeneralMethods boolForKey:@"SMM"])
+	if(![SMGeneralMethods boolForKey:@"SMM"])
 	{
 		[item3 setDimmed:YES];
 	}
@@ -303,7 +303,7 @@ static NSDate *lastFilterChangeDate = nil;
 
 -(void)itemSelected:(long)fp8
 {
-	NSLog(@"settingsChanged: %@",[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME]);
+	//NSLog(@"settingsChanged: %@",[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME]);
 	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"1"] || [[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"2"])
 	{
 		//NSMutableDictionary *hello=[NSMutableDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]];
@@ -337,7 +337,7 @@ static NSDate *lastFilterChangeDate = nil;
 	{
 		if([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"Updater"])
 		{
-			NSLog(@"Going to Software Updater");
+			//NSLog(@"Going to Software Updater");
 			id newController = nil;
 			newController = [[SMUpdater alloc] init];
 			[newController initCustom];

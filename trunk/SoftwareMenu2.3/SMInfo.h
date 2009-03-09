@@ -38,6 +38,7 @@
 -(void) setTheName:(NSString *)theName;
 -(void) setVersions:(NSString *)theOnlineVersion withBak:(NSString *)theBackupVersion withCurrent:(NSString *)theInstalledVersion;
 -(void) setDescriptionWithURL:(NSString *)theDescriptionURL;
+-(void) setDescriptionWithFile:(NSString *)theDescriptionFile;
 -(void) setDescription:(NSString *)theDescription;
 -(void) setBakVers: (NSString *) srcText;
 -(void) setCurrVers: (NSString *) srcText;

@@ -34,6 +34,10 @@ static SMGeneralMethods *sharedInstance = nil;
 	CFStringRef myString = [(CFStringRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
 	return (NSString *)myString;
 }
++(void)restartFinder;
+{
+	[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
+}
 
 + (NSArray *)menuItemNames
 {
@@ -140,6 +144,18 @@ static SMGeneralMethods *sharedInstance = nil;
 	return;
 	
 }
+-(void)blockUpdate
+{
+	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
+	NSTask *task6 = [[NSTask alloc] init];
+	NSArray *args6 = [NSArray arrayWithObjects:@"-blockUpdate",@"0",@"0",nil];
+	[task6 setArguments:args6];
+	[task6 setLaunchPath:helperLaunchPath];
+	[task6 launch];
+	[task6 waitUntilExit];
+	return;
+	
+}
 -(BOOL)usingTakeTwoDotThree
 {
 	if([(Class)NSClassFromString(@"BRController") instancesRespondToSelector:@selector(wasExhumed)])
@@ -154,7 +170,7 @@ static SMGeneralMethods *sharedInstance = nil;
 }
 -(NSString *)getImagePathforDict:(NSDictionary *)infoDict;
 {
-	NSLog(@"infoDict: %@",infoDict);
+	//NSLog(@"infoDict: %@",infoDict);
 	NSString *TYPE=[infoDict valueForKey:TYPE_KEY];
 	if ([TYPE isEqualToString:FRAP_KEY])
 	{

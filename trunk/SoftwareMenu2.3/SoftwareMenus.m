@@ -359,9 +359,9 @@
     [download release];
 	
     // inform the user
-    NSLog(@"Download failed! Error - %@ %@",
+    /*NSLog(@"Download failed! Error - %@ %@",
           [error localizedDescription],
-          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);*/
 }
 - (void)downloadDidFinish:(NSURLDownload *)download
 {

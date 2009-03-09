@@ -76,16 +76,16 @@
 }
 -(void)testURLs
 {
-	NSLog(@"1");
+	//NSLog(@"1");
 	NSString *updateUrl = @"http://web.me.com/tomcool420/SoftwareMenu/updates.plist";
 	NSData *outData = [NSData dataWithContentsOfURL:[NSURL URLWithString:updateUrl]];
 	NSString *error;
 	NSPropertyListFormat format;
-	NSLog(@"2");
+	//NSLog(@"2");
 	id vDict;
 	vDict = [NSPropertyListSerialization propertyListFromData:outData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
-	NSLog(@"***************************");
-	NSLog(@"%@",vDict);
+	//NSLog(@"***************************");
+	//NSLog(@"%@",vDict);
 }
 
 - (NSArray *)frapEnumerator
@@ -99,7 +99,7 @@
 	NSEnumerator *fileEnum = [filelist objectEnumerator]; 
 	NSString *file;
     while (file = [fileEnum nextObject]) {
-		NSLog(@"%@",file);
+		//NSLog(@"%@",file);
 		[manager changeCurrentDirectoryPath:pluginPath];
         if ([manager fileExistsAtPath:file isDirectory:&isDir] && isDir) {
             NSString *fullpath = [pluginPath stringByAppendingPathComponent:file];
@@ -125,24 +125,24 @@
 		[theorders addObject:[[NSDictionary alloc] initWithObjectsAndKeys:preforder,@"order",frapPath,@"fullpath",[frapPath lastPathComponent],@"name",nil]];
 	}
 	[theorders writeToFile:@"/Users/frontrow/orders.plist" atomically:YES];
-	NSLog(@"the orders: %@",theorders);
+	//NSLog(@"the orders: %@",theorders);
 	return theorders;
 }
 	
 
 -(id)initWithIdentifier:(NSString *)initId
 {
-	NSLog(@"hello");
+	//NSLog(@"hello");
 	[self testURLs];
 	//if ([initID isEqualToString:@"start")
 	//{
-	NSLog(@"init");
+	//NSLog(@"init");
 	NSArray *theFrapList=[[NSArray alloc] init];
 	theFrapList=[self frapEnumerator];
 	//}
 	NSArray *FrapOrderArray=[[NSArray alloc] initWithArray:[self frapOrderDict:theFrapList]];
 	
-	NSLog(@"after oderdict");
+	//NSLog(@"after oderdict");
 	[FrapOrderArray writeToFile:@"/Users/frontrow/orders2.plist" atomically:YES];
 	[[self list] removeDividers];
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
@@ -209,7 +209,7 @@
 	NSString *thename = (NSString *)[option valueForKey:@"name"];
 	if ([thename isEqualToString:@"Help"])
 	{
-		NSLog(@"Help");
+		//NSLog(@"Help");
 	}
 	else if([thename isEqualToString:@"Backup"])
 	{
@@ -249,7 +249,7 @@
 	else
 	{
 		CFPreferencesSetAppValue(CFSTR("option"), (CFNumberRef)[NSNumber numberWithLong:fp8],kCFPreferencesCurrentApplication);
-		NSLog(@"theNumber : %@",(CFNumberRef)[NSNumber numberWithLong:fp8]);
+		//NSLog(@"theNumber : %@",(CFNumberRef)[NSNumber numberWithLong:fp8]);
 		BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
 		[textinput setTitle:@"Number"];
 		[textinput setTextEntryCompleteDelegate:self];
@@ -257,124 +257,12 @@
 		//[self setOrder];
 	}
 }
-/*- (void) textDidEndEditing: (id) sender
-{
-	
-	NSString *thetext = [sender stringValue];
-	NSLog(@"thetext: %@",thetext);
-	
-	
-	NSTask *helperTask = [[NSTask alloc] init];
-	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	//NSFileManager *man = [NSFileManager defaultManager];
-	//NSDictionary *attrs = [man fileAttributesAtPath:helperPath traverseLink:YES];
-	//NSNumber *curPerms = [attrs objectForKey:NSFilePosixPermissions];
-	//[self appendSourceText:@"done installing"];
-	if (![self helperCheckPerm])
-	{
-		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
-		NSTask *task = [[NSTask alloc] init];
-		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
-		[task setArguments:args];
-		[task setLaunchPath:@"/bin/bash"];
-		[task launch];
-		[task waitUntilExit];
-		//[self appendSourceText:@"Go to Scripts Menu and run FixPerm"];
-		//[self setSourceText:@"go to the Scripts Menu and select FixPerm"];
-		//	return;
-		
-	}
-	//[self appendSourceText:@"done installing1"];
-	
-	//NSLog(@"installHelper curPerms: %@", curPerms);
-	[helperTask setLaunchPath:helperPath];
-	NSNumber *thestatus= (NSNumber *)(CFPreferencesCopyAppValue((CFStringRef)@"option", kCFPreferencesCurrentApplication));
-	NSLog(@"path: %@",[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"]);
-	NSLog(@"value: %@", [[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"order"] stringValue]);
-	[helperTask setArguments:[NSArray arrayWithObjects:@"-changeOrder", [[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"],thetext,nil]];	
-	[helperTask launch];
-	[helperTask waitUntilExit];
-	/*int theTerm = [helperTask terminationStatus];
-	[helperTask release];
-	[[self stack] popController];
-	[self initWithIdentifier:@"101"];
-	
-	
-	
-			
-}*/
-/*- (void)setOrder
-{
-	NSLog(@"1");
-	BRController *timeController = [[BRController alloc] init];
-	id theTheme = [BRThemeInfo sharedTheme];
-	BRHeaderControl *theHeader = [[BRHeaderControl alloc] init];
-	[timeController addControl:theHeader];
-	[theHeader setTitle:@"Order Value"];
-	BRTextControl *firstTextControl = [[BRTextControl alloc] init];
-	[timeController addControl:firstTextControl];
-	[firstTextControl setText:[NSString stringWithFormat:BRLocalizedString(@"Please enter order Number", @"enter duration")] withAttributes:[[BRThemeInfo sharedTheme] promptTextAttributes]];
-	NSLog(@"2");
-	NSRect master;
-	master  = [[self parent] frame];
-
-    
-	NSRect frame = master;
-	
-	frame.origin.y = frame.size.height * 0.60;
-	
-	
-	// position it near the top of the screen (remember, origin is
-    // lower-left)
-    frame.origin.y = frame.size.height * 0.82f;
-    frame.size.height = [theTheme listIconHeight];
-    [theHeader setFrame: frame];
-	id timeControls = nil;
-
-		
-		timeControls = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
-	NSLog(@"3");
-	
-	[timeController addControl:timeControls];
-	CGDirectDisplayID display = [[BRDisplayManager sharedInstance] display];
-	CGRect testFrame, firstFrame;
-	NSLog(@"3.1");
-	firstFrame.size = [firstTextControl renderedSize];
-    firstFrame.origin.y = master.origin.y + (master.size.height * 0.72f);
-    firstFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 2.42f);
-	[firstTextControl setFrame: firstFrame];
-	NSLog(@"3.5");
-	CGSize frameSize;
-	
-	frameSize.width = CGDisplayPixelsWide( display );
-    frameSize.height = CGDisplayPixelsHigh( display );
-	NSLog(@"3.6");
-	testFrame.size = [timeControls preferredSizeFromScreenSize:frameSize];
-	
-    testFrame.origin.y = master.origin.y + (master.size.height * 0.40f);
-    testFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 3.62f);
-	NSLog(@"3.7");
-
-	//[firstTextControl setFrame: testFrame];
-	[timeControls setFrame:testFrame];
-	[timeControls setInitialPasscode:0];
-	NSLog(@"4");
-	//id timeControls = [timeController editor];
-	//NSLog(@"timeControls: %@ delegate: %@", timeControls, [timeControls delegate]);
-	
-	
-	//id timeController = [BRController controllerWithContentControl:timeControls];
-	[timeControls setDelegate:self];
-	//[timeControls _layoutUI];
-	[[self stack] pushController:timeController];
-	//NSLog(@"timeControls: %@ delegate: %@", timeControls, [timeControls delegate]);
-}*/
 
 
 - (void) textDidEndEditing: (id) sender
 {
 	NSString *thetext = [sender stringValue];
-	NSLog(@"thetext: %@",thetext);
+	//NSLog(@"thetext: %@",thetext);
 	
 	
 	NSTask *helperTask = [[NSTask alloc] init];
@@ -383,27 +271,14 @@
 	//NSDictionary *attrs = [man fileAttributesAtPath:helperPath traverseLink:YES];
 	//NSNumber *curPerms = [attrs objectForKey:NSFilePosixPermissions];
 	//[self appendSourceText:@"done installing"];
-	if (![self helperCheckPerm])
-	{
-		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
-		NSTask *task = [[NSTask alloc] init];
-		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
-		[task setArguments:args];
-		[task setLaunchPath:@"/bin/bash"];
-		[task launch];
-		[task waitUntilExit];
-		//[self appendSourceText:@"Go to Scripts Menu and run FixPerm"];
-		//[self setSourceText:@"go to the Scripts Menu and select FixPerm"];
-		//	return;
-		
-	}
+	[[SMGeneralMethods sharedInstance]helperFixPerm];
 	//[self appendSourceText:@"done installing1"];
 	
 	//NSLog(@"installHelper curPerms: %@", curPerms);
 	[helperTask setLaunchPath:helperPath];
 	NSNumber *thestatus= (NSNumber *)(CFPreferencesCopyAppValue((CFStringRef)@"option", kCFPreferencesCurrentApplication));
-	NSLog(@"path: %@",[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"]);
-	NSLog(@"value: %@", [[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"order"] stringValue]);
+	//NSLog(@"path: %@",[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"]);
+	//NSLog(@"value: %@", [[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"order"] stringValue]);
 	[helperTask setArguments:[NSArray arrayWithObjects:@"-changeOrder", [[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"],thetext,nil]];	
 	[helperTask launch];
 	[helperTask waitUntilExit];

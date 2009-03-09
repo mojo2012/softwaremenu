@@ -35,6 +35,7 @@
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
++ (void)restartFinder;
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;
 + (NSArray *)menuItemNames;
@@ -43,6 +44,7 @@
 -(BOOL)helperCheckPerm;
 -(void)helperFixPerm;
 -(void)toggleUpdate;
+-(void)blockUpdate;
 -(BOOL)usingTakeTwoDotThree;
 -(NSString *)getImagePathforDict:(NSDictionary *)infoDict;
 -(BOOL)checkblocker;

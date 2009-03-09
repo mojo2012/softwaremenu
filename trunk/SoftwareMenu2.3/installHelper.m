@@ -243,6 +243,16 @@ int main (int argc, const char * argv[]) {
 			HELLO=[ihc makeSystemWritable];
 			i=[ihc toggleUpdate];
 		}
+		else if([option isEqual:@"-blockUpdate"])
+		{
+			
+			NSLog(@"toggleUpdate");
+			installHelperClass *ihc = [[installHelperClass alloc] init];
+			int i;
+			BOOL HELLO;
+			HELLO=[ihc makeSystemWritable];
+			i=[ihc blockUpdate];
+		}
 		else if([option isEqualToString:@"-untar"])
 		{
 			NSLog(@"untar");

@@ -317,8 +317,8 @@ static NSDate *lastFilterChangeDate = nil;
 						{
 							tempoption = @"FaF";
 						}
-						NSLog(@"HELLO: %@",tempoption);
-						NSLog(@"%ld",selitem);
+						//NSLog(@"HELLO: %@",tempoption);
+						//NSLog(@"%ld",selitem);
 						[tempdict setValue:tempoption forKey:@"runoption"];
 						[_runoption setValue:tempdict forKey:temptitle];
 						[_runoption writeToFile:@"Users/frontrow/Library/Application Support/SoftwareMenu/scriptsprefs.plist" atomically:YES];
