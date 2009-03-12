@@ -646,6 +646,7 @@
 	[hostArray release];
 	[hosts release];
 	[thePl release];
+	
 	return returnValue;
 }
 

@@ -58,13 +58,13 @@ static NSDate *lastFilterChangeDate = nil;
 		//NSArray *settingDescriptions=[[NSArray alloc] initWithObjects: BRLocalizedString(@"Tells Sapphire that for every TV episode, gather more information about this episode from the internet.", @"Fetch TV Show Data description"),nil];
 		NSString *settingDescription=@"Bye";
 		/* Construct a gerneric metadata asset for display */
-		NSMutableDictionary *settingMeta=[[NSMutableDictionary alloc] init];
+		/*NSMutableDictionary *settingMeta=[[NSMutableDictionary alloc] init];
 		 [settingMeta setObject:settingName forKey:META_TITLE_KEY];
 		 [settingMeta setObject:[NSNumber numberWithInt:-2] forKey:FILE_CLASS_KEY];
 		 [settingMeta setObject:settingDescription forKey:META_DESCRIPTION_KEY];
 		 SMMediaPreview *preview = [[SMMediaPreview alloc] init];
 		 [preview setUtilityData:settingMeta];
-		 [preview setShowsMetadataImmediately:YES];
+		 [preview setShowsMetadataImmediately:YES];*/
 		//[preview _populateMetadata];
 		/*SMMedia *media = [[SMMedia alloc] init];
 		[media setImagePath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
@@ -74,20 +74,31 @@ static NSDate *lastFilterChangeDate = nil;
 		 [meta setSummary:BRLocalizedString(@"hello",@"Hello")];
 		 [meta setStarRating:nil];
 		 [meta setRating:nil];
-		 [meta setCopyright:nil];
-		/*BRXMLMediaAsset *meta = [[BRXMLMediaAsset alloc] init];
-		[meta setObject:@"hello" forKey:META_TITLE_KEY];
-		[meta setObject:@"hello" forKey:META_DESCRIPTION_KEY];
-		BRMediaAssetItemProvider *assetProvider =[[BRMediaAssetItemProvider alloc] init];
-		[assetProvider setMediaAssets:[NSArray arrayWithObjects:meta,nil]];
+		 [meta setCopyright:nil];*/
+		SMMedia	*meta = [[SMMedia alloc] init];
+		[meta setObject:@"hello" forKey:@"title"];
+		[meta setObject:@"hello" forKey:@"description"];
+		[meta setObject:@"Bye" forKey:@"mediaSummary"];
+		[meta setObject:@"SoftwareMenu.png" forKey:@"id"];
+		[meta setObject:[BRMediaType movie] forKey:@"mediaType"];
+		NSURL *hello = [[NSURL alloc] initFileURLWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
+		[meta setObject:hello forKey:@"previewURL"];
+		[meta setObject:hello forKey:@"mediaURL"];
+		BRMetadataControl *hellotoo =[[BRMetadataControl alloc] init];
+		[hellotoo setTitle:@"hello"];
+		[hellotoo setSummary:@"hello"];
+
+		//BRMediaAssetItemProvider *assetProvider =[[BRMediaAssetItemProvider alloc] init];
+		//[assetProvider setMediaAssets:[NSArray arrayWithObjects:meta,nil]];
 		//[media setObject:@"hello" forKey:META_DESCRIPTION_KEY];
 		BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
 		[previewtoo setAsset:meta];
+		[previewtoo setMetadataProvider:hellotoo];
 		[previewtoo setShowsMetadataImmediately:YES];
 		//[previewtoo setMetadataProvider:assetProvider];*/
 		/*And go*/
 		//[preview doPopulation];
-		return [preview autorelease];
+		return [previewtoo autorelease];
 	}
     return ( nil );
 }

@@ -141,6 +141,8 @@ static SMGeneralMethods *sharedInstance = nil;
 	[task6 setLaunchPath:helperLaunchPath];
 	[task6 launch];
 	[task6 waitUntilExit];
+	[NSTask launchedTaskWithLaunchPath:@"/usr/sbin/lookupd" arguments:[NSArray arrayWithObjects:@"-flushcache",nil]];
+
 	return;
 	
 }
@@ -153,6 +155,8 @@ static SMGeneralMethods *sharedInstance = nil;
 	[task6 setLaunchPath:helperLaunchPath];
 	[task6 launch];
 	[task6 waitUntilExit];
+	[NSTask launchedTaskWithLaunchPath:@"/usr/sbin/lookupd" arguments:[NSArray arrayWithObjects:@"-flushcache",nil]];
+
 	return;
 	
 }

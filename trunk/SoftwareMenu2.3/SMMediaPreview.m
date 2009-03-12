@@ -124,7 +124,7 @@ static NSSet *coverArtExtentions = nil;
 	meta=[newMeta retain];
 	NSLog(@"meta:%@",meta);
 	SMMedia *asset  =[SMMedia alloc];
-	[asset setImagePath:[[NSBundle bundleForClass:[self class]] pathForResource:@"SoftwarMenu" ofType:@"png"]];
+	[asset setImagePath:[[NSBundle bundleForClass:[self class]] pathForResource:@"SoftwareMenu" ofType:@"png"]];
 	[self setAsset:asset];
 
 }
