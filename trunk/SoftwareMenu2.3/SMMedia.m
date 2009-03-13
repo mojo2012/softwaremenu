@@ -28,7 +28,7 @@
 
 @implementation SMMedia
 
-- (id)initWithMediaURL:(NSURL *)url
+/*- (id)initWithMediaURL:(NSURL *)url
 {
 	//This is here to fix 2.2
 	self = [super initWithMediaProvider:nil];
@@ -39,34 +39,49 @@
 	[self setObject:urlString forKey:@"mediaURL"];
 	
 	return self;
-}
+}*/
 
 - (void)dealloc
 {
 	[imagePath release];
 	[super dealloc];
 }
-
-- (void)setResumeTime:(unsigned int)time
+-(id)assetID
+{
+	return @"hello";
+}
+/*- (void)setResumeTime:(unsigned int)time
 {
 	resumeTime = time;
 }
 
 /* Overrides the bookmark time */
-- (unsigned int)bookmarkTimeInSeconds
-{
+//- (unsigned int)bookmarkTimeInSeconds
+//{
 	/*Check for resume time and if none, return bookmark time*/
-	if(time == 0)
-		return [super bookmarkTimeInSeconds];
+//	if(time == 0)
+//		return [super bookmarkTimeInSeconds];
 	/*return resume time*/
-	return resumeTime;
-}
+//	return resumeTime;
+//}
 
 - (void)setImagePath:(NSString *)path
 {
 	path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png";
 	[imagePath release];
 	imagePath = [path retain];
+}
+-(id)description
+{
+	NSString *hellotoo = [[NSString alloc] init];
+	hellotoo=@"hello";
+	return hellotoo;
+}
+-(id)title
+{
+	NSString *hello = [[NSString alloc] init];
+	hello=@"hello";
+	return hello;
 }
 
 - (id)mediaType

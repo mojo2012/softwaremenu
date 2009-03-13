@@ -76,29 +76,35 @@ static NSDate *lastFilterChangeDate = nil;
 		 [meta setRating:nil];
 		 [meta setCopyright:nil];*/
 		SMMedia	*meta = [[SMMedia alloc] init];
-		[meta setObject:@"hello" forKey:@"title"];
+		/*[meta setObject:@"hello" forKey:@"title"];
 		[meta setObject:@"hello" forKey:@"description"];
 		[meta setObject:@"Bye" forKey:@"mediaSummary"];
 		[meta setObject:@"SoftwareMenu.png" forKey:@"id"];
-		[meta setObject:[BRMediaType movie] forKey:@"mediaType"];
-		NSURL *hello = [[NSURL alloc] initFileURLWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
-		[meta setObject:hello forKey:@"previewURL"];
-		[meta setObject:hello forKey:@"mediaURL"];
-		BRMetadataControl *hellotoo =[[BRMetadataControl alloc] init];
-		[hellotoo setTitle:@"hello"];
-		[hellotoo setSummary:@"hello"];
+		[meta setObject:[BRMediaType movie] forKey:@"mediaType"];*/
+		[meta setImagePath:@"hello"];
+		//NSURL *hello = [[NSURL alloc] initFileURLWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
+		//[meta setObject:[hello absoluteString] forKey:@"previewURL"];
+		//
+		//[meta setObject:[hello absoluteString] forKey:@"mediaURL"];
+		
 
+		BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
+		[previewtoo setAsset:meta];
+
+		[previewtoo setShowsMetadataImmediately:YES];
+		[previewtoo setDeletterboxAssetArtwork:NO];
+		[previewtoo _updateMetadataLayer];
+
+		return [previewtoo autorelease];
+		
 		//BRMediaAssetItemProvider *assetProvider =[[BRMediaAssetItemProvider alloc] init];
 		//[assetProvider setMediaAssets:[NSArray arrayWithObjects:meta,nil]];
 		//[media setObject:@"hello" forKey:META_DESCRIPTION_KEY];
-		BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
-		[previewtoo setAsset:meta];
-		[previewtoo setMetadataProvider:hellotoo];
-		[previewtoo setShowsMetadataImmediately:YES];
+		//[previewtoo setMetadataProvider:hellotoo];
 		//[previewtoo setMetadataProvider:assetProvider];*/
 		/*And go*/
 		//[preview doPopulation];
-		return [previewtoo autorelease];
+		
 	}
     return ( nil );
 }

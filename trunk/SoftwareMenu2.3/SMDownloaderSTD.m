@@ -418,8 +418,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
 	
     // show an alert for the returned error (hopefully it has nice
     // localized reasons & such...)
-    BRAlertController * obj = [BRAlertController alertForError: error
-                                                     withScene: [self scene]];
+    BRAlertController * obj = [BRAlertController alertForError: error];
     [[self stack] swapController: obj];
 }
 

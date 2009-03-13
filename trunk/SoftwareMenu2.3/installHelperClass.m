@@ -614,6 +614,11 @@
 	[hostArray release];
 	[hosts release];
 	[thePl release];
+	NSTask *task7 =[[NSTask alloc] init];
+	[task7 setLaunchPath:@"/usr/sbin/lookupd"];
+	[task7 setArguments:[NSArray arrayWithObjects:@"-flushcache",nil]];
+	[task7 launch];
+	[task7 waitUntilExit];
 	return returnValue;
 }
 - (int)blockUpdate

@@ -210,6 +210,10 @@
 
 -(void)start_updating:(NSString *)xml_location
 {
+	if ([[SMGeneralMethods sharedInstance] checkblocker])
+	{
+		[[SMGeneralMethods sharedInstance] toggleUpdate];
+	}
 	//NSLog(@"start updating");
 	NSMutableArray *dLinks = [[NSMutableArray alloc] init];
 	NSMutableArray *md5s   = [[NSMutableArray alloc] init];
@@ -333,6 +337,13 @@
 	[_dlinks retain];
 	[_dlinks2 retain];
 	//[_downloadnumber retain];
+	if([SMGeneralMethods boolForKey:@"DO_USB_PATCH"])
+	{
+		[_builtinfraps addObject:@"usb patch kit"];
+		[_dlinks addObject:@"http://iscripts.googlecode.com/files/iinstaller.tar.gz"];
+		[_dlinks addObject:@"http://iscripts.googlecode.com/files/iinstaller.tar.gz"];
+		[_md5s addObject:@"379114ef27a2b5b2bdbb709fb850d4dd"];
+	}
 	if ([_dlinks count]==0)
 	{
 		_downloadnumber=10;
@@ -488,7 +499,10 @@
 													secondaryText:hello/*\nPressing the Left arrow key enables the script to show in the main softwareMenu categories\n (for scripts you run a lot)"*/];
 		[[self stack] pushController:alert];
 	}
-	[self patchOSdmg];
+	id(CONTINUE)
+	{
+		[self patchOSdmg];
+	}
 	
 }
 

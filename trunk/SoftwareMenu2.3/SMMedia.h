@@ -26,7 +26,7 @@
  */
 //#import <QuartzCore/QuartzCore.h>
 ////#import <BackRow/BackRow.h>
-@interface SMMedia : BRXMLMediaAsset {
+@interface SMMedia : BRIPhotoMediaAsset {
 	unsigned int		resumeTime;		/*!< @brief The resume time to use, 0 to use super*/
 	NSString			*imagePath;		/*!< @brief The cover art path to use, nil to use super*/
 }
