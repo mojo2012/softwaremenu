@@ -7,46 +7,38 @@
 //
 
 #import "SMFrappMover.h"
+//#import "SMMediaAsset.h"
+#import "SMMedia.h"
+#import "SMMMediaPreview.h"
 #define SETTINGSPATH						@"/Users/frontrow/Library/Application Support/SoftwareMenu/settings.plist"
 
 @implementation SMFrappMover
 - (id) previewControlForItem: (long) item
 {
-	////NSLog(@"%@ %s", self, _cmd);
-	NSString *resourcePath = nil;
-	NSString *appPng = nil;
-	NSArray * theoptions = [_options objectAtIndex:item];
-	NSString *theoption =[theoptions valueForKey:@"name"];
-	if([theoption isEqualToString:@"Help"])
-	{
-		resourcePath = @"info";
-	}
-	//NSLog(@"%@",theoption);
+	/* Get setting name & kill the gem cushion  */
+		                /* Construct a gerneric metadata asset for display */
+	SMMedia	*meta = [[SMMedia alloc] init];
+	/*[meta setObject:@"hello" forKey:@"title"];
+	 [meta setObject:@"hello" forKey:@"description"];
+	 [meta setObject:@"Bye" forKey:@"mediaSummary"];
+	 [meta setObject:@"SoftwareMenu.png" forKey:@"id"];
+	 [meta setObject:[BRMediaType movie] forKey:@"mediaType"];*/
+	[meta setImagePath:@"hello"];
+	//NSURL *hello = [[NSURL alloc] initFileURLWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
+	//[meta setObject:[hello absoluteString] forKey:@"previewURL"];
+	//
+	//[meta setObject:[hello absoluteString] forKey:@"mediaURL"];
 	
 	
-	if([theoption isEqualToString:@"Backup"])
-	{
-		resourcePath = @"refresh";
-	}
-		//NSLog(@"%@", appPng);
-	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:resourcePath ofType:@"png"];
-	//BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
-	BRMetadataPreviewControl *obj = [[BRMetadataPreviewControl alloc]init];
-	BRMetadataControl *obj2 =[[BRMetadataControl alloc]init];
-	NSString *settingsname=@"hello";
-	NSString *settingsdescription=@"hello";
-	NSMutableDictionary *settingsMeta=[[NSMutableDictionary alloc] init];
-	[settingsMeta setObject:settingsname forKey:@"metatitlekey"];
-	[settingsMeta setObject:[NSNumber numberWithInt:1] forKey:@"fileclassutility"];
-	[settingsMeta setObject:settingsdescription forKey:@"metadescriptionkey"];
-	id sp = [BRImage imageWithPath:appPng];
-	id sp2= @"hello";
-	[obj2 setTitle:@"hello"];
-	[obj2 setSummary:@"hello"];
-	[obj setAsset:obj2];
-	[obj setImageProvider:sp];
+	BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
+	[previewtoo setAsset:meta];
+	
+	[previewtoo setShowsMetadataImmediately:YES];
+	[previewtoo setDeletterboxAssetArtwork:NO];
+	[previewtoo _updateMetadataLayer];
+	
+	return [previewtoo autorelease];
 	//[obj setStatusMessage:BRLocalizedString(@"hello",@"hello")];
-	return (obj);
 }
 -(id)init{
 	//NSLog(@"init");
@@ -252,7 +244,7 @@
 		//NSLog(@"theNumber : %@",(CFNumberRef)[NSNumber numberWithLong:fp8]);
 		BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
 		[textinput setTitle:[NSString stringWithFormat:@"Order Number for Frappliance: %@",[option valueForKey:@"name"]]];
-		[textinput setInitialTextEntryText:[option valueForKey:@"order"]];
+		[textinput setInitialTextEntryText:[NSString stringWithFormat:@"%d",[[option valueForKey:@"order"]intValue]]];
 		[textinput setPromptText:@"enter a number"];
 		[textinput setTextEntryCompleteDelegate:self];
 		[[self stack] pushController:textinput];

@@ -42,15 +42,14 @@
 - (void) drawSelf
 
 {
-	//NSLog(@"drawSelf");
+	_previousText =	[[NSMutableString alloc] init];
 	[self disableScreenSaver];
-	//NSString *urlstr=_downloadURL;
-	_theSourceText = [[NSMutableString alloc] initWithString:BRLocalizedString(@"Starting Update Processing",@"Starting Update Processing")];
-	//_theSourceText = @"starting Download:";
-	_header = [[BRHeaderControl alloc] init];
-	_sourceText = [[BRScrollingTextControl alloc] init];
-	//_progressBar = [[SMProgressBarControl alloc] init];
-	_sourceImage = [[BRImageControl alloc] init];
+	_theSourceText =[[NSMutableString alloc] initWithString:BRLocalizedString(@"Starting Update Processing",@"Starting Update Processing")];
+	_header =		[[BRHeaderControl alloc] init];
+	_sourceText =	[[BRScrollingTextControl alloc] init];
+	_sourceImage =	[[BRImageControl alloc] init];
+	_spinner =		[[BRWaitSpinnerControl alloc] init];
+	//_step =			[[BRTextControl alloc] init];
 	[self addControl: _sourceImage];
 	// work out our desired output path	
 	// lay out our UI
@@ -63,33 +62,42 @@
 	frame.origin.y = frame.size.height * 0.82f;
 	frame.size.height = [[BRThemeInfo sharedTheme] listIconHeight];
 	[_header setFrame: frame];
+
 	
-	// progress bar goes in a specific place too (one-eighth of the way
-	// up the screen)
 	frame.size.width = masterFrame.size.width * 0.45f;
 	frame.size.height = ceilf( frame.size.width * 0.068f );
 	frame.origin.x = (masterFrame.size.width - frame.size.width) * 0.5f;
 	frame.origin.y = masterFrame.origin.y + (masterFrame.size.height * (1.0f / 8.0f));
-	//[_progressBar setFrame: frame];
 	NSString *name =  _downloadTitle;
 	if (name == nil)
 	{
 		name = BRLocalizedString(@"Updating",@"Updating");
 	}
 	//NSLog(@"name : %@",name);
+	NSRect frame2 = masterFrame;
+	frame2.origin.x = masterFrame.size.width  * 0.71f;
+    frame2.origin.y = (masterFrame.size.height * 0.13);// - txtSize.height;
 	
+    frame2.size.width = masterFrame.size.width*0.22f;
+	frame2.size.height = masterFrame.size.height*0.22f;
+	[_spinner setFrame:frame2];
+	[_spinner setSpins:YES];
 	[self setTitle: name];
 	[self setSourceImage: name];
-	
+	//[self setNumber:0 withSteps:0];
+	//[self setTheText:@"ATV"];
 	[self setSourceText: [NSString stringWithFormat:BRLocalizedString(@"Processing Updates for ATV%@",@"Processing Updates for ATV%@"),[_updateData valueForKey:@"displays"]]];   // this lays itself out
+	
 	//[self appendSourceText: @"hello"];
 	//[_progressBar setCurrentValue: [_progressBar minValue]];
 	
 	// add the controls
 	[self addControl: _header];
 	[self addControl: _sourceText];
+	[self addControl:_spinner];
+	//[self addControl:_step];
 	//[self addControl: _progressBar];
-	
+	NSLog(@"1");
 	
 	
 }
@@ -100,6 +108,22 @@
         return ( nil );
 	//finalName =  (NSString *)(CFPreferencesCopyAppValue((CFStringRef)@"name", kCFPreferencesCurrentApplication));
     return ( self );
+}
+- (void)setNumber:(int)step withSteps:(int)numberOfSteps
+{
+    [_step setText:[[NSString alloc]initWithFormat:@"Step: %@/%@",step,numberOfSteps,nil] withAttributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
+	
+    NSRect masterFrame = [[self parent] frame];
+	
+	
+    NSRect frame;
+    frame.origin.x = masterFrame.size.width  * 0.7f;
+    frame.origin.y = (masterFrame.size.height * 0.1);// - txtSize.height;
+	
+    frame.size.width = masterFrame.size.width*0.25f;
+	frame.size.height = masterFrame.size.height*0.07f;
+	
+	[_step setFrame: frame];
 }
 
 - (void) dealloc
@@ -113,6 +137,7 @@
     [_outputPath release];
 	[_sourceImage release];
 	[_updateData release];
+	//[_sourceTheText release];
 	
     [super dealloc];
 }
@@ -182,10 +207,29 @@
 {
 	//NSLog(@"appending: %@",srcText);
 	[_theSourceText appendString:[NSString stringWithFormat:@"\n%@",srcText]];
+	_previousText = srcText;
 	//_theSourceText=[_theSourceText stringByAppendingString:[NSString stringWithFormat:@"\n%@",srcText]];
 	[self setSourceText:_theSourceText];
+	//[self setTheText:[srcText mutableCopy]];
 }
+-(void) appendSourceTextSpace:(NSString *)srcText
+{
+	[_theSourceText appendString:[NSString stringWithFormat:@"    ...  %@",srcText]];
+	[self setSourceText:_theSourceText];
+}
+-(void) setTheText:(NSMutableString *) srcText
+{
+	//[_sourceTheText setText:srcText];
+	NSRect masterFrame = [[self parent] frame];
+	NSRect frame;
+    frame.origin.x = masterFrame.size.width  * 0.1f;
+    frame.origin.y = (masterFrame.size.height * 0.2f);// - txtSize.height;
+    //frame.size = txtSize;
+    frame.size.width = masterFrame.size.width*0.6f;
+	frame.size.height = masterFrame.size.height*0.2f;
+		//[_sourceTheText setFrame: frame];
 
+}
 - (void) setSourceText: (NSMutableString *) srcText
 {
 	//   [_sourceText setTextAttributes: [[BRThemeInfo sharedTheme] paragraphTextAttributes]];
@@ -224,7 +268,6 @@
 
 - (float) percentDownloaded
 {
-    return ( [_progressBar percentage] );
 }
 
 
@@ -247,12 +290,48 @@
 }
 -(void) processFiles
 {
+	NSLog(@"1");
+	//int numberOfSteps,step;
+	//step=0;
 	NSFileManager *man =[NSFileManager defaultManager];
+
+	BOOL original_status=[[_updateData valueForKey:@"original"] boolValue];	
+	/*if(original_status)
+	{
+		numberOfSteps=2;
+	}
+	else
+	{
+		numberOfSteps=10;
+		if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"])
+		{
+			numberOfSteps+=1;
+		}
+		if([SMGeneralMethods boolForKey:@"retain_installed"])
+		{
+			numberOfSteps+=1;
+		}
+		if([SMGeneralMethods boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
+		{
+			numberOfSteps+=1;
+		}
+		if([[_updateData valueForKey:@"install_perian"] boolValue])
+		{
+			numberOfSteps+=1;
+		}
+		if([[_updateData valueForKey:@"now"]boolValue])
+		{
+			numberOfSteps+=1;
+		}
+	}*/
+	
 	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
 	NSString *thestatus = [[NSString alloc] initWithString:@"OK"];
-	[self appendSourceText:BRLocalizedString(@"*Step 1/9: Checking Permissions on Helper",@"*Step 1/9: Checking Permissions on Helper")];
+	[self appendSourceText:BRLocalizedString(@"Checking Permissions on Helper",@"Checking Permissions on Helper")];
+	////step//step;
+	//[self setNumber:step withSteps:numberOfSteps];
 	BOOL update_status=YES;
-	BOOL original_status=[[_updateData valueForKey:@"original"] boolValue];
+	
 	
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	if(![[SMGeneralMethods sharedInstance] helperCheckPerm])
@@ -262,14 +341,16 @@
 	}
 	else
 	{
-		[self appendSourceText:BRLocalizedString(@"	Permissions OK",@"	Permissions OK")];
-		;
+		[self appendSourceTextSpace:BRLocalizedString(@"OK",@"OK")];
+		
 	}
 	
 	if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"] && update_status && !original_status)
 	{
 		NSTask *task8 = [[NSTask alloc] init];
-		[self appendSourceText:@"*Step -/- Unmounting volume at /Volumes/OSBBoot 1/"];
+		[self appendSourceText:@"Unmounting volume at /Volumes/OSBBoot 1/"];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		NSArray *args8 = [NSArray arrayWithObjects:@"-unmount",@"0",@"0",nil];
 		[task8 setArguments:args8];
 		[task8 setLaunchPath:helperLaunchPath];
@@ -280,20 +361,30 @@
 			update_status=NO;
 			[self appendSourceText:@"	Volume \"/Volumes/OSBoot 1/\" could not umount"];
 		}
+		else
+		{
+			[self appendSourceTextSpace:@"Done"];
+		}
 		
 	}
 	
 	
 	if(update_status){
-		[self appendSourceText:BRLocalizedString(@"*Step 1.5/9 Blocking mesu.apple.com",@"*Step 1.5/9 Blocking mesu.apple.com")];
+		[self appendSourceText:BRLocalizedString(@"Blocking mesu.apple.com",@"Blocking mesu.apple.com")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		[[SMGeneralMethods sharedInstance] blockUpdate];
+		[self appendSourceTextSpace:@"Done"];
 	}
 	
 	
 	if(update_status && !original_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"*Step 2/9: Make the .dmg writable",@"*Step 2/9: Make the .dmg writable")];
-		[self makeDMGRW:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",[_updateData valueForKey:@"displays"],nil]];
+		[self appendSourceText:BRLocalizedString(@"Convert .dmg to UDRW",@"Convert .dmg to UDRW")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
+		//[self makeDMGRW:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",[_updateData valueForKey:@"displays"],nil]];
+		[SMGeneralMethods convertDMG:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",[_updateData valueForKey:@"displays"],nil] toFormat:@"UDRW" withOutputLocation:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]];
 		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]])
 		{
 			[self appendSourceText:@"Conversion to RW has failed"];
@@ -301,7 +392,7 @@
 		}
 		else
 		{
-			[self appendSourceText:BRLocalizedString(@"	Conversion Done",@"	Conversion Done")];
+			[self appendSourceTextSpace:BRLocalizedString(@"Converted",@"Converted")];
 		}
 	}
 	
@@ -309,7 +400,9 @@
 	
 	if(update_status && !original_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"*Step 3/9: Mount the .dmg",@"*Step 3/9: Mount the .dmg")];
+		[self appendSourceText:BRLocalizedString(@"Mount the .dmg",@"Mount the .dmg")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task3 = [[NSTask alloc] init];
 		NSArray *args3 = [NSArray arrayWithObjects:@"-mountconverted",[_updateData valueForKey:@"displays"],@"0",nil];
 		[task3 setArguments:args3];
@@ -324,7 +417,7 @@
 		}
 		else
 		{
-			[self appendSourceText:BRLocalizedString(@"	Mounted",@"	Mounted")];
+			[self appendSourceTextSpace:BRLocalizedString(@"Mounted",@"Mounted")];
 			
 		}
 	}
@@ -332,7 +425,9 @@
 	if(update_status && !original_status)
 	{
 		
-		[self appendSourceText:BRLocalizedString(@"*Step 4/9: add the SSH and SoftwareMenu",@"*Step 4/9: add the SSH and SoftwareMenu")];
+		[self appendSourceText:BRLocalizedString(@"Adding Dropbear SSH and SoftwareMenu",@"Add Dropbear SSH and SoftwareMenu")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task4 = [[NSTask alloc] init];
 		NSArray *args4 = [NSArray arrayWithObjects:@"-addFiles",[_updateData valueForKey:@"displays"],@"0",nil];
 		[task4 setArguments:args4];
@@ -346,13 +441,90 @@
 		}
 		else
 		{
-			[self appendSourceText:BRLocalizedString(@"	copied",@"	copied")];
+			[self appendSourceTextSpace:BRLocalizedString(@"Done",@"Done")];
+		}
+	}
+	if(update_status && !original_status &&[SMGeneralMethods boolForKey:@"retain_installed"])
+	{
+		[self appendSourceText:BRLocalizedString (@"Moving Fraps",@"Moving Fraps")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
+		NSArray * builtinfraps = [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",@"SoftwareMenu.frappliance",nil];
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		NSString *thepath =@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/";
+		NSString *newbase = @"/Volumes/OSBoot 1/System/Library/CoreServices/Finder.app/Contents/PlugIns/";
+		long i, count = [[fileManager directoryContentsAtPath:thepath] count];
+		for ( i = 0; i < count; i++ )
+		{
+			NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
+			if(![builtinfraps containsObject:idStr])
+			{
+
+				if([SMGeneralMethods boolForKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]])
+				{
+				[man copyPath:[thepath stringByAppendingPathComponent:idStr] toPath:[newbase stringByAppendingPathComponent:idStr] handler:nil];
+				}
+			}
+			
+		}		
+		[self appendSourceTextSpace:@"Done"];
+		
+	}
+	if(update_status && !original_status &&[SMGeneralMethods boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
+	{
+		[self appendSourceText:@"Copying Builtin stuff"];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		NSString *thepath =@"/Volumes/OSBoot 1/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/";
+		NSString *newbase = @"/Volumes/OSBoot 1/System/Library/CoreServices/Finder.app/Contents/PlugIns/";
+		long i, count = [[fileManager directoryContentsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"] count];
+		[man createDirectoryAtPath:thepath attributes:nil];
+		for ( i = 0; i < count; i++ )
+		{
+			NSString *idStr = [[fileManager directoryContentsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"] objectAtIndex:i];
+			NSLog(@"%@ %@ %@",idStr,[newbase stringByAppendingPathComponent:idStr],[thepath stringByAppendingPathComponent:idStr]);
+			//[man movePath:[newbase stringByAppendingPathComponent:idStr] toPath:[thepath stringByAppendingPathComponent:idStr] handler:nil];
+			NSTask *task41 = [[NSTask alloc] init];
+			NSArray *args41 = [NSArray arrayWithObjects:[newbase stringByAppendingPathComponent:idStr],[thepath stringByAppendingPathComponent:idStr],nil];
+			[task41 setArguments:args41];
+			[task41 setLaunchPath:@"/bin/mv"];
+			[task41 launch];
+			[task41 waitUntilExit];
+			
+			
+		}
+		[self appendSourceTextSpace:@"Done"];
+	}
+	if(update_status && !original_status && [[_updateData valueForKey:@"install_perian"] boolValue])
+	{
+		[self appendSourceText:BRLocalizedString(@"Installing Perian",@"Installing Perian")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
+		NSTask *task41 = [[NSTask alloc] init];
+		//NSLog(@"unmounting");
+		NSArray *args41 = [NSArray arrayWithObjects:@"-install_perian",@"/Users/frontrow/Documents/Perian_1.1.3.dmg",@"/Volumes/OSBoot 1/",nil];
+		[task41 setArguments:args41];
+		[task41 setLaunchPath:helperLaunchPath];
+		[task41 launch];
+		[task41 waitUntilExit];
+		int perianTerm=[task41 terminationStatus];
+		if(perianTerm == 0)
+		{
+			[self appendSourceTextSpace:@"Installed"];
+		}
+		else
+		{
+			[self appendSourceText:@"	Perian Install Failed"];
+			update_status = NO;
 		}
 	}
 	
 	if(update_status && !original_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"*Step 5/9 Unmounting",@"*Step 5/9 Unmounting")];
+		[self appendSourceText:BRLocalizedString(@"Unmounting",@"Unmounting")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task5 = [[NSTask alloc] init];
 		//NSLog(@"unmounting");
 		NSArray *args5 = [NSArray arrayWithObjects:@"-unmount",@"0",@"0",nil];
@@ -368,15 +540,19 @@
 		}
 		else
 		{
-			[self appendSourceText:BRLocalizedString(@"	unmounted",@"	unmounted")];
+			[self appendSourceTextSpace:BRLocalizedString(@"Unmounted",@"Unmounted")];
 		}
 	}
 	
 	if(update_status && !original_status)
 	{
 		
-		[self appendSourceText:BRLocalizedString(@"*Step 6/9 makeRO",@"*Step 6/9 makeRO")];
-		[self makeDMGRO:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]];
+		[self appendSourceText:BRLocalizedString(@"Converting to UDZO (read-only)",@"Converting to UDZO (read-only)")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
+		//[self makeDMGRO:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]];
+		NSString *atvpath=[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil];
+		[SMGeneralMethods convertDMG:[atvpath stringByAppendingPathComponent:@"converted.dmg"] toFormat:@"UDZO" withOutputLocation:[atvpath stringByAppendingPathComponent:@"final.dmg"]];
 		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/final.dmg",[_updateData valueForKey:@"displays"],nil]])
 		{
 			update_status=NO;
@@ -384,7 +560,7 @@
 		}
 		else
 		{
-			[self appendSourceText:@"Conversion was successful"];
+			[self appendSourceTextSpace:@"Done"];
 		}
 	}
 	
@@ -392,14 +568,16 @@
 	{
 		if(!original_status)
 		{
-			[self appendSourceText:BRLocalizedString(@"*Step 7/9 Moving Files to ~/Updates",@"*Step 7/9 Moving Files to ~/Updates")];
+			[self appendSourceText:BRLocalizedString(@"Moving Files to ~/Updates",@"Moving Files to ~/Updates")];
 		}
 		else
 		{
-			[self appendSourceText:BRLocalizedString(@"*Step 2/3 Moving Files to ~/Updates",@"*Step 2/3 Moving Files to ~/Updates")];
+			[self appendSourceText:BRLocalizedString(@"Moving Files to ~/Updates",@"Moving Files to ~/Updates")];
 		}
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		
-		[self appendSourceText:[NSString stringWithFormat:BRLocalizedString(@"	Preserve: %@",@"	Preserve: %@"),[_updateData valueForKey:@"preserve"],nil]];
+		//[self appendSourceText:[NSString stringWithFormat:BRLocalizedString(@"	Preserve: %@",@"	Preserve: %@"),[_updateData valueForKey:@"preserve"],nil]];
 		[self moveFiles2:original_status];
 		//[self appendSourceText:@"	"];
 		if(![man fileExistsAtPath:[@"~/Updates/final.dmg" stringByExpandingTildeInPath]])
@@ -407,9 +585,10 @@
 			[self appendSourceText:@"Moving Failed"];
 			update_status=NO;
 		}
+
 		else
 		{
-			[self appendSourceText:@"Moved Files to Updates"];
+			[self appendSourceTextSpace:@"Done"];
 		}
 	}
 	[self cleanstuff];
@@ -428,7 +607,9 @@
 	{
 		int i;
 		//NSLog(@"making scan");
-		[self appendSourceText:BRLocalizedString(@"*Step 8/9 Doing ASR scan",@"*Step 8/9 Doing ASR scan")];
+		[self appendSourceText:BRLocalizedString(@"Doing ASR scan",@"Doing ASR scan")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		i=[self makeASRscan:@"/Users/frontrow/Updates/final.dmg"];
 		//NSLog(@"term status:%d",i);
 		if (i != 0)
@@ -441,30 +622,36 @@
 		}
 		else
 		{
-			[self appendSourceText:@"	done"];
+			[self appendSourceTextSpace:@"Done"];
 		}
 		
 	}
 	
 	if(update_status && [[_updateData valueForKey:@"now"]boolValue])
 	{
-		[self appendSourceText:@"*Step 9/9 Launching OSUpdate, Please wait"];
+		[self appendSourceText:@"Launching OSUpdate, Please wait"];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task7 = [[NSTask alloc] init];
 		NSArray *args7 = [NSArray arrayWithObjects:@"-osupdate",@"0",@"0",nil];
 		[task7 setArguments:args7];
 		[task7 setLaunchPath:helperLaunchPath];
 		[task7 launch];
-		[task7 waitUntilExit];
+		[task7 waitUntilExit]; 
 		
 	}
 	else if(update_status)
 	{
 		[self appendSourceText:BRLocalizedString(@"*Press Menu and launch the Update from the menu item",@"*Press Menu and launch the Update from the menu item")];
+		{
+			[_spinner setSpins:NO];
+		}
 		
 	}
 	else if(!update_status)
 	{
 		[self appendSourceText:@"there was an error"];
+		[_spinner setSpins:NO];
 	}
 	
 }

@@ -21,7 +21,7 @@
 #define SM_KEY						@"software_menu_key_image"
 #define LAYER_TYPE					@"layer_type"
 #define LAYER_NAME					@"layer_name"
-#define UPDATE_URL			@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
+#define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
 
 @interface SMGeneralMethods : NSObject {
 	
@@ -30,7 +30,9 @@
 + (BOOL)boolForKey:(NSString *)theKey;
 + (NSString *)stringForKey:(NSString *)theKey;
 + (NSArray *)arrayForKey:(NSString *)theKey;
++ (NSDictionary *)dictForKey:(NSString *)theKey;
 + (void)setArray:(NSArray *)inputArray forKey:(NSString *)theKey;
++ (void)setDict:(NSDictionary *)inputDict forKey:(NSString *)theKey;
 + (void)setBool:(BOOL)inputBOOL forKey:(NSString *)theKey;
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
@@ -39,7 +41,7 @@
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;
 + (NSArray *)menuItemNames;
-
++(int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
 +(SMGeneralMethods *)sharedInstance;
 -(BOOL)helperCheckPerm;
 -(void)helperFixPerm;

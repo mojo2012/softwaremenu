@@ -5,8 +5,9 @@
 //  Created by Thomas on 11/3/08.
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
-
+#import "SMUpdaterOptionss.h"
 #import "SoftwareSettings.h"
+#import "SMUOptions.h"
 //#import "SoftwareUntrusted.h"
 #import "SoftwareManual.h"
 #import "SMUpdater.h"
@@ -82,18 +83,31 @@ static NSDate *lastFilterChangeDate = nil;
 		[meta setObject:@"SoftwareMenu.png" forKey:@"id"];
 		[meta setObject:[BRMediaType movie] forKey:@"mediaType"];*/
 		[meta setImagePath:@"hello"];
+		[meta setObject:@"hello" forKey:@"title"];
+		[meta setObject:@"hello" forKey:@"mediaSummary"];
+		[meta setObject:@"hello" forKey:@"Show Description"];
+		[meta setObject:@"hello" forKey:@"description"];
+		
 		//NSURL *hello = [[NSURL alloc] initFileURLWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
 		//[meta setObject:[hello absoluteString] forKey:@"previewURL"];
 		//
 		//[meta setObject:[hello absoluteString] forKey:@"mediaURL"];
-		
+		BRMediaAssetItemProvider *theProvider = [BRMediaAssetItemProvider providerWithMediaAssetArray:[NSArray arrayWithObjects:meta,nil]];
 
 		BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
+		
+		//[previewtoo setAsset:meta];
+		//[previewtoo setMetadataProvider:[BRMediaAssetItemProvider providerWithMediaAssetArray:[NSArray arrayWithObjects:meta,nil]]];
+		//[previewtoo setImageProvider:[BRMediaAssetItemProvider providerWithMediaAssetArray:[NSArray arrayWithObjects:meta,nil]]];
+		//[previewtoo setUtilityData:[[NSDictionary alloc]init]];
+		//[previewtoo setShowsMetadataImmediately:YES];
+		//[previewtoo setAsset:meta];
+		[previewtoo setDeletterboxAssetArtwork:YES];
+		[previewtoo setMetadataProvider:theProvider];
+		[previewtoo setImageProvider:theProvider];
 		[previewtoo setAsset:meta];
-
-		[previewtoo setShowsMetadataImmediately:YES];
-		[previewtoo setDeletterboxAssetArtwork:NO];
-		[previewtoo _updateMetadataLayer];
+		//[previewtoo _showMetadataAfterDelay];
+		//[previewtoo _updateMetadataLayer];
 
 		return [previewtoo autorelease];
 		
@@ -220,47 +234,7 @@ static NSDate *lastFilterChangeDate = nil;
 		[_items addObject:item2];
 		
 		
-		//UNtrusted
-		
-	}
-	/*[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2",LAYER_TYPE,@"ARF",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
-	id item2 = [[BRTextMenuItemLayer alloc] init];
-	[item2 setTitle:@"Auto Restart Finder"];
-	if([SMGeneralMethods boolForKey:@"ARF"])
-	{
-		[item2 setRightJustifiedText:@"YES"];
-	}
-	else
-	{
-		[item2 setRightJustifiedText:@"NO"];
-		[SMGeneralMethods setBool:NO forKey:@"ARF"];
-	}
-	[_items addObject:item2];*/
-	
-	/*************
-	 * Scripts on Main Menu
-	 *************/
-	/*[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2",LAYER_TYPE,@"SMM",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
-	id item4 = [[BRTextMenuItemLayer alloc] init];
-	[item4 setTitle:@"Scripts on Main Menu"];
-	if([[_show_hide valueForKey:@"SMM"]isEqualToString:@"YES"])
-	{
-		[item4 setRightJustifiedText:@"YES"];
-	}
-	else if([[_show_hide valueForKey:@"SMM"]isEqualToString:@"NO"])
-	{
-		[item4 setRightJustifiedText:@"NO"];
-	}
-	else
-	{
-		[_show_hide setObject:@"YES" forKey:@"SMM"];
-		[item4 setRightJustifiedText:@"YES"];
-	}
-	[_items addObject:item4];*/
-	
-	/*************
-	 * Scripts Position
-	 *************/
+
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.1",LAYER_TYPE,@"ScriptsPosition",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
 	id item3 = [[BRTextMenuItemLayer alloc] init];
 	[item3 setTitle:@"Scripts Location"];
@@ -290,6 +264,11 @@ static NSDate *lastFilterChangeDate = nil;
 		[item7 setRightJustifiedText:BRLocalizedString(@"NOT Blocking",@"Blocking")];
 	}
 	[_items addObject:item7];
+	
+/*	id item75 = [BRTextMenuItemLayer folderMenuItem];
+	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.5",LAYER_TYPE,@"options",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
+	[item75 setTitle:BRLocalizedString(@"Upgrader Options",@"Upgrader Options")];
+	[_items addObject:item75];*/
 	
 	id item5 = [[BRTextMenuItemLayer alloc] init];
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.5",LAYER_TYPE,@"Updater",LAYER_NAME,SM_KEY,TYPE_KEY,@"Upgrader",NAME_KEY,nil]];
@@ -374,7 +353,14 @@ static NSDate *lastFilterChangeDate = nil;
 			[task6 waitUntilExit];
 			[self initWithIdentifier:@"101"];
 		}
-		
+		else if ([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"options"])
+		{
+			id newController = nil;
+			newController = [[SMUOptions alloc] init];
+			[newController initCustom];
+			[[self stack] pushController:newController];
+		}
+
 	}
 	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"Manage"])
 	{

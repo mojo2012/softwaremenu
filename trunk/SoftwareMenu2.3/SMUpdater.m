@@ -10,6 +10,7 @@
 #import "SMDownloaderSTD.h"
 #import "SMUpdaterProcess.h"
 #import "SMInfo.h"
+#import "SMUpdaterOptionss.h"
 
 
 
@@ -29,7 +30,7 @@
 -(id)initCustom
 {
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: BRLocalizedString(@"Update",@"Update")];
+	[self setListTitle: BRLocalizedString(@"Updater",@"Updater")];
 	
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
@@ -40,8 +41,14 @@
 	[_items addObject:item1];
 	int optionsSeparator=[_items count];
 	
-	NSArray *optionKeys  = [NSArray arrayWithObjects:@"preserve",@"updatenow",@"originalupdate",nil];
-	NSArray *optionNames = [NSArray arrayWithObjects:BRLocalizedString(@"Preserve Files",@"Preserve Files"),BRLocalizedString(@"Update Immediatly",@"Update Immediatly"),BRLocalizedString(@"Keep Unpatched",@"Keep Unpatched"),nil];
+	/*NSArray *optionKeys  = [NSArray arrayWithObjects:@"preserve",@"updatenow",@"originalupdate",@"install_perian",@"do_usb_patch",@"retain_installed",@"retain_builtin",nil];
+	NSArray *optionNames = [NSArray arrayWithObjects:BRLocalizedString(@"Preserve Files",@"Preserve Files"),
+							BRLocalizedString(@"Update Immediatly",@"Update Immediatly"),
+							BRLocalizedString(@"Keep Unpatched",@"Keep Unpatched"),
+							BRLocalizedString(@"Install Perian",@"Install Perian"),
+							BRLocalizedString(@"USB Patch",@"USB Patch"),
+							BRLocalizedString(@"Retain Plugins",@"Retain Plugins"),
+							BRLocalizedString(@"Retain Builtin Backup",@"Retain Builtin Backup"), nil];
 	int ii, counterr;
 	ii=[optionKeys count];
 	for(counterr=0;counterr<ii;counterr++)
@@ -60,9 +67,28 @@
 			[SMGeneralMethods setBool:NO forKey:optionKey];
 		}
 		[_items addObject:item2];
+		if([optionKey isEqualToString:@"retain_installed"] && ![SMGeneralMethods boolForKey:optionKey])
+		{
+			id item3 = [[BRTextMenuItemLayer alloc] init];
+			[item3 setTitle:BRLocalizedString(@"Retain Nito?",@"Retain Nito?")];
+			if([SMGeneralMethods boolForKey:@"retain_nito"])
+			{
+				[item3 setRightJustifiedText:BRLocalizedString(@"YES",@"YES")];
+			}
+			else
+			{
+				[item3 setRightJustifiedText:BRLocalizedString(@"NO",@"NO")];
+				[SMGeneralMethods setBool:NO forKey:@"retain_nito"];
+			}
+			[_options addObject:[NSArray arrayWithObjects:@"options",optionKey,nil]];
+			[_items addObject:item3];
+		}
 		
-	}
-	
+	}*/
+	id item31 =[BRTextMenuItemLayer folderMenuItem];
+	[item31 setTitle:@"Options"];
+	[_options addObject:[NSArray arrayWithObjects:@"options",@"options",nil]];
+	[_items addObject:item31];
 	int updateSeperator=[_items count];
 	
 	NSFileManager *man = [NSFileManager defaultManager];
@@ -142,13 +168,18 @@
 		//[newController setDescription:downloadedDescription];
 		[newController setTheName:@"README"];
 		[[self stack] pushController:newController];
+		return;
 		
 	}
 	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"options"])
 	{
 		_downloadnumber=10;
-		[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+		id newController2 = [[SMUpdaterOptionss alloc] init];
+		[newController2 initCustom];
+		[[self stack] pushController:newController2];
+		//[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		[self initCustom];
+		return;
 	}
 	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"updating"])
 	{
@@ -337,14 +368,56 @@
 	[_dlinks retain];
 	[_dlinks2 retain];
 	//[_downloadnumber retain];
-	if([SMGeneralMethods boolForKey:@"DO_USB_PATCH"])
+	if([SMGeneralMethods boolForKey:@"install_perian"])
 	{
-		[_builtinfraps addObject:@"usb patch kit"];
-		[_dlinks addObject:@"http://iscripts.googlecode.com/files/iinstaller.tar.gz"];
-		[_dlinks addObject:@"http://iscripts.googlecode.com/files/iinstaller.tar.gz"];
-		[_md5s addObject:@"379114ef27a2b5b2bdbb709fb850d4dd"];
+		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath]])
+		{
+			if(![self checkmd5:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath] withmd5:@"c0377cb6142f27270b1daf8ab151d1c6"])
+			{
+				[[NSFileManager defaultManager] removeFileAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath] handler:nil];
+				[_builtinfraps addObject:@"Perian 1.1.3"];
+				[_dlinks addObject:@"http://perian.cachefly.net/Perian_1.1.3.dmg"];
+				[_md5s addObject:@"c0377cb6142f27270b1daf8ab151d1c6"];
+				NSLog(@"install Perian");
+			}
+
+		}
+		else
+		{
+			[_builtinfraps addObject:@"Perian 1.1.3"];
+			[_dlinks addObject:@"http://perian.cachefly.net/Perian_1.1.3.dmg"];
+			[_md5s addObject:@"c0377cb6142f27270b1daf8ab151d1c6"];
+			NSLog(@"install Perian");
+		}
+
 	}
+	if([SMGeneralMethods boolForKey:@"do_usb_patch"])
+	{
+		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath]])
+		{
+			if(![self checkmd5:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath] withmd5:@"2c579f52ad69d12d95ea82ee3d9c4937"])
+			{
+				[[NSFileManager defaultManager] removeFileAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath] handler:nil];
+				[_builtinfraps addObject:@"Combo Update 10.4.9"];
+				[_dlinks addObject:@"http://supportdownload.apple.com/download.info.apple.com/Apple_Support_Area/Apple_Software_Updates/Mac_OS_X/downloads/061-3165.20070313.iU8y4/MacOSXUpdCombo10.4.9Intel.dmg"];
+				[_md5s addObject:@"2c579f52ad69d12d95ea82ee3d9c4937"];
+				NSLog(@"10.4.9");
+			}
+			
+		}
+		else
+		{
+			[_builtinfraps addObject:@"Combo Update 10.4.9"];
+			[_dlinks addObject:@"http://supportdownload.apple.com/download.info.apple.com/Apple_Support_Area/Apple_Software_Updates/Mac_OS_X/downloads/061-3165.20070313.iU8y4/MacOSXUpdCombo10.4.9Intel.dmg"];
+			[_md5s addObject:@"2c579f52ad69d12d95ea82ee3d9c4937"];
+			NSLog(@"10.4.9");
+		}
+		
+	}
+
+	NSLog(@"here");
 	if ([_dlinks count]==0)
+		   
 	{
 		_downloadnumber=10;
 		[self moveFiles];
@@ -394,7 +467,7 @@
 }
 - (void)wasExhumedByPoppingController:(id)fp8
 {
-	//NSLog(@"was Exhumed");
+	NSLog(@"was Exhumed By Poppping");
 	
 	//NSLog(@"builtinfrapscount %d",[_builtinfraps count]);
 	if(_downloadnumber==10)
@@ -413,7 +486,7 @@
 }
 -(void)wasExhumed
 {
-	//NSLog(@"was Exhumed");
+	NSLog(@"was Exhumed");
 	
 	//NSLog(@"builtinfrapscount %d",[_builtinfraps count]);
 	if(_downloadnumber==10)
@@ -445,6 +518,7 @@
 }
 -(void)moveFiles
 {
+	NSLog(@"-1");
 	_downloadnumber=10;
 	NSString *atvpath=[[NSString alloc] initWithString:@"/Users/frontrow/Documents/"];
 	NSString *foldername=[NSString stringWithFormat:BRLocalizedString(@"ATV%@",@"ATV%@"),_displays,nil];
@@ -476,7 +550,7 @@
 		NSString * thefolder = [[[obje lastPathComponent] stringByDeletingPathExtension] stringByAppendingPathExtension:@"download"];
 		path_init = [path_init stringByAppendingPathComponent:thefolder];
 		path_init = [path_init stringByAppendingPathComponent:[obje lastPathComponent]];
-		//NSLog(@"%@",path_init);
+		NSLog(@"%@",path_init);
 		
 		[man movePath:path_init toPath:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]] handler:nil];
 		if (![self checkmd5:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]]withmd5:md5])
@@ -485,11 +559,20 @@
 			hello=obje;
 			themd5=md5;
 		}
-		if([[obje pathExtension] isEqualToString:@"dmg"])
+		NSLog(@"0");
+		if([[obje lastPathComponent] isEqualToString:@"Perian_1.1.3.dmg"])
+		{
+			[man movePath:[atvpath stringByAppendingPathComponent:@"Perian_1.1.3.dmg"] toPath:[[atvpath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Perian_1.1.3.dmg"] handler:nil];
+		}
+		else if([[obje lastPathComponent] isEqualToString:@"MacOSXUpdCombo10.4.9Intel.dmg"])
+		{
+			[man movePath:[atvpath stringByAppendingPathComponent:@"MacOSXUpdCombo10.4.9Intel.dmg"] toPath:[[atvpath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"MacOSXUpdCombo10.4.9Intel.dmg"] handler:nil];
+		}
+		else if([[obje pathExtension] isEqualToString:@"dmg"])
 		{
 			[man movePath:[atvpath stringByAppendingPathComponent:[obje lastPathComponent]] toPath:[atvpath stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
 		}
-		
+
 	}
 	if(!CONTINUE)
 	{
@@ -499,8 +582,9 @@
 													secondaryText:hello/*\nPressing the Left arrow key enables the script to show in the main softwareMenu categories\n (for scripts you run a lot)"*/];
 		[[self stack] pushController:alert];
 	}
-	id(CONTINUE)
+	if(CONTINUE)
 	{
+		NSLog(@"3");
 		[self patchOSdmg];
 	}
 	
@@ -544,8 +628,9 @@
 	newController =[[SMUpdaterProcess alloc] init];
 	//NSLog(@"before dict");
 	//NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
-	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
+	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"install_perian"]],@"install_perian",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
 	//NSLog(@"%@",thedict);
+	NSLog(@"4");
 	[newController setUpdateData:thedict];
 	[[self stack] pushController: newController];	
 }

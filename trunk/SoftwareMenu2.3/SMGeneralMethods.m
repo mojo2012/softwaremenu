@@ -52,6 +52,11 @@ static SMGeneralMethods *sharedInstance = nil;
 	CFArrayRef myArray = [(CFArrayRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
 	return (NSArray *)myArray;
 }
++(NSDictionary *)dictForKey:(NSString *)theKey
+{
+	CFDictionaryRef myDict = [(CFDictionaryRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
+	return (NSDictionary *)myDict;
+}
 + (NSArray *)getPrefKeys
 {
 	NSArray *myArray = (NSArray *)CFPreferencesCopyKeyList(myDomain,kCFPreferencesCurrentUser,kCFPreferencesAnyHost);
@@ -83,7 +88,16 @@ static SMGeneralMethods *sharedInstance = nil;
 	CFPreferencesAppSynchronize(myDomain);
 	CFRelease(inputArray);
 }
-
++ (void)setDict:(NSDictionary *)inputDict forKey:(NSString *)theKey
+{
+	NSLog(@"dict1");
+	CFPreferencesSetAppValue((CFStringRef)theKey, (CFDictionaryRef)inputDict, myDomain);
+	NSLog(@"dict2");
+	CFPreferencesAppSynchronize(myDomain);
+	NSLog(@"dict2.5");
+	//CFRelease(inputDict);
+	NSLog(@"dict3");
+}
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey
 {
 	CFPreferencesSetAppValue((CFStringRef)theKey, (CFStringRef)inputString, myDomain);
@@ -241,5 +255,30 @@ static SMGeneralMethods *sharedInstance = nil;
 		} 
 	} 
 	return NO;
+}
++(BOOL)installPackage:(NSString *)targz fromType:(int)updateType
+{
+	switch (updateType)
+	{
+		case 0:
+			break;
+		case 1:
+			break;
+		default:
+			break;
+	}
+}
++(int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation
+{
+	NSTask *mdTask = [[NSTask alloc] init];
+	NSPipe *mdip = [[NSPipe alloc] init];
+	[mdTask setLaunchPath:@"/usr/bin/hdiutil"];
+	[mdTask setArguments:[NSArray arrayWithObjects:@"convert", initLocation, @"-format", dmgFormat, @"-o", outputLocation, nil]];
+	[mdTask setStandardOutput:mdip];
+	[mdTask setStandardError:mdip];
+	[mdTask launch];
+	[mdTask waitUntilExit];
+	int theTerm=[mdTask terminationStatus];
+	return theTerm;
 }
 @end

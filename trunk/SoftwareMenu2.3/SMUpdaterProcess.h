@@ -21,8 +21,9 @@
     BRScrollingTextControl *         _sourceText;
 	BRImageControl *		_sourceImage;
     SMProgressBarControl *  _progressBar;
-	
+	BRTextControl *			_step;
     NSURLDownload *         _downloader;
+	BRWaitSpinnerControl *	_spinner;
     NSString *              _outputPath;
     long long               _totalLength;
     long long               _gotLength;
@@ -31,6 +32,7 @@
 	NSString *				_downloadTitle;
 	NSString *				_downloadText;
 	NSDictionary *			_updateData;
+	NSString *				_previousText;
 	int m_screen_saver_timeout;
 }
 -(NSRect)frame;
@@ -54,7 +56,7 @@
 - (void) setFileText:(NSString *)downloadText;
 
 - (void) setdownloadTitle:(NSString *)downloadName;
-
+- (void) setNumber:(int)step withSteps:(int)numberOfSteps;
 - (void) setTitle: (NSString *) title;
 - (NSString *) title;
 - (void) setSourceImage:(NSString *)name;
@@ -63,9 +65,11 @@
 - (NSString *) sourceText;
 -(void) processdownload;
 - (float) percentDownloaded;
+-(void) setTheText:(NSMutableString *)srcText;
 
 - (void) storeResumeData;
 - (void) appendSourceText:(NSString *)srcText;
+- (void) appendSourceTextSpace:(NSString *)srcText;
 
 // NSURLDownload delegate methods
 

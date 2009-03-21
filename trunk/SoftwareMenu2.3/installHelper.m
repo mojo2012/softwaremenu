@@ -261,6 +261,15 @@ int main (int argc, const char * argv[]) {
 			//NSLog(@"%@",[basepath stringByAppendingPathComponent:@"final.dmg"]);
 			[ihc extractTar:value toLocation:value2];
 		}
+		else if([option isEqualToString:@"-install_perian"])
+		{
+			installHelperClass *ihc = [[installHelperClass alloc] init];
+			[ihc setRunPath:path];
+			int returnvalue=[ihc install_perian:value toVolume:value2];
+			[pool release];
+			return returnvalue;
+		}
+			
 			
 	}
 	

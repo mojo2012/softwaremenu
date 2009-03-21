@@ -185,15 +185,26 @@
 				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
 				//NSLog(@"%@ %@", current_version,onlineVersion);
 				//if ([current_version isEqualToString:onlineVersion])
-				if([current_version compare:onlineVersion]==NSOrderedAscending)
+				NSLog(@"%@",[frapPath lastPathComponent]);
+				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
+				{
+					current_version = [info objectForKey:@"CFBundleShortVersionString"];
+					onlineVersion = [obj valueForKey:@"shortVersion"];
+					NSLog(@"%@ %@",current_version, onlineVersion);
+				}
+				if([current_version compare:onlineVersion]==NSOrderedSame)
 				{
 					[item setRightJustifiedText:@"Up to Date"];
 					//NSLog(@"Up to Date");
 				}
-				else
+				else if ([current_version compare:onlineVersion]==NSOrderedAscending)
 				{
 					[item setRightJustifiedText:@"New Version available"];
 					//NSLog(@"Not up to date, current is %@",onlineVersion);
+				}
+				else
+				{
+					[item setRightJustifiedText:@"Ahead of the curve"];
 				}
 			}
 			else
@@ -487,6 +498,7 @@
 			NSMutableDictionary *hellofive = [[NSMutableDictionary alloc] init];
 			[hellofive setObject:@"nitoTV" forKey:@"name"];
 			[hellofive setObject:[hellothree valueForKey:@"displayVersionTwo"] forKey:@"Version"];
+			[hellofive setObject:[hellothree valueForKey:@"versionTwo"] forKey:@"shortVersion"];
 			[hellofive setObject:@"http://nitosoft.com/nitoTVInstaller_tt.zip" forKey:@"theURL"];
 			[TrustedDict setObject:hellofive forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];

@@ -153,7 +153,7 @@ static NSString  * _current_vers= nil;
 		/***********
 		 *Restoring from Backup
 		 ***********/
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"Remove",LAYER_NAME,MISC_KEY,TYPE_KEY,@"restore",NAME_KEY,nil]];
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"Restore",LAYER_NAME,MISC_KEY,TYPE_KEY,@"restore",NAME_KEY,nil]];
 		id item6 = [BRTextMenuItemLayer menuItem];
 		[item6 setTitle:@"Restore"];
 		[item6 setRightJustifiedText:bak_vers];

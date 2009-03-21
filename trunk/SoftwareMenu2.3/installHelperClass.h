@@ -37,7 +37,8 @@
 - (void)OSUpdate;
 - (int)toggleUpdate;
 - (int)blockUpdate;
-
+- (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
+- (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;
 - (BOOL)wasWritable;
 
 

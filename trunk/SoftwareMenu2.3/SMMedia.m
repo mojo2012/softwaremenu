@@ -81,7 +81,7 @@
 {
 	NSString *hello = [[NSString alloc] init];
 	hello=@"hello";
-	return hello;
+	return BRLocalizedString(@"hello",@"hello");
 }
 
 - (id)mediaType

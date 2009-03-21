@@ -583,7 +583,15 @@
 	//[man copyPath:@"/System/Library/CoreServices/Finder.app/Conents/PlugIns/SoftwareMenu.frappliance" toPath:@"/System/Library/CoreServices/Finder.app/Conents/PlugIns/SoftwareMenu.frappliance" handler:NULL];
 	//return TRUE;
 }
-
+- (int)install_perian:(NSString *)perian_path toVolume:(NSString *)targetVolume
+{
+	NSString *volume=[self mountImage:perian_path];
+	int i=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/Perian.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/"]];
+	int ii=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/QuickTime/AC3MovieImport.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/"]];
+	int iii=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/CoreAudio/A52Codec.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/"]];
+	int iv=i+ii+iii;
+	return iv;
+}
 - (int)toggleUpdate
 {
 	BOOL addHost = YES;
@@ -829,7 +837,24 @@
 	return theTerm;
 	
 }
-
+-(int)unZip:(NSString *)inputZip toLocation:(NSString *)toLocation
+{
+	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; 
+	NSTask *zipTask = [[NSTask alloc] init];
+	NSFileHandle *nullOut = [NSFileHandle fileHandleWithNullDevice];
+	[zipTask setLaunchPath:[ntvPath stringByAppendingPathComponent:@"unzip"]];
+	[zipTask setArguments:[NSArray arrayWithObjects:inputZip,nil]];
+	[zipTask setCurrentDirectoryPath:toLocation];
+	[zipTask setStandardError:nullOut];
+	[zipTask setStandardOutput:nullOut];
+	[zipTask launch];
+	[zipTask waitUntilExit];
+	
+	int theTerm = [zipTask terminationStatus];
+	[zipTask release];
+	zipTask=nil;
+	return theTerm;
+}
 
 
 - (int)extractTar:(NSString *)inputTar toLocation:(NSString *)toLocation

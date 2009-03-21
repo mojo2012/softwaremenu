@@ -18,21 +18,16 @@
  * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#import "SMMediaPreview.h"
-//#import "SapphireMetaData.h"
+#import "SMMMediaPreview.h"
 #import "SMMedia.h"
-#import "BackRowUtilstwo.h"
-//#import "BackRow/BRMetadataControl.h"
-//#import "SapphireSettings.h"
 #import <objc/objc-class.h>
-//#import <SapphireCompatClasses/SapphireFrontRowCompat.h>
 
 /*These interfaces are to access variables not available*/
-/*@interface BRMetadataLayer (protectedAccess)
+@interface BRMetadataControl (protectedAccess)
 - (NSArray *)gimmieMetadataObjs;
 @end
 
-@implementation BRMetadataLayer (protectedAccess)
+@implementation BRMetadataControl (protectedAccess)
 - (NSArray *)gimmieMetadataObjs
 {
 	Class myClass = [self class];
@@ -48,33 +43,17 @@
 @end*/
 
 
-@interface BRMetadataControl (protectedAccess)
-- (NSArray *)gimmieMetadataObjs;
-@end
 
-@implementation BRMetadataControl (protectedAccess)
-	-(NSArray *)gimmieMetadataObjs {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "_metadataObjs");
-	return *(NSArray * *)(((char *)self)+ret->ivar_offset);
-}
--(NSArray *)gimmieMetadataLabels {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "_metadataLabels");
-	return *(NSArray * *)(((char *)self)+ret->ivar_offset);
-}
 
-@end
-
-@interface BRMetadataPreviewControl (compat)
+@interface BRMetadataPreviewController (compat)
 - (void)_updateMetadataLayer;
 @end
 
-@interface BRMetadataPreviewControl (protectedAccess)
+@interface BRMetadataPreviewController (protectedAccess)
 - (BRMetadataControl *)gimmieMetadataLayer;
 @end
 
-@implementation BRMetadataPreviewControl (protectedAccess)
+@implementation BRMetadataPreviewController (protectedAccess)
 - (BRMetadataControl *)gimmieMetadataLayer
 {
 	Class myClass = [self class];
@@ -84,13 +63,12 @@
 }
 @end
 
-
-@interface SMMediaPreview (private)
+@interface SMMMediaPreview (private)
 - (void)doPopulation;
 - (NSString *)coverArtForPath;
 @end
 
-@implementation SMMediaPreview
+@implementation SMMMediaPreview
 
 /*List of extensions to look for cover art*/
 static NSSet *coverArtExtentions = nil;
@@ -108,32 +86,30 @@ static NSSet *coverArtExtentions = nil;
 		nil];
 }
 
+- (id)init
+{
+		return [super init];
+}
 
 - (void)dealloc
 {
-	[meta release];
-	[dirMeta release];
 	[super dealloc];
 }
 
 - (void)setUtilityData:(NSMutableDictionary *)newMeta
 {
-	/*NSArray *thelabels =[self gimmieMetadataLabels];
-	NSLog(@"populateutility:%@",thelabels);*/
-	NSLog(@"newmeta:%@",newMeta);
-	[meta release];
-	meta=[newMeta retain];
-	NSLog(@"meta:%@",meta);
 	SMMedia *asset  =[SMMedia alloc];
-	[asset setImagePath:[[NSBundle bundleForClass:[self class]] pathForResource:@"SoftwareMenu" ofType:@"png"]];
+	[asset setImagePath:[[NSBundle bundleForClass:[self class]] pathForResource:@"DefaultPreview" ofType:@"png"]];
 	[self setAsset:asset];
 
 }
 
-- (NSString *)coverArtForPath
-{
-	return [[NSBundle bundleForClass:[self class]] pathForResource:@"SoftwareMenu" ofType:@"png"];
-}
+
+/*!
+ * @brief Search for cover art for the current metadata
+ *
+ * @return The path to the found cover art
+ */
 
 /*!
  * @brief Override the loading of the cover art method
@@ -149,40 +125,46 @@ static NSSet *coverArtExtentions = nil;
 	/*Get our cover art*/
 	NSString *path = [self coverArtForPath];
 	NSURL *url = [NSURL fileURLWithPath:path];
+	/*Create an image source*/;
+    CGImageSourceRef  sourceRef;
+	CGImageRef        imageRef = NULL;
+	sourceRef = CGImageSourceCreateWithURL((CFURLRef)url, NULL);
+	if(sourceRef) {
+        imageRef = CGImageSourceCreateImageAtIndex(sourceRef, 0, NULL);
+        CFRelease(sourceRef);
+    }
+	if(imageRef)
 	{
-		[_coverArtLayer setImage:[BRImage imageWithURL:path]];
-		
+		[_coverArtLayer setImage:imageRef];
+		CFRelease(imageRef);
 	}	
 }
 
+/*!
+ * @brief populate metadata for TV Shows
+ */
 - (void)populateUtilityDataWith:(NSMutableDictionary *)allMeta
 {
-	//NSLog(@"populateutility:%@",thelabels);
-	NSLog(@"in populateUtility:%@",allMeta);
 	BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
-	NSArray *thelabels =[metaLayer gimmieMetadataLabels];
-	NSLog(@"%@",thelabels);
-
 	/* Get the setting name */
 	NSString *value = @"hello";
 	if(value != nil)
 		[metaLayer setTitle:value];
-	NSLog(@"value:%@",value);
 	/*Get the setting description*/
-	value = @"hello2";
-	NSLog(@"value:%@",value);
+	value = @"hello";
 	if(value != nil)
-		[metaLayer setSummary:@"hello"];
-	thelabels = [metaLayer gimmieMetadataLabels];
-	NSLog(@"labels: %@",thelabels);
+			[metaLayer setSummary:value];
 }
+
+/*!
+ * @brief populate generic file data
+ */
 
 /*!
  * @brief populate metadata for media files
  */
 - (void)_populateMetadata
 {
-	NSLog(@"_populateMeta");
 	[super _populateMetadata];
 	[self doPopulation];
 }
@@ -192,27 +174,25 @@ static NSSet *coverArtExtentions = nil;
  */
 - (void)_updateMetadataLayer
 {
-	NSLog(@"_updateMetaLayer");
 	[super _updateMetadataLayer];
-	[self doPopulation];
 	/*See if it loaded anything*/
-	
+	[self doPopulation];
 }
-
 
 - (void)doPopulation
 {
+	/*Get our data then*/
+	NSArray *order = nil;
+	NSMutableDictionary *allMeta = nil;
+	//FileClass fileClass=FILE_CLASS_UNKNOWN ;
 
 	BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
 	
-	//NSArray *hellotoo=[self gimmieMetadataObjs];
-	//NSLog(@"metadataObjs:%@",hellotoo);
 	/* TV Show Preview Handeling */
+	/* Utility Preview Handeling */
 
-		[self populateUtilityDataWith:meta];
-	[metaLayer setMetadata:[NSArray arrayWithObjects:@"hello",@"hello",nil] withLabels:[NSArray arrayWithObjects:@"Title",@"Show Description",nil]];
-	NSLog(@"Array: %@",[metaLayer gimmieMetadataObjs]);
-	}
+		[self populateUtilityDataWith:(NSMutableDictionary *)allMeta];
+}
 
 /*!
  * @brief Override the info about whether it has metadata

@@ -98,7 +98,7 @@
 	/************
 	 *Show Scripts Selected
 	 ************/
-	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"ScriptsOnMainMenu"])
+	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
 	{
 		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
 		{
@@ -195,6 +195,7 @@
 
 - (id)controllerForIdentifier:(id)fp8;
 {
+	NSLog(@"%@",fp8);
 	NSFileManager *man = [NSFileManager defaultManager];
 	if (![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath]])
 		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath] attributes:nil];
@@ -262,7 +263,8 @@
 	}
 	else if([[fp8 pathExtension] isEqualToString:@"sh"])
 	{
-		if([[[scripts valueForKey:fp8] valueForKey:@"runoption"] isEqualToString:@"FaW"])
+		NSLog(@"%@",[[scripts valueForKey:fp8] valueForKey:@"runoption"]);
+		/*if([[[scripts valueForKey:fp8] valueForKey:@"runoption"] isEqualToString:@"FaW"])
 		{
 			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:fp8];
 			NSTask *task = [[NSTask alloc] init];
@@ -287,12 +289,12 @@
 			[textControls setText:the_text];
 			newController =  [BRController controllerWithContentControl:textControls];
 		}
-		else if([[[scripts valueForKey:fp8] valueForKey:@"runoption"] isEqualToString:@"FaF"])
-		{
-			NSString *launchPath = [@"/Users/frontrow/Documents/Scripts/" stringByAppendingString:fp8];
-			//NSLog(@"launchPath: %@",launchPath);
+		else //if([[[scripts valueForKey:fp8] valueForKey:@"runoption"] isEqualToString:@"FaF"])
+		{*/
+			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:fp8];
+			NSLog(@"launchPath: %@",launchPath);
 			[NSTask launchedTaskWithLaunchPath:@"/bin/bash/" arguments:[NSArray arrayWithObject:launchPath]];
-		}
+		//}
 	}
 	
 	/*if([fp8 isEqualToString:@"update2"])
