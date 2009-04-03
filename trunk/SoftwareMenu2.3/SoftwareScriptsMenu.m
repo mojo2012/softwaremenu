@@ -8,6 +8,7 @@
 
 #import "SoftwareScriptsMenu.h"
 #import "SMGeneralMethods.h"
+#import "SMMedia.h"
 
 @implementation SoftwareScriptsMenu
 -(BOOL)usingTakeTwoDotThree
@@ -29,12 +30,14 @@
 	NSString *appPng = nil;
 	NSArray * theoptions = [_options objectAtIndex:item];
 	NSString *theoption =[theoptions objectAtIndex:0];
-	if([theoption isEqualToString:@"base"])
+	if([theoption isEqualToString:@"base"] || [theoption isEqualToString:@"docs"] || [theoption isEqualToString:@"builtin"])
 	{
 		theoption =[theoptions objectAtIndex:1];
 	}
+	
 	//NSLog(@"%@",theoption);
-
+	SMMedia	*meta = [[SMMedia alloc] init];
+	[meta setTitle:theoption];
 			resourcePath = @"script";
 			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:resourcePath ofType:@"png"];
 
@@ -59,13 +62,24 @@
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:resourcePath ofType:@"png"];
 	}
 	//NSLog(@"%@", appPng);
-	BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
+	[meta setImagePath:appPng];
+	if([[theoptions objectAtIndex:0]isEqualToString:@"docs"] || [[theoptions objectAtIndex:0]isEqualToString:@"builtin"])
+	{
+		NSString *launchPath = [@"/Users/frontrow/Documents/Scripts/" stringByAppendingString:theoption];
+		NSString *script=[[NSString alloc] initWithContentsOfFile:launchPath];
+		NSArray *splitscript = [script componentsSeparatedByString:@"\n"];
+		NSString *info = [splitscript objectAtIndex:1];
+		if([info hasPrefix:@"#SM:"])
+		{
+			[meta setDescription:[info substringFromIndex:4]];
+		}
+	}
+	BRMetadataPreviewControl *obj = [[BRMetadataPreviewControl alloc] init];
+	[obj setShowsMetadataImmediately:YES];
 	
 	
-	id sp = [BRImage imageWithPath:appPng];
 	
-	[obj setImage:sp];
-	//[obj setStatusMessage:BRLocalizedString(@"hello",@"hello")];
+	[obj setAsset:meta];
 	return (obj);
 }
 -(id)init{
@@ -76,22 +90,6 @@
 - (void)dealloc
 {
 	[super dealloc];  
-}
-- (BOOL)helperCheckPerm
-{
-	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	NSFileManager *man = [NSFileManager defaultManager];
-	NSDictionary *attrs = [man fileAttributesAtPath:helperPath traverseLink:YES];
-	NSNumber *curPerms = [attrs objectForKey:NSFilePosixPermissions];
-	////NSLog(@"curPerms: %@", curPerms);
-	if ([curPerms intValue] < 2541)
-	{
-		//NSLog(@"installHelper permissions: %@ are not sufficient, dying in scriptsmenu", curPerms);
-		return (NO);
-	}
-	
-	return (YES);
-	
 }
 
 -(id)initWithIdentifier:(NSString *)initId

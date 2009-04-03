@@ -29,6 +29,8 @@
 @interface SMMedia : BRXMLMediaAsset {
 	unsigned int		resumeTime;		/*!< @brief The resume time to use, 0 to use super*/
 	NSString			*imagePath;		/*!< @brief The cover art path to use, nil to use super*/
+	NSString			*theSetTitle;
+	NSString			*theSetDescription;
 }
 
 /*!
@@ -52,5 +54,8 @@
  * param path The path to the cover art
  */
 - (void)setImagePath:(NSString *)path;
+- (void)setDescription:(NSString *)description;
+- (void)setTitle:(NSString *)title;
+- (void)setDefaultImage;
 
 @end

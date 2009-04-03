@@ -10,7 +10,7 @@
 #import "SMDownloaderSTD.h"
 #import "SMUpdaterProcess.h"
 #import "SMInfo.h"
-#import "SMUpdaterOptionss.h"
+#import "SMUOptions.h"
 
 
 
@@ -174,7 +174,7 @@
 	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"options"])
 	{
 		_downloadnumber=10;
-		id newController2 = [[SMUpdaterOptionss alloc] init];
+		id newController2 = [[SMUOptions alloc] init];
 		[newController2 initCustom];
 		[[self stack] pushController:newController2];
 		//[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
@@ -368,7 +368,8 @@
 	[_dlinks retain];
 	[_dlinks2 retain];
 	//[_downloadnumber retain];
-	if([SMGeneralMethods boolForKey:@"install_perian"])
+	NSMutableDictionary *tempoptions = [self getOptions];
+	if([tempoptions valueForKey:@"install_perian"])
 	{
 		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath]])
 		{
@@ -391,7 +392,7 @@
 		}
 
 	}
-	if([SMGeneralMethods boolForKey:@"do_usb_patch"])
+	if([tempoptions valueForKey:@"do_usb_patch"])
 	{
 		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath]])
 		{
@@ -628,11 +629,17 @@
 	newController =[[SMUpdaterProcess alloc] init];
 	//NSLog(@"before dict");
 	//NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
+	NSMutableDictionary *tempoptions = [self getOptions];
 	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"install_perian"]],@"install_perian",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
 	//NSLog(@"%@",thedict);
 	NSLog(@"4");
 	[newController setUpdateData:thedict];
 	[[self stack] pushController: newController];	
+}
+-(NSMutableDictionary *)getOptions
+{
+	NSMutableDictionary *theoptions = [[SMGeneralMethods dictForKey:@"Updater_Options"] mutableCopy];
+	return theoptions;
 }
 
 

@@ -7,65 +7,22 @@
 //
 
 #import "SMFrappMover.h"
-//#import "SMMediaAsset.h"
 #import "SMMedia.h"
-#import "SMMMediaPreview.h"
 #define SETTINGSPATH						@"/Users/frontrow/Library/Application Support/SoftwareMenu/settings.plist"
 
 @implementation SMFrappMover
-- (id) previewControlForItem: (long) item
+- (id) previewControlForItem: (long) row
 {
-	/* Get setting name & kill the gem cushion  */
-		                /* Construct a gerneric metadata asset for display */
 	SMMedia	*meta = [[SMMedia alloc] init];
-	/*[meta setObject:@"hello" forKey:@"title"];
-	 [meta setObject:@"hello" forKey:@"description"];
-	 [meta setObject:@"Bye" forKey:@"mediaSummary"];
-	 [meta setObject:@"SoftwareMenu.png" forKey:@"id"];
-	 [meta setObject:[BRMediaType movie] forKey:@"mediaType"];*/
-	[meta setImagePath:@"hello"];
-	//NSURL *hello = [[NSURL alloc] initFileURLWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"];
-	//[meta setObject:[hello absoluteString] forKey:@"previewURL"];
-	//
-	//[meta setObject:[hello absoluteString] forKey:@"mediaURL"];
-	
-	
-	BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
-	[previewtoo setAsset:meta];
-	
-	[previewtoo setShowsMetadataImmediately:YES];
-	[previewtoo setDeletterboxAssetArtwork:NO];
-	[previewtoo _updateMetadataLayer];
-	
-	return [previewtoo autorelease];
-	//[obj setStatusMessage:BRLocalizedString(@"hello",@"hello")];
-}
--(id)init{
-	//NSLog(@"init");
-	
-	return [super init];
+	[meta setDefaultImage];
+	[meta setTitle:[[_items objectAtIndex:row] title]];
+	if(row>2) {[meta setDescription:BRLocalizedString(@"Change Order of Frap",@"Change Order of Frap")];}
+	BRMetadataPreviewControl *preview =[[BRMetadataPreviewControl alloc] init];
+	[preview setAsset:meta];
+	[preview setShowsMetadataImmediately:YES];
+	return [preview autorelease];
 }
 
-- (void)dealloc
-{
-	[super dealloc];  
-}
-- (BOOL)helperCheckPerm
-{
-	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	NSFileManager *man = [NSFileManager defaultManager];
-	NSDictionary *attrs = [man fileAttributesAtPath:helperPath traverseLink:YES];
-	NSNumber *curPerms = [attrs objectForKey:NSFilePosixPermissions];
-	////NSLog(@"curPerms: %@", curPerms);
-	if ([curPerms intValue] < 2541)
-	{
-		//NSLog(@"installHelper permissions: %@ are not sufficient, dying in scriptsmenu", curPerms);
-		return (NO);
-	}
-	
-	return (YES);
-	
-}
 -(void)testURLs
 {
 	//NSLog(@"1");
@@ -256,27 +213,15 @@
 - (void) textDidEndEditing: (id) sender
 {
 	NSString *thetext = [sender stringValue];
-	//NSLog(@"thetext: %@",thetext);
-	
-	
 	NSTask *helperTask = [[NSTask alloc] init];
 	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	//NSFileManager *man = [NSFileManager defaultManager];
-	//NSDictionary *attrs = [man fileAttributesAtPath:helperPath traverseLink:YES];
-	//NSNumber *curPerms = [attrs objectForKey:NSFilePosixPermissions];
-	//[self appendSourceText:@"done installing"];
-	[[SMGeneralMethods sharedInstance]helperFixPerm];
-	//[self appendSourceText:@"done installing1"];
-	
-	//NSLog(@"installHelper curPerms: %@", curPerms);
+	[[SMGeneralMethods sharedInstance] helperFixPerm];	
 	[helperTask setLaunchPath:helperPath];
 	NSNumber *thestatus= (NSNumber *)(CFPreferencesCopyAppValue((CFStringRef)@"option", kCFPreferencesCurrentApplication));
-	//NSLog(@"path: %@",[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"]);
-	//NSLog(@"value: %@", [[[_options objectAtIndex:[thestatus intValue]] valueForKey:@"order"] stringValue]);
 	[helperTask setArguments:[NSArray arrayWithObjects:@"-changeOrder", [[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"],thetext,nil]];	
 	[helperTask launch];
 	[helperTask waitUntilExit];
-	/*int theTerm = */[helperTask terminationStatus];
+	//[helperTask terminationStatus];
 	[helperTask release];
 	[[self stack] popController];
 	[self initWithIdentifier:@"101"];
@@ -298,12 +243,6 @@
 	//NSLog(@"willBuried");
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
 	[super willBeBuried];
-}
-
--(void)willBePushed
-{
-	//NSLog(@"willBePushed");
-	[super willBePushed];
 }
 
 -(void)willBePopped

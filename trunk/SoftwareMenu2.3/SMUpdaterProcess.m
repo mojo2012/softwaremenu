@@ -294,8 +294,8 @@
 	//int numberOfSteps,step;
 	//step=0;
 	NSFileManager *man =[NSFileManager defaultManager];
-
-	BOOL original_status=[[_updateData valueForKey:@"original"] boolValue];	
+	NSMutableDictionary *tempoptions=[self getOptions];
+	BOOL original_status=[[tempoptions valueForKey:@"original"] boolValue];	
 	/*if(original_status)
 	{
 		numberOfSteps=2;
@@ -496,7 +496,7 @@
 		}
 		[self appendSourceTextSpace:@"Done"];
 	}
-	if(update_status && !original_status && [[_updateData valueForKey:@"install_perian"] boolValue])
+	if(update_status && !original_status && [[tempoptions valueForKey:@"install_perian"] boolValue])
 	{
 		[self appendSourceText:BRLocalizedString(@"Installing Perian",@"Installing Perian")];
 		//step;
@@ -627,7 +627,7 @@
 		
 	}
 	
-	if(update_status && [[_updateData valueForKey:@"now"]boolValue])
+	if(update_status && [[tempoptions valueForKey:@"updatenow"]boolValue])
 	{
 		[self appendSourceText:@"Launching OSUpdate, Please wait"];
 		//step;
@@ -687,9 +687,10 @@
 }
 -(void)cleanstuff
 {
+	NSMutableDictionary *tempoptions = [self getOptions];
 	NSFileManager *man =[NSFileManager defaultManager];
 	//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"]boolValue]);
-	if(![[_updateData valueForKey:@"preserve"] boolValue])
+	if(![[tempoptions valueForKey:@"preserve"] boolValue])
 	{
 		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil] handler:nil];
 		
@@ -707,6 +708,7 @@
 }
 -(void)moveFiles2:(BOOL)original_status
 {
+	NSMutableDictionary *tempoptions = [self getOptions];
 	//NSLog(@"MoveFiles");
 	NSFileManager *man =[NSFileManager defaultManager];
 	if([man fileExistsAtPath:@"/Users/frontrow/Updates"])
@@ -731,7 +733,7 @@
 		{
 			NSString *obje2=[obje lastPathComponent];
 			//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"] boolValue]);
-			if([[_updateData valueForKey:@"preserve"] boolValue])
+			if([[tempoptions valueForKey:@"preserve"] boolValue])
 			{
 				//NSLog(@"copying %@ to %@",[basename stringByAppendingPathComponent:obje2],[updatename stringByAppendingPathComponent:obje2]);
 				[man copyPath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
@@ -752,7 +754,7 @@
 			}
 			else
 			{
-				if([[_updateData valueForKey:@"preserve"] boolValue])
+				if([[tempoptions valueForKey:@"preserve"] boolValue])
 				{
 					[man copyPath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
 				}
@@ -858,6 +860,11 @@
 	[self processFiles];
 	
     // do something with the data
+}
+-(NSMutableDictionary *)getOptions
+{
+	NSMutableDictionary *theoptions = [[SMGeneralMethods dictForKey:@"Updater_Options"] mutableCopy];
+	return theoptions;
 }
 
 @end

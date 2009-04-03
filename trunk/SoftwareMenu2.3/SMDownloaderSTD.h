@@ -49,7 +49,7 @@
 - (void) wasPushed;
 - (void) willBePopped;
 - (BOOL) isNetworkDependent;
--(void)initCustom;
+-(id)initCustom;
 -(void)setInformationDict:(NSMutableDictionary *)infoDict;
 - (void) setFileURL:(NSString *)downloadURL;
 

@@ -9,6 +9,9 @@
 //#import <Cocoa/Cocoa.h>
 ////#import <BackRow/BackRow.h>
 #import <SMDownloaderSTD.h>
+//#import <Cocoa/Cocoa.h>
+//#import <Foundation/Foundation.h>
+//#import <Foundation/Foundation.h>
 
 
 @interface SMTweaks : BRMediaMenuController {
@@ -18,6 +21,11 @@
 	NSString *	path;
 	NSString *	urlstr;
 	NSString *	version;
+	NSMutableArray *	settingNames;
+	NSMutableArray *	settingDisplays;
+	NSMutableArray *	settingType;
+	NSMutableArray *	settingDescriptions;
+	//NSWorkspace *workspace;
 	
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;
@@ -28,10 +36,11 @@
 	
 }
 
--(id)initWithIdentifier:(NSString *)initId;
--(int)getSelection;
--(long)getLongValue:(NSString *)jtwo;
--(void)modifyJ:(NSString *)changeValue;
+-(BOOL)VNCIsRunning;
+-(BOOL)AFPIsRunning;
+-(BOOL)AFPIsInstalled;
+-(BOOL)dropbearIsRunning;
+-(BOOL)dropbearIsInstalled;
 
 
 // Data source methods:
@@ -41,6 +50,8 @@
 -(id)itemForRow:(long)row;
 -(long)rowForTitle:(id)title;
 -(id)titleForRow:(long)row;
+-(id)initCustom;
+
 @end
 @interface SMDownloaderTweaks : SMDownloaderSTD
 {

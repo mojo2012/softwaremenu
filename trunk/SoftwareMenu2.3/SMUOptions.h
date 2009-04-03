@@ -13,8 +13,14 @@
 
 @interface SMUOptions : BRMediaMenuController {
 	int padding[16];
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
+	NSMutableArray			*	_items;
+	NSMutableArray			*	_options;
+	NSMutableArray			*	_optionDescriptions;
+	NSMutableArray			*	_optionNames;
+	NSMutableArray			*	_optionKeys;
+	NSMutableArray			*	_nonBuiltinFraps;
+	NSMutableDictionary		*	_theDefaults;
+	NSMutableDictionary		*	_optionDict;
 	
 }
 -(id)initCustom;
@@ -25,6 +31,7 @@
 -(id)itemForRow:(long)row;
 -(long)rowForTitle:(id)title;
 -(id)titleForRow:(long)row;
+-(NSMutableDictionary *)getOptions;
 
 
 @end

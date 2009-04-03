@@ -281,4 +281,15 @@ static SMGeneralMethods *sharedInstance = nil;
 	int theTerm=[mdTask terminationStatus];
 	return theTerm;
 }
++(NSArray *)builtinfrapsWithSettings:(BOOL)settings
+{
+	if(settings)
+	{
+		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",@"SoftwareMenu.frappliance",nil];
+	}
+	else
+	{
+		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",nil];
+	}
+}
 @end

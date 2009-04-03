@@ -52,10 +52,9 @@
 		E28A1D2A0F6C4C19003071C8 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28A1D290F6C4C19003071C8 /* BackRow.framework */; };
 		E28A1D2F0F6C4C36003071C8 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28A1D2E0F6C4C36003071C8 /* iPhotoAccess.framework */; };
 		E28A1DD50F6CA686003071C8 /* kernelpatch.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E28A1DD40F6CA686003071C8 /* kernelpatch.tar.gz */; };
-		E28A21D60F6DB7B6003071C8 /* SMUpdaterOptionss.h in Headers */ = {isa = PBXBuildFile; fileRef = E28A21D40F6DB7B6003071C8 /* SMUpdaterOptionss.h */; };
-		E28A21D70F6DB7B6003071C8 /* SMUpdaterOptionss.m in Sources */ = {isa = PBXBuildFile; fileRef = E28A21D50F6DB7B6003071C8 /* SMUpdaterOptionss.m */; };
-		E28A22AC0F6DDBD5003071C8 /* SMMMediaPreview.h in Headers */ = {isa = PBXBuildFile; fileRef = E28A22AB0F6DDBD5003071C8 /* SMMMediaPreview.h */; };
 		E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */; };
+		E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */ = {isa = PBXBuildFile; fileRef = E29A092A0F854FC0004CC67C /* SMUpdateLists.h */; };
+		E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */ = {isa = PBXBuildFile; fileRef = E29A092B0F854FC0004CC67C /* SMUpdateLists.m */; };
 		E29FA09E0F585603002BE2B0 /* SMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */; };
 		E29FA39B0F58A7AB002BE2B0 /* SMDownloaderSTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */; };
 		E29FA5E00F59D275002BE2B0 /* SMUpdaterProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */; };
@@ -81,9 +80,7 @@
 		E2ABC0010ECFDE44004771BB /* SoftwareManualInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */; };
 		E2CFDDCA0EAFD51B00BC03AB /* FixPerm.sh in Resources */ = {isa = PBXBuildFile; fileRef = E2CFDDC90EAFD51B00BC03AB /* FixPerm.sh */; };
 		E2CFE0FC0EAFDE4C00BC03AB /* PH.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CFE0FB0EAFDE4C00BC03AB /* PH.png */; };
-		E2E0F37D0F5E4604002EAE7F /* SMMediaPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F37B0F5E4604002EAE7F /* SMMediaPreview.m */; };
 		E2E0F3800F5E489C002EAE7F /* SMMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F37E0F5E489C002EAE7F /* SMMedia.m */; };
-		E2E0F3860F5E49EB002EAE7F /* BRMetadataPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F3840F5E49EB002EAE7F /* BRMetadataPreviewController.m */; };
 		E2E0F5D80F5EFC41002EAE7F /* SMTweaks.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */; };
 		E2E41B2C0ECCEC2A00D1697E /* SMInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */; };
 /* End PBXBuildFile section */
@@ -146,13 +143,12 @@
 		E28A1D290F6C4C19003071C8 /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = ../Desktop/BackRow.framework; sourceTree = SOURCE_ROOT; };
 		E28A1D2E0F6C4C36003071C8 /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "../Desktop/TV/2.3 frameworks/iPhotoAccess.framework"; sourceTree = SOURCE_ROOT; };
 		E28A1DD40F6CA686003071C8 /* kernelpatch.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = kernelpatch.tar.gz; sourceTree = "<group>"; };
-		E28A21D40F6DB7B6003071C8 /* SMUpdaterOptionss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterOptionss.h; sourceTree = "<group>"; };
-		E28A21D50F6DB7B6003071C8 /* SMUpdaterOptionss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterOptionss.m; sourceTree = "<group>"; };
-		E28A22AB0F6DDBD5003071C8 /* SMMMediaPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMMediaPreview.h; sourceTree = "<group>"; };
 		E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInstallMenu.h; sourceTree = "<group>"; };
 		E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallMenu.m; sourceTree = "<group>"; };
 		E2954F3A0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2954F3B0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 10; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E29A092A0F854FC0004CC67C /* SMUpdateLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdateLists.h; sourceTree = "<group>"; };
+		E29A092B0F854FC0004CC67C /* SMUpdateLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdateLists.m; sourceTree = "<group>"; };
 		E29FA09C0F585603002BE2B0 /* SMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdater.h; sourceTree = "<group>"; };
 		E29FA09D0F585603002BE2B0 /* SMUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdater.m; sourceTree = "<group>"; };
 		E29FA3990F58A7AB002BE2B0 /* SMDownloaderSTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDownloaderSTD.h; sourceTree = "<group>"; };
@@ -186,12 +182,8 @@
 		E2C720DB0E95BA1800572BD6 /* SoftwareMenus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareMenus.h; sourceTree = "<group>"; };
 		E2CFDDC90EAFD51B00BC03AB /* FixPerm.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FixPerm.sh; sourceTree = "<group>"; };
 		E2CFE0FB0EAFDE4C00BC03AB /* PH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PH.png; sourceTree = "<group>"; };
-		E2E0F37B0F5E4604002EAE7F /* SMMediaPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMediaPreview.m; sourceTree = "<group>"; };
-		E2E0F37C0F5E4604002EAE7F /* SMMediaPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMediaPreview.h; sourceTree = "<group>"; };
 		E2E0F37E0F5E489C002EAE7F /* SMMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedia.m; sourceTree = "<group>"; };
 		E2E0F37F0F5E489C002EAE7F /* SMMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedia.h; sourceTree = "<group>"; };
-		E2E0F3840F5E49EB002EAE7F /* BRMetadataPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMetadataPreviewController.m; sourceTree = "<group>"; };
-		E2E0F3850F5E49EB002EAE7F /* BRMetadataPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMetadataPreviewController.h; sourceTree = "<group>"; };
 		E2E0F5D60F5EFC41002EAE7F /* SMTweaks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTweaks.h; sourceTree = "<group>"; };
 		E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTweaks.m; sourceTree = "<group>"; };
 		E2E41B2A0ECCEC2A00D1697E /* SMInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInfo.h; sourceTree = "<group>"; };
@@ -338,16 +330,12 @@
 			children = (
 				E2A240D30EC0ACC800D606C2 /* SoftwareManual.h */,
 				E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */,
-				E2A23A2E0EBFDAE000D606C2 /* SoftwareSettings.h */,
-				E2A23A2F0EBFDAE000D606C2 /* SoftwareSettings.m */,
 				E2ABBFFF0ECFDE44004771BB /* SoftwareManualInfo.h */,
 				E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */,
 				E29FA09C0F585603002BE2B0 /* SMUpdater.h */,
 				E29FA09D0F585603002BE2B0 /* SMUpdater.m */,
 				E26B10E10F6EFED40005E868 /* SMUOptions.h */,
 				E26B10E20F6EFED40005E868 /* SMUOptions.m */,
-				E28A21D40F6DB7B6003071C8 /* SMUpdaterOptionss.h */,
-				E28A21D50F6DB7B6003071C8 /* SMUpdaterOptionss.m */,
 				E29FA3990F58A7AB002BE2B0 /* SMDownloaderSTD.h */,
 				E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */,
 				E29FA5DE0F59D275002BE2B0 /* SMUpdaterProcess.h */,
@@ -367,6 +355,8 @@
 				E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */,
 				E20C1CCA0EA980B900739E75 /* SoftwareScriptsMenu.h */,
 				E20C1CCB0EA980B900739E75 /* SoftwareScriptsMenu.m */,
+				E2A23A2E0EBFDAE000D606C2 /* SoftwareSettings.h */,
+				E2A23A2F0EBFDAE000D606C2 /* SoftwareSettings.m */,
 				E2587A920F55980600671F59 /* SMFrappMover.h */,
 				E2587A930F55980600671F59 /* SMFrappMover.m */,
 				E2C720DB0E95BA1800572BD6 /* SoftwareMenus.h */,
@@ -378,14 +368,9 @@
 		E2E0F37A0F5E45F0002EAE7F /* MetadataShit */ = {
 			isa = PBXGroup;
 			children = (
-				E28A22AB0F6DDBD5003071C8 /* SMMMediaPreview.h */,
 				E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */,
-				E2E0F3840F5E49EB002EAE7F /* BRMetadataPreviewController.m */,
-				E2E0F3850F5E49EB002EAE7F /* BRMetadataPreviewController.h */,
 				E2E0F37E0F5E489C002EAE7F /* SMMedia.m */,
 				E2E0F37F0F5E489C002EAE7F /* SMMedia.h */,
-				E2E0F37B0F5E4604002EAE7F /* SMMediaPreview.m */,
-				E2E0F37C0F5E4604002EAE7F /* SMMediaPreview.h */,
 			);
 			name = MetadataShit;
 			sourceTree = "<group>";
@@ -399,6 +384,8 @@
 				E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */,
 				E20C16F10EA90EA400739E75 /* SMThirdPartyMenu.h */,
 				E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */,
+				E29A092A0F854FC0004CC67C /* SMUpdateLists.h */,
+				E29A092B0F854FC0004CC67C /* SMUpdateLists.m */,
 				E2E41B2A0ECCEC2A00D1697E /* SMInfo.h */,
 				E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */,
 			);
@@ -424,9 +411,8 @@
 			files = (
 				87AD8DA70F630681003907EF /* BackRow.h in Headers */,
 				E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */,
-				E28A21D60F6DB7B6003071C8 /* SMUpdaterOptionss.h in Headers */,
-				E28A22AC0F6DDBD5003071C8 /* SMMMediaPreview.h in Headers */,
 				E26B10E30F6EFED40005E868 /* SMUOptions.h in Headers */,
+				E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,12 +545,10 @@
 				E29FA39B0F58A7AB002BE2B0 /* SMDownloaderSTD.m in Sources */,
 				E29FA5E00F59D275002BE2B0 /* SMUpdaterProcess.m in Sources */,
 				E204063E0F5A64B2008F2DF7 /* SMGeneralMethods.m in Sources */,
-				E2E0F37D0F5E4604002EAE7F /* SMMediaPreview.m in Sources */,
 				E2E0F3800F5E489C002EAE7F /* SMMedia.m in Sources */,
-				E2E0F3860F5E49EB002EAE7F /* BRMetadataPreviewController.m in Sources */,
 				E2E0F5D80F5EFC41002EAE7F /* SMTweaks.m in Sources */,
-				E28A21D70F6DB7B6003071C8 /* SMUpdaterOptionss.m in Sources */,
 				E26B10E40F6EFED40005E868 /* SMUOptions.m in Sources */,
+				E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

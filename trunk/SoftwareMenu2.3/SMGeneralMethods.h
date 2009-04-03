@@ -21,7 +21,9 @@
 #define SM_KEY						@"software_menu_key_image"
 #define LAYER_TYPE					@"layer_type"
 #define LAYER_NAME					@"layer_name"
+#define LAYER_DISPLAY				@"layer_display"
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
+#define PLUGINS						@"plugins"
 
 @interface SMGeneralMethods : NSObject {
 	
@@ -29,7 +31,6 @@
 + (int)integerForKey:(NSString *)theKey;
 + (BOOL)boolForKey:(NSString *)theKey;
 + (NSString *)stringForKey:(NSString *)theKey;
-+ (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSDictionary *)dictForKey:(NSString *)theKey;
 + (void)setArray:(NSArray *)inputArray forKey:(NSString *)theKey;
 + (void)setDict:(NSDictionary *)inputDict forKey:(NSString *)theKey;
@@ -38,17 +39,19 @@
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
 + (void)restartFinder;
++ (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;
 + (NSArray *)menuItemNames;
-+(int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
-+(SMGeneralMethods *)sharedInstance;
--(BOOL)helperCheckPerm;
--(void)helperFixPerm;
--(void)toggleUpdate;
--(void)blockUpdate;
--(BOOL)usingTakeTwoDotThree;
--(NSString *)getImagePathforDict:(NSDictionary *)infoDict;
--(BOOL)checkblocker;
++ (NSArray *)builtinfrapsWithSettings:(BOOL)settings;
++ (int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
++ (SMGeneralMethods *)sharedInstance;
+- (BOOL)helperCheckPerm;
+- (BOOL)checkblocker;
+- (BOOL)usingTakeTwoDotThree;
+- (void)helperFixPerm;
+- (void)toggleUpdate;
+- (void)blockUpdate;
+- (NSString *)getImagePathforDict:(NSDictionary *)infoDict;
 
 @end

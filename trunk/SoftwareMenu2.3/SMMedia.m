@@ -44,6 +44,8 @@
 - (void)dealloc
 {
 	[imagePath release];
+	[theSetDescription release];
+	[theSetDescription release];
 	[super dealloc];
 }
 -(id)assetID
@@ -67,9 +69,25 @@
 
 - (void)setImagePath:(NSString *)path
 {
-	path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png";
+	//path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png";
 	[imagePath release];
 	imagePath = [path retain];
+}
+- (void)setDefaultImage
+{
+	NSString *path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png";
+	[imagePath release];
+	imagePath = [path retain];
+}
+-(void)setDescription:(NSString *)description
+{
+	[theSetDescription release];
+	theSetDescription=[description retain];
+}
+-(void)setTitle:(NSString *)title
+{
+	[theSetTitle release];
+	theSetTitle=[title retain];
 }
 -(id)description
 {
@@ -79,15 +97,20 @@
 }
 -(id)title
 {
+	
 	NSString *hello = [[NSString alloc] init];
-	hello=@"hello";
-	return BRLocalizedString(@"hello",@"hello");
+	hello=@"Setting";
+	return theSetTitle;
 }
 
+-(id)mediaSummary
+{
+	return theSetDescription;
+}
 - (id)mediaType
 {
 
-		return [super mediaType];
+		return [BRMediaType TVShow];
 }
 
 - (BOOL)hasCoverArt
@@ -106,7 +129,7 @@
 	// this returns a CGImageRef
 	id sp= [BRImage imageWithPath:imagePath];
 	return [sp autorelease];
-		
 }
+
 
 @end
