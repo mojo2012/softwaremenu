@@ -1032,7 +1032,7 @@
 	if ( status != 0 ) 
 		NSLog( @"Remount read-only returned bad status %d (%#x)\n\n", status, status ); 
 } 
-- (int)toggleTweak:(NSString *)setting fromValue(NSString *)fp8
+- (int)toggleTweak:(NSString *)setting fromValue:(NSString *)fromValue
 {
 	int result = 0;
 	if([setting isEqualToString:@"VNC"])

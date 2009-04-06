@@ -10,7 +10,7 @@
 //#import <Cocoa/Cocoa.h>
 ////#import <BackRow/BackRow.h>
 #import <SMDownloaderSTD.h>
-//#import <Cocoa/Cocoa.h>
+#import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
 #import <SoftwareSettings.h>
 
@@ -25,7 +25,7 @@
 	NSMutableArray *	settingDisplays;
 	NSMutableArray *	settingType;
 	NSMutableArray *	settingDescriptions;
-	//NSWorkspace *workspace;
+	NSWorkspace *workspace;
 	
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;

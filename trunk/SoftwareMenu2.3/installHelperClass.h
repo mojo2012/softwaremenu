@@ -39,7 +39,7 @@
 - (int)blockUpdate;
 - (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;
-- (int)toggleTweak:(NSString *)setting fromValue(NSString *)fp8;
+- (int)toggleTweak:(NSString *)setting fromValue:(NSString *)fp8;
 - (BOOL)wasWritable;
 
 

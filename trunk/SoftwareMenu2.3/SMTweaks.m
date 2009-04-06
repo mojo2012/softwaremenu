@@ -138,6 +138,12 @@
 - (long)itemCount							{ return (long)[settingNames count];}
 - (id)itemForRow:(long)row					
 { 
+	workspace = [NSWorkspace sharedWorkspace];
+	//BOOL result = [ws launchApplication:@"Safari"];
+	NSArray * apps;
+	apps = [workspace launchedApplications];
+	NSLog (@"apps: = %@", [[NSWorkspace sharedWorkspace] launchedApplications]);
+	
 	NSString *title = [settingNames objectAtIndex:row];
 	//BOOL setDimmed=NO;
 
@@ -226,13 +232,15 @@
 	
     return ( result );
 }
-/*-(BOOL)VNCIsRunning
+-(BOOL)VNCIsRunning
 {
 	BOOL result =NO;
 	//[[NSWorkspace sharedWorkspace] ;
-	NSArray *apps = [[NSWorkspace sharedWorkspace] valueForKeyPath:@"launchedApplications.NSApplicationName"];
-	NSArray *pids = [[NSWorkspace sharedWorkspace] valueForKeyPath:@"launchedApplications.NSApplicationProcessIdentifier"];
-	// if (DEBUG_MODE) NSLog([NSString stringWithFormat:@"apps = %@",apps]);
+	NSWorkspace *workspaces = [NSWorkspace sharedWorkspace];
+	NSArray *apps = [workspaces valueForKeyPath:@"launchedApplications"];
+	//NSArray *pids = [workspaces valueForKeyPath:@"launchedApplications.NSApplicationProcessIdentifier"];
+	NSLog(@"Apps: %@",apps);
+	//NSLog(@"pids: %@",pids);
 	// if (DEBUG_MODE) NSLog([NSString stringWithFormat:@"pids = %@",pids]);
 	
 	int i;
@@ -245,11 +253,11 @@
 		}
 	}
 	return result;
-}*/
--(BOOL)VNCIsRunning
+}
+/*-(BOOL)VNCIsRunning
 {
 	return NO;
-}
+}*/
 -(BOOL)isRW
 {
 	return YES;

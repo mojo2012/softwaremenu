@@ -274,7 +274,7 @@ int main (int argc, const char * argv[]) {
 			installHelperClass *ihc = [[installHelperClass alloc] init];
 			[ihc setRunPath:path];
 			int returnvalue;
-			returnvalue = [ihc toggleTweak:value1 fromValue:value2]:
+			returnvalue = [ihc toggleTweak:value fromValue:value2];
 			[pool release];
 			return returnvalue;
 		}
