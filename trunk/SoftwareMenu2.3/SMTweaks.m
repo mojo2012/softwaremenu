@@ -10,8 +10,7 @@
 #import "SMGeneralMethods.h"
 #import "SMMedia.h"
 #import "SoftwareSettings.h"
-
-
+ 
 @implementation SMTweaks
 - (id) previewControlForItem: (long) item
 {
@@ -83,15 +82,16 @@
 				   @"toggle",
 				   @"toggle",
 				   @"install",
-				   @"install",
+				   @"Download Rowmote",
 				   nil];
+	_options = [[NSMutableArray alloc] initWithObjects:nil];
+	_infoDict= [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
 	return self;
 }
 -(id)initCustom
 {
 
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
-	_options = [[NSMutableArray alloc] initWithObjects:nil];
 
 	
 	int i,counter;
@@ -100,7 +100,7 @@
 	{
 		BRTextMenuItemLayer *item =[[BRTextMenuItemLayer alloc] init];
 		[item setTitle:[settingDisplays objectAtIndex:counter]];
-		[_options addObject:[NSArray arrayWithObjects:[settingType objectAtIndex:counter],[settingNames objectAtIndex:counter],[settingDisplays objectAtIndex:counter],nil]];
+		//[_options addObject:[NSArray arrayWithObjects:[settingType objectAtIndex:counter],[settingNames objectAtIndex:counter],[settingDisplays objectAtIndex:counter],nil]];
 		[_items addObject:item];
 		
 		
@@ -109,9 +109,20 @@
 	[list setDatasource: self];
 	return self;
 }
--(void)itemSelected:(long)fp8
+-(void)itemSelected:(long)row
 {
-	
+	NSMutableArray * args = [[NSMutableArray alloc] initWithObjects:nil];
+
+	if([[settingType objectAtIndex:row] isEqualToString:@"toggle"] && ![[[_infoDict valueForKey:[settingNames objectAtIndex:row]] objectAtIndex:0] boolValue])
+	{
+		
+		[args addObject:@"-toggle"];
+		[args addObject:[[settingNames objectAtIndex:row] substringFromIndex:6]];
+		[args addObject:[[_infoDict valueForKey:[settingNames objectAtIndex:row]] objectAtIndex:1]];
+		//[args addObject];
+	}
+	int terminationStatus= [SMGeneralMethods runHelperApp:args];
+	[[self list] reload];
 }
 /*- (id)titleForRow:(long)row			{ return [settingDisplays objectAtIndex:row];}
 - (long)rowForTitle:(id)title			{ return (long)[settingDisplays indexOfObject:title];}
@@ -124,53 +135,33 @@
 }*/
 - (float)heightForRow:(long)row				{ return 0.0f; }
 - (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
+- (long)itemCount							{ return (long)[settingNames count];}
 - (id)itemForRow:(long)row					
 { 
-	NSString *title = [settingDisplays objectAtIndex:row];
-	BOOL setDimmed=NO;
+	NSString *title = [settingNames objectAtIndex:row];
+	//BOOL setDimmed=NO;
 
 	BRTextMenuItemLayer *item = [BRTextMenuItemLayer menuItem];
+	NSLog(@"type: %@",[settingType objectAtIndex:row]);
 	if([[settingType objectAtIndex:row] isEqualToString:@"toggle"])
 	{
-		[item setRightJustifiedText:[self getToggleRightText:row]];
-	}
-	
-	if([[settingNames objectAtIndex:row] isEqualToString:@"toggleDropbear"])
-	{
-		if([self dropbearIsRunning]){[item setRightJustifiedText:@"YES"];}
-		else{[item setRightJustifiedText:@"NO"];}
+		BOOL result = ![self getToggleDimmed:title];
+		[item setDimmed:result];
 		
-		if(![self dropbearIsInstalled]){[item setDimmed:NO];}
-	}
-	
-	else if([[settingNames objectAtIndex:row] isEqualToString:@"installDropbear"])
-	{
-		if(![self dropbearIsInstalled]){[item setDimmed:YES];}
-	}
-	
-	else if([[settingNames objectAtIndex:row] isEqualToString:@"toggleVNC"])
-	{
-		if([self VNCIsRunning]){[item setRightJustifiedText:@"YES"];}
-		else{[item setRightJustifiedText:@"NO"];}
-		if(![self VNCIsInstalled]){[item setDimmed:YES];}
-	}
-	else if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
-	{
-		if(![self RowmoteIsInstalled])
+		if(![item dimmed])
 		{
-			[item setRightJustifiedText:@"ON"];
+			NSString *rightText = [self getToggleRightText:title];
+			[item setRightJustifiedText:rightText];
+			[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],rightText,nil] forKey:title];
 		}
-	}
-		
-		
-	else if([[settingNames objectAtIndex:row] isEqualToString:@"toggleAFP"])
-	{
-		if(![self AFPIsRunning])
+		else
 		{
-			[item setRightJustifiedText:@"NO"];
+			[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],nil] forKey:title];
 		}
+		
 	}
+	
+
 			
 	
 	NSLog(@"settingDisplays: %@",settingDisplays);
@@ -238,9 +229,9 @@
 /*-(BOOL)VNCIsRunning
 {
 	BOOL result =NO;
-	NSWorkspace *workspace ;
-	NSArray *apps = [workspace valueForKeyPath:@"launchedApplications.NSApplicationName"];
-	NSArray *pids = [workspace valueForKeyPath:@"launchedApplications.NSApplicationProcessIdentifier"];
+	//[[NSWorkspace sharedWorkspace] ;
+	NSArray *apps = [[NSWorkspace sharedWorkspace] valueForKeyPath:@"launchedApplications.NSApplicationName"];
+	NSArray *pids = [[NSWorkspace sharedWorkspace] valueForKeyPath:@"launchedApplications.NSApplicationProcessIdentifier"];
 	// if (DEBUG_MODE) NSLog([NSString stringWithFormat:@"apps = %@",apps]);
 	// if (DEBUG_MODE) NSLog([NSString stringWithFormat:@"pids = %@",pids]);
 	
@@ -259,7 +250,74 @@
 {
 	return NO;
 }
+-(BOOL)isRW
+{
+	return YES;
+}
+-(BOOL)AFPIsInstalled
+{
+	return NO;
+}
+-(NSString *)getToggleRightText:(NSString *)title
+{
+	BOOL result = NO;
+	if([title isEqualToString:@"toggleRW"])
+	{
+		result=[self isRW];
+	}
+	else if([title isEqualToString:@"toggleDropbear"])
+	{
+		result = [self dropbearIsRunning];
+	}
+	else if([title isEqualToString:@"toggleRowmote"])
+	{
+		result = [self RowmoteIsInstalled];
+	}
+	else if([title isEqualToString:@"toggleAFP"])
+	{
+		result = [self AFPIsRunning];
+	}
+	else if([title isEqualToString:@"toggleVNC"])
+	{
 
+		result = [self VNCIsRunning];
+	}
+
+	NSString *hello;
+	if(result)
+	{
+		hello=@"YES";
+	}
+	else
+		hello=@"NO";
+	return hello;
+}
+-(BOOL)getToggleDimmed:(NSString *)title
+{
+	BOOL result = NO;
+	if([title isEqualToString:@"toggleRW"])
+	{
+		result=YES;
+	}
+	else if([title isEqualToString:@"toggleDropbear"])
+	{
+		result = [self dropbearIsInstalled];
+	}
+	else if([title isEqualToString:@"toggleRowmote"])
+	{
+		result = [self RowmoteIsInstalled];
+	}
+	else if([title isEqualToString:@"toggleAFP"])
+	{
+		result = [self AFPIsInstalled];
+	}
+	else if([title isEqualToString:@"toggleVNC"])
+	{
+		result = [self VNCIsInstalled];
+	}
+	return result;
+		
+}
 
 
 

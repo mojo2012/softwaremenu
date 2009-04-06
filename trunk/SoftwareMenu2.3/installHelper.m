@@ -269,6 +269,15 @@ int main (int argc, const char * argv[]) {
 			[pool release];
 			return returnvalue;
 		}
+		else if([option isEqualToString:@"-toggle"])
+		{
+			installHelperClass *ihc = [[installHelperClass alloc] init];
+			[ihc setRunPath:path];
+			int returnvalue;
+			returnvalue = [ihc toggleTweak:value1 fromValue:value2]:
+			[pool release];
+			return returnvalue;
+		}
 			
 			
 	}

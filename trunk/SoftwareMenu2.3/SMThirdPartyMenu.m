@@ -463,7 +463,7 @@
 }
 -(void)startUpdate
 {
-	/*NSFileManager *man = [NSFileManager defaultManager];
+	NSFileManager *man = [NSFileManager defaultManager];
 	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath]])
 		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath] attributes:nil];
 	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath]])
@@ -539,8 +539,8 @@
 	}
 	[UnTrustedDict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist" atomically:YES];
 	//NSLog(@" ===== startUpdate =====");
-	*/
-	NSMutableDictionary *threedict =[[NSMutableDictionary alloc] initWithDictionary:nil];
+	
+	/*NSMutableDictionary *threedict =[[NSMutableDictionary alloc] initWithDictionary:nil];
 	NSMutableDictionary *fourdict  =[[NSMutableDictionary alloc] initWithDictionary:nil];
 	NSMutableDictionary *pluginsdict  =[[NSMutableDictionary alloc] initWithDictionary:nil];
 	
@@ -643,7 +643,7 @@
 	
 	[pluginsdict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist" atomically:YES];
 	[pluginsdict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/plugins.plist" atomically:YES];
-	[self writeToLog:@"========= Done ========="];
+	*/[self writeToLog:@"========= Done ========="];
 	BRScrollingTextControl *textControls = [[BRScrollingTextControl alloc] init];
 	[textControls setTitle:@"Check For Updates"];
 	[textControls setDocumentPath:@"/Users/frontrow/Library/Application Support/SoftwareMenu/updater.log" encoding:NSUTF8StringEncoding];

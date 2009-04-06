@@ -1032,6 +1032,50 @@
 	if ( status != 0 ) 
 		NSLog( @"Remount read-only returned bad status %d (%#x)\n\n", status, status ); 
 } 
+- (int)toggleTweak:(NSString *)setting fromValue(NSString *)fp8
+{
+	int result = 0;
+	if([setting isEqualToString:@"VNC"])
+	{
+		if([fromValue isEqualToString:fromValue]){
+			result = [self stopVNC];
+		}
+		else
+		{
+			result = [self startVNC];
+		}
+	}
+	else if([setting isEqualToString:@"AFP"])
+	{
+		if([fromValue isEqualToString:fromValue]){
+			result = [self stopAFP];
+		}
+		else
+		{
+			result = [self startAFP];
+		}
+	}
+	else if([setting isEqualToString:@"Rowmote"])
+	{
+		if([fromValue isEqualToString:fromValue]){
+			result = [self stopRowmote];
+		}
+		else
+		{
+			result = [self startRowmote];
+		}
+	}
+	else if([setting isEqualToString:@"RW"])
+	{
+		if([fromValue isEqualToString:fromValue]){
+			[self makeSystemReadOnly];
+		}
+		else
+		{
+			[self makeSystemWritable];
+		}
+	}
+}
 
 
 

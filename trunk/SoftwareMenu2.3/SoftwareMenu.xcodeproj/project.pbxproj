@@ -14,6 +14,9 @@
 		87AD8E4E0F630B68003907EF /* selsettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8E4D0F630B68003907EF /* selsettings.png */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		E204063E0F5A64B2008F2DF7 /* SMGeneralMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */; };
+		E2078CA30F85C49E005327E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2078CA20F85C49D005327E7 /* QuartzCore.framework */; };
+		E2078FB20F85C4D8005327E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2078FB10F85C4D8005327E7 /* Cocoa.framework */; };
+		E20791A70F85C714005327E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20791A60F85C714005327E7 /* Foundation.framework */; };
 		E20C16660EA8278800739E75 /* remove.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C16620EA8278700739E75 /* remove.sh */; };
 		E20C16670EA8278800739E75 /* install.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C16630EA8278800739E75 /* install.sh */; };
 		E20C16680EA8278800739E75 /* restore.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C16640EA8278800739E75 /* restore.sh */; };
@@ -74,8 +77,6 @@
 		E2A9619C0F6302D9000509A8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961920F6302D9000509A8 /* CoreData.framework */; };
 		E2A9619F0F6302D9000509A8 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961950F6302D9000509A8 /* QTKit.framework */; };
 		E2A961A10F6302D9000509A8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961970F6302D9000509A8 /* OpenGL.framework */; };
-		E2A961A20F6302D9000509A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961980F6302D9000509A8 /* Foundation.framework */; };
-		E2A961AC0F630405000509A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A961AB0F630405000509A8 /* Cocoa.framework */; };
 		E2A9631B0F63787A000509A8 /* dropbear.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E2A9631A0F63787A000509A8 /* dropbear.tar.gz */; };
 		E2ABC0010ECFDE44004771BB /* SoftwareManualInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */; };
 		E2CFDDCA0EAFD51B00BC03AB /* FixPerm.sh in Resources */ = {isa = PBXBuildFile; fileRef = E2CFDDC90EAFD51B00BC03AB /* FixPerm.sh */; };
@@ -98,6 +99,9 @@
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E204063C0F5A64B2008F2DF7 /* SMGeneralMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGeneralMethods.h; sourceTree = "<group>"; };
 		E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGeneralMethods.m; sourceTree = "<group>"; };
+		E2078CA20F85C49D005327E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		E2078FB10F85C4D8005327E7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E20791A60F85C714005327E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		E20C16620EA8278700739E75 /* remove.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = remove.sh; sourceTree = "<group>"; };
 		E20C16630EA8278800739E75 /* install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		E20C16640EA8278800739E75 /* restore.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = restore.sh; sourceTree = "<group>"; };
@@ -174,8 +178,6 @@
 		E2A961920F6302D9000509A8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = ../../../../Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = SOURCE_ROOT; };
 		E2A961950F6302D9000509A8 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = ../../../../Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/QTKit.framework; sourceTree = SOURCE_ROOT; };
 		E2A961970F6302D9000509A8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = ../../../../Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = SOURCE_ROOT; };
-		E2A961980F6302D9000509A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = ../../../../System/Library/Frameworks/Foundation.framework; sourceTree = SOURCE_ROOT; };
-		E2A961AB0F630405000509A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E2A9631A0F63787A000509A8 /* dropbear.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = dropbear.tar.gz; sourceTree = SOURCE_ROOT; };
 		E2ABBFFF0ECFDE44004771BB /* SoftwareManualInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareManualInfo.h; sourceTree = "<group>"; };
 		E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareManualInfo.m; sourceTree = "<group>"; };
@@ -199,10 +201,11 @@
 				E2A9619C0F6302D9000509A8 /* CoreData.framework in Frameworks */,
 				E2A9619F0F6302D9000509A8 /* QTKit.framework in Frameworks */,
 				E2A961A10F6302D9000509A8 /* OpenGL.framework in Frameworks */,
-				E2A961A20F6302D9000509A8 /* Foundation.framework in Frameworks */,
-				E2A961AC0F630405000509A8 /* Cocoa.framework in Frameworks */,
 				E28A1D2A0F6C4C19003071C8 /* BackRow.framework in Frameworks */,
 				E28A1D2F0F6C4C36003071C8 /* iPhotoAccess.framework in Frameworks */,
+				E2078CA30F85C49E005327E7 /* QuartzCore.framework in Frameworks */,
+				E2078FB20F85C4D8005327E7 /* Cocoa.framework in Frameworks */,
+				E20791A70F85C714005327E7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,14 +234,15 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E20791A60F85C714005327E7 /* Foundation.framework */,
+				E2078FB10F85C4D8005327E7 /* Cocoa.framework */,
+				E2078CA20F85C49D005327E7 /* QuartzCore.framework */,
 				E28A1D2E0F6C4C36003071C8 /* iPhotoAccess.framework */,
 				E28A1D290F6C4C19003071C8 /* BackRow.framework */,
-				E2A961AB0F630405000509A8 /* Cocoa.framework */,
 				E2A961900F6302D9000509A8 /* ApplicationServices.framework */,
 				E2A961920F6302D9000509A8 /* CoreData.framework */,
 				E2A961950F6302D9000509A8 /* QTKit.framework */,
 				E2A961970F6302D9000509A8 /* OpenGL.framework */,
-				E2A961980F6302D9000509A8 /* Foundation.framework */,
 			);
 			name = "Frameworks and Libraries";
 			sourceTree = "<group>";

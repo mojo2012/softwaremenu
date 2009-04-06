@@ -5,14 +5,14 @@
 //  Created by Thomas on 3/4/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
 //#import <Cocoa/Cocoa.h>
 ////#import <BackRow/BackRow.h>
 #import <SMDownloaderSTD.h>
 //#import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
-//#import <Foundation/Foundation.h>
-
+#import <SoftwareSettings.h>
 
 @interface SMTweaks : BRMediaMenuController {
 	int padding[16];
@@ -29,6 +29,7 @@
 	
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;
+	
 	NSString	   *	_keypress;
 	NSMutableDictionary *	_infoDict;// = [NSMutableDictionary alloc] ;
 	NSMutableDictionary *	_show_hide;
@@ -41,6 +42,8 @@
 -(BOOL)AFPIsInstalled;
 -(BOOL)dropbearIsRunning;
 -(BOOL)dropbearIsInstalled;
+-(BOOL)getToggleDimmed:(NSString *)title;
+-(NSString *)getToggleRightText:(NSString *)title;
 
 
 // Data source methods:

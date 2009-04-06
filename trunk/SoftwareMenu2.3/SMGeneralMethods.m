@@ -292,4 +292,16 @@ static SMGeneralMethods *sharedInstance = nil;
 		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",nil];
 	}
 }
++(int)runHelperApp:(NSArray *)options
+{
+	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
+	NSTask *task8 = [[NSTask alloc] init];
+	[task8 setArguments:options];
+	[task8 setLaunchPath:helperLaunchPath];
+	[task8 launch];
+	[task8 waitUntilExit];
+	int theTerm = [task8 terminationStatus];
+	return theTerm;
+}
+
 @end

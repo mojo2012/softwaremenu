@@ -45,6 +45,7 @@
 + (NSArray *)menuItemNames;
 + (NSArray *)builtinfrapsWithSettings:(BOOL)settings;
 + (int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
++ (int)runHelperApp:(NSArray *)options;
 + (SMGeneralMethods *)sharedInstance;
 - (BOOL)helperCheckPerm;
 - (BOOL)checkblocker;
