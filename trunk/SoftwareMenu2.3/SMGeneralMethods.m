@@ -146,6 +146,20 @@ static SMGeneralMethods *sharedInstance = nil;
 	}
 	return;
 }
++(void)helperFixPerm
+{
+	if(![self helperCheckPerm])
+	{
+		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
+		NSTask *task = [[NSTask alloc] init];
+		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
+		[task setArguments:args];
+		[task setLaunchPath:@"/bin/bash"];
+		[task launch];
+		[task waitUntilExit];
+	}
+	return;
+}
 -(void)toggleUpdate
 {
 	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];

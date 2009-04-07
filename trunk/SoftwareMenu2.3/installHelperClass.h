@@ -9,12 +9,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
+#import "AGProcess.h"
+#define FRAP_PATH					@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
 //////#import <BackRow/BackRow.h>
 
 @interface installHelperClass : NSObject {
 
 	BOOL wasWritable;
 	NSString *runPath;
+	NSFileManager *		_man;
 	
 }
 
@@ -28,19 +31,31 @@
 - (void)restoreFrap:(NSString *)value;
 - (void)backupFrap:(NSString *)value;
 - (void)changeOrder:(NSString *)value toOrder:(NSString *)value2;
-- (void)makeDMGRW:(NSString *)drivepath;
-- (void)makeDMGRO:(NSString *)drivepath;
-- (void)mountDrive:(NSString *)drivepath;
+- (void)makeDMGRW:(NSString *)dmgPath;
+- (void)makeDMGRO:(NSString *)dmgPath;
+- (void)mountDrive:(NSString *)dmgPath;
 - (void)unMountDrive:(NSString *)drive;
-- (void)makeASRscan:(NSString *)drivepath;
+- (void)makeASRscan:(NSString *)dmgPath;
 - (void)copySSHFiles;
 - (void)OSUpdate;
 - (int)toggleUpdate;
 - (int)blockUpdate;
+
 - (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;
-- (int)toggleTweak:(NSString *)setting fromValue:(NSString *)fp8;
+- (int)toggleTweak:(NSString *)setting toValue:(NSString *)fp8;
+- (int)toggleVNC:(BOOL)tosetting;
+- (int)toggleSSH:(BOOL)tosetting;
+- (int)toggleRowmote:(BOOL)tosetting;
+- (int)toggleAFP:(BOOL)tosetting;
+- (int)enableService:(NSString *)theService;
+- (int)disableService:(NSString *)theService;
+- (int)EnableAppleShareServer;
+- (int)DisableAppleShareServer;
+
+
 - (BOOL)wasWritable;
+- (BOOL)makeSystemWritable;
 
 
 - (void)changePermissions:(NSString *)perms onFile:(NSString *)theFile isRecursive:(BOOL)isR;

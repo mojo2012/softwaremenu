@@ -47,6 +47,7 @@
 + (int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
 + (int)runHelperApp:(NSArray *)options;
 + (SMGeneralMethods *)sharedInstance;
++ (BOOL)helperFixPerm;
 - (BOOL)helperCheckPerm;
 - (BOOL)checkblocker;
 - (BOOL)usingTakeTwoDotThree;

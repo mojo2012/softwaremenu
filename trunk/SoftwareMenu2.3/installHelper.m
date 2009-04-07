@@ -269,12 +269,12 @@ int main (int argc, const char * argv[]) {
 			[pool release];
 			return returnvalue;
 		}
-		else if([option isEqualToString:@"-toggle"])
+		else if([option isEqualToString:@"-toggleTweak"])
 		{
 			installHelperClass *ihc = [[installHelperClass alloc] init];
 			[ihc setRunPath:path];
 			int returnvalue;
-			returnvalue = [ihc toggleTweak:value fromValue:value2];
+			returnvalue = [ihc toggleTweak:value toValue:value2];
 			[pool release];
 			return returnvalue;
 		}

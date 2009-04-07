@@ -126,15 +126,15 @@ static NSDate *lastFilterChangeDate = nil;
 	[_items addObject:item1];
 	
 	id item2 =[[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"tweaks",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"SoftwareMenu Version",LAYER_DISPLAY,nil]];
+	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SM_info",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"SoftwareMenu Version",LAYER_DISPLAY,nil]];
 	[item2 setTitle:@"Software Menu Version"];
 	NSDictionary *sm_info_plist = [[NSBundle bundleForClass:[self class]] infoDictionary];
 	NSString *sm_version = [sm_info_plist valueForKey:@"CFBundleVersion"];
 	[item2 setRightJustifiedText:sm_version];
 	[_items addObject:item2];
 	
-	id item2_1 =[[BRTextMenuItemLayer alloc] init];
-	//[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SM_info",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"SoftwareMenu Version",LAYER_DISPLAY,nil]];
+	id item2_1 =[BRTextMenuItemLayer folderMenuItem];
+	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SMTweaks",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Tweaks, Toggles and Installs",LAYER_DISPLAY,nil]];
 	[item2_1 setTitle:@"SMTweaks"];
 	//NSDictionary *sm_info_plist = [[NSBundle bundleForClass:[self class]] infoDictionary];
 	//NSString *sm_version = [sm_info_plist valueForKey:@"CFBundleVersion"];

@@ -10,6 +10,7 @@
 #import "SMGeneralMethods.h"
 #import "SMMedia.h"
 #import "SoftwareSettings.h"
+#import "AGProcess.h"
  
 @implementation SMTweaks
 - (id) previewControlForItem: (long) item
@@ -42,6 +43,7 @@
 -(id)init
 {
 	self=[super init];
+	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	[[self list] removeDividers];
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	[self setListTitle: @"Settings"];
@@ -68,6 +70,7 @@
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:@"Will download and Install Perian",
 						   @"Deletes the Sapphire Metadata, which can cause a problem after upgrade",
 						   @"Changes the disk status from Read-Write to Read-Only",
+						   @"Turn SSH On/Off -- If dropbear is installed, it will using that is what you are using",
 						   @"Activates Rowmote (Requires Restarting the Finder)",
 						   @"Toggle AFP server",
 						   @"Toggle VNC server",
@@ -82,10 +85,11 @@
 				   @"toggle",
 				   @"toggle",
 				   @"install",
-				   @"Download Rowmote",
+				   @"Download",
 				   nil];
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	_infoDict= [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
+	_man = [NSFileManager defaultManager];
 	return self;
 }
 -(id)initCustom
@@ -112,14 +116,23 @@
 -(void)itemSelected:(long)row
 {
 	NSMutableArray * args = [[NSMutableArray alloc] initWithObjects:nil];
-
-	if([[settingType objectAtIndex:row] isEqualToString:@"toggle"] && ![[[_infoDict valueForKey:[settingNames objectAtIndex:row]] objectAtIndex:0] boolValue])
+	NSLog(@"settingType: %@",[settingType objectAtIndex:row]);
+	if([[settingType objectAtIndex:row] isEqualToString:@"toggle"])
 	{
-		
-		[args addObject:@"-toggle"];
+		//NSLog(@"Toggle");
+		[args addObject:@"-toggleTweak"];
 		[args addObject:[[settingNames objectAtIndex:row] substringFromIndex:6]];
-		[args addObject:[[_infoDict valueForKey:[settingNames objectAtIndex:row]] objectAtIndex:1]];
+		if([self getToggleRightText:[settingNames objectAtIndex:row]])
+		{
+			[args addObject:@"OFF"];
+		}
+		else
+		{
+			[args addObject:@"ON"];
+		}
+		//[args addObject:[[_infoDict valueForKey:[settingNames objectAtIndex:row]] objectAtIndex:1]];
 		//[args addObject];
+		NSLog(@"Args: %@",args);
 	}
 	int terminationStatus= [SMGeneralMethods runHelperApp:args];
 	[[self list] reload];
@@ -138,17 +151,11 @@
 - (long)itemCount							{ return (long)[settingNames count];}
 - (id)itemForRow:(long)row					
 { 
-	workspace = [NSWorkspace sharedWorkspace];
-	//BOOL result = [ws launchApplication:@"Safari"];
-	NSArray * apps;
-	apps = [workspace launchedApplications];
-	NSLog (@"apps: = %@", [[NSWorkspace sharedWorkspace] launchedApplications]);
 	
 	NSString *title = [settingNames objectAtIndex:row];
 	//BOOL setDimmed=NO;
 
 	BRTextMenuItemLayer *item = [BRTextMenuItemLayer menuItem];
-	NSLog(@"type: %@",[settingType objectAtIndex:row]);
 	if([[settingType objectAtIndex:row] isEqualToString:@"toggle"])
 	{
 		BOOL result = ![self getToggleDimmed:title];
@@ -156,9 +163,15 @@
 		
 		if(![item dimmed])
 		{
-			NSString *rightText = [self getToggleRightText:title];
+			NSString *rightText = @"OFF";
+			BOOL isActive = NO;
+			if([self getToggleRightText:title])
+			{
+				rightText=@"YES";
+				isActive = YES;
+			}
 			[item setRightJustifiedText:rightText];
-			[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],rightText,nil] forKey:title];
+			[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],[NSNumber numberWithBool:isActive],nil] forKey:title];
 		}
 		else
 		{
@@ -181,41 +194,46 @@
 
 -(BOOL)dropbearIsInstalled
 {
-	return ( [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/sbin/dropbear"] );
+	return YES;//( [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/sbin/dropbear"] );
 }
 -(BOOL)RowmoteIsInstalled
 {
-	return ([[NSFileManager defaultManager] fileExistsAtPath: @"/System/Library/CoreServices/Finder.app/Contents/PlugIns/RowmoteHelperATVHook.frappliance"]);
+	return ([_man fileExistsAtPath: @"/System/Library/CoreServices/Finder.app/Contents/PlugIns/RowmoteHelperATV.frappliance"] || 
+			[_man fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/RowmoteHelperATV.frappliance"] || 
+			[_man fileExistsAtPath:@"/Users/frontrow/Documents/RowmoteHelper.tgz"] ||
+			[_man fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/RowmoteHelper.tgz"]);
 }
+
 -(BOOL)VNCIsInstalled
 {
-	BOOL result = YES;
-	if (![[NSFileManager defaultManager] fileExistsAtPath: @"/System/Library/CoreServices/RemoteManagement"] || 
-		![[NSFileManager defaultManager] fileExistsAtPath: @"/System/Library/Perl/"] ||
-		![[NSFileManager defaultManager] fileExistsAtPath: @"/System/Library/Perl/5.8.6/"])
+	BOOL result = NO;
+	if ([_man fileExistsAtPath: @"/System/Library/CoreServices/RemoteManagement"] && 
+		[_man fileExistsAtPath: @"/System/Library/Perl/"] &&
+		[_man fileExistsAtPath: @"/System/Library/Perl/5.8.6/"])
 	{
-		result=NO;
+		result=YES;
 	}
-	
 	return result;
 }
--(BOOL)dropbearIsRunning
+
+- (BOOL)sshStatus //0 = on, 1 = off //YES=ON, NO=OFF
 {
-	BOOL result = NO;
+	NSString *sshType = nil;
+	if ( [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/bin/dropbear"] == YES )
+		sshType = @"com.atvMod.dropbear";
+	else
+		sshType = @"ssh";
 	
-    if ( [self dropbearIsInstalled] == NO )
-        return ( NO );
+	NSTask *serviceTask = [[NSTask alloc] init];
+	[serviceTask setLaunchPath:@"/sbin/service"];
 	
-    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile: @"/System/Library/LaunchDaemons/com.atvMod.dropbear.plist"];
-    if ( dict != nil )
-    {
-        result = YES;
-        NSNumber * num = (NSNumber *) [dict objectForKey: @"Disabled"];
-        if ( num != nil )
-            result = (![num boolValue]);
-    }
-	
-    return ( result );
+	[serviceTask setArguments:[NSArray arrayWithObjects:@"--test-if-configured-on", sshType,nil]];
+	[serviceTask launch];
+	[serviceTask waitUntilExit];
+	int termStatus = [serviceTask terminationStatus];
+	[serviceTask release];
+	serviceTask = nil;
+	return ![[NSNumber numberWithInt:termStatus] boolValue];
 }
 
 -(BOOL)AFPIsRunning
@@ -234,24 +252,10 @@
 }
 -(BOOL)VNCIsRunning
 {
-	BOOL result =NO;
-	//[[NSWorkspace sharedWorkspace] ;
-	NSWorkspace *workspaces = [NSWorkspace sharedWorkspace];
-	NSArray *apps = [workspaces valueForKeyPath:@"launchedApplications"];
-	//NSArray *pids = [workspaces valueForKeyPath:@"launchedApplications.NSApplicationProcessIdentifier"];
-	NSLog(@"Apps: %@",apps);
-	//NSLog(@"pids: %@",pids);
-	// if (DEBUG_MODE) NSLog([NSString stringWithFormat:@"pids = %@",pids]);
-	
-	int i;
-	for (i=0; i<[apps count]; i++)
-	{
-		if ([@"AppleVNCServer" isEqualToString:[apps objectAtIndex:i]])
-		{
-			//thePID = [[pids objectAtIndex:i] intValue];
-			result=YES;
-		}
-	}
+	BOOL result = NO;
+	AGProcess *argAgent = [AGProcess processForCommand:@"AppleVNCServer"];
+	if (argAgent != nil)
+		result = YES;
 	return result;
 }
 /*-(BOOL)VNCIsRunning
@@ -262,11 +266,27 @@
 {
 	return YES;
 }
+
 -(BOOL)AFPIsInstalled
 {
-	return NO;
+	BOOL result = NO;
+	if([_man fileExistsAtPath:@"/System/Library/Frameworks/AppleTalk.framework"] &&
+		[_man fileExistsAtPath:@"/System/Library/Frameworks/AppleShareClient.framework"] &&
+		[_man fileExistsAtPath:@"/System/Library/Frameworks/AppleShareClientCore.framework"] &&
+		[_man fileExistsAtPath:@"/System/Library/Filesystems/AppleShare"] &&
+		[_man fileExistsAtPath:@"/System/Library/CoreServices/AppleFileServer.app"] &&
+		[_man fileExistsAtPath:@"/System/Library/PrivateFrameworks/ByteRangeLocking.framework"] &&
+		[_man fileExistsAtPath:@"/System/Library/PrivateFrameworks/BezelServices.framework"] &&
+		[_man fileExistsAtPath:@"/usr/bin/a2p"] &&
+		[_man fileExistsAtPath:@"/usr/sbin/named"] &&
+		[_man fileExistsAtPath:@"/usr/sbin/named-checkconf"] &&
+		[_man fileExistsAtPath:@"/sbin/mount_afp"] &&
+		[_man fileExistsAtPath:@"/usr/sbin/appletalk"] &&
+		[_man fileExistsAtPath:@"/System/Library/PrivateFrameworks/Calculate.framework"])
+		result = YES;
+	return result;
 }
--(NSString *)getToggleRightText:(NSString *)title
+-(BOOL)getToggleRightText:(NSString *)title
 {
 	BOOL result = NO;
 	if([title isEqualToString:@"toggleRW"])
@@ -275,7 +295,7 @@
 	}
 	else if([title isEqualToString:@"toggleDropbear"])
 	{
-		result = [self dropbearIsRunning];
+		result = [self sshStatus];
 	}
 	else if([title isEqualToString:@"toggleRowmote"])
 	{
@@ -290,17 +310,9 @@
 
 		result = [self VNCIsRunning];
 	}
-
-	NSString *hello;
-	if(result)
-	{
-		hello=@"YES";
-	}
-	else
-		hello=@"NO";
-	return hello;
+	return result;
 }
--(BOOL)getToggleDimmed:(NSString *)title
+-(BOOL)getToggleDimmed:(NSString *)title //NO means it is Not
 {
 	BOOL result = NO;
 	if([title isEqualToString:@"toggleRW"])

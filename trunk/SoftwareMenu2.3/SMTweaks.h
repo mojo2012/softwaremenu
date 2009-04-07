@@ -13,7 +13,16 @@
 #import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
 #import <SoftwareSettings.h>
-
+/*typedef enum {
+	FILE_CLASS_UTILITY= -2,
+	FILE_CLASS_NOT_FILE= -1,
+	FILE_CLASS_UNKNOWN = 0,
+	FILE_CLASS_TV_SHOW = 1,
+	FILE_CLASS_MOVIE = 2,
+	FILE_CLASS_AUDIO = 3,
+	FILE_CLASS_IMAGE = 4,
+	FILE_CLASS_OTHER = 5,
+} FileClass;*/
 @interface SMTweaks : BRMediaMenuController {
 	int padding[16];
 	NSString *	identifier;
@@ -25,8 +34,8 @@
 	NSMutableArray *	settingDisplays;
 	NSMutableArray *	settingType;
 	NSMutableArray *	settingDescriptions;
-	NSWorkspace *workspace;
-	
+	//NSWorkspace *workspace;
+	NSFileManager *		_man;
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;
 	
@@ -36,14 +45,14 @@
 	NSFileHandle   *	log;
 	
 }
-
+-(BOOL)sshStatus;
 -(BOOL)VNCIsRunning;
 -(BOOL)AFPIsRunning;
 -(BOOL)AFPIsInstalled;
 -(BOOL)dropbearIsRunning;
 -(BOOL)dropbearIsInstalled;
 -(BOOL)getToggleDimmed:(NSString *)title;
--(NSString *)getToggleRightText:(NSString *)title;
+-(BOOL)getToggleRightText:(NSString *)title;
 
 
 // Data source methods:

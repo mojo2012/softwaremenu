@@ -12,6 +12,7 @@
 #include <sys/param.h>
 #include <sys/mount.h>
 #include <stdio.h>
+#import "AGProcess.h"
 
 @interface ATVSettingsHelper
 +(id)sharedInstance;
@@ -27,7 +28,7 @@
 
 - (void)dealloc
 {
-	
+	[_man release];
 	[super dealloc];
 }
 -(void)OSUpdate
@@ -703,7 +704,7 @@
 		
 		
 	}
-	
+	_man = [NSFileManager defaultManager];
 	return self;
 }
 
@@ -1032,42 +1033,126 @@
 	if ( status != 0 ) 
 		NSLog( @"Remount read-only returned bad status %d (%#x)\n\n", status, status ); 
 } 
-- (int)toggleTweak:(NSString *)setting fromValue:(NSString *)fromValue
+
+- (int)toggleVNC:(BOOL)tosetting
+{
+	NSLog(@"toggleVNC");
+	if(!tosetting)
+	{
+		NSLog(@"OFF");
+		AGProcess *argAgent = [AGProcess processForCommand:@"AppleVNCServer"];
+		if (argAgent != nil)
+			[argAgent terminate];
+		NSTask * configureKickstart =[NSTask alloc];
+		NSArray *configArgs = [NSArray arrayWithObjects:@"-deactivate",nil];
+		[configureKickstart setArguments:configArgs];
+		[configureKickstart setLaunchPath:@"/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"];
+		[configureKickstart launch];
+		[configureKickstart waitUntilExit];
+		NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 1];
+		[NSThread sleepUntilDate:future];
+	}
+	else
+	{
+		NSLog(@"ON");
+		if(![_man fileExistsAtPath:@"/Library/Preferences/com.apple.VNCSettings.txt"])
+		{
+			NSString *passKey = @"71463E00FFDAAA95FF1C39567390ADCA";
+			[passKey writeToFile:@"/Library/Preferences/com.apple.VNCSettings.txt" atomically:YES];
+		}
+		NSTask * configureKickstart =[NSTask alloc];
+		NSArray *configArgs = [NSArray arrayWithObjects:@"-configure",@"-clientopts",@"-setvnclegacy",@"-vnclegacy",@"yes",nil];
+		[configureKickstart setArguments:configArgs];
+		[configureKickstart setLaunchPath:@"/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"];
+		[configureKickstart launch];
+		[configureKickstart waitUntilExit];
+		
+		NSTask * runKick =[NSTask alloc];
+		NSArray *runArgs = [NSArray arrayWithObjects:@"-activate",@"-configure",@"-access",@"on",@"-users",@"frontrow",@"-privs",@"-all",@"-restart",@"-agent",@"-menu",nil];
+		[runKick setArguments:runArgs];
+		[runKick setLaunchPath:@"/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"];
+		[runKick launch];
+		[runKick waitUntilExit];
+		[NSTask launchedTaskWithLaunchPath:@"/System/Library/CoreServices/RemoteManagement/AppleVNCServer.bundle/Contents/MacOS/AppleVNCServer" arguments:[NSArray arrayWithObjects:@"&",nil]];
+		
+	}
+	return 0;
+	
+}
+- (int)toggleSSH:(BOOL)tosetting
+{
+	NSString *sshType = nil;
+	if ( [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/bin/dropbear"] == YES )
+	{ 
+		sshType = @"com.atvMod.dropbear";
+	}
+	else
+	{
+		sshType = @"ssh";
+	}
+	int theTerm;
+	if(tosetting)
+	{
+		theTerm=[self enableService:sshType];
+	}
+	else
+	{
+		theTerm=[self disableService:sshType];
+	}
+	return theTerm;
+}
+- (int) toggleRowmote:(BOOL)tosetting
+{
+	int returnValue =1;
+	if(![_man fileExistsAtPath:[[FRAP_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMBak"]])
+		[_man createDirectoryAtPath:[[FRAP_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMBak"] attributes:nil];
+	if(tosetting)
+	{
+		[_man movePath:[[[FRAP_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMBak"] stringByAppendingPathComponent:@"RowmoteHelperATV.frappliance"] toPath:[FRAP_PATH stringByAppendingPathComponent:@"RowmoteHelperATV.frappliance"] handler:nil];
+		if([_man fileExistsAtPath:[FRAP_PATH stringByAppendingPathComponent:@"RowmoteHelperATV.frappliance"]])
+		{
+			returnValue=0;
+		}
+	}
+	else
+	{
+		[_man movePath:[FRAP_PATH stringByAppendingPathComponent:@"RowmoteHelperATV.frappliance"] toPath:[[[FRAP_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMBak"] stringByAppendingPathComponent:@"RowmoteHelperATV.frappliance"] handler:nil];
+		if([_man fileExistsAtPath:[[FRAP_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMBak"]])
+		{
+			returnValue=0;
+		}
+	}
+	return returnValue;
+}
+- (int)toggleTweak:(NSString *)setting toValue:(NSString *)toValue
 {
 	int result = 0;
+	BOOL toggle=NO;
+	if([toValue isEqualToString:@"ON"])
+	{
+		toggle = YES;
+	}
+	
+	
 	if([setting isEqualToString:@"VNC"])
 	{
-		if([fromValue isEqualToString:fromValue]){
-			result = [self stopVNC];
-		}
-		else
-		{
-			result = [self startVNC];
-		}
+		[self toggleVNC:toggle];
+	}
+	else if([setting isEqualToString:@"SSH"])
+	{
+		result=[self toggleSSH:toggle];
 	}
 	else if([setting isEqualToString:@"AFP"])
 	{
-		if([fromValue isEqualToString:fromValue]){
-			result = [self stopAFP];
-		}
-		else
-		{
-			result = [self startAFP];
-		}
+		[self toggleAFP:toggle];
 	}
 	else if([setting isEqualToString:@"Rowmote"])
 	{
-		if([fromValue isEqualToString:fromValue]){
-			result = [self stopRowmote];
-		}
-		else
-		{
-			result = [self startRowmote];
-		}
+		[self toggleRowmote:toggle];
 	}
 	else if([setting isEqualToString:@"RW"])
 	{
-		if([fromValue isEqualToString:fromValue]){
+		if(toggle){
 			[self makeSystemReadOnly];
 		}
 		else
@@ -1075,8 +1160,152 @@
 			[self makeSystemWritable];
 		}
 	}
+	return result;
 }
-
+- (int)disableService:(NSString *)theService
+{
+	NSString *launchCtl = [NSString stringWithFormat:@"/bin/launchctl unload -w /System/Library/LaunchDaemons/%@.plist", theService];
+	
+	chdir( "/" );
+	
+    // *really* become root
+    setuid( 0 );
+    setgid( 0 );
+	
+    int status = system( [launchCtl UTF8String] );
+	
+	
+    if ( status != 0 )
+    {
+        NSLog( @"launchctl returned bad status '%d' (%#x)", status, status );
+        
+        return ( 1 );
+    }
+	
+    return ( 0 );
+}
+- (int)enableService:(NSString *)theService
+{
+	NSString *launchCtl = [NSString stringWithFormat:@"/bin/launchctl load -w /System/Library/LaunchDaemons/%@.plist", theService];
+	
+	
+	chdir( "/" );
+	
+    // *really* become root
+    setuid( 0 );
+    setgid( 0 );
+	
+    int status = system( [launchCtl UTF8String] );
+	
+	
+    if ( status != 0 )
+    {
+        NSLog( @"launchctl returned bad status '%d' (%#x)", status, status );
+        
+        return ( 1 );
+    }
+	
+    return ( 0 );
+}
+- (int)toggleAFP:(BOOL)tosetting
+{
+	int result;
+	if(tosetting)
+	{
+		result= [self EnableAppleShareServer];
+	}
+	else
+	{
+		result= [self DisableAppleShareServer];
+	}
+	return result;
+}
+-(int) EnableAppleShareServer
+{
+    // change /etc/hostconfig
+    NSMutableString * hostconfig = [NSMutableString stringWithContentsOfFile: @"/etc/hostconfig"];
+    if ( hostconfig == nil )
+    {
+        /*ATVErrorLog( @"Failed to load hostconfig file" );
+        PostNSError( EIO, NSPOSIXErrorDomain,
+					LocalizedError(@"HostconfigOpenFailed", @"Unable to read /etc/hostconfig"),
+					nil );*/
+		NSLog(@"Failed To Load hostconfig");
+        return ( 1 );
+    }
+	
+    if ( [hostconfig replaceOccurrencesOfString: @"AFPSERVER=-NO-"
+                                     withString: @"AFPSERVER=-YES-"
+                                        options: 0
+                                          range: NSMakeRange(0, [hostconfig length])] == 0 )
+    {
+        // is it already set ?
+        NSRange range = [hostconfig rangeOfString: @"AFPSERVER=-YES-"];
+        if ( range.location == NSNotFound )
+        {
+            NSLog( @"AFP Server hostconfig entry not found, adding..." );
+            [hostconfig insertString: @"AFPSERVER=-YES-\n" atIndex: 0];
+        }
+        else
+        {
+            NSLog( @"AFP Server already enabled" );
+            return ( 1 );     // don't write file or start server
+        }
+    }
+	
+    if ( [hostconfig writeToFile: @"/etc/hostconfig" atomically: YES] == NO )
+    {
+        //ATVErrorLog( @"Failed to write hostconfig" );
+       /* PostNSError( EIO, NSPOSIXErrorDomain,
+					LocalizedError(@"HostconfigWriteFailed", @"Unable to write /etc/hostconfig"),
+					nil );*/
+		NSLog(@"Cannot write Hostconfig");
+    }
+	
+    system( "/usr/sbin/AppleFileServer" );  // this one daemonizes itself
+	
+    return ( 0 );
+}
+-( int) DisableAppleShareServer
+{
+    NSMutableString * hostconfig = [NSMutableString stringWithContentsOfFile: @"/etc/hostconfig"];
+    if ( hostconfig == nil )
+    {
+        /*ATVErrorLog( @"Failed to load hostconfig file" );
+        PostNSError( EIO, NSPOSIXErrorDomain,
+					LocalizedError(@"HostconfigOpenFailed", @"Unable to read /etc/hostconfig"),
+					nil );*/
+		NSLog(@"Cannot load hostconfig");
+        return ( 1 );
+    }
+	
+    if ( [hostconfig replaceOccurrencesOfString: @"AFPSERVER=-YES-"
+                                     withString: @"AFPSERVER=-NO-"
+                                        options: 0
+                                          range: NSMakeRange(0, [hostconfig length])] == 0 )
+    {
+        NSLog( @"AFP Server already stopped, or not configured" );
+        return ( 1 );
+    }
+	
+    if ( [hostconfig writeToFile: @"/etc/hostconfig" atomically: YES] == NO )
+    {
+        /*ATVErrorLog( @"Failed to write hostconfig" );
+        PostNSError( EIO, NSPOSIXErrorDomain,
+					LocalizedError(@"HostconfigWriteFailed", @"Unable to write /etc/hostconfig"),
+					nil );*/
+		NSLog(@"cannot write hostconfig");
+    }
+	
+    NSString * pidString = [NSString stringWithContentsOfFile: @"/var/run/AppleFileServer.pid"];
+    pid_t procID = (pid_t) [pidString intValue];
+    NSLog( @"Killing AFP server, process ID '%d'", (int) procID );
+	
+    if ( procID > 0 )
+        kill( procID, SIGTERM );
+	
+    return ( 0 );
+}
 
 
 
