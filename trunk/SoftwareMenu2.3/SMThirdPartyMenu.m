@@ -11,6 +11,7 @@
 #define DEBUG_MODE false
 #import "SMThirdPartyMenu.h"
 #import "SMInstallMenu.h"
+#import "SMMedia.h"
 //static NSString  * trustedURL = @"http://web.me.com/tomcool420/Trusted.plist";
 
 
@@ -25,21 +26,22 @@
 	NSString * theoption = [[_options objectAtIndex:item] objectAtIndex:1];
 	
 	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:theoption ofType:@"png"];
-	
-	
 	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
 	if([theoption isEqualToString:@"Reset"])
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"softwareupdate" ofType:@"png"];
+	SMMedia *meta = [[SMMedia alloc] init];
+	[meta setImagePath:appPng];
+	[meta setTitle:[[_items objectAtIndex:item]title]];
+	BRMetadataPreviewControl *preview = [[BRMetadataPreviewControl alloc] init];
+	[preview setAsset:meta];
+	//BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
 	
-
-	BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
 	
+	//id sp = [BRImage imageWithPath:appPng];
 	
-	id sp = [BRImage imageWithPath:appPng];
-	
-	[obj setImage:sp];
-	return (obj);
+	//[obj setImage:sp];
+	return (preview);
 }
 
 -(id)init{
@@ -499,7 +501,7 @@
 			[hellofive setObject:@"nitoTV" forKey:@"name"];
 			[hellofive setObject:[hellothree valueForKey:@"displayVersionTwo"] forKey:@"Version"];
 			[hellofive setObject:[hellothree valueForKey:@"versionTwo"] forKey:@"shortVersion"];
-			[hellofive setObject:@"http://nitosoft.com/nitoTVInstaller_tt.zip" forKey:@"theURL"];
+			[hellofive setObject:@"http://nitosoft.com/nitoTVTwo.tar.gz" forKey:@"theURL"];
 			[TrustedDict setObject:hellofive forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];
 			

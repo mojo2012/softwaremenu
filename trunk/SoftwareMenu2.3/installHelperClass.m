@@ -471,12 +471,12 @@
 
 - (void)copySSHFiles
 {
-	[self extractTar:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tar.gz"  toLocation:@"/Users/frontrow/"];
+	//[self extractTar:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tar.gz"  toLocation:@"/Users/frontrow/"];
 	NSLog(@"copy SSHFiles");
 	NSString *origBase=@"/Users/frontrow/dropbear";
 	NSString *newBase=@"/Volumes/OSBoot 1";
-	//[self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tgz" toLocation:@"/Volumes/OSBoot 1/"];
-	NSFileManager *man = [NSFileManager defaultManager];
+	[self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tgz" toLocation:@"/Volumes/OSBoot 1/"];
+	/*NSFileManager *man = [NSFileManager defaultManager];
 	NSArray *fromlocations =[[NSArray alloc] initWithObjects:@"System/Library/LaunchDaemons/com.atvMod.dropbear.plist",@"usr/bin/sshh",@"usr/bin/dbclient",@"usr/bin/dropbear",@"usr/bin/dropbearconvert",@"usr/bin/dropbearkey",@"usr/bin/scp",@"usr/lib/libarmfp.dylib",@"Users/frontrow/.bash_login",@"usr/libexec/dropbear-keygen-wrapper",@"usr/libexec/sftp-server",nil];
 	NSEnumerator *enumerator =[fromlocations objectEnumerator];
 	id obje;
@@ -534,7 +534,7 @@
 		
 		[mdTask2 launch];
 		[mdTask2 waitUntilExit];
-	}
+	}*/
 	NSTask *mdTask4 = [[NSTask alloc] init];
 	NSPipe *mdip4 = [[NSPipe alloc] init];
 	
@@ -547,7 +547,7 @@
 	[mdTask4 setStandardError:mdip4];
 	[mdTask4 launch];
 	[mdTask4 waitUntilExit];
-	NSTask *mdTask5 = [[NSTask alloc] init];
+	/*NSTask *mdTask5 = [[NSTask alloc] init];
 	NSPipe *mdip5 = [[NSPipe alloc] init];
 	
 	NSTask *mdTask13 = [[NSTask alloc] init];
@@ -571,7 +571,7 @@
 	[mdTask14 launch];
 	[mdTask14 waitUntilExit];
 	[self changeOwner:@"frontrow:frontrow" onFile:@"/Users/frontrow/.bash_login" isRecursive:NO];
-	[self changePermissions:@"755" onFile:@"/Users/frontrow/.bash_login" isRecursive:NO];
+	[self changePermissions:@"755" onFile:@"/Users/frontrow/.bash_login" isRecursive:NO];*/
 	/*[mdTask5 setLaunchPath:@"/usr/bin/sudo"];
 	
 	[mdTask5 setArguments:[NSArray arrayWithObjects:@"touch",@"/Volumes/OSBoot 1/.readwrite", nil]];
@@ -833,7 +833,7 @@
 	NSFileHandle *nullOut = [NSFileHandle fileHandleWithNullDevice];
 	
 	[tarTask setLaunchPath:@"/usr/bin/tar"];
-	[tarTask setArguments:[NSArray arrayWithObjects:@"zvxf", inputTar, nil]];
+	[tarTask setArguments:[NSArray arrayWithObjects:@"xfpz", inputTar, nil]];
 	[tarTask setCurrentDirectoryPath:toLocation];
 	[tarTask setStandardError:nullOut];
 	[tarTask setStandardOutput:nullOut];

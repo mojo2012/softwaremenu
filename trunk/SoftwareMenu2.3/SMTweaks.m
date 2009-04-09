@@ -259,8 +259,8 @@
 	switch([[settingNumberType objectAtIndex:row] intValue])
 	{
 		case kSMTwToggle:
-			[item setDimmed:result];
 			result = ![self getToggleDimmed:title];
+			[item setDimmed:result];
 		
 			if(![item dimmed])
 			{
@@ -282,7 +282,7 @@
 			break;
 		case kSMTwDownloadRowmote:
 			LocalVersion = [self getRowmoteVersion];
-			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"Version"]];}
+			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"DisplayVersion"]];}
 			else 		{[item setDimmed:YES];}
 			break;
 		case kSMTwDownloadPerian:
@@ -331,8 +331,8 @@
 	}
 	NSDictionary *rowDict = [NSDictionary dictionaryWithContentsOfFile:pListPath];
 	if(rowDict !=nil)
-		RowmoteVersion = [rowDict valueForKey:@"CFBundleVersion"];
-	NSLog(@"RowMoteVersion: %@", [rowDict valueForKey:@"CFBundleVersion"]);
+		RowmoteVersion = [rowDict valueForKey:@"CFBundleShortVersionString"];
+	NSLog(@"RowMoteVersion: %@", [rowDict valueForKey:@"CFBundleShortVersionString"]);
 	return RowmoteVersion;
 }
 -(NSString *)getPerianVersion

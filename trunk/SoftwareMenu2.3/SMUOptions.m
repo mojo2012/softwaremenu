@@ -64,12 +64,13 @@
 	
 	//Set up Options, their descriptions and keys
 	_theDefaults = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"preserve",
-							 [NSNumber numberWithBool:NO],@"updatenow",
-							 [NSNumber numberWithBool:NO],@"originalupdate",
-							 [NSNumber numberWithBool:YES],@"install_perian",
-							 [NSNumber numberWithBool:NO],@"retain_installed",
-							 [NSNumber numberWithBool:NO],@"retain_builtin",
-							 nil];
+					[NSNumber numberWithBool:NO],@"updatenow",
+					[NSNumber numberWithBool:NO],@"originalupdate",
+					[NSNumber numberWithBool:YES],@"install_perian",
+					[NSNumber numberWithBool:YES],@"install_bin_tools",
+					[NSNumber numberWithBool:NO],@"retain_installed",
+					[NSNumber numberWithBool:NO],@"retain_builtin",
+					nil];
 	_optionDict=[self getOptions];
 	if([_optionDict count]==0){[SMGeneralMethods setDict:_theDefaults forKey:@"Updater_Options"];
 								_optionDict=[self getOptions];}
@@ -78,12 +79,14 @@
 						   BRLocalizedString(@"Update Immediatly after download and processing is done.\n Not really recommended.",@"Update Immediatly after download and processing is done.\n Not really recommended."),
 						   BRLocalizedString(@"Download the OS and Update without processing. A standard apple Update except you can upgrade and downgrade",@"Download the OS and Update without processing. A standard apple Update except you can upgrade and downgrade"),
 						   BRLocalizedString(@"Install Perian while Processing",@"Install Perian while Processing"),
+						   BRLocalizedString(@"Install some basic binary tools compiled by |bile|",@"Install bin tools"),
 						   BRLocalizedString(@"Copy the installed fraps over to the new OS, once YES is selected, you need to choose the fraps below\nWARNING: if a frappliance is not compatible, may cause problems",@"Copy the installed fraps over to the new OS\nWARNING: if a frappliance is not compatible, may cause problems")
 						   ,nil];
 	_optionNames=[NSArray arrayWithObjects:BRLocalizedString(@"Preserve Files",@"Preserve Files"),
 				  BRLocalizedString(@"Update Immediately",@"Update Immediately"),
 				  BRLocalizedString(@"Keep Unpatched",@"Keep Unpatched"),
 				  BRLocalizedString(@"Install Perian",@"Install Perian"),
+				  BRLocalizedString(@"Install Bin Tools",@"Install Bin Tools"),
 				  BRLocalizedString(@"Retain Plugins",@"Retain Plugins"),
 				  BRLocalizedString(@"Retain Builtin Backup",@"Retain Builtin Backup"), 
 				  nil];
@@ -91,6 +94,7 @@
 				 @"updatenow",
 				 @"originalupdate",
 				 @"install_perian",
+				 @"install_bin_tools",
 				 @"retain_installed",
 				 @"retain_builtin",
 				 nil];

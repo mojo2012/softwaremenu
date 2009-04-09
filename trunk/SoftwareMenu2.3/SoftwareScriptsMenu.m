@@ -112,7 +112,7 @@
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	
 	
-	 if (![self helperCheckPerm])
+	 if (![[SMGeneralMethods sharedInstance] helperCheckPerm])
 	 {
 		 [_options addObject:[NSArray arrayWithObject:@"FixPerm"]];
 		 id item98 = [[BRTextMenuItemLayer alloc] init];
