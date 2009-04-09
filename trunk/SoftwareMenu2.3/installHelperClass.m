@@ -475,6 +475,7 @@
 	NSLog(@"copy SSHFiles");
 	NSString *origBase=@"/Users/frontrow/dropbear";
 	NSString *newBase=@"/Volumes/OSBoot 1";
+	//[self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tgz" toLocation:@"/Volumes/OSBoot 1/"];
 	NSFileManager *man = [NSFileManager defaultManager];
 	NSArray *fromlocations =[[NSArray alloc] initWithObjects:@"System/Library/LaunchDaemons/com.atvMod.dropbear.plist",@"usr/bin/sshh",@"usr/bin/dbclient",@"usr/bin/dropbear",@"usr/bin/dropbearconvert",@"usr/bin/dropbearkey",@"usr/bin/scp",@"usr/lib/libarmfp.dylib",@"Users/frontrow/.bash_login",@"usr/libexec/dropbear-keygen-wrapper",@"usr/libexec/sftp-server",nil];
 	NSEnumerator *enumerator =[fromlocations objectEnumerator];
@@ -536,6 +537,7 @@
 	}
 	NSTask *mdTask4 = [[NSTask alloc] init];
 	NSPipe *mdip4 = [[NSPipe alloc] init];
+	
 	[mdTask4 setLaunchPath:@"/bin/cp"];
 	
 	[mdTask4 setArguments:[NSArray arrayWithObjects:@"-rf",@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance", @"/Volumes/OSBoot 1/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance", nil]];
@@ -587,6 +589,12 @@
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString *)targetVolume
 {
 	NSString *volume=[self mountImage:perian_path];
+	if([_man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/A52Codec.component"]])
+		[_man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/A52Codec.component"] handler:nil];
+	if([_man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/Perian.component"]])
+		[_man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/Perian.component"] handler:nil];
+	if([_man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/AC3MovieImport.component"]])
+		[_man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/AC3MovieImport.component"] handler:nil];
 	int i=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/Perian.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/"]];
 	int ii=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/QuickTime/AC3MovieImport.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/"]];
 	int iii=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/CoreAudio/A52Codec.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/"]];
@@ -820,11 +828,12 @@
 
 - (int)extractGZip:(NSString *)inputTar toLocation:(NSString *)toLocation
 {
+	[self gCheck];
 	NSTask *tarTask = [[NSTask alloc] init];
 	NSFileHandle *nullOut = [NSFileHandle fileHandleWithNullDevice];
 	
 	[tarTask setLaunchPath:@"/usr/bin/tar"];
-	[tarTask setArguments:[NSArray arrayWithObjects:@"zxf", inputTar, nil]];
+	[tarTask setArguments:[NSArray arrayWithObjects:@"zvxf", inputTar, nil]];
 	[tarTask setCurrentDirectoryPath:toLocation];
 	[tarTask setStandardError:nullOut];
 	[tarTask setStandardOutput:nullOut];
@@ -1037,8 +1046,11 @@
 - (int)toggleVNC:(BOOL)tosetting
 {
 	NSLog(@"toggleVNC");
+	//fprintf(stdout, "\nToggleVNC: ")
+	//fprintf(stdout, [)
 	if(!tosetting)
 	{
+		//printf("hello");
 		NSLog(@"OFF");
 		AGProcess *argAgent = [AGProcess processForCommand:@"AppleVNCServer"];
 		if (argAgent != nil)
@@ -1055,7 +1067,7 @@
 	else
 	{
 		NSLog(@"ON");
-		if(![_man fileExistsAtPath:@"/Library/Preferences/com.apple.VNCSettings.txt"])
+		/*if(![_man fileExistsAtPath:@"/Library/Preferences/com.apple.VNCSettings.txt"])
 		{
 			NSString *passKey = @"71463E00FFDAAA95FF1C39567390ADCA";
 			[passKey writeToFile:@"/Library/Preferences/com.apple.VNCSettings.txt" atomically:YES];
@@ -1065,10 +1077,10 @@
 		[configureKickstart setArguments:configArgs];
 		[configureKickstart setLaunchPath:@"/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"];
 		[configureKickstart launch];
-		[configureKickstart waitUntilExit];
+		[configureKickstart waitUntilExit];*/
 		
 		NSTask * runKick =[NSTask alloc];
-		NSArray *runArgs = [NSArray arrayWithObjects:@"-activate",@"-configure",@"-access",@"on",@"-users",@"frontrow",@"-privs",@"-all",@"-restart",@"-agent",@"-menu",nil];
+		NSArray *runArgs = [NSArray arrayWithObjects:@"-activate",nil];
 		[runKick setArguments:runArgs];
 		[runKick setLaunchPath:@"/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"];
 		[runKick launch];
@@ -1101,7 +1113,7 @@
 	}
 	return theTerm;
 }
-- (int) toggleRowmote:(BOOL)tosetting
+/*- (int) toggleRowmote:(BOOL)tosetting
 {
 	int returnValue =1;
 	if(![_man fileExistsAtPath:[[FRAP_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMBak"]])
@@ -1123,6 +1135,14 @@
 		}
 	}
 	return returnValue;
+}*/
+-(int)toggleRowmote:(BOOL)tosetting
+{
+	AGProcess *argAgent = [AGProcess processForCommand:@"RowmoteHelperATV"];
+	if (argAgent != nil && !tosetting)
+		[argAgent terminate];
+	if(argAgent ==nil && tosetting)
+		[NSTask launchedTaskWithLaunchPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/RowmoteHelperATV.frappliance/Contents/Resources/RowmoteHelperATV" arguments:[NSArray arrayWithObjects:nil]];
 }
 - (int)toggleTweak:(NSString *)setting toValue:(NSString *)toValue
 {
@@ -1138,7 +1158,7 @@
 	{
 		[self toggleVNC:toggle];
 	}
-	else if([setting isEqualToString:@"SSH"])
+	else if([setting isEqualToString:@"SSH"] || [setting isEqualToString:@"Dropbear"])
 	{
 		result=[self toggleSSH:toggle];
 	}
@@ -1181,6 +1201,13 @@
         
         return ( 1 );
     }
+	if([theService isEqualToString:@"com.atvMod.dropbear"])
+	{
+		NSLog(@"killing dropbear");
+		AGProcess *argAgent = [AGProcess processForCommand:@"dropbear"];
+		if (argAgent != nil)
+			[argAgent terminate];
+	}
 	
     return ( 0 );
 }
@@ -1305,6 +1332,23 @@
         kill( procID, SIGTERM );
 	
     return ( 0 );
+}
+-(int)runscript:(NSString *)scriptpath
+{
+	NSTask *task = [[NSTask alloc] init];
+	//NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
+	[task setArguments:[NSArray arrayWithObjects:scriptpath,nil]];
+	[task setLaunchPath:@"/bin/bash"];
+	//NSPipe *outPipe = [[NSPipe alloc] init];
+	
+	//[task setStandardOutput:outPipe];
+	//[task setStandardError:outPipe];
+	//NSFileHandle *file;
+	//file = [outPipe fileHandleForReading];
+	
+	[task launch];
+	[task waitUntilExit];
+	
 }
 
 

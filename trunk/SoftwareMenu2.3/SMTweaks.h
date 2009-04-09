@@ -13,16 +13,16 @@
 #import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
 #import <SoftwareSettings.h>
-/*typedef enum {
-	FILE_CLASS_UTILITY= -2,
-	FILE_CLASS_NOT_FILE= -1,
-	FILE_CLASS_UNKNOWN = 0,
-	FILE_CLASS_TV_SHOW = 1,
-	FILE_CLASS_MOVIE = 2,
-	FILE_CLASS_AUDIO = 3,
-	FILE_CLASS_IMAGE = 4,
-	FILE_CLASS_OTHER = 5,
-} FileClass;*/
+typedef enum {
+	
+	kSMTwDownload= 0,
+	kSMTwFix = 1,
+	kSMTwToggle= 2,
+	kSMTwInstall = 3,
+	kSMTwDownloadPerian = 4,
+	kSMTwDownloadRowmote = 5,
+
+} TweakType;
 @interface SMTweaks : BRMediaMenuController {
 	int padding[16];
 	NSString *	identifier;
@@ -34,12 +34,14 @@
 	NSMutableArray *	settingDisplays;
 	NSMutableArray *	settingType;
 	NSMutableArray *	settingDescriptions;
+	NSMutableArray *	settingNumberType;
 	//NSWorkspace *workspace;
 	NSFileManager *		_man;
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;
 	
 	NSString	   *	_keypress;
+	NSMutableDictionary *	_rowmoteDict;
 	NSMutableDictionary *	_infoDict;// = [NSMutableDictionary alloc] ;
 	NSMutableDictionary *	_show_hide;
 	NSFileHandle   *	log;
@@ -49,11 +51,14 @@
 -(BOOL)VNCIsRunning;
 -(BOOL)AFPIsRunning;
 -(BOOL)AFPIsInstalled;
--(BOOL)dropbearIsRunning;
+//-(BOOL)dropbearIsRunning;
 -(BOOL)dropbearIsInstalled;
 -(BOOL)getToggleDimmed:(NSString *)title;
 -(BOOL)getToggleRightText:(NSString *)title;
 
+-(int)VNCFix;
+-(NSString *)getRowmoteVersion;
+-(NSString *)getPerianVersion;
 
 // Data source methods:
 -(float)heightForRow:(long)row;
@@ -64,15 +69,17 @@
 -(id)titleForRow:(long)row;
 -(id)initCustom;
 
-@end
-@interface SMDownloaderTweaks : SMDownloaderSTD
-{
-}
 
+
+@end
+
+@interface SMDownloaderTweaks : SMDownloaderSTD 
+{
+	
+}
 -(void)processdownload;
 
 @end
-
 
 
 

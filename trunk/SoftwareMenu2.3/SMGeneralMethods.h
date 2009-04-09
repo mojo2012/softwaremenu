@@ -35,10 +35,12 @@
 + (void)setArray:(NSArray *)inputArray forKey:(NSString *)theKey;
 + (void)setDict:(NSDictionary *)inputDict forKey:(NSString *)theKey;
 + (void)setBool:(BOOL)inputBOOL forKey:(NSString *)theKey;
++ (void)setBool:(BOOL)inputBOOL	forKey:(NSString *)theKey forDomain:(NSString *)theDomain;
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
 + (void)restartFinder;
++ (void)checkFolders;
 + (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;

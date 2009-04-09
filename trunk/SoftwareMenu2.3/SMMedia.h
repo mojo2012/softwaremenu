@@ -31,6 +31,7 @@
 	NSString			*imagePath;		/*!< @brief The cover art path to use, nil to use super*/
 	NSString			*theSetTitle;
 	NSString			*theSetDescription;
+	NSString			*theDev;
 }
 
 /*!
@@ -56,6 +57,8 @@
 - (void)setImagePath:(NSString *)path;
 - (void)setDescription:(NSString *)description;
 - (void)setTitle:(NSString *)title;
+- (void)setDev:(NSString *)devName;
+- (void)setReleaseDate:(NSString *)releaseDate;
 - (void)setDefaultImage;
 
 @end

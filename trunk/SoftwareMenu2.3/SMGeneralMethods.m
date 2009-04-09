@@ -81,7 +81,11 @@ static SMGeneralMethods *sharedInstance = nil;
 	CFPreferencesSetAppValue((CFStringRef)theKey, (CFNumberRef)[NSNumber numberWithBool:inputBool], myDomain);
 	CFPreferencesAppSynchronize(myDomain);
 }
-
++ (void)setBool:(BOOL)inputBool forKey:(NSString *)theKey forDomain:(NSString *)theDomain
+{
+	CFPreferencesSetAppValue((CFStringRef)theKey, (CFNumberRef)[NSNumber numberWithBool:inputBool], (CFStringRef)theDomain);
+	CFPreferencesAppSynchronize((CFStringRef)theDomain);
+}
 + (void)setArray:(NSArray *)inputArray forKey:(NSString *)theKey
 {
 	CFPreferencesSetAppValue((CFStringRef)theKey, (CFArrayRef)inputArray, myDomain);
@@ -316,6 +320,10 @@ static SMGeneralMethods *sharedInstance = nil;
 	[task8 waitUntilExit];
 	int theTerm = [task8 terminationStatus];
 	return theTerm;
+}
++(void)checkFolders
+{
+	
 }
 
 @end

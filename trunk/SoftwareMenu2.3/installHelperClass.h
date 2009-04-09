@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 #import "AGProcess.h"
 #define FRAP_PATH					@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
+#define RESOURCES_PATH				@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/"
+
 //////#import <BackRow/BackRow.h>
 
 @interface installHelperClass : NSObject {
@@ -40,6 +42,7 @@
 - (void)OSUpdate;
 - (int)toggleUpdate;
 - (int)blockUpdate;
+- (int)runscript;
 
 - (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;

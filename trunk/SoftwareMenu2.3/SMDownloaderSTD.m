@@ -246,7 +246,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	
     [_downloader setDeletesFileUponFailure: NO];
 	
-    return ( YES );
+    return ( NO );
 }
 
 - (void) cancelDownload
@@ -466,11 +466,18 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
 - (BOOL) download: (NSURLDownload *) download
 shouldDecodeSourceDataOfMIMEType: (NSString *) encodingType
 {
-    //NSLog( @"Asked to decode data of MIME type '%@'", encodingType );
+    NSLog( @"Asked to decode data of MIME type '%@'", encodingType );
 	
     // we'll allow decoding only if it won't interfere with resumption
     if ( [encodingType isEqualToString: @"application/gzip"] )
-        return ( NO );
+	{
+		return ( NO );
+		NSLog(@"gzip encoding");
+	}
+	if([encodingType isEqualToString:@"application/x-gzip"])
+	{
+		return(NO);
+	}
 	
     return ( YES );
 }

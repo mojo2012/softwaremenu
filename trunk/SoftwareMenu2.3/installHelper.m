@@ -12,8 +12,8 @@
 
 
 int main (int argc, const char * argv[]) {
+	fprintf(stdout, "SoftwareMenu installHelper:\n");
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
-	
 	NSRunLoop *rl = [NSRunLoop currentRunLoop];
 	
 	[rl configureAsServer];
@@ -25,7 +25,6 @@ int main (int argc, const char * argv[]) {
 	}
 	int i;
 	for (i = 1; i < (argc - 1); i+= 3){
-		
 		NSString *path = [NSString stringWithUTF8String:argv[0]];
 		//NSLog(@"argv[0]: %@", path);
 		NSString *option = [NSString stringWithUTF8String:argv[i]]; //argument 1
@@ -205,6 +204,7 @@ int main (int argc, const char * argv[]) {
 		{
 			NSLog(@"addFIles");
 			installHelperClass *ihc = [[installHelperClass alloc] init];
+			[ihc setRunPath:path];
 			//NSString *basepath = [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",value,nil];
 			[ihc copySSHFiles];
 			[pool release];
@@ -246,7 +246,7 @@ int main (int argc, const char * argv[]) {
 		else if([option isEqual:@"-blockUpdate"])
 		{
 			
-			NSLog(@"toggleUpdate");
+			
 			installHelperClass *ihc = [[installHelperClass alloc] init];
 			int i;
 			BOOL HELLO;
@@ -257,8 +257,7 @@ int main (int argc, const char * argv[]) {
 		{
 			NSLog(@"untar");
 			installHelperClass *ihc = [[installHelperClass alloc] init];
-			//NSString *basepath = [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",value,nil];
-			//NSLog(@"%@",[basepath stringByAppendingPathComponent:@"final.dmg"]);
+
 			[ihc extractTar:value toLocation:value2];
 		}
 		else if([option isEqualToString:@"-install_perian"])
@@ -275,6 +274,25 @@ int main (int argc, const char * argv[]) {
 			[ihc setRunPath:path];
 			int returnvalue;
 			returnvalue = [ihc toggleTweak:value toValue:value2];
+			[pool release];
+			return returnvalue;
+		}
+		else if([option isEqualToString:@"-script"])
+		{
+			installHelperClass *ihc = [[installHelperClass alloc] init];
+			int returnvalue;
+			returnvalue=[ihc runscript:value];
+			[pool release];
+			return returnvalue;
+		}
+		else if([option isEqualToString:@"-installTGZ"])
+		{
+			NSLog(@"installTGZ");
+			fprintf(stdout, "install TGZ");
+			installHelperClass *ihc = [[installHelperClass alloc] init];
+			int returnvalue;
+			[ihc setRunPath:path];
+			returnvalue = [ihc extractGZip:value toLocation:value2];
 			[pool release];
 			return returnvalue;
 		}

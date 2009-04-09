@@ -46,6 +46,7 @@
 	[imagePath release];
 	[theSetDescription release];
 	[theSetDescription release];
+	[theDev release];
 	[super dealloc];
 }
 -(id)assetID
@@ -89,6 +90,11 @@
 	[theSetTitle release];
 	theSetTitle=[title retain];
 }
+-(void)setDev:(NSString *)devName
+{
+	[theDev release];
+	theDev=[devName retain];
+}
 -(id)description
 {
 	NSString *hellotoo = [[NSString alloc] init];
@@ -110,7 +116,7 @@
 - (id)mediaType
 {
 
-		return [BRMediaType TVShow];
+		return [BRMediaType movie];
 }
 
 - (BOOL)hasCoverArt
@@ -123,6 +129,31 @@
 	id coverArt=[BRImage imageWithPath:imagePath];
 	return coverArt;
 }
+-(id)directors
+{
+	NSLog(@"directors: %@",theDev);
+	return [NSArray arrayWithObjects:theDev,nil];
+}
+/*-(id)artist
+{
+	NSLog(@"artist: %@",theDev);
+	return [NSArray arrayWithObjects:theDev,nil];
+}*/
+/*-(id)composer
+{
+	NSLog(@"composer: %@",theDev);
+	return theDev;
+}
+-(id)dateCreated
+{
+	NSLog(@"date: %@",[NSDate date]);
+	return [NSDate date];
+}
+-(id)datePublished
+{
+	NSLog(@"date: %@",[NSDate date]);
+	return [NSDate date];
+}*/
 -(id)imageAtPath:(NSString *)path
 {
 	
@@ -130,6 +161,10 @@
 	id sp= [BRImage imageWithPath:imagePath];
 	return [sp autorelease];
 }
+/*-(id)genres
+{
+	return [NSArray arrayWithObjects:@"date"];
+}*/
 
 
 @end
