@@ -45,7 +45,11 @@
 }
 
 -(id)init{
-	return [super init];
+	self = [super init];
+	NSString *scriptPNG = [[NSBundle bundleForClass:[self class]] pathForResource:@"internet" ofType:@"png"];
+	id folderImage = [BRImage imageWithPath:scriptPNG];
+	[self setListIcon:folderImage horizontalOffset:0.5f kerningFactor:0.2f];
+	return self;
 }
 
 - (void)dealloc
@@ -55,31 +59,15 @@
 
 -(id)initWithIdentifier:(NSString *)initId
 {
-	NSFileManager *man =[NSFileManager defaultManager];
-	if(![man fileExistsAtPath:[@"~/Documents" stringByExpandingTildeInPath]])
-	{
-		[man createDirectoryAtPath:[@"~/Documents" stringByExpandingTildeInPath] attributes:nil];
-	}
-	if(![man fileExistsAtPath:[@"~/Documents/Backups" stringByExpandingTildeInPath]])
-	{
-		[man createDirectoryAtPath:[@"~/Documents/Backups" stringByExpandingTildeInPath] attributes:nil];
-	}
-	
 	NSMutableDictionary *file =[[NSMutableDictionary alloc] initWithDictionary:nil];
 	[[self list] removeDividers];
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	[self setListTitle: @"3rd Party Plugins"];
-	NSString *scriptPNG = [[NSBundle bundleForClass:[self class]] pathForResource:@"internet" ofType:@"png"];
-	id folderImage = [BRImage imageWithPath:scriptPNG];
-	[self setListIcon:folderImage horizontalOffset:0.5f kerningFactor:0.2f];
-	
-	_items = [[NSMutableArray alloc] initWithObjects:nil];
-	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	
 
 	
-	//Setting up the default parts
-	
+	_items = [[NSMutableArray alloc] initWithObjects:nil];
+	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	id item99 = [BRTextMenuItemLayer networkMenuItem];
 	[item99 setTitle:@"Check For Updates"];
 	[_options addObject:[[NSArray alloc] initWithObjects:@"1",@"Check",nil]];
@@ -181,12 +169,9 @@
 			if ([manager fileExistsAtPath:frapPath])
 			{
 				[file setValue:@"YES" forKey:thename];
-				//NSLog(@"%@.frappliance exists",thename);
 				NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
 				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-				//NSLog(@"%@ %@", current_version,onlineVersion);
-				//if ([current_version isEqualToString:onlineVersion])
 				NSLog(@"%@",[frapPath lastPathComponent]);
 				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
 				{
@@ -310,28 +295,11 @@
 				//NSLog(@"Not Installed");
 			}
 			
-			
-			//Adding option for Info
 			[_options addObject:[[NSArray alloc] initWithObjects:@"3",thename,nil]];
 			[item setTitle:thename];
 			[_items addObject: item];
 		}
-		else
-		{
-			/*NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
-			 NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
-			 NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-			 //NSLog(@"Software Menu: %@ %@", current_version,onlineVersion);
-			 if (![current_version isEqualToString:onlineVersion])	
-			 {
-			 [_options addObject:thename];
-			 [item setTitle:thename];
-			 [item setRightJustifiedText:@"Update ME"];
-			 [_items addObject: item];
-			 
-			 
-			 }*/
-		}
+
 	}
 		id list = [self list];
 		[list setDatasource: self];
@@ -465,15 +433,7 @@
 }
 -(void)startUpdate
 {
-	NSFileManager *man = [NSFileManager defaultManager];
-	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath]])
-		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath] attributes:nil];
-	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath]])
-		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath] attributes:nil];
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath]])
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath] handler:nil];
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath]])
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath] handler:nil];
+
 	
 	tempFrapsInfo = [[NSMutableDictionary alloc] initWithDictionary:nil];
 	tempFrapsInfo2= [[NSMutableDictionary alloc] initWithDictionary:nil];
