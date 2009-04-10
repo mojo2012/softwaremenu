@@ -10,7 +10,7 @@
 		3802E5840BD7E65C00B6DA5A /* SoftwareMenus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802E5830BD7E65C00B6DA5A /* SoftwareMenus.m */; };
 		3802E58A0BD7E8C300B6DA5A /* SMProgressBarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802E5890BD7E8C300B6DA5A /* SMProgressBarControl.m */; };
 		87AD8DA70F630681003907EF /* BackRow.h in Headers */ = {isa = PBXBuildFile; fileRef = 87AD8DA60F630681003907EF /* BackRow.h */; };
-		87AD8E070F630AAF003907EF /* SoftwareMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8E060F630AAF003907EF /* SoftwareMenu.png */; };
+		87AD8E070F630AAF003907EF /* softwaremenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8E060F630AAF003907EF /* softwaremenu.png */; };
 		87AD8E4E0F630B68003907EF /* selsettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8E4D0F630B68003907EF /* selsettings.png */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		E204063E0F5A64B2008F2DF7 /* SMGeneralMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */; };
@@ -37,7 +37,6 @@
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
 		E24525230EABDF7D00E4127B /* timemachine.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525220EABDF7D00E4127B /* timemachine.png */; };
 		E245252B0EABE04900E4127B /* trashempty.png in Resources */ = {isa = PBXBuildFile; fileRef = E245252A0EABE04900E4127B /* trashempty.png */; };
-		E245252F0EABE0F200E4127B /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E245252E0EABE0F200E4127B /* refresh.png */; };
 		E24525350EABF94400E4127B /* nitoTV.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525340EABF94400E4127B /* nitoTV.png */; };
 		E24525370EABF96D00E4127B /* Sapphire.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525360EABF96D00E4127B /* Sapphire.png */; };
 		E245253B0EABF9F700E4127B /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = E245253A0EABF9F700E4127B /* info.png */; };
@@ -93,6 +92,9 @@
 		E2E0F3800F5E489C002EAE7F /* SMMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F37E0F5E489C002EAE7F /* SMMedia.m */; };
 		E2E0F5D80F5EFC41002EAE7F /* SMTweaks.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */; };
 		E2E41B2C0ECCEC2A00D1697E /* SMInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */; };
+		E2F0A3CE0F8F832600625DC1 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3CD0F8F832600625DC1 /* refresh.png */; };
+		E2F0A3D00F8F83D300625DC1 /* standby.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3CF0F8F83D300625DC1 /* standby.png */; };
+		E2F0A3D20F8F841000625DC1 /* web.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3D10F8F841000625DC1 /* web.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +104,7 @@
 		3802E5890BD7E8C300B6DA5A /* SMProgressBarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMProgressBarControl.m; sourceTree = "<group>"; };
 		3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BRLocalizedString.h; sourceTree = "<group>"; };
 		87AD8DA60F630681003907EF /* BackRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRow.h; sourceTree = "<group>"; };
-		87AD8E060F630AAF003907EF /* SoftwareMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SoftwareMenu.png; sourceTree = "<group>"; };
+		87AD8E060F630AAF003907EF /* softwaremenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = softwaremenu.png; sourceTree = "<group>"; };
 		87AD8E4D0F630B68003907EF /* selsettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selsettings.png; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* SoftwareMenu.frappliance */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftwareMenu.frappliance; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,7 +138,6 @@
 		E24524B50EABD98700E4127B /* package.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = package.png; sourceTree = "<group>"; };
 		E24525220EABDF7D00E4127B /* timemachine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timemachine.png; sourceTree = "<group>"; };
 		E245252A0EABE04900E4127B /* trashempty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trashempty.png; sourceTree = "<group>"; };
-		E245252E0EABE0F200E4127B /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		E24525340EABF94400E4127B /* nitoTV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nitoTV.png; sourceTree = "<group>"; };
 		E24525360EABF96D00E4127B /* Sapphire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sapphire.png; sourceTree = "<group>"; };
 		E245253A0EABF9F700E4127B /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
@@ -207,6 +208,9 @@
 		E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTweaks.m; sourceTree = "<group>"; };
 		E2E41B2A0ECCEC2A00D1697E /* SMInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInfo.h; sourceTree = "<group>"; };
 		E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInfo.m; sourceTree = "<group>"; };
+		E2F0A3CD0F8F832600625DC1 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		E2F0A3CF0F8F83D300625DC1 /* standby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standby.png; sourceTree = "<group>"; };
+		E2F0A3D10F8F841000625DC1 /* web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +271,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2F0A3D10F8F841000625DC1 /* web.png */,
 				E281804C0F8E4CAD0065D70D /* FTP.png */,
 				E28180480F8E48980065D70D /* RW.png */,
 				E2817FA70F8DA2200065D70D /* AFP.png */,
@@ -276,7 +281,7 @@
 				E2B7A6A90F8C1737007B8BAB /* gzip */,
 				E273B2420F647CAC00E516B5 /* readmeupd.txt */,
 				87AD8E4D0F630B68003907EF /* selsettings.png */,
-				87AD8E060F630AAF003907EF /* SoftwareMenu.png */,
+				87AD8E060F630AAF003907EF /* softwaremenu.png */,
 				E2B7A8390F8D0C45007B8BAB /* gunzip */,
 				E25CC08F0F6228B00024A371 /* Localizable.strings */,
 				E24689790F5F8F7C0009B44A /* scriptLicense.png */,
@@ -292,9 +297,10 @@
 				E24525400EABFAB100E4127B /* script.png */,
 				E245253A0EABF9F700E4127B /* info.png */,
 				E24525480EABFEB700E4127B /* softwareupdate.png */,
+				E2F0A3CD0F8F832600625DC1 /* refresh.png */,
+				E2F0A3CF0F8F83D300625DC1 /* standby.png */,
 				E24525360EABF96D00E4127B /* Sapphire.png */,
 				E24525340EABF94400E4127B /* nitoTV.png */,
-				E245252E0EABE0F200E4127B /* refresh.png */,
 				E245252A0EABE04900E4127B /* trashempty.png */,
 				E24525220EABDF7D00E4127B /* timemachine.png */,
 				E20C1CEA0EA9841100739E75 /* Scripts.plist */,
@@ -530,7 +536,6 @@
 				E24524B80EABD98700E4127B /* package.png in Resources */,
 				E24525230EABDF7D00E4127B /* timemachine.png in Resources */,
 				E245252B0EABE04900E4127B /* trashempty.png in Resources */,
-				E245252F0EABE0F200E4127B /* refresh.png in Resources */,
 				E24525350EABF94400E4127B /* nitoTV.png in Resources */,
 				E24525370EABF96D00E4127B /* Sapphire.png in Resources */,
 				E245253B0EABF9F700E4127B /* info.png in Resources */,
@@ -551,7 +556,7 @@
 				E24689680F5F8C020009B44A /* power.png in Resources */,
 				E246897A0F5F8F7C0009B44A /* scriptLicense.png in Resources */,
 				E25CC0910F6228B00024A371 /* Localizable.strings in Resources */,
-				87AD8E070F630AAF003907EF /* SoftwareMenu.png in Resources */,
+				87AD8E070F630AAF003907EF /* softwaremenu.png in Resources */,
 				87AD8E4E0F630B68003907EF /* selsettings.png in Resources */,
 				E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */,
 				E2B7A6AA0F8C1737007B8BAB /* gzip in Resources */,
@@ -563,6 +568,9 @@
 				E2817FA80F8DA2200065D70D /* AFP.png in Resources */,
 				E28180490F8E48980065D70D /* RW.png in Resources */,
 				E281804D0F8E4CAD0065D70D /* FTP.png in Resources */,
+				E2F0A3CE0F8F832600625DC1 /* refresh.png in Resources */,
+				E2F0A3D00F8F83D300625DC1 /* standby.png in Resources */,
+				E2F0A3D20F8F841000625DC1 /* web.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

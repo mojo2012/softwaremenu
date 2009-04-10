@@ -267,17 +267,9 @@
 	
 	NSString *thename =[location lastPathComponent]; //Gets us the name of the file
 	NSString *thenameextension = [thename pathExtension];
-	if([thenameextension isEqualToString:@"gz"])
+	if([thenameextension isEqualToString:@"gz"] || [thenameextension isEqualToString:@"tgz"])
 	{
-		NSTask *task = [[NSTask alloc] init];
-		NSArray *args = [NSArray arrayWithObjects:@"-xvf",location,nil];
-		[task setArguments:args];
-		[task setLaunchPath:@"/usr/bin/tar"];
-		[task setCurrentDirectoryPath:[location stringByDeletingLastPathComponent]];
-		[task launch];
-		[task waitUntilExit];
-		NSLog(@"%@",[location stringByDeletingLastPathComponent]);
-		NSLog(@".gz file");
+		[self extractGZip:location toLocation:[location stringByDeletingLastPathComponent]];
 	}
 	else if([thenameextension isEqualToString:@"zip"])
 	{

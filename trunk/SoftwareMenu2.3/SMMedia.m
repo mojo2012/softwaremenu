@@ -76,7 +76,7 @@
 }
 - (void)setDefaultImage
 {
-	NSString *path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png";
+	NSString *path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/softwaremenu.png";
 	[imagePath release];
 	imagePath = [path retain];
 }
@@ -111,6 +111,9 @@
 
 -(id)mediaSummary
 {
+	if ([theSetDescription isEqualToString:@"nil"])
+		return nil;
+	
 	return theSetDescription;
 }
 - (id)mediaType
@@ -132,6 +135,8 @@
 -(id)directors
 {
 	NSLog(@"directors: %@",theDev);
+	if ([theDev isEqualToString:@"nil"])
+		return nil;
 	return [NSArray arrayWithObjects:theDev,nil];
 }
 /*-(id)artist

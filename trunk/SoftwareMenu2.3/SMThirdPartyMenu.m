@@ -12,6 +12,7 @@
 #import "SMThirdPartyMenu.h"
 #import "SMInstallMenu.h"
 #import "SMMedia.h"
+#import "SMGeneralMethods.h"
 //static NSString  * trustedURL = @"http://web.me.com/tomcool420/Trusted.plist";
 
 
@@ -19,22 +20,56 @@
 @implementation SMThirdPartyMenu
 
 
-- (id) previewControlForItem: (long) item
+- (id) previewControlForItem: (long) row
 {
+	if(row>=[_items count])
+		return nil;
 	//NSString *resourcePath = nil;
 	NSString *appPng = nil;
-	NSString * theoption = [[_options objectAtIndex:item] objectAtIndex:1];
-	
-	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:theoption ofType:@"png"];
-	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
-		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
-	if([theoption isEqualToString:@"Reset"])
-		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"softwareupdate" ofType:@"png"];
+	NSLog(@"%@",[_options objectAtIndex:row]);
 	SMMedia *meta = [[SMMedia alloc] init];
+	switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
+	{
+		case kSMTpCheck:
+			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"web" ofType:@"png"];
+			[meta setDescription:@"Check online for new updates"];
+			[meta setTitle:@"Check For Updates"];
+			break;
+		case kSMTpRestart:
+			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"standby" ofType:@"png"];
+			[meta setTitle:@"Restart Finder"];
+			[meta setDescription:@"Restart Finder"];
+			break;
+		case kSMTpRefresh:
+			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"refresh" ofType:@"png"];
+			[meta setTitle:@"Refresh Menu"];
+			[meta setDescription:@"Refresh in case Info4.plist and/or Info3.plist was modified and change doesn't appear"];
+			break;
+		case kSMTpSm:
+		case KSMTpTrusted:
+		case kSMTpUntrusted:
+			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:[[_options objectAtIndex:row] valueForKey:@"Name"] ofType:@"png"];
+			NSLog(@"appPng: %@, displayName: %@, name: %@, developer: %@",appPng,[[_options objectAtIndex:row] valueForKey:@"DisplayName"],[[_options objectAtIndex:row] valueForKey:@"Name"],[[_options objectAtIndex:row] valueForKey:@"Developer"]);
+			[meta setTitle:[[_options objectAtIndex:row] valueForKey:@"DisplayName"]];
+			[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"ShortDescription"]];
+			[meta setDev:[[_options objectAtIndex:row] valueForKey:@"Developer"]];
+			break;
+		
+	}
+	if(![_man fileExistsAtPath:appPng])
+		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
+	
 	[meta setImagePath:appPng];
-	[meta setTitle:[[_items objectAtIndex:item]title]];
+	switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
+	{
+		case kSMTpSm:
+			[meta setDefaultImage];
+			break;
+	}
+	
 	BRMetadataPreviewControl *preview = [[BRMetadataPreviewControl alloc] init];
 	[preview setAsset:meta];
+	[preview setShowsMetadataImmediately:YES];
 	//BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
 	
 	
@@ -49,6 +84,8 @@
 	NSString *scriptPNG = [[NSBundle bundleForClass:[self class]] pathForResource:@"internet" ofType:@"png"];
 	id folderImage = [BRImage imageWithPath:scriptPNG];
 	[self setListIcon:folderImage horizontalOffset:0.5f kerningFactor:0.2f];
+	[_options release];
+	_man = [NSFileManager defaultManager];
 	return self;
 }
 
@@ -68,44 +105,59 @@
 	
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
+	
 	id item99 = [BRTextMenuItemLayer networkMenuItem];
 	[item99 setTitle:@"Check For Updates"];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"1",@"Check",nil]];
+	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+						 [NSNumber numberWithInt:1],@"Type",
+						 nil]];
 	[_items addObject:item99];
-	//Adding Refresh again
+	
 	id item2 = [[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"1",@"refresh",nil]];
+	 [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+						  [NSNumber numberWithInt:2],@"Type",
+						  nil]];
 	[item2 setTitle:@"Refresh"];
 	[_items addObject: item2];
+	
 	//Adding reset Finder option
 	id item3 = [[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"1",@"Reset",nil]];
+	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+						 [NSNumber numberWithInt:3],@"Type",
+						 nil]];
 	[item3 setTitle:@"Restart Finder"];
 	[_items addObject: item3];
+	
+	
 	int sep1 = [_items count];
-	
-	
-	/*id item98 = [[BRTextMenuItemLayer alloc] init];
-	[item98 setTitle:@"Manage Untrusted"];
-	[_options addObject:@"Untrusted"];
-	[_items addObject:item98];*/
-	/*NSSortDescriptor *nameDescriptor =[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
-	NSArray *descriptors = [NSArray arrayWithObjects:nameDescriptor, nil];*/
+
 	
 	NSDictionary *loginItemDict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist"]];
+	
 	NSDictionary *SoftwareMenuInfo = [loginItemDict valueForKey:@"SoftwareMenu"];
 	NSString *SoftVers = [SoftwareMenuInfo valueForKey:@"Version"];
-	NSString *frapSoftPath= [[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/"];
+	
+	NSString *frapSoftPath= [[NSString alloc] initWithString:[FRAP_PATH stringByAppendingString: @"SoftwareMenu.frappliance/"]];
 	NSString * infoSoftPath = [frapSoftPath stringByAppendingString:@"Contents/Info.plist"];
+	
 	NSDictionary * Softinfo =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoSoftPath]];
+	
 	NSString * current_soft_version =[[NSString alloc]initWithString:[Softinfo objectForKey:@"CFBundleVersion"]];
-	//NSLog(@"SoftVers: %@, current_soft_version: %@", SoftVers, current_soft_version);
+	
 	int versLength = [SoftVers length];
-	//NSLog(@"versLength: %d",versLength);
 	
 	id item90 = [BRTextMenuItemLayer folderMenuItem];
-	[_options addObject:[[NSArray alloc] initWithObjects:@"2",@"SoftwareMenu",nil]];
-	[item90 setTitle:@"Software Menu"];
+	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+						 [NSNumber numberWithInt:4],@"Type",
+						 @"Thomas C. Cool",@"Developer",
+						 @"Extension to Settings Menu. allows you to install plugins, run scripts, upgrade and downgrade TV",@"ShortDescription",
+						 @"None",@"ReleaseDate",
+						 @"softwaremenu",@"Name",
+						 @"SoftwareMenu",@"DisplayName",
+						 nil]];
+	NSData *image = [ NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://appletv.nanopi.net/Images/ApplianceIcon.gif"]];
+	[image writeToFile:@"/Users/frontrow/ApplianceIcon.gif" atomically:YES];
+	[item90 setTitle:@"SoftwareMenu"];
 	
 	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
 	{
@@ -119,38 +171,33 @@
 			
 		[_items addObject: item90];
 
+	int sep2 = [_items count];	
 	
-	
-	
-	int sep2 = [_items count];
 	int feedCounts=[[loginItemDict allKeys] count];
+	
 	int ii;
+	
 	NSString *currentNames = nil;
 	id currentItems = nil;
 	NSString *currentKeys = nil;
-	/*NSString *currentmd5 = nil;
-	NSString *currentVersion =nil;
-	NSString *currentURL = nil;*/
 	NSArray *sortedArrays;
 	NSSortDescriptor *nameDescriptors = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
-	NSArray *descriptorss = [NSArray arrayWithObjects:nameDescriptors, nil];
-	NSMutableArray *_locationDictss = [[NSMutableArray alloc] init];
+	NSArray *ArraySortDescriptor = [NSArray arrayWithObjects:nameDescriptors, nil];
+	NSMutableArray *unsortedArray = [NSMutableArray arrayWithObjects:nil];
 	
 	for (ii = 0; ii < feedCounts; ii++)
 	{
-		//NSDictionary *dicts;
-		////NSLog(@"ii: %d",ii);
+
 		currentKeys = [[loginItemDict allKeys] objectAtIndex:ii];
 		currentItems = [loginItemDict valueForKey:currentKeys];
-		////NSLog(@"current items: %@",currentItems);
-		[_locationDictss addObject:currentItems];
+		[unsortedArray addObject:currentItems];
 		
 		
 	}
 	
 	
-	sortedArrays = [_locationDictss sortedArrayUsingDescriptors:descriptorss];
-	
+	sortedArrays = [unsortedArray sortedArrayUsingDescriptors:ArraySortDescriptor];
+	NSLog(@"C");
 	
 	
 	NSEnumerator *enumerator = [sortedArrays objectEnumerator];
@@ -158,275 +205,236 @@
 	while((obj = [enumerator nextObject]) != nil) 
 	{
 		
-		
 		NSString *thename = [obj valueForKey:@"name"];
+		if (thename == nil)
+			thename = [obj valueForKey:@"Name"];
+		NSString *displayName = [obj valueForKey:@"DisplayName"];
+		if (displayName == nil)
+			displayName = thename;
+		
 		NSString *onlineVersion = [obj valueForKey:@"Version"];
-		NSString *frapPath= [[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",thename];
+		NSString *frapPath= [NSString stringWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename,nil];
 		NSFileManager *manager = [NSFileManager defaultManager];
 		id item = [BRTextMenuItemLayer folderMenuItem];		
 		if(![thename isEqualToString:@"SoftwareMenu"])
 		{
 			if ([manager fileExistsAtPath:frapPath])
 			{
-				[file setValue:@"YES" forKey:thename];
-				NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
-				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
+				//NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
+				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[frapPath stringByAppendingString:@"Contents/Info.plist"]];
 				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-				NSLog(@"%@",[frapPath lastPathComponent]);
+				
 				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
 				{
 					current_version = [info objectForKey:@"CFBundleShortVersionString"];
 					onlineVersion = [obj valueForKey:@"shortVersion"];
-					NSLog(@"%@ %@",current_version, onlineVersion);
 				}
-				if([current_version compare:onlineVersion]==NSOrderedSame)
-				{
-					[item setRightJustifiedText:@"Up to Date"];
-					//NSLog(@"Up to Date");
-				}
-				else if ([current_version compare:onlineVersion]==NSOrderedAscending)
-				{
-					[item setRightJustifiedText:@"New Version available"];
-					//NSLog(@"Not up to date, current is %@",onlineVersion);
-				}
-				else
-				{
-					[item setRightJustifiedText:@"Ahead of the curve"];
-				}
+				
+				if([current_version compare:onlineVersion]==NSOrderedSame)				{[item setRightJustifiedText:@"Up to Date"];}
+				else if ([current_version compare:onlineVersion]==NSOrderedAscending)	{[item setRightJustifiedText:@"New Version available"];}
+				else																	{[item setRightJustifiedText:@"Ahead of the curve"];}
 			}
 			else
 			{
-				[file setValue:@"NO" forKey:thename];
 				[item setRightJustifiedText:@"Not Installed"];
-				//NSLog(@"Not Installed");
 			}
 			
 			
 			//Adding option for Info
-			[_options addObject:[[NSArray alloc] initWithObjects:@"2",thename,nil]];
-			[item setTitle:thename];
+			NSString *dev = [obj valueForKey:@"Developer"];
+			if(dev==nil)
+				dev = @"nil";
+			NSString *desc = [obj valueForKey:@"ShortDescription"];
+			if(desc == nil)
+				desc = @"nil";
+			
+			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+								 [NSNumber numberWithInt:5],@"Type",
+								 thename,@"Name",
+								 displayName,@"DisplayName",
+								 onlineVersion,@"OnlineVersion",
+								 dev,@"Developer",
+								 desc,@"ShortDescription",
+								 [obj valueForKey:@"ReleaseDate"],@"ReleaseDate",
+								 nil]];
+			[item setTitle:displayName];
 			[_items addObject: item];
 		}
-	else
-	{
-		/*NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
-		NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
-		NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-		//NSLog(@"Software Menu: %@ %@", current_version,onlineVersion);
-		if (![current_version isEqualToString:onlineVersion])	
-		{
-			[_options addObject:thename];
-			[item setTitle:thename];
-			[item setRightJustifiedText:@"Update ME"];
-			[_items addObject: item];
-			
-			
-		}*/
-	}
 	}
 	
 	int sep3 = [_items count];
-	
+	NSLog(@"D");
 	///////////////////UNTRUSTED//////////////////////
 	NSDictionary *loginItemDict2 = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist"]];
 	feedCounts=[[loginItemDict2 allKeys] count];
 	currentNames = nil;
-	//id currentItems2 = nil;
 	currentKeys = nil;
-	NSArray *sortedArrays2;
-	/*NSSortDescriptor *nameDescriptors2 = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
-	NSArray *descriptorss = [NSArray arrayWithObjects:nameDescriptors, nil];*/
-	NSMutableArray *_locationDictss2 = [[NSMutableArray alloc] init];
+	NSMutableArray *_locationDictss2 = [NSMutableArray arrayWithObjects:nil];
 	
 	for (ii = 0; ii < feedCounts; ii++)
 	{
-		//NSDictionary *dicts;
-		//NSLog(@"ii: %d",ii);
 		currentKeys = [[loginItemDict2 allKeys] objectAtIndex:ii];
 		currentItems = [loginItemDict2 valueForKey:currentKeys];
-		//NSLog(@"current items: %@",currentItems);
 		[_locationDictss2 addObject:currentItems];
-		
-		
 	}
 	
-	
-	sortedArrays2 = [_locationDictss2 sortedArrayUsingDescriptors:descriptorss];
-	//NSLog(@"sortedArrays2: %@",sortedArrays2);
-	
-	
+	NSLog(@"D.1");
+	//NSSortDescriptor *nameDescriptors2 = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
+	NSArray *ArraySortDescriptor2 = [NSArray arrayWithObjects:nameDescriptors, nil];
+	 NSArray *sortedArrays2 = [_locationDictss2 sortedArrayUsingDescriptors:ArraySortDescriptor2];	
+	NSLog(@"E");
 	NSEnumerator *enumerator2 = [sortedArrays2 objectEnumerator];
-	id obj2;
-	while((obj2 = [enumerator2 nextObject]) != nil) 
+	//id obj2;
+	while((obj = [enumerator2 nextObject]) != nil) 
 	{
 		
-		
-		NSString *thename = [obj2 valueForKey:@"name"];
-		NSString *onlineVersion = [obj2 valueForKey:@"Version"];
-		NSString *frapPath= [[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",thename];
+		NSString *thename = [obj valueForKey:@"name"];
+		if (thename == nil)
+			thename = [obj valueForKey:@"Name"];
+		NSString *displayName = [obj valueForKey:@"DisplayName"];
+		if (displayName == nil)
+			displayName = thename;
+		NSString *onlineVersion = [obj valueForKey:@"Version"];
+		NSString *frapPath= [[NSString alloc] initWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename];
 		NSFileManager *manager = [NSFileManager defaultManager];
 		id item = [[BRTextMenuItemLayer alloc] init];		
 		if(![thename isEqualToString:@"SoftwareMenu"])
 		{
 			if ([manager fileExistsAtPath:frapPath])
 			{
-				[file setValue:@"YES" forKey:thename];
-				//NSLog(@"%@.frappliance exists",thename);
 				NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
 				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-				//NSLog(@"%@ %@", current_version,onlineVersion);
 				if ([current_version isEqualToString:onlineVersion])
 				{
 					[item setRightJustifiedText:@"Up to Date"];
-					//NSLog(@"Up to Date");
 				}
 				else
 				{
 					
 					[item setRightJustifiedText:@"New Version available"];
-					//NSLog(@"Not up to date, current is %@",onlineVersion);
 				}
 			}
 			else
 			{
-				[file setValue:@"NO" forKey:thename];
 				[item setRightJustifiedText:@"Not Installed"];
-				//NSLog(@"Not Installed");
 			}
 			
-			[_options addObject:[[NSArray alloc] initWithObjects:@"3",thename,nil]];
+			//[_options addObject:[[NSArray alloc] initWithObjects:[NSNumber numberWithInt:6],thename,nil]];
+			NSString *dev = [obj valueForKey:@"Developer"];
+			if(dev==nil)
+				dev = @"nil";
+			NSString *desc = [obj valueForKey:@"ShortDescription"];
+			if(desc == nil)
+				desc = @"nil";
+			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+								 [NSNumber numberWithInt:6],@"Type",
+								 thename,@"Name",
+								 displayName,@"DisplayName",
+								 dev,@"Developer",
+								 desc,@"ShortDescription",
+								 onlineVersion,@"OnlineVersion",
+								 [obj valueForKey:@"ReleaseDate"],@"ReleaseDate",
+								 nil]];
 			[item setTitle:thename];
 			[_items addObject: item];
 		}
 
 	}
-		id list = [self list];
-		[list setDatasource: self];
-	[file setValue:@"NO" forKey:@"Update"];
-	[file writeToFile:[@"~/Library/Application Support/SoftwareMenu/log2.plist" stringByExpandingTildeInPath] atomically:YES];
-	//if (![current_soft_version isEqualToString:SoftVers])
-	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
-	{
-		[[self list] addDividerAtIndex:sep1 withLabel:@"Important - SoftwareMenu"];
-
-	}
-	else
-	{
-		[[self list] addDividerAtIndex:sep1 withLabel:@"SoftwareMenu"];
-
-	}
-	[[self list] addDividerAtIndex:sep2 withLabel:@"Trusted"];
-	[[self list] addDividerAtIndex:sep3 withLabel:@"Self Added"];
-		return self;
+	id list = [self list];
+	[list setDatasource: self];
+	[_options writeToFile:@"/Users/frontrow/options.plist" atomically:YES];
+	[[self list] addDividerAtIndex:sep1 withLabel:@"SoftwareMenu"];
+	[[self list] addDividerAtIndex:sep2 withLabel:BRLocalizedString(@"Trusted",@"Trusted")];
+	[[self list] addDividerAtIndex:sep3 withLabel:BRLocalizedString(@"Untrusted",@"Untrusted")];
+	return self;
 	
 }
 
 -(void)itemSelected:(long)fp8
 {
-	id newController = nil;
+	NSLog(@"itemselected");
 	NSArray * thenames = [_options objectAtIndex:fp8];
-	NSString *thetype = [thenames objectAtIndex:0];
-	NSString *thename = [thenames objectAtIndex:1];
-	if([thetype isEqualToString:@"1"])
+	NSLog(@"A");
+	//NSString *thename = [thenames objectAtIndex:1];
+	NSMutableDictionary *loginItemDict=[[NSMutableDictionary alloc] initWithDictionary:nil];
+	NSLog(@"B");
+	switch([[[_options objectAtIndex:fp8] valueForKey:@"Type"] intValue])
 	{
-		if ([thename isEqualToString:@"refresh"])
-		{
-			[self initWithIdentifier:@"101"];
-		}
-		else if([thename isEqualToString:@"Untrusted"])
-		{
-			// Call for Menu to manage untrusted
-			
-			/*BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
-			 [textinput setTitle:@"add Untrusted"];
-			 [textinput setTextEntryCompleteDelegate:self];
-			 [[self stack] pushController:textinput];*/
-			
-		}
-		else if([thename isEqualToString:@"Reset"]){
-			[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
-		}
-		else if ([thename isEqualToString:@"Check"])
-		{
+		case kSMTpCheck:
+			NSLog(@"doing Update");
 			NSString *thelog = [[NSString alloc] initWithString:@"thelog"];
 			[thelog writeToFile:[@"~/Library/Application Support/SoftwareMenu/updater.log" stringByExpandingTildeInPath] atomically:YES];
-			[self writeToLog:@"init"];
-			[self writeToLog:@"update"];
+			[self writeToLog:@"Initializing Update"];
 			[self startUpdate];
 			
-		}
+			break;
+		case kSMTpRefresh:
+			[self initWithIdentifier:@"101"];
+			break;
+		case kSMTpRestart:
+			[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
+			break;
+		case kSMTpSm:
+		case KSMTpTrusted:
+			NSLog(@"Going to a Trusted Menu");
+			NSDictionary *Info4Dict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist"]];
+			[loginItemDict addEntriesFromDictionary:Info4Dict];
+			break;
+		case kSMTpUntrusted:
+			NSLog(@"Going to an Untrusted Menu");
+			NSDictionary *Info3Dict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist"]];
+			[loginItemDict addEntriesFromDictionary:Info3Dict];
+			break;
 	}
-	else 
+	switch([[[_options objectAtIndex:fp8] valueForKey:@"Type"] intValue])
 	{
-		//NSLog(@"%@",thename);
-		//NSLog(@"selected something");
-		NSMutableDictionary *loginItemDict=[[NSMutableDictionary alloc] initWithDictionary:nil];
-		if([thetype isEqualToString:@"2"])
-		   {
-		NSDictionary *loginItemsDict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist"]];
-			   [loginItemDict addEntriesFromDictionary:loginItemsDict];
-		}
-		else if([thetype isEqualToString:@"3"])
-		{
-			NSDictionary *loginItemsDict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist"]];
-			[loginItemDict addEntriesFromDictionary:loginItemsDict];
-		}
-		NSEnumerator *enumerator = [loginItemDict objectEnumerator];
-		id obj;
-		while((obj = [enumerator nextObject]) != nil) 
-		{
-			if ([thename isEqualToString:[obj valueForKey:@"name"]])
+		case kSMTpUntrusted:
+		case KSMTpTrusted:
+			NSLog(@"doing something");
+			NSString *thename = [[_options objectAtIndex:fp8] valueForKey:@"Name"];
+			NSEnumerator *enumerator = [loginItemDict objectEnumerator];
+			id obj;
+			while((obj = [enumerator nextObject]) != nil) 
 			{
-				//NSLog(@"right name: %@", thename);
-				NSString * theURL = [obj valueForKey:@"theURL"];
-				if (theURL == nil)
+				if ([thename isEqualToString:[obj valueForKey:@"name"]])
 				{
-					theURL=[obj valueForKey:@"URL"];
-				}
-				NSString * theversion = [obj valueForKey:@"Version"];
-				NSString *thescript =[obj valueForKey:@"thescript"];
-				//NSLog(@"%@",thescript);
-				if(thescript == nil)
-				{
-					thescript = @"none";
-				}
-				
-				NSString *thedescription = [obj valueForKey:@"theDesc"];
-				if(thedescription == nil)
-				{
-					thedescription = [obj valueForKey:@"Desc"];
+					NSString * theURL = [obj valueForKey:@"theURL"];
+					if (theURL == nil)
+					{
+						theURL=[obj valueForKey:@"URL"];
+					}
+					
+					NSString * theversion = [obj valueForKey:@"Version"];
+					//NSString *thescript =[obj valueForKey:@"thescript"];
+					NSString *thedescription = [obj valueForKey:@"theDesc"];
 					if(thedescription == nil)
 					{
-						thedescription = [obj valueForKey:@"desc"];
-
+						thedescription = [obj valueForKey:@"Desc"];
 						if(thedescription == nil)
 						{
-							
-							thedescription = @"No description added";
-
+							thedescription = [obj valueForKey:@"desc"];
+							if(thedescription == nil)
+							{
+								thedescription = @"No description added";
+							}
 						}
-
-
-
 					}
-				}
-				NSString *thelicense = [obj valueForKey:@"thelicense"];
-				if(thelicense == nil)
-				{
-					thelicense = [obj valueForKey:@"license"];
+					
+					NSString *thelicense = [obj valueForKey:@"thelicense"];
 					if(thelicense == nil)
 					{
-						thelicense = @"No License added";
+						thelicense = [obj valueForKey:@"license"];
+						if(thelicense == nil)
+						{
+							thelicense = @"No License added";
+						}
 					}
-				}
-				//NSLog(@"before starting");
-				NSMutableDictionary *theInformation = [[NSMutableDictionary alloc] initWithObjectsAndKeys:thename,@"name",theversion,@"version",thescript,@"script",thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
-				newController = [[SMInstallMenu alloc] init];
-				//NSLog(@"gonna send");
-				[newController setInformationDictionary:theInformation];
-				[newController initCustom];
-				[[self stack] pushController: newController];
+					id newController = [[SMInstallMenu alloc] init];
+					NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:thename,@"name",theversion,@"version",thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
+					[newController setInformationDictionary:theInformation];
+					[newController initCustom];
+					[[self stack] pushController: newController];
 			}
 		}
 	}
@@ -437,52 +445,59 @@
 	
 	tempFrapsInfo = [[NSMutableDictionary alloc] initWithDictionary:nil];
 	tempFrapsInfo2= [[NSMutableDictionary alloc] initWithDictionary:nil];
+	
 	istrusted = [[NSMutableArray alloc] initWithObjects:nil];
+	
 	NSMutableDictionary *TrustedDict=[[NSMutableDictionary alloc] init];
 	NSMutableDictionary *UnTrustedDict=[[NSMutableDictionary alloc] init];
-	NSArray *hellotwo =[[NSArray alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:@"http://web.me.com/tomcool420/Trusted2.plist"]];
-	NSEnumerator *enumerator = [hellotwo objectEnumerator];
+	
+	NSArray *trustedSources =[NSArray arrayWithContentsOfURL:[[NSURL alloc] initWithString:TRUSTED_URL]];
+	NSEnumerator *enumerator = [trustedSources objectEnumerator];
 	[self writeToLog:@"==== startUpdate ===="];
 	[self writeToLog:@"========= Adding Trusted ========="];
-	[self writeToLog:@"Downloading trusted file from: http://web.me.com/tomcool420/Trusted2.plist"];
+	[self writeToLog:[NSString stringWithFormat:@"Downloading trusted file from: %@",TRUSTED_URL,nil]];
 	id obj;
+	
 	while((obj = [enumerator nextObject]) != nil) 
 	{
 		NSString *theTrustedURL = [obj valueForKey:@"theURL"];
 		NSString *theTrustedName = [obj valueForKey:@"name"];
 
-		[self writeToLog:[[NSString alloc] initWithFormat:@"Adding From List: %@",theTrustedName]];
-		[self writeToLog:theTrustedURL];
+		[self writeToLog:[NSString stringWithFormat:@"Adding From List: %@",theTrustedName,nil]];
+		[self writeToLog:[NSString stringWithFormat:@"With URL: %@",theTrustedURL,nil]];
 		[self writeToLog:@"\n"];
-		NSDictionary *hellothree =[[NSDictionary alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:theTrustedURL]];
+		
+		NSDictionary *trustedSource =[NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:theTrustedURL]];
+		
 		if([theTrustedURL isEqualToString:@"http://nitosoft.com/version.plist"])
 		{
-			NSMutableDictionary *hellofive = [[NSMutableDictionary alloc] init];
-			[hellofive setObject:@"nitoTV" forKey:@"name"];
-			[hellofive setObject:[hellothree valueForKey:@"displayVersionTwo"] forKey:@"Version"];
-			[hellofive setObject:[hellothree valueForKey:@"versionTwo"] forKey:@"shortVersion"];
-			[hellofive setObject:@"http://nitosoft.com/nitoTVTwo.tar.gz" forKey:@"theURL"];
-			[TrustedDict setObject:hellofive forKey:@"NitoTV"];
+			NSMutableDictionary *nitoDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+			[nitoDict setObject:@"nitoTV" forKey:@"name"];
+			[nitoDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"Version"];
+			[nitoDict setObject:[trustedSource valueForKey:@"versionTwo"] forKey:@"shortVersion"];
+			[nitoDict setObject:@"http://nitosoft.com/nitoTVTwo.tar.gz" forKey:@"theURL"];
+			[nitoDict setObject:[trustedSource valueForKey:@"ShortDescription"] forKey:@"ShortDescription"];
+			[nitoDict setObject:[trustedSource valueForKey:@"developer"] forKey:@"Developer"];
+			[nitoDict setObject:[trustedSource valueForKey:@"ReleaseDate"] forKey:@"ReleaseDate"];
+			[TrustedDict setObject:nitoDict forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];
 			
 		}
 		else if([theTrustedURL isEqualToString:@"http://nitosoft.com/updates.plist"])
 		{
-			NSMutableDictionary *hellofive = [[NSMutableDictionary alloc] init];
-			[hellofive setObject:@"CouchSurfer" forKey:@"name"];
-			[hellofive setObject:[hellothree valueForKey:@"displayVersionTwo"] forKey:@"Version"];
-			[hellofive setObject:[hellothree valueForKey:@"twoUrl"] forKey:@"theURL"];
-			[TrustedDict setObject:hellofive forKey:@"CouchSurfer"];
-			[self writeToLog:@"CouchSurfer"];
+			NSMutableDictionary *couchDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+			[couchDict setObject:@"CouchSurfer" forKey:@"name"];
+			[couchDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"Version"];
+			[couchDict setObject:[trustedSource valueForKey:@"twoUrl"] forKey:@"theURL"];
+			[TrustedDict setObject:couchDict forKey:@"CouchSurfer"];
+			[self writeToLog:@"CouchSurfer Special loop (Thanks to nito for plist up to date)"];
 		}
 		else
 		{
-			[TrustedDict addEntriesFromDictionary:hellothree];
+			[TrustedDict addEntriesFromDictionary:trustedSource];
 			[self writeToLog:@"Normal Loop"];
 		}
-		//NSLog(@"hellothree: %@",hellothree);
 	}
-	//NSLog(@"TrustedDict: %@",TrustedDict);
 	[TrustedDict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist" atomically:YES];
 	
 	NSDictionary *hellofour = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/unTrusted/untrusted.plist"]];
@@ -500,278 +515,13 @@
 		[UnTrustedDict addEntriesFromDictionary:hellofive];
 	}
 	[UnTrustedDict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist" atomically:YES];
-	//NSLog(@" ===== startUpdate =====");
-	
-	/*NSMutableDictionary *threedict =[[NSMutableDictionary alloc] initWithDictionary:nil];
-	NSMutableDictionary *fourdict  =[[NSMutableDictionary alloc] initWithDictionary:nil];
-	NSMutableDictionary *pluginsdict  =[[NSMutableDictionary alloc] initWithDictionary:nil];
-	
-	NSFileManager *man = [NSFileManager defaultManager];
-	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath]])
-		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath] attributes:nil];
-	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath]])
-		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath] attributes:nil];
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/plugins.plist" stringByExpandingTildeInPath]])
-	{
-		NSMutableDictionary *threedict=[[NSMutableDictionary alloc] initWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath]];
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath] handler:nil];
-	}
-	
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath]])
-	{
-		NSMutableDictionary *fourdict = [[NSMutableDictionary alloc] initWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath]];
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath] handler:nil];
-	}
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/plugins.plist" stringByExpandingTildeInPath]])
-	{
-		NSMutableDictionary *fourdict = [[NSMutableDictionary alloc] initWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/plugins.plist" stringByExpandingTildeInPath]];
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/plugins.plist" stringByExpandingTildeInPath] handler:nil];
-	}
-	
-	tempFrapsInfo = [[NSMutableDictionary alloc] initWithDictionary:nil];
-	tempFrapsInfo2= [[NSMutableDictionary alloc] initWithDictionary:nil];
-	istrusted = [[NSMutableArray alloc] initWithObjects:nil];
-	NSMutableDictionary *TrustedDict=[[NSMutableDictionary alloc] init];
-	NSMutableDictionary *UnTrustedDict=[[NSMutableDictionary alloc] init];
-	NSArray *hellotwo =[[NSArray alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:@"http://web.me.com/tomcool420/Trusted2.plist"]];
-	NSEnumerator *enumerator = [hellotwo objectEnumerator];
-	[self writeToLog:@"==== startUpdate ===="];
-	[self writeToLog:@"========= Adding Trusted ========="];
-	[self writeToLog:@"Downloading trusted file from: http://web.me.com/tomcool420/Trusted2.plist"];
-	id obj;
-	while((obj = [enumerator nextObject]) != nil) 
-	{
-		NSString *theTrustedURL = [obj valueForKey:@"theURL"];
-		NSString *theTrustedName = [obj valueForKey:@"name"];
-		
-		[self writeToLog:[[NSString alloc] initWithFormat:@"Adding From List: %@",theTrustedName]];
-		[self writeToLog:[NSString stringWithFormat:@"	From URL:%@",theTrustedURL,nil]];
-		[self writeToLog:@"\n"];
-		NSDictionary *hellothree =[[NSDictionary alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:theTrustedURL]];
-		
-		if([theTrustedURL isEqualToString:@"http://nitosoft.com/version.plist"])
-		{
-			NSMutableDictionary *nitoDict = [[NSMutableDictionary alloc] init];
-			[nitoDict setObject:@"nitoTV" forKey:@"name"];
-			[nitoDict setObject:[hellothree valueForKey:@"displayVersionTwo"] forKey:@"Version"];
-			[nitoDict setObject:[hellothree valueForKey:@"versionTwo"] forKey:@"shortVersion"];
-			[nitoDict setObject:@"http://nitosoft.com/nitoTVInstaller_tt.zip" forKey:@"theURL"];
-			[nitoDict setObject:@"\|bile\|" forKey:@"developer"];
-			[nitoDict setObject:@"nitoTV" forKey:@"pluginbase"];
-			[TrustedDict setObject:nitoDict forKey:@"NitoTV"];
-			[self writeToLog:@"nitoTV special loop"];
-			
-		}
-		else if([theTrustedURL isEqualToString:@"http://nitosoft.com/updates.plist"])
-		{
-			NSMutableDictionary *couchDict = [[NSMutableDictionary alloc] init];
-			[couchDict setObject:@"CouchSurfer" forKey:@"name"];
-			[couchDict setObject:[hellothree valueForKey:@"displayVersionTwo"] forKey:@"Version"];
-			[couchDict setObject:[hellothree valueForKey:@"twoUrl"] forKey:@"theURL"];
-			[couchDict setObject:@"Brandon Holland" forKey:@"developer"];
-			[couchDict setObject:@"CouchSurfer" forKey:@"pluginbase"];
-			[TrustedDict setObject:couchDict forKey:@"CouchSurfer"];
-			[self writeToLog:@"CouchSurfer Loop (from nitoserver)"];
-		}
-		else
-		{
-			NSLog(@"1");
-			NSArray *dl_keys=[[NSArray alloc] initWithArray:[hellothree allKeys]];
-			NSLog(@"2");
-			NSArray *plugins_keys =[NSArray arrayWithArray:[pluginsdict allKeys]];
-			NSEnumerator *key_Enumerator=[dl_keys objectEnumerator];
-			id obj2;
-			NSLog(@"3");
-			while(obj2=[key_Enumerator nextObject] != nil)
-			{
-				NSLog(@"4");
-				if(![plugins_keys containsObject:obj2])
-				{
-					[pluginsdict setObject:[hellothree valueForKey:obj2] forKey:obj2];
-				}
-				else if([[[pluginsdict valueForKey:obj2] valueForKey:@"Version"] compare:[[hellothree valueForKey:obj2] valueForKey:@"Version"]]==NSOrderedAscending)
-				{
-					[pluginsdict removeObjectForKey:obj2];
-					[pluginsdict setObject:[hellothree valueForKey:obj2] forKey:obj2];
-				}
-				NSLog(@"4.5");
-			}
-			NSLog(@"5");
-			
-			//[TrustedDict addEntriesFromDictionary:hellothree];
-			[self writeToLog:@"Normal Loop"];
-		}
-	}
-	
-	[pluginsdict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist" atomically:YES];
-	[pluginsdict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/plugins.plist" atomically:YES];
-	*/[self writeToLog:@"========= Done ========="];
+	[self writeToLog:@"========= Done ========="];
 	BRScrollingTextControl *textControls = [[BRScrollingTextControl alloc] init];
 	[textControls setTitle:@"Check For Updates"];
 	[textControls setDocumentPath:@"/Users/frontrow/Library/Application Support/SoftwareMenu/updater.log" encoding:NSUTF8StringEncoding];
 	BRController *theController =  [BRController controllerWithContentControl:textControls];
 	[[self stack] pushController:theController];
 
-}
--(void)parsetrusted
-{
-	total = 0 ;
-	/*NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 0.5];
-	 [NSThread sleepUntilDate:future];*/
-	//NSLog(@"===== parsetrusted =====");
-	
-	[self writeToLog:@"parsing trusted Sources"];
-	
-	NSArray *loginItemDict = [NSArray arrayWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Trusted/Trusted.plist.xml"]];
-	NSEnumerator *enumerator = [loginItemDict objectEnumerator];
-	NSString *theURL;
-	total = [loginItemDict count];
-	total = total +1;
-	[self writeToLog:[NSString stringWithFormat:@"total: %d",total]];
-	id obj;
-	[istrusted addObject:@"yes"];
-	while((obj = [enumerator nextObject]) != nil) 
-	{
-		[istrusted addObject:@"yes"];
-		theURL = [obj valueForKey:@"theURL"];
-		//NSLog(@"theURL: %@", theURL);
-		NSString * thelogstring = [[NSString stringWithFormat:@"source: %@  ; ",[obj valueForKey:@"thename"]] stringByAppendingString:[NSString stringWithFormat:@"URL: %@",theURL]];
-		[self writeToLog:thelogstring];
-		
-		NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:theURL]
-												  cachePolicy:NSURLRequestUseProtocolCachePolicy
-											  timeoutInterval:60.0];
-		NSURLDownload  *theDownload=[[NSURLDownload alloc] initWithRequest:theRequest delegate:self];
-		
-		if (!theDownload) {
-			//NSLog(@"shit");
-		}
-	}
-	
-	NSDictionary *loginItemDict2 = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/unTrusted/untrusted.plist"]];
-	NSEnumerator *enumerator2 = [loginItemDict2 objectEnumerator];
-	int total2 = [loginItemDict2 count];
-	total = total + total2 ;
-	while((obj = [enumerator2 nextObject]) != nil) 
-	{
-		[istrusted addObject:@"no"];
-		theURL = [obj valueForKey:@"theURL"];
-		//NSLog(@"theURL: %@", theURL);
-		NSString * thelogstring = [[NSString stringWithFormat:@"source: %@  ; ",[obj valueForKey:@"thename"]] stringByAppendingString:[NSString stringWithFormat:@"URL: %@",theURL]];
-		[self writeToLog:thelogstring];
-		
-		NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:theURL]
-												  cachePolicy:NSURLRequestUseProtocolCachePolicy
-											  timeoutInterval:60.0];
-		NSURLDownload  *theDownload=[[NSURLDownload alloc] initWithRequest:theRequest delegate:self];
-		
-		if (!theDownload) {
-			//NSLog(@"shit");
-		}
-	}
-
-}
-
-
-- (void)download:(NSURLDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename
-{
-	//NSLog(@" ===== download =====");
-    NSString *destinationFilename;
-    NSString *homeDirectory=NSHomeDirectory();
-	if(STARTING)
-	{
-		destinationFilename=[[homeDirectory stringByAppendingPathComponent:@"Library/Application Support/SoftwareMenu/Trusted"]
-							 stringByAppendingPathComponent:filename];
-	}
-	else
-	{
-		if([[istrusted objectAtIndex:i] isEqualToString:@"yes"])
-		{
-			destinationFilename=[[homeDirectory stringByAppendingPathComponent:@"Library/Application Support/SoftwareMenu/Trusted"]
-								 stringByAppendingPathComponent:filename];
-		}
-		else
-		{
-			destinationFilename=[[homeDirectory stringByAppendingPathComponent:@"Library/Application Support/SoftwareMenu/unTrusted"]
-								 stringByAppendingPathComponent:filename];
-		}
-	}
-	_DownloadFileNames = destinationFilename;
-	CFPreferencesSetAppValue(CFSTR("theURL"), (CFStringRef)[NSString stringWithString:destinationFilename],kCFPreferencesCurrentApplication);
-	//NSLog(@" destionationFilename: %@",destinationFilename);
-	[urls addObject:destinationFilename];
-	[download setDestination:destinationFilename allowOverwrite:YES];
-}
-- (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error
-{
-    // release the connection
-    [download release];
-	NSString *theURL= (NSString *)(CFPreferencesCopyAppValue((CFStringRef)@"theURL", kCFPreferencesCurrentApplication));
-	[self writeToLog:[theURL stringByAppendingString:@" has failed"]];
-	if(STARTING)
-	{
-		[self writeToLog:@"please send me a mail and yell at me"];
-	}
-    // inform the user
-	i=i+1;
-	[self writeToLog:@"error"];
-    /*NSLog(@"Download failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);*/
-	
-}
-- (void)downloadDidFinish:(NSURLDownload *)download
-{
-    // release the connection
-    [download release];
-	
-    // do something with the data
-    //NSLog(@"%@",@"downloadDidFinish");
-	[self writeToLog:@"==== Download Finished === "];
-	if (STARTING)
-	{
-		STARTING = false;
-		[self parsetrusted];
-	}
-	else
-	{
-		
-		NSString *theURL= [urls objectAtIndex:i];
-		//NSLog(@"destination filename:%@",theURL);
-		[self writeToLog:[NSString stringWithFormat:@"adding links from : %@", theURL]];
-		NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:theURL];
-		
-		
-		/*theURL = _DownloadFileNames;
-		 //NSLog(@"destionation filenames:%@",theURL);*/
-		if([[istrusted objectAtIndex:i]isEqualToString:@"yes"])
-		{
-			[tempFrapsInfo addEntriesFromDictionary:tempdict];
-			[tempFrapsInfo writeToFile:@"Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist" atomically:YES];
-
-		}
-		else if([[istrusted objectAtIndex:i]isEqualToString:@"no"])
-		{
-			[tempFrapsInfo2 addEntriesFromDictionary:tempdict];
-			[tempFrapsInfo2 writeToFile:@"Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist" atomically:YES];
-		}
-		//[self setsourceText:[[self sourceText] stringByAppendingString:[NSString stringWithFormat:@"\n%@ has been parsed",theURL]]]; 
-	}
-	i=i+1;
-	[self writeToLog:[NSString stringWithFormat:@"i: %d",i]];
-	[self writeToLog:[NSString stringWithFormat:@"total: %d",total]];
-	//NSLog(@"%d",i);
-	//NSLog(@"total: %d",total);
-	if(i==total)
-	{
-		[self writeToLog:@"done"];
-		
-		BRScrollingTextControl *textControls = [[BRScrollingTextControl alloc] init];
-		[textControls setTitle:@"Check For Updates"];
-		[textControls setDocumentPath:@"/Users/frontrow/Library/Application Support/SoftwareMenu/updater.log" encoding:NSUTF8StringEncoding];
-		BRController *theController =  [BRController controllerWithContentControl:textControls];
-		[[self stack] pushController:theController];
-	}
 }
 
 
@@ -782,20 +532,14 @@
 }
 -(void)willBeBuried
 {
-	//NSLog(@"willBuried");
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
 	[super willBeBuried];
 }
 
--(void)willBePushed
-{
-	//NSLog(@"willBePushed");
-	[super willBePushed];
-}
+
 
 -(void)willBePopped
 {
-	//NSLog(@"willBePopped");
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
 	[super willBePopped];
 }
@@ -804,13 +548,7 @@
 	NSString * thelog2 = [[[[NSString alloc] initWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/updater.log" stringByExpandingTildeInPath]] stringByAppendingString:@"\n"] stringByAppendingString:str];
 	[thelog2 writeToFile:[@"~/Library/Application Support/SoftwareMenu/updater.log" stringByExpandingTildeInPath] atomically:YES];
 }
-- (void) textDidEndEditing: (id) sender
-{
-	[[self stack] popController];
-	NSString *thetext = [sender stringValue];
-	//NSLog(@"thetext");
-	[self writeToLog:thetext];
-}
+
 - (void)wasExhumedByPoppingController:(id)fp8
 {
 	[self initWithIdentifier:@"101"];	
@@ -819,40 +557,7 @@
 {
 	[self initWithIdentifier:@"101"];	
 }
-- (BOOL)brEventAction:(BREvent *)event
-{
-	long selitem;
-	unsigned int hashVal = (uint32_t)((int)[event page] << 16 | (int)[event usage]);
-	if ([(BRControllerStack *)[self stack] peekController] != self)
-		hashVal = 0;
-	
-	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
-	
-	//NSLog(@"hashval =%i",hashVal);
-	switch (hashVal)
-	{
-		case 65676:  // tap up
-			break;
-		case 65677:  // tap down
-			break;
-		case 65675:  // tap left
-			break;
-		case 65674:  // tap right
 
-			break;
-		
-		case 65673:  // tap play
-			/*selitem = [self selectedItem];*/
-			selitem = 0;
-			
-			selitem = [self selectedItem];
-			 if(selitem<(long)1);
-				[[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];
-			//NSLog(@"type play");
-			break;
-	}
-	return [super brEventAction:event];
-}
 //	Data source methods:
 
 - (float)heightForRow:(long)row				{ return 0.0f; }

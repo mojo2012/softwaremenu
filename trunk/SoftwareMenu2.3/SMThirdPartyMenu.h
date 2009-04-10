@@ -9,7 +9,15 @@
 //#import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 ////#import <BackRow/BackRow.h>
-
+typedef enum 
+	{
+		kSMTpCheck = 1,
+		kSMTpRefresh = 2,
+		kSMTpRestart = 3,
+		kSMTpSm =4,
+		KSMTpTrusted =5,
+		kSMTpUntrusted =6,
+	} TPMenuTypes;
 
 @interface SMThirdPartyMenu : BRMediaMenuController 
 {
@@ -33,7 +41,7 @@
 	int total;
 	NSString *				_DownloadFileNames;
 
-
+	NSFileManager *		_man;
 	
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;
