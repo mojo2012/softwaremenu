@@ -48,7 +48,7 @@
 	}
 	else if([theoption isEqualToString:@"Reboot"])
 	{
-		resourcePath = @"softwareupdate";
+		resourcePath = @"standby";
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:resourcePath ofType:@"png"];
 	}
 	else if([theoption isEqualToString:@"Refresh"])
@@ -58,7 +58,7 @@
 	}
 	else if([theoption isEqualToString:@"KillFinder"])
 	{
-		resourcePath = @"softwareupdate";
+		resourcePath = @"standby";
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:resourcePath ofType:@"png"];
 	}
 	//NSLog(@"%@", appPng);

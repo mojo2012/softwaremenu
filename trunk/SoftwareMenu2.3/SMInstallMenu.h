@@ -22,8 +22,8 @@
 	int padding[16];
 	NSString *	identifier;
 	BOOL		EXISTS;
-	NSString *	current_vers;
-	NSString *	bak_vers;
+	//NSString *	current_vers;
+	//NSString *	bak_vers;
 	BOOL		UPTODATE;
 	BOOL		BAK_EXISTS;
 	
@@ -31,6 +31,7 @@
 	NSMutableArray *		_options;
 	NSFileHandle   *		log;
 	NSMutableDictionary *	_theInformation;
+	NSFileManager  *		_man;
 	
 }
 

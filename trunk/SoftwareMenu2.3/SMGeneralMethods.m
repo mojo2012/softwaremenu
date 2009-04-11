@@ -334,10 +334,7 @@ static SMGeneralMethods *sharedInstance = nil;
 		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath] attributes:nil];
 	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath]])
 		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath] attributes:nil];
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath]])
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath] handler:nil];
-	if([man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath]])
-		[man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath] handler:nil];
+	
 }
 
 @end

@@ -41,29 +41,15 @@ static NSString  * _current_vers= nil;
 
 -(id)init{
 	//NSLog(@"init");
-	if(DEBUG_MODE)
-	{
-		NSString *thelog = [NSString stringWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/log.txt"]];
-		thelog = [thelog stringByAppendingString:(@"\n")];
-		[@"DEBUG MODE ON" writeToFile:@"/Users/frontrow/log.txt" atomically:YES];
-		log = [NSFileHandle fileHandleForWritingAtPath:@"/Users/frontrow/Software.log"];
-		[log retain];
-		[log seekToEndOfFile];
-	}
-	//[self writeToLog:@"init"];
-	return [super init];
+	self=[super init];
+	_man = [NSFileManager defaultManager];
+	return self;
 }
 - (void)dealloc
 {
 	//[self writeToLog:@"dealloc"];
 	//NSLog(@"dealloc");
 	[_theInformation release];
-	if(DEBUG_MODE)
-	{
-		[log closeFile];
-		[log release];
-	}
-	
 	[super dealloc];  
 }
 
@@ -73,9 +59,7 @@ static NSString  * _current_vers= nil;
 	NSString *name=[[NSString alloc] initWithString:[_theInformation valueForKey:@"name"]];
 	NSString *version=[_theInformation valueForKey:@"version"];
 	NSString *thelicense =[[NSString alloc] initWithString:[_theInformation valueForKey:@"license"]];
-	//NSLog(@"after allocations");
 	[self checkVarious];
-	//NSLog(@"after checkvarious");
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	[self setListTitle: name];
 	
@@ -178,67 +162,50 @@ static NSString  * _current_vers= nil;
 	[[self list] addDividerAtIndex:iii withLabel:name];
 	return self;
 }
--(void)checkVarious
+-(void)getVersions
 {
-	
-	//NSLog(@"===== CheckVarious =====");
-	
-	NSString *frapPath= [[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
-	NSString *bakPath= [[NSString alloc] initWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
-	
-	NSFileManager *manager = [NSFileManager defaultManager];
-	
-	if ([manager fileExistsAtPath:frapPath])
+	if([self frapExists])
 	{
-		
-		
-		EXISTS = true;
-		NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
+		NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
+		NSString *infoPath = [[NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]] stringByAppendingString:@"Contents/Info.plist"];
 		NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
-		_current_vers =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-		[_theInformation setObject:_current_vers forKey:@"currentvers"];
-		//CFPreferencesSetAppValue(CFSTR("currentvers"), (CFStringRef)[NSString stringWithString:_current_vers],kCFPreferencesCurrentApplication);
-		
-		//NSLog(@"version: %@ is installed; version %@ is most recent", _current_vers, version);
-		
-		//if([_current_vers isEqualToString:[_theInformation valueForKey:@"version"]])
-		if([_current_vers compare:[_theInformation valueForKey:@"version"]]!=NSOrderedAscending)
-
-		{
-			
-			
-			//NSLog(@"frap is up to date");
-			UPTODATE = true;
-		}
-		else
-		{
-			//NSLog(@"you are not up to date");
-			UPTODATE = false;
-		}
-		
+		NSString * current_vers =[[NSString alloc] initWithString:[info objectForKey:@"CFBundleVersion"]];
+		[_theInformation setObject:current_vers forKey:@"installedVersion"];
 	}
-	else
+	if([self bakExists])
 	{
-		EXISTS = false;
-		[_theInformation setObject:@"0.0.0 - not installed" forKey:@"currentvers"];
-	}
-	if([manager fileExistsAtPath:bakPath])
-	{
-		
-		BAK_EXISTS = true;
+		NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
 		NSString *bakInfoPath = [bakPath stringByAppendingString:@"Contents/Info.plist"];
 		NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:bakInfoPath]];
-		
-		bak_vers = [[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-		[_theInformation setObject:bak_vers forKey:@"bakvers"];
-	}
-	else
-	{
-		BAK_EXISTS = false;
-		bak_vers=[[NSString alloc]initWithString:@"0.0 -- not Backed Up"];
-		[_theInformation setObject:@"0.0 -- not Backed Up" forKey:@"bakvers"];
+		NSString * bcakup_vers = [[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
+		[_theInformation setObject:backup_vers forKey:@"backupVersion"];
 	}
 }
+
+-(BOOL)frapExists
+{
+	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
+	if([_man fileExistsAtPath:frapPath]){return (YES);}
+	[_theInformation setObject:@"0.0.0 - not installed" forKey:@"installedVersion"];
+	return(NO);
+}
+
+-(BOOL)bakExists
+{
+	NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
+	if([_man fileExistsAtPath:bakPath]){return (YES);}
+	[_theInformation setObject:@"0.0 - not Backed up" forKey:@"backupVersion"];
+	return(NO);
+}
+
+-(BOOL)frapUpToDate
+{
+	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
+	NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
+	if([[_theInformation valueForKey:@"installedVersion"] compare:[_theInformation valueForKey:@"version"]]!=NSOrderedAscending){return (YES);}
+	return (NO);
+}
+
 
 -(long)defaultIndex
 {

@@ -459,6 +459,24 @@
 	NSLog(@"%@",string);
 	//return TRUE;
 }
+-(int)setNetworkName:(NSString *)newName
+{
+	NSTask *changeName = [[NSTask alloc] init];
+	[changeName setLaunchPath:@"/usr/sbin/scutil"];
+	[changeName setArguments:[NSArray arrayWithObjects:@"–set",@"LocalHostName", newName, nil]];
+	[changeName launch];
+	[changeName waitUntilExit];
+	int i = [changeName terminationStatus];
+	NSTask *changeHost = [[NSTask alloc] init];
+	[changeHost setLaunchPath:@"/usr/sbin/scutil"];
+	[changeHost setArguments:[NSArray arrayWithObjects:@"–set",@"ComputerName", newName, nil]];
+	[changeHost launch];
+	[changeHost waitUntilExit];
+	int ii = [changeName terminationStatus];
+	int returnValue = i+ii;
+	return returnValue;
+
+}
 
 
 - (void)copySSHFiles

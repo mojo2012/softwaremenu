@@ -91,6 +91,9 @@
 
 - (void)dealloc
 {
+	[_man release];
+	[_options release];
+	[_items release];
 	[super dealloc];  
 }
 
@@ -155,8 +158,7 @@
 						 @"softwaremenu",@"Name",
 						 @"SoftwareMenu",@"DisplayName",
 						 nil]];
-	NSData *image = [ NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://appletv.nanopi.net/Images/ApplianceIcon.gif"]];
-	[image writeToFile:@"/Users/frontrow/ApplianceIcon.gif" atomically:YES];
+
 	[item90 setTitle:@"SoftwareMenu"];
 	
 	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
@@ -215,14 +217,15 @@
 		NSString *onlineVersion = [obj valueForKey:@"Version"];
 		NSString *frapPath= [NSString stringWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename,nil];
 		NSFileManager *manager = [NSFileManager defaultManager];
-		id item = [BRTextMenuItemLayer folderMenuItem];		
+		id item = [BRTextMenuItemLayer folderMenuItem];
+		NSString * current_version = nil;
 		if(![thename isEqualToString:@"SoftwareMenu"])
 		{
 			if ([manager fileExistsAtPath:frapPath])
 			{
 				//NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[frapPath stringByAppendingString:@"Contents/Info.plist"]];
-				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
+				current_version =[NSString stringWithString:[info objectForKey:@"CFBundleVersion"]];
 				
 				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
 				{
@@ -252,7 +255,7 @@
 								 [NSNumber numberWithInt:5],@"Type",
 								 thename,@"Name",
 								 displayName,@"DisplayName",
-								 onlineVersion,@"OnlineVersion",
+								 online_version,@"OnlineVersion",
 								 dev,@"Developer",
 								 desc,@"ShortDescription",
 								 [obj valueForKey:@"ReleaseDate"],@"ReleaseDate",
@@ -389,10 +392,14 @@
 	}
 	switch([[[_options objectAtIndex:fp8] valueForKey:@"Type"] intValue])
 	{
+		case kSMTpSm:
+			NSLog(@"SoftwareMenu:");
 		case kSMTpUntrusted:
 		case KSMTpTrusted:
 			NSLog(@"doing something");
 			NSString *thename = [[_options objectAtIndex:fp8] valueForKey:@"Name"];
+			if([thename isEqualToString:@"softwaremenu"]) {thename = @"SoftwareMenu";}
+				
 			NSEnumerator *enumerator = [loginItemDict objectEnumerator];
 			id obj;
 			while((obj = [enumerator nextObject]) != nil) 
@@ -406,7 +413,6 @@
 					}
 					
 					NSString * theversion = [obj valueForKey:@"Version"];
-					//NSString *thescript =[obj valueForKey:@"thescript"];
 					NSString *thedescription = [obj valueForKey:@"theDesc"];
 					if(thedescription == nil)
 					{
@@ -442,6 +448,10 @@
 -(void)startUpdate
 {
 
+	if([_man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath]])
+		[_man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info3.plist" stringByExpandingTildeInPath] handler:nil];
+	if([_man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath]])
+		[_man removeFileAtPath:[@"~/Library/Application Support/SoftwareMenu/Info4.plist" stringByExpandingTildeInPath] handler:nil];
 	
 	tempFrapsInfo = [[NSMutableDictionary alloc] initWithDictionary:nil];
 	tempFrapsInfo2= [[NSMutableDictionary alloc] initWithDictionary:nil];

@@ -20,6 +20,7 @@
 #import "SoftwareSettings.h"
 #import "SMFrappMover.h"
 #import "SMGeneralMethods.h"
+#import "AGProcess.h"
 
 
 @implementation SoftwareMenus
