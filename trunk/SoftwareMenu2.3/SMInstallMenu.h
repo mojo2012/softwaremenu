@@ -14,7 +14,17 @@
 ////#import <BackRow/BRController.h>
 #import <CoreData/CoreData.h>
 #import <SMDownloaderSTD.h>
-
+typedef enum {
+	kSMInInfo = 1,
+	kSMInLicense = 2,
+	kSMInInstall = 4,
+	kSMInUpdate = 5,
+	kSMInBackup = 6,
+	kSMInRemove = 7,
+	kSMInRestore = 8,
+	kSMInRemoveB = 9,
+	kSMInManage = 10,
+} InType;
 @class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, SMProgressBarControl;
 
 @interface SMInstallMenu : BRMediaMenuController 

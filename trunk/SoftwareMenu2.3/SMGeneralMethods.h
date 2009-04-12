@@ -22,6 +22,7 @@
 #define LAYER_TYPE					@"layer_type"
 #define LAYER_NAME					@"layer_name"
 #define LAYER_DISPLAY				@"layer_display"
+#define LAYER_INT					@"layer_integer"
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
 #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
 #define PLUGINS						@"plugins"

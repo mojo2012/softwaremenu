@@ -255,7 +255,7 @@
 								 [NSNumber numberWithInt:5],@"Type",
 								 thename,@"Name",
 								 displayName,@"DisplayName",
-								 online_version,@"OnlineVersion",
+								 onlineVersion,@"OnlineVersion",
 								 dev,@"Developer",
 								 desc,@"ShortDescription",
 								 [obj valueForKey:@"ReleaseDate"],@"ReleaseDate",

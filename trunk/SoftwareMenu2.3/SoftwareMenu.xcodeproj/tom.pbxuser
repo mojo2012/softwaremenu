@@ -111,6 +111,10 @@
 			E2144FA50F60ECE7003A3A0C = E2144FA50F60ECE7003A3A0C /* PBXTextBookmark */;
 			E21730480ECB9920009E5364 = E21730480ECB9920009E5364 /* PBXBookmark */;
 			E224B6020EC286BC00D9D783 = E224B6020EC286BC00D9D783 /* PBXBookmark */;
+			E22CCAC50F914BAC0004DA78 /* PBXTextBookmark */ = E22CCAC50F914BAC0004DA78 /* PBXTextBookmark */;
+			E22CCAC60F914BAC0004DA78 /* PBXTextBookmark */ = E22CCAC60F914BAC0004DA78 /* PBXTextBookmark */;
+			E22CCAC70F914BAC0004DA78 /* PBXTextBookmark */ = E22CCAC70F914BAC0004DA78 /* PBXTextBookmark */;
+			E22CCAC80F914BAC0004DA78 /* PBXTextBookmark */ = E22CCAC80F914BAC0004DA78 /* PBXTextBookmark */;
 			E236DAC40F644AF7003C02CA = E236DAC40F644AF7003C02CA /* PBXTextBookmark */;
 			E23E85A10F818B6200288CE1 = E23E85A10F818B6200288CE1 /* PBXTextBookmark */;
 			E23E88DF0F81937100288CE1 = E23E88DF0F81937100288CE1 /* PBXTextBookmark */;
@@ -627,9 +631,9 @@
 	};
 	E204063C0F5A64B2008F2DF7 /* SMGeneralMethods.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 840}}";
-			sepNavSelRange = "{1020, 0}";
-			sepNavVisRange = "{46, 1860}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 854}}";
+			sepNavSelRange = "{906, 0}";
+			sepNavVisRange = "{46, 1871}";
 			sepNavWindowFrame = "{{15, 4}, {1424, 869}}";
 		};
 	};
@@ -848,9 +852,9 @@
 	};
 	E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1379, 8134}}";
-			sepNavSelRange = "{14473, 0}";
-			sepNavVisRange = "{12581, 1694}";
+			sepNavIntBoundsRect = "{{0, 0}, {1379, 8358}}";
+			sepNavSelRange = "{8953, 0}";
+			sepNavVisRange = "{7611, 1568}";
 			sepNavWindowFrame = "{{113, 4}, {1149, 874}}";
 		};
 	};
@@ -1089,6 +1093,44 @@
 	E224B6020EC286BC00D9D783 /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = E2A23E230EBFF8DD00D606C2 /* syspref.png */;
+	};
+	E22CCAC50F914BAC0004DA78 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */;
+		name = "SMInstallMenu.h: 26";
+		rLen = 0;
+		rLoc = 575;
+		rType = 0;
+		vrLen = 884;
+		vrLoc = 0;
+	};
+	E22CCAC60F914BAC0004DA78 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: 'online_version' undeclared (first use in this function)";
+		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
+		rLen = 1;
+		rLoc = 257;
+		rType = 1;
+	};
+	E22CCAC70F914BAC0004DA78 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */;
+		name = "SMInstallMenu.h: 26";
+		rLen = 0;
+		rLoc = 575;
+		rType = 0;
+		vrLen = 884;
+		vrLoc = 0;
+	};
+	E22CCAC80F914BAC0004DA78 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
+		name = "SMThirdPartyMenu.m: 258";
+		rLen = 0;
+		rLoc = 8953;
+		rType = 0;
+		vrLen = 1568;
+		vrLoc = 7611;
 	};
 	E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */ = {
 		uiCtxt = {
@@ -4301,17 +4343,17 @@
 	};
 	E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1108, 840}}";
-			sepNavSelRange = "{1144, 87}";
-			sepNavVisRange = "{328, 904}";
+			sepNavIntBoundsRect = "{{0, 0}, {1108, 924}}";
+			sepNavSelRange = "{565, 0}";
+			sepNavVisRange = "{199, 1032}";
 			sepNavWindowFrame = "{{29, 4}, {890, 874}}";
 		};
 	};
 	E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1230, 6328}}";
-			sepNavSelRange = "{585, 0}";
-			sepNavVisRange = "{0, 1158}";
+			sepNavIntBoundsRect = "{{0, 0}, {1332, 5738}}";
+			sepNavSelRange = "{9678, 0}";
+			sepNavVisRange = "{9356, 1934}";
 			sepNavWindowFrame = "{{330, 4}, {1291, 874}}";
 		};
 	};
@@ -4320,7 +4362,7 @@
 		fRef = E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */;
 		name = "SoftwareMenu.h: 29";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 1136;
 		rType = 0;
 		vrLen = 850;
 		vrLoc = 0;
@@ -4330,7 +4372,7 @@
 		fRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */;
 		name = "SoftwareMenu.m: 43";
 		rLen = 0;
-		rLoc = 14632;
+		rLoc = 14576;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 135;
@@ -4775,9 +4817,9 @@
 	};
 	E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2214, 18550}}";
-			sepNavSelRange = "{16674, 20}";
-			sepNavVisRange = "{16670, 2051}";
+			sepNavIntBoundsRect = "{{0, 0}, {1236, 19264}}";
+			sepNavSelRange = "{16669, 0}";
+			sepNavVisRange = "{15976, 1545}";
 			sepNavWindowFrame = "{{769, 4}, {890, 874}}";
 		};
 	};
@@ -4786,7 +4828,7 @@
 		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
 		name = "installHelperClass.m: 109";
 		rLen = 0;
-		rLoc = 27153;
+		rLoc = 27805;
 		rType = 0;
 		vrLen = 968;
 		vrLoc = 2518;
@@ -5502,7 +5544,7 @@
 		fRef = E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */;
 		name = "SMInstallMenu.h: 52";
 		rLen = 87;
-		rLoc = 1144;
+		rLoc = 1362;
 		rType = 0;
 		vrLen = 904;
 		vrLoc = 328;
@@ -5512,7 +5554,7 @@
 		fRef = E204063C0F5A64B2008F2DF7 /* SMGeneralMethods.h */;
 		name = "SMGeneralMethods.h: 26";
 		rLen = 0;
-		rLoc = 1020;
+		rLoc = 1059;
 		rType = 0;
 		vrLen = 1860;
 		vrLoc = 46;
@@ -5836,7 +5878,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 320";
 		rLen = 0;
-		rLoc = 12312;
+		rLoc = 12330;
 		rType = 0;
 		vrLen = 1881;
 		vrLoc = 8470;
@@ -5866,7 +5908,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 320";
 		rLen = 0;
-		rLoc = 12105;
+		rLoc = 12123;
 		rType = 0;
 		vrLen = 1363;
 		vrLoc = 10989;
@@ -5896,7 +5938,7 @@
 		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
 		name = "installHelperClass.m: 701";
 		rLen = 10;
-		rLoc = 26813;
+		rLoc = 27465;
 		rType = 0;
 		vrLen = 2123;
 		vrLoc = 6116;
@@ -5916,7 +5958,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 256";
 		rLen = 0;
-		rLoc = 8996;
+		rLoc = 9014;
 		rType = 0;
 		vrLen = 1613;
 		vrLoc = 8411;
@@ -5970,7 +6012,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 481";
 		rLen = 0;
-		rLoc = 18425;
+		rLoc = 18505;
 		rType = 0;
 		vrLen = 2441;
 		vrLoc = 16049;
@@ -5988,7 +6030,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 543";
 		rLen = 23;
-		rLoc = 20961;
+		rLoc = 21041;
 		rType = 0;
 		vrLen = 1393;
 		vrLoc = 19528;
@@ -6203,7 +6245,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 543";
 		rLen = 23;
-		rLoc = 20961;
+		rLoc = 21041;
 		rType = 0;
 		vrLen = 2010;
 		vrLoc = 567;
@@ -6426,7 +6468,7 @@
 		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
 		name = "installHelperClass.m: 464";
 		rLen = 20;
-		rLoc = 16674;
+		rLoc = 17326;
 		rType = 0;
 		vrLen = 2051;
 		vrLoc = 16670;
@@ -6476,7 +6518,7 @@
 		fRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */;
 		name = "installHelperClass.m: 464";
 		rLen = 20;
-		rLoc = 16674;
+		rLoc = 17326;
 		rType = 0;
 		vrLen = 2051;
 		vrLoc = 16670;
@@ -6506,7 +6548,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 400";
 		rLen = 0;
-		rLoc = 14473;
+		rLoc = 14553;
 		rType = 0;
 		vrLen = 1803;
 		vrLoc = 13346;
