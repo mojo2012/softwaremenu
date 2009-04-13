@@ -37,8 +37,6 @@
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
 		E24525230EABDF7D00E4127B /* timemachine.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525220EABDF7D00E4127B /* timemachine.png */; };
 		E245252B0EABE04900E4127B /* trashempty.png in Resources */ = {isa = PBXBuildFile; fileRef = E245252A0EABE04900E4127B /* trashempty.png */; };
-		E24525350EABF94400E4127B /* nitoTV.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525340EABF94400E4127B /* nitoTV.png */; };
-		E24525370EABF96D00E4127B /* Sapphire.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525360EABF96D00E4127B /* Sapphire.png */; };
 		E24525410EABFAB100E4127B /* script.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525400EABFAB100E4127B /* script.png */; };
 		E24525490EABFEB700E4127B /* softwareupdate.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525480EABFEB700E4127B /* softwareupdate.png */; };
 		E24689680F5F8C020009B44A /* power.png in Resources */ = {isa = PBXBuildFile; fileRef = E24689670F5F8C020009B44A /* power.png */; };
@@ -51,7 +49,6 @@
 		E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */ = {isa = PBXBuildFile; fileRef = E273B2420F647CAC00E516B5 /* readmeupd.txt */; };
 		E2817F210F8D7B0B0065D70D /* VNC.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817F1F0F8D7B0B0065D70D /* VNC.png */; };
 		E2817F220F8D7B0B0065D70D /* Rowmote.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817F200F8D7B0B0065D70D /* Rowmote.png */; };
-		E2817F280F8D82280065D70D /* dropbear.tgz in Resources */ = {isa = PBXBuildFile; fileRef = E2817F270F8D82280065D70D /* dropbear.tgz */; };
 		E2817F8A0F8D96D20065D70D /* dropbear.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E2817F890F8D96D20065D70D /* dropbear.tar.gz */; };
 		E2817FA80F8DA2200065D70D /* AFP.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817FA70F8DA2200065D70D /* AFP.png */; };
 		E28180490F8E48980065D70D /* RW.png in Resources */ = {isa = PBXBuildFile; fileRef = E28180480F8E48980065D70D /* RW.png */; };
@@ -62,9 +59,6 @@
 		E29FA09E0F585603002BE2B0 /* SMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */; };
 		E29FA39B0F58A7AB002BE2B0 /* SMDownloaderSTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */; };
 		E29FA5E00F59D275002BE2B0 /* SMUpdaterProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */; };
-		E2A2385E0EBE8C4B00D606C2 /* XBMCLauncher.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2385D0EBE8C4B00D606C2 /* XBMCLauncher.png */; };
-		E2A238600EBE8C7C00D606C2 /* ATVFiles.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A2385F0EBE8C7C00D606C2 /* ATVFiles.png */; };
-		E2A238630EBE8CDB00D606C2 /* CouchSurfer.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A238620EBE8CDB00D606C2 /* CouchSurfer.png */; };
 		E2A23A300EBFDAE000D606C2 /* SoftwareSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A23A2F0EBFDAE000D606C2 /* SoftwareSettings.m */; };
 		E2A23E240EBFF8DD00D606C2 /* syspref.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A23E230EBFF8DD00D606C2 /* syspref.png */; };
 		E2A240D50EC0ACC800D606C2 /* SoftwareManual.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */; };
@@ -138,8 +132,6 @@
 		E24524B50EABD98700E4127B /* package.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = package.png; sourceTree = "<group>"; };
 		E24525220EABDF7D00E4127B /* timemachine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timemachine.png; sourceTree = "<group>"; };
 		E245252A0EABE04900E4127B /* trashempty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trashempty.png; sourceTree = "<group>"; };
-		E24525340EABF94400E4127B /* nitoTV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nitoTV.png; sourceTree = "<group>"; };
-		E24525360EABF96D00E4127B /* Sapphire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sapphire.png; sourceTree = "<group>"; };
 		E24525400EABFAB100E4127B /* script.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = script.png; sourceTree = "<group>"; };
 		E24525480EABFEB700E4127B /* softwareupdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = softwareupdate.png; sourceTree = "<group>"; };
 		E24689670F5F8C020009B44A /* power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power.png; sourceTree = "<group>"; };
@@ -154,7 +146,6 @@
 		E273B3490F648DEE00E516B5 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2817F1F0F8D7B0B0065D70D /* VNC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VNC.png; sourceTree = "<group>"; };
 		E2817F200F8D7B0B0065D70D /* Rowmote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rowmote.png; sourceTree = "<group>"; };
-		E2817F270F8D82280065D70D /* dropbear.tgz */ = {isa = PBXFileReference; lastKnownFileType = file; path = dropbear.tgz; sourceTree = "<group>"; };
 		E2817F890F8D96D20065D70D /* dropbear.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = dropbear.tar.gz; sourceTree = "<group>"; };
 		E2817FA70F8DA2200065D70D /* AFP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AFP.png; sourceTree = "<group>"; };
 		E28180480F8E48980065D70D /* RW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RW.png; sourceTree = "<group>"; };
@@ -171,9 +162,6 @@
 		E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDownloaderSTD.m; sourceTree = "<group>"; };
 		E29FA5DE0F59D275002BE2B0 /* SMUpdaterProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterProcess.h; sourceTree = "<group>"; };
 		E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterProcess.m; sourceTree = "<group>"; };
-		E2A2385D0EBE8C4B00D606C2 /* XBMCLauncher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XBMCLauncher.png; sourceTree = "<group>"; };
-		E2A2385F0EBE8C7C00D606C2 /* ATVFiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ATVFiles.png; sourceTree = "<group>"; };
-		E2A238620EBE8CDB00D606C2 /* CouchSurfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CouchSurfer.png; sourceTree = "<group>"; };
 		E2A23A2E0EBFDAE000D606C2 /* SoftwareSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareSettings.h; sourceTree = "<group>"; };
 		E2A23A2F0EBFDAE000D606C2 /* SoftwareSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareSettings.m; sourceTree = "<group>"; };
 		E2A23E230EBFF8DD00D606C2 /* syspref.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = syspref.png; sourceTree = "<group>"; };
@@ -288,18 +276,12 @@
 				E24689670F5F8C020009B44A /* power.png */,
 				E224B56B0EC2827100D9D783 /* internet.png */,
 				E2A23E230EBFF8DD00D606C2 /* syspref.png */,
-				E2A238620EBE8CDB00D606C2 /* CouchSurfer.png */,
-				E2A2385F0EBE8C7C00D606C2 /* ATVFiles.png */,
-				E2A2385D0EBE8C4B00D606C2 /* XBMCLauncher.png */,
-				E2817F270F8D82280065D70D /* dropbear.tgz */,
 				E2CFE0FB0EAFDE4C00BC03AB /* PH.png */,
 				E2A35EDF0EAD7C1A00FB6FD7 /* unzip */,
 				E24525400EABFAB100E4127B /* script.png */,
 				E24525480EABFEB700E4127B /* softwareupdate.png */,
 				E2F0A3CD0F8F832600625DC1 /* refresh.png */,
 				E2F0A3CF0F8F83D300625DC1 /* standby.png */,
-				E24525360EABF96D00E4127B /* Sapphire.png */,
-				E24525340EABF94400E4127B /* nitoTV.png */,
 				E245252A0EABE04900E4127B /* trashempty.png */,
 				E24525220EABDF7D00E4127B /* timemachine.png */,
 				E2F0A4BB0F8F9D1200625DC1 /* Info.png */,
@@ -536,8 +518,6 @@
 				E24524B80EABD98700E4127B /* package.png in Resources */,
 				E24525230EABDF7D00E4127B /* timemachine.png in Resources */,
 				E245252B0EABE04900E4127B /* trashempty.png in Resources */,
-				E24525350EABF94400E4127B /* nitoTV.png in Resources */,
-				E24525370EABF96D00E4127B /* Sapphire.png in Resources */,
 				E24525410EABFAB100E4127B /* script.png in Resources */,
 				E24525490EABFEB700E4127B /* softwareupdate.png in Resources */,
 				E2A35E9C0EAD784300FB6FD7 /* installs.sh in Resources */,
@@ -547,9 +527,6 @@
 				E2CFDDCA0EAFD51B00BC03AB /* FixPerm.sh in Resources */,
 				E2CFE0FC0EAFDE4C00BC03AB /* PH.png in Resources */,
 				E25576D80EBE53DC002B6313 /* reset.sh in Resources */,
-				E2A2385E0EBE8C4B00D606C2 /* XBMCLauncher.png in Resources */,
-				E2A238600EBE8C7C00D606C2 /* ATVFiles.png in Resources */,
-				E2A238630EBE8CDB00D606C2 /* CouchSurfer.png in Resources */,
 				E2A23E240EBFF8DD00D606C2 /* syspref.png in Resources */,
 				E224B56C0EC2827100D9D783 /* internet.png in Resources */,
 				E24689680F5F8C020009B44A /* power.png in Resources */,
@@ -562,7 +539,6 @@
 				E2B7A83A0F8D0C45007B8BAB /* gunzip in Resources */,
 				E2817F210F8D7B0B0065D70D /* VNC.png in Resources */,
 				E2817F220F8D7B0B0065D70D /* Rowmote.png in Resources */,
-				E2817F280F8D82280065D70D /* dropbear.tgz in Resources */,
 				E2817F8A0F8D96D20065D70D /* dropbear.tar.gz in Resources */,
 				E2817FA80F8DA2200065D70D /* AFP.png in Resources */,
 				E28180490F8E48980065D70D /* RW.png in Resources */,

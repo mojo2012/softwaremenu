@@ -21,8 +21,6 @@ typedef enum {
 	kSMInUpdate = 5,
 	kSMInBackup = 6,
 	kSMInRemove = 7,
-	kSMInRestore = 8,
-	kSMInRemoveB = 9,
 	kSMInManage = 10,
 } InType;
 @class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, SMProgressBarControl;
@@ -57,6 +55,9 @@ typedef enum {
 -(long)rowForTitle:(id)title;
 -(id)titleForRow:(long)row;
 -(void)checkVarious;
+-(BOOL) frapExists;
+-(BOOL) bakExists;
+-(BOOL) frapUpToDate;
 
 
 @end

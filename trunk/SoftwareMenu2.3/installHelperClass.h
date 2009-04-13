@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import "AGProcess.h"
 #define FRAP_PATH					@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
+#define BAK_PATH					@"/Users/frontrow/Documents/Backups/"
 #define RESOURCES_PATH				@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/"
 
 //////#import <BackRow/BackRow.h>

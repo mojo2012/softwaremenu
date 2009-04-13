@@ -107,6 +107,7 @@
 	}
 	
 }
+
 -(void)hideFrap:(NSString *)frapname
 {
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources

@@ -13,6 +13,7 @@
 #define FRAP_PATH					@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
 #define BAK_PATH					@"/Users/frontrow/Documents/Backups/"
 #define SCRIPTS_FOLDER				@"/Users/frontrow/Documents/scripts/"
+#define IMAGES_FOLDER				@"/Users/frontrow/Library/Application Support/SoftwareMenu/Images"
 #define NAME_KEY					@"name_key_image"
 #define TYPE_KEY					@"type_key_image"
 #define SCRIPT_KEY					@"script_key_image"
@@ -59,5 +60,6 @@
 - (void)toggleUpdate;
 - (void)blockUpdate;
 - (NSString *)getImagePathforDict:(NSDictionary *)infoDict;
++ (NSString *)getImagePath:(NSString *)Name;
 
 @end

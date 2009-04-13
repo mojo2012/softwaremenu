@@ -55,10 +55,11 @@ int main (int argc, const char * argv[]) {
 		}
 		else if([option isEqual:@"-r"])
 		{
+			NSString *file = [@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/" stringByAppendingString:value];
 			NSLog(@"option: %@",option);
 			installHelperClass *ihc = [[installHelperClass alloc] init];
 			[ihc setRunPath:path];
-			int returnvalue=[ihc removeFile:value];
+			int returnvalue=[ihc removeFile:file];
 			[pool release];
 			//rvalue = 1;
 			
@@ -67,13 +68,15 @@ int main (int argc, const char * argv[]) {
 		else if([option isEqual:@"-rb"])
 		{
 			NSLog(@"option: %@",option);
+			NSString *file = [@"/Users/frontrow/Documents/Backups/" stringByAppendingString:[[value stringByDeletingPathExtension] stringByAppendingPathExtension:@"bak"]];
+			NSLog(@"filelocation: %@",file);
 			installHelperClass *ihc = [[installHelperClass alloc] init];
 			[ihc setRunPath:path];
-			[ihc removeBak:value];
+			int returnvalue=[ihc removeFile:file];
 			[pool release];
 			//rvalue = 1;
 			
-			return 0;
+			return returnvalue;
 		}
 		else if([option isEqual:@"-update"])
 		{

@@ -334,7 +334,33 @@ static SMGeneralMethods *sharedInstance = nil;
 		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/Trusted" stringByExpandingTildeInPath] attributes:nil];
 	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath]])
 		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/unTrusted" stringByExpandingTildeInPath] attributes:nil];
+	if(![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/Images" stringByExpandingTildeInPath]])
+		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/Images" stringByExpandingTildeInPath] attributes:nil];
 	
+}
++(NSString *)getImagePath:(NSString *)Name
+{
+	NSFileManager *man =[NSFileManager defaultManager];
+	NSString *filepath = nil;
+	NSArray *imageExtensions = [NSArray arrayWithObjects:
+							   @"png",
+							   @"jpeg",
+							   @"tif",
+							   @"tiff",
+							   @"jpg",
+							   @"gif",
+							   nil];
+	NSEnumerator *objEnum = [imageExtensions objectEnumerator];
+	id obj;
+	while((obj = [objEnum nextObject]) != nil) 
+	{
+		filepath=[IMAGES_FOLDER stringByAppendingPathComponent:[Name stringByAppendingPathExtension:obj]];
+		if([man fileExistsAtPath:filepath])
+		{
+			return (filepath);
+		}
+	}
+	return filepath;
 }
 
 @end

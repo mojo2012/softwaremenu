@@ -48,10 +48,32 @@
 		case kSMTpSm:
 		case KSMTpTrusted:
 		case kSMTpUntrusted:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:[[_options objectAtIndex:row] valueForKey:@"Name"] ofType:@"png"];
+			
+			
+			appPng = [SMGeneralMethods getImagePath:[[_options objectAtIndex:row] valueForKey:@"Name"]];
+			NSString *releaseDate= [[_options objectAtIndex:row] valueForKey:@"ReleaseDate"];
+			if(![releaseDate isEqualToString:@"nil"])
+			{
+				[meta setTitle:[NSString stringWithFormat:@"Released: %@",releaseDate]];
+			}
+			else
+			{
+				[meta setTitle:[[_options objectAtIndex:row] valueForKey:@"DisplayName"]];
+			}
+			//[SMGeneralMethods getImagePath:[[[_options objectAtIndex:row] valueForKey:@"Name"]]];
+			//appPng = [IMAGES_FOLDER stringByAppendingPathComponent:[[[_options objectAtIndex:row] valueForKey:@"Name"] stringByAppendingPathExtension:@"png"]];
+			//appPng = [[NSBundle bundleForClass:[self class]] pathForResource:[[_options objectAtIndex:row] valueForKey:@"Name"] ofType:@"png"];
+			
 			NSLog(@"appPng: %@, displayName: %@, name: %@, developer: %@",appPng,[[_options objectAtIndex:row] valueForKey:@"DisplayName"],[[_options objectAtIndex:row] valueForKey:@"Name"],[[_options objectAtIndex:row] valueForKey:@"Developer"]);
-			[meta setTitle:[[_options objectAtIndex:row] valueForKey:@"DisplayName"]];
-			[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"ShortDescription"]];
+			if([[[_options objectAtIndex:row] valueForKey:@"UpToDate"] boolValue])
+			{
+				[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"ShortDescription"]];
+			}
+			else
+			{
+				NSLog(@"UpdateText: %@", [[_options objectAtIndex:row] valueForKey:@"UpdateText"]);
+				[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"UpdateText"]];
+			}
 			[meta setDev:[[_options objectAtIndex:row] valueForKey:@"Developer"]];
 			break;
 		
@@ -99,6 +121,7 @@
 
 -(id)initWithIdentifier:(NSString *)initId
 {
+	[SMGeneralMethods checkFolders];
 	NSMutableDictionary *file =[[NSMutableDictionary alloc] initWithDictionary:nil];
 	[[self list] removeDividers];
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
@@ -150,11 +173,18 @@
 	int versLength = [SoftVers length];
 	
 	id item90 = [BRTextMenuItemLayer folderMenuItem];
+	BOOL SoftUpToDate =YES;
+	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
+	{
+		SoftUpToDate = NO;
+	}
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSNumber numberWithInt:4],@"Type",
 						 @"Thomas C. Cool",@"Developer",
 						 @"Extension to Settings Menu. allows you to install plugins, run scripts, upgrade and downgrade TV",@"ShortDescription",
-						 @"None",@"ReleaseDate",
+						 @"nil",@"ReleaseDate",
+						 @"Really Pro Update",@"UpdateText",
+						 [NSNumber numberWithBool:SoftUpToDate],@"UpToDate",
 						 @"softwaremenu",@"Name",
 						 @"SoftwareMenu",@"DisplayName",
 						 nil]];
@@ -166,7 +196,7 @@
 		if(versLength != 0)
 		{
 			[item90 setRightJustifiedText:@"Update Me"];
-			[item90 setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] errorIcon], @"BRMenuIconImageKey",nil]];
+			[item90 setIndentedLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] errorIcon], @"BRMenuIconImageKey",nil] largestOrdinal:4 iconAlignmentFactor:7];
 
 		}
 	}
@@ -250,15 +280,34 @@
 			NSString *desc = [obj valueForKey:@"ShortDescription"];
 			if(desc == nil)
 				desc = @"nil";
-			
+			NSDate *date = [obj valueForKey:@"ReleaseDate"];
+			NSString *dateFormat = nil;
+			NSLog(@"date: %@",date);
+			if(date == nil)
+			{
+				dateFormat = @"nil";
+			}
+			else
+			{
+				dateFormat = [date descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil];
+			}
+			BOOL uptodates = YES;
+			if ([current_version compare:onlineVersion]==NSOrderedAscending)
+				uptodates = NO;
+			NSString *updateText = [obj valueForKey:@"ShortChangeLog"];
+			if(updateText == nil)
+				updateText = desc;
+				
 			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 								 [NSNumber numberWithInt:5],@"Type",
 								 thename,@"Name",
 								 displayName,@"DisplayName",
 								 onlineVersion,@"OnlineVersion",
 								 dev,@"Developer",
+								 updateText,@"UpdateText",
+								 [NSNumber numberWithBool:uptodates],@"UpToDate",
 								 desc,@"ShortDescription",
-								 [obj valueForKey:@"ReleaseDate"],@"ReleaseDate",
+								 dateFormat,@"ReleaseDate",
 								 nil]];
 			[item setTitle:displayName];
 			[_items addObject: item];
@@ -300,14 +349,16 @@
 		NSString *onlineVersion = [obj valueForKey:@"Version"];
 		NSString *frapPath= [[NSString alloc] initWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename];
 		NSFileManager *manager = [NSFileManager defaultManager];
-		id item = [[BRTextMenuItemLayer alloc] init];		
+		id item = [[BRTextMenuItemLayer alloc] init];
+		NSString * current_version =nil;
 		if(![thename isEqualToString:@"SoftwareMenu"])
 		{
 			if ([manager fileExistsAtPath:frapPath])
 			{
 				NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
-				NSString * current_version =[[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
+				current_version = [[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
+
 				if ([current_version isEqualToString:onlineVersion])
 				{
 					[item setRightJustifiedText:@"Up to Date"];
@@ -330,14 +381,33 @@
 			NSString *desc = [obj valueForKey:@"ShortDescription"];
 			if(desc == nil)
 				desc = @"nil";
+			NSDate *date = [obj valueForKey:@"date"];
+			NSString *dateFormat = nil;
+			if(date == nil)
+			{
+				dateFormat = @"nil";
+			}
+			else
+			{
+				dateFormat = [date descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil];
+			}
+			BOOL uptodates = YES;
+			if ([current_version compare:onlineVersion]==NSOrderedAscending)
+				uptodates = NO;
+			NSString *updateText = [obj valueForKey:@"ShortChangeLog"];
+			if(updateText == nil)
+				updateText = desc;
+			
 			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-								 [NSNumber numberWithInt:6],@"Type",
+								 [NSNumber numberWithInt:5],@"Type",
 								 thename,@"Name",
 								 displayName,@"DisplayName",
-								 dev,@"Developer",
-								 desc,@"ShortDescription",
 								 onlineVersion,@"OnlineVersion",
-								 [obj valueForKey:@"ReleaseDate"],@"ReleaseDate",
+								 dev,@"Developer",
+								 updateText,@"UpdateText",
+								 [NSNumber numberWithBool:uptodates],@"UpToDate",
+								 desc,@"ShortDescription",
+								 dateFormat,@"ReleaseDate",
 								 nil]];
 			[item setTitle:thename];
 			[_items addObject: item];
@@ -426,6 +496,12 @@
 							}
 						}
 					}
+					NSString *displayName = [obj valueForKey:@"DisplayName"];
+					if (displayName == nil)
+						displayName = thename;
+					NSString *displayVersion = [obj valueForKey:@"displayVersion"];
+					if (displayVersion == nil)
+						displayVersion = theversion;
 					
 					NSString *thelicense = [obj valueForKey:@"thelicense"];
 					if(thelicense == nil)
@@ -437,7 +513,10 @@
 						}
 					}
 					id newController = [[SMInstallMenu alloc] init];
-					NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:thename,@"name",theversion,@"version",thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
+					NSString *shortVersion = @"empty";
+					if([thename isEqualToString:@"nitoTV"])
+						shortVersion = [obj valueForKey:@"shortVersion"];
+					NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:thename,@"name",theversion,@"version",displayName,@"displayName",shortVersion,@"shortVersion", displayVersion,@"displayVersion", thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
 					[newController setInformationDictionary:theInformation];
 					[newController initCustom];
 					[[self stack] pushController: newController];
@@ -475,7 +554,6 @@
 
 		[self writeToLog:[NSString stringWithFormat:@"Adding From List: %@",theTrustedName,nil]];
 		[self writeToLog:[NSString stringWithFormat:@"With URL: %@",theTrustedURL,nil]];
-		[self writeToLog:@"\n"];
 		
 		NSDictionary *trustedSource =[NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:theTrustedURL]];
 		
@@ -489,6 +567,8 @@
 			[nitoDict setObject:[trustedSource valueForKey:@"ShortDescription"] forKey:@"ShortDescription"];
 			[nitoDict setObject:[trustedSource valueForKey:@"developer"] forKey:@"Developer"];
 			[nitoDict setObject:[trustedSource valueForKey:@"ReleaseDate"] forKey:@"ReleaseDate"];
+			[nitoDict setObject:[trustedSource valueForKey:@"ImageURL"] forKey:@"ImageURL"];
+			NSLog(@"imageURL: %@",[nitoDict valueForKey:@"ImageURL"]);
 			[TrustedDict setObject:nitoDict forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];
 			
@@ -507,8 +587,10 @@
 			[TrustedDict addEntriesFromDictionary:trustedSource];
 			[self writeToLog:@"Normal Loop"];
 		}
+		[self writeToLog:@"\n"];
 	}
 	[TrustedDict writeToFile:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist" atomically:YES];
+	[self getImages:TrustedDict];
 	
 	NSDictionary *hellofour = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/unTrusted/untrusted.plist"]];
 	NSEnumerator *enumerator2 = [hellofour objectEnumerator];
@@ -532,6 +614,71 @@
 	BRController *theController =  [BRController controllerWithContentControl:textControls];
 	[[self stack] pushController:theController];
 
+}
+-(void)getImages:TrustedDict
+{
+	[self writeToLog:@"getting Images"];
+	NSEnumerator *keyEnum = [TrustedDict keyEnumerator];
+	id obj2;
+	NSString *ImageURL=nil;
+	NSString *name=nil;
+	id obj;
+	while((obj2 = [keyEnum nextObject]) != nil) 
+	{
+		obj = [TrustedDict objectForKey:obj2];
+		ImageURL = nil;
+		NSLog(@"1");
+		name = [obj objectForKey:@"name"];
+		if (name == nil)
+			name = [obj objectForKey:@"Name"];
+		ImageURL = [obj objectForKey:@"ImageURL"];
+		NSLog(@"name:%@, ImageURl:%@",name,ImageURL);
+		if([ImageURL length] !=0)
+		{
+			NSLog(@"non zero");
+		}
+		if([ImageURL length] == 0)
+		{
+			if([name isEqualToString:@"ATVFiles"])
+			{
+				ImageURL=@"http://softwaremenu.googlecode.com/svn/trunk/SoftwareMenu2.3/ATVFiles.png";
+				NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+				[imageData writeToFile:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]] atomically:YES];
+				
+			}
+			else if([name isEqualToString:@"CouchSurfer"])
+			{
+				ImageURL=@"http://softwaremenu.googlecode.com/svn/trunk/SoftwareMenu2.3/CouchSurfer.png";
+				NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+				[imageData writeToFile:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]] atomically:YES];
+			}
+			else if([name isEqualToString:@"nitoTV"])
+			{
+				ImageURL=@"http://softwaremenu.googlecode.com/svn/trunk/SoftwareMenu2.3/nitoTV.png";
+				NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+				[imageData writeToFile:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]] atomically:YES];
+			}
+			
+		}
+		if([ImageURL length]!=0)
+		{
+			NSLog(@"2");
+			NSLog(@"Image URL: %@",ImageURL);
+			NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+			NSLog(@"3");
+			
+			NSLog(@"4");
+			NSLog(@"image path: %@",[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]]);
+			if([_man fileExistsAtPath:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]]])
+			{
+				[_man removeFileAtPath:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]] handler:nil];
+			}
+			[imageData writeToFile:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]] atomically:YES];
+			
+		}
+	}
+		
+	
 }
 
 

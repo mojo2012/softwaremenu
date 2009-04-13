@@ -315,14 +315,17 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 - (void) setSourceImage: (NSString *)name
 {
 	NSString *appPng = nil;
+	appPng = [SMGeneralMethods getImagePath:name];
 	
-	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
+	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
+		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
+	
 	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
 	//NSLog(@"appPng: %@",appPng);
 	id sp= [BRImage imageWithPath:appPng];
 	[_sourceImage setImage:sp];
-	[_sourceImage setAutomaticDownsample:YES];
+	[_sourceImage setAutomaticDownsample:NO];
 	NSRect masterFrame = [[self parent] frame];
 	NSRect frame;
 	frame.origin.x = masterFrame.size.width *0.7f;
