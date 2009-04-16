@@ -28,18 +28,18 @@
 
 @implementation SMMedia
 
-/*- (id)initWithMediaURL:(NSURL *)url
+- (id)initWithMediaURL//:(NSURL *)url
 {
 	//This is here to fix 2.2
 	self = [super initWithMediaProvider:nil];
-	NSString *urlString = [url absoluteString];
-	NSString *filename = [url path];
-	[self setObject:[filename lastPathComponent] forKey:@"id"];
+	//NSString *urlString = [url absoluteString];
+	//NSString *filename = [url path];
+	[self setObject:@"hello.png" forKey:@"id"];
 	[self setObject:[BRMediaType movie] forKey:@"mediaType"];
-	[self setObject:urlString forKey:@"mediaURL"];
+	[self setObject:@"hello" forKey:@"mediaURL"];
 	
 	return self;
-}*/
+}
 
 - (void)dealloc
 {
@@ -52,6 +52,31 @@
 -(id)assetID
 {
 	return @"hello";
+}
+- (void)setOnlineVersion:(NSString *)theOnlineVersion
+{
+	[onlineVersion release];
+	onlineVersion = [theOnlineVersion retain];
+}
+- (void)setInstalledVersion:(NSString *)theInstalledVersion
+{
+	[installedVersion release];
+	installedVersion = [theInstalledVersion retain];
+}
+- (id)developer
+{
+	if ([theDev isEqualToString:@"nil"])
+		return nil;
+	return theDev;
+}
+- (id)installedVersion
+{
+	NSLog(@"InstalledVersion: %@",installedVersion);
+	return installedVersion;
+}
+- (id)onlineVersion
+{
+	return onlineVersion;
 }
 /*- (void)setResumeTime:(unsigned int)time
 {
@@ -81,6 +106,11 @@
 	imagePath = [path retain];
 }
 -(void)setDescription:(NSString *)description
+{
+	[theSetDescription release];
+	theSetDescription=[description retain];
+}
+-(void)setSummary:(NSString *)description
 {
 	[theSetDescription release];
 	theSetDescription=[description retain];

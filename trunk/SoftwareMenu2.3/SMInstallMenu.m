@@ -46,8 +46,10 @@ static NSString  * bak_vers = nil;
 			break;
 		case kSMInManage:
 		case kSMInRemove:
+		case kSMInRemoveB:
 			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"trashempty" ofType:@"png"];
 			break;
+		case kSMInRestore:
 		case kSMInBackup:
 			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"timemachine" ofType:@"png"];
 			break;
@@ -177,7 +179,7 @@ static NSString  * bak_vers = nil;
 		///////////////////////
 		//   Restore Backup  //
 		///////////////////////
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-restore",LAYER_NAME,[NSNumber numberWithInt:6],LAYER_INT,MISC_KEY,TYPE_KEY,@"restore",NAME_KEY,nil]];
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-restore",LAYER_NAME,[NSNumber numberWithInt:9],LAYER_INT,MISC_KEY,TYPE_KEY,@"restore",NAME_KEY,nil]];
 		id item6 = [BRTextMenuItemLayer menuItem];
 		[item6 setTitle:@"Restore"];
 		[item6 setRightJustifiedText:[_theInformation objectForKey:@"backupVersion"]];
@@ -187,7 +189,7 @@ static NSString  * bak_vers = nil;
 		///////////////////////
 		//   Remove Backup   //
 		///////////////////////
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-rb",LAYER_NAME,[NSNumber numberWithInt:7],LAYER_INT,MISC_KEY,TYPE_KEY,@"remove",NAME_KEY,nil]];
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-rb",LAYER_NAME,[NSNumber numberWithInt:8],LAYER_INT,MISC_KEY,TYPE_KEY,@"remove",NAME_KEY,nil]];
 		id item8 =[BRTextMenuItemLayer menuItem];
 		[item8 setTitle:@"Remove Backup"];
 		[item8 setRightJustifiedText:[_theInformation objectForKey:@"backupVersion"]];
@@ -302,6 +304,8 @@ static NSString  * bak_vers = nil;
 			break;
 		case kSMInBackup:
 		case kSMInRemove:
+		case kSMInRestore:
+		case kSMInRemoveB:
 		case kSMInManage:
 			misc=@"!";
 			NSArray *taskArray = [NSArray arrayWithObjects:[selectedOption objectForKey:LAYER_NAME],[thename stringByAppendingString:@".frappliance"],@"0",nil];
@@ -309,6 +313,12 @@ static NSString  * bak_vers = nil;
 			[self initCustom];
 			break;
 
+	} InType;
+	switch ([[selectedOption objectForKey:LAYER_INT] intValue]) 
+	{
+		case kSMInRestore:
+		case kSMInRemove:
+			[SMGeneralMethods terminateFinder];
 	} InType;
 	return;
 }
@@ -413,6 +423,7 @@ static NSString  * bak_vers = nil;
 	[helperTask waitUntilExit];
 	[helperTask release];
 	[self appendSourceText:@"Press Menu When you are done"];
+	[SMGeneralMethods terminateFinder];
 
 
 

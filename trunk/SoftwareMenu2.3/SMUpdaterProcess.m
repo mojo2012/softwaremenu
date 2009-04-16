@@ -470,9 +470,10 @@
 		[self appendSourceTextSpace:@"Done"];
 		
 	}
-	if(update_status && !original_status &&[SMGeneralMethods boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
+	if(update_status && !original_status && [SMGeneralMethods boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
 	{
 		[self appendSourceText:@"Copying Builtin stuff"];
+		NSLog(@"retaining builtin");
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		NSFileManager *fileManager = [NSFileManager defaultManager];

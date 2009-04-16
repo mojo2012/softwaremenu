@@ -32,6 +32,9 @@
 	NSString			*theSetTitle;
 	NSString			*theSetDescription;
 	NSString			*theDev;
+	NSString			*installedVersion;
+	NSString			*onlineVersion;
+	NSString			*changeLog;
 }
 
 /*!
@@ -54,11 +57,18 @@
  *
  * param path The path to the cover art
  */
+- (id)initWithMediaURL;
 - (void)setImagePath:(NSString *)path;
 - (void)setDescription:(NSString *)description;
 - (void)setTitle:(NSString *)title;
 - (void)setDev:(NSString *)devName;
 - (void)setReleaseDate:(NSString *)releaseDate;
+- (void)setOnlineVersion:(NSString *)onlineVersion;
+- (void)setInstalledVersion:(NSString *)installedVersion;
 - (void)setDefaultImage;
+- (id)installedVersion;
+- (id)onlineVersion;
+- (id)developer;
+- (id)changeLog;
 
 @end

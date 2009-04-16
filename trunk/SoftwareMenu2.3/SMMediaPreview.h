@@ -19,14 +19,6 @@
  */
 
 //@class SapphireMetaData, SapphireDirectoryMetaData;
-//////#import <BackRow/BackRow.h>
-////#import <BackRow/BRMetadataPreviewControl.h>
-//////#import <BackRow/BackRow.h>
-
-//#typedef enum {       FILE_CLASS_UTILITY= -2} FileClass;
-#define META_TITLE_KEY                                  @"Title"
-#define FILE_CLASS_KEY                                  @"File Class"
-#define META_DESCRIPTION_KEY                    @"Show Description"
 
 /*!
  * @brief A subclass of BRMetadataPreviewController for our own preview
@@ -36,11 +28,11 @@
  * The directory may not always be the parent of the metadata. In the case of virtual directories, the parent is a virtual directory while the metadata is the actual file located elsewhere.
  */
 @interface SMMediaPreview : BRMetadataPreviewControl{
-	char		padding[128];	/*!< @brief The classes are of different sizes.  This padding prevents a class compiled with one size to overlap when used with a class of a different size*/	
-	NSDictionary			*meta;			/*!< @brief The metadata to display in the preview*/
-	NSString	*dirMeta;		/*!< @brief The directory containing the metadata*/
+	int		padding[32];	/*!< @brief The classes are of different sizes.  This padding prevents a class compiled with one size to overlap when used with a class of a different size*/	
+	NSMutableDictionary			*meta;			/*!< @brief The metadata to display in the preview*/
+	//SapphireDirectoryMetaData	*dirMeta;		/*!< @brief The directory containing the metadata*/
 }
-- (BRMetadataControl *)gimmieMetadataLayer;
+
 /*!
  * @brief Set the File information
  *
@@ -49,7 +41,7 @@
  * @param newMeta The metadata for the file or directory
  * @param dir The directory which contains this metadata
  */
-//- (void)setMetaData:(NSDictionary *)newMeta inMetaData:(SapphireDirectoryMetaData *)dir;
+- (void)setMetaData:(NSDictionary *)newMeta;
 - (void)setUtilityData:(NSMutableDictionary *)newMeta;
 
 @end

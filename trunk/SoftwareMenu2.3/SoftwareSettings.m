@@ -14,6 +14,7 @@
 #import "SMUpdater.h"
 #import "SMGeneralMethods.h"
 #import "SMMedia.h"
+#import "SMMediaPreview.h"
 //#import "SMMediaPreview.h"
 //#import "BackRow/BRMetadataPreviewControl.h"
 #import "BackRowUtilstwo.h"
@@ -66,11 +67,12 @@ static NSDate *lastFilterChangeDate = nil;
 		[meta setDefaultImage];
 		[meta setTitle:[[_items objectAtIndex:item] title]];
 		[meta setDescription:[[_options objectAtIndex:item] valueForKey:LAYER_DISPLAY]];
+		//[meta setDev:@"Thomas C. Cool"];
 		//[meta setObject:@"Settings" forKey:@"title"];
 		//[metatoo setObject:@"hello" forKey:@"mediaSummary"];
-		BRMediaAssetItemProvider *theProvider = [BRMediaAssetItemProvider providerWithMediaAssetArray:[NSArray arrayWithObjects:meta,nil]];
+		//BRMediaAssetItemProvider *theProvider = [BRMediaAssetItemProvider providerWithMediaAssetArray:[NSArray arrayWithObjects:meta,nil]];
 
-		BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
+		SMMediaPreview *previewtoo =[[SMMediaPreview alloc] init];
 		[previewtoo setShowsMetadataImmediately:YES];
 		[previewtoo setDeletterboxAssetArtwork:YES];
 		[previewtoo setAsset:meta];
@@ -81,7 +83,26 @@ static NSDate *lastFilterChangeDate = nil;
 	}
     return ( nil );
 }
+/*- (id) previewControlForItem: (long) item
+{
+	if(item >= [_items count])
+		return nil;
+	else
+	{
+		SMMediaPreview * preview = [[SMMediaPreview alloc] init];
+		[preview setMetaData:[NSDictionary dictionaryWithObjectsAndKeys:
+							  [[_items objectAtIndex:item] title],@"Name",
+							  [[_options objectAtIndex:item] valueForKey:LAYER_DISPLAY],@"ShortDescription",
+							  //@"Hello",@"Developer",
+							  //@"0.7",@"OnlineVersion",
+							  nil]];
+		[preview setShowsMetadataImmediately:YES];
+		return [preview autorelease];
+	}
+	return (nil);
+}*/
 
+	
 
 
 
@@ -133,13 +154,13 @@ static NSDate *lastFilterChangeDate = nil;
 	[item2 setRightJustifiedText:sm_version];
 	[_items addObject:item2];
 	
-	id item2_1 =[BRTextMenuItemLayer folderMenuItem];
+/*id item2_1 =[BRTextMenuItemLayer folderMenuItem];
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SMTweaks",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Tweaks, Toggles and Installs",LAYER_DISPLAY,nil]];
 	[item2_1 setTitle:@"SMTweaks"];
 	//NSDictionary *sm_info_plist = [[NSBundle bundleForClass:[self class]] infoDictionary];
 	//NSString *sm_version = [sm_info_plist valueForKey:@"CFBundleVersion"];
 	//[item2_1 setRightJustifiedText:sm_version];
-	[_items addObject:item2_1];
+	[_items addObject:item2_1];*/
 	
 	int iii=[_items count];
 	int ii;//
@@ -276,12 +297,12 @@ static NSDate *lastFilterChangeDate = nil;
 		[SMGeneralMethods switchBoolforKey:settingsChanged];
 		[self initWithIdentifier:@"101"];
 	}
-	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"0"])
+	/*if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"0"])
 	{
 		id tweakController = [[SMTweaks alloc] init];
 		[tweakController initCustom];
 		[[self stack] pushController:tweakController];
-	}
+	}*/
 		
 	/*else if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"2"])
 	{

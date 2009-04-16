@@ -44,6 +44,7 @@
 + (void)switchBoolforKey:(NSString *)theKey;
 + (void)restartFinder;
 + (void)checkFolders;
++ (void)terminateFinder;
 + (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSArray *)getPrefKeys;
 + (NSArray *)menuItemOptions;

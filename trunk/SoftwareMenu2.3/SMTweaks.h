@@ -13,9 +13,11 @@
 #import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
 #import <SoftwareSettings.h>
+#define ROWMOTE_DOMAIN_KEY		@"com.apple.frontrow.appliance.RowmoteHelperATV"	
 typedef enum {
 	
-	kSMTwDownload= 0,
+	kSMTwDownload= 9,
+	kSMTwRestart=0,
 	kSMTwFix = 1,
 	kSMTwToggle= 2,
 	kSMTwInstall = 3,

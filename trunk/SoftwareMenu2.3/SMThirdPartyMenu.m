@@ -13,11 +13,96 @@
 #import "SMInstallMenu.h"
 #import "SMMedia.h"
 #import "SMGeneralMethods.h"
+#import "SMMediaPreview.h"
 //static NSString  * trustedURL = @"http://web.me.com/tomcool420/Trusted.plist";
 
 
 
 @implementation SMThirdPartyMenu
+
+
+/*- (id) previewControlForItem: (long) row
+{
+	NSString *appPng = nil;
+
+	if(row >= [_items count])
+		return nil;
+	else
+	{
+		NSMutableDictionary *metaData = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+		SMMediaPreview * preview = [[SMMediaPreview alloc] init];
+		switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
+		{
+			case kSMTpCheck:
+				appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"web" ofType:@"png"];
+				[metaData setValue:@"Check online for new updates" forKey:@"ShortDescription"];
+				[metaData setValue:@"Check For Updates" forKey:@"Name"];
+				//[meta setTitle:@"Check For Updates"];
+				break;
+			case kSMTpRestart:
+				appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"standby" ofType:@"png"];
+				[metaData setValue:@"Restart Finder" forKey:@"ShortDescription"];
+				[metaData setValue:@"Restart Finder" forKey:@"Name"];
+				break;
+			case kSMTpRefresh:
+				appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"refresh" ofType:@"png"];
+				[metaData setValue:@"Refresh in case Info4.plist and/or Info3.plist was modified and change doesn't appear" forKey:@"ShortDescription"];
+				[metaData setValue:@"Refresh Menu" forKey:@"Name"];
+				break;
+			case kSMTpSm:
+			case KSMTpTrusted:
+			case kSMTpUntrusted:
+				
+				
+				appPng = [SMGeneralMethods getImagePath:[[_options objectAtIndex:row] valueForKey:@"Name"]];
+				NSString *releaseDate= [[_options objectAtIndex:row] valueForKey:@"ReleaseDate"];
+				if(![releaseDate isEqualToString:@"nil"])
+				{
+					[metaData setValue:[NSString stringWithFormat:@"Released: %@",releaseDate] forKey:@"Name"];
+				}
+				else
+				{
+					[metaData setValue:[[_options objectAtIndex:row] valueForKey:@"DisplayName"] forKey:@"Name"];
+				}
+				if([[_options objectAtIndex:row] valueForKey:@"OnlineVersion"] !=nil)
+				[metaData setValue:[[_options objectAtIndex:row] valueForKey:@"OnlineVersion"] forKey:@"OnlineVersion"];
+				[metaData setValue:[[_options objectAtIndex:row] valueForKey:@"ShortDescription"] forKey:@"ShortDescription"];
+				
+				//[SMGeneralMethods getImagePath:[[[_options objectAtIndex:row] valueForKey:@"Name"]]];
+				//appPng = [IMAGES_FOLDER stringByAppendingPathComponent:[[[_options objectAtIndex:row] valueForKey:@"Name"] stringByAppendingPathExtension:@"png"]];
+				//appPng = [[NSBundle bundleForClass:[self class]] pathForResource:[[_options objectAtIndex:row] valueForKey:@"Name"] ofType:@"png"];
+				
+				//NSLog(@"appPng: %@, displayName: %@, name: %@, developer: %@",appPng,[[_options objectAtIndex:row] valueForKey:@"DisplayName"],[[_options objectAtIndex:row] valueForKey:@"Name"],[[_options objectAtIndex:row] valueForKey:@"Developer"]);
+				/*if([[[_options objectAtIndex:row] valueForKey:@"UpToDate"] boolValue])
+				{
+					[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"ShortDescription"]];
+				}
+				else
+				{
+					NSLog(@"UpdateText: %@", [[_options objectAtIndex:row] valueForKey:@"UpdateText"]);
+					[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"UpdateText"]];
+				}*/
+				/*[metaData setValue:[[_options objectAtIndex:row] valueForKey:@"Developer"] forKey:@"Developer"];
+				break;
+				
+		}
+		if(![_man fileExistsAtPath:appPng])
+			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
+		[metaData setValue:appPng forKey:@"ImageURL"];
+		//[meta setImagePath:appPng];
+		switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
+		{
+			case kSMTpSm:
+				[metaData removeObjectForKey:@"ImageURL"];
+				break;
+		}
+		
+		[preview setMetaData:metaData];
+		[preview setShowsMetadataImmediately:YES];
+		return [preview autorelease];
+	}
+	return (nil);
+}*/
 
 
 - (id) previewControlForItem: (long) row
@@ -47,6 +132,10 @@
 			break;
 		case kSMTpSm:
 		case KSMTpTrusted:
+			if([[[_options objectAtIndex:row] valueForKey:@"InstalledVersion"] isEqualToString:@"nil"] || ![[[_options objectAtIndex:row] valueForKey:@"UpToDate"] boolValue])
+				[meta setOnlineVersion:[[_options objectAtIndex:row] valueForKey:@"DisplayVersion"]];
+			if(![[[_options objectAtIndex:row] valueForKey:@"InstalledVersion"] isEqualToString:@"nil"])
+				[meta setInstalledVersion:[[_options objectAtIndex:row] valueForKey:@"InstalledVersion"]];
 		case kSMTpUntrusted:
 			
 			
@@ -89,7 +178,7 @@
 			break;
 	}
 	
-	BRMetadataPreviewControl *preview = [[BRMetadataPreviewControl alloc] init];
+	SMMediaPreview *preview = [[SMMediaPreview alloc] init];
 	[preview setAsset:meta];
 	[preview setShowsMetadataImmediately:YES];
 	//BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
@@ -249,6 +338,7 @@
 		NSFileManager *manager = [NSFileManager defaultManager];
 		id item = [BRTextMenuItemLayer folderMenuItem];
 		NSString * current_version = nil;
+		NSString * installed_version = nil;
 		if(![thename isEqualToString:@"SoftwareMenu"])
 		{
 			if ([manager fileExistsAtPath:frapPath])
@@ -256,11 +346,16 @@
 				//NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[frapPath stringByAppendingString:@"Contents/Info.plist"]];
 				current_version =[NSString stringWithString:[info objectForKey:@"CFBundleVersion"]];
+				installed_version = [info objectForKey:@"CFBundleShortVersionString"];
+				if(installed_version == nil)
+					installed_version = current_version;
 				
 				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
 				{
+					NSLog(@"nito: %@",obj);
 					current_version = [info objectForKey:@"CFBundleShortVersionString"];
 					onlineVersion = [obj valueForKey:@"shortVersion"];
+					installed_version = [info objectForKey:@"CFBundleVersion"];
 				}
 				
 				if([current_version compare:onlineVersion]==NSOrderedSame)				{[item setRightJustifiedText:@"Up to Date"];}
@@ -270,6 +365,7 @@
 			else
 			{
 				[item setRightJustifiedText:@"Not Installed"];
+				installed_version = @"nil";
 			}
 			
 			
@@ -277,6 +373,10 @@
 			NSString *dev = [obj valueForKey:@"Developer"];
 			if(dev==nil)
 				dev = @"nil";
+			NSString *displayVersion = [obj valueForKey:@"displayVersion"];
+			if(displayVersion == nil)
+				displayVersion == [obj valueForKey:@"Version"];
+			
 			NSString *desc = [obj valueForKey:@"ShortDescription"];
 			if(desc == nil)
 				desc = @"nil";
@@ -308,6 +408,8 @@
 								 [NSNumber numberWithBool:uptodates],@"UpToDate",
 								 desc,@"ShortDescription",
 								 dateFormat,@"ReleaseDate",
+								 displayVersion,@"DisplayVersion",
+								 installed_version,@"InstalledVersion",
 								 nil]];
 			[item setTitle:displayName];
 			[_items addObject: item];
@@ -562,6 +664,7 @@
 			NSMutableDictionary *nitoDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
 			[nitoDict setObject:@"nitoTV" forKey:@"name"];
 			[nitoDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"Version"];
+			[nitoDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"displayVersion"];
 			[nitoDict setObject:[trustedSource valueForKey:@"versionTwo"] forKey:@"shortVersion"];
 			[nitoDict setObject:@"http://nitosoft.com/nitoTVTwo.tar.gz" forKey:@"theURL"];
 			[nitoDict setObject:[trustedSource valueForKey:@"ShortDescription"] forKey:@"ShortDescription"];
@@ -578,6 +681,7 @@
 			NSMutableDictionary *couchDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
 			[couchDict setObject:@"CouchSurfer" forKey:@"name"];
 			[couchDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"Version"];
+			[couchDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"displayVersion"];
 			[couchDict setObject:[trustedSource valueForKey:@"twoUrl"] forKey:@"theURL"];
 			[TrustedDict setObject:couchDict forKey:@"CouchSurfer"];
 			[self writeToLog:@"CouchSurfer Special loop (Thanks to nito for plist up to date)"];
@@ -664,6 +768,7 @@
 		{
 			NSLog(@"2");
 			NSLog(@"Image URL: %@",ImageURL);
+			[self writeToLog:ImageURL];
 			NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
 			NSLog(@"3");
 			

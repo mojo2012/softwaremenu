@@ -972,7 +972,25 @@
 
 
 
+- (int)isWritable
+{
+	struct statfs statBuf; 
 
+	if ( statfs("/", &statBuf) == -1 ) 
+	{ 
+		NSLog( @"statfs(\"/\"): %d", errno ); 
+		return ( 1 ); 
+	} 
+	
+	// check mount flags -- do we even need to make a modification ? 
+	if ( (statBuf.f_flags & MNT_RDONLY) == 0 ) 
+	{ 
+		NSLog( @"Root filesystem already writable\n\n" );
+		wasWritable = YES;
+		return ( 0 ); 
+	} 
+	return (1);
+}
 
 - (BOOL)makeSystemWritable 
 { 
@@ -1124,6 +1142,19 @@
 	}
 	return theTerm;
 }
+- (int)toggleFTP:(BOOL)tosetting
+{
+	int theTerm;
+	if(tosetting)
+	{
+		theTerm=[self enableService:@"ftp"];
+	}
+	else
+	{
+		theTerm=[self disableService:@"ftp"];
+	}
+	return theTerm;
+}
 /*- (int) toggleRowmote:(BOOL)tosetting
 {
 	int returnValue =1;
@@ -1169,6 +1200,10 @@
 	{
 		[self toggleVNC:toggle];
 	}
+	else if([setting isEqualToString:@"FTP"])
+	{
+		[self toggleFTP:toggle];
+	}
 	else if([setting isEqualToString:@"SSH"] || [setting isEqualToString:@"Dropbear"])
 	{
 		result=[self toggleSSH:toggle];
@@ -1183,11 +1218,13 @@
 	}
 	else if([setting isEqualToString:@"RW"])
 	{
-		if(toggle){
+		if(!toggle){
+			NSLog(@"Make read only");
 			[self makeSystemReadOnly];
 		}
 		else
 		{
+			NSLog(@"Make Writable");
 			[self makeSystemWritable];
 		}
 	}

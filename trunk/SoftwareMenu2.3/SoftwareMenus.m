@@ -21,6 +21,7 @@
 #import "SMFrappMover.h"
 #import "SMGeneralMethods.h"
 #import "AGProcess.h"
+#import "SMTweaks.h"
 
 
 @implementation SoftwareMenus
@@ -261,6 +262,11 @@
 	{
 		newController = [[SMFrappMover alloc] init];
 		[newController initWithIdentifier:fp8];
+	}
+	else if([fp8 isEqualToString:@"tweaks"])
+	{
+		newController = [[SMTweaks alloc] init];
+		[newController initCustom];
 	}
 	else if([[fp8 pathExtension] isEqualToString:@"sh"])
 	{

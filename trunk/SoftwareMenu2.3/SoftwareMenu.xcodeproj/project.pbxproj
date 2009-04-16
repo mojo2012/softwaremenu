@@ -48,11 +48,12 @@
 		E26B10E40F6EFED40005E868 /* SMUOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = E26B10E20F6EFED40005E868 /* SMUOptions.m */; };
 		E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */ = {isa = PBXBuildFile; fileRef = E273B2420F647CAC00E516B5 /* readmeupd.txt */; };
 		E2817F210F8D7B0B0065D70D /* VNC.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817F1F0F8D7B0B0065D70D /* VNC.png */; };
-		E2817F220F8D7B0B0065D70D /* Rowmote.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817F200F8D7B0B0065D70D /* Rowmote.png */; };
 		E2817F8A0F8D96D20065D70D /* dropbear.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E2817F890F8D96D20065D70D /* dropbear.tar.gz */; };
 		E2817FA80F8DA2200065D70D /* AFP.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817FA70F8DA2200065D70D /* AFP.png */; };
 		E28180490F8E48980065D70D /* RW.png in Resources */ = {isa = PBXBuildFile; fileRef = E28180480F8E48980065D70D /* RW.png */; };
 		E281804D0F8E4CAD0065D70D /* FTP.png in Resources */ = {isa = PBXBuildFile; fileRef = E281804C0F8E4CAD0065D70D /* FTP.png */; };
+		E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */; };
+		E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */ = {isa = PBXBuildFile; fileRef = E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */; };
 		E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */; };
 		E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */ = {isa = PBXBuildFile; fileRef = E29A092A0F854FC0004CC67C /* SMUpdateLists.h */; };
 		E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */ = {isa = PBXBuildFile; fileRef = E29A092B0F854FC0004CC67C /* SMUpdateLists.m */; };
@@ -145,11 +146,12 @@
 		E273B2420F647CAC00E516B5 /* readmeupd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readmeupd.txt; sourceTree = "<group>"; };
 		E273B3490F648DEE00E516B5 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2817F1F0F8D7B0B0065D70D /* VNC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VNC.png; sourceTree = "<group>"; };
-		E2817F200F8D7B0B0065D70D /* Rowmote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rowmote.png; sourceTree = "<group>"; };
 		E2817F890F8D96D20065D70D /* dropbear.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = dropbear.tar.gz; sourceTree = "<group>"; };
 		E2817FA70F8DA2200065D70D /* AFP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AFP.png; sourceTree = "<group>"; };
 		E28180480F8E48980065D70D /* RW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RW.png; sourceTree = "<group>"; };
 		E281804C0F8E4CAD0065D70D /* FTP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FTP.png; sourceTree = "<group>"; };
+		E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMediaPreview.m; sourceTree = "<group>"; };
+		E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMediaPreview.h; sourceTree = "<group>"; };
 		E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInstallMenu.h; sourceTree = "<group>"; };
 		E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallMenu.m; sourceTree = "<group>"; };
 		E2954F3A0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -265,7 +267,6 @@
 				E2817FA70F8DA2200065D70D /* AFP.png */,
 				E2817F890F8D96D20065D70D /* dropbear.tar.gz */,
 				E2817F1F0F8D7B0B0065D70D /* VNC.png */,
-				E2817F200F8D7B0B0065D70D /* Rowmote.png */,
 				E2B7A6A90F8C1737007B8BAB /* gzip */,
 				E273B2420F647CAC00E516B5 /* readmeupd.txt */,
 				87AD8E4D0F630B68003907EF /* selsettings.png */,
@@ -396,6 +397,8 @@
 				E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */,
 				E2E0F37E0F5E489C002EAE7F /* SMMedia.m */,
 				E2E0F37F0F5E489C002EAE7F /* SMMedia.h */,
+				E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */,
+				E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */,
 			);
 			name = MetadataShit;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				E26B10E30F6EFED40005E868 /* SMUOptions.h in Headers */,
 				E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */,
 				E2B7A18E0F8AD1CA007B8BAB /* AGProcess.h in Headers */,
+				E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +542,6 @@
 				E2B7A6AA0F8C1737007B8BAB /* gzip in Resources */,
 				E2B7A83A0F8D0C45007B8BAB /* gunzip in Resources */,
 				E2817F210F8D7B0B0065D70D /* VNC.png in Resources */,
-				E2817F220F8D7B0B0065D70D /* Rowmote.png in Resources */,
 				E2817F8A0F8D96D20065D70D /* dropbear.tar.gz in Resources */,
 				E2817FA80F8DA2200065D70D /* AFP.png in Resources */,
 				E28180490F8E48980065D70D /* RW.png in Resources */,
@@ -578,6 +581,7 @@
 				E26B10E40F6EFED40005E868 /* SMUOptions.m in Sources */,
 				E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */,
 				E2B7A18F0F8AD1CA007B8BAB /* AGProcess.m in Sources */,
+				E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

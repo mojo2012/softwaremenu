@@ -7,6 +7,7 @@
 //
 
 #import "SMGeneralMethods.h"
+#import "AGProcess.h"
 #define myDomain			(CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu"
 
 
@@ -41,11 +42,11 @@ static SMGeneralMethods *sharedInstance = nil;
 
 + (NSArray *)menuItemNames
 {
-	return [NSArray arrayWithObjects:BRLocalizedString(@"3rd Party Plugins",@"3rd Party Plugins"),BRLocalizedString(@"Manage Built-in",@"Manage Built-in"),BRLocalizedString(@"Scripts",@"Scripts"),BRLocalizedString(@"Restart Finder",@"Restart Finder"),BRLocalizedString(@"FrapMover",@"FrapMover"),BRLocalizedString(@"Console",@"Console"),nil];
+	return [NSArray arrayWithObjects:BRLocalizedString(@"3rd Party Plugins",@"3rd Party Plugins"),BRLocalizedString(@"Manage Built-in",@"Manage Built-in"),BRLocalizedString(@"Scripts",@"Scripts"),BRLocalizedString(@"Restart Finder",@"Restart Finder"),BRLocalizedString(@"FrapMover",@"FrapMover"),BRLocalizedString(@"Console",@"Console"),BRLocalizedString(@"Tweaks",@"Tweaks"),nil];
 }
 + (NSArray *)menuItemOptions
 {
-	return [NSArray arrayWithObjects:@"downloadable",@"builtin",@"scripts",@"reboot",@"mover",@"console",nil];
+	return [NSArray arrayWithObjects:@"downloadable",@"builtin",@"scripts",@"reboot",@"mover",@"console",@"tweaks",nil];
 }
 + (NSArray *)arrayForKey:(NSString *)theKey
 {
@@ -361,6 +362,14 @@ static SMGeneralMethods *sharedInstance = nil;
 		}
 	}
 	return filepath;
+}
++(void)terminateFinder
+{
+	if([SMGeneralMethods boolForKey:@"ARF"])
+	{
+		AGProcess *finder = [AGProcess processForCommand:@"Finder"];
+		[finder terminate];
+	}
 }
 
 @end

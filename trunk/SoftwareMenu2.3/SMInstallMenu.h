@@ -14,6 +14,7 @@
 ////#import <BackRow/BRController.h>
 #import <CoreData/CoreData.h>
 #import <SMDownloaderSTD.h>
+
 typedef enum {
 	kSMInInfo = 1,
 	kSMInLicense = 2,
@@ -21,6 +22,8 @@ typedef enum {
 	kSMInUpdate = 5,
 	kSMInBackup = 6,
 	kSMInRemove = 7,
+	kSMInRemoveB = 8,
+	kSMInRestore = 9,
 	kSMInManage = 10,
 } InType;
 @class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, SMProgressBarControl;

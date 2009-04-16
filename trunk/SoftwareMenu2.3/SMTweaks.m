@@ -11,6 +11,10 @@
 #import "SMMedia.h"
 #import "SoftwareSettings.h"
 #import "AGProcess.h"
+#import "SMMediaPreview.h"
+#include <sys/param.h>
+#include <sys/mount.h>
+#include <stdio.h>
  
 @implementation SMTweaks
 - (id) previewControlForItem: (long) item
@@ -28,14 +32,21 @@
 		[meta setTitle:[[_items objectAtIndex:item] title]];
 		NSString *imageName = nil;		
 		NSLog(@"preview");
+		[meta setDescription:[settingDescriptions objectAtIndex:item]];	
+
 		switch([[settingNumberType objectAtIndex:item] intValue])
 		{
+			case kSMTwRestart:
+				imageName = [settingNames objectAtIndex:item];
 			case kSMTwToggle:
 				imageName = [[settingNames objectAtIndex:item] substringFromIndex:6];
 				break;
 			case kSMTwDownloadRowmote:
 				[meta setDev:[_rowmoteDict valueForKey:@"Developer"]];
-				[meta setTitle:[@"Install Rowmote - released: " stringByAppendingString:[_rowmoteDict valueForKey:@"ReleaseDate"]]];
+
+				[meta setTitle:[@"Rekeased: " stringByAppendingString:[[_rowmoteDict valueForKey:@"ReleaseDate"] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil]]];
+				[meta setDescription:[_rowmoteDict valueForKey:@"ShortDescription"]];
+				[meta setOnlineVersion:[_rowmoteDict valueForKey:@"displayVersion"]];
 			case kSMTwDownload:
 			case kSMTwDownloadPerian:
 				imageName = [[settingNames objectAtIndex:item] substringFromIndex:8];
@@ -56,10 +67,9 @@
 		{
 			[meta setDefaultImage];
 		}
-		[meta setDescription:[settingDescriptions objectAtIndex:item]];	
 		
 		
-		BRMetadataPreviewControl *previewtoo =[[BRMetadataPreviewControl alloc] init];
+		SMMediaPreview *previewtoo =[[SMMediaPreview alloc] init];
 		[previewtoo setShowsMetadataImmediately:YES];
 		//[previewtoo setDeletterboxAssetArtwork:YES];
 		[previewtoo setAsset:meta];
@@ -87,9 +97,11 @@
 		[_rowmoteDict setObject:[nitoUpdatesDict objectForKey:@"perianDownloadLink"] forKey:@"perianDownloadLink"];
 	}
 	[[self list] removeDividers];
+	
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: @"Tweaks Menu"];
+	[self setListTitle: BRLocalizedString(@"Tweaks Menu",@"Tweaks Menu")];
 	settingNames = [[NSMutableArray alloc] initWithObjects:
+					@"restartFinder",
 					@"fixSapphire",
 					@"toggleRW",
 					@"toggleDropbear",
@@ -102,18 +114,21 @@
 					@"downloadPerian",
 					nil];
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
-					   @"Fix Sapphire",
-					   @"Disk Read/Write toggle",
-					   @"Dropbear SSH toggle",
-					   @"Rowmote toggle",
-					   @"AFP toggle",
-					   @"VNC toggle",
-					   @"FTP toggle",
-					   @"Install Dropbear SSH",
-					   @"Install Rowmote",
-					   @"Install Perian",
+					   BRLocalizedString(@"Restart Finder",@"Restart Finder"),
+					   BRLocalizedString(@"Fix Sapphire",@"Fix Sapphire"),
+					   BRLocalizedString(@"Disk Read/Write toggle",@"Disk Read/Write toggle"),
+					   BRLocalizedString(@"Dropbear SSH toggle",@"Dropbear SSH toggle"),
+					   BRLocalizedString(@"Rowmote toggle",@"Rowmote toggle"),
+					   BRLocalizedString(@"AFP toggle",@"AFP toggle"),
+					   BRLocalizedString(@"VNC toggle",@"VNC toggle"),
+					   BRLocalizedString(@"FTP toggle",@"FTP toggle"),
+					   BRLocalizedString(@"Install Dropbear SSH",@"Install Dropbear SSH"),
+					   BRLocalizedString(@"Install Rowmote",@"Install Rowmote"),
+					   BRLocalizedString(@"Install Perian",@"Install Perian"),
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
+						   @"Restarts the Finder, necessary after install of Perian or Rowmote",
+
 						   @"Deletes the Sapphire Metadata, which can cause a problem after upgrade",
 						   @"Changes the disk status from Read-Write to Read-Only",
 						   @"Turn SSH On/Off -- If dropbear is installed, it will using that is what you are using",
@@ -138,6 +153,7 @@
 				   @"Download",
 				   nil];*/
 	settingNumberType = [[NSMutableArray alloc] initWithObjects:
+						 [NSNumber numberWithInt:0],
 						 [NSNumber numberWithInt:1],
 						 [NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:2],
@@ -174,6 +190,9 @@
 		
 	}
 	id list = [self list];
+	[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
+	[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
+	[[self list] addDividerAtIndex:1 withLabel:@"Toggles"];
 	[list setDatasource: self];
 	return self;
 }
@@ -181,11 +200,17 @@
 {
 	NSMutableArray * args = [[NSMutableArray alloc] initWithObjects:nil];
 	NSMutableDictionary *dlDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+	NSString *a=nil;
 	if(![[self itemForRow:row] dimmed])
 	{
 		
 		switch([[settingNumberType objectAtIndex:row]intValue])
 		{
+			case kSMTwRestart:
+				a=nil;
+				AGProcess *killFinder = [AGProcess processForCommand:@"Finder"];
+				[killFinder terminate];
+				break;
 			case kSMTwToggle:
 				NSLog(@"toggle");
 				[args addObject:@"-toggleTweak"];
@@ -195,7 +220,7 @@
 					[args addObject:@"OFF"];
 					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
 					{
-						[SMGeneralMethods setBool:YES forKey:@"DisableRowmote" forDomain:@"com.apple.frontrow.appliance.RowmoteHelperATV"];
+						[SMGeneralMethods setBool:YES forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
 					}
 				}
 				else
@@ -207,7 +232,7 @@
 					}
 					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
 					{
-						[SMGeneralMethods setBool:NO forKey:@"DisableRowmote" forDomain:@"com.apple.frontrow.appliance.RowmoteHelperATV"];
+						[SMGeneralMethods setBool:NO forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
 					}
 				}
 				
@@ -216,9 +241,9 @@
 			case kSMTwDownloadRowmote:
 				NSLog(@"Rowmote");
 				SMDownloaderTweaks *rowmoteDownloader = [[SMDownloaderTweaks alloc] init];
-				[dlDict setValue:[_rowmoteDict valueForKey:@"FileURL"] forKey:@"url"];
+				[dlDict setValue:[_rowmoteDict valueForKey:@"URL"] forKey:@"url"];
 				[dlDict setValue:[NSString stringWithFormat:@"Rowmote Helper Version %@",[_rowmoteDict valueForKey:@"Version"],nil] forKey:@"name"];
-				[dlDict setValue:[NSString stringWithFormat:@"Downloading Rowmote Version: %@\nfromURL: %@",[_rowmoteDict valueForKey:@"Version"],[_rowmoteDict valueForKey:@"FileURL"]] forKey:@"downloadtext"];
+				[dlDict setValue:[NSString stringWithFormat:@"Downloading Rowmote Version: %@\nfromURL: %@",[_rowmoteDict valueForKey:@"Version"],[_rowmoteDict valueForKey:@"URL"]] forKey:@"downloadtext"];
 				[rowmoteDownloader setInformationDict:dlDict];
 				[[self stack]pushController:rowmoteDownloader];
 				break;
@@ -268,7 +293,7 @@
 				BOOL isActive = NO;
 				if([self getToggleRightText:title])
 				{
-					rightText=@"YES";
+					rightText=@"ON";
 					isActive = YES;
 
 				}
@@ -281,9 +306,20 @@
 			}
 			break;
 		case kSMTwDownloadRowmote:
+			NSLog(@"kSMTwDownloadRowmote");
+			LocalVersion = nil;
 			LocalVersion = [self getRowmoteVersion];
-			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"DisplayVersion"]];}
-			else 		{[item setDimmed:YES];}
+			NSLog(@"LocalVersion of Rowmote:%@",LocalVersion);
+			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		
+			{
+			[item setRightJustifiedText:[_rowmoteDict valueForKey:@"displayVersion"]];
+			NSLog(@"Bigger");
+			}
+			else 		
+			{
+			[item setDimmed:YES];
+			NSLog(@"Other");
+			}
 			break;
 		case kSMTwDownloadPerian:
 			LocalVersion = [self getPerianVersion];
@@ -331,8 +367,8 @@
 	}
 	NSDictionary *rowDict = [NSDictionary dictionaryWithContentsOfFile:pListPath];
 	if(rowDict !=nil)
-		RowmoteVersion = [rowDict valueForKey:@"CFBundleShortVersionString"];
-	NSLog(@"RowMoteVersion: %@", [rowDict valueForKey:@"CFBundleShortVersionString"]);
+		RowmoteVersion = [rowDict valueForKey:@"CFBundleVersion"];
+	NSLog(@"RowMoteVersion: %@, pListPath: %@", [rowDict valueForKey:@"CFBundleVersion"],pListPath,nil);
 	return RowmoteVersion;
 }
 -(NSString *)getPerianVersion
@@ -346,7 +382,7 @@
 	NSDictionary *rowDict = [NSDictionary dictionaryWithContentsOfFile:pListPath];
 	if(rowDict !=nil)
 		PerianVersion = [rowDict valueForKey:@"CFBundleVersion"];
-	NSLog(@"RowMoteVersion: %@", [rowDict valueForKey:@"CFBundleVersion"]);
+	NSLog(@"perianVersion: %@", [rowDict valueForKey:@"CFBundleVersion"]);
 	return PerianVersion;
 }
 -(BOOL)dropbearIsInstalled
@@ -439,11 +475,34 @@ return result;
 }*/
 -(BOOL)isRW
 {
-	return YES;
+	struct statfs statBuf; 
+	
+	//if ( pModified != NULL ) 
+	//		*pModified = NO; 
+	
+	if ( statfs("/", &statBuf) == -1 ) 
+	{ 
+		NSLog( @"statfs(\"/\"): %d", errno ); 
+		return ( NO ); 
+	} 
+	
+	// check mount flags -- do we even need to make a modification ? 
+	if ( (statBuf.f_flags & MNT_RDONLY) == 0 ) 
+	{ 
+		NSLog( @"Root filesystem already writable\n\n" );
+		return ( YES ); 
+	} 
+	return (NO);
 }
 -(BOOL)FTPIsInstalled
 {
-	return NO;
+	BOOL result = NO;
+	if ([_man fileExistsAtPath: @"/usr/libexec/ftpd"] && 
+		[_man fileExistsAtPath: @"/etc/ftpusers"])
+	{
+		result=YES;
+	}
+	return result;
 }
 
 -(BOOL)AFPIsInstalled
@@ -561,7 +620,12 @@ return result;
 		NSArray *arguments =[NSArray arrayWithObjects:@"-installTGZ",_outputPath,@"/",nil];
 		[SMGeneralMethods runHelperApp:arguments];
 	}
-	
+	[self appendSourceText:@"Please Restart the Finder for changes to take effect"];
+	if([SMGeneralMethods boolForKey:@"ARF"])
+	{
+		AGProcess * FinderProcess = [AGProcess processForCommand:@"Finder"];
+		[FinderProcess terminate];
+	}
 	[[self stack] popController];
 
 }

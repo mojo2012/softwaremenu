@@ -44,6 +44,7 @@
 - (int)toggleUpdate;
 - (int)blockUpdate;
 - (int)runscript;
+- (int)isWritable;
 
 - (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;
