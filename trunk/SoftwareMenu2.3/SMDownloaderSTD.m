@@ -27,6 +27,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
  }
  - (void) enableScreenSaver{
  //reset screen saver to user settings
+	 NSLog(@"timeout: %@",[NSNumber numberWithInt:m_screen_saver_timeout]);
  [[BRSettingsFacade singleton] setScreenSaverTimeout: m_screen_saver_timeout];
  [[BRSettingsFacade singleton] flushDiskChanges];
  }

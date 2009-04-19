@@ -11813,4 +11813,17 @@ BRVolumeLayer;
 - (void)animationDidStop:(id)fp8 finished:(BOOL)fp12;
 
 @end
+@interface ATVDefaultPhotos : BRIPhotoMediaCollection
+{
+}
+
++ (id)screenSaverPhotosForType:(id)fp8;
++ (id)applePhotos;
++ (id)applePhotosCollection;
+- (id)init;
+- (id)title;
+- (id)collectionID;
+- (id)mediaAssets;
+
+@end
 

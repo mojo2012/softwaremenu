@@ -44,6 +44,7 @@
 		E25576D80EBE53DC002B6313 /* reset.sh in Resources */ = {isa = PBXBuildFile; fileRef = E25576D70EBE53DC002B6313 /* reset.sh */; };
 		E2587A940F55980600671F59 /* SMFrappMover.m in Sources */ = {isa = PBXBuildFile; fileRef = E2587A930F55980600671F59 /* SMFrappMover.m */; };
 		E25CC0910F6228B00024A371 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E25CC08F0F6228B00024A371 /* Localizable.strings */; };
+		E2609F450F97F4670007547F /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2609F440F97F4670007547F /* AppleTV.framework */; };
 		E26B10E30F6EFED40005E868 /* SMUOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = E26B10E10F6EFED40005E868 /* SMUOptions.h */; };
 		E26B10E40F6EFED40005E868 /* SMUOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = E26B10E20F6EFED40005E868 /* SMUOptions.m */; };
 		E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */ = {isa = PBXBuildFile; fileRef = E273B2420F647CAC00E516B5 /* readmeupd.txt */; };
@@ -90,6 +91,8 @@
 		E2F0A3D00F8F83D300625DC1 /* standby.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3CF0F8F83D300625DC1 /* standby.png */; };
 		E2F0A3D20F8F841000625DC1 /* web.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3D10F8F841000625DC1 /* web.png */; };
 		E2F0A4BC0F8F9D1200625DC1 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A4BB0F8F9D1200625DC1 /* Info.png */; };
+		E2F3C71F0F98E2530090919D /* SMDefaultPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F3C71D0F98E2530090919D /* SMDefaultPhotos.h */; };
+		E2F3C7200F98E2530090919D /* SMDefaultPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3C71E0F98E2530090919D /* SMDefaultPhotos.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +144,7 @@
 		E2587A920F55980600671F59 /* SMFrappMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFrappMover.h; sourceTree = "<group>"; };
 		E2587A930F55980600671F59 /* SMFrappMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFrappMover.m; sourceTree = "<group>"; };
 		E25CC0900F6228B00024A371 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2609F440F97F4670007547F /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = ../Desktop/AppleTV.framework; sourceTree = SOURCE_ROOT; };
 		E26B10E10F6EFED40005E868 /* SMUOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUOptions.h; sourceTree = "<group>"; };
 		E26B10E20F6EFED40005E868 /* SMUOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUOptions.m; sourceTree = "<group>"; };
 		E273B2420F647CAC00E516B5 /* readmeupd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readmeupd.txt; sourceTree = "<group>"; };
@@ -201,6 +205,10 @@
 		E2F0A3CF0F8F83D300625DC1 /* standby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standby.png; sourceTree = "<group>"; };
 		E2F0A3D10F8F841000625DC1 /* web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web.png; sourceTree = "<group>"; };
 		E2F0A4BB0F8F9D1200625DC1 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
+		E2F3C05A0F9821880090919D /* SMScreenSaverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenSaverMenu.h; sourceTree = "<group>"; };
+		E2F3C05B0F9821880090919D /* SMScreenSaverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenSaverMenu.m; sourceTree = "<group>"; };
+		E2F3C71D0F98E2530090919D /* SMDefaultPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDefaultPhotos.h; sourceTree = "<group>"; };
+		E2F3C71E0F98E2530090919D /* SMDefaultPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDefaultPhotos.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +225,7 @@
 				E20791A70F85C714005327E7 /* Foundation.framework in Frameworks */,
 				E2B7A01A0F8AA6A3007B8BAB /* BackRow.framework in Frameworks */,
 				E2B7A01F0F8AA745007B8BAB /* iPhotoAccess.framework in Frameworks */,
+				E2609F450F97F4670007547F /* AppleTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +254,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E2609F440F97F4670007547F /* AppleTV.framework */,
 				E2B7A01E0F8AA745007B8BAB /* iPhotoAccess.framework */,
 				E2B7A0190F8AA6A3007B8BAB /* BackRow.framework */,
 				E20791A60F85C714005327E7 /* Foundation.framework */,
@@ -366,6 +376,8 @@
 		E2ABBFFB0ECFDCF1004771BB /* Menus */ = {
 			isa = PBXGroup;
 			children = (
+				E2F3C05A0F9821880090919D /* SMScreenSaverMenu.h */,
+				E2F3C05B0F9821880090919D /* SMScreenSaverMenu.m */,
 				E20C1B830EA92CED00739E75 /* SoftwareBuiltInMenu.h */,
 				E20C1B840EA92CED00739E75 /* SoftwareBuiltInMenu.m */,
 				E2E0F5D60F5EFC41002EAE7F /* SMTweaks.h */,
@@ -397,6 +409,8 @@
 				E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */,
 				E2E0F37E0F5E489C002EAE7F /* SMMedia.m */,
 				E2E0F37F0F5E489C002EAE7F /* SMMedia.h */,
+				E2F3C71D0F98E2530090919D /* SMDefaultPhotos.h */,
+				E2F3C71E0F98E2530090919D /* SMDefaultPhotos.m */,
 				E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */,
 				E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */,
 			);
@@ -443,6 +457,7 @@
 				E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */,
 				E2B7A18E0F8AD1CA007B8BAB /* AGProcess.h in Headers */,
 				E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */,
+				E2F3C71F0F98E2530090919D /* SMDefaultPhotos.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +597,7 @@
 				E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */,
 				E2B7A18F0F8AD1CA007B8BAB /* AGProcess.m in Sources */,
 				E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */,
+				E2F3C7200F98E2530090919D /* SMDefaultPhotos.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +676,8 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../CustomControllerExample\"";
@@ -687,6 +705,8 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_28 = "\"$(SRCROOT)/../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_29 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Desktop\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_30 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_31 = "\"$(SRCROOT)/../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Desktop/Store/frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../Desktop/TV/frameworks\"";
@@ -747,6 +767,8 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../Projects/nitoTV/trunk/resources/take_two\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
@@ -773,6 +795,8 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_28 = "\"$(SRCROOT)/../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_29 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../Desktop\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_30 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_31 = "\"$(SRCROOT)/../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../Desktop/Store/frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../Desktop\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../Desktop/TV/frameworks\"";

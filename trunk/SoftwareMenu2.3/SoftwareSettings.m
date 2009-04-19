@@ -14,17 +14,78 @@
 #import "SMUpdater.h"
 #import "SMGeneralMethods.h"
 #import "SMMedia.h"
+#import "SMDefaultPhotos.h"
 #import "SMMediaPreview.h"
 //#import "SMMediaPreview.h"
 //#import "BackRow/BRMetadataPreviewControl.h"
 #import "BackRowUtilstwo.h"
+//#import "ATVScreenSaverManager.h"
 //#typedef enum {       FILE_CLASS_UTILITY= -2} FileClass;
 #define META_TITLE_KEY                                  @"Title"
 #define FILE_CLASS_KEY                                  @"File Class"
 #define META_DESCRIPTION_KEY                    @"Show Description"
+/*@interface ATVDefaultPhotos : BRIPhotoMediaCollection
+{
+}
++ (id)screenSaverPhotosForType:(id)fp8;
++ (id)applePhotos;
++ (id)applePhotosCollection;
+@end*/
+	#import <objc/objc-class.h>
 
 
+@interface IPSlideshow : NSObject
+@end
+@implementation IPSlideshow (protectedAccess)
+-(NSMutableDictionary *)gimmeAlbumDict {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "mAlbumDictionary");
+	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
+}
 
+
+@end
+
+@interface ATVScreenSaverManager
++(id)singleton;
+- (void)showScreenSaver;
+@end
+@interface ATVSettingsFacade : BRSettingsFacade
+- (void)setScreenSaverSelectedPath:(id)fp8;
+- (id)screenSaverSelectedPath;
+- (id)screenSaverPaths;
+- (id)screenSaverCollectionForScreenSaver:(id)fp8;
+
+@end
+@interface PhotoConnection
+@end
+@implementation BRIPhotoMediaCollection (protectedAccess)
+-(NSMutableDictionary *)gimmeCollectionDict {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "_collectionDictionary");
+	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
+}
+-(NSMutableArray *)gimmeConnectionDict {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "_imageList");
+	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
+}
+@interface PhotoXMLConnection : PhotoConnection
+- (id)initWithDictionary:(id)fp8;
+@end
+@implementation PhotoXMLConnection (protectedAccess)
+-(NSMutableDictionary *)gimmePhotos {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "mPhotos");
+	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
+}
+-(NSMutableArray *)gimmeRootContainers {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "mRootContainers");
+	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
+}
+
+@end
 @implementation SoftwareSettings
 static NSDate *lastFilterChangeDate = nil;
 - (BOOL)_assetHasMetadata
@@ -297,12 +358,195 @@ static NSDate *lastFilterChangeDate = nil;
 		[SMGeneralMethods switchBoolforKey:settingsChanged];
 		[self initWithIdentifier:@"101"];
 	}
-	/*if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"0"])
+	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"0"])
 	{
-		id tweakController = [[SMTweaks alloc] init];
+		BRBackupPhotoAsset *Image = [[SMDefaultPhotosAsset alloc] initWithPath:@"/Users/frontrow/DefaultImages/GWKH.jpg"];
+
+		BRIPhotoMediaCollection *hello = [SMDefaultPhotos applePhotosCollection];
+
+		NSMutableArray *photoArray = [NSMutableArray arrayWithObjects:nil];
+		//[SMDefaultPhotos setPath:@"/Users/frontrow/DefaultImages/"];
+		NSEnumerator *assetEnum = [[SMDefaultPhotos applePhotosForPath:@"/Users/frontrow/BB"] objectEnumerator];
+		id obj;
+		while((obj = [assetEnum nextObject]) != nil)
+		{
+			NSString *assetID = [obj coverArtID];
+			[photoArray addObject:assetID];
+		}
+		
+		NSMutableDictionary *Collections = [[BRIPhotoMediaCollection createPhotoDictFromListOfPhotoAssets:[SMDefaultPhotos applePhotos]] mutableCopy];
+		NSMutableDictionary *hellos = [NSDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/GWKH.jpg",@"ImageURL",nil],
+									  [NSNumber numberWithInt:100],
+									  [NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/GWKH.jpg",@"ImageURL",nil],
+									  [NSNumber numberWithInt:101],
+									  nil];
+
+		NSDictionary *Collectionstoo = [BRIPhotoMediaCollection createPhotoDictFromListOfLocalPhotos:photoArray];
+		//[Collections setMediaAssets:[NSArray arrayWithObjects:Image,nil]];
+		//NSLog(@"1");
+		NSLog(@"assetList: %@",Collectionstoo);//[Collections mediaAssets]);
+		//NSLog(@"2");
+		//NSLog(@"AssetList2: %@",[Collectionstoo mediaAssets]);
+		PhotoXMLConnection *PhotoConnections = [[PhotoXMLConnection alloc] initWithDictionary:Collectionstoo];
+
+		[Collections setObject:hellos forKey:@"Master Image List"];
+		[Collections setObject:[NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"library",
+														 @"Album Type",
+														 [NSNumber numberWithInt:124],
+														 @"AlbumId",
+														 [NSArray arrayWithObjects:[NSNumber numberWithInt:100],[NSNumber numberWithInt:101],nil],
+														 @"KeyList",
+														 nil]] 
+						forKey:@"List of Albums"];
+
+		//NSLog(@"provider: %@",[[ATVDefaultPhotos applePhotosCollection] provider]);
+		
+		//NSLog(@"Default Photos: Collection: %@", [hello mediaAssets]);
+		//BRIPhotoMediaCollection *maybe = [ATVDefaultPhotos applePhotosCollection];
+		NSSet *mediaSet=[NSSet setWithObject:[BRMediaType photo]];
+		BRMediaHost *mediaHost = [BRMediaHost localMediaProviderAdvertisingMediaTypes:mediaSet];
+		
+		//BRIPhotoMediaCollection *theCollection = [[BRIPhotoMediaCollection alloc] initWithProvider:[[ATVDefaultPhotos applePhotosCollection] provider] dictionary:[[ATVDefaultPhotos applePhotosCollection] collectionDictionary] andPhotoConnection:[[ATVDefaultPhotos applePhotosCollection] photoConnection]];
+		
+		//NSLog(@"theCollection: %@",[[[ATVDefaultPhotos applePhotos] objectAtIndex:0] assetID]);
+		//NSLog(@"theCollection1: %@",[[[ATVDefaultPhotos applePhotos] objectAtIndex:0] coverArtID]);
+		//NSLog(@"theCollection2: %@",[[[ATVDefaultPhotos applePhotos] objectAtIndex:0] fullSizeArtID]);
+		//NSLog(@"theCollection2.5: %@",[[[SMDefaultPhotos applePhotos] objectAtIndex:1] coverArtID]);
+		//NSLog(@"theCollection3: %@",[theCollection title]);
+		//[theCollection setMediaAssets:[[ATVDefaultPhotos applePhotosCollection] mediaAssets]];
+		
+		//NSLog(@"theCollection4: %@",[[[theCollection mediaAssets] objectAtIndex:0] fullSizeArt]);
+		
+		//NSLog(@"SS: %@",[[ATVSettingsFacade singleton] providerIDForCurrentScreenSaver]);
+		//id theProvider = [[ATVDefaultPhotos applePhotosCollection] photoConnection];
+
+		//NSLog(@"1: %@",[PhotoConnections originalArchivePath]);
+		NSLog(@"2: %@",[PhotoConnections rootAlbums]);
+		//NSLog(@"2.5: %@",[PhotoConnections gimmePhotos]);
+		//NSLog(@"3: %@",[PhotoConnections imageInfoForImageID:100]);
+		/*NSMutableDictionary * URLs = [PhotoConnections gimmePhotos];
+		[URLs setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"GWKH.jpg",
+									@"file name",
+									@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos",
+									@"file path",
+									[NSNumber numberWithInt:100],
+									@"key",
+									nil]
+							forKey:[NSNumber numberWithInt:100]];
+		[URLs setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"sb_zn.jpg",
+									@"file name",
+									@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos",
+									@"file path",
+									[NSNumber numberWithInt:101],
+									@"key",
+									nil]
+				 forKey:[NSNumber numberWithInt:101]];*/
+		NSMutableArray * photoRootContainers = [PhotoConnections gimmeRootContainers];
+		NSMutableDictionary * dict = [[photoRootContainers objectAtIndex:0] mutableCopy];
+		[dict setObject:[[BRSettingsFacade singleton] slideshowPlaybackOptions] forKey:@"slideshow options"];
+		[photoRootContainers removeLastObject];
+		[photoRootContainers addObject:dict];
+		
+		
+		NSLog(@"rootAlbums: %@",[[PhotoConnections rootAlbums] objectAtIndex:0]);
+
+		SMDefaultPhotoCollection *collectiontoo = [[SMDefaultPhotoCollection alloc] initWithProvider:[[ATVDefaultPhotos applePhotosCollection] provider] 
+																						  dictionary:Collections
+																				  andPhotoConnection:PhotoConnections];
+		SMDefaultPhotoCollection *collectionthree = [[SMDefaultPhotoCollection alloc] initWithProvider:[[ATVDefaultPhotos applePhotosCollection] provider] 
+																							dictionary:[[PhotoConnections rootAlbums] objectAtIndex:0]
+																								  path:@"/Users/frontrow/BB"
+																				  andPhotoConnection:PhotoConnections];
+		NSMutableArray *imageList = [collectiontoo gimmeConnectionDict];
+		[imageList removeLastObject];
+		//[URLs setValue:[NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/GWKH.jpg",@"ImageURL",[NSNumber numberWithInt:100],@"key",nil] forKey:[NSNumber numberWithInt:100]];
+		//[URLs setValue:[NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/SB_ZN.JPG",@"ImageURL",[NSNumber numberWithInt:101],@"key",nil] forKey:[NSNumber numberWithInt:101]];
+
+		
+		/*
+		//////Set collectionDictionary
+		NSMutableDictionary *collDict = [collectiontoo gimmeCollectionDict];
+		[collDict removeAllObjects];
+		[collDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:100],[NSNumber numberWithInt:101],nil] forKey:@"images"];
+		[collDict setObject:[NSNumber numberWithInt:102] forKey:@"key"];
+		[collDict setObject:[NSDictionary dictionaryWithDictionary:nil] forKey:@"slideshow options"];
+		//////////////////////////////
+		
+		NSLog(@"Collections: %@",Collections);
+		NSDictionary *helllo = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:[NSNumber numberWithInt:100],[NSNumber numberWithInt:101],nil],
+								@"Images",
+								[NSNumber numberWithInt:102],
+								@"key",
+								[NSDictionary dictionaryWithObjectsAndKeys:nil],
+								@"slideshow options",
+								nil];
+		
+		NSLog(@"5: %@",[[collectiontoo photoConnection] gimmePhotos]);
+		NSLog(@"5: %@",URLs);
+		NSLog(@"collectiontoo: %@",collectiontoo);
+		
+		NSMutableArray *mutableArray = [[ATVDefaultPhotos applePhotosCollection] mediaAssets];
+		NSLog(@"rootContainers: %@",mutableArray);
+		[collectiontoo setMediaAssets:[SMDefaultPhotos applePhotos]];
+		NSMutableArray *mutableArraytoo = [collectiontoo mediaAssets];
+		NSLog(@"rootContainersToo: %@",mutableArraytoo);
+		
+		//NSMutableDictionary *photoConnPhotos = [[collectiontoo photoConnection] rootAlbums];
+
+		/*[photoConnPhotos setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"GWKH.jpg",
+																			   @"file name",
+																			   @"/Users/frontrow/DefaultImages",
+																			   @"file path",
+																			   [NSNumber numberWithInt:100],
+																			   @"key",
+																			   nil]
+							forKey:[NSNumber numberWithInt:100]];
+		[photoConnPhotos setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"sb_zn.jpg",
+									@"file name",
+									@"/Users/frontrow/DefaultImages",
+									@"file path",
+									[NSNumber numberWithInt:101],
+									@"key",
+									nil]
+							forKey:[NSNumber numberWithInt:101]];*/
+		//NSLog(@"CollectionDict: %@",[[ATVDefaultPhotos	applePhotosCollection] mediaAssets]);
+		//NSLog(@"CollectionDictToo: %@",[collectionthree mediaAssets]);
+		//NSLog(@"ConnectionDict: %@",[[ATVDefaultPhotos applePhotosCollection] gimmeCollectionDict]);
+
+		//NSLog(@"ConnectionDictToo: %@",[collectionthree gimmeCollectionDict]);
+		
+
+		//NSArray 
+		
+		/*NSLog(@"2: %@",[theProvider providerID]);
+		NSLog(@"3: %@",[theProvider mediaTypes]);
+		NSLog(@"4: %@",[theProvider providerName]);*/
+		
+
+		
+		//[maybe setCollectionDictionary:Collections];
+		//[maybe setNumberOfPhotos:1];
+		//NSLog(@"hello: %@",maybe);
+		//NSLog(@"Weird: %@", [[ATVSettingsFacade singleton] screenSaverCollectionForScreenSaver:1]);
+		
+		//NSLog(@"number: %@",[NSNumber numberWithInt:[collectiontoo numberOfPhotos]]);
+		NSLog(@"screensaveroption: %@",[[BRSettingsFacade singleton] slideshowPlaybackOptions]);
+		NSLog(@"rootContainers: %@",[[collectionthree  photoConnection] gimmeRootContainers]);
+
+		//BRPhotoBrowserController *photoBrowser = [[BRPhotoBrowserController alloc] initWithCollection:collectiontoo	withPlaybackOptions:[[BRSettingsFacade singleton] slideshowPlaybackOptions]];
+		BRPhotoBrowserController *photoBrowser = [[BRPhotoBrowserController alloc] initWithCollection:collectionthree withPlaybackOptions:[[BRSettingsFacade singleton] slideshowPlaybackOptions]];
+		[[self stack] pushController:photoBrowser];
+		//NSDictionary *playbackOptions = [[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions] mutableCopy]; 
+		//[playbackOptions setValue:[NSNumber numberWithBool:NO] forKey:@"PanAndZoom"];
+		//[[ATVSettingsFacade setSingleton:playbackOptions] slideshowScreensaverPlaybackOptions];
+		//[[ATVSettingsFacade setSingleton] setScreenSaverPhotoCollection:collectiontoo forScreenSaverType:[[ATVSettingsFacade singleton] providerIDForCurrentScreenSaver]];
+		//[[ATVSettingsFacade singleton] setScreenSaverSelectedPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/Slideshow.frss"];
+		//[[ATVScreenSaverManager singleton] showScreenSaver];
+		
+		/*id tweakController = [[SMTweaks alloc] init];
 		[tweakController initCustom];
-		[[self stack] pushController:tweakController];
-	}*/
+		[[self stack] pushController:tweakController];*/
+	}
 		
 	/*else if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"2"])
 	{
@@ -579,6 +823,10 @@ static NSDate *lastFilterChangeDate = nil;
 - (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
 - (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
 - (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
+- (void)wasExhumed
+{
+	NSLog(@"wasExhumed");
+}
 
 
 
