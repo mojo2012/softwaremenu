@@ -15,8 +15,16 @@
 @implementation SMInfo
 - (void)setTheName:(NSString *)theName
 {
+	[_theName release];
 	_theName=theName;
 	[_theName retain];
+}
+- (void)setTheImage:(BRImage *)theImage
+{
+	[_theImage release];
+	_theImage = theImage;
+	[_theImage retain];
+	
 }
 -(void)setVersions:(NSString *)theOnlineVersion withBak:(NSString *)theBackupVersion withCurrent:(NSString *)theInstalledVersion
 {
@@ -66,6 +74,7 @@
 }
 -(void)setDescription:(NSString *)theDescription
 {
+	[_theDescription release];
 	_theDescription=[theDescription copy];
 	[_theDescription retain];
 }
@@ -79,7 +88,6 @@
 	_header = [[BRHeaderControl alloc] init];
 	_sourceText = [[BRScrollingTextControl alloc] init];
 	_sourceImage = [[BRImageControl alloc] init];
-	
 	
 	
 	// lay out our UI
@@ -98,7 +106,6 @@
 	frame.origin.x = (masterFrame.size.width - frame.size.width) * 0.5f;
 	frame.origin.y = masterFrame.origin.y + (masterFrame.size.height * (1.0f / 8.0f));
 	
-	
 	[self setTitle: _theName];
 	[self setSourceImage: _theName];
 	
@@ -106,6 +113,9 @@
 	[self setSourceText:@"hello"];
 	//NSLog(@"theDescription:%@",_theDescription);
 	[self appendSourceText: _theDescription];
+
+	//shrinksize.width=
+	//[_sourceText shrinkTextToFitInBounds:{masterFrame.size.width*0.4f;masterFrame.size.height*0.45f;};]
 	
 	// add the controls
 	[self addControl: _header];
@@ -123,6 +133,8 @@
 - (id) init {
     if ( [super init] == nil )
         return ( nil );
+	self = [super init];
+	_passData = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
     return ( self );
 }
 -(void)customStuff
@@ -190,12 +202,21 @@
 		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
 	
 	id sp= [BRImage imageWithPath:appPng];
-	[_sourceImage setImage:sp];
+	if([name isEqualToString:@"imageProvided"])
+	{
+		[_sourceImage setImage:_theImage];
+	}
+	else
+	{
+		[_sourceImage setImage:sp];
+	}
+	if(_theImage !=nil)
+		[_sourceImage setImage:_theImage];
 	[_sourceImage setAutomaticDownsample:YES];
 	NSRect masterFrame = [[self parent] frame];
 	NSRect frame;
 	frame.origin.x = masterFrame.size.width *0.7f;
-	frame.origin.y = masterFrame.size.height *0.45f;
+	frame.origin.y = masterFrame.size.height *0.25f;
 	frame.size.width = masterFrame.size.height*0.4f; 
 	frame.size.height= masterFrame.size.height*0.4f;
 	[_sourceImage setFrame: frame];
@@ -216,6 +237,9 @@
 	//NSAttributedString *srcsText =[[NSAttributedString alloc]initWithString:srcText attributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
 	[_sourceText setText:srcText];
     // layout this item
+	BRPasscodeEntryControl *hello = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
+	[hello setDelegate:self];
+
     NSRect masterFrame = [[self parent] frame];
 	
 	// [_sourceText setMaximumSize: NSMakeSize(masterFrame.size.width * 0.66f,
@@ -232,6 +256,9 @@
 	//struct CGSize shrinksize;
 	//shrinksize.width=
 	//[_sourceText shrinkTextToFitInBounds:{masterFrame.size.width*0.4f;masterFrame.size.height*0.45f;};]
+	//[hello setKeyboardTitle:@"one"];
+	
+	//[hello setFrame:frame];
 	[_sourceText setFrame: frame];
 }
 - (void) setBakVers: (NSString *) srcText
@@ -304,6 +331,15 @@
 {
     return ( [_sourceText text] );
 }
+/*- (void)textDidChange:(id)fp8
+{
+	
+}
+- (void)textDidEndEditing:(id)fp8
+{
+	[[self stack] popController];
+}*/
+
 @end
 @implementation SMLog
 - (void) drawSelf
@@ -360,4 +396,5 @@
 	frame.size.height = masterFrame.size.height*0.80f;
 	[_sourceText setFrame: frame];
 }
+
 @end

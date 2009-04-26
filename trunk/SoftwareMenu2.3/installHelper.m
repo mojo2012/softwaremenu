@@ -299,6 +299,16 @@ int main (int argc, const char * argv[]) {
 			[pool release];
 			return returnvalue;
 		}
+		else if ([option isEqualToString:@"installScreensaver"])
+		{
+			NSLog(@"Install ScreenSaver");
+			installHelperClass *ihc = [[installHelperClass alloc] init];
+			int returnvalue;
+			[ihc setRunPath:path];
+			returnvalue = [ihc installScreenSaver];
+			[pool release];
+			return returnvalue;
+		}
 			
 			
 	}

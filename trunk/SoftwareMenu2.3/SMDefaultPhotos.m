@@ -12,6 +12,14 @@
 @implementation SMDefaultPhotos
 + (id)applePhotosForPath:(NSString *)thepath
 {
+	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
+						  @"jpg",
+						  @"jpeg",
+						  @"tif",
+						  @"tiff",
+						  @"png",
+						  @"gif",
+						  nil];
 	id hello = [super applePhotos];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
@@ -19,14 +27,16 @@
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		[hellotoo addObject:[[BRBackupPhotoAsset alloc] initWithPath:[thepath stringByAppendingPathComponent:idStr]]];
+		if([coverArtExtention containsObject:[idStr pathExtension]])
+		{
+			[hellotoo addObject:[[BRBackupPhotoAsset alloc] initWithPath:[thepath stringByAppendingPathComponent:idStr]]];
+		}
 		//NSLog(@"%@",idStr);
 		
 	}
 	
 	//BRBackupPhotoAsset *Image = [[BRBackupPhotoAsset alloc] initWithPath:@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos/GWKH.jpg"];
 	//BRBackupPhotoAsset *Image2 = [[BRBackupPhotoAsset alloc] initWithPath:@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos/SB_ZN.JPG"];
-	NSLog(@"AssetList: %@",hellotoo);
 	return hellotoo;
 }
 - (id)mediaAssets
@@ -51,7 +61,7 @@
 
 - (id)collectionID
 {
-	return [[SMDefaultPhotos alloc] collectionID];
+	return @"3178";
 }
 
 - (id)mediaAssets
@@ -70,12 +80,12 @@
 }
 - (id)title
 {
-	return @"Tom";
+	return [path lastPathComponent];
 }
-/*- (int)numberOfPhotos
+- (int)numberOfPhotos
 {
-	return [[SMDefaultPhotos applePhotos] count];
-}*/
+	return [[SMDefaultPhotos applePhotosForPath:path] count];
+}
 @end
 @implementation  SMDefaultPhotosAsset 
 -(id) dateTaken

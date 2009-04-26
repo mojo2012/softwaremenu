@@ -8,22 +8,26 @@
 
 #import "SMFrappMover.h"
 #import "SMMedia.h"
+#import "SMMediaPreview.h"
+#import	"SoftwarePasscodeController.h"
 #define SETTINGSPATH						@"/Users/frontrow/Library/Application Support/SoftwareMenu/settings.plist"
 
 @implementation SMFrappMover
 - (id) previewControlForItem: (long) row
 {
+	if(row >=[_items count])
+		return nil;
 	SMMedia	*meta = [[SMMedia alloc] init];
 	[meta setDefaultImage];
 	[meta setTitle:[[_items objectAtIndex:row] title]];
 	if(row>2) {[meta setDescription:BRLocalizedString(@"Change Order of Frap",@"Change Order of Frap")];}
-	BRMetadataPreviewControl *preview =[[BRMetadataPreviewControl alloc] init];
+	SMMediaPreview *preview =[[SMMediaPreview  alloc] init];
 	[preview setAsset:meta];
 	[preview setShowsMetadataImmediately:YES];
 	return [preview autorelease];
 }
 
--(void)testURLs
+/*-(void)testURLs
 {
 	//NSLog(@"1");
 	NSString *updateUrl = @"http://web.me.com/tomcool420/SoftwareMenu/updates.plist";
@@ -35,7 +39,7 @@
 	vDict = [NSPropertyListSerialization propertyListFromData:outData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
 	//NSLog(@"***************************");
 	//NSLog(@"%@",vDict);
-}
+}*/
 
 - (NSArray *)frapEnumerator
 {
@@ -77,54 +81,60 @@
 	//NSLog(@"the orders: %@",theorders);
 	return theorders;
 }
-	
-
--(id)initWithIdentifier:(NSString *)initId
+-(id)init
 {
-	//NSLog(@"hello");
-	[self testURLs];
-	//if ([initID isEqualToString:@"start")
-	//{
-	//NSLog(@"init");
+	self = [super init];
+	[[self list] removeDividers];
+	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
+	[self setListTitle: BRLocalizedString(@"Frap Order",@"Frap Order")];
+	_items = [[NSMutableArray alloc] initWithObjects:nil];
+	_options = [[NSMutableArray alloc] initWithObjects:nil];
+	return self;
+	
+}
+
+-(id)initCustom
+{
+	[_items removeAllObjects];
+	[_items removeAllObjects];
+	
 	NSArray *theFrapList=[[NSArray alloc] init];
 	theFrapList=[self frapEnumerator];
 	//}
 	NSArray *FrapOrderArray=[[NSArray alloc] initWithArray:[self frapOrderDict:theFrapList]];
+	NSLog(@"1");
+	NSArray *names = [NSArray arrayWithObjects:
+						   BRLocalizedString(@"Help",@"Help"),
+						   BRLocalizedString(@"Backup",@"Backup"),
+						   BRLocalizedString(@"Restore",@"Restore"),
+						   nil];
+	NSArray *types = [NSArray arrayWithObjects:
+						   [NSNumber numberWithInt:0],
+						   [NSNumber numberWithInt:1],
+						   [NSNumber numberWithInt:2],
+						   nil];
 	
-	//NSLog(@"after oderdict");
-	[FrapOrderArray writeToFile:@"/Users/frontrow/orders2.plist" atomically:YES];
-	[[self list] removeDividers];
-	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: BRLocalizedString(@"Frap Order",@"Frap Order")];
-	/*NSString *scriptPNG = [[NSBundle bundleForClass:[self class]] pathForResource:@"script" ofType:@"png"];
-	id folderImage = [BRImage imageWithPath:scriptPNG];
-	[self setListIcon:folderImage horizontalOffset:0.5f kerningFactor:0.2f];*/
-	
-	_items = [[NSMutableArray alloc] initWithObjects:nil];
-	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	NSSortDescriptor *lastDescriptor =[[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
 	NSSortDescriptor *firstDescriptor =[[[NSSortDescriptor alloc] initWithKey:@"name"
 								 ascending:YES
 								  selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
 	NSArray *thedescriptors = [NSArray arrayWithObjects:lastDescriptor,firstDescriptor, nil];
 	NSMutableArray *thesortedArray;
-	thesortedArray = [FrapOrderArray sortedArrayUsingDescriptors:thedescriptors];
+	thesortedArray = [[FrapOrderArray sortedArrayUsingDescriptors:thedescriptors] mutableCopy];
 	
-	
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Help",@"name",nil]];
-	id item1 = [[BRTextMenuItemLayer alloc] init];
-	[item1 setTitle:BRLocalizedString(@"Help",@"Help")];
-	[_items addObject:item1];
-	
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Backup",@"name",FrapOrderArray,@"data",nil]];
-	id item2 = [[BRTextMenuItemLayer alloc] init];
-	[item2 setTitle:BRLocalizedString(@"Backup",@"Backup")];
-	[_items addObject:item2];
-	
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Restore",@"name",nil]];
-	id item3 = [[BRTextMenuItemLayer alloc] init];
-	[item3 setTitle:BRLocalizedString(@"Restore",@"Restore")];
-	[_items addObject:item3];
+	int counter , i = [names count];
+	for(counter = 0;counter<i;counter++)
+	{
+		NSLog(@"%d",counter);
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+							 [types objectAtIndex:counter],LAYER_TYPE,
+							 [names objectAtIndex:counter],LAYER_NAME,
+							 nil]];
+		id item1 = [BRTextMenuItemLayer menuItem];
+		[item1 setTitle:[names objectAtIndex:counter]];
+		[_items addObject:item1];
+	}
+	NSLog(@"2");
 	
 	int marker1 =[_items count];
 
@@ -137,9 +147,13 @@
 
 	while (anObject = [enumerator nextObject]) 
 	{
+		NSLog(@"anObject: %@",anObject);
 		id item = [[BRTextMenuItemLayer alloc] init];
 		[item setTitle:[[anObject valueForKey:@"name"] stringByDeletingPathExtension]];
-		[_options addObject:anObject];
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+							 anObject,LAYER_NAME,
+							 [NSNumber numberWithInt:3],LAYER_TYPE,
+							 nil]];
 		[item setRightJustifiedText:[[anObject valueForKey:@"order"] stringValue]];
 		[_items addObject:item];
 	}
@@ -148,64 +162,62 @@
 	id list = [self list];
 	[list setDatasource: self];
 	[[self list] addDividerAtIndex:marker1 withLabel:@"Frappliances"];
+	NSLog(@"3");
 	return self;
 }
 
--(void)itemSelected:(long)fp8
+-(void)itemSelected:(long)row
 {
 	
-	NSArray *option = [_options objectAtIndex:fp8];
-	NSString *thename = (NSString *)[option valueForKey:@"name"];
-	if ([thename isEqualToString:@"Help"])
+	NSArray *option = [_options objectAtIndex:row];
+	BOOL isDir;
+	switch([[option valueForKey:LAYER_TYPE] intValue])
 	{
-		//NSLog(@"Help");
-	}
-	else if([thename isEqualToString:@"Backup"])
-	{
-		NSMutableDictionary *settingsDict = [[NSMutableDictionary alloc] initWithDictionary:nil];
-		
-		if([[NSFileManager defaultManager] fileExistsAtPath:SETTINGSPATH])
-		{
-			NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:SETTINGSPATH];
-			[settingsDict addEntriesFromDictionary:tempdict];
-		}
-		
-		[settingsDict setValue:[option valueForKey:@"data"] forKey:@"OrderBak"];
-		[settingsDict writeToFile:SETTINGSPATH atomically:YES];
-		[self initWithIdentifier:@"101"];
-	}
-	else if([thename isEqualToString:@"Restore"])
-	{
-		NSMutableDictionary *settingsDict =[[NSMutableDictionary alloc] initWithContentsOfFile:SETTINGSPATH];
-		NSArray *backupArray=[[NSArray alloc] initWithArray:[settingsDict valueForKey:@"OrderBak"]];
-		NSEnumerator *enumerator = [backupArray objectEnumerator];
-		id anObject;
-		while (anObject = [enumerator nextObject]) 
-		{
-			NSTask *helperTask = [[NSTask alloc] init];
-			NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-			[helperTask setLaunchPath:helperPath];
-			[helperTask setArguments:[NSArray arrayWithObjects:@"-changeOrder", [anObject valueForKey:@"fullpath"],[[anObject valueForKey:@"order"] stringValue],nil]];	
-			[helperTask launch];
-			[helperTask waitUntilExit];
-			/*int theTerm = */[helperTask terminationStatus];
-			[helperTask release];
-		}
-		[self initWithIdentifier:@"101"];
-		
-		
-	}
-	else
-	{
-		CFPreferencesSetAppValue(CFSTR("option"), (CFNumberRef)[NSNumber numberWithLong:fp8],kCFPreferencesCurrentApplication);
-		//NSLog(@"theNumber : %@",(CFNumberRef)[NSNumber numberWithLong:fp8]);
-		BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
-		[textinput setTitle:[NSString stringWithFormat:@"Order Number for Frappliance: %@",[option valueForKey:@"name"]]];
-		[textinput setInitialTextEntryText:[NSString stringWithFormat:@"%d",[[option valueForKey:@"order"]intValue]]];
-		[textinput setPromptText:@"enter a number"];
-		[textinput setTextEntryCompleteDelegate:self];
-		[[self stack] pushController:textinput];
-		//[self setOrder];
+		case 0:
+			break;
+		case 1:
+			isDir = NO;
+			NSMutableDictionary *settingsDict = [[NSMutableDictionary alloc] initWithDictionary:nil];
+			
+			if([[NSFileManager defaultManager] fileExistsAtPath:SETTINGSPATH])
+			{
+				NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:SETTINGSPATH];
+				[settingsDict addEntriesFromDictionary:tempdict];
+			}
+			
+			[settingsDict setValue:[option valueForKey:@"data"] forKey:@"OrderBak"];
+			[settingsDict writeToFile:SETTINGSPATH atomically:YES];
+			[self initCustom];
+			break;
+		case 2:
+			isDir = YES;
+			NSMutableDictionary *settingsDicts =[[NSMutableDictionary alloc] initWithContentsOfFile:SETTINGSPATH];
+			NSArray *backupArray=[[NSArray alloc] initWithArray:[settingsDicts valueForKey:@"OrderBak"]];
+			NSEnumerator *enumerator = [backupArray objectEnumerator];
+			id anObject;
+			while (anObject = [enumerator nextObject]) 
+			{
+				[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-changeOrder", [anObject valueForKey:@"fullpath"],[[anObject valueForKey:@"order"] stringValue],nil]];
+			}
+			[self initCustom];
+			break;
+		case 3:
+			isDir = NO;
+			id newController = [[SoftwarePasscodeController alloc] initWithTitle:[[option valueForKey:LAYER_NAME] valueForKey:@"name"]
+																 withDescription:BRLocalizedString(@"Please enter a new value for prefered Order", @"Please enter a new value for prefered Order")
+																	   withBoxes:4
+																		 withKey:nil];
+			[newController setChangeOrder:[[option valueForKey:LAYER_NAME] valueForKey:@"fullpath"]];
+			[[self stack] pushController:newController];
+			/*CFPreferencesSetAppValue(CFSTR("option"), (CFNumberRef)[NSNumber numberWithLong:row],kCFPreferencesCurrentApplication);
+			//NSLog(@"theNumber : %@",(CFNumberRef)[NSNumber numberWithLong:row]);
+			BRTextEntryController *textinput = [[BRTextEntryController alloc] initWithTextEntryStyle:3];
+			NSLog(@"name: %@",[[option valueForKey:LAYER_NAME] valueForKey:@"name"]);
+			[textinput setTitle:[NSString stringWithFormat:@"Move: %@",[[option valueForKey:LAYER_NAME] valueForKey:@"name"]]];
+			[textinput setInitialTextEntryText:[NSString stringWithFormat:@"%d",[[[option valueForKey:LAYER_NAME] valueForKey:@"order"]intValue]]];
+			[textinput setPromptText:@"enter a number"];
+			[textinput setTextEntryCompleteDelegate:self];
+			[[self stack] pushController:textinput];*/
 	}
 }
 
@@ -213,18 +225,10 @@
 - (void) textDidEndEditing: (id) sender
 {
 	NSString *thetext = [sender stringValue];
-	NSTask *helperTask = [[NSTask alloc] init];
-	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	[[SMGeneralMethods sharedInstance] helperFixPerm];	
-	[helperTask setLaunchPath:helperPath];
 	NSNumber *thestatus= (NSNumber *)(CFPreferencesCopyAppValue((CFStringRef)@"option", kCFPreferencesCurrentApplication));
-	[helperTask setArguments:[NSArray arrayWithObjects:@"-changeOrder", [[_options objectAtIndex:[thestatus intValue]] valueForKey:@"fullpath"],thetext,nil]];	
-	[helperTask launch];
-	[helperTask waitUntilExit];
-	//[helperTask terminationStatus];
-	[helperTask release];
+	[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-changeOrder", [[[_options objectAtIndex:[thestatus intValue]] valueForKey:LAYER_NAME] valueForKey:@"fullpath"],thetext,nil]];
 	[[self stack] popController];
-	[self initWithIdentifier:@"101"];
+	[self initCustom];
 	//NSLog(@"check it: %i", [[BRSettingsFacade singleton] slideshowSecondsPerSlide]);
 	
 }
@@ -232,52 +236,15 @@
 {
 	//Do Nothing Now
 }
-
-
--(long)defaultIndex
+-(void)wasExhumed
 {
-	return 0;
-}
--(void)willBeBuried
-{
-	//NSLog(@"willBuried");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBeBuried];
+	[self initCustom];
 }
 
--(void)willBePopped
-{
-	//NSLog(@"willBePopped");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBePopped];
-}
-- (int)getSelection
-{
-	BRListControl *list = [self list];
-	int row;
-	NSMethodSignature *signature = [list methodSignatureForSelector:@selector(selection)];
-	NSInvocation *selInv = [NSInvocation invocationWithMethodSignature:signature];
-	[selInv setSelector:@selector(selection)];
-	[selInv invokeWithTarget:list];
-	if([signature methodReturnLength] == 8)
-	{
-		double retDoub = 0;
-		[selInv getReturnValue:&retDoub];
-		row = retDoub;
-	}
-	else
-		[selInv getReturnValue:&row];
-	return row;
-}
+
 
 //	Data source methods:
 
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
-- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
 
 
 

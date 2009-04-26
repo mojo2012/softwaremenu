@@ -5,6 +5,7 @@
 //  Created by Thomas on 11/3/08.
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
+#import <Cocoa/Cocoa.h>
 #import "SMUpdaterOptionss.h"
 #import "SoftwareSettings.h"
 #import "SMUOptions.h"
@@ -16,6 +17,10 @@
 #import "SMMedia.h"
 #import "SMDefaultPhotos.h"
 #import "SMMediaPreview.h"
+#import "SMScreenSaverMenu.h"
+#import "SMInfo.h"
+#import "SMScreenSaverSettingsMenu.h"
+#import "SoftwarePasscodeController.h"
 //#import "SMMediaPreview.h"
 //#import "BackRow/BRMetadataPreviewControl.h"
 #import "BackRowUtilstwo.h"
@@ -24,684 +29,283 @@
 #define META_TITLE_KEY                                  @"Title"
 #define FILE_CLASS_KEY                                  @"File Class"
 #define META_DESCRIPTION_KEY                    @"Show Description"
-/*@interface ATVDefaultPhotos : BRIPhotoMediaCollection
-{
-}
-+ (id)screenSaverPhotosForType:(id)fp8;
-+ (id)applePhotos;
-+ (id)applePhotosCollection;
-@end*/
-	#import <objc/objc-class.h>
 
-
-@interface IPSlideshow : NSObject
-@end
-@implementation IPSlideshow (protectedAccess)
--(NSMutableDictionary *)gimmeAlbumDict {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "mAlbumDictionary");
-	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
-}
-
-
-@end
-
-@interface ATVScreenSaverManager
-+(id)singleton;
-- (void)showScreenSaver;
-@end
-@interface ATVSettingsFacade : BRSettingsFacade
-- (void)setScreenSaverSelectedPath:(id)fp8;
-- (id)screenSaverSelectedPath;
-- (id)screenSaverPaths;
-- (id)screenSaverCollectionForScreenSaver:(id)fp8;
-
-@end
-@interface PhotoConnection
-@end
-@implementation BRIPhotoMediaCollection (protectedAccess)
--(NSMutableDictionary *)gimmeCollectionDict {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "_collectionDictionary");
-	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
-}
--(NSMutableArray *)gimmeConnectionDict {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "_imageList");
-	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
-}
-@interface PhotoXMLConnection : PhotoConnection
-- (id)initWithDictionary:(id)fp8;
-@end
-@implementation PhotoXMLConnection (protectedAccess)
--(NSMutableDictionary *)gimmePhotos {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "mPhotos");
-	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
-}
--(NSMutableArray *)gimmeRootContainers {
-	Class klass = [self class];
-	Ivar ret = class_getInstanceVariable(klass, "mRootContainers");
-	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
-}
-
-@end
 @implementation SoftwareSettings
-static NSDate *lastFilterChangeDate = nil;
-- (BOOL)_assetHasMetadata
-	{
-		return YES;
-	}
-
-/*- (id) previewControlForItem: (long) item
-{
-	id asset =[[BRBaseMediaAsset alloc] init];
-
-	NSString *appPng = nil;
-	NSString * theoption = [[_options objectAtIndex:item] valueForKey:NAME_KEY];
-	
-	appPng = [[SMGeneralMethods sharedInstance] getImagePathforDict:[NSDictionary dictionaryWithObjectsAndKeys:SM_KEY,TYPE_KEY,theoption,NAME_KEY,nil]];
-	BRImageAndSyncingPreviewController *obj = [[BRImageAndSyncingPreviewController alloc] init];
-	id sp = [BRImage imageWithPath:appPng];
-	
-	[obj setImage:sp];
-	return (obj);
-}*/
 - (id) previewControlForItem: (long) item
 {
-    // If subclassing BRMediaMenuController, this function is called when the selection cursor
-    // passes over an item.
 	if(item >= [_items count])
 		return nil;
 	else
 	{
-		//NSLog(@"in preview loop");
-		//NSArray *names = [[NSArray alloc] initWithObjects:       BRLocalizedString(@"  Populate File Data", @"Populate File Data menu item"),BRLocalizedString(@"  Fetch TV Show Data", @"Fetch TV Show Data menu item"),nil];
-		/* Get setting name & kill the gem cushion  */
-		NSString *settingName = @"hello";
-		//NSArray *settingDescriptions=[[NSArray alloc] initWithObjects: BRLocalizedString(@"Tells Sapphire that for every TV episode, gather more information about this episode from the internet.", @"Fetch TV Show Data description"),nil];
-		NSString *settingDescription=@"Bye";
-
 		SMMedia	*meta = [[SMMedia alloc] init];
-		BRXMLMediaAsset *metatoo = [[SMMedia alloc] init];
-		[metatoo setObject:[BRImage imageWithPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/SoftwareMenu.png"] forKey:@"coverArt"];
 		[meta setDefaultImage];
 		[meta setTitle:[[_items objectAtIndex:item] title]];
 		[meta setDescription:[[_options objectAtIndex:item] valueForKey:LAYER_DISPLAY]];
-		//[meta setDev:@"Thomas C. Cool"];
-		//[meta setObject:@"Settings" forKey:@"title"];
-		//[metatoo setObject:@"hello" forKey:@"mediaSummary"];
-		//BRMediaAssetItemProvider *theProvider = [BRMediaAssetItemProvider providerWithMediaAssetArray:[NSArray arrayWithObjects:meta,nil]];
-
-		SMMediaPreview *previewtoo =[[SMMediaPreview alloc] init];
-		[previewtoo setShowsMetadataImmediately:YES];
-		[previewtoo setDeletterboxAssetArtwork:YES];
-		[previewtoo setAsset:meta];
-
-		return [previewtoo autorelease];
-
-		
+		SMMediaPreview *preview =[[SMMediaPreview alloc] init];
+		[preview setShowsMetadataImmediately:YES];
+		[preview setAsset:meta];
+		return [preview autorelease];
 	}
     return ( nil );
 }
-/*- (id) previewControlForItem: (long) item
-{
-	if(item >= [_items count])
-		return nil;
-	else
-	{
-		SMMediaPreview * preview = [[SMMediaPreview alloc] init];
-		[preview setMetaData:[NSDictionary dictionaryWithObjectsAndKeys:
-							  [[_items objectAtIndex:item] title],@"Name",
-							  [[_options objectAtIndex:item] valueForKey:LAYER_DISPLAY],@"ShortDescription",
-							  //@"Hello",@"Developer",
-							  //@"0.7",@"OnlineVersion",
-							  nil]];
-		[preview setShowsMetadataImmediately:YES];
-		return [preview autorelease];
-	}
-	return (nil);
-}*/
 
+
+
+-(id)init
+{
+	self = [super init];
+	[self setListIcon:[[BRThemeInfo sharedTheme] gearImage] horizontalOffset:0.5f kerningFactor:0.2f];
+	_items = [[NSMutableArray alloc] initWithObjects:nil];
+	_options = [[NSMutableArray alloc] initWithObjects:nil];
+	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
+	[self setListTitle: NSLocalizedString(@"Settings",@"Settings")];
+	[[self list] removeDividers];
+	NSArray *settingsNumberType = [NSArray arrayWithObjects:
+						   [NSNumber numberWithInt:kSMSetInfo],
+						   [NSNumber numberWithInt:kSMSetInfo],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetToggle],
+						   [NSNumber numberWithInt:kSMSetYNToggle],
+						   [NSNumber numberWithInt:kSMSetYNToggle],
+						   [NSNumber numberWithInt:kSMSetSPos],
+						   [NSNumber numberWithInt:kSMSetBlocker],
+						   [NSNumber numberWithInt:kSMSetUpdater],
+						   [NSNumber numberWithInt:kSMSetUntrusted],
+						   nil];
+	NSArray *settingsDisplays = [NSArray arrayWithObjects:
+						 BRLocalizedString(@"TV Version",@"TV Version"),
+						 BRLocalizedString(@"SoftwareMenu Version",@"Software Menu Version"),
+						 BRLocalizedString(@"3rd Party Plugins",@"3rd Party Plugins"),
+						 BRLocalizedString(@"Manage Built-in",@"Manage Built-in"),
+						 BRLocalizedString(@"Scripts",@"Scripts"),
+						 BRLocalizedString(@"Restart Finder",@"Restart Finder"),
+						 BRLocalizedString(@"FrapMover",@"FrapMover"),
+						 BRLocalizedString(@"Console",@"Console"),
+						 BRLocalizedString(@"Tweaks",@"Tweaks"),
+						 BRLocalizedString(@"Photos",@"Photos"),
+						 BRLocalizedString(@"Auto Restart Finder",@"Auto Restart Finder"),
+						 BRLocalizedString(@"Scripts Main Menu",@"Scripts Main Menu"),
+						 BRLocalizedString(@"Scripts Position",@"Scripts Position"),
+						 BRLocalizedString(@"UpdateBlocker",@"UpdateBlocker"),
+						 BRLocalizedString(@"Updater",@"Updater"),
+						 BRLocalizedString(@"Manage Untrusted Sources",@"Manage Untrusted Sources"),
+						 nil];
+	
+	 NSArray *settingsDescriptions = [NSArray arrayWithObjects:
+						  @"nil",
+						  @"nil",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Hide and Show this option from main menu",
+						  @"Auto Restart the Finder after any action requirering a restart : (anytime you install or remove a plugin, etc)",
+						  @"Show selected scripts on the main menu",
+						  @"Position of said scripts",
+						  @"Blocks Updates from Apple ",
+						  @"Manual updates (quickpwn for appleTV...)",
+						  @"Untrusted sources ... WIP",
+						  nil];
+	//[_settingsPrefNames release];
+	NSArray *settingsPrefNames = [NSArray arrayWithObjects:
+							 @"nil",
+							 @"nil",
+							 @"downloadable",
+							 @"builtin",
+							 @"scripts",
+							 @"reboot",
+							 @"mover",
+							 @"console",
+							 @"tweaks",
+							 @"Photos",
+							 @"ARF",
+							 @"SMM",
+							 @"ScriptsPosition",
+							 @"nil",
+							 @"nil",
+							 @"nil",
+							 nil];
+	//[_settingsPrefNames retain];
+	NSArray *dividerPositions = [NSArray arrayWithObjects:
+						 [NSNumber numberWithInt:0],
+						 [NSNumber numberWithInt:2],
+						 [NSNumber numberWithInt:10],
+						 [NSNumber numberWithInt:13],
+						 [NSNumber numberWithInt:15],
+						 nil];
+	//NSArray * settingNames = [SMGeneralMethods menuItemOptions];
+	//NSArray * settingDisplays = [SMGeneralMethods menuItemNames];
+	
+	
+	/********************
+	 * General Info     *
+	 ********************/
+	
+	
+	int ii,counter;
+	
+	ii=[settingsNumberType count];
+	
+	
+	for( counter=0; counter < ii ; counter++)
+	{
+		id item = [[BRTextMenuItemLayer alloc] init];
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+							 [settingsNumberType objectAtIndex:counter],LAYER_TYPE,
+							 [settingsPrefNames objectAtIndex:counter],LAYER_NAME,
+							 [settingsDescriptions objectAtIndex:counter],LAYER_DISPLAY,
+							 nil]];
+		[item setTitle:[settingsDisplays objectAtIndex:counter]];
+		[_items addObject:item];
+		
+	}
+	id list = [self list];
+	[list setDatasource: self];
+	
+	[[self list] addDividerAtIndex:[[dividerPositions objectAtIndex:0] intValue] withLabel:BRLocalizedString(@"System Info",@"System Info")];
+	[[self list] addDividerAtIndex:[[dividerPositions objectAtIndex:1] intValue] withLabel:BRLocalizedString(@"Main Menu Settings",@"Main Menu Settings")];
+	[[self list] addDividerAtIndex:[[dividerPositions objectAtIndex:2] intValue] withLabel:BRLocalizedString(@"Other Settings",@"Other Settings")];
+	[[self list] addDividerAtIndex:[[dividerPositions objectAtIndex:3] intValue] withLabel:BRLocalizedString(@"Upgrader",@"Upgrader")];
+	[[self list] addDividerAtIndex:[[dividerPositions objectAtIndex:4] intValue] withLabel:BRLocalizedString(@"Manage Untrusted Sources",@"Manage Untrusted Sources")];
+	
 	
 
+	return self;
 
-
-
-
+}
 
 - (void)dealloc
 {
+	//[_settingsNumberType release];
 	[_options release];
 	[_items release];
 	[super dealloc];  
 }
 
--(id)initWithIdentifier:(NSString *)initId
+
+
+-(void)itemSelected:(long)row
 {
-	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"displays",@"1",@"dlinks",@"1",@"preserve",@"1",@"now",nil];
-	[SMGeneralMethods setDict:thedict forKey:@"dictinfo"];
-	[[self list] removeDividers];
-	 [self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: NSLocalizedString(@"Settings",@"Settings")];
-	_items = [[NSMutableArray alloc] initWithObjects:nil];
-	_options = [[NSMutableArray alloc] initWithObjects:nil];
-	NSArray * settingNames = [SMGeneralMethods menuItemOptions];
-	NSArray * settingDisplays = [SMGeneralMethods menuItemNames];
-	_show_hide = [[NSMutableDictionary alloc] initWithDictionary:nil];
-	
-	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]])
+	id newController = nil;
+	//BOOL isDir;
+	switch([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
 	{
-		NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]];
-		[_show_hide addEntriesFromDictionary:tempdict];
-		//NSLog(@"adding from temp dict");
-	}
-	/********************
-	 * General Info     *
-	 ********************/
-	id item1 =[[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"atv_info",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Apple TV OS Version\nFrom AppleTV.framework plist file",LAYER_DISPLAY,nil]];
-	[item1 setTitle:@"ATV Version"];
-	NSDictionary *atv_framework_plist = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/version.plist"];
-	NSString *atv_version = [atv_framework_plist valueForKey:@"CFBundleVersion"];
-	[item1 setRightJustifiedText:atv_version];
-	[_items addObject:item1];
-	
-	id item2 =[[BRTextMenuItemLayer alloc] init];
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SM_info",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"SoftwareMenu Version",LAYER_DISPLAY,nil]];
-	[item2 setTitle:@"Software Menu Version"];
-	NSDictionary *sm_info_plist = [[NSBundle bundleForClass:[self class]] infoDictionary];
-	NSString *sm_version = [sm_info_plist valueForKey:@"CFBundleVersion"];
-	[item2 setRightJustifiedText:sm_version];
-	[_items addObject:item2];
-	
-/*id item2_1 =[BRTextMenuItemLayer folderMenuItem];
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"0",LAYER_TYPE,@"SMTweaks",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Tweaks, Toggles and Installs",LAYER_DISPLAY,nil]];
-	[item2_1 setTitle:@"SMTweaks"];
-	//NSDictionary *sm_info_plist = [[NSBundle bundleForClass:[self class]] infoDictionary];
-	//NSString *sm_version = [sm_info_plist valueForKey:@"CFBundleVersion"];
-	//[item2_1 setRightJustifiedText:sm_version];
-	[_items addObject:item2_1];*/
-	
-	int iii=[_items count];
-	int ii;//
-	ii=[settingNames count];
-	int counter;
-	
-	for( counter=0; counter < ii ; counter++)
-	{
-		id item = [[BRTextMenuItemLayer alloc] init];
-		
-		NSString *settingName = (NSString *)[settingNames objectAtIndex:counter];
-		NSString *settingDisplay =(NSString *)[settingDisplays objectAtIndex:counter];
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"1",LAYER_TYPE,settingName,LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Hide and Show this option from main menu",LAYER_DISPLAY,nil]];
-		//NSLog(@"%@",settingName);
-		[item setTitle:settingDisplay];
-		if([SMGeneralMethods boolForKey:settingName])
-		{
-			[item setRightJustifiedText:BRLocalizedString(@"Shown",@"Shown")];
-		}
-		else
-		{
-			[item setRightJustifiedText:BRLocalizedString(@"Hidden",@"Hidden")];
-			[SMGeneralMethods setBool:NO forKey:settingName];
-		}
-		
-		[_items addObject:item];
-		
-		
-		//UNtrusted
-		
-	}
-	int othersec = [_items count];
-	/*************
-	 * ARF (Auto Restart Finder)
-	 *************/
-	NSMutableArray * settingDisplaysOne=[[NSMutableArray alloc] initWithObjects:BRLocalizedString(@"Auto Restart Finder",@"Auto Restart Finder"),BRLocalizedString(@"Scripts Main Menu",@"Scripts Main Menu"),nil];
-	NSMutableArray * settingNamesOne=[[NSMutableArray alloc] initWithObjects:@"ARF",@"SMM",nil];
-	NSMutableArray * settingDescriptionOne=[[NSMutableArray alloc] initWithObjects:@"Automatically restart the Finder after any action that requires restarting the Finder to show",@"Show Selected Scripts on Main Menu",nil];
-	ii=[settingNamesOne count];
-	for( counter=0; counter < ii ; counter++)
-	{
-		id item2 = [[BRTextMenuItemLayer alloc] init];
-		
-		NSString *settingName = (NSString *)[settingNamesOne objectAtIndex:counter];
-		NSString *settingDisplay =(NSString *)[settingDisplaysOne objectAtIndex:counter];
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2",LAYER_TYPE,settingName,LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,[settingDescriptionOne objectAtIndex:counter],LAYER_DISPLAY,nil]];
-		//NSLog(@"%@",settingName);
-		[item2 setTitle:settingDisplay];
-		if([SMGeneralMethods boolForKey:settingName])
-		{
-			[item2 setRightJustifiedText:BRLocalizedString(@"YES",@"YES")];
-		}
-		else
-		{
-			[item2 setRightJustifiedText:BRLocalizedString(@"NO",@"NO")];
-			[SMGeneralMethods setBool:NO forKey:settingName];
-		}
-		
-		[_items addObject:item2];
-	}
-		
-		
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.1",LAYER_TYPE,@"ScriptsPosition",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Script Position on SoftwareMenu Menu",LAYER_DISPLAY,nil]];
-		id item3 = [[BRTextMenuItemLayer alloc] init];
-		[item3 setTitle:@"Scripts Location"];
-		int j=0;
-		j=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-		[item3 setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] airportImageForSignalStrength:j], @"BRMenuIconImageKey",nil]];
-		
-		if(![SMGeneralMethods boolForKey:@"SMM"])
-		{
-			[item3 setDimmed:YES];
-		}
-		[_items addObject:item3];
-		
-		int upgradeIndex=[_items count];
-		
-		id item7 = [[BRTextMenuItemLayer alloc] init];
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.5",LAYER_TYPE,@"toggleUpdateBlocker",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,@"Blocks mesu.apple.com (and thus apple updates)\n do not need to deactivate to update manually",LAYER_DISPLAY,nil]];
-		[item7 setTitle:BRLocalizedString(@"UpdateBlocker",@"UpdateBlocker")];
-		BOOL toggleUp = NO;
-		toggleUp=[[SMGeneralMethods sharedInstance] checkblocker];
-		if(toggleUp)
-		{
-			[item7 setRightJustifiedText:BRLocalizedString(@"Blocking",@"Blocking")];
-		}
-		else
-		{
-			[item7 setRightJustifiedText:BRLocalizedString(@"NOT Blocking",@"Blocking")];
-		}
-		[_items addObject:item7];
-		
-		/*	id item75 = [BRTextMenuItemLayer folderMenuItem];
-		 [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.5",LAYER_TYPE,@"options",LAYER_NAME,SM_KEY,TYPE_KEY,@"SoftwareMenu",NAME_KEY,nil]];
-		 [item75 setTitle:BRLocalizedString(@"Upgrader Options",@"Upgrader Options")];
-		 [_items addObject:item75];*/
-		
-		id item5 = [[BRTextMenuItemLayer alloc] init];
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"2.5",LAYER_TYPE,@"Updater",LAYER_NAME,SM_KEY,TYPE_KEY,@"Upgrader",NAME_KEY,@"The OS updater\nAllows you to change your OS to 2.1/2.2/2.3/2.3.1",LAYER_DISPLAY,nil]];
-		[item5 setTitle:NSLocalizedString(@"Updater",@"Updater")];
-		[_items addObject:item5];
-		
-		int untrustedsec = [_items count];
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"3",LAYER_TYPE,@"Manage",LAYER_NAME,SM_KEY,TYPE_KEY,@"Upgrader",NAME_KEY,@"Manage Untrusted Sources and thus allow you to add more plugins that have not been \"approved\"",LAYER_DISPLAY,nil]];
-		id item6 = [BRTextMenuItemLayer folderMenuItem];
-		[item6 setTitle:NSLocalizedString(@"Manage Untrusted Sources",@"Manage Untrusted Sources")];
-		[item6 axSelectedItemText];
-		[_items addObject:item6];
-		
-		
-		[_show_hide writeToFile:@"Users/frontrow/Library/Application Support/SoftwareMenu/settings.plist" atomically:YES];
-		id list = [self list];
-		[list setDatasource: self];
-		[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"System Info",@"System Info")];
-		[[self list] addDividerAtIndex:iii withLabel:BRLocalizedString(@"Main Menu Settings",@"Main Menu Settings")];
-		[[self list] addDividerAtIndex:upgradeIndex withLabel:BRLocalizedString(@"Upgrader",@"Upgrader")];
-		[[self list] addDividerAtIndex:othersec withLabel:BRLocalizedString(@"Other Settings",@"Other Settings")];
-		[[self list] addDividerAtIndex:untrustedsec withLabel:BRLocalizedString(@"Manage Untrusted Sources",@"Manage Untrusted Sources")];
-		return self;
-		
-	}
-
-
-
--(void)itemSelected:(long)fp8
-{
-	//NSLog(@"settingsChanged: %@",[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME]);
-	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"1"] || [[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"2"])
-	{
-		//NSMutableDictionary *hello=[NSMutableDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]];
-		NSString *settingsChanged=[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME];
-		//NSLog(@"settingsChanged: %@", settingsChanged);
-		//NSString *settingIs= [hello valueForKey:settingsChanged];
-		[SMGeneralMethods switchBoolforKey:settingsChanged];
-		[self initWithIdentifier:@"101"];
-	}
-	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"0"])
-	{
-		BRBackupPhotoAsset *Image = [[SMDefaultPhotosAsset alloc] initWithPath:@"/Users/frontrow/DefaultImages/GWKH.jpg"];
-
-		BRIPhotoMediaCollection *hello = [SMDefaultPhotos applePhotosCollection];
-
-		NSMutableArray *photoArray = [NSMutableArray arrayWithObjects:nil];
-		//[SMDefaultPhotos setPath:@"/Users/frontrow/DefaultImages/"];
-		NSEnumerator *assetEnum = [[SMDefaultPhotos applePhotosForPath:@"/Users/frontrow/BB"] objectEnumerator];
-		id obj;
-		while((obj = [assetEnum nextObject]) != nil)
-		{
-			NSString *assetID = [obj coverArtID];
-			[photoArray addObject:assetID];
-		}
-		
-		NSMutableDictionary *Collections = [[BRIPhotoMediaCollection createPhotoDictFromListOfPhotoAssets:[SMDefaultPhotos applePhotos]] mutableCopy];
-		NSMutableDictionary *hellos = [NSDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/GWKH.jpg",@"ImageURL",nil],
-									  [NSNumber numberWithInt:100],
-									  [NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/GWKH.jpg",@"ImageURL",nil],
-									  [NSNumber numberWithInt:101],
-									  nil];
-
-		NSDictionary *Collectionstoo = [BRIPhotoMediaCollection createPhotoDictFromListOfLocalPhotos:photoArray];
-		//[Collections setMediaAssets:[NSArray arrayWithObjects:Image,nil]];
-		//NSLog(@"1");
-		NSLog(@"assetList: %@",Collectionstoo);//[Collections mediaAssets]);
-		//NSLog(@"2");
-		//NSLog(@"AssetList2: %@",[Collectionstoo mediaAssets]);
-		PhotoXMLConnection *PhotoConnections = [[PhotoXMLConnection alloc] initWithDictionary:Collectionstoo];
-
-		[Collections setObject:hellos forKey:@"Master Image List"];
-		[Collections setObject:[NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"library",
-														 @"Album Type",
-														 [NSNumber numberWithInt:124],
-														 @"AlbumId",
-														 [NSArray arrayWithObjects:[NSNumber numberWithInt:100],[NSNumber numberWithInt:101],nil],
-														 @"KeyList",
-														 nil]] 
-						forKey:@"List of Albums"];
-
-		//NSLog(@"provider: %@",[[ATVDefaultPhotos applePhotosCollection] provider]);
-		
-		//NSLog(@"Default Photos: Collection: %@", [hello mediaAssets]);
-		//BRIPhotoMediaCollection *maybe = [ATVDefaultPhotos applePhotosCollection];
-		NSSet *mediaSet=[NSSet setWithObject:[BRMediaType photo]];
-		BRMediaHost *mediaHost = [BRMediaHost localMediaProviderAdvertisingMediaTypes:mediaSet];
-		
-		//BRIPhotoMediaCollection *theCollection = [[BRIPhotoMediaCollection alloc] initWithProvider:[[ATVDefaultPhotos applePhotosCollection] provider] dictionary:[[ATVDefaultPhotos applePhotosCollection] collectionDictionary] andPhotoConnection:[[ATVDefaultPhotos applePhotosCollection] photoConnection]];
-		
-		//NSLog(@"theCollection: %@",[[[ATVDefaultPhotos applePhotos] objectAtIndex:0] assetID]);
-		//NSLog(@"theCollection1: %@",[[[ATVDefaultPhotos applePhotos] objectAtIndex:0] coverArtID]);
-		//NSLog(@"theCollection2: %@",[[[ATVDefaultPhotos applePhotos] objectAtIndex:0] fullSizeArtID]);
-		//NSLog(@"theCollection2.5: %@",[[[SMDefaultPhotos applePhotos] objectAtIndex:1] coverArtID]);
-		//NSLog(@"theCollection3: %@",[theCollection title]);
-		//[theCollection setMediaAssets:[[ATVDefaultPhotos applePhotosCollection] mediaAssets]];
-		
-		//NSLog(@"theCollection4: %@",[[[theCollection mediaAssets] objectAtIndex:0] fullSizeArt]);
-		
-		//NSLog(@"SS: %@",[[ATVSettingsFacade singleton] providerIDForCurrentScreenSaver]);
-		//id theProvider = [[ATVDefaultPhotos applePhotosCollection] photoConnection];
-
-		//NSLog(@"1: %@",[PhotoConnections originalArchivePath]);
-		NSLog(@"2: %@",[PhotoConnections rootAlbums]);
-		//NSLog(@"2.5: %@",[PhotoConnections gimmePhotos]);
-		//NSLog(@"3: %@",[PhotoConnections imageInfoForImageID:100]);
-		/*NSMutableDictionary * URLs = [PhotoConnections gimmePhotos];
-		[URLs setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"GWKH.jpg",
-									@"file name",
-									@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos",
-									@"file path",
-									[NSNumber numberWithInt:100],
-									@"key",
-									nil]
-							forKey:[NSNumber numberWithInt:100]];
-		[URLs setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"sb_zn.jpg",
-									@"file name",
-									@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos",
-									@"file path",
-									[NSNumber numberWithInt:101],
-									@"key",
-									nil]
-				 forKey:[NSNumber numberWithInt:101]];*/
-		NSMutableArray * photoRootContainers = [PhotoConnections gimmeRootContainers];
-		NSMutableDictionary * dict = [[photoRootContainers objectAtIndex:0] mutableCopy];
-		[dict setObject:[[BRSettingsFacade singleton] slideshowPlaybackOptions] forKey:@"slideshow options"];
-		[photoRootContainers removeLastObject];
-		[photoRootContainers addObject:dict];
-		
-		
-		NSLog(@"rootAlbums: %@",[[PhotoConnections rootAlbums] objectAtIndex:0]);
-
-		SMDefaultPhotoCollection *collectiontoo = [[SMDefaultPhotoCollection alloc] initWithProvider:[[ATVDefaultPhotos applePhotosCollection] provider] 
-																						  dictionary:Collections
-																				  andPhotoConnection:PhotoConnections];
-		SMDefaultPhotoCollection *collectionthree = [[SMDefaultPhotoCollection alloc] initWithProvider:[[ATVDefaultPhotos applePhotosCollection] provider] 
-																							dictionary:[[PhotoConnections rootAlbums] objectAtIndex:0]
-																								  path:@"/Users/frontrow/BB"
-																				  andPhotoConnection:PhotoConnections];
-		NSMutableArray *imageList = [collectiontoo gimmeConnectionDict];
-		[imageList removeLastObject];
-		//[URLs setValue:[NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/GWKH.jpg",@"ImageURL",[NSNumber numberWithInt:100],@"key",nil] forKey:[NSNumber numberWithInt:100]];
-		//[URLs setValue:[NSDictionary dictionaryWithObjectsAndKeys:@"/Users/frontrow/DefaultImages/SB_ZN.JPG",@"ImageURL",[NSNumber numberWithInt:101],@"key",nil] forKey:[NSNumber numberWithInt:101]];
-
-		
-		/*
-		//////Set collectionDictionary
-		NSMutableDictionary *collDict = [collectiontoo gimmeCollectionDict];
-		[collDict removeAllObjects];
-		[collDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:100],[NSNumber numberWithInt:101],nil] forKey:@"images"];
-		[collDict setObject:[NSNumber numberWithInt:102] forKey:@"key"];
-		[collDict setObject:[NSDictionary dictionaryWithDictionary:nil] forKey:@"slideshow options"];
-		//////////////////////////////
-		
-		NSLog(@"Collections: %@",Collections);
-		NSDictionary *helllo = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:[NSNumber numberWithInt:100],[NSNumber numberWithInt:101],nil],
-								@"Images",
-								[NSNumber numberWithInt:102],
-								@"key",
-								[NSDictionary dictionaryWithObjectsAndKeys:nil],
-								@"slideshow options",
-								nil];
-		
-		NSLog(@"5: %@",[[collectiontoo photoConnection] gimmePhotos]);
-		NSLog(@"5: %@",URLs);
-		NSLog(@"collectiontoo: %@",collectiontoo);
-		
-		NSMutableArray *mutableArray = [[ATVDefaultPhotos applePhotosCollection] mediaAssets];
-		NSLog(@"rootContainers: %@",mutableArray);
-		[collectiontoo setMediaAssets:[SMDefaultPhotos applePhotos]];
-		NSMutableArray *mutableArraytoo = [collectiontoo mediaAssets];
-		NSLog(@"rootContainersToo: %@",mutableArraytoo);
-		
-		//NSMutableDictionary *photoConnPhotos = [[collectiontoo photoConnection] rootAlbums];
-
-		/*[photoConnPhotos setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"GWKH.jpg",
-																			   @"file name",
-																			   @"/Users/frontrow/DefaultImages",
-																			   @"file path",
-																			   [NSNumber numberWithInt:100],
-																			   @"key",
-																			   nil]
-							forKey:[NSNumber numberWithInt:100]];
-		[photoConnPhotos setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"sb_zn.jpg",
-									@"file name",
-									@"/Users/frontrow/DefaultImages",
-									@"file path",
-									[NSNumber numberWithInt:101],
-									@"key",
-									nil]
-							forKey:[NSNumber numberWithInt:101]];*/
-		//NSLog(@"CollectionDict: %@",[[ATVDefaultPhotos	applePhotosCollection] mediaAssets]);
-		//NSLog(@"CollectionDictToo: %@",[collectionthree mediaAssets]);
-		//NSLog(@"ConnectionDict: %@",[[ATVDefaultPhotos applePhotosCollection] gimmeCollectionDict]);
-
-		//NSLog(@"ConnectionDictToo: %@",[collectionthree gimmeCollectionDict]);
-		
-
-		//NSArray 
-		
-		/*NSLog(@"2: %@",[theProvider providerID]);
-		NSLog(@"3: %@",[theProvider mediaTypes]);
-		NSLog(@"4: %@",[theProvider providerName]);*/
-		
-
-		
-		//[maybe setCollectionDictionary:Collections];
-		//[maybe setNumberOfPhotos:1];
-		//NSLog(@"hello: %@",maybe);
-		//NSLog(@"Weird: %@", [[ATVSettingsFacade singleton] screenSaverCollectionForScreenSaver:1]);
-		
-		//NSLog(@"number: %@",[NSNumber numberWithInt:[collectiontoo numberOfPhotos]]);
-		NSLog(@"screensaveroption: %@",[[BRSettingsFacade singleton] slideshowPlaybackOptions]);
-		NSLog(@"rootContainers: %@",[[collectionthree  photoConnection] gimmeRootContainers]);
-
-		//BRPhotoBrowserController *photoBrowser = [[BRPhotoBrowserController alloc] initWithCollection:collectiontoo	withPlaybackOptions:[[BRSettingsFacade singleton] slideshowPlaybackOptions]];
-		BRPhotoBrowserController *photoBrowser = [[BRPhotoBrowserController alloc] initWithCollection:collectionthree withPlaybackOptions:[[BRSettingsFacade singleton] slideshowPlaybackOptions]];
-		[[self stack] pushController:photoBrowser];
-		//NSDictionary *playbackOptions = [[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions] mutableCopy]; 
-		//[playbackOptions setValue:[NSNumber numberWithBool:NO] forKey:@"PanAndZoom"];
-		//[[ATVSettingsFacade setSingleton:playbackOptions] slideshowScreensaverPlaybackOptions];
-		//[[ATVSettingsFacade setSingleton] setScreenSaverPhotoCollection:collectiontoo forScreenSaverType:[[ATVSettingsFacade singleton] providerIDForCurrentScreenSaver]];
-		//[[ATVSettingsFacade singleton] setScreenSaverSelectedPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/Slideshow.frss"];
-		//[[ATVScreenSaverManager singleton] showScreenSaver];
-		
-		/*id tweakController = [[SMTweaks alloc] init];
-		[tweakController initCustom];
-		[[self stack] pushController:tweakController];*/
-	}
-		
-	/*else if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"2"])
-	{
-		NSMutableDictionary *hello=[NSMutableDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]];
-		NSString *settingsChanged=[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME];
-		NSString *settingIs= [hello valueForKey:settingsChanged];
-		if([settingIs isEqualToString:@"YES"])
-		{
-			[hello setValue:@"NO" forKey:settingsChanged];
-			
-			
-		}
-		else
-		{
-			[hello setValue:@"YES" forKey:settingsChanged];
-		}
-		//NSLog(@"new value is %@", [hello valueForKey:@"settingsChanged"]);
-		[hello writeToFile:@"Users/frontrow/Library/Application Support/SoftwareMenu/settings.plist" atomically:YES];
-		[self initWithIdentifier:@"101"];
-		
-	}*/
-	else if([[[_options objectAtIndex:fp8] valueForKey:LAYER_TYPE] isEqualToString:@"2.5"])
-	{
-		if([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"Updater"])
-		{
-			//NSLog(@"Going to Software Updater");
-			id newController = nil;
+		case kSMSetInfo:
+			//Used as new menu test bed
+			/*newController = [[SoftwarePasscodeController alloc] init];
+			NSLog(@"afterinit");
+			[newController setTitle:@"hello"];
+			NSLog(@"afterTitle");
+			[newController setDescription:@"hello"];
+			NSLog(@"afterdesc");
+			[newController setNumberOfBoxes:5];
+			//[newController drawSelf];
+			NSLog(@"afterboxes");
+			[[self stack] pushController:newController];*/
+			newController = [[SoftwarePasscodeController alloc] initWithTitle:@"hello"
+															  withDescription:@"to you too" 
+																	withBoxes:4
+																	  withKey:@"weird"];	
+			//[self setCustomRotationTime];
+			/*newController = [[SMScreenSaverMenu alloc] init];
+			[newController initCustom];*/
+			[[self stack] pushController:newController];
+			break;
+		case kSMSetToggle:
+		case kSMSetYNToggle:
+			[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]];
+			[[self list] reload];
+			break;
+			break;
+		case kSMSetUpdater:
 			newController = [[SMUpdater alloc] init];
 			[newController initCustom];
 			[[self stack] pushController:newController];
-		}
-		else if([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"toggleUpdateBlocker"])
-		{
-			
-			SMGeneralMethods *ihc = [[SMGeneralMethods alloc] init];
-			[ihc helperFixPerm];
-			NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-			NSTask *task6 = [[NSTask alloc] init];
-			NSArray *args6 = [NSArray arrayWithObjects:@"-toggleUpdate",@"0",@"0",nil];
-			[task6 setArguments:args6];
-			[task6 setLaunchPath:helperLaunchPath];
-			[task6 launch];
-			[task6 waitUntilExit];
-			[self initWithIdentifier:@"101"];
-		}
-		else if ([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"options"])
-		{
-			id newController = nil;
-			newController = [[SMUOptions alloc] init];
-			[newController initCustom];
+			break;
+		case kSMSetBlocker:
+			[[SMGeneralMethods sharedInstance] helperFixPerm];
+			[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-toggleUpdate",@"0",@"0",nil]];
+			[[self list] reload];
+			break;
+		case kSMSetUntrusted:
+			newController = [[SoftwareManual alloc] init];
+			[newController initWithIdentifier:nil];
 			[[self stack] pushController:newController];
-		}
+		default:
+			[[self list] reload];
+	}
 
-	}
-	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"Manage"])
-	{
-		id newController = nil;
-		newController = [[SoftwareManual alloc] init];
-		[newController initWithIdentifier:nil];
-		[[self stack] pushController:newController];
-		// Call for Menu to manage untrusted
-		/*CFPreferencesSetAppValue(CFSTR("status"), (CFStringRef)[NSString stringWithString:@"name"],kCFPreferencesCurrentApplication);
-
-		BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
-		 [textinput setTitle:@"add Untrusted: Name"];
-		 [textinput setTextEntryCompleteDelegate:self];
-		 [[self stack] pushController:textinput];*/
-	}
-	if([[[_options objectAtIndex:fp8] valueForKey:LAYER_NAME] isEqualToString:@"AddUntrusted"])
-	{
-		/*id newController = nil;
-		newController = [[SoftwareManual alloc] init];
-		[newController initWithIdentifier:nil];
-		[[self stack] pushController:newController];*/
-		// Call for Menu to manage untrusted
-		CFPreferencesSetAppValue(CFSTR("status"), (CFStringRef)[NSString stringWithString:@"name"],kCFPreferencesCurrentApplication);
-		 
-		 BRTextEntryController *textinput = [[BRTextEntryController alloc] init];
-		 [textinput setTitle:@"add Untrusted: Name"];
-		 [textinput setTextEntryCompleteDelegate:self];
-		 [[self stack] pushController:textinput];
-	}
 	
 }
 - (BOOL)brEventAction:(BREvent *)event
 {
-	long selitem;
-	unsigned int hashVal = (uint32_t)((int)[event page] << 16 | (int)[event usage]);
+
+	int remoteAction =[event remoteAction];
+	
 	if ([(BRControllerStack *)[self stack] peekController] != self)
-		hashVal = 0;
+		return [super brEventAction:event];
 	
-	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
+	if([event value] ==0)
+		return [super brEventAction:event];
 	
-	//NSLog(@"hashval =%i",hashVal);
-	selitem = 0;
+	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
+		remoteAction ++;
+	int i;
+	long row = [self getSelection];
+
+	//NSMutableArray *theoptions = [_options objectAtIndex:selitem];
 	
-	selitem = [self getSelection];
-	NSMutableArray *theoptions = [_options objectAtIndex:selitem];
-	
-	switch (hashVal)
+	switch (remoteAction)
 	{
+		case kSMRemoteUp:
 		case 65676:  // tap up
-			//NSLog(@"type up");
+			//NSLog(@"up");
 			break;
+		case kSMRemoteDown:
 		case 65677:  // tap down
-			//NSLog(@"type down");
+			//NSLog(@"down");
 			break;
 		case 65675:  // tap left
-			//NSLog(@"type left");
-
-			
-			//NSLog(@"selection :%d",selitem);
-			//NSLog(@"theoptions objectAtIndex:1 :%@", [theoptions objectAtIndex:1]);
-			if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
+		case kSMRemoteLeft:
+			//NSLog(@"left");
+			//if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
+			//{
+			//[lastFilterChangeDate release];
+			//lastFilterChangeDate = [[NSDate date] retain];
+			switch ([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
 			{
-				[lastFilterChangeDate release];
-				lastFilterChangeDate = [[NSDate date] retain];
-				if([[theoptions valueForKey:LAYER_NAME] isEqualToString:@"ScriptsPosition"])
-				{
-					//NSLog(@"going to decrease");
-					int i;
+				case kSMSetSPos:
 					i=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-					if(i>0)
-					{
-						[SMGeneralMethods setInteger:i-1 forKey:@"ScriptsPosition"];
-					}
-					//[self modifyJ:@"decrease"];
-					[self initWithIdentifier:@"101"];
-				}
+					if(i>0)		{[SMGeneralMethods setInteger:i-1 forKey:@"ScriptsPosition"];}
+					[[self list] reload];
+					break;
 			}
+			//}
 			break;
-		case 65674:
-			//NSLog(@"type right");
-			//NSLog(@"selection :%d",selitem);
-			//NSLog(@"theoptions: %@",theoptions);
-			if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
+		case 65674: //tap right
+		case kSMRemoteRight:
+			switch ([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
 			{
-				[lastFilterChangeDate release];
-				lastFilterChangeDate = [[NSDate date] retain];
-			if([[theoptions valueForKey:LAYER_NAME] isEqualToString:@"ScriptsPosition"])
-			{
-				int i;
-				i=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-				if(i<5)
-				{
-					[SMGeneralMethods setInteger:i+1 forKey:@"ScriptsPosition"];
-				}
-				[self initWithIdentifier:@"101"];
+				case kSMSetSPos:
+					i=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
+					if(i<5)		{[SMGeneralMethods setInteger:i+1 forKey:@"ScriptsPosition"];}
+					[[self list] reload];
+					break;
 			}
-			}
+			
 			break;
+		case kSMRemotePlay:
 		case 65673:  // tap play
-			/*selitem = [self selectedItem];
-			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];*/
-			//NSLog(@"type play");
+			NSLog(@"play");
 			break;
 			
 	}
@@ -730,104 +334,183 @@ static NSDate *lastFilterChangeDate = nil;
 	return row;
 }
 
--(long)defaultIndex
-{
-	return 0;
-}
--(void)willBeBuried
-{
-	//NSLog(@"willBuried");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBeBuried];
-}
-
--(void)willBePushed
-{
-	//NSLog(@"willBePushed");
-	[super willBePushed];
-}
-
--(void)willBePopped
-{
-	//NSLog(@"willBePopped");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBePopped];
-}
 
 
-//	Data source methods:
--(long)getLongValue:(NSString *)jtwo
-{
-	if([jtwo isEqualToString:@"1"])
+
+
+
+- (id)itemForRow:(long)row	
+{ 
+	BRTextMenuItemLayer *item = [_items objectAtIndex:row];
+	switch([[[_options objectAtIndex:row]valueForKey:LAYER_TYPE]intValue])
 	{
-		//NSLog(@"j = 1");
-		return 1;
-	}
-	else if([jtwo isEqualToString:@"2"])
-	{
-		//NSLog(@"j = 2");
-		return 2;
-	}
-	else if([jtwo isEqualToString:@"3"])
-	{
-		//NSLog(@"j = 3");
-		return 3;
-	}
-	else if([jtwo isEqualToString:@"4"])
-	{
-		//NSLog(@"j = 4");
-		return 4;
-	}
-	else if([jtwo isEqualToString:@"5"])
-	{
-		//NSLog(@"j = 5");
-		return 5;
-	}
-	else if([jtwo isEqualToString:@"0"])
-	{
-		//NSLog(@"j = 6");
-		return 0;
-	}
-	//NSLog(@"j = 100");
-	return 100;
-}
--(void)modifyJ:(NSString *)changeValue
-{
-	NSString *jtwo=[_show_hide valueForKey:@"scriptsPos"];
-	long j= [self getLongValue:jtwo];
-	if([changeValue isEqualToString:@"decrease"])
-	{
-		if(j>0)
-		{
-			j=j-1;
-		}
-	}
-	else if([changeValue isEqualToString:@"increase"])
-	{
-		
-		if(j<5)
-		{
-			//NSLog(@"increasing");
-			j=j+1;
+		case kSMSetToggle:
+			if([SMGeneralMethods boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightJustifiedText:@"Shown"];}
+			else																						{[item setRightJustifiedText:@"Hidden"];}
+			break;
+		case kSMSetYNToggle:
+			if([SMGeneralMethods boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];}
+			else																						{[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];}
+			break;
+		case kSMSetSPos:
+			if(![SMGeneralMethods boolForKey:@"SMM"])			{[item setDimmed:YES];}
+			else												{[item setDimmed:NO];}
+			int j=0;
+			j=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
+			[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] airportImageForSignalStrength:j], @"BRMenuIconImageKey",nil]];
+			break;
+		case kSMSetBlocker:
+			if([[SMGeneralMethods sharedInstance] checkblocker])		{[item setRightJustifiedText:BRLocalizedString(@"Blocking",@"Blocking")];}
+			else														{[item setRightJustifiedText:BRLocalizedString(@"NOT Blocking",@"Blocking")];}
+			break;
 			
-		}
+			
+			
 	}
-	[_show_hide setObject:[NSString stringWithFormat:@"%d", j]	forKey:@"scriptsPos"];
-	//NSLog(@"writing to file");
-	[_show_hide writeToFile:@"Users/frontrow/Library/Application Support/SoftwareMenu/settings.plist" atomically:YES];
+return [_items objectAtIndex:row]; 
 }
-
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
-- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
-- (void)wasExhumed
+- (void)wasExhumed	{[[self list] reload];}
+/*- (void)setCustomRotationTime
 {
-	NSLog(@"wasExhumed");
+	//NSString *timeScale = [slideShowEditor currentTimeUnits];
+	BRController *timeController = [[BRController alloc] init];
+	id theTheme = [BRThemeInfo sharedTheme];
+	BRHeaderControl *theHeader = [[BRHeaderControl alloc] init];
+	[timeController addControl:theHeader];
+	[theHeader setTitle:@"Rotation Duration"];
+	BRTextControl *firstTextControl = [[BRTextControl alloc] init];
+	[timeController addControl:firstTextControl];
+	[firstTextControl setText:[NSString stringWithFormat:BRLocalizedString(@"Enter a number in seconds", @"enter duration"),nil] withAttributes:[[BRThemeInfo sharedTheme] promptTextAttributes]];
+	[theHeader setIcon:[[BRThemeInfo sharedTheme] photoSettingsImage] horizontalOffset:0.5f kerningFactor:0.2f];
+	
+	//NSString *atvVersion = [nitoTVAppliance appleTVVersion];
+	NSRect master ;
+	//NSLog(@"atvVersion: %@", atvVersion);
+	if ([[SMGeneralMethods sharedInstance] usingTakeTwoDotThree]){
+		//NSLog(@"2.3");
+		master  = [[self parent] frame];
+	} else {
+		master = [self frame];
+	}
+    
+	NSRect frame = master;
+	
+	frame.origin.y = frame.size.height * 0.60;
+	
+	
+	// position it near the top of the screen (remember, origin is
+    // lower-left)
+    frame.origin.y = frame.size.height * 0.82f;
+    frame.size.height = [theTheme listIconHeight];
+    [theHeader setFrame: frame];
+	id timeControls = nil;
+		timeControls = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
+	
+	
+	[timeController addControl:timeControls];
+	CGDirectDisplayID display = [[BRDisplayManager sharedInstance] display];
+	NSRect testFrame;
+	NSRect firstFrame;
+	
+	firstFrame.size = [firstTextControl renderedSize];
+    firstFrame.origin.y = master.origin.y + (master.size.height * 0.72f);
+    firstFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 2.42f);
+	[firstTextControl setFrame: firstFrame];
+	
+	NSSize frameSize;
+	
+	frameSize.width = CGDisplayPixelsWide( display );
+    frameSize.height = CGDisplayPixelsHigh( display );
+
+	
+	if (![self is1080i])
+	{
+		testFrame.size = [timeControls preferredSizeFromScreenSize:frameSize];
+	} else {
+		//NSLog(@"is 1080i, should do 1080 by 720");
+		testFrame.size = [timeControls preferredSizeFromScreenSize:[self sizeFor1080i]];
+	}
+	
+	
+    testFrame.origin.y = master.origin.y + (master.size.height * 0.40f);
+    testFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 3.62f);
+	//[firstTextControl setFrame: testFrame];
+	[timeControls setFrame:testFrame];
+	//[timeControls setInitialPasscode:[slideShowEditor convertedTime]];
+	
+	//id timeControls = [timeController editor];
+	//NSLog(@"timeControls: %@ delegate: %@", timeControls, [timeControls delegate]);
+	
+	
+	//id timeController = [BRController controllerWithContentControl:timeControls];
+	[timeControls setDelegate:self];
+	//[timeControls _layoutUI];
+	[[self stack] pushController:timeController];
+	//NSLog(@"timeControls: %@ delegate: %@", timeControls, [timeControls delegate]);
+}
+- (BOOL)is1080i
+{
+	NSString *displayUIString = [BRDisplayManager currentDisplayModeUIString];
+	//NSLog(@"displayUIString: %@", displayUIString);
+	NSArray *displayCom = [displayUIString componentsSeparatedByString:@" "];
+	NSString *shortString = [displayCom objectAtIndex:0];
+	if ([shortString isEqualToString:@"1080i"])
+		return YES;
+	else
+		return NO;
 }
 
+- (NSSize)sizeFor1080i
+{
+	
+	NSSize currentSize;
+	currentSize.width = 1280.0f;
+	currentSize.height = 720.0f;
+	
+	
+	return currentSize;
+}
+- (void) textDidChange: (id<BRTextContainer>) sender
+{
+	 NSLog(@"text did change");
+}
 
-
+- (void) textDidEndEditing: (id) sender
+{
+	/*int timeUnits = [nitoTVAppliance integerForKey:@"timeUnits"];
+	int unitConverter = 1;
+	
+	switch (timeUnits) {
+			
+		case 1: //seconds
+			
+			unitConverter = 1;
+			
+			break;
+			
+	    case 2: //minutes
+			
+			unitConverter = 60;
+			
+			break;
+			
+		case 3: //hours
+			
+			unitConverter = 3600;
+			break;
+			
+	}
+	int newDuration = ([[sender stringValue] intValue] * unitConverter);
+	
+	//NSLog(@"newDuration: %i", newDuration);
+	[[BRSettingsFacade singleton] setSlideshowSecondsPerSlide:newDuration];
+	[[self list] reload];
+	[[self stack] popController];
+	[[self list] reload];
+	//NSLog(@"check it: %i", [[BRSettingsFacade singleton] slideshowSecondsPerSlide]);
+	[[self stack] popController];
+	[SMGeneralMethods setInteger:[[sender stringValue] intValue] forKey:PHOTO_SPIN_FREQUENCY];
+	NSLog(@"here is what was entered: %@",[sender stringValue]);
+	
+}*/
 @end

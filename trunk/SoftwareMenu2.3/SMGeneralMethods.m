@@ -32,6 +32,7 @@ static SMGeneralMethods *sharedInstance = nil;
 
 + (NSString *)stringForKey:(NSString *)theKey
 {
+	//CFPreferencesAppSynchronize(myDomain);
 	CFStringRef myString = [(CFStringRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
 	return (NSString *)myString;
 }
@@ -42,11 +43,20 @@ static SMGeneralMethods *sharedInstance = nil;
 
 + (NSArray *)menuItemNames
 {
-	return [NSArray arrayWithObjects:BRLocalizedString(@"3rd Party Plugins",@"3rd Party Plugins"),BRLocalizedString(@"Manage Built-in",@"Manage Built-in"),BRLocalizedString(@"Scripts",@"Scripts"),BRLocalizedString(@"Restart Finder",@"Restart Finder"),BRLocalizedString(@"FrapMover",@"FrapMover"),BRLocalizedString(@"Console",@"Console"),BRLocalizedString(@"Tweaks",@"Tweaks"),nil];
+	return [NSArray arrayWithObjects:BRLocalizedString(@"3rd Party Plugins",@"3rd Party Plugins"),BRLocalizedString(@"Manage Built-in",@"Manage Built-in"),BRLocalizedString(@"Scripts",@"Scripts"),BRLocalizedString(@"Restart Finder",@"Restart Finder"),BRLocalizedString(@"FrapMover",@"FrapMover"),BRLocalizedString(@"Console",@"Console"),BRLocalizedString(@"Tweaks",@"Tweaks"),BRLocalizedString(@"Photos",@"Photos"),nil];
 }
 + (NSArray *)menuItemOptions
 {
-	return [NSArray arrayWithObjects:@"downloadable",@"builtin",@"scripts",@"reboot",@"mover",@"console",@"tweaks",nil];
+	return [NSArray arrayWithObjects:@"downloadable",@"builtin",@"scripts",@"reboot",@"mover",@"console",@"tweaks",@"Photos",nil];
+	/*return [NSArray arrayWithObjects:
+			[NSNumber numberWithInt:1],
+			[NSNumber numberWithInt:2],
+			[NSNumber numberWithInt:3],
+			[NSNumber numberWithInt:4],
+			[NSNumber numberWithInt:5],
+			[NSNumber numberWithInt:6],
+			[NSNumber numberWithInt:7],
+			[NSNumber numberWithInt:8],nil];*/
 }
 + (NSArray *)arrayForKey:(NSString *)theKey
 {
@@ -149,6 +159,7 @@ static SMGeneralMethods *sharedInstance = nil;
 		[task launch];
 		[task waitUntilExit];
 	}
+	//[SMGeneralMethods checkScreensaver];
 	return;
 }
 +(void)helperFixPerm
@@ -313,6 +324,7 @@ static SMGeneralMethods *sharedInstance = nil;
 }
 +(int)runHelperApp:(NSArray *)options
 {
+	NSLog(@"helper app");
 	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
 	NSTask *task8 = [[NSTask alloc] init];
 	[task8 setArguments:options];
@@ -325,6 +337,8 @@ static SMGeneralMethods *sharedInstance = nil;
 +(void)checkFolders
 {
 	NSFileManager *man =[NSFileManager defaultManager];
+	if (![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath]])
+		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath] attributes:nil];
 	if(![man fileExistsAtPath:[@"~/Documents" stringByExpandingTildeInPath]])
 	{[man createDirectoryAtPath:[@"~/Documents" stringByExpandingTildeInPath] attributes:nil];}
 	
@@ -369,6 +383,20 @@ static SMGeneralMethods *sharedInstance = nil;
 	{
 		AGProcess *finder = [AGProcess processForCommand:@"Finder"];
 		[finder terminate];
+	}
+}
++(BOOL)checkScreensaver
+{
+	[[SMGeneralMethods sharedInstance] helperFixPerm];
+	NSString *SMPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SM" ofType:@"frss"];
+	int currentVersion = [[[[NSBundle bundleWithPath:SMPath] infoDictionary] valueForKey:@"CFBundleVersion"] intValue];
+	NSLog(@"SMVersion In package: %@",[NSNumber numberWithInt:currentVersion]);
+	int installedVersion = [[[[NSBundle bundleWithPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"] infoDictionary] valueForKey:@"CFBundleVersion"] intValue];
+	if (currentVersion >installedVersion)
+	{
+		NSLog(@"Updating Screen Saver to version: %@, (you had : %@)",[NSNumber numberWithInt:currentVersion],[NSNumber numberWithInt:installedVersion],nil);
+		[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"installScreensaver",@"0",@"0",nil]];
+		NSLog(@"Version %@ is not installed",[[[NSBundle bundleWithPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"] infoDictionary] valueForKey:@"CFBundleVersion"]);
 	}
 }
 

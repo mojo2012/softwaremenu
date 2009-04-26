@@ -13,6 +13,7 @@
 #import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
 #import <SoftwareSettings.h>
+#import "SMMediaMenuController.h"
 #define ROWMOTE_DOMAIN_KEY		@"com.apple.frontrow.appliance.RowmoteHelperATV"	
 typedef enum {
 	
@@ -23,15 +24,10 @@ typedef enum {
 	kSMTwInstall = 3,
 	kSMTwDownloadPerian = 4,
 	kSMTwDownloadRowmote = 5,
+	kSMTwReload	=6,
 
 } TweakType;
-@interface SMTweaks : BRMediaMenuController {
-	int padding[16];
-	NSString *	identifier;
-	NSString *	name;
-	NSString *	path;
-	NSString *	urlstr;
-	NSString *	version;
+@interface SMTweaks : SMMediaMenuController {
 	NSMutableArray *	settingNames;
 	NSMutableArray *	settingDisplays;
 	NSMutableArray *	settingType;
@@ -39,8 +35,6 @@ typedef enum {
 	NSMutableArray *	settingNumberType;
 	//NSWorkspace *workspace;
 	NSFileManager *		_man;
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
 	
 	NSString	   *	_keypress;
 	NSMutableDictionary *	_rowmoteDict;
@@ -63,12 +57,7 @@ typedef enum {
 -(NSString *)getPerianVersion;
 
 // Data source methods:
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
+
 -(id)initCustom;
 
 

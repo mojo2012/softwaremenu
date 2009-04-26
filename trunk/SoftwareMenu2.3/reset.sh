@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#SM: Restarts the Finder -- Fun times
 echo "frontrow" | sudo -S command
 
 sudo kill `ps awwx | grep [F]inder | awk '{print $1}'`

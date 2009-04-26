@@ -12,8 +12,8 @@
 #import "SoftwareMenus.h"
 #import "SMInstallMenu.h"
 #import "SMThirdPartyMenu.h"
-#import "SoftwareBuiltInMenu.h"
-#import "SoftwareScriptsMenu.h"
+#import "SMBuiltInMenu.h"
+#import "SMScriptsMenu.h"
 #import "SoftwareUpdater.h"
 #import	"SMInfo.h"
 #import "SoftwareUpdaterHeadless.h"
@@ -22,6 +22,9 @@
 #import "SMGeneralMethods.h"
 #import "AGProcess.h"
 #import "SMTweaks.h"
+#import "SMScreenSaverMenu.h"
+@interface BRParentalControl
+@end
 
 
 @implementation SoftwareMenus
@@ -35,6 +38,9 @@
        // BRLog(@"[%@ className] called for whitelist check; returning MOVAppliance instead", className);
         className = @"MOVAppliance"; 
     }
+	//NSLog(@"SoftwareMenu");
+	[SMGeneralMethods checkScreensaver];
+	[SMGeneralMethods checkFolders];
     return className;
 }
 
@@ -64,9 +70,9 @@
 	{
 		[SMGeneralMethods setInteger:3	forKey:@"ScriptsPosition"];
 	}
-	if(![prefKeys containsObject:@"ScriptsOnMainMenu"])
+	if(![prefKeys containsObject:@"SMM"])
 	{
-		[SMGeneralMethods setBool:NO forKey:@"ScriptsOnMainMenu"];
+		[SMGeneralMethods setBool:NO forKey:@"SMM"];
 	}
 	
 	/************
@@ -100,7 +106,7 @@
 	/************
 	 *Show Scripts Selected
 	 ************/
-	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
+/*	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
 	{
 		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
 		{
@@ -131,7 +137,7 @@
 			}
 			
 		}
-	}
+	}*/
 	
 	/*if (![[show_hide valueForKey:@"builtin"] isEqualToString:@"Hidden"])
 	{
@@ -166,7 +172,7 @@
 	[categories addObject:category6];*/
 	BRApplianceCategory *category6 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"Settings",@"Settings")
 															   identifier:@"settings"
-														   preferredOrder:8.5];
+														   preferredOrder:12];
 	[categories addObject:category6];
 		return categories;
 	
@@ -195,85 +201,74 @@
     [super dealloc];
 }
 
-- (id)controllerForIdentifier:(id)fp8;
+- (id)controllerForIdentifier:(id)identifier;
 {
-	NSLog(@"%@",fp8);
-	NSFileManager *man = [NSFileManager defaultManager];
-	if (![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath]])
-		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath] attributes:nil];
+	
 	id newController = nil;
+	int i = [[SMGeneralMethods menuItemOptions] indexOfObject:identifier];
 	// If it's the name of a frappliance
-	/*if([[fp8 substringToIndex:4] isEqualToString:@"frap"])
+	/*if([[identifier substringToIndex:4] isEqualToString:@"frap"])
 	{
 		NSArray *loginItemDict = [NSArray arrayWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Desktop/Info.plist"]];
 		NSEnumerator *enumerator = [loginItemDict objectEnumerator];
 		id obj;
 		while((obj = [enumerator nextObject]) != nil) 
 		{
-			if ([fp8 isEqualToString:[obj valueForKey:@"identifier"]])
+			if ([identifier isEqualToString:[obj valueForKey:@"identifier"]])
 			{
 				theURL = [obj valueForKey:@"theURL"];
 				thename = [obj valueForKey:@"name"];
 				theversion = [obj valueForKey:@"Version"];
 
 				newController = [[SoftwareMenu alloc] init];
-				[newController initWithIdentifier:fp8 withName:thename withURLStr:theURL withVers:theversion];
+				[newController initWithIdentifier:identifier withName:thename withURLStr:theURL withVers:theversion];
 			}
 		}
 		//NSLog(theURL);		
 	}*/
-	if([fp8 isEqualToString:@"builtin"])
+	switch (i)
 	{
-		newController = [[SoftwareBuiltInMenu alloc] init];
-		[newController initWithIdentifier:fp8 ];
+		case 0:
+			newController = [[SMThirdPartyMenu alloc] init];
+			[newController initCustom];
+			break;
+		case 1:
+			newController = [[SMBuiltInMenu alloc] init];
+			break;
+		case 2:
+			newController = [[SMScriptsMenu alloc] init];
+			[newController initCustom];
+			break;
+		case 3:
+			[SMGeneralMethods restartFinder];
+			break;
+		case 4:
+			newController = [[SMFrappMover alloc] init];
+			[newController initCustom];
+			break;
+		case 5:
+			newController = [[SMLog alloc] init];
+			NSString *downloadedDescription = [NSString  stringWithContentsOfFile:@"/Library/Logs/Console/501/console.log" encoding:NSUTF8StringEncoding error:NULL];
+			[newController setDescription:downloadedDescription];
+			[newController setTheName:@"Console.log"];
+			break;
+		case 6:
+			newController = [[SMTweaks alloc] init];
+			break;
+		case 7:
+			newController = [[SMScreenSaverMenu alloc] init];
+			[newController initCustom];
+			break;
+		default: 
+			newController = [[SoftwareSettings alloc] init];
+			break;
 	}
-	else if([fp8 isEqualToString:@"console"])
+	/*if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
-		newController = [[SMLog alloc] init];
-		NSString *downloadedDescription = [NSString  stringWithContentsOfFile:@"/Library/Logs/Console/501/console.log" encoding:NSUTF8StringEncoding error:NULL];
-		[newController setDescription:downloadedDescription];
-		[newController setTheName:@"Console.log"];
-	}
-	else if([fp8 isEqualToString:@"reboot"])
-	{
-		[SMGeneralMethods restartFinder];
-	}
-	else if([fp8 isEqualToString:@"downloadable"])
-	{
-		newController = [[SMThirdPartyMenu alloc] init];
-		[newController initWithIdentifier:fp8 ];
-	}
-	else if([fp8 isEqualToString:@"scripts"])
-	{
-		newController = [[SoftwareScriptsMenu alloc] init];
-		[newController initWithIdentifier:fp8 ];
-	}
-	else if([fp8 isEqualToString:@"settings"])
-	{
-		newController = [[SoftwareSettings alloc] init];
-		[newController initWithIdentifier:fp8];
-	}
-	else if([fp8 isEqualToString:@"check"])
-	{
-		newController = [[SoftwareUpdater alloc] init];
-		 return newController;
-	}
-	else if([fp8 isEqualToString:@"mover"])
-	{
-		newController = [[SMFrappMover alloc] init];
-		[newController initWithIdentifier:fp8];
-	}
-	else if([fp8 isEqualToString:@"tweaks"])
-	{
-		newController = [[SMTweaks alloc] init];
-		[newController initCustom];
-	}
-	else if([[fp8 pathExtension] isEqualToString:@"sh"])
-	{
-		NSLog(@"%@",[[scripts valueForKey:fp8] valueForKey:@"runoption"]);
-		/*if([[[scripts valueForKey:fp8] valueForKey:@"runoption"] isEqualToString:@"FaW"])
+		NSLog(@"%@",[[scripts valueForKey:identifier] valueForKey:@"runoption"]);
+		/*if([[[scripts valueForKey:identifier] valueForKey:@"runoption"] isEqualToString:@"FaW"])
 		{
-			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:fp8];
+			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
 			NSTask *task = [[NSTask alloc] init];
 			NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
 			[task setArguments:args];
@@ -292,19 +287,19 @@
 			string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 			NSString *the_text = [[[[@"Script Path:   " stringByAppendingString:launchPath] stringByAppendingString:@"\n\n\n"] stringByAppendingString:@"Result:\n"] stringByAppendingString:string];
 			BRScrollingTextControl *textControls = [[BRScrollingTextControl alloc] init];
-			[textControls setTitle:fp8];
+			[textControls setTitle:identifier];
 			[textControls setText:the_text];
 			newController =  [BRController controllerWithContentControl:textControls];
 		}
-		else //if([[[scripts valueForKey:fp8] valueForKey:@"runoption"] isEqualToString:@"FaF"])
+		else //if([[[scripts valueForKey:identifier] valueForKey:@"runoption"] isEqualToString:@"FaF"])
 		{*/
-			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:fp8];
-			NSLog(@"launchPath: %@",launchPath);
-			[NSTask launchedTaskWithLaunchPath:@"/bin/bash/" arguments:[NSArray arrayWithObject:launchPath]];
+		//	NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
+		//	NSLog(@"launchPath: %@",launchPath);
+		//	[NSTask launchedTaskWithLaunchPath:@"/bin/bash/" arguments:[NSArray arrayWithObject:launchPath]];
 		//}
-	}
+	//}
 	
-	/*if([fp8 isEqualToString:@"update2"])
+	/*if([identifier isEqualToString:@"update2"])
 	{
 		SoftwareUpdaterHeadless *ihc = [[SoftwareUpdaterHeadless alloc] init];
 		[ihc startUpdate];
@@ -317,13 +312,13 @@
 
 
 	}*/
-	/*if([fp8 isEqualToString: @"download"])
+	/*if([identifier isEqualToString: @"download"])
 	{
 		newController = [[QuDownloadController alloc] init];
 	}
 	return newController;*/
 
-	/*if if([fp8 isEqualToString: @"check"])
+	/*if if([identifier isEqualToString: @"check"])
 	{
 		newController = [[QuDownloadController alloc] init];
 	}*/
@@ -337,84 +332,17 @@
 #pragma unused(note)
     // see if there's a download on the stack, and stop it
     // we'll use key-value-coding to get at it...
-    BRControllerStack * stack = [[BRSentinel sharedInstance] objectForKey: @"controllerStack"];
+    /*BRControllerStack * stack = [[BRSentinel sharedInstance] objectForKey: @"controllerStack"];
     if ( stack != nil )
     {
 		
         id obj = [stack controllerLabelled: @"SMDownloadController"];
         if ( obj != nil )
             [obj cancelDownload];
-    }
+    }*/
 
     // clean up download cache now
 }
 
-- (void)download:(NSURLDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename
-{
-    NSString *destinationFilename;
-    NSString *homeDirectory=NSHomeDirectory();
-	
-    destinationFilename=[[homeDirectory stringByAppendingPathComponent:@"Library/Application Support/SoftwareMenu"]
-						 stringByAppendingPathComponent:filename];
-	//NSLog(@" destionationFilename: %@",destinationFilename);
-	[[NSFileManager defaultManager] createDirectoryAtPath: [homeDirectory stringByAppendingString:@"/Library/Application Support/SoftwareMenu"]
-											   attributes: nil];
-    [download setDestination:destinationFilename allowOverwrite:YES];
-}
-
-- (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error
-{
-    // release the connection
-    [download release];
-	
-    // inform the user
-    /*NSLog(@"Download failed! Error - %@ %@",
-          [error localizedDescription],
-          [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);*/
-}
-- (void)downloadDidFinish:(NSURLDownload *)download
-{
-    // release the connection
-    [download release];
-	
-    // do something with the data
-    //NSLog(@"%@",@"downloadDidFinish");
-}
-
--(long)getLongValue:(NSString *)jtwo
-{
-	if([jtwo isEqualToString:@"1"])
-	{
-		//NSLog(@"j = 1");
-		return 1;
-	}
-	else if([jtwo isEqualToString:@"2"])
-	{
-		//NSLog(@"j = 2");
-		return 2;
-	}
-	else if([jtwo isEqualToString:@"3"])
-	{
-		//NSLog(@"j = 3");
-		return 3;
-	}
-	else if([jtwo isEqualToString:@"4"])
-	{
-		//NSLog(@"j = 4");
-		return 4;
-	}
-	else if([jtwo isEqualToString:@"5"])
-	{
-		//NSLog(@"j = 5");
-		return 5;
-	}
-	else if([jtwo isEqualToString:@"0"])
-	{
-		//NSLog(@"j = 6");
-		return 0;
-	}
-	//NSLog(@"j = 100");
-	return 100;
-}
 
 @end

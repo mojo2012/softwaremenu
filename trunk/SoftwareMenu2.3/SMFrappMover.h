@@ -8,36 +8,15 @@
 #import <Foundation/Foundation.h>
 ////#import <BackRow/BackRow.h>
 //#import <Cocoa/Cocoa.h>
+#import "SMMediaMenuController.h"
 
-@interface SMFrappMover : BRMediaMenuController 
+@interface SMFrappMover : SMMediaMenuController 
 {
-	int padding[16];
-	NSString *	identifier;
-	NSString *	name;
-	NSString *	path;
-	NSString *	urlstr;
-	NSString *	version;
-	
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
-	NSString	   *	_keypress;
-	NSMutableDictionary *	_runoption;// = [NSMutableDictionary alloc] ;
-	NSFileHandle   *	log;
-	
 }
 
--(void)writeToLog:(NSString *)strLog;
--(id)initWithIdentifier:(NSString *)initId;
--(BOOL)checkExists:(NSString *)thename;
+-(id)initCustom;
 -(NSArray *)frapOrderDict:(NSArray *)theFrapList;
 -(NSArray *)frapEnumerator;
 
 
-// Data source methods:
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
 @end

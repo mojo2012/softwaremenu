@@ -58,7 +58,10 @@
 			case kSMTwInstall:
 				imageName = [[settingNames objectAtIndex:item] substringFromIndex:7];
 				break;
-		} TweakType;
+			case kSMTwReload:
+				[meta setBRImage:[[SMThemeInfo sharedTheme] refreshImage]];
+				break;
+		} ;
 		if([_man fileExistsAtPath:[[NSBundle bundleForClass:[self class]] pathForResource:imageName ofType:@"png"]])
 		{
 			[meta setImagePath:[[NSBundle bundleForClass:[self class]] pathForResource:imageName ofType:@"png"]];
@@ -102,6 +105,7 @@
 	[self setListTitle: BRLocalizedString(@"Tweaks Menu",@"Tweaks Menu")];
 	settingNames = [[NSMutableArray alloc] initWithObjects:
 					@"restartFinder",
+					@"reloadList",
 					@"fixSapphire",
 					@"toggleRW",
 					@"toggleDropbear",
@@ -115,6 +119,7 @@
 					nil];
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
 					   BRLocalizedString(@"Restart Finder",@"Restart Finder"),
+					   BRLocalizedString(@"Refresh",@"Refresh"),
 					   BRLocalizedString(@"Fix Sapphire",@"Fix Sapphire"),
 					   BRLocalizedString(@"Disk Read/Write toggle",@"Disk Read/Write toggle"),
 					   BRLocalizedString(@"Dropbear SSH toggle",@"Dropbear SSH toggle"),
@@ -128,7 +133,7 @@
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
 						   @"Restarts the Finder, necessary after install of Perian or Rowmote",
-
+						   @"Refreshes the List because sometimes changes can take a while to be taken into effect",
 						   @"Deletes the Sapphire Metadata, which can cause a problem after upgrade",
 						   @"Changes the disk status from Read-Write to Read-Only",
 						   @"Turn SSH On/Off -- If dropbear is installed, it will using that is what you are using",
@@ -154,6 +159,7 @@
 				   nil];*/
 	settingNumberType = [[NSMutableArray alloc] initWithObjects:
 						 [NSNumber numberWithInt:0],
+						 [NSNumber numberWithInt:6],
 						 [NSNumber numberWithInt:1],
 						 [NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:2],
@@ -170,13 +176,8 @@
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
 	_infoDict= [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
 	_man = [NSFileManager defaultManager];
-	return self;
-}
--(id)initCustom
-{
-
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
-
+	
 	
 	int i,counter;
 	i=[settingNames count];
@@ -190,17 +191,24 @@
 		
 	}
 	id list = [self list];
-	[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
-	[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
-	[[self list] addDividerAtIndex:1 withLabel:@"Toggles"];
 	[list setDatasource: self];
+	[[self list] addDividerAtIndex:9 withLabel:BRLocalizedString(@"Installs",@"Installs")];
+	[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
+	[[self list] addDividerAtIndex:2 withLabel:@"Toggles"];
+	
 	return self;
+}
+-(id)initCustom
+{
+
+		return self;
 }
 -(void)itemSelected:(long)row
 {
 	NSMutableArray * args = [[NSMutableArray alloc] initWithObjects:nil];
 	NSMutableDictionary *dlDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
 	NSString *a=nil;
+	NSLog(@"option selected: %@",[settingDisplays objectAtIndex:row]);
 	if(![[self itemForRow:row] dimmed])
 	{
 		
@@ -259,19 +267,19 @@
 			case kSMTwFix:
 				[_man removeFileAtPath:@"/Users/frontrow/Library/Application Support/Sapphire/metaData.plist" handler:nil];
 				break;
+			case kSMTwReload:
+				[[self list] reload];
+				break;
 
 				
 				
-		} TweakType;
+		} 
 
 		
 	}
 		
 	[[self list] reload];
 }
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[settingNames count];}
 - (id)itemForRow:(long)row					
 { 
 	NSString *LocalVersion = nil;
@@ -291,35 +299,29 @@
 			{
 				NSString *rightText = @"OFF";
 				BOOL isActive = NO;
+				[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];
 				if([self getToggleRightText:title])
 				{
 					rightText=@"ON";
 					isActive = YES;
+					[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];
 
 				}
-				[item setRightJustifiedText:rightText];
+				//[item setRightJustifiedText:rightText];
 				[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],[NSNumber numberWithBool:isActive],nil] forKey:title];
 			}
 			else
 			{
+				[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greyGem], @"BRMenuIconImageKey",nil]];
 				[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],nil] forKey:title];
 			}
 			break;
 		case kSMTwDownloadRowmote:
-			NSLog(@"kSMTwDownloadRowmote");
 			LocalVersion = nil;
 			LocalVersion = [self getRowmoteVersion];
-			NSLog(@"LocalVersion of Rowmote:%@",LocalVersion);
 			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		
-			{
-			[item setRightJustifiedText:[_rowmoteDict valueForKey:@"displayVersion"]];
-			NSLog(@"Bigger");
-			}
-			else 		
-			{
-			[item setDimmed:YES];
-			NSLog(@"Other");
-			}
+						{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"displayVersion"]];}
+			else 		{[item setDimmed:YES];}
 			break;
 		case kSMTwDownloadPerian:
 			LocalVersion = [self getPerianVersion];
@@ -334,29 +336,7 @@
 	[item setTitle:[settingDisplays objectAtIndex:row]];
 	return item;
 	
-//return [_items objectAtIndex:row]; 
 }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
-/*- (id)titleForRow:(long)row					
-{
-	return [settingDisplays objectAtIndex:row];
-}
-- (long) rowForTitle: (id) title
-{
-	long result = -1;
-	long i, count = [self itemCount];
-	for ( i = 0; i < count; i++ )
-	{
-		if ( [title isEqualToString: [self titleForRow: i]] )
-		{
-			result = i;
-			break;
-		}
-	}
-	
-	return ( result );
-}*/
 - (NSString *)getRowmoteVersion
 {
 	NSString * RowmoteVersion =@"0.0";

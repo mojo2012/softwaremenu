@@ -99,10 +99,12 @@
 	}
 	if([man fileExistsAtPath:filepath])
 	{
+		NSLog(@"File was not deleted");
 		return 1;
 	}
 	else
 	{
+		NSLog(@"Files was deleted properly");
 		return 0;
 	}
 	
@@ -1397,6 +1399,14 @@
 	[task launch];
 	[task waitUntilExit];
 	
+}
+-(int)installScreenSaver
+{
+	[self makeSystemWritable];
+	[self removeFile:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"];
+	NSLog(@"old path: %@",[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingString:@"SM.frss"]);
+	NSLog(@"new path: %@",@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers");
+	[_man copyPath:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SM.frss"] toPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss" handler:nil];
 }
 
 

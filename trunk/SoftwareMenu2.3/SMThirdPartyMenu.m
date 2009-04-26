@@ -116,17 +116,17 @@
 	switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
 	{
 		case kSMTpCheck:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"web" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] webImage]];
 			[meta setDescription:@"Check online for new updates"];
 			[meta setTitle:@"Check For Updates"];
 			break;
 		case kSMTpRestart:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"standby" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] standbyImage]];
 			[meta setTitle:@"Restart Finder"];
 			[meta setDescription:@"Restart Finder"];
 			break;
 		case kSMTpRefresh:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"refresh" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] refreshImage]];
 			[meta setTitle:@"Refresh Menu"];
 			[meta setDescription:@"Refresh in case Info4.plist and/or Info3.plist was modified and change doesn't appear"];
 			break;
@@ -164,13 +164,12 @@
 				[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"UpdateText"]];
 			}
 			[meta setDev:[[_options objectAtIndex:row] valueForKey:@"Developer"]];
+			[meta setImagePath:appPng];
 			break;
 		
 	}
-	if(![_man fileExistsAtPath:appPng])
-		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
+
 	
-	[meta setImagePath:appPng];
 	switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
 	{
 		case kSMTpSm:
@@ -192,9 +191,7 @@
 
 -(id)init{
 	self = [super init];
-	NSString *scriptPNG = [[NSBundle bundleForClass:[self class]] pathForResource:@"internet" ofType:@"png"];
-	id folderImage = [BRImage imageWithPath:scriptPNG];
-	[self setListIcon:folderImage horizontalOffset:0.5f kerningFactor:0.2f];
+	[self setListIcon:[[SMThemeInfo sharedTheme] webImage] horizontalOffset:0.5f kerningFactor:0.2f];
 	[_options release];
 	_man = [NSFileManager defaultManager];
 	return self;
@@ -210,8 +207,11 @@
 
 -(id)initWithIdentifier:(NSString *)initId
 {
+	return [self initCustom];
+}
+-(id)initCustom
+{
 	[SMGeneralMethods checkFolders];
-	NSMutableDictionary *file =[[NSMutableDictionary alloc] initWithDictionary:nil];
 	[[self list] removeDividers];
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	[self setListTitle: @"3rd Party Plugins"];
@@ -243,7 +243,7 @@
 	[item3 setTitle:@"Restart Finder"];
 	[_items addObject: item3];
 	
-	
+	NSLog(@"1");
 	int sep1 = [_items count];
 
 	
@@ -279,6 +279,7 @@
 						 nil]];
 
 	[item90 setTitle:@"SoftwareMenu"];
+	NSLog(@"2");
 	
 	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
 	{

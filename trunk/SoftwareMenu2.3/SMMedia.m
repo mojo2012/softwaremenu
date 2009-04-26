@@ -40,6 +40,13 @@
 	
 	return self;
 }
+- (id)init
+{
+	self = [super init];
+	
+	type = kSMMOther;
+	return self;
+}
 
 - (void)dealloc
 {
@@ -49,6 +56,7 @@
 	[theDev release];
 	[super dealloc];
 }
+
 -(id)assetID
 {
 	return @"hello";
@@ -71,7 +79,7 @@
 }
 - (id)installedVersion
 {
-	NSLog(@"InstalledVersion: %@",installedVersion);
+	//NSLog(@"InstalledVersion: %@",installedVersion);
 	return installedVersion;
 }
 - (id)onlineVersion
@@ -101,9 +109,26 @@
 }
 - (void)setDefaultImage
 {
-	NSString *path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/softwaremenu.png";
-	[imagePath release];
-	imagePath = [path retain];
+	//NSString *path=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/softwaremenu.png";
+	//[imagePath release];
+	//imagePath = [path retain];
+	type = kSMMDefault;
+}
+- (void)setBRImage:(id)theImage
+{
+	type = kSMMImaged;
+	[bRImage release];
+	bRImage = theImage;
+	[bRImage retain];
+	NSLog(@"setBRImage");
+}
+- (void)setPhotosImage
+{
+	type = kSMMPhotos;
+}
+- (void)setPhotosSettingsImage
+{
+	type = kSMMPhotosSettings;
 }
 -(void)setDescription:(NSString *)description
 {
@@ -127,24 +152,16 @@
 }
 -(id)description
 {
-	NSString *hellotoo = [[NSString alloc] init];
-	hellotoo=@"hello";
-	return hellotoo;
+	return [self stringReturn:theSetDescription];
 }
 -(id)title
-{
-	
-	NSString *hello = [[NSString alloc] init];
-	hello=@"Setting";
-	return theSetTitle;
+{	
+	return [self stringReturn:theSetTitle];
 }
 
 -(id)mediaSummary
 {
-	if ([theSetDescription isEqualToString:@"nil"])
-		return nil;
-	
-	return theSetDescription;
+	return [self stringReturn:theSetDescription];
 }
 - (id)mediaType
 {
@@ -159,15 +176,38 @@
 
 - (id)coverArt
 {
-	id coverArt=[BRImage imageWithPath:imagePath];
+	id coverArt;
+	switch (type) {
+		case kSMMPhotos:
+			coverArt = [[BRThemeInfo sharedTheme] photosImage];
+			break;
+		case kSMMPhotosSettings:
+			coverArt = [[BRThemeInfo sharedTheme] photoSettingsImage];
+			break;
+		case kSMMOther:
+			coverArt = [BRImage imageWithPath:imagePath];
+			break;
+		case kSMMDefault:
+			coverArt = [[SMThemeInfo sharedInstance] softwareMenuImage];
+			break;
+		case kSMMImaged:
+//NSLog(@"BRImaged");
+			coverArt = bRImage;
+			break;
+		default:
+			coverArt = [[SMThemeInfo sharedInstance] softwareMenuImage];
+			break;
+	}
 	return coverArt;
 }
+
 -(id)directors
 {
-	NSLog(@"directors: %@",theDev);
-	if ([theDev isEqualToString:@"nil"])
+	if([theDev isEqualToString:@"nil"])
 		return nil;
-	return [NSArray arrayWithObjects:theDev,nil];
+	if(theDev == nil)
+		return nil;
+	return [NSArray arrayWithObject:[NSArray arrayWithObjects:[self stringReturn:theDev],nil]];
 }
 /*-(id)artist
 {
@@ -195,6 +235,13 @@
 	// this returns a CGImageRef
 	id sp= [BRImage imageWithPath:imagePath];
 	return [sp autorelease];
+}
+-(NSString *)stringReturn:(NSString *)theString
+{
+	if ([theString isEqualToString:@"nil"])
+		return nil;
+	
+	return theString;
 }
 /*-(id)genres
 {

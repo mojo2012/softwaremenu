@@ -27,6 +27,16 @@
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
 #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
 #define PLUGINS						@"plugins"
+#define SHOW_HIDDEN_KEY				@"ShowHidden"
+typedef enum
+	{
+		kSMRemoteMenu	= 1,
+		kSMRemoteUp		= 3,
+		kSMRemoteDown	= 4,
+		kSMRemotePlay	= 5,
+		kSMRemoteLeft	= 6,
+		kSMRemoteRight	= 7,
+	}SMRemoteKeys;
 
 @interface SMGeneralMethods : NSObject {
 	
@@ -44,6 +54,7 @@
 + (void)switchBoolforKey:(NSString *)theKey;
 + (void)restartFinder;
 + (void)checkFolders;
++ (void)checkScreensaver;
 + (void)terminateFinder;
 + (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSArray *)getPrefKeys;

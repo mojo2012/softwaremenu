@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH

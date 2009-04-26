@@ -52,6 +52,7 @@ typedef enum
 - (void) parsetrusted;
 -(void)writeToLog:(NSString *)strLog;
 -(id)initWithIdentifier:(NSString *)initId;
+-(id)initCustom;
 /*-(void)removeFrap;
  -(void)restoreFrap;
  -(void)downloadAndInstall;

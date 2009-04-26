@@ -10,9 +10,11 @@
 #import <Foundation/Foundation.h>
 //#import <BackRow/BRController.h>
 #import <CoreData/CoreData.h>
+#define DESCRIPTION_KEY			@"description"
+#define TITLE_KEY				@"title"
+#define NUMBER_BOXES_KEY		@"numberOfBoxes"
 
-
-@class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl;
+@class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, BRPasscodeEntryControl, BRDisplayManager;
 
 @interface SMInfo : BRController
 {
@@ -23,14 +25,17 @@
 	BRTextControl *				_onlinevers;
 	BRTextControl *				_bakvers;
 	BRImageControl *			_sourceImage;
+	BRImage		*				_theImage;
 	
 	NSString *					_theSourceText;
 	NSString *					_theDescriptionURL;
 	NSString *					_theName;
 	NSString *					_theDescription;
 	NSMutableArray *			_theVersions;
+	NSMutableDictionary *		_passData;
 }
 -(NSRect)frame;
+-(NSSize)sizeFor1080i;
 
 -(id) init;
 -(BOOL) isNetworkDependent;

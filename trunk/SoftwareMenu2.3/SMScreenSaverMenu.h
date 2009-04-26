@@ -13,75 +13,51 @@
 #import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
 #import <SoftwareSettings.h>
-#define ROWMOTE_DOMAIN_KEY		@"com.apple.frontrow.appliance.RowmoteHelperATV"	
+#import "SMMediaMenuController.h"
+#define DEFAULT_IMAGES_PATH		@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/DefaultPhotos/"
+#define PHOTO_DIRECTORY_KEY		@"PhotoDirectory"
 typedef enum {
 	
-	kSMTwDownload= 9,
-	kSMTwRestart=0,
-	kSMTwFix = 1,
-	kSMTwToggle= 2,
-	kSMTwInstall = 3,
-	kSMTwDownloadPerian = 4,
-	kSMTwDownloadRowmote = 5,
-	
-} TweakType;
-@interface SMScreenSaverMenu : BRMediaMenuController {
-	int padding[16];
-	NSString *	identifier;
-	NSString *	name;
-	NSString *	path;
-	NSString *	urlstr;
-	NSString *	version;
+	kSMSSAbout=0,
+	kSMSSStart=1,
+	kSMSSSettings=2,
+	kSMSSCustomSettings=3,
+} SMSSType;
+@interface SMScreenSaverMenu : SMMediaMenuController {
 	NSMutableArray *	settingNames;
 	NSMutableArray *	settingDisplays;
 	NSMutableArray *	settingType;
 	NSMutableArray *	settingDescriptions;
 	NSMutableArray *	settingNumberType;
+	NSMutableDictionary *	_dividers;
+	NSMutableArray *	paths;
 	//NSWorkspace *workspace;
 	NSFileManager *		_man;
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
-	
-	NSString	   *	_keypress;
-	NSMutableDictionary *	_rowmoteDict;
-	NSMutableDictionary *	_infoDict;// = [NSMutableDictionary alloc] ;
-	NSMutableDictionary *	_show_hide;
-	NSFileHandle   *	log;
+	//NSMutableArray *	_items;
+	//NSMutableArray *	_options;
+	NSString *			_tempPath;
 	
 }
--(BOOL)sshStatus;
--(BOOL)VNCIsRunning;
--(BOOL)AFPIsRunning;
--(BOOL)AFPIsInstalled;
-//-(BOOL)dropbearIsRunning;
--(BOOL)dropbearIsInstalled;
--(BOOL)getToggleDimmed:(NSString *)title;
--(BOOL)getToggleRightText:(NSString *)title;
 
--(int)VNCFix;
--(NSString *)getRowmoteVersion;
--(NSString *)getPerianVersion;
+
 
 // Data source methods:
--(float)heightForRow:(long)row;
+/*-(float)heightForRow:(long)row;
 -(BOOL)rowSelectable:(long)row;
 -(long)itemCount;
 -(id)itemForRow:(long)row;
 -(long)rowForTitle:(id)title;
 -(id)titleForRow:(long)row;
--(id)initCustom;
+-(id)initCustom;*/
 
 
 
 @end
-
-@interface SMDownloaderTweaks : SMDownloaderSTD 
-{
-	
-}
--(void)processdownload;
-
+@interface SMScreenSaverDefaultSettings	: BRSlideshowSettingsController
 @end
+
+
+
 
 
 

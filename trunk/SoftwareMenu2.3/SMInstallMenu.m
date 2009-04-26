@@ -12,6 +12,7 @@
 #import "SMInfo.h"
 #import "SMGeneralMethods.h"
 #import "SMMedia.h"
+#import "SMMediaPreview.h"
 
 #define DEBUG_MODE false
 static NSString  * bak_vers = nil;
@@ -19,51 +20,45 @@ static NSString  * bak_vers = nil;
 @implementation SMInstallMenu
 -(void)setInformationDictionary:(NSDictionary *)information
 {
+	[_theInformation release];
 	_theInformation=[information mutableCopy];
+	[self setListTitle:[_theInformation valueForKey:@"displayName"]];
 	[_theInformation retain];
 }
 - (id) previewControlForItem: (long) item
 {
-	NSLog(@"preview Control");
-	NSString *appPng = nil;
 	NSArray * theoptions = [_options objectAtIndex:item];
 	SMMedia *meta = [[SMMedia alloc ] init];
 	switch([[theoptions valueForKey:LAYER_INT] intValue])
 	{
 		case kSMInInfo:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"info" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] infoImage]];
 			[meta setTitle:@"Additional Information"];
 			break;
 		case kSMInLicense:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"scriptLicense" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] licenseImage]];	
 			[meta setTitle:@"License File"];
-			//[meta setDescription:@"Read Me"];
 			break;
 		case kSMInUpdate:
 		case kSMInInstall:
-			appPng = [SMGeneralMethods getImagePath:[theoptions valueForKey:NAME_KEY]];
+			[meta setImagePath:[SMGeneralMethods getImagePath:[theoptions valueForKey:NAME_KEY]]];
 			[meta setTitle:[theoptions valueForKey:NAME_KEY]];
 			break;
 		case kSMInManage:
 		case kSMInRemove:
 		case kSMInRemoveB:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"trashempty" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] trashEmptyImage]];
 			break;
 		case kSMInRestore:
 		case kSMInBackup:
-			appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"timemachine" ofType:@"png"];
+			[meta setBRImage:[[SMThemeInfo sharedTheme] timeMachineImage]];
 			break;
 			
 	} InType;
-	[meta setImagePath:appPng];
-	if(![_man fileExistsAtPath:appPng])
-	{
-		[meta setDefaultImage];
-	}
-	BRMetadataPreviewControl *preview = [[BRMetadataPreviewControl alloc] init];
+
+	SMMediaPreview *preview = [[SMMediaPreview alloc] init];
 	[preview setAsset:meta];
 	[preview setShowsMetadataImmediately:YES];
-	NSLog(@"Preview Control done");
 	return (preview);
 }
 
@@ -71,6 +66,9 @@ static NSString  * bak_vers = nil;
 	//NSLog(@"init");
 	self=[super init];
 	_man = [NSFileManager defaultManager];
+	_items = [[NSMutableArray alloc] initWithObjects:nil];
+	_options = [[NSMutableArray alloc] initWithObjects:nil];
+	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	return self;
 }
 - (void)dealloc
@@ -85,18 +83,17 @@ static NSString  * bak_vers = nil;
 
 -(id)initCustom;
 {
-	NSLog(@"1");
 	[[self list] removeDividers];
+	[_items removeAllObjects];
+	[_options removeAllObjects];
 	NSString *name=[[NSString alloc] initWithString:[_theInformation valueForKey:@"name"]];
 	NSString *version=[_theInformation valueForKey:@"version"];
 	NSString *displayVersion=[_theInformation valueForKey:@"displayVersion"];
 	NSString *displayName =[_theInformation valueForKey:@"displayName"];
 	NSString *thelicense =[_theInformation valueForKey:@"license"];
-	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: displayName];
+
 	
-	_items = [[NSMutableArray alloc] initWithObjects:nil];
-	_options = [[NSMutableArray alloc] initWithObjects:nil];
+
 	
 	////////////////
 	//    INFO    //
@@ -123,7 +120,7 @@ static NSString  * bak_vers = nil;
 	int iii = [_options count];
 	
 	///Does the plugins exist?
-	if(![self frapExists])
+	if(![self frapExists]) //Does Not Exist
 	{
 		////////////////
 		//   install  //
@@ -136,10 +133,10 @@ static NSString  * bak_vers = nil;
 		[item2 setRightJustifiedText:displayVersion];
 		[_items addObject:item2];
 	}
-	else
+	else //Exists
 	{
 		///Is the plugin up to date?
-		if (![self frapUpToDate])
+		if (![self frapUpToDate]) //Not Up to Date
 		{
 			////////////////
 			//   Update   //
@@ -174,7 +171,7 @@ static NSString  * bak_vers = nil;
 		}
 	}
 	///Does a Backup Exists?
-	if ([self bakExists])
+	if ([self bakExists]) //backup exists
 	{		
 		///////////////////////
 		//   Restore Backup  //
@@ -201,7 +198,6 @@ static NSString  * bak_vers = nil;
 	[list setDatasource: self];
 	///Add the Seperator
 	[[self list] addDividerAtIndex:iii withLabel:name];
-	NSLog(@"4");
 	return self;
 }
 -(void)getVersions
@@ -281,6 +277,7 @@ static NSString  * bak_vers = nil;
 			infoController=[[SMInfo alloc] init];
 			[infoController setTheName:[_theInformation valueForKey:@"name"]];
 			[infoController setDescriptionWithURL:[_theInformation valueForKey:@"description"]];
+			[infoController setTheImage:[BRImage imageWithPath:[SMGeneralMethods getImagePath:[_theInformation valueForKey:@"name"]]]];
 			[infoController setVersions:theOnlineVersion withBak:thebackvers withCurrent:thecurrentvers];
 			[[self stack] pushController:infoController];
 			break;
@@ -289,6 +286,8 @@ static NSString  * bak_vers = nil;
 			infoController=[[SMInfo alloc] init];
 			[infoController setTheName:[NSString stringWithFormat:@"License for %@",[_theInformation valueForKey:@"name"]]];
 			[infoController setDescriptionWithURL:[_theInformation valueForKey:@"license"]];
+			//[infoController setTheImage:[BRImage imageWithPath:[SMGeneralMethods getImagePath:[selectedOption valueForKey:NAME_KEY]]]];
+			[infoController setTheImage:[[SMThemeInfo sharedTheme] licenseImage]];
 			[infoController setVersions:theOnlineVersion withBak:thebackvers withCurrent:thecurrentvers];
 			[[self stack] pushController:infoController];
 			break;
@@ -323,18 +322,10 @@ static NSString  * bak_vers = nil;
 	return;
 }
 
-/*-(void)willBeBuried
-{
-	//NSLog(@"willBuried");
-	//[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBeBuried];
-}*/
-
 
 
 -(void)willBePopped
 {
-	NSString *thename= [_theInformation valueForKey:@"name"];
 	
 	NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithDictionary:nil];
 	
@@ -344,42 +335,16 @@ static NSString  * bak_vers = nil;
 		[settings addEntriesFromDictionary:tempdict1];
 		////NSLog(@"adding from temp dict");
 	}
-	/*if([[settings objectForKey:@"ARF"] isEqualToString:@"YES"])
-	{
-		NSMutableDictionary *show_hide = [[NSMutableDictionary alloc] initWithDictionary:nil];
-		
-		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/log2.plist" stringByExpandingTildeInPath]])
-		{
-			NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/log2.plist" stringByExpandingTildeInPath]];
-			[show_hide addEntriesFromDictionary:tempdict];
-			////NSLog(@"adding from temp dict");
-		}
-		
-		NSString *var = [show_hide objectForKey:thename];
-		if([var isEqualToString:@"YES"] && ![[NSFileManager defaultManager] fileExistsAtPath:[[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",thename]])
-			[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
-		if([var isEqualToString:@"NO"] && [[NSFileManager defaultManager] fileExistsAtPath:[[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",thename]])
-			[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
-		if([var isEqualToString:@"YES"] && [[show_hide objectForKey:@"Update"] isEqualToString:@"YES"] &&[[NSFileManager defaultManager] fileExistsAtPath:[[NSString alloc] initWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",thename]])
-			[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
-	}
-	//NSLog(@"willBePopped");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];*/
 	[super willBePopped];
 }
 
 
 - (void)wasExhumedByPoppingController:(id)row
 {
-	
-
-
 	[self initCustom];	
 }
 -(void)wasExhumed
 {
-	
-	
 	[self initCustom];	
 }
 
@@ -388,7 +353,11 @@ static NSString  * bak_vers = nil;
 - (float)heightForRow:(long)row				{ return 0.0f; }
 - (BOOL)rowSelectable:(long)row				{ return YES;}
 - (long)itemCount							{ return (long)[_items count];}
-- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
+- (id)itemForRow:(long)row					
+{ 
+	BRTextMenuItemLayer *theItem = [_items objectAtIndex:row];
+	return theItem; 
+}
 - (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
 - (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
 

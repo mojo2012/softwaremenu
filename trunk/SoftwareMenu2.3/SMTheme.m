@@ -1,0 +1,204 @@
+//
+//  SMTheme.m
+//  SoftwareMenu
+//
+//  Created by Thomas on 4/19/09.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//
+
+#import "SMTheme.h"
+
+@implementation SMThemeInfo
++ (id)sharedTheme
+{
+	static SMThemeInfo *shared = nil;
+	if(shared == nil)
+		shared = [[SMThemeInfo alloc] init];
+	
+	return shared;
+}
++ (SMThemeInfo *)sharedInstance
+{
+    return [[self alloc] init];
+}
+-(id)softwareMenuImage
+{	
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM ofType:@"png"]];
+}
+-(id)infoImage {
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_INFO ofType:@"png"]] ;
+}
+-(id)internetImage {
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_INTERNET ofType:@"png"]] ;
+}
+-(id)powerImage {
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_POWER ofType:@"png"]] ;
+}
+-(id)refreshImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_REFRESH ofType:@"png"]] ;
+}
+-(id)standbyImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_STANDBY ofType:@"png"]] ;
+}
+-(id)trashEmptyImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_TRASH_EMPTY ofType:@"png"]] ;
+}
+-(id)webImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_WEB ofType:@"png"]] ;
+}
+-(id)hardDiskImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_HARDDISK ofType:@"png"]] ;
+}
+-(id)AFPImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_AFP ofType:@"png"]] ;
+}
+-(id)FTPImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_FTP ofType:@"png"]] ;
+}
+-(id)VNCImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_VNC ofType:@"png"]] ;
+}
+-(id)systemPrefsImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SYS_PREFS ofType:@"png"]] ;
+}
+-(id)scriptImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SCRIPT ofType:@"png"]] ;
+}
+-(id)timeMachineImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_TIME_MACHINE ofType:@"png"]] ;
+}
+-(id)perianImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_PERIAN ofType:@"png"]];
+}
+-(id)packageImage
+{	
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_PACKAGE ofType:@"png"]];
+	
+}
+-(id)folderIcon
+{	
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_FOLDER ofType:@"png"]];
+}
+-(id)licenseImage
+{	
+
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"license" ofType:@"png"]];
+}
+-(id)photosImage
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_PHOTO_HELP ofType:@"png"]];
+}
+-(id)greenGem
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]];
+}
+-(id)redGem
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_RED_GEM ofType:@"png"]];
+}
+-(id)greyGem
+{
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREY_GEM ofType:@"png"]];
+}
+
+-(id)imageForString:(NSString *)imageName
+{
+	NSArray *imageNames = [NSArray arrayWithObjects:
+						   IMAGE_SM,
+						   IMAGE_INFO,
+						   IMAGE_INTERNET,
+						   IMAGE_POWER,
+						   IMAGE_REFRESH,
+						   IMAGE_STANDBY,
+						   IMAGE_TRASH_EMPTY,
+						   IMAGE_WEB,
+						   IMAGE_HARDDISK,
+						   IMAGE_AFP,
+						   IMAGE_FTP,
+						   IMAGE_VNC,
+						   IMAGE_SYS_PREFS,
+						   IMAGE_SCRIPT,
+						   IMAGE_TIME_MACHINE,
+						   IMAGE_PERIAN,
+						   IMAGE_PACKAGE,
+						   IMAGE_FOLDER,
+						   nil];
+	int indexOfImage = -1;
+	indexOfImage = [imageNames indexOfObject:imageName];
+	BRImage *returnImage = nil;
+	switch (indexOfImage) {
+		case 0:
+			returnImage = [self softwareMenuImage];
+			break;
+		case 1:
+			returnImage = [self infoImage];
+			break;
+		case 2:
+			returnImage = [self internetImage];
+			break;
+		case 3:
+			returnImage = [self powerImage];
+			break;
+		case 4:
+			returnImage = [self refreshImage];
+			break;
+		case 6:
+			returnImage = [self standbyImage];
+			break;
+		case 7:
+			returnImage = [self trashEmptyImage];
+			break;
+		case 8:
+			returnImage = [self webImage];
+			break;
+		case 9:
+			returnImage = [self hardDiskImage];
+			break;
+		case 10 :
+			returnImage = [self AFPImage];
+			break;
+		case 11 :
+			returnImage = [self FTPImage];
+			break;
+		case 12:
+			returnImage = [self VNCImage];
+			break;
+		case 13:
+			returnImage = [self systemPrefsImage];
+			break;
+		case 14:
+			returnImage = [self	scriptImage];
+			break;
+		case 15:
+			returnImage = [self timeMachineImage];
+			break;
+		case 16:
+			returnImage = [self perianImage];
+			break;
+		case 17:
+			returnImage = [self packageImage];
+			break;
+		case 18:
+			returnImage = [self folderIcon];
+			break;
+		default:
+			returnImage = [self softwareMenuImage];
+			break;
+	}
+	return returnImage;
+
+
+}
+@end

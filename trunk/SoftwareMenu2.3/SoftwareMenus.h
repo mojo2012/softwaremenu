@@ -30,7 +30,6 @@
 + (NSString *) className;
 - (id)controllerForIdentifier:(id)fp8;
 - (id)applianceCategories;
--(long)getLongValue:(NSString *)jtwo;
 
 
 //- (BRLayerController *) applianceControllerWithScene: (BRRenderScene *) scene;

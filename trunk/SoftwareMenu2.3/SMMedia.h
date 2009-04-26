@@ -26,6 +26,13 @@
  */
 //#import <QuartzCore/QuartzCore.h>
 ////#import <BackRow/BackRow.h>
+typedef enum{
+	kSMMPhotos = 1,
+	kSMMDefault = 0,
+	kSMMPhotosSettings = 2,
+	kSMMImaged = 3,
+	kSMMOther = 10,
+}SSMType;
 @interface SMMedia : BRXMLMediaAsset {
 	unsigned int		resumeTime;		/*!< @brief The resume time to use, 0 to use super*/
 	NSString			*imagePath;		/*!< @brief The cover art path to use, nil to use super*/
@@ -35,6 +42,8 @@
 	NSString			*installedVersion;
 	NSString			*onlineVersion;
 	NSString			*changeLog;
+	id					bRImage;
+	unsigned int		type;
 }
 
 /*!
@@ -62,13 +71,15 @@
 - (void)setDescription:(NSString *)description;
 - (void)setTitle:(NSString *)title;
 - (void)setDev:(NSString *)devName;
-- (void)setReleaseDate:(NSString *)releaseDate;
 - (void)setOnlineVersion:(NSString *)onlineVersion;
 - (void)setInstalledVersion:(NSString *)installedVersion;
 - (void)setDefaultImage;
+- (void)setPhotosImage;
+- (void)setPhotosSettingsImage;
+- (void)setBRImage:(id)Image;
 - (id)installedVersion;
 - (id)onlineVersion;
 - (id)developer;
-- (id)changeLog;
+- (NSString *)stringReturn:(NSString *)theString;
 
 @end

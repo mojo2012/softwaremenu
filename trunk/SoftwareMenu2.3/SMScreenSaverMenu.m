@@ -10,173 +10,230 @@
 #import "SMGeneralMethods.h"
 #import "SMMedia.h"
 #import "SoftwareSettings.h"
+#import "SMDefaultPhotos.h"
 #import "AGProcess.h"
 #import "SMMediaPreview.h"
 #include <sys/param.h>
 #include <sys/mount.h>
 #include <stdio.h>
+#import <objc/objc-class.h>
+#import "SMFolderBrowser.h"
+#import "SMPhotoPreview.h"
+#import "SMScreenSaverSettingsMenu.h"
+#import "SMInfo.h"
+#define SCREEN_SAVER_PATH @"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"
+
+
+@implementation SMScreenSaverDefaultSettings
+
+-(id)init
+{
+	self = [super init];
+	//NSLog(@"set title");
+	[self setListTitle: BRLocalizedString(@"Default Settings",@"Default Settings")];
+	//NSLog(@"setimage");
+	[self setListIcon:[[BRThemeInfo sharedTheme] photoSettingsImage] horizontalOffset:0.5f kerningFactor:0.2f];
+	//NSLog(@"done");
+	return self;
+}
+
+@end
+
+@interface IPSlideshow : NSObject
+@end
+@implementation IPSlideshow (protectedAccess)
+-(NSMutableDictionary *)gimmeAlbumDict {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "mAlbumDictionary");
+	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
+}
+
+
+@end
+
+@interface ATVScreenSaverManager
++(id)singleton;
+- (void)showScreenSaver;
+@end
+@interface ATVSettingsFacade : BRSettingsFacade
+- (void)setScreenSaverSelectedPath:(id)fp8;
+- (id)screenSaverSelectedPath;
+- (id)screenSaverPaths;
+- (id)screenSaverCollectionForScreenSaver:(id)fp8;
+
+@end
+@interface PhotoConnection
+@end
+@implementation BRIPhotoMediaCollection (protectedAccess)
+-(NSMutableDictionary *)gimmeCollectionDict {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "_collectionDictionary");
+	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
+}
+-(NSMutableArray *)gimmeConnectionDict {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "_imageList");
+	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
+}
+@interface PhotoXMLConnection : PhotoConnection
+- (id)initWithDictionary:(id)fp8;
+@end
+@implementation PhotoXMLConnection (protectedAccess)
+-(NSMutableDictionary *)gimmePhotos {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "mPhotos");
+	return *(NSMutableDictionary * *)(((char *)self)+ret->ivar_offset);
+}
+-(NSMutableArray *)gimmeRootContainers {
+	Class klass = [self class];
+	Ivar ret = class_getInstanceVariable(klass, "mRootContainers");
+	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
+}
+
+@end
 
 @implementation SMScreenSaverMenu
+static NSDate *lastFilterChangeDate = nil;
+
+-(BOOL)usingTakeTwoDotThree
+{
+	if([(Class)NSClassFromString(@"BRController") instancesRespondToSelector:@selector(wasExhumed)])
+	{
+		return YES;
+	}
+	else
+	{
+		return NO;
+	}
+	
+}
 - (id) previewControlForItem: (long) item
 {
     // If subclassing BRMediaMenuController, this function is called when the selection cursor
     // passes over an item.
 	if(item >= [_items count])
 		return nil;
+	else if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current"]intValue] && item == [settingNames count])
+	{
+		SMMedia	*meta = [[SMMedia alloc] init];
+		[meta setTitle:(NSString *)[[_items objectAtIndex:item] title]];
+		[meta setBRImage:[SMPhotoPreview firstPhotoForPath:[SMGeneralMethods stringForKey:PHOTO_DIRECTORY_KEY]]];
+		SMMediaPreview *preview =[[SMMediaPreview alloc] init];
+		[preview setAsset:meta];
+		return [preview autorelease];
+	}
+	else if(item >= [settingNames count])
+	{
+		SMMedia	*meta = [[SMMedia alloc] init];
+		[meta setTitle:(NSString *)[[_items objectAtIndex:item] title]];
+		[meta setBRImage:[SMPhotoPreview firstPhotoForPath:[paths objectAtIndex:item]]];
+		SMMediaPreview *preview =[[SMMediaPreview alloc] init];
+		[preview setAsset:meta];
+		return [preview autorelease];
+
+	}
 	else
 	{
 		
 		
 		SMMedia	*meta = [[SMMedia alloc] init];
-		[meta setDefaultImage];
-		[meta setTitle:[[_items objectAtIndex:item] title]];
-		NSString *imageName = nil;		
-		NSLog(@"preview");
+		[meta setTitle:(NSString *)[[_items objectAtIndex:item] title]];
 		[meta setDescription:[settingDescriptions objectAtIndex:item]];	
-		
 		switch([[settingNumberType objectAtIndex:item] intValue])
 		{
-			case kSMTwRestart:
-				imageName = [settingNames objectAtIndex:item];
-			case kSMTwToggle:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:6];
+			case kSMSSAbout:
+				[meta setBRImage:[[SMThemeInfo sharedTheme] infoImage]];
+				//[meta setDefaultImage];
 				break;
-			case kSMTwDownloadRowmote:
-				[meta setDev:[_rowmoteDict valueForKey:@"Developer"]];
-				
-				[meta setTitle:[@"Rekeased: " stringByAppendingString:[[_rowmoteDict valueForKey:@"ReleaseDate"] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil]]];
-				[meta setDescription:[_rowmoteDict valueForKey:@"ShortDescription"]];
-				[meta setOnlineVersion:[_rowmoteDict valueForKey:@"displayVersion"]];
-			case kSMTwDownload:
-			case kSMTwDownloadPerian:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:8];
+			case kSMSSStart:
+				[meta setPhotosImage];
 				break;
-				
-			case kSMTwFix:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:3];
+			case kSMSSSettings:
+				[meta setPhotosSettingsImage];
 				break;
-			case kSMTwInstall:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:7];
+			default:
+				[meta setDefaultImage];
 				break;
-		} TweakType;
-		if([_man fileExistsAtPath:[[NSBundle bundleForClass:[self class]] pathForResource:imageName ofType:@"png"]])
-		{
-			[meta setImagePath:[[NSBundle bundleForClass:[self class]] pathForResource:imageName ofType:@"png"]];
-		}
-		else
-		{
-			[meta setDefaultImage];
-		}
-		
-		
-		SMMediaPreview *previewtoo =[[SMMediaPreview alloc] init];
-		[previewtoo setShowsMetadataImmediately:YES];
+			
+		} SMSSType;
+		SMMediaPreview *preview =[[SMMediaPreview alloc] init];
+		[preview setShowsMetadataImmediately:YES];
 		//[previewtoo setDeletterboxAssetArtwork:YES];
-		[previewtoo setAsset:meta];
+		[preview setAsset:meta];
 		
-		return [previewtoo autorelease];
+		return [preview autorelease];
 	}
 }
--(void)getDict;
+- (void)dealloc
 {
-	_infoDict=[NSMutableDictionary dictionaryWithContentsOfURL:(NSURL *)[BASE_URL stringByAppendingString:@"tweaks.plist"]];
-	[_infoDict retain];
+	[_man release];
+	[paths release];
+	[_items release];
+	
+	[settingNames release];
+	[settingDisplays release];
+	[settingType release];
+	[settingDescriptions release];
+	[settingNumberType release];
+	[_dividers release];
+	[paths release];
+	//NSWorkspace *workspace;
+	[_man release];
+	[_items release];
+	[_options release];
+	[super dealloc];  
 }
 -(id)init
 {
+	
 	self=[super init];
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	[SMGeneralMethods checkFolders];
-	_SoftwareDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
-	//[_rowmoteDict addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:@"http://rowmote.com/rowmote-atv-version.plist"]]];
-	NSMutableDictionary *nitoUpdatesDict = [NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:@"http://nitosoft.com/version.plist"]];
-	if(nitoUpdatesDict != nil)
-	{
-		[_rowmoteDict setObject:[nitoUpdatesDict objectForKey:@"perianDisplayVersion"] forKey:@"perianDisplayVersion"];
-		[_rowmoteDict setObject:[nitoUpdatesDict objectForKey:@"perianVersion"] forKey:@"perianVersion"];
-		[_rowmoteDict setObject:[nitoUpdatesDict objectForKey:@"perianDownloadLink"] forKey:@"perianDownloadLink"];
-	}
 	[[self list] removeDividers];
 	
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: BRLocalizedString(@"Tweaks Menu",@"Tweaks Menu")];
+	[self setListTitle: BRLocalizedString(@"Slideshow Menu",@"Slideshow Menu")];
 	settingNames = [[NSMutableArray alloc] initWithObjects:
-					@"StartShow",
-					@"SlideshowTimePerSlide",
-					@"SlideshowFolder",
-					@"SlideshowType",
-					@"toggleRowmote",
-					@"toggleAFP",
-					@"toggleVNC",
-					@"toggleFTP",
-					@"installDropbear",
-					@"downloadRowmote",
-					@"downloadPerian",
+					@"About",
+					@"SlideshowStart",
+					@"slideshowSettings",
+					@"smSlideshowSettings",
 					nil];
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
-					   BRLocalizedString(@"Restart Finder",@"Restart Finder"),
-					   BRLocalizedString(@"Fix Sapphire",@"Fix Sapphire"),
-					   BRLocalizedString(@"Disk Read/Write toggle",@"Disk Read/Write toggle"),
-					   BRLocalizedString(@"Dropbear SSH toggle",@"Dropbear SSH toggle"),
-					   BRLocalizedString(@"Rowmote toggle",@"Rowmote toggle"),
-					   BRLocalizedString(@"AFP toggle",@"AFP toggle"),
-					   BRLocalizedString(@"VNC toggle",@"VNC toggle"),
-					   BRLocalizedString(@"FTP toggle",@"FTP toggle"),
-					   BRLocalizedString(@"Install Dropbear SSH",@"Install Dropbear SSH"),
-					   BRLocalizedString(@"Install Rowmote",@"Install Rowmote"),
-					   BRLocalizedString(@"Install Perian",@"Install Perian"),
+					   BRLocalizedString(@"About",@"About"),
+					   BRLocalizedString(@"Start Slideshow",@"Start Slideshow"),
+					   BRLocalizedString(@"Slideshow Settings",@"Slideshow Settings"),
+					   BRLocalizedString(@"SM Slideshow Settings",@"SM Slideshow Settings"),
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
-						   @"Restarts the Finder, necessary after install of Perian or Rowmote",
-						   
-						   @"Deletes the Sapphire Metadata, which can cause a problem after upgrade",
-						   @"Changes the disk status from Read-Write to Read-Only",
-						   @"Turn SSH On/Off -- If dropbear is installed, it will using that is what you are using",
-						   @"Toggle Rowmote ON/OFF",
-						   @"Toggle AFP server",
-						   @"Toggle VNC server",
-						   @"Toggle FTP server",
-						   @"Install Dropbear (will Fix SSH in case you somehow broke it)",
-						   @"Install Rowmote Helper Program for AppleTV                (www.rowmote.com - needs the iphone/ipod program rowmote)",
-						   @"Will download and Install Perian",
+						   @"Explains everything you need to know about the slideshow functionality",
+						   @"Starts the slideshow",
+						   @"Settings from apple Photos menu",
+						   @"Settings from SoftwareMenu Photos... yea apple didn't do a complete enough job ;)",
 						   nil];
-	/*settingType = [[NSMutableArray alloc] initWithObjects:
-	 @"Fix",
-	 @"toggle",
-	 @"toggle",
-	 @"toggle",
-	 @"toggle",
-	 @"toggle",
-	 @"toggle",
-	 @"install",
-	 @"Download",
-	 @"Download",
-	 nil];*/
 	settingNumberType = [[NSMutableArray alloc] initWithObjects:
 						 [NSNumber numberWithInt:0],
 						 [NSNumber numberWithInt:1],
 						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:3],
-						 [NSNumber numberWithInt:5],
-						 [NSNumber numberWithInt:4],
 						 nil];
 	
 	
-	_options = [[NSMutableArray alloc] initWithObjects:nil];
-	_infoDict= [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
+	_items = [[NSMutableArray alloc] initWithObjects:nil];
+	_dividers = [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
 	_man = [NSFileManager defaultManager];
+	paths = [[NSMutableArray alloc] initWithObjects:nil];
+	_tempPath = nil;
+	[self setListIcon:[[BRThemeInfo sharedTheme] photosImage] horizontalOffset:0.5f kerningFactor:0.2f];
 	return self;
 }
 -(id)initCustom
 {
-	
-	_items = [[NSMutableArray alloc] initWithObjects:nil];
-	
+	NSLog(@"initCustom");
+	[_items removeAllObjects];
+	[paths removeAllObjects];
+	[_dividers removeAllObjects];
+	[[self list] removeDividers];
 	
 	int i,counter;
 	i=[settingNames count];
@@ -186,158 +243,341 @@
 		[item setTitle:[settingDisplays objectAtIndex:counter]];
 		//[_options addObject:[NSArray arrayWithObjects:[settingType objectAtIndex:counter],[settingNames objectAtIndex:counter],[settingDisplays objectAtIndex:counter],nil]];
 		[_items addObject:item];
-		
+		[paths addObject:@"nil"];
 		
 	}
+	//Now let's go through the Non Builtin Scripts ... Located in ~/Documents/Scripts/ -- Shamelessly taken from Emulators Plugin
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	BOOL isDir;
+	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Current"];
+	NSString *currentFile = nil;
+	NSLog(@"file: %@",[SMGeneralMethods stringForKey:@"PhotoDirectory"]);
+	if(_tempPath !=nil)
+	{
+		currentFile = _tempPath;
+		[_tempPath release];
+		_tempPath = nil;
+		[_tempPath retain];
+	}
+	else
+	{
+		currentFile = [SMGeneralMethods stringForKey:@"PhotoDirectory"];
+	}
+	if([fileManager fileExistsAtPath:currentFile isDirectory:&isDir] && isDir)
+	{
+		//NSLog(@"Exists");
+		BRTextImageMenuItemLayer *current_item = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
+		[current_item setTitle:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
+		//[current_item setTitleImage:[[BRThemeInfo sharedTheme] photosImage]];
+		NSNumber *numberofPhotos = [SMPhotoPreview numberOfPhotosForPath:currentFile];
+		[current_item setSubtitle:[NSString stringWithFormat:@"(%@) Images in folder",numberofPhotos]];
+		[current_item setLoadsThumbnails:YES];
+		if([numberofPhotos boolValue])
+		{
+			[current_item setThumbnailImage:[SMPhotoPreview firstPhotoForPath:currentFile]];
+		}
+		else
+		{
+			[current_item setThumbnailImage:[[SMThemeInfo sharedTheme] folderIcon]];
+		}
+		//[current_item setLeftImageIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] selectedSettingImage], @"BRMenuIconImageKey",nil]];
+		[_items addObject:current_item];
+		[paths addObject:currentFile];
+	}
+	int current = [_items count];
+	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Favorites"];
+	NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
+	[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
+	NSEnumerator *objEnum = [favorites objectEnumerator];
+	id obj;
+	while((obj = [objEnum nextObject]) != nil)
+	{
+		if([fileManager fileExistsAtPath:obj isDirectory:&isDir] &&isDir)
+		{
+			NSNumber *numberOfPhotos = [SMPhotoPreview numberOfPhotosForPath:obj];
+			BRTextImageMenuItemLayer * favoritesLayer = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
+			[favoritesLayer setTitle:obj];
+			[favoritesLayer setSubtitle:[NSString stringWithFormat:@"(%@)",numberOfPhotos,nil]];
+			if([numberOfPhotos intValue] == 0)	{[favoritesLayer setThumbnailImage:[[BRThemeInfo sharedTheme] missingImage]];}
+			else								{[favoritesLayer setThumbnailImage:[SMPhotoPreview firstPhotoForPath:obj]];}
+
+			[_items addObject:favoritesLayer];
+			[paths addObject:obj];
+		}
+	}
+	
+	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Volumes"];
+	NSLog(@"1");
+	
+	
+	NSString *thepath = @"/Volumes/";
+	long ii, count = [[fileManager directoryContentsAtPath:thepath] count];	
+	for ( ii = 0; ii < count; ii++ )
+	{
+		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:ii];
+		if([fileManager fileExistsAtPath:[thepath stringByAppendingPathComponent:idStr] isDirectory:&isDir] &&isDir && ![idStr isEqualToString:@"OSBoot"])
+		{
+			NSNumber *numberOfPhotos = [SMPhotoPreview numberOfPhotosForPath:[thepath stringByAppendingPathComponent:idStr]];
+			BRTextImageMenuItemLayer * mountsLayer = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
+			[mountsLayer setTitle:[thepath stringByAppendingPathComponent:idStr]];
+			[mountsLayer setSubtitle:[NSString stringWithFormat:@"(%@)",numberOfPhotos,nil]];
+			if([numberOfPhotos intValue] == 0)	{[mountsLayer setThumbnailImage:[[BRThemeInfo sharedTheme] missingImage]];}
+			else								{[mountsLayer setThumbnailImage:[SMPhotoPreview firstPhotoForPath:[thepath stringByAppendingPathComponent:idStr]]];}
+			[_items addObject:mountsLayer];
+			[paths addObject:[thepath stringByAppendingPathComponent:idStr]];
+		}
+	}
+	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Folders"];
+	if([fileManager fileExistsAtPath:@"/Users/frontrow/Pictures" isDirectory:&isDir] && isDir)
+	{
+		NSNumber *numberOfPhotos = [SMPhotoPreview numberOfPhotosForPath:@"/Users/frontrow/Pictures"];
+
+		BRTextImageMenuItemLayer * picturesLayer = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
+		[picturesLayer setTitle:@"~/frontrow/Pictures"];
+		[picturesLayer setSubtitle:[NSString stringWithFormat:@"(%@)",[SMPhotoPreview numberOfPhotosForPath:@"/Users/frontrow/Pictures"]]];
+		if([numberOfPhotos intValue] == 0)	{[picturesLayer setThumbnailImage:[[BRThemeInfo sharedTheme] missingImage]];}
+		else								{[picturesLayer setThumbnailImage:[SMPhotoPreview firstPhotoForPath:@"/Users/frontrow/Pictures"]];}
+		[_items addObject:picturesLayer];
+		[paths addObject:@"/Users/frontrow/Pictures"];
+	}
+	NSNumber *numberOfPhotos = [SMPhotoPreview numberOfPhotosForPath:@"/Users/frontrow"];
+
+	BRTextImageMenuItemLayer * homeLayer = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
+	[homeLayer setTitle:@"~/frontrow"];
+	[homeLayer setSubtitle:[NSString stringWithFormat:@"(%@)",[SMPhotoPreview numberOfPhotosForPath:@"/Users/frontrow/"]]];
+	[_items addObject:homeLayer];
+	[paths addObject:[@"/Users/frontrow" stringByExpandingTildeInPath]];
+	if([numberOfPhotos intValue] == 0)	{[homeLayer setThumbnailImage:[[BRThemeInfo sharedTheme] missingImage]];}
+	else								{[homeLayer setThumbnailImage:[SMPhotoPreview firstPhotoForPath:@"/Users/frontrow"]];}
 	id list = [self list];
-	[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
-	[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
-	[[self list] addDividerAtIndex:1 withLabel:@"Toggles"];
+	//[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
+	//[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
 	[list setDatasource: self];
+	if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current"]intValue])
+		[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current"]intValue] withLabel:@"Current"];
+	if([[_dividers valueForKey:@"Volumes"]intValue] != [[_dividers valueForKey:@"Favorites"]intValue])
+		[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Favorites"]intValue] withLabel:@"Favorites"];
+	if([[_dividers valueForKey:@"Folders"]intValue] != [[_dividers valueForKey:@"Volumes"]intValue])
+		[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Volumes"]intValue] withLabel:@"Volumes"];
+	[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Folders"]intValue] withLabel:@"Folders"];
+	NSLog(@"3");
+	NSLog(@"paths: %@",paths);
 	return self;
 }
 -(void)itemSelected:(long)row
 {
-	NSMutableArray * args = [[NSMutableArray alloc] initWithObjects:nil];
-	NSMutableDictionary *dlDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
-	NSString *a=nil;
-	if(![[self itemForRow:row] dimmed])
+	NSString *theDir = nil;
+	if(row>=[settingNames count])
 	{
-		
+		SMFolderBrowser *folder = [[SMFolderBrowser alloc] init];
+		[folder setPath:[paths objectAtIndex:row]];
+		[folder initCustom];
+		[[self stack] pushController:folder];
+	}
+	else
+	{
+		BOOL isDir;
 		switch([[settingNumberType objectAtIndex:row]intValue])
 		{
-			case kSMTwRestart:
-				a=nil;
-				AGProcess *killFinder = [AGProcess processForCommand:@"Finder"];
-				[killFinder terminate];
+			case kSMSSAbout:
+				isDir = NO;
+				SMInfo *infoController = [[SMInfo alloc] init];
+				NSLog(@"1");
+				NSString *downloadedDescription = [NSString  stringWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"PhotosAbout" ofType:@"txt"] encoding:NSUTF8StringEncoding error:NULL];
+				[infoController setDescription:downloadedDescription];
+				NSLog(@"2");
+				[infoController setTheImage:[[SMThemeInfo sharedTheme] photosImage]];
+				[infoController setTheName:@"Photos Help"];
+				NSLog(@"3");
+				[[self stack] pushController:infoController];
+				//isDir =NO;
+				//BRSlideshowSettingsTimePerSlideController *sstime = [[BRSlideshowSettingsTimePerSlideController alloc] init];
+				//[[self stack] pushController:sstime];
 				break;
-			case kSMTwToggle:
-				NSLog(@"toggle");
-				[args addObject:@"-toggleTweak"];
-				[args addObject:[[settingNames objectAtIndex:row] substringFromIndex:6]];
-				if([self getToggleRightText:[settingNames objectAtIndex:row]])
+			case kSMSSStart:
+				isDir = NO;
+				if([[SMGeneralMethods stringForKey:@"SlideShowType"] isEqualToString:@"Floating Images"])
 				{
-					[args addObject:@"OFF"];
-					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
-					{
-						[SMGeneralMethods setBool:YES forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
-					}
+					//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"installScreenSaver",@"0",@"0",nil]];
+					
+					NSString *oldScreenSaver = [[ATVSettingsFacade singleton] screenSaverSelectedPath];
+					[[ATVSettingsFacade singleton] setScreenSaverSelectedPath:SCREEN_SAVER_PATH];
+					[[ATVScreenSaverManager singleton] showScreenSaver];
+					[[ATVSettingsFacade singleton] setScreenSaverSelectedPath:oldScreenSaver];
 				}
 				else
 				{
-					[args addObject:@"ON"];
-					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleVNC"])
+					[SMGeneralMethods setString:@"SlideShow" forKey:@"SlideShowType"];
+					theDir = [SMGeneralMethods stringForKey:@"PhotoDirectory"];
+					//NSLog(@"thDir: %@",theDir);
+					if(theDir==nil || ![[NSFileManager defaultManager] fileExistsAtPath:theDir isDirectory:&isDir] || !isDir)
+						theDir = DEFAULT_IMAGES_PATH;
+					//NSLog(@"theDir: %@",theDir);
+					if([[NSFileManager defaultManager] fileExistsAtPath:theDir isDirectory:&isDir] && isDir){}
+					else
 					{
-						[self VNCFix];
+						theDir = DEFAULT_IMAGES_PATH;
 					}
-					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
+					//NSLog(@"theDir: %@",theDir);
+					NSMutableArray *photoArray = [NSMutableArray arrayWithObjects:nil];
+					
+					NSEnumerator *assetEnum = [[SMDefaultPhotos applePhotosForPath:theDir] objectEnumerator];
+					id obj;
+					while((obj = [assetEnum nextObject]) != nil)
 					{
-						[SMGeneralMethods setBool:NO forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
+						NSString *assetID = [obj coverArtID];
+						[photoArray addObject:assetID];
 					}
+					NSDictionary *Collectionstoo = [BRIPhotoMediaCollection createPhotoDictFromListOfLocalPhotos:photoArray];
+					
+					PhotoXMLConnection *PhotoConnections = [[PhotoXMLConnection alloc] initWithDictionary:Collectionstoo];
+					
+					NSSet *mediaSet=[NSSet setWithObject:[BRMediaType photo]];
+					BRMediaHost *mediaHost = [BRMediaHost localMediaProviderAdvertisingMediaTypes:mediaSet];
+					
+					NSMutableArray * photoRootContainers = [PhotoConnections gimmeRootContainers];
+					NSMutableDictionary * dict = [[photoRootContainers objectAtIndex:0] mutableCopy];
+					[dict setObject:[[BRSettingsFacade singleton] slideshowPlaybackOptions] forKey:@"slideshow options"];
+					[photoRootContainers removeLastObject];
+					[photoRootContainers addObject:dict];
+					
+					
+					
+					
+					SMDefaultPhotoCollection *collectionthree = [[SMDefaultPhotoCollection alloc] initWithProvider:mediaHost 
+																										dictionary:[[PhotoConnections rootAlbums] objectAtIndex:0]
+																											  path:theDir
+																								andPhotoConnection:PhotoConnections];
+					
+					
+					BRPhotoBrowserController *photoBrowser = [[BRPhotoBrowserController alloc] initWithCollection:collectionthree withPlaybackOptions:[[BRSettingsFacade singleton] slideshowPlaybackOptions]];
+					[[self stack] pushController:photoBrowser];
+					
 				}
-				
-				[SMGeneralMethods runHelperApp:args];
 				break;
-			case kSMTwDownloadRowmote:
-				NSLog(@"Rowmote");
-				SMDownloaderTweaks *rowmoteDownloader = [[SMDownloaderTweaks alloc] init];
-				[dlDict setValue:[_rowmoteDict valueForKey:@"URL"] forKey:@"url"];
-				[dlDict setValue:[NSString stringWithFormat:@"Rowmote Helper Version %@",[_rowmoteDict valueForKey:@"Version"],nil] forKey:@"name"];
-				[dlDict setValue:[NSString stringWithFormat:@"Downloading Rowmote Version: %@\nfromURL: %@",[_rowmoteDict valueForKey:@"Version"],[_rowmoteDict valueForKey:@"URL"]] forKey:@"downloadtext"];
-				[rowmoteDownloader setInformationDict:dlDict];
-				[[self stack]pushController:rowmoteDownloader];
+			case kSMSSSettings:
+				isDir =NO;
+				BRSlideshowSettingsController *settings = [[BRSlideshowSettingsController alloc] init];
+				[[self stack] pushController:settings];
 				break;
-			case kSMTwDownloadPerian:
-				NSLog(@"Perian");
-				SMDownloaderTweaks *perianDownloader = [[SMDownloaderTweaks alloc] init];
-				[dlDict setValue:[_rowmoteDict valueForKey:@"perianDownloadLink"] forKey:@"url"];
-				[dlDict setValue:[NSString stringWithFormat:@"Perian Version %@(%@)",[_rowmoteDict valueForKey:@"perianDisplayVersion"],[_rowmoteDict valueForKey:@"perianVersion"], nil] forKey:@"name"];
-				[dlDict setValue:[NSString stringWithFormat:@"Downloading Rowmote Version: %@\nfromURL: %@",[_rowmoteDict valueForKey:@"perianDisplayVersion"],[_rowmoteDict valueForKey:@"perianDownloadLink"]] forKey:@"downloadtext"];
-				[perianDownloader setInformationDict:dlDict];
-				[[self stack]pushController:perianDownloader];
-				break;
-			case kSMTwFix:
-				[_man removeFileAtPath:@"/Users/frontrow/Library/Application Support/Sapphire/metaData.plist" handler:nil];
+			case kSMSSCustomSettings:
+				isDir = NO;
+				SMScreenSaverSettingsMenu *cusSettings = [[SMScreenSaverSettingsMenu alloc] init];
+				[cusSettings initCustom];
+				[[self stack] pushController:cusSettings];
 				break;
 				
 				
 				
-		} TweakType;
-		
-		
+				
+				
+		}
+		/*switch(row)
+		{
+			case 0:
+				theDir = [SMGeneralMethods stringForKey:@"PhotoDirectory"];
+				BOOL isDir;
+				if(theDir==nil || ![[NSFileManager defaultManager] fileExistsAtPath:theDir isDirectory:&isDir] || !isDir)
+					theDir = DEFAULT_IMAGES_PATH;
+				NSMutableArray *photoArray = [NSMutableArray arrayWithObjects:nil];
+				
+				NSEnumerator *assetEnum = [[SMDefaultPhotos applePhotosForPath:theDir] objectEnumerator];
+				id obj;
+				while((obj = [assetEnum nextObject]) != nil)
+				{
+					NSString *assetID = [obj coverArtID];
+					[photoArray addObject:assetID];
+				}
+				NSDictionary *Collectionstoo = [BRIPhotoMediaCollection createPhotoDictFromListOfLocalPhotos:photoArray];
+				
+				PhotoXMLConnection *PhotoConnections = [[PhotoXMLConnection alloc] initWithDictionary:Collectionstoo];
+				
+				NSSet *mediaSet=[NSSet setWithObject:[BRMediaType photo]];
+				BRMediaHost *mediaHost = [BRMediaHost localMediaProviderAdvertisingMediaTypes:mediaSet];
+				
+				NSMutableArray * photoRootContainers = [PhotoConnections gimmeRootContainers];
+				NSMutableDictionary * dict = [[photoRootContainers objectAtIndex:0] mutableCopy];
+				[dict setObject:[[BRSettingsFacade singleton] slideshowPlaybackOptions] forKey:@"slideshow options"];
+				[photoRootContainers removeLastObject];
+				[photoRootContainers addObject:dict];
+				
+				
+				
+				
+				SMDefaultPhotoCollection *collectionthree = [[SMDefaultPhotoCollection alloc] initWithProvider:mediaHost 
+																									dictionary:[[PhotoConnections rootAlbums] objectAtIndex:0]
+																										  path:theDir
+																							andPhotoConnection:PhotoConnections];
+				[[ATVSettingsFacade singleton] setScreenSaverPhotoCollection:collectionthree forScreenSaverType:@"ScreenSaverFloatingPhotoType"];
+				NSLog(@"screensaverPhotos: %@", [[ATVDefaultPhotos screenSaverPhotosForType:@"ScreenSaverFloatingPhotoType"] objectAtIndex:0]);
+				NSLog(@"screensaverPaths: %@", [[ATVSettingsFacade singleton] screenSaverPaths]);
+				[[ATVScreenSaverManager singleton] showScreenSaver];
+		}*/
 	}
+
 	
 	[[self list] reload];
 }
-- (float)heightForRow:(long)row				{ return 0.0f; }
+/*- (float)heightForRow:(long)row				{ return 0.0f; }
 - (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[settingNames count];}
+- (long)itemCount							{ return (long)[_items count];}*/
 - (id)itemForRow:(long)row					
 { 
-	NSString *LocalVersion = nil;
-	NSString *title = [settingNames objectAtIndex:row];
-	//BOOL setDimmed=NO;
-	
-	BRTextMenuItemLayer *item = [BRTextMenuItemLayer menuItem];
-	BOOL result = NO;
-	
-	switch([[settingNumberType objectAtIndex:row] intValue])
+	//NSLog(@"itemForRow");
+	if(row >= [_items count])
+		return nil;
+	if(row == [settingNames count])
 	{
-		case kSMTwToggle:
-			result = ![self getToggleDimmed:title];
-			[item setDimmed:result];
-			
-			if(![item dimmed])
-			{
-				NSString *rightText = @"OFF";
-				BOOL isActive = NO;
-				if([self getToggleRightText:title])
-				{
-					rightText=@"ON";
-					isActive = YES;
-					
-				}
-				[item setRightJustifiedText:rightText];
-				[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],[NSNumber numberWithBool:isActive],nil] forKey:title];
-			}
-			else
-			{
-				[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],nil] forKey:title];
-			}
+		NSLog(@"row three");
+		BRTextImageMenuItemLayer *theitem = [_items objectAtIndex:row];
+		[theitem setTitle:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
+		return theitem;
+	}
+	if(row >[settingNames count])
+	{
+		NSLog(@"beyond row three");
+		BRTextImageMenuItemLayer *theitem = [_items objectAtIndex:row];
+		//NSLog(@"title: %@",(NSString *)[theitem title]);
+		/*if([[paths objectAtIndex:row] isEqualToString:[SMGeneralMethods stringForKey:@"PhotoDirectory"]])
+		{
+			[theitem setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] selectedSettingImage], @"BRMenuIconImageKey",nil]];
+		}
+		else
+		{
+			[theitem setLeftIconInfo:nil];
+		}*/
+		return theitem;
+
+	}
+	//NSLog(@"after special");
+	BRTextMenuItemLayer *item  = nil;
+	switch (row) {
+		case 0:
+			//NSLog(@"PhotoController");
+			item = [BRTextMenuItemLayer menuItem];
+			[item setTitle:[settingDisplays objectAtIndex:row]];
 			break;
-		case kSMTwDownloadRowmote:
-			NSLog(@"kSMTwDownloadRowmote");
-			LocalVersion = nil;
-			LocalVersion = [self getRowmoteVersion];
-			NSLog(@"LocalVersion of Rowmote:%@",LocalVersion);
-			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		
-			{
-				[item setRightJustifiedText:[_rowmoteDict valueForKey:@"displayVersion"]];
-				NSLog(@"Bigger");
-			}
-			else 		
-			{
-				[item setDimmed:YES];
-				NSLog(@"Other");
-			}
+		case 1:
+			//NSLog(@"PhotoController");
+			item = [BRTextMenuItemLayer menuItem];
+			[item setTitle:[settingDisplays objectAtIndex:row]];
 			break;
-		case kSMTwDownloadPerian:
-			LocalVersion = [self getPerianVersion];
-			if([LocalVersion compare:[_rowmoteDict valueForKey:@"perianDisplayVersion"]]==NSOrderedAscending)		{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"perianDisplayVersion"]];}
-			else		{[item setDimmed:YES];}
+		case 2:
+			item = [BRTextMenuItemLayer menuItem];
+			[item setTitle:[settingDisplays objectAtIndex:row]];
+			break;
+		case 3:
+			item = [BRTextMenuItemLayer menuItem];
+			[item setTitle:[settingDisplays objectAtIndex:row]];
+		default:
 			break;
 	}
-	
-	
-	
-	
-	[item setTitle:[settingDisplays objectAtIndex:row]];
 	return item;
-	
+		
 	//return [_items objectAtIndex:row]; 
 }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
+/*- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
+- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }*/
 /*- (id)titleForRow:(long)row					
  {
  return [settingDisplays objectAtIndex:row];
@@ -359,8 +599,106 @@
  }*/
 -(void)wasExhumed
 {
+	[self initCustom];
 	[[self list] reload];
 }
+- (BOOL)brEventAction:(BREvent *)event
+{
+	long selitem;
+	unsigned int hashVal = (uint32_t)((int)[event page] << 16 | (int)[event usage]);
+	if ([(BRControllerStack *)[self stack] peekController] != self)
+		hashVal = 0;
+	
+	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
+	
+	//NSLog(@"hashval =%i",hashVal);
+	switch (hashVal)
+	{
+		case 65676:  // tap up
+			//NSLog(@"type up");
+			break;
+		case 65677:  // tap down
+			//NSLog(@"type down");
+			break;
+		case 65675:  // tap left
+			//NSLog(@"type left");
+			selitem = 0;
+			
+			selitem = [self getSelection];
+			//NSLog(@"selection :%d",selitem);
+			if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
+			{
+				[lastFilterChangeDate release];
+				lastFilterChangeDate = [[NSDate date] retain];
+				NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
+				[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
+				if([favorites containsObject:[paths objectAtIndex:selitem]])
+				{
+					[favorites removeObjectAtIndex:[favorites indexOfObject:[paths objectAtIndex:selitem]]];
+					[SMGeneralMethods setArray:favorites forKey:@"PhotosFavorites"];
+					[_items removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:selitem]]];
+					[paths removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:selitem]]];
+					[[self list] removeDividers];
+					if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current"]intValue])
+						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current"]intValue] withLabel:@"Current"];
+					int i = [[_dividers valueForKey:@"Volumes"] intValue];
+					i--;
+					[_dividers setObject:[NSNumber numberWithInt:i] forKey:@"Volumes"];
+					
+					i= [[_dividers valueForKey:@"Folders"] intValue];
+					i--;
+					[_dividers setObject:[NSNumber numberWithInt:i] forKey:@"Folders"];
+					if([[_dividers valueForKey:@"Volumes"]intValue] != [[_dividers valueForKey:@"Favorites"]intValue])
+						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Favorites"]intValue] withLabel:@"Favorites"];
+					if([[_dividers valueForKey:@"Folders"]intValue] != [[_dividers valueForKey:@"Volumes"]intValue])
+						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Volumes"]intValue] withLabel:@"Volumes"];
+					[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Folders"]intValue] withLabel:@"Folders"];
+
+					//[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
+					//[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
+					[[self list] reload];
+					
+					
+					
+					
+				}
+			}
+			
+			
+			break;
+		case 65674:  // tap right
+			//NSLog(@"type right");
+			//[self setSelectedItem:1];
+			selitem = 0;
+			
+			selitem = [self getSelection];
+			if(selitem>=[settingNames count])
+			{
+				if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
+				{
+					[lastFilterChangeDate release];
+					lastFilterChangeDate = [[NSDate date] retain];
+					NSLog(@"Row: %@",[NSNumber numberWithInt:selitem]);
+					NSLog(@"path: %@",[paths objectAtIndex:selitem]);
+					[SMGeneralMethods setString:[paths objectAtIndex:selitem] forKey:@"PhotoDirectory"];
+					[_tempPath release];
+					_tempPath = [paths objectAtIndex:selitem];
+					[_tempPath retain];
+					[self initCustom];
+					[[self list] reload];
+				}
+			}
+
+			break;
+		case 65673:  // tap play
+			/*selitem = [self selectedItem];
+			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];*/
+			//NSLog(@"type play");
+			break;
+	}
+	return [super brEventAction:event];
+}
+
 
 
 

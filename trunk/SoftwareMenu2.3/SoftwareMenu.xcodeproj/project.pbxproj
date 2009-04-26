@@ -6,6 +6,22 @@
 	objectVersion = 42;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E2F64FF80F9F562B005CF172 /* Complete */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E2F650250F9F5663005CF172 /* Build configuration list for PBXAggregateTarget "Complete" */;
+			buildPhases = (
+			);
+			dependencies = (
+				E2F650020F9F5642005CF172 /* PBXTargetDependency */,
+				E2F650040F9F5646005CF172 /* PBXTargetDependency */,
+				E2F650000F9F563F005CF172 /* PBXTargetDependency */,
+			);
+			name = Complete;
+			productName = Complete;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3802E5840BD7E65C00B6DA5A /* SoftwareMenus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802E5830BD7E65C00B6DA5A /* SoftwareMenus.m */; };
 		3802E58A0BD7E8C300B6DA5A /* SMProgressBarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802E5890BD7E8C300B6DA5A /* SMProgressBarControl.m */; };
@@ -22,16 +38,21 @@
 		E20C16680EA8278800739E75 /* restore.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C16640EA8278800739E75 /* restore.sh */; };
 		E20C16690EA8278800739E75 /* backup.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C16650EA8278800739E75 /* backup.sh */; };
 		E20C16F30EA90EA500739E75 /* SMThirdPartyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */; };
-		E20C1B850EA92CED00739E75 /* SoftwareBuiltInMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C1B840EA92CED00739E75 /* SoftwareBuiltInMenu.m */; };
+		E20C1B850EA92CED00739E75 /* SMBuiltInMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C1B840EA92CED00739E75 /* SMBuiltInMenu.m */; };
 		E20C1C9B0EA9732200739E75 /* Hide.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C1C9A0EA9732200739E75 /* Hide.sh */; };
 		E20C1C9D0EA973EE00739E75 /* Show.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C1C9C0EA973EE00739E75 /* Show.sh */; };
-		E20C1CCC0EA980B900739E75 /* SoftwareScriptsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C1CCB0EA980B900739E75 /* SoftwareScriptsMenu.m */; };
+		E20C1CCC0EA980B900739E75 /* SMScriptsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C1CCB0EA980B900739E75 /* SMScriptsMenu.m */; };
 		E20C1CE50EA983AA00739E75 /* hello.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C1CE20EA983AA00739E75 /* hello.sh */; };
 		E20C1CE60EA983AA00739E75 /* Reboot.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C1CE30EA983AA00739E75 /* Reboot.sh */; };
 		E20C1CE70EA983AA00739E75 /* Populate.sh in Resources */ = {isa = PBXBuildFile; fileRef = E20C1CE40EA983AA00739E75 /* Populate.sh */; };
 		E20C1CEB0EA9841100739E75 /* Scripts.plist in Resources */ = {isa = PBXBuildFile; fileRef = E20C1CEA0EA9841100739E75 /* Scripts.plist */; };
 		E224B56C0EC2827100D9D783 /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = E224B56B0EC2827100D9D783 /* internet.png */; };
-		E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */; };
+		E22E8A1A0FA16329005489A6 /* SMScriptsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = E22E8A190FA16329005489A6 /* SMScriptsMenu.h */; };
+		E22E8FC60FA2114E005489A6 /* SoftwarePasscodeController.h in Headers */ = {isa = PBXBuildFile; fileRef = E22E8FC40FA2114E005489A6 /* SoftwarePasscodeController.h */; };
+		E22E8FC70FA2114E005489A6 /* SoftwarePasscodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = E22E8FC50FA2114E005489A6 /* SoftwarePasscodeController.m */; };
+		E22E929D0FA34EA1005489A6 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = E22E929B0FA34EA1005489A6 /* green.png */; };
+		E22E929E0FA34EA1005489A6 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = E22E929C0FA34EA1005489A6 /* red.png */; };
+		E236DA3C0F64368E003C02CA /* SM.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* SM.pch */; };
 		E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E245235F0EABCAE600E4127B /* SoftwareUpdater.m */; };
 		E24524B70EABD98700E4127B /* Perian.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B40EABD98700E4127B /* Perian.png */; };
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
@@ -41,6 +62,14 @@
 		E24525490EABFEB700E4127B /* softwareupdate.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525480EABFEB700E4127B /* softwareupdate.png */; };
 		E24689680F5F8C020009B44A /* power.png in Resources */ = {isa = PBXBuildFile; fileRef = E24689670F5F8C020009B44A /* power.png */; };
 		E246897A0F5F8F7C0009B44A /* scriptLicense.png in Resources */ = {isa = PBXBuildFile; fileRef = E24689790F5F8F7C0009B44A /* scriptLicense.png */; };
+		E24C6C5D0F9BE986001D4956 /* folderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E24C6C5C0F9BE986001D4956 /* folderIcon.png */; };
+		E24C6D540F9C05A3001D4956 /* SMFolderBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = E24C6D520F9C05A3001D4956 /* SMFolderBrowser.h */; };
+		E24C6D550F9C05A3001D4956 /* SMFolderBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E24C6D530F9C05A3001D4956 /* SMFolderBrowser.m */; };
+		E24C6E5B0F9C1E3A001D4956 /* SMPhotoPreview.h in Headers */ = {isa = PBXBuildFile; fileRef = E24C6E590F9C1E3A001D4956 /* SMPhotoPreview.h */; };
+		E24C6E5C0F9C1E3A001D4956 /* SMPhotoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E24C6E5A0F9C1E3A001D4956 /* SMPhotoPreview.m */; };
+		E24C76F10F9D483B001D4956 /* SMScreenSaverSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = E24C76EF0F9D483B001D4956 /* SMScreenSaverSettingsMenu.h */; };
+		E24C76F20F9D483B001D4956 /* SMScreenSaverSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E24C76F00F9D483B001D4956 /* SMScreenSaverSettingsMenu.m */; };
+		E24C79100F9D56B9001D4956 /* SM.frss.tgz in Resources */ = {isa = PBXBuildFile; fileRef = E24C790F0F9D56B9001D4956 /* SM.frss.tgz */; };
 		E25576D80EBE53DC002B6313 /* reset.sh in Resources */ = {isa = PBXBuildFile; fileRef = E25576D70EBE53DC002B6313 /* reset.sh */; };
 		E2587A940F55980600671F59 /* SMFrappMover.m in Sources */ = {isa = PBXBuildFile; fileRef = E2587A930F55980600671F59 /* SMFrappMover.m */; };
 		E25CC0910F6228B00024A371 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E25CC08F0F6228B00024A371 /* Localizable.strings */; };
@@ -53,6 +82,8 @@
 		E2817FA80F8DA2200065D70D /* AFP.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817FA70F8DA2200065D70D /* AFP.png */; };
 		E28180490F8E48980065D70D /* RW.png in Resources */ = {isa = PBXBuildFile; fileRef = E28180480F8E48980065D70D /* RW.png */; };
 		E281804D0F8E4CAD0065D70D /* FTP.png in Resources */ = {isa = PBXBuildFile; fileRef = E281804C0F8E4CAD0065D70D /* FTP.png */; };
+		E28A1FD70FA14FBB00C4E40E /* SMMediaMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = E28A1FD50FA14FBB00C4E40E /* SMMediaMenuController.h */; };
+		E28A1FD80FA14FBB00C4E40E /* SMMediaMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28A1FD60FA14FBB00C4E40E /* SMMediaMenuController.m */; };
 		E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */; };
 		E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */ = {isa = PBXBuildFile; fileRef = E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */; };
 		E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */; };
@@ -84,16 +115,53 @@
 		E2B7A83A0F8D0C45007B8BAB /* gunzip in Resources */ = {isa = PBXBuildFile; fileRef = E2B7A8390F8D0C45007B8BAB /* gunzip */; };
 		E2CFDDCA0EAFD51B00BC03AB /* FixPerm.sh in Resources */ = {isa = PBXBuildFile; fileRef = E2CFDDC90EAFD51B00BC03AB /* FixPerm.sh */; };
 		E2CFE0FC0EAFDE4C00BC03AB /* PH.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CFE0FB0EAFDE4C00BC03AB /* PH.png */; };
+		E2D044480FA38BC700959B34 /* grey.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D044470FA38BC700959B34 /* grey.png */; };
+		E2D049C00FA408F900959B34 /* SMMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = E2D049BF0FA408F900959B34 /* SMMenu.h */; };
 		E2E0F3800F5E489C002EAE7F /* SMMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F37E0F5E489C002EAE7F /* SMMedia.m */; };
 		E2E0F5D80F5EFC41002EAE7F /* SMTweaks.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */; };
 		E2E41B2C0ECCEC2A00D1697E /* SMInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */; };
 		E2F0A3CE0F8F832600625DC1 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3CD0F8F832600625DC1 /* refresh.png */; };
 		E2F0A3D00F8F83D300625DC1 /* standby.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3CF0F8F83D300625DC1 /* standby.png */; };
 		E2F0A3D20F8F841000625DC1 /* web.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3D10F8F841000625DC1 /* web.png */; };
-		E2F0A4BC0F8F9D1200625DC1 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A4BB0F8F9D1200625DC1 /* Info.png */; };
+		E2F0A4BC0F8F9D1200625DC1 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A4BB0F8F9D1200625DC1 /* info.png */; };
+		E2F3B1AF0F9B5A190083DA71 /* SMScreenSaverMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F3C05A0F9821880090919D /* SMScreenSaverMenu.h */; };
+		E2F3B1B00F9B5A190083DA71 /* SMScreenSaverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3C05B0F9821880090919D /* SMScreenSaverMenu.m */; };
+		E2F3B40B0F9B7C550083DA71 /* SMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F3B4090F9B7C550083DA71 /* SMTheme.h */; };
+		E2F3B40C0F9B7C550083DA71 /* SMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3B40A0F9B7C550083DA71 /* SMTheme.m */; };
 		E2F3C71F0F98E2530090919D /* SMDefaultPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F3C71D0F98E2530090919D /* SMDefaultPhotos.h */; };
 		E2F3C7200F98E2530090919D /* SMDefaultPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F3C71E0F98E2530090919D /* SMDefaultPhotos.m */; };
+		E2F64BA20F9EC80C005CF172 /* SM.frss in Resources */ = {isa = PBXBuildFile; fileRef = E2F64A3E0F9E5714005CF172 /* SM.frss */; };
+		E2F64BD70F9EC8D9005CF172 /* SMPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F64BD60F9EC8D9005CF172 /* SMPhotos.m */; };
+		E2F6506D0F9F5F5E005CF172 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2609F440F97F4670007547F /* AppleTV.framework */; };
+		E2F6506E0F9F5F5E005CF172 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B7A01E0F8AA745007B8BAB /* iPhotoAccess.framework */; };
+		E2F6506F0F9F5F5E005CF172 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B7A0190F8AA6A3007B8BAB /* BackRow.framework */; };
+		E2F6533B0F9FF15B005CF172 /* PhotosAbout.txt in Resources */ = {isa = PBXBuildFile; fileRef = E2F6533A0F9FF15B005CF172 /* PhotosAbout.txt */; };
+		E2F6533D0F9FF35B005CF172 /* RemotePhotos.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F6533C0F9FF35B005CF172 /* RemotePhotos.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2F64FFF0F9F563F005CF172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = SoftwareMenu;
+		};
+		E2F650010F9F5642005CF172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2A35FE70EAE02B900FB6FD7;
+			remoteInfo = installHelper;
+		};
+		E2F650030F9F5646005CF172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2F64A3D0F9E5714005CF172;
+			remoteInfo = SM;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -117,19 +185,23 @@
 		E20C16650EA8278800739E75 /* backup.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = backup.sh; sourceTree = "<group>"; };
 		E20C16F10EA90EA400739E75 /* SMThirdPartyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMThirdPartyMenu.h; sourceTree = "<group>"; };
 		E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMThirdPartyMenu.m; sourceTree = "<group>"; };
-		E20C1B830EA92CED00739E75 /* SoftwareBuiltInMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareBuiltInMenu.h; sourceTree = "<group>"; };
-		E20C1B840EA92CED00739E75 /* SoftwareBuiltInMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareBuiltInMenu.m; sourceTree = "<group>"; };
+		E20C1B830EA92CED00739E75 /* SMBuiltInMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBuiltInMenu.h; sourceTree = "<group>"; };
+		E20C1B840EA92CED00739E75 /* SMBuiltInMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBuiltInMenu.m; sourceTree = "<group>"; };
 		E20C1C9A0EA9732200739E75 /* Hide.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Hide.sh; sourceTree = "<group>"; };
 		E20C1C9C0EA973EE00739E75 /* Show.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Show.sh; sourceTree = "<group>"; };
-		E20C1CCA0EA980B900739E75 /* SoftwareScriptsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareScriptsMenu.h; sourceTree = "<group>"; };
-		E20C1CCB0EA980B900739E75 /* SoftwareScriptsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareScriptsMenu.m; sourceTree = "<group>"; };
+		E20C1CCB0EA980B900739E75 /* SMScriptsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScriptsMenu.m; sourceTree = "<group>"; };
 		E20C1CE20EA983AA00739E75 /* hello.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = hello.sh; sourceTree = "<group>"; };
 		E20C1CE30EA983AA00739E75 /* Reboot.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Reboot.sh; sourceTree = "<group>"; };
 		E20C1CE40EA983AA00739E75 /* Populate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Populate.sh; sourceTree = "<group>"; };
 		E20C1CEA0EA9841100739E75 /* Scripts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Scripts.plist; sourceTree = "<group>"; };
 		E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRowUtilstwo.h; sourceTree = "<group>"; };
 		E224B56B0EC2827100D9D783 /* internet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = internet.png; sourceTree = "<group>"; };
-		E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = QuDownloader_Prefix.pch; sourceTree = "<group>"; };
+		E22E8A190FA16329005489A6 /* SMScriptsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScriptsMenu.h; sourceTree = "<group>"; };
+		E22E8FC40FA2114E005489A6 /* SoftwarePasscodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwarePasscodeController.h; sourceTree = "<group>"; };
+		E22E8FC50FA2114E005489A6 /* SoftwarePasscodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwarePasscodeController.m; sourceTree = "<group>"; };
+		E22E929B0FA34EA1005489A6 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		E22E929C0FA34EA1005489A6 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		E236DA3B0F64368E003C02CA /* SM.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = SM.pch; sourceTree = "<group>"; };
 		E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdater.h; sourceTree = "<group>"; };
 		E245235F0EABCAE600E4127B /* SoftwareUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdater.m; sourceTree = "<group>"; };
 		E24524B40EABD98700E4127B /* Perian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Perian.png; sourceTree = "<group>"; };
@@ -140,6 +212,14 @@
 		E24525480EABFEB700E4127B /* softwareupdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = softwareupdate.png; sourceTree = "<group>"; };
 		E24689670F5F8C020009B44A /* power.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power.png; sourceTree = "<group>"; };
 		E24689790F5F8F7C0009B44A /* scriptLicense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scriptLicense.png; sourceTree = "<group>"; };
+		E24C6C5C0F9BE986001D4956 /* folderIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folderIcon.png; sourceTree = "<group>"; };
+		E24C6D520F9C05A3001D4956 /* SMFolderBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFolderBrowser.h; sourceTree = "<group>"; };
+		E24C6D530F9C05A3001D4956 /* SMFolderBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFolderBrowser.m; sourceTree = "<group>"; };
+		E24C6E590F9C1E3A001D4956 /* SMPhotoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotoPreview.h; sourceTree = "<group>"; };
+		E24C6E5A0F9C1E3A001D4956 /* SMPhotoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotoPreview.m; sourceTree = "<group>"; };
+		E24C76EF0F9D483B001D4956 /* SMScreenSaverSettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenSaverSettingsMenu.h; sourceTree = "<group>"; };
+		E24C76F00F9D483B001D4956 /* SMScreenSaverSettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenSaverSettingsMenu.m; sourceTree = "<group>"; };
+		E24C790F0F9D56B9001D4956 /* SM.frss.tgz */ = {isa = PBXFileReference; lastKnownFileType = file; path = SM.frss.tgz; sourceTree = "<group>"; };
 		E25576D70EBE53DC002B6313 /* reset.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = reset.sh; sourceTree = "<group>"; };
 		E2587A920F55980600671F59 /* SMFrappMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFrappMover.h; sourceTree = "<group>"; };
 		E2587A930F55980600671F59 /* SMFrappMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFrappMover.m; sourceTree = "<group>"; };
@@ -154,6 +234,8 @@
 		E2817FA70F8DA2200065D70D /* AFP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AFP.png; sourceTree = "<group>"; };
 		E28180480F8E48980065D70D /* RW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RW.png; sourceTree = "<group>"; };
 		E281804C0F8E4CAD0065D70D /* FTP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FTP.png; sourceTree = "<group>"; };
+		E28A1FD50FA14FBB00C4E40E /* SMMediaMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMediaMenuController.h; sourceTree = "<group>"; };
+		E28A1FD60FA14FBB00C4E40E /* SMMediaMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMediaMenuController.m; sourceTree = "<group>"; };
 		E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMediaPreview.m; sourceTree = "<group>"; };
 		E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMediaPreview.h; sourceTree = "<group>"; };
 		E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInstallMenu.h; sourceTree = "<group>"; };
@@ -195,6 +277,8 @@
 		E2C720DB0E95BA1800572BD6 /* SoftwareMenus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareMenus.h; sourceTree = "<group>"; };
 		E2CFDDC90EAFD51B00BC03AB /* FixPerm.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FixPerm.sh; sourceTree = "<group>"; };
 		E2CFE0FB0EAFDE4C00BC03AB /* PH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PH.png; sourceTree = "<group>"; };
+		E2D044470FA38BC700959B34 /* grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey.png; sourceTree = "<group>"; };
+		E2D049BF0FA408F900959B34 /* SMMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMenu.h; sourceTree = "<group>"; };
 		E2E0F37E0F5E489C002EAE7F /* SMMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMedia.m; sourceTree = "<group>"; };
 		E2E0F37F0F5E489C002EAE7F /* SMMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMedia.h; sourceTree = "<group>"; };
 		E2E0F5D60F5EFC41002EAE7F /* SMTweaks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTweaks.h; sourceTree = "<group>"; };
@@ -204,11 +288,19 @@
 		E2F0A3CD0F8F832600625DC1 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		E2F0A3CF0F8F83D300625DC1 /* standby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standby.png; sourceTree = "<group>"; };
 		E2F0A3D10F8F841000625DC1 /* web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web.png; sourceTree = "<group>"; };
-		E2F0A4BB0F8F9D1200625DC1 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
+		E2F0A4BB0F8F9D1200625DC1 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		E2F3B4090F9B7C550083DA71 /* SMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTheme.h; sourceTree = "<group>"; };
+		E2F3B40A0F9B7C550083DA71 /* SMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTheme.m; sourceTree = "<group>"; };
 		E2F3C05A0F9821880090919D /* SMScreenSaverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenSaverMenu.h; sourceTree = "<group>"; };
 		E2F3C05B0F9821880090919D /* SMScreenSaverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenSaverMenu.m; sourceTree = "<group>"; };
 		E2F3C71D0F98E2530090919D /* SMDefaultPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDefaultPhotos.h; sourceTree = "<group>"; };
 		E2F3C71E0F98E2530090919D /* SMDefaultPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDefaultPhotos.m; sourceTree = "<group>"; };
+		E2F64A3E0F9E5714005CF172 /* SM.frss */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SM.frss; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2F64A3F0F9E5714005CF172 /* SM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SM-Info.plist"; sourceTree = "<group>"; };
+		E2F64BD50F9EC8D9005CF172 /* SMPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPhotos.h; sourceTree = "<group>"; };
+		E2F64BD60F9EC8D9005CF172 /* SMPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPhotos.m; sourceTree = "<group>"; };
+		E2F6533A0F9FF15B005CF172 /* PhotosAbout.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PhotosAbout.txt; sourceTree = "<group>"; };
+		E2F6533C0F9FF35B005CF172 /* RemotePhotos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RemotePhotos.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +328,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2F64A3C0F9E5714005CF172 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2F6506D0F9F5F5E005CF172 /* AppleTV.framework in Frameworks */,
+				E2F6506E0F9F5F5E005CF172 /* iPhotoAccess.framework in Frameworks */,
+				E2F6506F0F9F5F5E005CF172 /* BackRow.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -247,6 +349,7 @@
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				E2F64A3F0F9E5714005CF172 /* SM-Info.plist */,
 			);
 			name = QuDownloader;
 			sourceTree = "<group>";
@@ -271,6 +374,8 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2F6533C0F9FF35B005CF172 /* RemotePhotos.png */,
+				E24C790F0F9D56B9001D4956 /* SM.frss.tgz */,
 				E2F0A3D10F8F841000625DC1 /* web.png */,
 				E281804C0F8E4CAD0065D70D /* FTP.png */,
 				E28180480F8E48980065D70D /* RW.png */,
@@ -295,7 +400,7 @@
 				E2F0A3CF0F8F83D300625DC1 /* standby.png */,
 				E245252A0EABE04900E4127B /* trashempty.png */,
 				E24525220EABDF7D00E4127B /* timemachine.png */,
-				E2F0A4BB0F8F9D1200625DC1 /* Info.png */,
+				E2F0A4BB0F8F9D1200625DC1 /* info.png */,
 				E20C1CEA0EA9841100739E75 /* Scripts.plist */,
 				E20C1CE20EA983AA00739E75 /* hello.sh */,
 				E20C1CE30EA983AA00739E75 /* Reboot.sh */,
@@ -311,9 +416,14 @@
 				E24524B40EABD98700E4127B /* Perian.png */,
 				E24524B50EABD98700E4127B /* package.png */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
+				E24C6C5C0F9BE986001D4956 /* folderIcon.png */,
+				E22E929B0FA34EA1005489A6 /* green.png */,
+				E2D044470FA38BC700959B34 /* grey.png */,
+				E22E929C0FA34EA1005489A6 /* red.png */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 				E2A35F180EAD85A600FB6FD7 /* incscript.sh */,
 				E25576D70EBE53DC002B6313 /* reset.sh */,
+				E2F6533A0F9FF15B005CF172 /* PhotosAbout.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -321,15 +431,15 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E2B7A1220F8AB2C6007B8BAB /* External Classes */,
-				87AD8DA60F630681003907EF /* BackRow.h */,
-				E2E0F37A0F5E45F0002EAE7F /* MetadataShit */,
+				E2F6527A0F9FD9B9005CF172 /* Headers */,
+				E2F64BB60F9EC84B005CF172 /* SM.frss */,
 				E2E41DF70ECD04D700D1697E /* InstallHelper */,
-				E2E41B2D0ECCEC3700D1697E /* 3rdParty */,
+				E2B7A1220F8AB2C6007B8BAB /* External Classes */,
+				E2F652800F9FDA51005CF172 /* SlideShow */,
+				E2E0F37A0F5E45F0002EAE7F /* Metadata & Picture */,
 				E2ABBFFB0ECFDCF1004771BB /* Menus */,
+				E2E41B2D0ECCEC3700D1697E /* 3rdParty */,
 				E2ABBFF90ECFDCBB004771BB /* Settings */,
-				E245235E0EABCAE600E4127B /* SoftwareUpdater.h */,
-				E245235F0EABCAE600E4127B /* SoftwareUpdater.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -339,6 +449,7 @@
 			children = (
 				8D5B49B6048680CD000E48DA /* SoftwareMenu.frappliance */,
 				E2A35FE80EAE02B900FB6FD7 /* installHelper */,
+				E2F64A3E0F9E5714005CF172 /* SM.frss */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,8 +457,6 @@
 		32C88E010371C26100C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E236DA3B0F64368E003C02CA /* QuDownloader_Prefix.pch */,
-				3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -355,20 +464,8 @@
 		E2ABBFF90ECFDCBB004771BB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E2A240D30EC0ACC800D606C2 /* SoftwareManual.h */,
-				E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */,
-				E2ABBFFF0ECFDE44004771BB /* SoftwareManualInfo.h */,
-				E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */,
-				E29FA09C0F585603002BE2B0 /* SMUpdater.h */,
-				E29FA09D0F585603002BE2B0 /* SMUpdater.m */,
-				E26B10E10F6EFED40005E868 /* SMUOptions.h */,
-				E26B10E20F6EFED40005E868 /* SMUOptions.m */,
-				E29FA3990F58A7AB002BE2B0 /* SMDownloaderSTD.h */,
-				E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */,
-				E29FA5DE0F59D275002BE2B0 /* SMUpdaterProcess.h */,
-				E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */,
-				E204063C0F5A64B2008F2DF7 /* SMGeneralMethods.h */,
-				E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */,
+				E2F652820F9FDA87005CF172 /* Manual */,
+				E2F652810F9FDA75005CF172 /* Updater */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -376,20 +473,23 @@
 		E2ABBFFB0ECFDCF1004771BB /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				E2F3C05A0F9821880090919D /* SMScreenSaverMenu.h */,
-				E2F3C05B0F9821880090919D /* SMScreenSaverMenu.m */,
-				E20C1B830EA92CED00739E75 /* SoftwareBuiltInMenu.h */,
-				E20C1B840EA92CED00739E75 /* SoftwareBuiltInMenu.m */,
+				E29FA3990F58A7AB002BE2B0 /* SMDownloaderSTD.h */,
+				E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */,
+				E2E41B2A0ECCEC2A00D1697E /* SMInfo.h */,
+				E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */,
+				E20C1B830EA92CED00739E75 /* SMBuiltInMenu.h */,
+				E20C1B840EA92CED00739E75 /* SMBuiltInMenu.m */,
 				E2E0F5D60F5EFC41002EAE7F /* SMTweaks.h */,
 				E2E0F5D70F5EFC41002EAE7F /* SMTweaks.m */,
-				E20C1CCA0EA980B900739E75 /* SoftwareScriptsMenu.h */,
-				E20C1CCB0EA980B900739E75 /* SoftwareScriptsMenu.m */,
+				E22E8A190FA16329005489A6 /* SMScriptsMenu.h */,
+				E20C1CCB0EA980B900739E75 /* SMScriptsMenu.m */,
 				E2A23A2E0EBFDAE000D606C2 /* SoftwareSettings.h */,
 				E2A23A2F0EBFDAE000D606C2 /* SoftwareSettings.m */,
 				E2587A920F55980600671F59 /* SMFrappMover.h */,
 				E2587A930F55980600671F59 /* SMFrappMover.m */,
 				E2C720DB0E95BA1800572BD6 /* SoftwareMenus.h */,
 				3802E5830BD7E65C00B6DA5A /* SoftwareMenus.m */,
+				E2D049BF0FA408F900959B34 /* SMMenu.h */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -403,18 +503,25 @@
 			name = "External Classes";
 			sourceTree = "<group>";
 		};
-		E2E0F37A0F5E45F0002EAE7F /* MetadataShit */ = {
+		E2E0F37A0F5E45F0002EAE7F /* Metadata & Picture */ = {
 			isa = PBXGroup;
 			children = (
-				E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */,
+				E28A1FD50FA14FBB00C4E40E /* SMMediaMenuController.h */,
+				E28A1FD60FA14FBB00C4E40E /* SMMediaMenuController.m */,
+				E204063C0F5A64B2008F2DF7 /* SMGeneralMethods.h */,
+				E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */,
 				E2E0F37E0F5E489C002EAE7F /* SMMedia.m */,
 				E2E0F37F0F5E489C002EAE7F /* SMMedia.h */,
 				E2F3C71D0F98E2530090919D /* SMDefaultPhotos.h */,
 				E2F3C71E0F98E2530090919D /* SMDefaultPhotos.m */,
 				E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */,
 				E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */,
+				E2F3B4090F9B7C550083DA71 /* SMTheme.h */,
+				E2F3B40A0F9B7C550083DA71 /* SMTheme.m */,
+				E22E8FC40FA2114E005489A6 /* SoftwarePasscodeController.h */,
+				E22E8FC50FA2114E005489A6 /* SoftwarePasscodeController.m */,
 			);
-			name = MetadataShit;
+			name = "Metadata & Picture";
 			sourceTree = "<group>";
 		};
 		E2E41B2D0ECCEC3700D1697E /* 3rdParty */ = {
@@ -428,8 +535,6 @@
 				E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */,
 				E29A092A0F854FC0004CC67C /* SMUpdateLists.h */,
 				E29A092B0F854FC0004CC67C /* SMUpdateLists.m */,
-				E2E41B2A0ECCEC2A00D1697E /* SMInfo.h */,
-				E2E41B2B0ECCEC2A00D1697E /* SMInfo.m */,
 			);
 			name = 3rdParty;
 			sourceTree = "<group>";
@@ -444,6 +549,67 @@
 			name = InstallHelper;
 			sourceTree = "<group>";
 		};
+		E2F64BB60F9EC84B005CF172 /* SM.frss */ = {
+			isa = PBXGroup;
+			children = (
+				E2F64BD50F9EC8D9005CF172 /* SMPhotos.h */,
+				E2F64BD60F9EC8D9005CF172 /* SMPhotos.m */,
+			);
+			name = SM.frss;
+			sourceTree = "<group>";
+		};
+		E2F6527A0F9FD9B9005CF172 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8DA60F630681003907EF /* BackRow.h */,
+				E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */,
+				E236DA3B0F64368E003C02CA /* SM.pch */,
+				3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		E2F652800F9FDA51005CF172 /* SlideShow */ = {
+			isa = PBXGroup;
+			children = (
+				E24C6D520F9C05A3001D4956 /* SMFolderBrowser.h */,
+				E24C6D530F9C05A3001D4956 /* SMFolderBrowser.m */,
+				E24C6E590F9C1E3A001D4956 /* SMPhotoPreview.h */,
+				E24C6E5A0F9C1E3A001D4956 /* SMPhotoPreview.m */,
+				E2F3C05A0F9821880090919D /* SMScreenSaverMenu.h */,
+				E2F3C05B0F9821880090919D /* SMScreenSaverMenu.m */,
+				E24C76EF0F9D483B001D4956 /* SMScreenSaverSettingsMenu.h */,
+				E24C76F00F9D483B001D4956 /* SMScreenSaverSettingsMenu.m */,
+			);
+			name = SlideShow;
+			sourceTree = "<group>";
+		};
+		E2F652810F9FDA75005CF172 /* Updater */ = {
+			isa = PBXGroup;
+			children = (
+				E245235E0EABCAE600E4127B /* SoftwareUpdater.h */,
+				E245235F0EABCAE600E4127B /* SoftwareUpdater.m */,
+				E29FA5DE0F59D275002BE2B0 /* SMUpdaterProcess.h */,
+				E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */,
+				E29FA09C0F585603002BE2B0 /* SMUpdater.h */,
+				E29FA09D0F585603002BE2B0 /* SMUpdater.m */,
+				E26B10E10F6EFED40005E868 /* SMUOptions.h */,
+				E26B10E20F6EFED40005E868 /* SMUOptions.m */,
+			);
+			name = Updater;
+			sourceTree = "<group>";
+		};
+		E2F652820F9FDA87005CF172 /* Manual */ = {
+			isa = PBXGroup;
+			children = (
+				E2A240D30EC0ACC800D606C2 /* SoftwareManual.h */,
+				E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */,
+				E2ABBFFF0ECFDE44004771BB /* SoftwareManualInfo.h */,
+				E2ABC0000ECFDE44004771BB /* SoftwareManualInfo.m */,
+			);
+			name = Manual;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -452,12 +618,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AD8DA70F630681003907EF /* BackRow.h in Headers */,
-				E236DA3C0F64368E003C02CA /* QuDownloader_Prefix.pch in Headers */,
+				E236DA3C0F64368E003C02CA /* SM.pch in Headers */,
 				E26B10E30F6EFED40005E868 /* SMUOptions.h in Headers */,
 				E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */,
 				E2B7A18E0F8AD1CA007B8BAB /* AGProcess.h in Headers */,
 				E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */,
 				E2F3C71F0F98E2530090919D /* SMDefaultPhotos.h in Headers */,
+				E2F3B1AF0F9B5A190083DA71 /* SMScreenSaverMenu.h in Headers */,
+				E2F3B40B0F9B7C550083DA71 /* SMTheme.h in Headers */,
+				E24C6D540F9C05A3001D4956 /* SMFolderBrowser.h in Headers */,
+				E24C6E5B0F9C1E3A001D4956 /* SMPhotoPreview.h in Headers */,
+				E24C76F10F9D483B001D4956 /* SMScreenSaverSettingsMenu.h in Headers */,
+				E28A1FD70FA14FBB00C4E40E /* SMMediaMenuController.h in Headers */,
+				E22E8A1A0FA16329005489A6 /* SMScriptsMenu.h in Headers */,
+				E22E8FC60FA2114E005489A6 /* SoftwarePasscodeController.h in Headers */,
+				E2D049C00FA408F900959B34 /* SMMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +674,23 @@
 			productReference = E2A35FE80EAE02B900FB6FD7 /* installHelper */;
 			productType = "com.apple.product-type.tool";
 		};
+		E2F64A3D0F9E5714005CF172 /* SM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2F64B8A0F9E5715005CF172 /* Build configuration list for PBXNativeTarget "SM" */;
+			buildPhases = (
+				E2F64A3A0F9E5714005CF172 /* Resources */,
+				E2F64A3B0F9E5714005CF172 /* Sources */,
+				E2F64A3C0F9E5714005CF172 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SM;
+			productName = SM;
+			productReference = E2F64A3E0F9E5714005CF172 /* SM.frss */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -513,6 +705,8 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* SoftwareMenu */,
 				E2A35FE70EAE02B900FB6FD7 /* installHelper */,
+				E2F64A3D0F9E5714005CF172 /* SM */,
+				E2F64FF80F9F562B005CF172 /* Complete */,
 			);
 		};
 /* End PBXProject section */
@@ -564,7 +758,22 @@
 				E2F0A3CE0F8F832600625DC1 /* refresh.png in Resources */,
 				E2F0A3D00F8F83D300625DC1 /* standby.png in Resources */,
 				E2F0A3D20F8F841000625DC1 /* web.png in Resources */,
-				E2F0A4BC0F8F9D1200625DC1 /* Info.png in Resources */,
+				E2F0A4BC0F8F9D1200625DC1 /* info.png in Resources */,
+				E24C6C5D0F9BE986001D4956 /* folderIcon.png in Resources */,
+				E24C79100F9D56B9001D4956 /* SM.frss.tgz in Resources */,
+				E2F64BA20F9EC80C005CF172 /* SM.frss in Resources */,
+				E2F6533B0F9FF15B005CF172 /* PhotosAbout.txt in Resources */,
+				E2F6533D0F9FF35B005CF172 /* RemotePhotos.png in Resources */,
+				E22E929D0FA34EA1005489A6 /* green.png in Resources */,
+				E22E929E0FA34EA1005489A6 /* red.png in Resources */,
+				E2D044480FA38BC700959B34 /* grey.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2F64A3A0F9E5714005CF172 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,8 +788,8 @@
 				3802E58A0BD7E8C300B6DA5A /* SMProgressBarControl.m in Sources */,
 				E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */,
 				E20C16F30EA90EA500739E75 /* SMThirdPartyMenu.m in Sources */,
-				E20C1B850EA92CED00739E75 /* SoftwareBuiltInMenu.m in Sources */,
-				E20C1CCC0EA980B900739E75 /* SoftwareScriptsMenu.m in Sources */,
+				E20C1B850EA92CED00739E75 /* SMBuiltInMenu.m in Sources */,
+				E20C1CCC0EA980B900739E75 /* SMScriptsMenu.m in Sources */,
 				E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */,
 				E2A23A300EBFDAE000D606C2 /* SoftwareSettings.m in Sources */,
 				E2A240D50EC0ACC800D606C2 /* SoftwareManual.m in Sources */,
@@ -598,6 +807,13 @@
 				E2B7A18F0F8AD1CA007B8BAB /* AGProcess.m in Sources */,
 				E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */,
 				E2F3C7200F98E2530090919D /* SMDefaultPhotos.m in Sources */,
+				E2F3B1B00F9B5A190083DA71 /* SMScreenSaverMenu.m in Sources */,
+				E2F3B40C0F9B7C550083DA71 /* SMTheme.m in Sources */,
+				E24C6D550F9C05A3001D4956 /* SMFolderBrowser.m in Sources */,
+				E24C6E5C0F9C1E3A001D4956 /* SMPhotoPreview.m in Sources */,
+				E24C76F20F9D483B001D4956 /* SMScreenSaverSettingsMenu.m in Sources */,
+				E28A1FD80FA14FBB00C4E40E /* SMMediaMenuController.m in Sources */,
+				E22E8FC70FA2114E005489A6 /* SoftwarePasscodeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +827,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2F64A3B0F9E5714005CF172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2F64BD70F9EC8D9005CF172 /* SMPhotos.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2F650000F9F563F005CF172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
+			targetProxy = E2F64FFF0F9F563F005CF172 /* PBXContainerItemProxy */;
+		};
+		E2F650020F9F5642005CF172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2A35FE70EAE02B900FB6FD7 /* installHelper */;
+			targetProxy = E2F650010F9F5642005CF172 /* PBXContainerItemProxy */;
+		};
+		E2F650040F9F5646005CF172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2F64A3D0F9E5714005CF172 /* SM */;
+			targetProxy = E2F650030F9F5646005CF172 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
@@ -719,7 +961,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = QuDownloader_Prefix.pch;
+				GCC_PREFIX_HEADER = SM.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /System/Library/CoreServices/Finder.app/Contents/PlugIns;
 				PRODUCT_NAME = SoftwareMenu;
@@ -807,7 +1049,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = QuDownloader_Prefix.pch;
+				GCC_PREFIX_HEADER = SM.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /System/Library/CoreServices/Finder.app/Contents/PlugIns;
 				LIBRARY_SEARCH_PATHS = "$(LIBRARY_SEARCH_PATHS_QUOTED_1)";
@@ -892,6 +1134,93 @@
 			};
 			name = Release;
 		};
+		E2F64A400F9E5715005CF172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../Desktop\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GENERATE_PKGINFO_FILE = YES;
+				INFOPLIST_FILE = "SM-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = SM;
+				WRAPPER_EXTENSION = frss;
+			};
+			name = Debug;
+		};
+		E2F64A410F9E5715005CF172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../Desktop\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../Desktop/TV/2.3 frameworks\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GENERATE_PKGINFO_FILE = YES;
+				INFOPLIST_FILE = "SM-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = SM;
+				WRAPPER_EXTENSION = frss;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E2F64FF90F9F562B005CF172 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Complete;
+			};
+			name = Debug;
+		};
+		E2F64FFA0F9F562B005CF172 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = Complete;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -918,6 +1247,24 @@
 			buildConfigurations = (
 				E2A35FEA0EAE02B900FB6FD7 /* Debug */,
 				E2A35FEB0EAE02B900FB6FD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2F64B8A0F9E5715005CF172 /* Build configuration list for PBXNativeTarget "SM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2F64A400F9E5715005CF172 /* Debug */,
+				E2F64A410F9E5715005CF172 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2F650250F9F5663005CF172 /* Build configuration list for PBXAggregateTarget "Complete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2F64FF90F9F562B005CF172 /* Debug */,
+				E2F64FFA0F9F562B005CF172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

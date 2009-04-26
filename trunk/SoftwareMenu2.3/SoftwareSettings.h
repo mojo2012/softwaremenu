@@ -7,39 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SMMediaMenuController.h"
 ////#import <BackRow/BackRow.h>
+#define SHOW_HIDE_KEY			@"Show_Hide"
 
 
-
-@interface SoftwareSettings : BRMediaMenuController 
+typedef enum {
+	
+	kSMSetInfo = 0,
+	kSMSetToggle = 1,
+	kSMSetYNToggle = 2,
+	kSMSetSPos = 3,
+	kSMSetBlocker = 4,
+	kSMSetUpdater = 5,
+	kSMSetUntrusted = 6,
+	
+} SettingType;
+@interface SoftwareSettings : SMMediaMenuController 
 {
-	int padding[16];
-	NSString *	identifier;
-	NSString *	name;
-	NSString *	path;
-	NSString *	urlstr;
-	NSString *	version;
-	
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
-	NSString	   *	_keypress;
-	NSMutableDictionary *	_runoption;// = [NSMutableDictionary alloc] ;
-	NSMutableDictionary *	_show_hide;
-	NSFileHandle   *	log;
-	
 }
-
--(id)initWithIdentifier:(NSString *)initId;
--(int)getSelection;
--(long)getLongValue:(NSString *)jtwo;
--(void)modifyJ:(NSString *)changeValue;
-
-
-// Data source methods:
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
+- (NSSize)sizeFor1080i;
 @end

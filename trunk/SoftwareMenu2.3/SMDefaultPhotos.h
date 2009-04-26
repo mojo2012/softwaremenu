@@ -13,6 +13,7 @@
 @interface SMDefaultPhotos : ATVDefaultPhotos {
 
 }
++ (id)applePhotosForPath:(NSString *)thepath;
 
 @end
 @interface SMDefaultPhotoCollection	: BRIPhotoMediaCollection

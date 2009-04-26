@@ -57,6 +57,7 @@
 - (int)disableService:(NSString *)theService;
 - (int)EnableAppleShareServer;
 - (int)DisableAppleShareServer;
+- (int)installScreenSaver;
 
 
 - (BOOL)wasWritable;
