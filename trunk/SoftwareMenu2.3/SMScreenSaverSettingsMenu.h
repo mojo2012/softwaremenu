@@ -21,6 +21,7 @@ typedef enum
 	{
 		kSMSSSType = 0,
 		kSMSSSRotation = 1,
+		kSMSSSSlideTime = 4,
 		kSMSSSFDefaults = 2,
 		kSMSSSDefaultImages = 3,
 	}kSMSSSMenu;

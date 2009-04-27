@@ -13,7 +13,7 @@
 
 
 typedef enum {
-	
+	kSMSetSMInfo = -1,
 	kSMSetInfo = 0,
 	kSMSetToggle = 1,
 	kSMSetYNToggle = 2,

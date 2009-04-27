@@ -29,7 +29,14 @@
 #define META_TITLE_KEY                                  @"Title"
 #define FILE_CLASS_KEY                                  @"File Class"
 #define META_DESCRIPTION_KEY                    @"Show Description"
+@interface ATVSettingsFacade : BRSettingsFacade
+- (void)setScreenSaverSelectedPath:(id)fp8;
+- (id)screenSaverSelectedPath;
+- (id)screenSaverPaths;
+- (id)screenSaverCollectionForScreenSaver:(id)fp8;
+- (id)versionOS;
 
+@end
 @implementation SoftwareSettings
 - (id) previewControlForItem: (long) item
 {
@@ -62,7 +69,7 @@
 	[[self list] removeDividers];
 	NSArray *settingsNumberType = [NSArray arrayWithObjects:
 						   [NSNumber numberWithInt:kSMSetInfo],
-						   [NSNumber numberWithInt:kSMSetInfo],
+						   [NSNumber numberWithInt:kSMSetSMInfo],
 						   [NSNumber numberWithInt:kSMSetToggle],
 						   [NSNumber numberWithInt:kSMSetToggle],
 						   [NSNumber numberWithInt:kSMSetToggle],
@@ -344,6 +351,13 @@
 	BRTextMenuItemLayer *item = [_items objectAtIndex:row];
 	switch([[[_options objectAtIndex:row]valueForKey:LAYER_TYPE]intValue])
 	{
+		case kSMSetInfo:
+			[item setRightJustifiedText:[[NSDictionary dictionaryWithContentsOfFile:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/version.plist"] 
+										 valueForKey:@"CFBundleVersion"]];
+			break;
+		case kSMSetSMInfo:
+			[item setRightJustifiedText:[[[NSBundle bundleForClass:[self class]] infoDictionary] valueForKey:@"CFBundleVersion"]];
+			break;
 		case kSMSetToggle:
 			if([SMGeneralMethods boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightJustifiedText:@"Shown"];}
 			else																						{[item setRightJustifiedText:@"Hidden"];}

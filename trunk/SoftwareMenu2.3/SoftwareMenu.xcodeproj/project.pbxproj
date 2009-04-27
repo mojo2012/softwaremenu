@@ -53,6 +53,7 @@
 		E22E929D0FA34EA1005489A6 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = E22E929B0FA34EA1005489A6 /* green.png */; };
 		E22E929E0FA34EA1005489A6 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = E22E929C0FA34EA1005489A6 /* red.png */; };
 		E236DA3C0F64368E003C02CA /* SM.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* SM.pch */; };
+		E240D6150FA4EBC300185AC7 /* dropbear.tgz in Resources */ = {isa = PBXBuildFile; fileRef = E240D6140FA4EBC300185AC7 /* dropbear.tgz */; };
 		E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E245235F0EABCAE600E4127B /* SoftwareUpdater.m */; };
 		E24524B70EABD98700E4127B /* Perian.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B40EABD98700E4127B /* Perian.png */; };
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
@@ -78,7 +79,6 @@
 		E26B10E40F6EFED40005E868 /* SMUOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = E26B10E20F6EFED40005E868 /* SMUOptions.m */; };
 		E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */ = {isa = PBXBuildFile; fileRef = E273B2420F647CAC00E516B5 /* readmeupd.txt */; };
 		E2817F210F8D7B0B0065D70D /* VNC.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817F1F0F8D7B0B0065D70D /* VNC.png */; };
-		E2817F8A0F8D96D20065D70D /* dropbear.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E2817F890F8D96D20065D70D /* dropbear.tar.gz */; };
 		E2817FA80F8DA2200065D70D /* AFP.png in Resources */ = {isa = PBXBuildFile; fileRef = E2817FA70F8DA2200065D70D /* AFP.png */; };
 		E28180490F8E48980065D70D /* RW.png in Resources */ = {isa = PBXBuildFile; fileRef = E28180480F8E48980065D70D /* RW.png */; };
 		E281804D0F8E4CAD0065D70D /* FTP.png in Resources */ = {isa = PBXBuildFile; fileRef = E281804C0F8E4CAD0065D70D /* FTP.png */; };
@@ -202,6 +202,7 @@
 		E22E929B0FA34EA1005489A6 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
 		E22E929C0FA34EA1005489A6 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		E236DA3B0F64368E003C02CA /* SM.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = SM.pch; sourceTree = "<group>"; };
+		E240D6140FA4EBC300185AC7 /* dropbear.tgz */ = {isa = PBXFileReference; lastKnownFileType = file; path = dropbear.tgz; sourceTree = "<group>"; };
 		E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdater.h; sourceTree = "<group>"; };
 		E245235F0EABCAE600E4127B /* SoftwareUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdater.m; sourceTree = "<group>"; };
 		E24524B40EABD98700E4127B /* Perian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Perian.png; sourceTree = "<group>"; };
@@ -379,6 +380,7 @@
 				E2F0A3D10F8F841000625DC1 /* web.png */,
 				E281804C0F8E4CAD0065D70D /* FTP.png */,
 				E28180480F8E48980065D70D /* RW.png */,
+				E240D6140FA4EBC300185AC7 /* dropbear.tgz */,
 				E2817FA70F8DA2200065D70D /* AFP.png */,
 				E2817F890F8D96D20065D70D /* dropbear.tar.gz */,
 				E2817F1F0F8D7B0B0065D70D /* VNC.png */,
@@ -751,7 +753,6 @@
 				E2B7A6AA0F8C1737007B8BAB /* gzip in Resources */,
 				E2B7A83A0F8D0C45007B8BAB /* gunzip in Resources */,
 				E2817F210F8D7B0B0065D70D /* VNC.png in Resources */,
-				E2817F8A0F8D96D20065D70D /* dropbear.tar.gz in Resources */,
 				E2817FA80F8DA2200065D70D /* AFP.png in Resources */,
 				E28180490F8E48980065D70D /* RW.png in Resources */,
 				E281804D0F8E4CAD0065D70D /* FTP.png in Resources */,
@@ -767,6 +768,7 @@
 				E22E929D0FA34EA1005489A6 /* green.png in Resources */,
 				E22E929E0FA34EA1005489A6 /* red.png in Resources */,
 				E2D044480FA38BC700959B34 /* grey.png in Resources */,
+				E240D6150FA4EBC300185AC7 /* dropbear.tgz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

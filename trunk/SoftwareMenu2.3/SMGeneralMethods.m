@@ -10,7 +10,14 @@
 #import "AGProcess.h"
 #define myDomain			(CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu"
 
+@interface ATVSettingsFacade : BRSettingsFacade
+- (void)setScreenSaverSelectedPath:(id)fp8;
+- (id)screenSaverSelectedPath;
+- (id)screenSaverPaths;
+- (id)screenSaverCollectionForScreenSaver:(id)fp8;
+- (id)versionOS;
 
+@end
 @implementation SMGeneralMethods
 static SMGeneralMethods *sharedInstance = nil;
 

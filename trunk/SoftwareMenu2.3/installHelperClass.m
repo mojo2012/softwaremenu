@@ -484,7 +484,8 @@
 
 - (void)copySSHFiles
 {
-	[self extractTar:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tar.gz"  toLocation:@"/Users/frontrow/"];
+	//[self extractTar:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tar.gz"  toLocation:@"/Users/frontrow/"];
+	[self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tgz" toLocation:@"/Users/frontrow/"];
 	NSLog(@"copy SSHFiles");
 	NSString *origBase=@"/Users/frontrow/dropbear";
 	NSString *newBase=@"/Volumes/OSBoot 1";

@@ -59,6 +59,7 @@
 			case kSMSSSFDefaults:
 			case kSMSSSRotation:
 			case kSMSSSType:
+			case kSMSSSSlideTime:
 				[meta setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
 				//[meta setDefaultImage];
 				break;
@@ -103,27 +104,28 @@
 	settingNames = [[NSMutableArray alloc] initWithObjects:
 					@"SlideShowType",
 					@"defaultimages",
-
+					@"timePerSlide",
 					@"FloatingRotationDelay",
 					@"FloatingDefaults",
 					nil];
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
 					   BRLocalizedString(@"Slide Show Type",@"Slide Show Type"),
 					   BRLocalizedString(@"Set Apple Images",@"Set Apple Images"),
-
+					   BRLocalizedString(@"Time Per Slide",@"Time Per Slide"),
 					   BRLocalizedString(@"Rotation Delay",@"Rotation Delay"),
 					   BRLocalizedString(@"Defaults",@"Defaults"),
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
 						   @"Switches the SlideShow between different types:      SlideShow / Floating Images",
 						   @"Set Image folder to flowery apple images",
-
+						   @"Set Number of seconds per slide",
 						   @"Time Between different rotations",
 						   @"Set Floating Menu Back to Defaults",
 						   nil];
 	settingNumberType = [[NSMutableArray alloc] initWithObjects:
 						 [NSNumber numberWithInt:0],
 						 [NSNumber numberWithInt:3],
+						 [NSNumber numberWithInt:4],
 						 [NSNumber numberWithInt:1],
 						 [NSNumber numberWithInt:2],
 						 nil];
@@ -155,7 +157,8 @@
 	id list = [self list];
 	[list setDatasource: self];
 	[[self list] addDividerAtIndex:1 withLabel:@"General"];
-	[[self list] addDividerAtIndex:2 withLabel:@"Floating"];
+	[[self list] addDividerAtIndex:2 withLabel:@"Slideshow"];
+	[[self list] addDividerAtIndex:3 withLabel:@"Floating"];
 	return self;
 }
 -(void)itemSelected:(long)row
@@ -182,10 +185,20 @@
 			int i = nil;
 			id newController = [[SoftwarePasscodeController alloc] initWithTitle:BRLocalizedString(@"Set Delay",@"Spin Delay") 
 																 withDescription:BRLocalizedString(@"Please enter delay time between each spin (in secs)", @"Please enter delay time between each spin (in secs)")
-																	   withBoxes:4
+																	   withBoxes:3
 																		 withKey:PHOTO_SPIN_FREQUENCY];
 			[[self stack] pushController:newController];
 			i = [SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY];
+		case kSMSSSSlideTime:
+			randomV = NO;
+			id controller = [[SoftwarePasscodeController alloc] initWithTitle:BRLocalizedString(@"Set Time Per Slide",@"Set Time Per Slide")
+															  withDescription:BRLocalizedString(@"Please enter a time in seconds",@"Please enter a time in seconds")
+																	withBoxes:5
+																	  withKey:nil];
+			[controller setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
+			[controller setValue:[NSNumber numberWithInt:1] forKey:@"options"];
+			//[controller setInitialValue:[[BRSettingsFacade singleton] slideshowSecondsPerSlide]];
+			[[self stack] pushController:controller];
 			/*if(i==nil || i == 0)
 				i=DEFAULT_SPIN_FREQUENCY;
 			BRPasscodeEntryControl *pass = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
@@ -204,7 +217,6 @@
 				
 			
 	}
-	[[self list] addDividerAtIndex:1 withLabel:@"Floating Menu"];
 	[[self list] reload];
 }
 - (void) textDidChange: (id) sender
@@ -256,7 +268,11 @@
 			i = [SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY];
 			if(i==nil || i == 0)
 				i=60;
-			[item setRightJustifiedText:[NSString stringWithFormat:@"(%@ seconds)",[NSNumber numberWithInt:[SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY]],nil]];
+			[item setRightJustifiedText:[NSString stringWithFormat:@"(%@ seconds)",[NSNumber numberWithInt:i],nil]];
+			break;
+		case kSMSSSSlideTime:
+			i = [[BRSettingsFacade singleton] slideshowSecondsPerSlide];
+			[item setRightJustifiedText:[NSString stringWithFormat:@"(%@ seconds)",[NSNumber numberWithInt:i],nil]];
 			break;
 			
 	}

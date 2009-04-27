@@ -263,8 +263,7 @@ static NSDate *lastFilterChangeDate = nil;
 	{
 		currentFile = [SMGeneralMethods stringForKey:@"PhotoDirectory"];
 	}
-	if([fileManager fileExistsAtPath:currentFile isDirectory:&isDir] && isDir)
-	{
+
 		//NSLog(@"Exists");
 		BRTextImageMenuItemLayer *current_item = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
 		[current_item setTitle:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
@@ -283,7 +282,7 @@ static NSDate *lastFilterChangeDate = nil;
 		//[current_item setLeftImageIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] selectedSettingImage], @"BRMenuIconImageKey",nil]];
 		[_items addObject:current_item];
 		[paths addObject:currentFile];
-	}
+	
 	int current = [_items count];
 	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Favorites"];
 	NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
@@ -396,6 +395,13 @@ static NSDate *lastFilterChangeDate = nil;
 				break;
 			case kSMSSStart:
 				isDir = NO;
+				theDir = [SMGeneralMethods stringForKey:@"PhotoDirectory"];
+				if([_man fileExistsAtPath:theDir isDirectory:&isDir] && isDir){}
+				else{
+					//NSLog(@"setDefault");
+					theDir = DEFAULT_IMAGES_PATH;
+				}
+
 				if([[SMGeneralMethods stringForKey:@"SlideShowType"] isEqualToString:@"Floating Images"])
 				{
 					//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"installScreenSaver",@"0",@"0",nil]];
@@ -528,14 +534,14 @@ static NSDate *lastFilterChangeDate = nil;
 		return nil;
 	if(row == [settingNames count])
 	{
-		NSLog(@"row three");
+		//NSLog(@"row three");
 		BRTextImageMenuItemLayer *theitem = [_items objectAtIndex:row];
 		[theitem setTitle:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
 		return theitem;
 	}
 	if(row >[settingNames count])
 	{
-		NSLog(@"beyond row three");
+		//NSLog(@"beyond row three");
 		BRTextImageMenuItemLayer *theitem = [_items objectAtIndex:row];
 		//NSLog(@"title: %@",(NSString *)[theitem title]);
 		/*if([[paths objectAtIndex:row] isEqualToString:[SMGeneralMethods stringForKey:@"PhotoDirectory"]])

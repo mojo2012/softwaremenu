@@ -89,9 +89,15 @@
 	if([[NSFileManager defaultManager] fileExistsAtPath:SCRIPTS_PREFS])
 	{
 		NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:SCRIPTS_PREFS];
-		[_runoption addEntriesFromDictionary:tempdict];
+		NSArray *hello = [tempdict allKeys];
+		if([hello count]!=0 && [hello containsObject:@"BoolFormat1"])
+		{
+			//NSLog(@"should work %@ %@",[onBoot className],[NSString class],nil);
+			[_runoption addEntriesFromDictionary:tempdict];
+			[_runoption removeObjectForKey:@"BoolFormat1"];
+		}
 	}
-
+	[_runoption setObject:[NSNumber numberWithBool:YES] forKey:@"BoolFormat1"];
 	NSLog(@"_runoption 1: %@",_runoption);
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSNumber numberWithInt:0],LAYER_TYPE,

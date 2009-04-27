@@ -126,7 +126,7 @@ static NSDate *lastFilterChangeDate = nil;
 			{
 				NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
 				[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
-				NSLog(@"favorites: %@",favorites);
+				//NSLog(@"favorites: %@",favorites);
 				if(![favorites containsObject:[_paths objectAtIndex:selitem]])
 				{
 					[favorites addObject:[_paths objectAtIndex:selitem]];

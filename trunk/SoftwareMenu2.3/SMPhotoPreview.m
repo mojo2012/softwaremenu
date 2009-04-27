@@ -70,7 +70,7 @@
 			[NSNumber numberWithInt:number],@"Images",
 			[NSNumber numberWithInt:folders],@"Folders",
 			nil];
-	NSLog(@"folders: %@",[NSNumber numberWithInt:folders]);
+	//NSLog(@"folders: %@",[NSNumber numberWithInt:folders]);
 
 }
 +(id)firstPhotoForPath:(NSString *)thepath
@@ -115,8 +115,11 @@
 	////NSLog(@"%@ %s", self, _cmd);
 	SMMedia	*meta = [[SMMedia alloc] init];
 	[meta setTitle:[[_paths objectAtIndex:item] lastPathComponent]];
-	[meta setDescription:[_paths objectAtIndex:item]];
-	[meta setImagePath:[_paths objectAtIndex:item]];
+	if(![[[_paths objectAtIndex:item] lastPathComponent] isEqualToString:@"nil"])
+	{
+		[meta setDescription:[_paths objectAtIndex:item]];
+		[meta setImagePath:[_paths objectAtIndex:item]];
+	}
 	BRMetadataPreviewControl *obj = [[BRMetadataPreviewControl alloc] init];
 	[obj setShowsMetadataImmediately:NO];
 	[obj setAsset:meta];
@@ -152,7 +155,14 @@
 		//NSLog(@"%@",idStr);
 		
 	}
-	
+	if ([_items count]==0)
+	{
+		BRTextMenuItemLayer *one = [BRTextMenuItemLayer menuItem];
+		[one setTitle:@"Empty Folder"];
+		[_items addObject:one];
+		[_paths addObject:@"nil"];
+	}
+	//NSLog(@"items: %@",_items);
 	id list = [self list];
 	[list setDatasource: self];
 	

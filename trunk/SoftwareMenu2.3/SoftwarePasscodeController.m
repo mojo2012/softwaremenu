@@ -61,13 +61,16 @@
     [super controlWasActivated];
 	
 }
--(void)setImage:(BRImage *)image
+-(void)setBRImage:(BRImage *)image
 {
 	[_image release];
 	_image = image;
 	[_image retain];
 }
-
+- (void)setInitialValue:(int)value
+{
+		[_passData setObject:[NSString stringWithFormat:@"%0%@%@",[_passData objectForKey:NUMBER_BOXES_KEY],[[NSNumber numberWithInt:value] stringValue],nil] forKey:@"initValue"];
+}
 - (void)setDescription:(NSString *)description
 {
 	[_passData setObject:description forKey:DESCRIPTION_KEY];
@@ -76,6 +79,10 @@
 - (void)setChangeOrder:(NSString *)path
 {
 	[_passData setObject:path forKey:@"changeOrderPath"];
+}
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+	[_passData setObject:value forKey:key];
 }
 - (void)setTitle:(NSString *)title
 {
@@ -141,7 +148,8 @@
 	
 	
 	[self addControl:timeControls];
-	
+	if([_passData valueForKey:@"initValue"]!=nil)
+		[timeControls setInitialText:[_passData valueForKey:@"initValue"]];
 	CGDirectDisplayID display = [[BRDisplayManager sharedInstance] display];
 	NSRect testFrame;
 	NSRect firstFrame;
@@ -166,7 +174,8 @@
 	
 	
     testFrame.origin.y = master.origin.y + (master.size.height * 0.40f);
-    testFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 3.62f);
+    //testFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 3.62f);
+	testFrame.origin.x = NSMinX(master) +NSMaxX(master)*0.5f-testFrame.size.width*([[_passData valueForKey:NUMBER_BOXES_KEY] floatValue]*0.5f)/([[_passData valueForKey:NUMBER_BOXES_KEY] floatValue]+0.6f);
 	[timeControls setFrame:testFrame];
 	[timeControls setDelegate:self];	
 	NSLog(@"passData1: %@",_passData);
@@ -202,7 +211,15 @@
 	NSLog(@"done");
 	//[_passData writeToFile:@"/Users/frontrow/passData" atomically:YES];
 	NSLog(@"passData: %@",_passData);
-	if([self getChangePath]!=nil)
+	if([[_passData allKeys] containsObject:@"options"])
+	{
+		switch ([[_passData valueForKey:@"options"] intValue])
+		{
+			case 1:
+				[[BRSettingsFacade singleton] setSlideshowSecondsPerSlide:[[sender stringValue] intValue]];
+		}
+	}
+	else if([self getChangePath]!=nil)
 	{
 		[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-changeOrder", [self getChangePath] ,[sender stringValue],nil]];
 		NSLog(@"change order of: %@ to %@",[self getChangePath],[sender stringValue],nil);

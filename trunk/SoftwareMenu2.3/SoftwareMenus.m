@@ -83,7 +83,16 @@
 	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
 	{
 		NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]];
-		[scripts addEntriesFromDictionary:tempdict];
+		if([[tempdict allKeys] count]!=0)
+		{
+			if([[tempdict allKeys] containsObject:@"BoolFormat1"])
+				[scripts addEntriesFromDictionary:tempdict];
+
+			/*id onBoot = [[tempdict valueForKey:[[tempdict allKeys] objectAtIndex:0]] valueForKey:@"onBoot"];
+			if(![onBoot isKindOfClass:[NSString class]])
+				[scripts addEntriesFromDictionary:tempdict];*/
+		}
+		
 	}
 	//NSLog(@"scripts: %@", scripts);
 	
@@ -106,13 +115,13 @@
 	/************
 	 *Show Scripts Selected
 	 ************/
-/*	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
+	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
 	{
 		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
 		{
 			//NSLog(@"ok trying");
 			NSFileManager *fileManager = [NSFileManager defaultManager];
-			NSString *thepath = @"/Users/frontrow/Documents/Scripts/";
+			NSString *thepath = @"/Users/frontrow/Documents/scripts/";
 			long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
 			for ( i = 0; i < count; i++ )
 			{
@@ -121,13 +130,11 @@
 				//NSLog(@"%@", [idStr pathExtension]);
 				if([[idStr pathExtension] isEqualToString:@"sh"])
 				{
-					
 					//NSLog(@"onBoot: %@", [[scripts valueForKey:idStr] valueForKey:@"onBoot"]);
-					if([[[scripts valueForKey:idStr] valueForKey:@"onBoot"] isEqualToString:@"YES"])
+					if([[[scripts valueForKey:idStr] valueForKey:@"onBoot"] boolValue])
 					{
-						long n=nil;
+						//long n=nil;
 						int jtwo=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-						
 						BRApplianceCategory *category3 =[BRApplianceCategory categoryWithName:idStr
 																				   identifier:idStr
 																			   preferredOrder:jtwo];
@@ -137,7 +144,7 @@
 			}
 			
 		}
-	}*/
+	}
 	
 	/*if (![[show_hide valueForKey:@"builtin"] isEqualToString:@"Hidden"])
 	{
@@ -170,6 +177,7 @@
 	}*/
 	/*BRApplianceCategory *category6 =[BRApplianceCategory categoryWithName:@"Update2"identifier:@"update2" preferredOrder:4];
 	[categories addObject:category6];*/
+	[scripts retain];
 	BRApplianceCategory *category6 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"Settings",@"Settings")
 															   identifier:@"settings"
 														   preferredOrder:12];
@@ -203,65 +211,111 @@
 
 - (id)controllerForIdentifier:(id)identifier;
 {
-	
-	id newController = nil;
-	int i = [[SMGeneralMethods menuItemOptions] indexOfObject:identifier];
-	// If it's the name of a frappliance
-	/*if([[identifier substringToIndex:4] isEqualToString:@"frap"])
-	{
-		NSArray *loginItemDict = [NSArray arrayWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Desktop/Info.plist"]];
-		NSEnumerator *enumerator = [loginItemDict objectEnumerator];
-		id obj;
-		while((obj = [enumerator nextObject]) != nil) 
-		{
-			if ([identifier isEqualToString:[obj valueForKey:@"identifier"]])
-			{
-				theURL = [obj valueForKey:@"theURL"];
-				thename = [obj valueForKey:@"name"];
-				theversion = [obj valueForKey:@"Version"];
 
-				newController = [[SoftwareMenu alloc] init];
-				[newController initWithIdentifier:identifier withName:thename withURLStr:theURL withVers:theversion];
-			}
-		}
-		//NSLog(theURL);		
-	}*/
-	switch (i)
+	id newController = nil;
+	if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
-		case 0:
-			newController = [[SMThirdPartyMenu alloc] init];
-			[newController initCustom];
-			break;
-		case 1:
-			newController = [[SMBuiltInMenu alloc] init];
-			break;
-		case 2:
-			newController = [[SMScriptsMenu alloc] init];
-			[newController initCustom];
-			break;
-		case 3:
-			[SMGeneralMethods restartFinder];
-			break;
-		case 4:
-			newController = [[SMFrappMover alloc] init];
-			[newController initCustom];
-			break;
-		case 5:
-			newController = [[SMLog alloc] init];
-			NSString *downloadedDescription = [NSString  stringWithContentsOfFile:@"/Library/Logs/Console/501/console.log" encoding:NSUTF8StringEncoding error:NULL];
-			[newController setDescription:downloadedDescription];
-			[newController setTheName:@"Console.log"];
-			break;
-		case 6:
-			newController = [[SMTweaks alloc] init];
-			break;
-		case 7:
-			newController = [[SMScreenSaverMenu alloc] init];
-			[newController initCustom];
-			break;
-		default: 
-			newController = [[SoftwareSettings alloc] init];
-			break;
+
+			NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]];
+
+		if([[[tempdict valueForKey:identifier] valueForKey:@"runoption"] isEqualToString:@"FaW"])
+		{
+			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
+			NSTask *task = [[NSTask alloc] init];
+			NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
+			[task setArguments:args];
+			[task setLaunchPath:@"/bin/bash"];
+			NSPipe *outPipe = [[NSPipe alloc] init];
+			
+			[task setStandardOutput:outPipe];
+			[task setStandardError:outPipe];
+			NSFileHandle *file;
+			file = [outPipe fileHandleForReading];
+			
+			[task launch];
+			NSData *data;
+			data = [ file readDataToEndOfFile];
+			NSString *string;
+			string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+			NSString *the_text = [[[[@"Script Path:   " stringByAppendingString:launchPath] stringByAppendingString:@"\n\n\n"] stringByAppendingString:@"Result:\n"] stringByAppendingString:string];
+			BRScrollingTextControl *textControls = [[BRScrollingTextControl alloc] init];
+			[textControls setTitle:identifier];
+			[textControls setText:the_text];
+			newController =  [BRController controllerWithContentControl:textControls];
+			return newController;
+			
+		}
+		else
+		{
+			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
+			NSLog(@"launchPath: %@",launchPath);
+			[NSTask launchedTaskWithLaunchPath:@"/bin/bash/" arguments:[NSArray arrayWithObject:launchPath]];
+			return nil;
+		}
+
+	}
+	else
+	{
+		int i = [[SMGeneralMethods menuItemOptions] indexOfObject:identifier];
+		// If it's the name of a frappliance
+		/*if([[identifier substringToIndex:4] isEqualToString:@"frap"])
+		 {
+		 NSArray *loginItemDict = [NSArray arrayWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Desktop/Info.plist"]];
+		 NSEnumerator *enumerator = [loginItemDict objectEnumerator];
+		 id obj;
+		 while((obj = [enumerator nextObject]) != nil) 
+		 {
+		 if ([identifier isEqualToString:[obj valueForKey:@"identifier"]])
+		 {
+		 theURL = [obj valueForKey:@"theURL"];
+		 thename = [obj valueForKey:@"name"];
+		 theversion = [obj valueForKey:@"Version"];
+		 
+		 newController = [[SoftwareMenu alloc] init];
+		 [newController initWithIdentifier:identifier withName:thename withURLStr:theURL withVers:theversion];
+		 }
+		 }
+		 //NSLog(theURL);		
+		 }*/
+		switch (i)
+		{
+			case 0:
+				newController = [[SMThirdPartyMenu alloc] init];
+				[newController initCustom];
+				break;
+			case 1:
+				newController = [[SMBuiltInMenu alloc] init];
+				break;
+			case 2:
+				newController = [[SMScriptsMenu alloc] init];
+				[newController initCustom];
+				break;
+			case 3:
+				[SMGeneralMethods restartFinder];
+				break;
+			case 4:
+				newController = [[SMFrappMover alloc] init];
+				[newController initCustom];
+				break;
+			case 5:
+				newController = [[SMLog alloc] init];
+				NSString *downloadedDescription = [NSString  stringWithContentsOfFile:@"/Library/Logs/Console/501/console.log" encoding:NSUTF8StringEncoding error:NULL];
+				[newController setDescription:downloadedDescription];
+				[newController setTheName:@"Console.log"];
+				break;
+			case 6:
+				newController = [[SMTweaks alloc] init];
+				break;
+			case 7:
+				newController = [[SMScreenSaverMenu alloc] init];
+				[newController initCustom];
+				break;
+			default: 
+				newController = [[SoftwareSettings alloc] init];
+				break;
+		}
+		return newController;
+		
 	}
 	/*if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
@@ -322,7 +376,7 @@
 	{
 		newController = [[QuDownloadController alloc] init];
 	}*/
-	return newController;
+	return nil;
 }
 
 

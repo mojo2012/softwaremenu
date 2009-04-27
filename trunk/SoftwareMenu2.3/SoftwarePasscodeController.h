@@ -21,17 +21,21 @@
 {
 	int							padding[16];
 	NSMutableDictionary *		_passData;
+	BRPasscodeEntryControl *	_entryControl;
 	BRImage				*		_image;
 }
 - (id)initWithTitle:(NSString *)title withDescription:(NSString *)description withBoxes:(int)boxes withKey:(NSString *)key;
+//- (id)initWithTitle:(NSString *)title withDescription:(NSString *)description withBoxes:(int)boxes withKey:(NSString *)key withDefaultValue:(int)value;
 - (NSSize)sizeFor1080i;
 - (void)setDescription:(NSString *)description;
 - (void)setTitle:(NSString *)title;
 - (void)setNumberOfBoxes:(int)boxes;
 - (void)setKey:(NSString *)key;
-- (void)setImage:(BRImage *)image;
+- (void)setBRImage:(BRImage *)image;
 - (void)setWriteToDefault:(BOOL)defaults;
+- (void)setInitialValue:(int)value;
 - (BOOL)is1080i;
+
 - (void) textDidChange: (id<BRTextContainer>) sender;
 - (void) textDidEndEditing: (id) sender;
 - (NSString *)getTitle;
