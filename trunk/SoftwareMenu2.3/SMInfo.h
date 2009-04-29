@@ -14,7 +14,7 @@
 #define TITLE_KEY				@"title"
 #define NUMBER_BOXES_KEY		@"numberOfBoxes"
 
-@class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, BRPasscodeEntryControl, BRDisplayManager;
+@class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, BRPasscodeEntryControl, BRDisplayManager, BRImage;
 
 @interface SMInfo : BRController
 {
@@ -48,6 +48,7 @@
 -(void) setBakVers: (NSString *) srcText;
 -(void) setCurrVers: (NSString *) srcText;
 -(void) setOnlineVers: (NSString *) srcText;
+-(void)setTheImage:(BRImage *)theImage;
 -(void) drawSelf;
 
 

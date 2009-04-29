@@ -34,7 +34,7 @@ int main (int argc, const char * argv[]) {
 		if ([option isEqual:@"-z"]) { //move stub file
 
 				installHelperClass *ihc = [[installHelperClass alloc] init];
-				BOOL MSW = [ihc makeSystemWritable];
+				[ihc makeSystemWritable];
 				[ihc setRunPath:path];
 			NSLog(@"installhelper value; %@",value);
 				int rvalue = [ihc updateSelf:value];	
@@ -150,7 +150,7 @@ int main (int argc, const char * argv[]) {
 		
 		installHelperClass *ihc = [[installHelperClass alloc] init];
 		[ihc setRunPath:path];
-		int rvalue =[ihc restart:value];
+			[ihc restart:value];
 		[pool release];
 		[rl run];
 		}
@@ -190,7 +190,6 @@ int main (int argc, const char * argv[]) {
 		{
 			NSLog(@"makeRO");
 			installHelperClass *ihc = [[installHelperClass alloc] init];
-			NSString *basepath = [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",value,nil];
 			[ihc makeDMGRO:value];
 			[pool release];
 		}
@@ -199,8 +198,8 @@ int main (int argc, const char * argv[]) {
 			NSLog(@"mountconverted");
 			installHelperClass *ihc = [[installHelperClass alloc] init];
 			NSString *basepath = [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",value,nil];
-			NSString *themountpath=[ihc mountImage:[basepath stringByAppendingPathComponent:@"converted.dmg"]];
-			return themountpath;
+			[ihc mountImage:[basepath stringByAppendingPathComponent:@"converted.dmg"]];
+			return 0;
 			[pool release];
 		}
 		else if([option isEqual:@"-addFiles"])

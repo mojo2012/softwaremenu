@@ -15,7 +15,6 @@
 #import "SMMediaPreview.h"
 
 #define DEBUG_MODE false
-static NSString  * bak_vers = nil;
 
 @implementation SMInstallMenu
 -(void)setInformationDictionary:(NSDictionary *)information
@@ -54,7 +53,7 @@ static NSString  * bak_vers = nil;
 			[meta setBRImage:[[SMThemeInfo sharedTheme] timeMachineImage]];
 			break;
 			
-	} InType;
+	}
 
 	SMMediaPreview *preview = [[SMMediaPreview alloc] init];
 	[preview setAsset:meta];
@@ -87,9 +86,7 @@ static NSString  * bak_vers = nil;
 	[_items removeAllObjects];
 	[_options removeAllObjects];
 	NSString *name=[[NSString alloc] initWithString:[_theInformation valueForKey:@"name"]];
-	NSString *version=[_theInformation valueForKey:@"version"];
 	NSString *displayVersion=[_theInformation valueForKey:@"displayVersion"];
-	NSString *displayName =[_theInformation valueForKey:@"displayName"];
 	NSString *thelicense =[_theInformation valueForKey:@"license"];
 
 	
@@ -312,19 +309,19 @@ static NSString  * bak_vers = nil;
 			[self initCustom];
 			break;
 
-	} InType;
+	}
 	switch ([[selectedOption objectForKey:LAYER_INT] intValue]) 
 	{
 		case kSMInRestore:
 		case kSMInRemove:
 			[SMGeneralMethods terminateFinder];
-	} InType;
+	}
 	return;
 }
 
 
 
--(void)willBePopped
+/*-(void)willBePopped
 {
 	
 	NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithDictionary:nil];
@@ -336,7 +333,7 @@ static NSString  * bak_vers = nil;
 		////NSLog(@"adding from temp dict");
 	}
 	[super willBePopped];
-}
+}*/
 
 
 - (void)wasExhumedByPoppingController:(id)row
@@ -350,16 +347,13 @@ static NSString  * bak_vers = nil;
 
 //	Data source methods:
 
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
+
 - (id)itemForRow:(long)row					
 { 
 	BRTextMenuItemLayer *theItem = [_items objectAtIndex:row];
 	return theItem; 
 }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
+
 
 @end
 @implementation SMDownloaderInstaller

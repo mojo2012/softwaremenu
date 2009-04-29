@@ -7,6 +7,7 @@
 //
 
 //#import <Cocoa/Cocoa.h>
+#import "SMMediaMenuController.h"
 #import <Foundation/Foundation.h>
 ////#import <BackRow/BackRow.h>
 //#import <Cocoa/Cocoa.h>
@@ -28,9 +29,8 @@ typedef enum {
 } InType;
 @class BRHeaderControl, BRTextControl,BRScrollingTextControl, BRImageControl, SMProgressBarControl;
 
-@interface SMInstallMenu : BRMediaMenuController 
+@interface SMInstallMenu : SMMediaMenuController 
 {
-	int padding[16];
 	NSString *	identifier;
 	BOOL		EXISTS;
 	//NSString *	current_vers;
@@ -38,26 +38,16 @@ typedef enum {
 	BOOL		UPTODATE;
 	BOOL		BAK_EXISTS;
 	
-	NSMutableArray *		_items;
-	NSMutableArray *		_options;
-	NSFileHandle   *		log;
+
 	NSMutableDictionary *	_theInformation;
-	NSFileManager  *		_man;
+	NSFileManager		*	_man;
+
 	
 }
 
--(void)writeToLog:(NSString *)strLog;
 -(id)initCustom;
 -(void)setInformationDictionary:(NSDictionary *)information;
 
-// Data source methods:
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
--(void)checkVarious;
 -(BOOL) frapExists;
 -(BOOL) bakExists;
 -(BOOL) frapUpToDate;

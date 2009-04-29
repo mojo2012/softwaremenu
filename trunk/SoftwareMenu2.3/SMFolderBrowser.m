@@ -75,8 +75,10 @@
 		NSString *idStr = [[_man directoryContentsAtPath:path] objectAtIndex:ii];
 		if([_man fileExistsAtPath:[path stringByAppendingPathComponent:idStr] isDirectory:&isDir] &&isDir && ![idStr isEqualToString:@"OSBoot"])
 		{
+			NSLog(@"idStr:%@");
 			NSDictionary *items = [SMPhotoPreview numberOfInterestingFilesForPath:[path stringByAppendingPathComponent:idStr]];
 			int files = [[items valueForKey:@"Folders"] intValue] + [[items valueForKey:@"Images"] intValue];
+			NSLog(@"files in %@: %i",path,files);
 			if(files != 0)
 			{
 				if(![idStr hasPrefix:@"."] || [SMGeneralMethods boolForKey:SHOW_HIDDEN_KEY])
@@ -97,66 +99,52 @@
 	return self;
 }
 
-static NSDate *lastFilterChangeDate = nil;
 - (BOOL)brEventAction:(BREvent *)event
 {
-	long selitem;
-	unsigned int hashVal = (uint32_t)((int)[event page] << 16 | (int)[event usage]);
-	if ([(BRControllerStack *)[self stack] peekController] != self)
-		hashVal = 0;
+	int remoteAction =[event remoteAction];
 	
+	if ([(BRControllerStack *)[self stack] peekController] != self)
+		return [super brEventAction:event];
+	
+	if([event value] == 0)
+		return [super brEventAction:event];
+	
+	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
+		remoteAction ++;
+	long row = [self getSelection];
 	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
 	
 	//NSLog(@"hashval =%i",hashVal);
-	switch (hashVal)
+	NSMutableArray * favorites = nil;
+	switch (remoteAction)
 	{
-		case 65676:  // tap up
+		case kSMRemoteUp:  // tap up
 			//NSLog(@"type up");
 			break;
-		case 65677:  // tap down
+		case kSMRemoteDown:  // tap down
 			//NSLog(@"type down");
 			break;
-		case 65675:  // tap left
-			//NSLog(@"type left");
-			selitem = 0;
-			
-			selitem = [self getSelection];
+		case kSMRemoteLeft:  // tap left
 			//NSLog(@"selection :%d",selitem);
-			if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-			{
-				NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
+
+				favorites = [[NSMutableArray alloc] initWithObjects:nil];
 				[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
 				//NSLog(@"favorites: %@",favorites);
-				if(![favorites containsObject:[_paths objectAtIndex:selitem]])
+				if(![favorites containsObject:[_paths objectAtIndex:row]])
 				{
-					[favorites addObject:[_paths objectAtIndex:selitem]];
+					[favorites addObject:[_paths objectAtIndex:row]];
 					[SMGeneralMethods setArray:favorites forKey:@"PhotosFavorites"];
 				}
-				[lastFilterChangeDate release];
-				lastFilterChangeDate = [[NSDate date] retain];
 				[[self list] reload];
-				
-			}
+
 			
 			
 			break;
-		case 65674:  // tap right
-			//NSLog(@"type right");
-			//[self setSelectedItem:1];
-			selitem = 0;
-			
-			selitem = [self getSelection];
-			//NSLog(@"selection :%d",selitem);
-			if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-			{
-				[lastFilterChangeDate release];
-				lastFilterChangeDate = [[NSDate date] retain];
-				
-				[SMGeneralMethods setString:[_paths objectAtIndex:selitem] forKey:@"PhotoDirectory"];
+		case kSMRemoteRight:  // tap right
+				[SMGeneralMethods setString:[_paths objectAtIndex:row] forKey:@"PhotoDirectory"];
 				[[self list] reload];
-			}
 			break;
-		case 65673:  // tap play
+		case kSMRemotePlay:  // tap play
 			/*selitem = [self selectedItem];
 			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];*/
 			//NSLog(@"type play");
@@ -172,9 +160,7 @@ static NSDate *lastFilterChangeDate = nil;
 	}
 	else if(row == 0)
 	{
-		SMPhotoPreview *folder = [[SMPhotoPreview alloc] init];
-		[folder setPath:path];
-		[folder initCustom];
+		SMPhotoPreview *folder = [[SMPhotoPreview alloc] initWithPath:path];
 		[[self stack] pushController:folder];
 	}
 	else if(row>0)

@@ -12,32 +12,37 @@
 @implementation SMDefaultPhotos
 + (id)applePhotosForPath:(NSString *)thepath
 {
+	return [SMDefaultPhotos photosForPath:thepath];
+}
++ (id)photosForPath:(NSString *)thepath
+{
 	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
-						  @"jpg",
-						  @"jpeg",
-						  @"tif",
-						  @"tiff",
-						  @"png",
-						  @"gif",
-						  nil];
-	id hello = [super applePhotos];
+								  @"jpg",
+								  @"JPG",
+								  @"jpeg",
+								  @"tif",
+								  @"tiff",
+								  @"png",
+								  @"gif",
+								  nil];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
-	NSMutableArray *hellotoo =[NSMutableArray arrayWithObjects:nil];
+	NSMutableArray *photos =[NSMutableArray arrayWithObjects:nil];
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[idStr pathExtension]])
+		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
 		{
-			[hellotoo addObject:[[BRBackupPhotoAsset alloc] initWithPath:[thepath stringByAppendingPathComponent:idStr]]];
+			
+			[photos addObject:[[BRBackupPhotoAsset alloc] initWithPath:[thepath stringByAppendingPathComponent:idStr]]];
 		}
-		//NSLog(@"%@",idStr);
+		else 
+		{
+			NSLog(@"idStr not added: %@",idStr);
+		}
 		
 	}
-	
-	//BRBackupPhotoAsset *Image = [[BRBackupPhotoAsset alloc] initWithPath:@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos/GWKH.jpg"];
-	//BRBackupPhotoAsset *Image2 = [[BRBackupPhotoAsset alloc] initWithPath:@"System/Library/PrivateFrameworks/AppleTV.framework/Versions/A/Resources/DefaultPhotos/SB_ZN.JPG"];
-	return hellotoo;
+	return photos;
 }
 - (id)mediaAssets
 {
@@ -68,7 +73,7 @@
 {
 	return [SMDefaultPhotos applePhotosForPath:path];
 }
-- (id)setPath:(NSString *)thepath
+- (void)setPath:(NSString *)thepath
 {
 	[path release];
 	path = thepath;

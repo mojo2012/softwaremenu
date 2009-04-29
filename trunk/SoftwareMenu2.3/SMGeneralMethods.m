@@ -166,7 +166,6 @@ static SMGeneralMethods *sharedInstance = nil;
 		[task launch];
 		[task waitUntilExit];
 	}
-	//[SMGeneralMethods checkScreensaver];
 	return;
 }
 +(void)helperFixPerm

@@ -99,7 +99,7 @@
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[idStr pathExtension]])
+		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			[hellotoo addObject:[[BRBackupPhotoAsset alloc] initWithPath:[thepath stringByAppendingPathComponent:idStr]]];
 		}

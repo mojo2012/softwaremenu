@@ -87,8 +87,6 @@
 		E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */; };
 		E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */ = {isa = PBXBuildFile; fileRef = E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */; };
 		E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */; };
-		E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */ = {isa = PBXBuildFile; fileRef = E29A092A0F854FC0004CC67C /* SMUpdateLists.h */; };
-		E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */ = {isa = PBXBuildFile; fileRef = E29A092B0F854FC0004CC67C /* SMUpdateLists.m */; };
 		E29FA09E0F585603002BE2B0 /* SMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */; };
 		E29FA39B0F58A7AB002BE2B0 /* SMDownloaderSTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */; };
 		E29FA5E00F59D275002BE2B0 /* SMUpdaterProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */; };
@@ -243,8 +241,6 @@
 		E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallMenu.m; sourceTree = "<group>"; };
 		E2954F3A0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2954F3B0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 10; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E29A092A0F854FC0004CC67C /* SMUpdateLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdateLists.h; sourceTree = "<group>"; };
-		E29A092B0F854FC0004CC67C /* SMUpdateLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdateLists.m; sourceTree = "<group>"; };
 		E29FA09C0F585603002BE2B0 /* SMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdater.h; sourceTree = "<group>"; };
 		E29FA09D0F585603002BE2B0 /* SMUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdater.m; sourceTree = "<group>"; };
 		E29FA3990F58A7AB002BE2B0 /* SMDownloaderSTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDownloaderSTD.h; sourceTree = "<group>"; };
@@ -535,8 +531,6 @@
 				E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */,
 				E20C16F10EA90EA400739E75 /* SMThirdPartyMenu.h */,
 				E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */,
-				E29A092A0F854FC0004CC67C /* SMUpdateLists.h */,
-				E29A092B0F854FC0004CC67C /* SMUpdateLists.m */,
 			);
 			name = 3rdParty;
 			sourceTree = "<group>";
@@ -622,7 +616,6 @@
 				87AD8DA70F630681003907EF /* BackRow.h in Headers */,
 				E236DA3C0F64368E003C02CA /* SM.pch in Headers */,
 				E26B10E30F6EFED40005E868 /* SMUOptions.h in Headers */,
-				E29A092C0F854FC0004CC67C /* SMUpdateLists.h in Headers */,
 				E2B7A18E0F8AD1CA007B8BAB /* AGProcess.h in Headers */,
 				E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */,
 				E2F3C71F0F98E2530090919D /* SMDefaultPhotos.h in Headers */,
@@ -805,7 +798,6 @@
 				E2E0F3800F5E489C002EAE7F /* SMMedia.m in Sources */,
 				E2E0F5D80F5EFC41002EAE7F /* SMTweaks.m in Sources */,
 				E26B10E40F6EFED40005E868 /* SMUOptions.m in Sources */,
-				E29A092D0F854FC0004CC67C /* SMUpdateLists.m in Sources */,
 				E2B7A18F0F8AD1CA007B8BAB /* AGProcess.m in Sources */,
 				E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */,
 				E2F3C7200F98E2530090919D /* SMDefaultPhotos.m in Sources */,

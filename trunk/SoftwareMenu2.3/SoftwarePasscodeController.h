@@ -22,6 +22,8 @@
 	int							padding[16];
 	NSMutableDictionary *		_passData;
 	BRPasscodeEntryControl *	_entryControl;
+	BRHeaderControl *			_header;
+	BRTextControl *				_firstText;
 	BRImage				*		_image;
 }
 - (id)initWithTitle:(NSString *)title withDescription:(NSString *)description withBoxes:(int)boxes withKey:(NSString *)key;
@@ -42,7 +44,6 @@
 - (NSString *)getKey;
 - (BOOL)defaults;
 - (int)getNumberOfBoxes;
-- (BRImage *)getImage;
 - (NSString *)getDescription;
 -(NSString *)getChangePath;
 - (void)setChangeOrder:(NSString *)path;

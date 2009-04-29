@@ -26,5 +26,4 @@ typedef enum {
 @interface SoftwareSettings : SMMediaMenuController 
 {
 }
-- (NSSize)sizeFor1080i;
 @end

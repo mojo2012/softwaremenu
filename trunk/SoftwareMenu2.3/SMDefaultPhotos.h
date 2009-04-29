@@ -13,13 +13,15 @@
 @interface SMDefaultPhotos : ATVDefaultPhotos {
 
 }
-+ (id)applePhotosForPath:(NSString *)thepath;
++ (id)applePhotosForPath:(NSString *)thepath; //compat
++ (id)photosForPath:(NSString *)thepath;
 
 @end
 @interface SMDefaultPhotoCollection	: BRIPhotoMediaCollection
 {
 	NSString *path;
 }
+- (void)setPath:(NSString *)thepath;
 @end
 @interface SMDefaultPhotosAsset : BRBackupPhotoAsset
 - (id)dateTaken;

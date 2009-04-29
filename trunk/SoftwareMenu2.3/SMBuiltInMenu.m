@@ -90,8 +90,18 @@
 - (id)itemForRow:(long)row					
 { 
 	BRTextMenuItemLayer *item = [_items objectAtIndex:row];
-	if([self checkExists:[_options objectAtIndex:row]])		{[item setRightJustifiedText:@"Shown"];}
-	else													{[item setRightJustifiedText:@"Hidden"];}
+	if([self checkExists:[_options objectAtIndex:row]])		
+	{
+	[item setRightJustifiedText:@"Shown"];
+		[item setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];
+	}
+	else													
+	{
+	[item setRightJustifiedText:@"Hidden"];
+		[item setTextMenuItemHeightStyle:20];
+		[item setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];
+
+	}
 
 return item; 
 }

@@ -17,7 +17,7 @@
 		NSFileManager   *	_man;
 		
 	}
-	
-	-(BOOL)usingTakeTwoDotThree;	
-
+-(id)initCustom;
+-(BOOL)usingTakeTwoDotThree;	
+-(void)setPath:(NSString *)thePath;
 @end

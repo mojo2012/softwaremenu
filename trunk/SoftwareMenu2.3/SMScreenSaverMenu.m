@@ -62,7 +62,7 @@
 - (id)screenSaverCollectionForScreenSaver:(id)fp8;
 
 @end
-@interface PhotoConnection
+@interface PhotoConnection:NSObject
 @end
 @implementation BRIPhotoMediaCollection (protectedAccess)
 -(NSMutableDictionary *)gimmeCollectionDict {
@@ -75,8 +75,12 @@
 	Ivar ret = class_getInstanceVariable(klass, "_imageList");
 	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
 }
+@end
 @interface PhotoXMLConnection : PhotoConnection
 - (id)initWithDictionary:(id)fp8;
+- (id)rootAlbums;
+- (NSMutableArray *)gimmeRootContainers;
+
 @end
 @implementation PhotoXMLConnection (protectedAccess)
 -(NSMutableDictionary *)gimmePhotos {
@@ -93,7 +97,6 @@
 @end
 
 @implementation SMScreenSaverMenu
-static NSDate *lastFilterChangeDate = nil;
 
 -(BOOL)usingTakeTwoDotThree
 {
@@ -155,7 +158,7 @@ static NSDate *lastFilterChangeDate = nil;
 				[meta setDefaultImage];
 				break;
 			
-		} SMSSType;
+		}
 		SMMediaPreview *preview =[[SMMediaPreview alloc] init];
 		[preview setShowsMetadataImmediately:YES];
 		//[previewtoo setDeletterboxAssetArtwork:YES];
@@ -283,7 +286,6 @@ static NSDate *lastFilterChangeDate = nil;
 		[_items addObject:current_item];
 		[paths addObject:currentFile];
 	
-	int current = [_items count];
 	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Favorites"];
 	NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
 	[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
@@ -610,40 +612,35 @@ static NSDate *lastFilterChangeDate = nil;
 }
 - (BOOL)brEventAction:(BREvent *)event
 {
-	long selitem;
-	unsigned int hashVal = (uint32_t)((int)[event page] << 16 | (int)[event usage]);
+	int remoteAction =[event remoteAction];
+	
 	if ([(BRControllerStack *)[self stack] peekController] != self)
-		hashVal = 0;
-	
-	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
-	
-	//NSLog(@"hashval =%i",hashVal);
-	switch (hashVal)
+		return [super brEventAction:event];
+	NSLog(@"event: %i, value: %i",remoteAction, [event value]);
+
+	if([event value] == 0)
+		return [super brEventAction:event];
+	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
+		remoteAction ++;
+	long row = [self getSelection];
+	NSMutableArray *favorites = nil;
+	switch (remoteAction)
 	{
-		case 65676:  // tap up
+		case kSMRemoteUp:  // tap up
 			//NSLog(@"type up");
 			break;
-		case 65677:  // tap down
+		case kSMRemoteDown:  // tap down
 			//NSLog(@"type down");
 			break;
-		case 65675:  // tap left
-			//NSLog(@"type left");
-			selitem = 0;
-			
-			selitem = [self getSelection];
-			//NSLog(@"selection :%d",selitem);
-			if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-			{
-				[lastFilterChangeDate release];
-				lastFilterChangeDate = [[NSDate date] retain];
-				NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
+		case kSMRemoteLeft:  // tap left
+				favorites = [[NSMutableArray alloc] initWithObjects:nil];
 				[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
-				if([favorites containsObject:[paths objectAtIndex:selitem]])
+				if([favorites containsObject:[paths objectAtIndex:row]])
 				{
-					[favorites removeObjectAtIndex:[favorites indexOfObject:[paths objectAtIndex:selitem]]];
+					[favorites removeObjectAtIndex:[favorites indexOfObject:[paths objectAtIndex:row]]];
 					[SMGeneralMethods setArray:favorites forKey:@"PhotosFavorites"];
-					[_items removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:selitem]]];
-					[paths removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:selitem]]];
+					[_items removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:row]]];
+					[paths removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:row]]];
 					[[self list] removeDividers];
 					if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current"]intValue])
 						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current"]intValue] withLabel:@"Current"];
@@ -667,36 +664,24 @@ static NSDate *lastFilterChangeDate = nil;
 					
 					
 					
-				}
 			}
 			
 			
 			break;
-		case 65674:  // tap right
-			//NSLog(@"type right");
-			//[self setSelectedItem:1];
-			selitem = 0;
-			
-			selitem = [self getSelection];
-			if(selitem>=[settingNames count])
+		case kSMRemoteRight:  // tap right
+
+			if(row>=[settingNames count])
 			{
-				if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-				{
-					[lastFilterChangeDate release];
-					lastFilterChangeDate = [[NSDate date] retain];
-					NSLog(@"Row: %@",[NSNumber numberWithInt:selitem]);
-					NSLog(@"path: %@",[paths objectAtIndex:selitem]);
-					[SMGeneralMethods setString:[paths objectAtIndex:selitem] forKey:@"PhotoDirectory"];
+					[SMGeneralMethods setString:[paths objectAtIndex:row] forKey:@"PhotoDirectory"];
 					[_tempPath release];
-					_tempPath = [paths objectAtIndex:selitem];
+					_tempPath = [paths objectAtIndex:row];
 					[_tempPath retain];
-					[self initCustom];
+					//[self initCustom];
 					[[self list] reload];
-				}
 			}
 
 			break;
-		case 65673:  // tap play
+		case kSMRemotePlay:  // tap play
 			/*selitem = [self selectedItem];
 			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];*/
 			//NSLog(@"type play");

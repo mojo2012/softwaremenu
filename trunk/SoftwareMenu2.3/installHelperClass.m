@@ -53,7 +53,7 @@
 		fprintf(stderr, "Instance of settings helper class not found?!\n");
 		exit(3);
 	}
-	BOOL result = [settingsHelper performOSUpdate:YES EFIUpdate:YES IRUpdate:YES SIUpdate:YES];
+	[settingsHelper performOSUpdate:YES EFIUpdate:YES IRUpdate:YES SIUpdate:YES];
 	
 }
 -(void)removeFrap:(NSString *)frapname
@@ -262,7 +262,6 @@
 -(void)installSelf:(NSString *)location
 
 {
-	NSFileManager *man = [NSFileManager defaultManager];
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Contents
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Frap Path
@@ -561,8 +560,6 @@
 	[mdTask4 setStandardError:mdip4];
 	[mdTask4 launch];
 	[mdTask4 waitUntilExit];
-	NSTask *mdTask5 = [[NSTask alloc] init];
-	NSPipe *mdip5 = [[NSPipe alloc] init];
 	
 	NSTask *mdTask13 = [[NSTask alloc] init];
 	NSPipe *mdip13 = [[NSPipe alloc] init];
@@ -956,7 +953,6 @@
 	NSNumber *value22 = [[NSNumber alloc] initWithFloat:value2_1];
 	fullPath=[fullPath stringByAppendingPathComponent:@"/Contents/Info.plist"];
 	NSDictionary *infoplist=[[NSDictionary alloc] initWithContentsOfFile:fullPath];
-	NSNumber *preforder = [infoplist valueForKey:@"FRAppliancePreferedOrderValue"];
 	[infoplist setValue:value22 forKey:@"FRAppliancePreferedOrderValue"];
 	[infoplist writeToFile:fullPath atomically:YES];
 	
@@ -1188,6 +1184,7 @@
 		[argAgent terminate];
 	if(argAgent ==nil && tosetting)
 		[NSTask launchedTaskWithLaunchPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/RowmoteHelperATV.frappliance/Contents/Resources/RowmoteHelperATV" arguments:[NSArray arrayWithObjects:nil]];
+	return 0;
 }
 - (int)toggleTweak:(NSString *)setting toValue:(NSString *)toValue
 {
@@ -1399,17 +1396,23 @@
 	
 	[task launch];
 	[task waitUntilExit];
-	
+	return 0;
 }
 -(int)installScreenSaver
 {
 	[self makeSystemWritable];
 	[self removeFile:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"];
-	NSLog(@"old path: %@",[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingString:@"SM.frss"]);
-	NSLog(@"new path: %@",@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers");
 	[_man copyPath:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SM.frss"] toPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss" handler:nil];
+	return 0;
 }
 
 
-
+-(int)restart:(NSString *)value
+{
+	return 0;
+}
+-(int)runscript
+{
+	return 0;
+}
 @end

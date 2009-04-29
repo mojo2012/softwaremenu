@@ -111,7 +111,7 @@
 		return nil;
 	//NSString *resourcePath = nil;
 	NSString *appPng = nil;
-	NSLog(@"%@",[_options objectAtIndex:row]);
+	//NSLog(@"%@",[_options objectAtIndex:row]);
 	SMMedia *meta = [[SMMedia alloc] init];
 	switch([[[_options objectAtIndex:row] valueForKey:@"Type"] intValue])
 	{
@@ -153,14 +153,14 @@
 			//appPng = [IMAGES_FOLDER stringByAppendingPathComponent:[[[_options objectAtIndex:row] valueForKey:@"Name"] stringByAppendingPathExtension:@"png"]];
 			//appPng = [[NSBundle bundleForClass:[self class]] pathForResource:[[_options objectAtIndex:row] valueForKey:@"Name"] ofType:@"png"];
 			
-			NSLog(@"appPng: %@, displayName: %@, name: %@, developer: %@",appPng,[[_options objectAtIndex:row] valueForKey:@"DisplayName"],[[_options objectAtIndex:row] valueForKey:@"Name"],[[_options objectAtIndex:row] valueForKey:@"Developer"]);
+			//NSLog(@"appPng: %@, displayName: %@, name: %@, developer: %@",appPng,[[_options objectAtIndex:row] valueForKey:@"DisplayName"],[[_options objectAtIndex:row] valueForKey:@"Name"],[[_options objectAtIndex:row] valueForKey:@"Developer"]);
 			if([[[_options objectAtIndex:row] valueForKey:@"UpToDate"] boolValue])
 			{
 				[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"ShortDescription"]];
 			}
 			else
 			{
-				NSLog(@"UpdateText: %@", [[_options objectAtIndex:row] valueForKey:@"UpdateText"]);
+				//NSLog(@"UpdateText: %@", [[_options objectAtIndex:row] valueForKey:@"UpdateText"]);
 				[meta setDescription:[[_options objectAtIndex:row] valueForKey:@"UpdateText"]];
 			}
 			[meta setDev:[[_options objectAtIndex:row] valueForKey:@"Developer"]];
@@ -200,8 +200,9 @@
 - (void)dealloc
 {
 	[_man release];
-	[_options release];
-	[_items release];
+	[tempFrapsInfo release];
+	[tempFrapsInfo2 release];
+	[istrusted release];
 	[super dealloc];  
 }
 
@@ -243,7 +244,7 @@
 	[item3 setTitle:@"Restart Finder"];
 	[_items addObject: item3];
 	
-	NSLog(@"1");
+	//NSLog(@"1");
 	int sep1 = [_items count];
 
 	
@@ -279,7 +280,7 @@
 						 nil]];
 
 	[item90 setTitle:@"SoftwareMenu"];
-	NSLog(@"2");
+	//NSLog(@"2");
 	
 	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
 	{
@@ -319,7 +320,7 @@
 	
 	
 	sortedArrays = [unsortedArray sortedArrayUsingDescriptors:ArraySortDescriptor];
-	NSLog(@"C");
+	//NSLog(@"C");
 	
 	
 	NSEnumerator *enumerator = [sortedArrays objectEnumerator];
@@ -353,7 +354,7 @@
 				
 				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
 				{
-					NSLog(@"nito: %@",obj);
+					//NSLog(@"nito: %@",obj);
 					current_version = [info objectForKey:@"CFBundleShortVersionString"];
 					onlineVersion = [obj valueForKey:@"shortVersion"];
 					installed_version = [info objectForKey:@"CFBundleVersion"];
@@ -383,7 +384,7 @@
 				desc = @"nil";
 			NSDate *date = [obj valueForKey:@"ReleaseDate"];
 			NSString *dateFormat = nil;
-			NSLog(@"date: %@",date);
+			//NSLog(@"date: %@",date);
 			if(date == nil)
 			{
 				dateFormat = @"nil";
@@ -418,7 +419,7 @@
 	}
 	
 	int sep3 = [_items count];
-	NSLog(@"D");
+	//NSLog(@"D");
 	///////////////////UNTRUSTED//////////////////////
 	NSDictionary *loginItemDict2 = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist"]];
 	feedCounts=[[loginItemDict2 allKeys] count];
@@ -433,11 +434,11 @@
 		[_locationDictss2 addObject:currentItems];
 	}
 	
-	NSLog(@"D.1");
+	//NSLog(@"D.1");
 	//NSSortDescriptor *nameDescriptors2 = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
 	NSArray *ArraySortDescriptor2 = [NSArray arrayWithObjects:nameDescriptors, nil];
 	 NSArray *sortedArrays2 = [_locationDictss2 sortedArrayUsingDescriptors:ArraySortDescriptor2];	
-	NSLog(@"E");
+	//NSLog(@"E");
 	NSEnumerator *enumerator2 = [sortedArrays2 objectEnumerator];
 	//id obj2;
 	while((obj = [enumerator2 nextObject]) != nil) 
@@ -529,16 +530,18 @@
 
 -(void)itemSelected:(long)fp8
 {
-	NSLog(@"itemselected");
-	NSArray * thenames = [_options objectAtIndex:fp8];
-	NSLog(@"A");
+	//NSLog(@"itemselected");
+	//NSArray * thenames = [_options objectAtIndex:fp8];
+	//NSLog(@"A");
+	BOOL hellos;
 	//NSString *thename = [thenames objectAtIndex:1];
 	NSMutableDictionary *loginItemDict=[[NSMutableDictionary alloc] initWithDictionary:nil];
-	NSLog(@"B");
+	//NSLog(@"B");
 	switch([[[_options objectAtIndex:fp8] valueForKey:@"Type"] intValue])
 	{
 		case kSMTpCheck:
-			NSLog(@"doing Update");
+			hellos =NO;
+			//NSLog(@"doing Update");
 			NSString *thelog = [[NSString alloc] initWithString:@"thelog"];
 			[thelog writeToFile:[@"~/Library/Application Support/SoftwareMenu/updater.log" stringByExpandingTildeInPath] atomically:YES];
 			[self writeToLog:@"Initializing Update"];
@@ -546,19 +549,21 @@
 			
 			break;
 		case kSMTpRefresh:
-			[self initWithIdentifier:@"101"];
+			[self initCustom];
 			break;
 		case kSMTpRestart:
 			[NSTask launchedTaskWithLaunchPath:@"/bin/bash" arguments:[NSArray arrayWithObjects:@"/System/Library/CoreServices/Finder.app/Contents/Plugins/SoftwareMenu.frappliance/Contents/Resources/reset.sh",nil]];
 			break;
 		case kSMTpSm:
 		case KSMTpTrusted:
-			NSLog(@"Going to a Trusted Menu");
+			hellos = NO;
+			//NSLog(@"Going to a Trusted Menu");
 			NSDictionary *Info4Dict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info4.plist"]];
 			[loginItemDict addEntriesFromDictionary:Info4Dict];
 			break;
 		case kSMTpUntrusted:
-			NSLog(@"Going to an Untrusted Menu");
+			hellos = NO;
+			//NSLog(@"Going to an Untrusted Menu");
 			NSDictionary *Info3Dict = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist"]];
 			[loginItemDict addEntriesFromDictionary:Info3Dict];
 			break;
@@ -566,10 +571,11 @@
 	switch([[[_options objectAtIndex:fp8] valueForKey:@"Type"] intValue])
 	{
 		case kSMTpSm:
-			NSLog(@"SoftwareMenu:");
+			//NSLog(@"SoftwareMenu:");
 		case kSMTpUntrusted:
 		case KSMTpTrusted:
-			NSLog(@"doing something");
+			hellos = NO;
+			//NSLog(@"doing something");
 			NSString *thename = [[_options objectAtIndex:fp8] valueForKey:@"Name"];
 			if([thename isEqualToString:@"softwaremenu"]) {thename = @"SoftwareMenu";}
 				
@@ -672,7 +678,7 @@
 			[nitoDict setObject:[trustedSource valueForKey:@"developer"] forKey:@"Developer"];
 			[nitoDict setObject:[trustedSource valueForKey:@"ReleaseDate"] forKey:@"ReleaseDate"];
 			[nitoDict setObject:[trustedSource valueForKey:@"ImageURL"] forKey:@"ImageURL"];
-			NSLog(@"imageURL: %@",[nitoDict valueForKey:@"ImageURL"]);
+			//NSLog(@"imageURL: %@",[nitoDict valueForKey:@"ImageURL"]);
 			[TrustedDict setObject:nitoDict forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];
 			
@@ -732,15 +738,15 @@
 	{
 		obj = [TrustedDict objectForKey:obj2];
 		ImageURL = nil;
-		NSLog(@"1");
+		//NSLog(@"1");
 		name = [obj objectForKey:@"name"];
 		if (name == nil)
 			name = [obj objectForKey:@"Name"];
 		ImageURL = [obj objectForKey:@"ImageURL"];
-		NSLog(@"name:%@, ImageURl:%@",name,ImageURL);
+		//NSLog(@"name:%@, ImageURl:%@",name,ImageURL);
 		if([ImageURL length] !=0)
 		{
-			NSLog(@"non zero");
+			//NSLog(@"non zero");
 		}
 		if([ImageURL length] == 0)
 		{
@@ -767,14 +773,14 @@
 		}
 		if([ImageURL length]!=0)
 		{
-			NSLog(@"2");
-			NSLog(@"Image URL: %@",ImageURL);
+			//NSLog(@"2");
+			//NSLog(@"Image URL: %@",ImageURL);
 			[self writeToLog:ImageURL];
 			NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
-			NSLog(@"3");
+			//NSLog(@"3");
 			
-			NSLog(@"4");
-			NSLog(@"image path: %@",[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]]);
+			//NSLog(@"4");
+			//NSLog(@"image path: %@",[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]]);
 			if([_man fileExistsAtPath:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]]])
 			{
 				[_man removeFileAtPath:[IMAGES_FOLDER stringByAppendingPathComponent:[name stringByAppendingPathExtension:[ImageURL pathExtension]]] handler:nil];
@@ -788,24 +794,6 @@
 }
 
 
-
--(long)defaultIndex
-{
-	return 0;
-}
--(void)willBeBuried
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBeBuried];
-}
-
-
-
--(void)willBePopped
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBePopped];
-}
 - (void)writeToLog:(NSString *)str
 {
 	NSString * thelog2 = [[[[NSString alloc] initWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/updater.log" stringByExpandingTildeInPath]] stringByAppendingString:@"\n"] stringByAppendingString:str];
@@ -814,22 +802,14 @@
 
 - (void)wasExhumedByPoppingController:(id)fp8
 {
-	[self initWithIdentifier:@"101"];	
+	[self initCustom];	
 }
 - (void)wasExhumed
 {
-	[self initWithIdentifier:@"101"];	
+	[self initCustom];	
 }
 
 //	Data source methods:
-
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
-- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
-
 
 
 @end

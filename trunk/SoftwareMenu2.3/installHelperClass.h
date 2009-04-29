@@ -25,6 +25,7 @@
 }
 
 - (NSString *)runPath;
+- (int)updateSelf:(NSString *)value;
 - (void)setRunPath:(NSString *)value;
 - (void)installSelf:(NSString *)value;
 - (void)removeFrap:(NSString *)value;
@@ -58,7 +59,12 @@
 - (int)EnableAppleShareServer;
 - (int)DisableAppleShareServer;
 - (int)installScreenSaver;
-
+- (int)extractGZip:(NSString *)file toLocation:(NSString *)path;
+- (int)extractTar:(NSString *)file toLocation:(NSString *)path;
+- (int)restart:(NSString *)value;
+- (int)runscript:(NSString *)scriptPath;
+- (void)changeOwner:(NSString *)owner onFile:(NSString *)file isRecursive:(BOOL)recursive;
+- (NSString *)mountImage:(NSString *)image;
 
 - (BOOL)wasWritable;
 - (BOOL)makeSystemWritable;

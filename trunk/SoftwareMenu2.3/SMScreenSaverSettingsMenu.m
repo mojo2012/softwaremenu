@@ -187,8 +187,11 @@
 																 withDescription:BRLocalizedString(@"Please enter delay time between each spin (in secs)", @"Please enter delay time between each spin (in secs)")
 																	   withBoxes:3
 																		 withKey:PHOTO_SPIN_FREQUENCY];
+			[newController setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
+			[newController setInitialValue:[SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY]];
 			[[self stack] pushController:newController];
 			i = [SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY];
+			break;
 		case kSMSSSSlideTime:
 			randomV = NO;
 			id controller = [[SoftwarePasscodeController alloc] initWithTitle:BRLocalizedString(@"Set Time Per Slide",@"Set Time Per Slide")
@@ -197,18 +200,8 @@
 																	  withKey:nil];
 			[controller setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
 			[controller setValue:[NSNumber numberWithInt:1] forKey:@"options"];
-			//[controller setInitialValue:[[BRSettingsFacade singleton] slideshowSecondsPerSlide]];
+			[controller setInitialValue:[[BRSettingsFacade singleton] slideshowSecondsPerSlide]];
 			[[self stack] pushController:controller];
-			/*if(i==nil || i == 0)
-				i=DEFAULT_SPIN_FREQUENCY;
-			BRPasscodeEntryControl *pass = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
-			[pass setDelegate:self];
-			BRTextEntryController *textinput = [[BRTextEntryController alloc] 
-												initWithTextEntryStyle:3];
-			[textinput setTitle:@"Set Delay (in seconds)"];
-			[textinput setInitialTextEntryText:[NSString stringWithFormat:@"%@",[NSNumber numberWithInt:i],nil]];
-			[textinput setTextEntryCompleteDelegate:self];
-			[[self stack] pushController:textinput];*/
 			break;
 		case kSMSSSFDefaults:
 			randomV = NO;
@@ -285,99 +278,6 @@
 	[self initCustom];
 	[[self list] reload];
 }
-/*- (BOOL)brEventAction:(BREvent *)event
-{
-	long selitem;
-	unsigned int hashVal = (uint32_t)((int)[event page] << 16 | (int)[event usage]);
-	if ([(BRControllerStack *)[self stack] peekController] != self)
-		hashVal = 0;
-	
-	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
-	
-	//NSLog(@"hashval =%i",hashVal);
-	switch (hashVal)
-	{
-		case 65676:  // tap up
-			//NSLog(@"type up");
-			break;
-		case 65677:  // tap down
-			//NSLog(@"type down");
-			break;
-		case 65675:  // tap left
-			//NSLog(@"type left");
-			selitem = 0;
-			
-			selitem = [self getSelection];
-			//NSLog(@"selection :%d",selitem);
-			if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-			{
-				[lastFilterChangeDate release];
-				lastFilterChangeDate = [[NSDate date] retain];
-				NSMutableArray *favorites = [[NSMutableArray alloc] initWithObjects:nil];
-				[favorites addObjectsFromArray:[SMGeneralMethods arrayForKey:@"PhotosFavorites"]];
-				if([favorites containsObject:[paths objectAtIndex:selitem]])
-				{
-					[favorites removeObjectAtIndex:[favorites indexOfObject:[paths objectAtIndex:selitem]]];
-					[SMGeneralMethods setArray:favorites forKey:@"PhotosFavorites"];
-					[_items removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:selitem]]];
-					[paths removeObjectAtIndex:[paths indexOfObject:[paths objectAtIndex:selitem]]];
-					[[self list] removeDividers];
-					if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current"]intValue])
-						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current"]intValue] withLabel:@"Current"];
-					int i = [[_dividers valueForKey:@"Volumes"] intValue];
-					i--;
-					[_dividers setObject:[NSNumber numberWithInt:i] forKey:@"Volumes"];
-					
-					i= [[_dividers valueForKey:@"Folders"] intValue];
-					i--;
-					[_dividers setObject:[NSNumber numberWithInt:i] forKey:@"Folders"];
-					if([[_dividers valueForKey:@"Volumes"]intValue] != [[_dividers valueForKey:@"Favorites"]intValue])
-						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Favorites"]intValue] withLabel:@"Favorites"];
-					if([[_dividers valueForKey:@"Folders"]intValue] != [[_dividers valueForKey:@"Volumes"]intValue])
-						[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Volumes"]intValue] withLabel:@"Volumes"];
-					[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Folders"]intValue] withLabel:@"Folders"];
-					
-					//[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
-					//[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
-					[[self list] reload];
-					
-					
-					
-					
-				}
-			}
-			
-			
-			break;
-		case 65674:  // tap right
-			//NSLog(@"type right");
-			//[self setSelectedItem:1];
-			selitem = 0;
-			
-			selitem = [self getSelection];
-			if(selitem>=[settingNames count])
-			{
-				if(![self usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-				{
-					[lastFilterChangeDate release];
-					lastFilterChangeDate = [[NSDate date] retain];
-					NSLog(@"Row: %@",[NSNumber numberWithInt:selitem]);
-					[SMGeneralMethods setString:[paths objectAtIndex:selitem] forKey:@"PhotoDirectory"];
-					[self initCustom];
-					[[self list] reload];
-				}
-			}
-			
-			break;
-		case 65673:  // tap play
-			/*selitem = [self selectedItem];
-			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];
-			//NSLog(@"type play");
-			break;
-	}
-	return [super brEventAction:event];
-}*/
-
 
 
 

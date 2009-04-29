@@ -28,7 +28,7 @@
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[idStr pathExtension]])
+		if([coverArtExtention containsObject:[[idStr pathExtension]lowercaseString]])
 		{
 			number ++;
 		}
@@ -56,7 +56,7 @@
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[idStr pathExtension]])
+		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			number ++;
 		}
@@ -88,7 +88,7 @@
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[idStr pathExtension]])
+		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			return [BRImage imageWithPath:[thepath stringByAppendingPathComponent:idStr]];
 		}
@@ -125,25 +125,34 @@
 	[obj setAsset:meta];
 	return (obj);
 }
--(id)init{
+-(id)initWithPath:(NSString *)thepath{
+	[path release];
+	path=thepath;
+	[path retain];
 	self = [super init];
+	NSLog(@"after self");
+	[self setListTitle: [path lastPathComponent]];
+	[self setListIcon:[[SMThemeInfo sharedTheme] folderIcon] horizontalOffset:0.5f kerningFactor:0.2f];
+	
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	_paths = [[NSMutableArray alloc] initWithObjects:nil];
 	_man = [NSFileManager defaultManager];
 	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
 								  @"jpg",
+								  @"JPG",
 								  @"jpeg",
 								  @"tif",
 								  @"tiff",
 								  @"png",
 								  @"gif",
 								  nil];
-	long i, count = [[_man directoryContentsAtPath:path] count];	
+	long i, count = [[_man directoryContentsAtPath:path] count];
+	NSLog(@"contents at %@: %@",path,[_man directoryContentsAtPath:path]);
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[_man directoryContentsAtPath:path] objectAtIndex:i];
-		if([coverArtExtention containsObject:[idStr pathExtension]])
+		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			BRTextMenuItemLayer * hello = [BRTextMenuItemLayer menuItem];
 			[hello setTitle:idStr];
@@ -151,6 +160,10 @@
 			[_items addObject:hello];
 			[_paths addObject:[path stringByAppendingPathComponent:idStr]];
 			
+		}
+		else
+		{
+			NSLog(@"lowercase pathextension: %@",[[idStr pathExtension] lowercaseString]);
 		}
 		//NSLog(@"%@",idStr);
 		
@@ -173,6 +186,7 @@
 {
 	[path release];
 	path = thePath;
+	[path retain];
 	[path retain];
 	[self setListTitle: [path lastPathComponent]];
 	[self setListIcon:[[SMThemeInfo sharedTheme] folderIcon] horizontalOffset:0.5f kerningFactor:0.2f];
