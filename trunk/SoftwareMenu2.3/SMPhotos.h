@@ -9,9 +9,10 @@
 #import <Cocoa/Cocoa.h>
 //#import "BackRow.h"
 @interface ATVPhloatoScreenSaver 
-
+-(id)class;
+-(id)init;
+-(id)setImageProviders:(id)fp8;
 @end
-
 
 
 

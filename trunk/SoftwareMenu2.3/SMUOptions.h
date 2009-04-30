@@ -10,11 +10,10 @@
 //#import <Cocoa/Cocoa.h>
 ////#import <BackRow/BackRow.h>
 #import <Foundation/Foundation.h>
+#import "SMMediaMenuController.h"
 
-@interface SMUOptions : BRMediaMenuController {
-	int padding[16];
-	NSMutableArray			*	_items;
-	NSMutableArray			*	_options;
+@interface SMUOptions : SMMediaMenuController{
+
 	NSMutableArray			*	_optionDescriptions;
 	NSMutableArray			*	_optionNames;
 	NSMutableArray			*	_optionKeys;
@@ -23,14 +22,8 @@
 	NSMutableDictionary		*	_optionDict;
 	
 }
--(id)initCustom;
+-(id)initCust;
 -(int)getSelection;
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
 -(NSMutableDictionary *)getOptions;
 
 

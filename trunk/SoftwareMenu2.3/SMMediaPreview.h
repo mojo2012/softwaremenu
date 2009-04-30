@@ -41,7 +41,8 @@
  * @param newMeta The metadata for the file or directory
  * @param dir The directory which contains this metadata
  */
-- (void)setMetaData:(NSDictionary *)newMeta;
+- (NSMutableDictionary *)getMetaData;
+- (void)setMetaData:(NSMutableDictionary *)newMeta;
 - (void)setUtilityData:(NSMutableDictionary *)newMeta;
 
 @end

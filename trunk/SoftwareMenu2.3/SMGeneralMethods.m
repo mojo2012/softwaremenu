@@ -40,7 +40,7 @@ static SMGeneralMethods *sharedInstance = nil;
 + (NSString *)stringForKey:(NSString *)theKey
 {
 	//CFPreferencesAppSynchronize(myDomain);
-	CFStringRef myString = [(CFStringRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
+	NSString * myString = [(NSString *)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
 	return (NSString *)myString;
 }
 +(void)restartFinder;
@@ -67,12 +67,12 @@ static SMGeneralMethods *sharedInstance = nil;
 }
 + (NSArray *)arrayForKey:(NSString *)theKey
 {
-	CFArrayRef myArray = [(CFArrayRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
+	NSArray  *myArray = [(NSArray *)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
 	return (NSArray *)myArray;
 }
 +(NSDictionary *)dictForKey:(NSString *)theKey
 {
-	CFDictionaryRef myDict = [(CFDictionaryRef)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
+	NSDictionary * myDict = [(NSDictionary *)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];
 	return (NSDictionary *)myDict;
 }
 + (NSArray *)getPrefKeys
@@ -138,6 +138,22 @@ static SMGeneralMethods *sharedInstance = nil;
     return sharedInstance ? sharedInstance : [[self alloc] init];
 }
 - (BOOL)helperCheckPerm
+{
+	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
+	NSFileManager *man = [NSFileManager defaultManager];
+	NSDictionary *attrs = [man fileAttributesAtPath:helperPath traverseLink:YES];
+	NSNumber *curPerms = [attrs objectForKey:NSFilePosixPermissions];
+	////NSLog(@"curPerms: %@", curPerms);
+	if ([curPerms intValue] < 2541)
+	{
+		//NSLog(@"installHelper permissions: %@ are not sufficient, dying", curPerms);
+		return (NO);
+	}
+	
+	return (YES);
+	
+}
++ (BOOL)helperCheckPerm
 {
 	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
 	NSFileManager *man = [NSFileManager defaultManager];
@@ -303,6 +319,7 @@ static SMGeneralMethods *sharedInstance = nil;
 		default:
 			break;
 	}
+	return NO;
 }
 +(int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation
 {
@@ -391,7 +408,7 @@ static SMGeneralMethods *sharedInstance = nil;
 		[finder terminate];
 	}
 }
-+(BOOL)checkScreensaver
++(void)checkScreensaver
 {
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	NSString *SMPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SM" ofType:@"frss"];

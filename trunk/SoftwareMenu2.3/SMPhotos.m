@@ -18,12 +18,14 @@
 /*@implementation ATVDefaultPhotos 
  @end*/
 @interface BRBacktracingException
++(id)backtrace;
 @end
 @interface BRBackupPhotoAsset
++(id)alloc;
 @end
 @class ATVPhloatoPlane, NSTimer;
 
-@interface ATVPhloatoControl
+@interface ATVPhloatoControl :NSObject
 {
     ATVPhloatoPlane *_frontPlane;
     ATVPhloatoPlane *_middlePlane;
@@ -118,7 +120,6 @@
 	if(outInt == nil)
 		outInt = 60;
 	ATVPhloatoControl *hellos = [self gimmeControl];
-	float ii = (float)[hellos spinFrequency];
 	[hellos setSpinFrequency:(float)outInt];
 	return hellotoo;
 }
@@ -126,7 +127,7 @@
 {
 	
 	//CFPreferencesAppSynchronize(myDomain);
-	CFStringRef myString = [(CFStringRef)CFPreferencesCopyAppValue((CFStringRef)PHOTO_DIRECTORY_KEY, myDomain) autorelease];
+	NSString *myString = [(NSString *)CFPreferencesCopyAppValue((CFStringRef)PHOTO_DIRECTORY_KEY, myDomain) autorelease];
 	NSString *theDir = (NSString *)myString;
 	
 	BOOL isDir;

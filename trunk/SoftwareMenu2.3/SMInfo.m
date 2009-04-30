@@ -11,6 +11,13 @@
 #import "BRLocalizedString.h"
 ////#import <BackRow/BackRow.h>
 
+@interface BRTextControl (protectedAccess)
+-(id)text;
+@end
+@interface BRScrollingTextControl (protectedAccess)
+-(id)text;
+@end
+
 
 @implementation SMInfo
 - (void)setTheName:(NSString *)theName

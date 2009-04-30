@@ -10,11 +10,11 @@
 #import "SMDownloaderSTD.h"
 #import "SMProgressBarControl.h"
 #import "BRLocalizedString.h"
+#import "SMPseudoCompat.h"
 ////#import <BackRow/BackRow.h>
 
 
 #define myDomain			(CFStringRef)@"org.quatermain.downloader"
-static NSString * finalName = nil;
 static NSString  const * kDefaultURLString = @"http://www.google.com";
 
 @implementation SMDownloaderSTD
@@ -202,7 +202,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	//urlstr =  (NSString *)(CFPreferencesCopyAppValue((CFStringRef)@"urlstr", kCFPreferencesCurrentApplication));
 	urlstr=[_theInformation valueForKey:@"url"];
     if ( urlstr == nil )
-		urlstr = kDefaultURLString;
+		urlstr = (NSString *)kDefaultURLString;
 	//[self disableScreenSaver];
 	
 	//NSLog(@"urlstr in beginDownload: %@",urlstr);
@@ -288,16 +288,16 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	
     [super controlWasActivated];
 }
--(void)initCustom
+-(id)initCustom
 {
-	
+	return self;
 }
 
-- (void)controlWillDeactivate;
+/*- (void)controlWillDeactivate;
 {
     [self cancelDownload];
     [super controlWillDeactivate];
-}
+}*/
 
 - (BOOL) isNetworkDependent
 {

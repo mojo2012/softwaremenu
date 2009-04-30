@@ -64,8 +64,10 @@ typedef enum
 + (int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
 + (int)runHelperApp:(NSArray *)options;
 + (SMGeneralMethods *)sharedInstance;
-+ (BOOL)helperFixPerm;
++ (void)helperFixPerm;
+- (void)helperFixPerm;
 - (BOOL)helperCheckPerm;
++ (BOOL)helperCheckPerm;
 - (BOOL)checkblocker;
 - (BOOL)usingTakeTwoDotThree;
 - (void)helperFixPerm;

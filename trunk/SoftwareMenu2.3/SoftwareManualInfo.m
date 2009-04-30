@@ -137,7 +137,7 @@
 {
 	return 0;
 }
--(void)willBeBuried
+/*-(void)willBeBuried
 {
 	//NSLog(@"willBuried");
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
@@ -155,7 +155,7 @@
 	//NSLog(@"willBePopped");
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
 	[super willBePopped];
-}
+}*/
 
 - (BOOL)helperCheckPerm
 {

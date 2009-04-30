@@ -120,7 +120,7 @@
 	[bRImage release];
 	bRImage = theImage;
 	[bRImage retain];
-	NSLog(@"setBRImage");
+	//NSLog(@"setBRImage");
 }
 - (void)setPhotosImage
 {

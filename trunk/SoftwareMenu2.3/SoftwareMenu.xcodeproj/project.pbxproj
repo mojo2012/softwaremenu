@@ -54,7 +54,6 @@
 		E22E929E0FA34EA1005489A6 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = E22E929C0FA34EA1005489A6 /* red.png */; };
 		E236DA3C0F64368E003C02CA /* SM.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* SM.pch */; };
 		E240D6150FA4EBC300185AC7 /* dropbear.tgz in Resources */ = {isa = PBXBuildFile; fileRef = E240D6140FA4EBC300185AC7 /* dropbear.tgz */; };
-		E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E245235F0EABCAE600E4127B /* SoftwareUpdater.m */; };
 		E24524B70EABD98700E4127B /* Perian.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B40EABD98700E4127B /* Perian.png */; };
 		E24524B80EABD98700E4127B /* package.png in Resources */ = {isa = PBXBuildFile; fileRef = E24524B50EABD98700E4127B /* package.png */; };
 		E24525230EABDF7D00E4127B /* timemachine.png in Resources */ = {isa = PBXBuildFile; fileRef = E24525220EABDF7D00E4127B /* timemachine.png */; };
@@ -87,6 +86,8 @@
 		E28E20970F93FE3900FC63C9 /* SMMediaPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E20960F93FE3900FC63C9 /* SMMediaPreview.m */; };
 		E28E209E0F9401A700FC63C9 /* SMMediaPreview.h in Headers */ = {isa = PBXBuildFile; fileRef = E28E209D0F9401A700FC63C9 /* SMMediaPreview.h */; };
 		E291BB0F0E9D568C00190C96 /* SMInstallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */; };
+		E29708F40FA9105D009667AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E29708F30FA9105D009667AE /* InfoPlist.strings */; };
+		E2970A9E0FA91AF5009667AE /* SMPseudoCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = E2970A9D0FA91AF5009667AE /* SMPseudoCompat.h */; };
 		E29FA09E0F585603002BE2B0 /* SMUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA09D0F585603002BE2B0 /* SMUpdater.m */; };
 		E29FA39B0F58A7AB002BE2B0 /* SMDownloaderSTD.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA39A0F58A7AB002BE2B0 /* SMDownloaderSTD.m */; };
 		E29FA5E00F59D275002BE2B0 /* SMUpdaterProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */; };
@@ -201,8 +202,6 @@
 		E22E929C0FA34EA1005489A6 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		E236DA3B0F64368E003C02CA /* SM.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = SM.pch; sourceTree = "<group>"; };
 		E240D6140FA4EBC300185AC7 /* dropbear.tgz */ = {isa = PBXFileReference; lastKnownFileType = file; path = dropbear.tgz; sourceTree = "<group>"; };
-		E245235E0EABCAE600E4127B /* SoftwareUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdater.h; sourceTree = "<group>"; };
-		E245235F0EABCAE600E4127B /* SoftwareUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdater.m; sourceTree = "<group>"; };
 		E24524B40EABD98700E4127B /* Perian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Perian.png; sourceTree = "<group>"; };
 		E24524B50EABD98700E4127B /* package.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = package.png; sourceTree = "<group>"; };
 		E24525220EABDF7D00E4127B /* timemachine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timemachine.png; sourceTree = "<group>"; };
@@ -241,6 +240,8 @@
 		E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallMenu.m; sourceTree = "<group>"; };
 		E2954F3A0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2954F3B0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 10; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E29708E30FA90F74009667AE /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2970A9D0FA91AF5009667AE /* SMPseudoCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPseudoCompat.h; sourceTree = "<group>"; };
 		E29FA09C0F585603002BE2B0 /* SMUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdater.h; sourceTree = "<group>"; };
 		E29FA09D0F585603002BE2B0 /* SMUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdater.m; sourceTree = "<group>"; };
 		E29FA3990F58A7AB002BE2B0 /* SMDownloaderSTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDownloaderSTD.h; sourceTree = "<group>"; };
@@ -346,7 +347,6 @@
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
-				E2F64A3F0F9E5714005CF172 /* SM-Info.plist */,
 			);
 			name = QuDownloader;
 			sourceTree = "<group>";
@@ -422,6 +422,8 @@
 				E2A35F180EAD85A600FB6FD7 /* incscript.sh */,
 				E25576D70EBE53DC002B6313 /* reset.sh */,
 				E2F6533A0F9FF15B005CF172 /* PhotosAbout.txt */,
+				E2F64A3F0F9E5714005CF172 /* SM-Info.plist */,
+				E29708F30FA9105D009667AE /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -561,6 +563,7 @@
 				E2144F950F60EC78003A3A0C /* BackRowUtilstwo.h */,
 				E236DA3B0F64368E003C02CA /* SM.pch */,
 				3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */,
+				E2970A9D0FA91AF5009667AE /* SMPseudoCompat.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -583,8 +586,6 @@
 		E2F652810F9FDA75005CF172 /* Updater */ = {
 			isa = PBXGroup;
 			children = (
-				E245235E0EABCAE600E4127B /* SoftwareUpdater.h */,
-				E245235F0EABCAE600E4127B /* SoftwareUpdater.m */,
 				E29FA5DE0F59D275002BE2B0 /* SMUpdaterProcess.h */,
 				E29FA5DF0F59D275002BE2B0 /* SMUpdaterProcess.m */,
 				E29FA09C0F585603002BE2B0 /* SMUpdater.h */,
@@ -628,6 +629,7 @@
 				E22E8A1A0FA16329005489A6 /* SMScriptsMenu.h in Headers */,
 				E22E8FC60FA2114E005489A6 /* SoftwarePasscodeController.h in Headers */,
 				E2D049C00FA408F900959B34 /* SMMenu.h in Headers */,
+				E2970A9E0FA91AF5009667AE /* SMPseudoCompat.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +771,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29708F40FA9105D009667AE /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +788,6 @@
 				E20C16F30EA90EA500739E75 /* SMThirdPartyMenu.m in Sources */,
 				E20C1B850EA92CED00739E75 /* SMBuiltInMenu.m in Sources */,
 				E20C1CCC0EA980B900739E75 /* SMScriptsMenu.m in Sources */,
-				E24523600EABCAE600E4127B /* SoftwareUpdater.m in Sources */,
 				E2A23A300EBFDAE000D606C2 /* SoftwareSettings.m in Sources */,
 				E2A240D50EC0ACC800D606C2 /* SoftwareManual.m in Sources */,
 				E2E41B2C0ECCEC2A00D1697E /* SMInfo.m in Sources */,
@@ -867,6 +869,14 @@
 				E273B3490F648DEE00E516B5 /* German */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E29708F30FA9105D009667AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E29708E30FA90F74009667AE /* English */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

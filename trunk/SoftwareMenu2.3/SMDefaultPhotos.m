@@ -38,7 +38,7 @@
 		}
 		else 
 		{
-			NSLog(@"idStr not added: %@",idStr);
+			//NSLog(@"idStr not added: %@",idStr);
 		}
 		
 	}

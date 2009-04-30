@@ -7,14 +7,9 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-//#import <Cocoa/Cocoa.h>
-////#import <BackRow/BackRow.h>
 #import <Foundation/Foundation.h>
-
-@interface SMUpdater : BRCenteredMenuController {
-	int padding[16];
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
+#import "SMMediaMenuController.h"
+@interface SMUpdater : SMMediaMenuController {
 	NSMutableArray *	_dlinks;
 	NSMutableArray *	_dlinks2;
 	NSMutableArray *	_md5s;
@@ -30,13 +25,8 @@
 -(void)start_updating:(NSString *)xml_location;
 -(void)downloadthemalready;
 -(id)initCustom;
--(int)getSelection;
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
+-(NSMutableDictionary *)getOptions;
+
 
 
 @end

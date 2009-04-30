@@ -376,7 +376,7 @@ BRVolumeLayer;
 - (BOOL)setFloat:(float)fp8 forKey:(id)fp12;
 - (BOOL)setDouble:(double)fp8 forKey:(id)fp16;
 - (BOOL)setBool:(BOOL)fp8 forKey:(id)fp12;
-- (BOOL)setObject:(id)fp8 forKey:(id)fp12;
+//- (BOOL)setObject:(id)fp8 forKey:(id)fp12;
 
 @end
 
@@ -1413,7 +1413,7 @@ BRVolumeLayer;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(NSRect)fp8;
 - (void)renderInContext:(struct CGContext *)fp8;
-- (void)display;
+//- (void)display;
 - (void)_display;
 - (void)drawInContext:(struct CGContext *)fp8;
 - (void)setNeedsLayout;

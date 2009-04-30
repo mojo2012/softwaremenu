@@ -34,11 +34,8 @@
 	NSMutableArray *			_theVersions;
 	NSMutableDictionary *		_passData;
 }
--(NSRect)frame;
--(NSSize)sizeFor1080i;
 
 -(id) init;
--(BOOL) isNetworkDependent;
 -(void) customStuff;
 -(void) setTheName:(NSString *)theName;
 -(void) setVersions:(NSString *)theOnlineVersion withBak:(NSString *)theBackupVersion withCurrent:(NSString *)theInstalledVersion;
@@ -48,11 +45,10 @@
 -(void) setBakVers: (NSString *) srcText;
 -(void) setCurrVers: (NSString *) srcText;
 -(void) setOnlineVers: (NSString *) srcText;
--(void)setTheImage:(BRImage *)theImage;
+-(void) setTheImage:(BRImage *)theImage;
 -(void) drawSelf;
 
 
--(id) sourceImage: (NSString *)name;
 -(void) appendSourceText:(NSString *)srcText;
 -(void) setTitle: (NSString *) title;
 -(void) setSourceImage:(NSString *)name;
@@ -65,5 +61,4 @@
 
 }
 - (void) drawSelf;
-- (void) setSourceText;
 @end

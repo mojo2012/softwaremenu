@@ -35,7 +35,6 @@
 	NSString *				_previousText;
 	int m_screen_saver_timeout;
 }
--(NSRect)frame;
 -(void)processFiles;
 
 
@@ -44,18 +43,13 @@
 - (int)makeASRscan:(NSString *)drivepath;
 
 // stack callbacks
-- (void) wasPushed;
-- (void) willBePopped;
 - (BOOL) isNetworkDependent;
--(void)initCustom;
+- (void)initCustom;
 - (void)moveFiles2:(BOOL)original_status;
 - (void)setUpdateData:(NSDictionary *)updatedata;
-- (void) setFileURL:(NSString *)downloadURL;
--(BOOL)returnBoolValue:(NSString *)thevalue;
+- (BOOL)returnBoolValue:(NSString *)thevalue;
 
-- (void) setFileText:(NSString *)downloadText;
 
-- (void) setdownloadTitle:(NSString *)downloadName;
 - (void) setNumber:(int)step withSteps:(int)numberOfSteps;
 - (void) setTitle: (NSString *) title;
 - (NSString *) title;
@@ -63,11 +57,9 @@
 - (id) sourceImage;
 - (void) setSourceText: (NSMutableString *) text;
 - (NSString *) sourceText;
--(void) processdownload;
-- (float) percentDownloaded;
--(void) setTheText:(NSMutableString *)srcText;
-
-- (void) storeResumeData;
+- (NSMutableDictionary *)getOptions;
+- (void) setTheText:(NSMutableString *)srcText;
+- (void) cleanstuff;
 - (void) appendSourceText:(NSString *)srcText;
 - (void) appendSourceTextSpace:(NSString *)srcText;
 

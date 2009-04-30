@@ -268,11 +268,25 @@
 	{
 		SoftUpToDate = NO;
 	}
+	NSDate *dateSoft = [SoftwareMenuInfo valueForKey:@"ReleaseDate"];
+	NSString *dateFormatSoft = nil;
+	//NSLog(@"date: %@",date);
+	if(dateSoft == nil)
+	{
+		dateFormatSoft = @"nil";
+	}
+	else
+	{
+		dateFormatSoft = [dateSoft descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil];
+	}
+	NSString *descSoft = [SoftwareMenuInfo valueForKey:@"ShortDescription"];
+	if(descSoft == nil)
+		descSoft = @"nil";
 	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSNumber numberWithInt:4],@"Type",
-						 @"Thomas C. Cool",@"Developer",
-						 @"Extension to Settings Menu. allows you to install plugins, run scripts, upgrade and downgrade TV",@"ShortDescription",
-						 @"nil",@"ReleaseDate",
+						 [SoftwareMenuInfo valueForKey:@"Developer"],@"Developer",
+						 descSoft,@"ShortDescription",
+						 dateFormatSoft,@"ReleaseDate",
 						 @"Really Pro Update",@"UpdateText",
 						 [NSNumber numberWithBool:SoftUpToDate],@"UpToDate",
 						 @"softwaremenu",@"Name",
@@ -621,13 +635,13 @@
 							thelicense = @"No License added";
 						}
 					}
-					id newController = [[SMInstallMenu alloc] init];
 					NSString *shortVersion = @"empty";
 					if([thename isEqualToString:@"nitoTV"])
 						shortVersion = [obj valueForKey:@"shortVersion"];
 					NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:thename,@"name",theversion,@"version",displayName,@"displayName",shortVersion,@"shortVersion", displayVersion,@"displayVersion", thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
-					[newController setInformationDictionary:theInformation];
-					[newController initCustom];
+										
+					id newController = [[SMInstallMenu alloc] initWithDictionary:theInformation];
+										//[newController setInformationDictionary:theInformation];
 					[[self stack] pushController: newController];
 			}
 		}

@@ -20,7 +20,7 @@
 +(id)firstPhotoForPath:(NSString *)thepath;
 +(id)numberOfPhotosForPath:(NSString *)thepath;
 +(NSDictionary *)numberOfInterestingFilesForPath:(NSString *)thepath;
--(id)initWithPath;
+//-(id)initWithPath;
 -(id)initCustom;
 
 

@@ -17,15 +17,10 @@
 #define DEBUG_MODE false
 
 @implementation SMInstallMenu
--(void)setInformationDictionary:(NSDictionary *)information
-{
-	[_theInformation release];
-	_theInformation=[information mutableCopy];
-	[self setListTitle:[_theInformation valueForKey:@"displayName"]];
-	[_theInformation retain];
-}
 - (id) previewControlForItem: (long) item
 {
+	if(item >=[_items count])
+		return nil;
 	NSArray * theoptions = [_options objectAtIndex:item];
 	SMMedia *meta = [[SMMedia alloc ] init];
 	switch([[theoptions valueForKey:LAYER_INT] intValue])
@@ -54,20 +49,74 @@
 			break;
 			
 	}
-
 	SMMediaPreview *preview = [[SMMediaPreview alloc] init];
 	[preview setAsset:meta];
 	[preview setShowsMetadataImmediately:YES];
 	return (preview);
 }
 
--(id)init{
+-(id)initWithDictionary:(NSDictionary *)dict{
 	//NSLog(@"init");
 	self=[super init];
+	[_theInformation release];
+	_theInformation = [dict mutableCopy];
+	[_theInformation retain];
+	NSArray *layer_names = [NSArray arrayWithObjects:
+							@"Info",
+							@"License",
+							@"Install",
+							@"-backup",
+							@"-r",
+							@"-restore",
+							@"-rb",
+							nil];
+	NSArray *displayNames = [NSArray arrayWithObjects:
+							 BRLocalizedString(@"Info",@"Info"),
+							 BRLocalizedString(@"License",@"License"),
+							 BRLocalizedString(@"Install",@"Install"),
+							 BRLocalizedString(@"Backup",@"Backup"),
+							 BRLocalizedString(@"Remove",@"Remove"),
+							 BRLocalizedString(@"Restore",@"Restore"),
+							 BRLocalizedString(@"Remove Backup",@"Remove Backup"),
+							 nil];
+	NSArray *layer_ints = [NSArray arrayWithObjects:
+						   [NSNumber numberWithInt:kSMInInfo],
+						   [NSNumber numberWithInt:kSMInLicense],
+						   [NSNumber numberWithInt:kSMInInstall],
+						   [NSNumber numberWithInt:kSMInBackup],
+						   [NSNumber numberWithInt:kSMInRemove],
+						   [NSNumber numberWithInt:kSMInRestore],
+						   [NSNumber numberWithInt:kSMInRemoveB],
+						   nil];
 	_man = [NSFileManager defaultManager];
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
+	int counter,ii=[layer_ints count];
+	
+	
+	for( counter=0; counter < ii ; counter++)
+	{
+		id item = nil;
+		if([[layer_ints objectAtIndex:counter] intValue] == kSMInInstall)	{item = [BRTextMenuItemLayer networkMenuItem];}
+		else																{item = [BRTextMenuItemLayer menuItem];}
+
+		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+							 [layer_ints objectAtIndex:counter],LAYER_INT,
+							 [layer_names objectAtIndex:counter],LAYER_NAME,
+							 [displayNames objectAtIndex:counter],LAYER_DISPLAY,
+							 nil]];
+		[item setTitle:[displayNames objectAtIndex:counter]];
+		[_items addObject:item];
+		
+	}
+	[_items retain];
+	[_options retain];
+	[self setListTitle:[_theInformation valueForKey:@"displayName"]];
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
+	id list = [self list];
+	[list setDatasource: self];
+	[[self list] addDividerAtIndex:2 withLabel:[_theInformation valueForKey:@"displayName"]];
+	
 	return self;
 }
 - (void)dealloc
@@ -80,140 +129,31 @@
 	[super dealloc];  
 }
 
--(id)initCustom;
+-(NSString *)bakVersion
 {
-	[[self list] removeDividers];
-	[_items removeAllObjects];
-	[_options removeAllObjects];
-	NSString *name=[[NSString alloc] initWithString:[_theInformation valueForKey:@"name"]];
-	NSString *displayVersion=[_theInformation valueForKey:@"displayVersion"];
-	NSString *thelicense =[_theInformation valueForKey:@"license"];
-
-	
-
-	
-	////////////////
-	//    INFO    //
-	////////////////
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Info",LAYER_TYPE,@"Info",LAYER_NAME,[NSNumber numberWithInt:1],LAYER_INT,MISC_KEY,TYPE_KEY,@"info",NAME_KEY,nil]];
-	id item1 = [[BRTextMenuItemLayer alloc] init];
-	[item1 setTitle:@"Info"];
-	[_items addObject: item1];
-
-	////////////////
-	//   License  //
-	////////////////
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Info",LAYER_TYPE,@"License",LAYER_NAME,[NSNumber numberWithInt:2],LAYER_INT,MISC_KEY,TYPE_KEY,@"license",NAME_KEY,nil]];
-	id item2 = [[BRTextMenuItemLayer alloc] init];
-	[item2 setTitle:@"License"];
-	if([thelicense isEqualToString:@"No License added"])
+	NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
+	NSString *bakInfoPath = [bakPath stringByAppendingString:@"Contents/Info.plist"];
+	NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:bakInfoPath]];
+	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[_theInformation valueForKey:@"name"] isEqualToString:@"nitoTV"])
 	{
-		[item2 setRightJustifiedText:@"No License Provided"];
-		[item2 setDimmed:YES];
+		return [info objectForKey:@"CFBundleShortVersionString"];
+		
 	}
-	[_items	addObject:item2];
-
-	//// Seperator 1 Index
-	int iii = [_options count];
+	else
+		return [info objectForKey:@"CFBundleVersion"];
 	
-	///Does the plugins exist?
-	if(![self frapExists]) //Does Not Exist
-	{
-		////////////////
-		//   install  //
-		////////////////
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Download",LAYER_TYPE,@"Install",LAYER_NAME,[NSNumber numberWithInt:4],LAYER_INT,FRAP_KEY,TYPE_KEY,name,NAME_KEY,nil]];
-
-		id item2 = [BRTextMenuItemLayer networkMenuItem];
-		
-		[item2 setTitle:@"Install"];
-		[item2 setRightJustifiedText:displayVersion];
-		[_items addObject:item2];
-	}
-	else //Exists
-	{
-		///Is the plugin up to date?
-		if (![self frapUpToDate]) //Not Up to Date
-		{
-			////////////////
-			//   Update   //
-			////////////////
-			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Download",LAYER_TYPE,@"Update",LAYER_NAME,[NSNumber numberWithInt:5],LAYER_INT,FRAP_KEY,TYPE_KEY,name,NAME_KEY,nil]];
-			id item3 = [BRTextMenuItemLayer networkMenuItem];
-			[item3 setTitle:@"Update"];
-			[item3 setRightJustifiedText:displayVersion];
-			[_items addObject:item3];
-			
-		}
-		////////////////
-		//   backup   //
-		////////////////
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-backup",LAYER_NAME,[NSNumber numberWithInt:6],LAYER_INT,MISC_KEY,TYPE_KEY,@"backup",NAME_KEY,nil]];
-		id item4 = [[BRTextMenuItemLayer alloc] init];
-		[item4 setTitle:@"Backup"];
-		[item4 setRightJustifiedText:[_theInformation objectForKey:@"installedVersion"]];
-		[_items addObject:item4];
-		
-		//cannot delete SoftwareMenu
-		if(![name isEqualToString:@"SoftwareMenu"] && ![name isEqualToString:@"softwaremenu"])
-		{
-			////////////////
-			//   Remove   //
-			////////////////
-			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-r",LAYER_NAME,[NSNumber numberWithInt:7],LAYER_INT,MISC_KEY,TYPE_KEY,@"remove",NAME_KEY,nil]];
-			[_options addObject:[NSArray arrayWithObjects:@"Manage",@"Remove",nil]];
-			id item5 = [[BRTextMenuItemLayer alloc] init];
-			[item5 setTitle:@"Remove"];
-			[_items addObject:item5];
-		}
-	}
-	///Does a Backup Exists?
-	if ([self bakExists]) //backup exists
-	{		
-		///////////////////////
-		//   Restore Backup  //
-		///////////////////////
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-restore",LAYER_NAME,[NSNumber numberWithInt:9],LAYER_INT,MISC_KEY,TYPE_KEY,@"restore",NAME_KEY,nil]];
-		id item6 = [BRTextMenuItemLayer menuItem];
-		[item6 setTitle:@"Restore"];
-		[item6 setRightJustifiedText:[_theInformation objectForKey:@"backupVersion"]];
-		[_items addObject:item6];
-		
-		
-		///////////////////////
-		//   Remove Backup   //
-		///////////////////////
-		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Manage",LAYER_TYPE,@"-rb",LAYER_NAME,[NSNumber numberWithInt:8],LAYER_INT,MISC_KEY,TYPE_KEY,@"remove",NAME_KEY,nil]];
-		id item8 =[BRTextMenuItemLayer menuItem];
-		[item8 setTitle:@"Remove Backup"];
-		[item8 setRightJustifiedText:[_theInformation objectForKey:@"backupVersion"]];
-		[_items addObject:item8];
-	}
-	
-	
-	id list = [self list];
-	[list setDatasource: self];
-	///Add the Seperator
-	[[self list] addDividerAtIndex:iii withLabel:name];
-	return self;
 }
--(void)getVersions
+-(NSString *)installedVersion
 {
-	if([self frapExists])
+	NSString *infoPath = [[NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]] stringByAppendingString:@"Contents/Info.plist"];
+	NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
+	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[_theInformation valueForKey:@"name"] isEqualToString:@"nitoTV"])
 	{
-		NSString *infoPath = [[NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]] stringByAppendingString:@"Contents/Info.plist"];
-		NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
-		NSString * current_vers =[NSString stringWithString:[info objectForKey:@"CFBundleVersion"]];
-		[_theInformation setObject:current_vers forKey:@"installedVersion"];
+		return [info objectForKey:@"CFBundleShortVersionString"];
+		
 	}
-	if([self bakExists])
-	{
-		NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
-		NSString *bakInfoPath = [bakPath stringByAppendingString:@"Contents/Info.plist"];
-		NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:bakInfoPath]];
-		NSString * backup_vers = [[NSString alloc]initWithString:[info objectForKey:@"CFBundleVersion"]];
-		[_theInformation setObject:backup_vers forKey:@"backupVersion"];
-	}
+	else
+		return [info objectForKey:@"CFBundleVersion"];
 }
 
 -(BOOL)frapExists
@@ -237,27 +177,22 @@
 	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
 	NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 	NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfFile:infoPath];
-	NSLog(@"name:%@",[_theInformation objectForKey:@"name"]);
 	if(![[_theInformation objectForKey:@"name"] isEqualToString:@"nitoTV"])
 	{
-		if([[infoDict valueForKey:@"installedVersion"] compare:[_theInformation valueForKey:@"version"]]!=NSOrderedAscending){return (YES);}
+		NSLog(@"installed: %@, online: %@",[infoDict valueForKey:@"CFBundleVersion"],[_theInformation valueForKey:@"version"],nil);
+		if([[infoDict valueForKey:@"CFBundleVersion"] compare:[_theInformation valueForKey:@"version"]]!=NSOrderedAscending){return (YES);}
 	}
 	else
 	{
-		NSLog(@"installed: %@, online %@",[infoDict valueForKey:@"CFBundleShortVersionString"],[_theInformation valueForKey:@"shortVersion"]);
 		if([[infoDict valueForKey:@"CFBundleShortVersionString"] compare:[_theInformation valueForKey:@"shortVersion"]]!=NSOrderedAscending){return (YES);}
 	}
 	return (NO);
 }
 
-
--(long)defaultIndex
-{
-	return 0;
-}
-
 -(void)itemSelected:(long)row
 {
+	if([[_items objectAtIndex:row] dimmed])
+		return;
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	NSString *thename= [_theInformation valueForKey:@"name"];
 	NSString *theOnlineVersion = [_theInformation valueForKey:@"version"];
@@ -291,6 +226,8 @@
 		case kSMInUpdate:
 			update =@"YES";
 		case kSMInInstall:
+			if([self frapExists] && ![self frapUpToDate])
+				update =@"YES";
 			[_theInformation setObject:update forKey:@"update"];
 			id downloadController = nil;
 			downloadController =[[SMDownloaderInstaller alloc] init];
@@ -306,7 +243,7 @@
 			misc=@"!";
 			NSArray *taskArray = [NSArray arrayWithObjects:[selectedOption objectForKey:LAYER_NAME],[thename stringByAppendingString:@".frappliance"],@"0",nil];
 			[SMGeneralMethods runHelperApp:taskArray];
-			[self initCustom];
+			[[self list] reload];
 			break;
 
 	}
@@ -336,24 +273,80 @@
 }*/
 
 
-- (void)wasExhumedByPoppingController:(id)row
-{
-	[self initCustom];	
-}
 -(void)wasExhumed
 {
-	[self initCustom];	
+	[[self list] reload];	
 }
 
 //	Data source methods:
 
 
-- (id)itemForRow:(long)row					
-{ 
-	BRTextMenuItemLayer *theItem = [_items objectAtIndex:row];
-	return theItem; 
-}
 
+- (id)itemForRow:(long)row	
+{ 
+	BRTextMenuItemLayer *item =[_items objectAtIndex:row];
+	switch ([[[_options objectAtIndex:row] valueForKey:LAYER_INT] intValue]) 
+	{
+		case kSMInInstall:
+			if(![self frapExists])
+			{
+				[item setRightJustifiedText:[_theInformation valueForKey:@"displayVersion"]];
+				[item setDimmed:NO];
+			}
+			else if([self frapExists] && ![self frapUpToDate])
+			{
+				[item setRightJustifiedText:[_theInformation valueForKey:@"displayVersion"]];
+				[item setTitle:@"Update"];
+				[item setDimmed:NO];
+			}
+			else
+			{
+				[item setDimmed:YES];
+			}
+			break;
+		case kSMInBackup:
+			if(![self frapExists])
+				[item setDimmed:YES];
+			else			
+			{
+				[item setRightJustifiedText:[self installedVersion]];
+				[item setDimmed:NO];
+			}
+			break;
+		case kSMInRemove:
+
+			if(![self frapExists])
+				[item setDimmed:YES];
+			else 			
+			{
+				[item setDimmed:NO];
+				[item setRightJustifiedText:[self installedVersion]];
+			}
+			if([[_theInformation valueForKey:@"name"] isEqualToString:@"SoftwareMenu"])
+			{
+				[item setDimmed:YES];
+			}
+			break;
+		case kSMInRestore:
+		case kSMInRemoveB:
+			if(![self bakExists])
+			{
+				[item setDimmed:YES];		
+			}
+			else			
+			{
+				[item setRightJustifiedText:[self bakVersion]];
+				[item setDimmed:NO];
+			}
+			break;
+		default:
+			break;
+	}
+	if([item dimmed])
+		[item setRightJustifiedText:@""];
+	[_items replaceObjectAtIndex:row withObject:item];
+	return item;
+}
 
 @end
 @implementation SMDownloaderInstaller

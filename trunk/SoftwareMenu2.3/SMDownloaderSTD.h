@@ -33,7 +33,6 @@
 	NSMutableDictionary *	_theInformation;
 	int m_screen_saver_timeout;
 }
--(NSRect)frame;
 
 + (void) clearAllDownloadCaches;
 + (NSString *) downloadCachePath;
@@ -46,8 +45,6 @@
 - (void) deleteDownload;
 
 // stack callbacks
-- (void) wasPushed;
-- (void) willBePopped;
 - (BOOL) isNetworkDependent;
 -(id)initCustom;
 -(void)setInformationDict:(NSMutableDictionary *)infoDict;

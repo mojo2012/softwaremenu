@@ -175,7 +175,7 @@
 	{
 		_downloadnumber=10;
 		id newController2 = [[SMUOptions alloc] init];
-		[newController2 initCustom];
+		[newController2 initCust];
 		[[self stack] pushController:newController2];
 		//[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		[self initCustom];
@@ -232,12 +232,12 @@
 }
 
 
--(void)willBePopped
+/*-(void)willBePopped
 {
 	//NSLog(@"willBePopped");
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
 	[super willBePopped];
-}
+}*/
 
 -(void)start_updating:(NSString *)xml_location
 {
@@ -629,7 +629,6 @@
 	newController =[[SMUpdaterProcess alloc] init];
 	//NSLog(@"before dict");
 	//NSLog(@"preserve:%@,%d",[NSString stringWithFormat:@"%d",[SMGeneralMethods boolForKey:@"preserve"]],[SMGeneralMethods boolForKey:@"preserve"]);
-	NSMutableDictionary *tempoptions = [self getOptions];
 	NSDictionary *thedict=[[NSDictionary alloc] initWithObjectsAndKeys:_displays,@"displays",_dlinks2,@"dlinks",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"preserve"]],@"preserve",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"updatenow"]],@"now",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"install_perian"]],@"install_perian",[NSNumber numberWithBool:[SMGeneralMethods boolForKey:@"originalupdate"]],@"original",nil];
 	//NSLog(@"%@",thedict);
 	NSLog(@"4");

@@ -141,7 +141,7 @@
 						   @"Toggle AFP server",
 						   @"Toggle VNC server",
 						   @"Toggle FTP server",
-						   @"Install Dropbear (will Fix SSH in case you somehow broke it)",
+						   @"Install Dropbear (will Fix SSH in case you somehow broke it) - Does not work yet",
 						   @"Install Rowmote Helper Program for AppleTV                (www.rowmote.com - needs the iphone/ipod program rowmote)",
 						   @"Will download and Install Perian",
 						   nil];
@@ -327,6 +327,9 @@
 			LocalVersion = [self getPerianVersion];
 			if([LocalVersion compare:[_rowmoteDict valueForKey:@"perianDisplayVersion"]]==NSOrderedAscending)		{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"perianDisplayVersion"]];}
 			else		{[item setDimmed:YES];}
+			break;
+		case kSMTwInstall:
+			[item setDimmed:YES];
 			break;
 	}
 	

@@ -20,6 +20,9 @@
 #import "SMMediaPreview.h"
 #import "SMMedia.h"
 #import <objc/objc-class.h>
+@interface BRCoverArtImageLayer (compat)
+-(id)texture;
+@end
 
 /*These interfaces are to access variables not available*/
 @interface BRMetadataControl (protectedAccess)
@@ -40,7 +43,9 @@
 
 
 @interface BRMetadataPreviewControl (compat)
+- (void)_populateMetadata;
 - (void)_updateMetadataLayer;
+- (id) _loadCoverArt;
 @end
 
 @interface BRMetadataPreviewControl (protectedAccess)

@@ -12,11 +12,15 @@
 #import "BRLocalizedString.h"
 ////#import <BackRow/BackRow.h>
 #import	"SMGeneralMethods.h"
+#import "SMPseudoCompat.h"
 #define	DOCUMENTS_FOLDER	@"/Users/frontrow/Documents/"
 
 #define myDomain			(CFStringRef)@"org.quatermain.downloader"
 //static NSString * finalName = nil;
 //static NSString  const * kDefaultURLString = @"http://www.google.com";
+
+
+
 
 @implementation SMUpdaterProcess
 - (void) disableScreenSaver{
@@ -107,6 +111,8 @@
     if ( [super init] == nil )
         return ( nil );
 	//finalName =  (NSString *)(CFPreferencesCopyAppValue((CFStringRef)@"name", kCFPreferencesCurrentApplication));
+	self = [super init];
+	[self drawSelf];
     return ( self );
 }
 - (void)setNumber:(int)step withSteps:(int)numberOfSteps
@@ -145,9 +151,10 @@
 - (void)controlWasActivated
 {
 	//NSLog(@"was Activated");
-	[self drawSelf];
+	//[self drawSelf];
 	[super controlWasActivated];
-	[self startDownloadingURL];
+	//[self startDownloadingURL];
+	[self processFiles];
 	
 	
 }
@@ -156,10 +163,10 @@
 	
 }
 
-- (void)controlWillDeactivate;
+/*- (void)controlWillDeactivate;
 {
     [super controlWillDeactivate];
-}
+}*/
 
 - (BOOL) isNetworkDependent
 {
@@ -266,9 +273,7 @@
     return ( [_sourceText text] );
 }
 
-- (float) percentDownloaded
-{
-}
+
 
 
 
@@ -326,7 +331,6 @@
 	}*/
 	
 	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	NSString *thestatus = [[NSString alloc] initWithString:@"OK"];
 	[self appendSourceText:BRLocalizedString(@"Checking Permissions on Helper",@"Checking Permissions on Helper")];
 	////step//step;
 	//[self setNumber:step withSteps:numberOfSteps];
@@ -682,7 +686,6 @@
 	int termStatus = [mdTask2 terminationStatus];
 	NSData *outData;
 	outData = [hdih readDataToEndOfFile];
-	NSString *string = [[NSString alloc] initWithData: outData encoding: NSUTF8StringEncoding];
 	//NSLog(@"%@ status: %i",string, termStatus);
 	return termStatus;
 }
@@ -727,7 +730,6 @@
 	while((obje = [enum2 nextObject]) != nil)
 	{
 		
-		NSString *thefilename=[obje lastPathComponent];
 		NSString *basename= [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil];
 		NSString *updatename= @"/Users/frontrow/Updates";
 		if(![[obje pathExtension] isEqualToString:@"dmg"])

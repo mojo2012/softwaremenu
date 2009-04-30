@@ -79,9 +79,10 @@
 						   BRLocalizedString(@"Update Immediatly after download and processing is done.\n Not really recommended.",@"Update Immediatly after download and processing is done.\n Not really recommended."),
 						   BRLocalizedString(@"Download the OS and Update without processing. A standard apple Update except you can upgrade and downgrade",@"Download the OS and Update without processing. A standard apple Update except you can upgrade and downgrade"),
 						   BRLocalizedString(@"Install Perian while Processing",@"Install Perian while Processing"),
-						   BRLocalizedString(@"Install some basic binary tools compiled by |bile|",@"Install bin tools"),
-						   BRLocalizedString(@"Copy the installed fraps over to the new OS, once YES is selected, you need to choose the fraps below\nWARNING: if a frappliance is not compatible, may cause problems",@"Copy the installed fraps over to the new OS\nWARNING: if a frappliance is not compatible, may cause problems")
-						   ,nil];
+						   BRLocalizedString(@"Install some basic binary tools compiled by nito ... not yet active",@"Install bin tools"),
+						   BRLocalizedString(@"Copy the installed fraps over to the new OS, once YES is selected, you need to choose the fraps below\nWARNING: if a frappliance is not compatible, may cause problems",@"Copy the installed fraps over to the new OS\nWARNING: if a frappliance is not compatible, may cause problems"),
+						   BRLocalizedString(@"Retain settings for Built in fraps... Not yet active",@"Retain settings for Built in fraps"),
+						   nil];
 	_optionNames=[NSArray arrayWithObjects:BRLocalizedString(@"Preserve Files",@"Preserve Files"),
 				  BRLocalizedString(@"Update Immediately",@"Update Immediately"),
 				  BRLocalizedString(@"Keep Unpatched",@"Keep Unpatched"),
@@ -123,7 +124,7 @@
 	
 
 }
--(id)initCustom
+-(id)initCust
 {	
 	int ii, counter;
 	ii=[_items count];
@@ -158,21 +159,19 @@
 		for ( i = 0; i < count; i++ )
 		{
 			NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-			NSLog(@"%d",i);
 			if(![builtinfraps containsObject:idStr])
 			{
-				NSLog(@"yes");
 				id item3 = [[BRTextMenuItemLayer alloc] init];
 				[item3 setTitle:[idStr stringByDeletingPathExtension]];
 				if([SMGeneralMethods boolForKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]])
 				{
-					[item3 setRightJustifiedText:@"YES"];
+					[item3 setRightJustifiedText:BRLocalizedString(@"YES",@"YES")];
 					
 				}
 				else
 				{
 					[SMGeneralMethods setBool:NO forKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]];
-					[item3 setRightJustifiedText:@"NO"];
+					[item3 setRightJustifiedText:BRLocalizedString(@"NO",@"NO")];
 				}
 				if(![SMGeneralMethods boolForKey:@"retain_installed"])
 				{
@@ -184,9 +183,7 @@
 			}
 			
 		
-		NSLog(@"hello");
 	}
-	NSLog(@"after all is done");
 	id list = [self list];
 	[list setDatasource: self];
 
@@ -302,7 +299,6 @@
 		//[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 
 	}
-	NSLog(@"saving...");
 	[SMGeneralMethods setDict:tempDict forKey:@"Updater_Options"];
 	[[self list] reload];
 }
@@ -347,40 +343,11 @@
 }
 
 
--(void)willBePopped
-{
-	//NSLog(@"willBePopped");
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
-	[super willBePopped];
-}
+
 -(NSMutableDictionary *)getOptions
 {
 	NSMutableDictionary *theoptions = [[SMGeneralMethods dictForKey:@"Updater_Options"] mutableCopy];
 	return theoptions;
 }
-
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
-- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title]; }
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title]; }
-/*
-- (float)heightForRow:(long)row				{ return 0.0f; }
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
-//- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row]; }
-- (long)rowForTitle:(id)title				
-{ NSLog(@"row for title");
-return (long)[_items indexOfObject:title];
-}
-- (id)titleForRow:(long)row					
-{ 
-NSLog(@"title for row");
-return [_items objectAtIndex:row];
-}*/
-
-
-
 
 @end

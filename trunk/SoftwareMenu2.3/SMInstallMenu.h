@@ -45,9 +45,8 @@ typedef enum {
 	
 }
 
--(id)initCustom;
--(void)setInformationDictionary:(NSDictionary *)information;
-
+-(NSString *)installedVersion;
+-(NSString *)bakVersion;
 -(BOOL) frapExists;
 -(BOOL) bakExists;
 -(BOOL) frapUpToDate;
