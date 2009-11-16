@@ -1,0 +1,20 @@
+/*
+ *  SMM.pch
+ *  SoftwareMenu
+ *
+ *  Created by Thomas Cool on 11/12/09.
+ *  Copyright 2009 Thomas Cool. All rights reserved.
+ *
+ */
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <Backrow/Backrow.h>
+#import "AppleTV.h"
+//#import "SMM3.0/SMImageReturns.h"
+//#import "SMM3.0/SMSubclasses.h"
+//#import "SMM3.0/SMMPrefs.h"
+#import "SMM.h"
+#import "SMPrefs.h"
+
+#endif
