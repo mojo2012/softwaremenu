@@ -257,27 +257,27 @@
 	id obj;
 	while((obj = [enumerator nextObject]) != nil) 
 	{
-		NSLog(@"C.1");
-		NSString *thename = [obj valueForKey:@"name"];
-		if (thename == nil)
-			thename = [obj valueForKey:@"Name"];
-		NSString *displayName = [obj valueForKey:@"DisplayName"];
-		if (displayName == nil)
-			displayName = thename;
+        NSMutableDictionary *objm = [self formatDict:obj];
+        
+
+
+
 		
-		NSString *onlineVersion = [obj valueForKey:@"Version"];
-		NSString *frapPath= [NSString stringWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename,nil];
+		NSString *onlineVersion = [objm valueForKey:@"Version"];
+        
+		NSString *frapPath= [FRAP_PATH stringByAppendingPathComponent:[[objm objectForKey:@"Name"] stringByAppendingPathExtension:@"frappliance"]];//[NSString stringWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename,nil];
 		NSFileManager *manager = [NSFileManager defaultManager];
 		id item = [BRTextMenuItemLayer folderMenuItem];
 		NSString * current_version = nil;
 		NSString * installed_version = nil;
-        NSLog(@"C.2");
-		if(![thename isEqualToString:@"SoftwareMenu"])
+//        NSLog(@"C.2");
+
+		if(![[objm objectForKey:@"Name"] isEqualToString:@"SoftwareMenu"] && [SMGeneralMethods isWithinRangeForDict:objm])
 		{
 			if ([manager fileExistsAtPath:frapPath])
 			{
 				//NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
-				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[frapPath stringByAppendingString:@"Contents/Info.plist"]];
+				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[frapPath stringByAppendingPathComponent:@"Contents/Info.plist"]];
 				current_version =[NSString stringWithString:[info objectForKey:@"CFBundleVersion"]];
 				installed_version = [info objectForKey:@"CFBundleShortVersionString"];
 				if(installed_version == nil)
@@ -285,7 +285,7 @@
 				
 				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
 				{
-					//NSLog(@"nito: %@",obj);
+					NSLog(@"nito: %@",obj);
 					current_version = [info objectForKey:@"CFBundleShortVersionString"];
 					onlineVersion = [obj valueForKey:@"shortVersion"];
 					installed_version = [info objectForKey:@"CFBundleVersion"];
@@ -301,21 +301,17 @@
 				installed_version = @"nil";
 			}
 			
-			
 			//Adding option for Info
 			NSString *dev = [obj valueForKey:@"Developer"];
 			if(dev==nil)
 				dev = @"nil";
-			NSString *displayVersion = [obj valueForKey:@"displayVersion"];
-			if(displayVersion == nil)
-				displayVersion == [obj valueForKey:@"Version"];
 			
 			NSString *desc = [obj valueForKey:@"ShortDescription"];
 			if(desc == nil)
 				desc = @"nil";
+            
 			NSDate *date = [obj valueForKey:@"ReleaseDate"];
 			NSString *dateFormat = nil;
-			//NSLog(@"date: %@",date);
 			if(date == nil)
 			{
 				dateFormat = @"nil";
@@ -333,18 +329,20 @@
 				
 			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 								 [NSNumber numberWithInt:5],@"Type",
-								 thename,@"Name",
-								 displayName,@"DisplayName",
+								 [objm objectForKey:@"Name"],@"Name",
+								 [objm objectForKey:@"displayName"],@"DisplayName",
 								 onlineVersion,@"OnlineVersion",
 								 dev,@"Developer",
 								 updateText,@"UpdateText",
 								 [NSNumber numberWithBool:uptodates],@"UpToDate",
 								 desc,@"ShortDescription",
 								 dateFormat,@"ReleaseDate",
-								 displayVersion,@"DisplayVersion",
+								 [objm objectForKey:@"displayVersion"],@"DisplayVersion",
 								 installed_version,@"InstalledVersion",
+                                 objm,@"object",
 								 nil]];
-			[item setTitle:displayName];
+            NSLog(@"objm: %@",objm);
+			[item setTitle:[objm objectForKey:@"displayName"]];
 			[_items addObject: item];
 		}
         NSLog(@"C.3");
@@ -548,58 +546,80 @@
 			//NSLog(@"doing something");
 			NSString *thename = [[_options objectAtIndex:fp8] valueForKey:@"Name"];
 			if([thename isEqualToString:@"softwaremenu"]) {thename = @"SoftwareMenu";}
-				
-			NSEnumerator *enumerator = [loginItemDict objectEnumerator];
-			id obj;
-			while((obj = [enumerator nextObject]) != nil) 
-			{
-				if ([thename isEqualToString:[obj valueForKey:@"name"]])
-				{
-					NSString * theURL = [obj valueForKey:@"theURL"];
-					if (theURL == nil)
-					{
-						theURL=[obj valueForKey:@"URL"];
-					}
-					
-					NSString * theversion = [obj valueForKey:@"Version"];
-					NSString *thedescription = [obj valueForKey:@"theDesc"];
-					if(thedescription == nil)
-					{
-						thedescription = [obj valueForKey:@"Desc"];
-						if(thedescription == nil)
-						{
-							thedescription = [obj valueForKey:@"desc"];
-							if(thedescription == nil)
-							{
-								thedescription = @"No description added";
-							}
+            if ([[[_options objectAtIndex:fp8]allKeys]containsObject:@"object"]) {
+                NSDictionary *obj = [[_options objectAtIndex:fp8] objectForKey:@"object"];
+                NSLog(@"obj: %@",obj);
+                NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                       [obj objectForKey:@"Name"],@"name",
+                                                       [obj valueForKey:@"Version"],@"version",
+                                                       [obj valueForKey:@"displayName"],@"displayName",
+                                                       [obj valueForKey:@"shortVersion"],@"shortVersion", 
+                                                       [obj valueForKey:@"displayVersion"],@"displayVersion", 
+                                                       [obj objectForKey:@"description"],@"description",
+                                                       [obj objectForKey:@"license"],@"license",
+                                                       [obj objectForKey:@"URL"],@"url",
+                                                        nil];
+                                                       
+                id newController = [[SMInstallMenu alloc] initWithDictionary:obj];
+                //[newController setInformationDictionary:theInformation];
+                [[self stack] pushController: newController];
+
+            }
+            else {
+                NSEnumerator *enumerator = [loginItemDict objectEnumerator];
+                id obj;
+                while((obj = [enumerator nextObject]) != nil) 
+                {
+                    if ([thename isEqualToString:[obj valueForKey:@"name"]])
+                    {
+                        NSString * theURL = [obj valueForKey:@"theURL"];
+                        if (theURL == nil)
+                        {
+                            theURL=[obj valueForKey:@"URL"];
+                        }
+                        
+                        NSString * theversion = [obj valueForKey:@"Version"];
+                        NSString *thedescription = [obj valueForKey:@"theDesc"];
+                        if(thedescription == nil)
+                        {
+                            thedescription = [obj valueForKey:@"Desc"];
+                            if(thedescription == nil)
+                            {
+                                thedescription = [obj valueForKey:@"desc"];
+                                if(thedescription == nil)
+                                {
+                                    thedescription = @"No description added";
+                                }
+                            }
+                        }
+                        NSString *displayName = [obj valueForKey:@"DisplayName"];
+                        if (displayName == nil)
+                            displayName = thename;
+                        NSString *displayVersion = [obj valueForKey:@"displayVersion"];
+                        if (displayVersion == nil)
+                            displayVersion = theversion;
+                        
+                        NSString *thelicense = [obj valueForKey:@"thelicense"];
+                        if(thelicense == nil)
+                        {
+                            thelicense = [obj valueForKey:@"license"];
+                            if(thelicense == nil)
+                            {
+                                thelicense = @"No License added";
+                            }
+                        }
+                        NSString *shortVersion = @"empty";
+                        if([thename isEqualToString:@"nitoTV"])
+                            shortVersion = [obj valueForKey:@"shortVersion"];
+                        NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:thename,@"Name",theversion,@"Version",displayName,@"displayName",shortVersion,@"shortVersion", displayVersion,@"displayVersion", thedescription,@"description",thelicense,@"license",theURL,@"URL",nil];
+                        
+                        id newController = [[SMInstallMenu alloc] initWithDictionary:theInformation];
+                        //[newController setInformationDictionary:theInformation];
+                        [[self stack] pushController: newController];
+                        
+            }
+
 						}
-					}
-					NSString *displayName = [obj valueForKey:@"DisplayName"];
-					if (displayName == nil)
-						displayName = thename;
-					NSString *displayVersion = [obj valueForKey:@"displayVersion"];
-					if (displayVersion == nil)
-						displayVersion = theversion;
-					
-					NSString *thelicense = [obj valueForKey:@"thelicense"];
-					if(thelicense == nil)
-					{
-						thelicense = [obj valueForKey:@"license"];
-						if(thelicense == nil)
-						{
-							thelicense = @"No License added";
-						}
-					}
-					NSString *shortVersion = @"empty";
-					if([thename isEqualToString:@"nitoTV"])
-						shortVersion = [obj valueForKey:@"shortVersion"];
-					NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:thename,@"name",theversion,@"version",displayName,@"displayName",shortVersion,@"shortVersion", displayVersion,@"displayVersion", thedescription,@"description",thelicense,@"license",theURL,@"url",nil];
-										
-					id newController = [[SMInstallMenu alloc] initWithDictionary:theInformation];
-										//[newController setInformationDictionary:theInformation];
-					[[self stack] pushController: newController];
-			}
 		}
 	}
 }
@@ -647,7 +667,9 @@
 			[nitoDict setObject:[trustedSource valueForKey:@"developer"] forKey:@"Developer"];
 			[nitoDict setObject:[trustedSource valueForKey:@"ReleaseDate"] forKey:@"ReleaseDate"];
 			[nitoDict setObject:[trustedSource valueForKey:@"ImageURL"] forKey:@"ImageURL"];
-			//NSLog(@"imageURL: %@",[nitoDict valueForKey:@"ImageURL"]);
+            [nitoDict setObject:[trustedSource valueForKey:@"osMin"] forKey:@"osMin"];
+			[nitoDict setObject:[trustedSource valueForKey:@"osMax"] forKey:@"osMax"];
+            //NSLog(@"imageURL: %@",[nitoDict valueForKey:@"ImageURL"]);
 			[TrustedDict setObject:nitoDict forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];
 			
@@ -776,6 +798,87 @@
 }
 
 //	Data source methods:
-
+-(NSMutableDictionary *)formatDict:(NSDictionary*)dict
+{
+    NSMutableDictionary *objm = [dict mutableCopy];
+    NSArray *keys = [objm allKeys];
+    
+    //Checking Name
+    if (![keys containsObject:@"Name"] && [keys containsObject:@"name"])
+    {
+        [objm setObject:[objm objectForKey:@"name"] forKey:@"Name"];
+    }
+    else if(![keys containsObject:@"Name"] && ![keys containsObject:@"name"])
+    {
+        return nil;
+    }
+    
+    //Checking Version
+    if(![keys containsObject:@"Version"])
+    {
+        return nil;
+    }
+    
+    //Checking description
+    NSString *thedescription = [objm valueForKey:@"theDesc"];
+    if(thedescription == nil)
+    {
+        thedescription = [objm valueForKey:@"Desc"];
+        if(thedescription == nil)
+        {
+            thedescription = [objm valueForKey:@"desc"];
+            if(thedescription == nil)
+            {
+                thedescription = @"No description added";
+            }
+        }
+    }
+    [objm setObject:thedescription forKey:@"description"];
+    
+    //displayVersion
+    if (![keys containsObject:@"displayVersion"] && [keys containsObject:@"DisplayVersion"])
+        [objm setObject:[objm objectForKey:@"DisplayVersion"] forKey:@"displayVersion"];
+    else if (![keys containsObject:@"displayVersion"] && ![keys containsObject:@"DisplayVersion"])
+        [objm setObject:[objm objectForKey:@"Version"] forKey:@"DisplayVersion"];
+    
+    //displayName
+    if(![keys containsObject:@"displayName"])
+        [objm setObject:[objm objectForKey:@"Name"] forKey:@"displayName"];
+    
+    //license
+    NSString *thelicense = [objm valueForKey:@"thelicense"];
+    if(thelicense == nil)
+    {
+        thelicense = [objm valueForKey:@"license"];
+        if(thelicense == nil)
+        {
+            thelicense = @"No License added";
+        }
+    }
+    [objm setObject:thelicense forKey:@"license"];
+    
+    //URL
+    if(![keys containsObject:@"theURL"] && ![keys containsObject:@"URL"])
+    {
+        return nil;
+    }
+    else if(![keys containsObject:@"URL"])
+    {
+        [objm setObject:[objm objectForKey:@"theURL"] forKey:@"URL"];
+    }
+    
+    //osMin
+    if(![keys containsObject:@"osMin"])
+    {
+        [objm setObject:@"nil" forKey:@"osMin"];
+    }
+    //osMax
+    if(![keys containsObject:@"osMax"])
+    {
+        [objm setObject:@"nil" forKey:@"osMax"];
+    }
+    return objm;
+    
+}
 
 @end

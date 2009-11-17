@@ -207,7 +207,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	
 	NSString *urlstr;
 	//urlstr =  (NSString *)(CFPreferencesCopyAppValue((CFStringRef)@"urlstr", kCFPreferencesCurrentApplication));
-	urlstr=[_theInformation valueForKey:@"url"];
+	urlstr=[_theInformation valueForKey:@"URL"];
     if ( urlstr == nil )
 		urlstr = (NSString *)kDefaultURLString;
 	//[self disableScreenSaver];

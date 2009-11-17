@@ -24,10 +24,36 @@
 @end*/
 @implementation SMGeneralMethods
 static SMGeneralMethods *sharedInstance = nil;
++ (BOOL)isWithinRangeForDict:(NSDictionary *)dict
+{
+    BOOL greater =YES;
+    BOOL lesser  = NO;
+    if([[dict objectForKey:@"osMin"] isEqualToString:@"nil"])
+        greater = YES;
+    else
+        greater = [SMGeneralMethods OSGreaterThan:[dict objectForKey:@"osMin"]];
+    
+    if([[dict objectForKey:@"osMax"] isEqualToString:@"nil"])
+        lesser = YES;
+    else
+        lesser = [SMGeneralMethods OSLessThan:[dict objectForKey:@"osMax"]];
+    if(lesser && greater)
+        return YES;
+    return NO;
+}
 + (BOOL)isWithinRangeWithMin:(NSString *)osMin withMax:(NSString *)osMax
 {
+    NSLog(@"min %@, max %@, current %@",osMin,osMax,[SMPreferences appleTVVersion]);
     BOOL greater    = [SMGeneralMethods OSGreaterThan:osMin];
+    if(greater)
+    {
+        NSLog(@"greater than min");
+    }
     BOOL lower      = [SMGeneralMethods OSLessThan:osMax];
+    if(lower)
+    {
+        NSLog(@"lower than max");
+    }
     if (lower && greater)
         return YES;
     return NO;
@@ -40,6 +66,7 @@ static SMGeneralMethods *sharedInstance = nil;
 	} else if ( theResult == NSOrderedAscending ){
 		return YES;
 	} else if ( theResult == NSOrderedSame ) {
+
 		return YES;
 	}
 	return NO;
@@ -48,11 +75,14 @@ static SMGeneralMethods *sharedInstance = nil;
 {
     NSComparisonResult theResult = [value compare:[SMPreferences appleTVVersion] options:NSNumericSearch];
 	if ( theResult == NSOrderedDescending ){
+                NSLog(@"descending");
 		return YES;
 	} else if ( theResult == NSOrderedAscending ){
-		return YES;
-	} else if ( theResult == NSOrderedSame ) {
+                NSLog(@"ascending");
 		return NO;
+	} else if ( theResult == NSOrderedSame ) {
+                NSLog(@"same");
+		return YES;
 	}
 	return NO;
 }

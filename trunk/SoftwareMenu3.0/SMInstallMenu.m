@@ -114,6 +114,7 @@
 	self=[super init];
 	[_theInformation release];
 	_theInformation = [dict mutableCopy];
+    NSLog(@"theInformation: %@",_theInformation);
 	[_theInformation retain];
 	NSArray *layer_names = [NSArray arrayWithObjects:
 							@"Info",
@@ -185,10 +186,10 @@
 
 -(NSString *)bakVersion
 {
-	NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
+	NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"Name"]];
 	NSString *bakInfoPath = [bakPath stringByAppendingString:@"Contents/Info.plist"];
 	NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:bakInfoPath]];
-	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[_theInformation valueForKey:@"name"] isEqualToString:@"nitoTV"])
+	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[_theInformation valueForKey:@"Name"] isEqualToString:@"nitoTV"])
 	{
 		return [info objectForKey:@"CFBundleShortVersionString"];
 		
@@ -199,9 +200,9 @@
 }
 -(NSString *)installedVersion
 {
-	NSString *infoPath = [[NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]] stringByAppendingString:@"Contents/Info.plist"];
+	NSString *infoPath = [[NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"Name"]] stringByAppendingString:@"Contents/Info.plist"];
 	NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoPath]];
-	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[_theInformation valueForKey:@"name"] isEqualToString:@"nitoTV"])
+	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[_theInformation valueForKey:@"Name"] isEqualToString:@"nitoTV"])
 	{
 		return [info objectForKey:@"CFBundleShortVersionString"];
 		
@@ -212,7 +213,7 @@
 
 -(BOOL)frapExists
 {
-	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
+	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"Name"]];
 	if([_man fileExistsAtPath:frapPath]){return (YES);}
 	[_theInformation setObject:@"0.0.0 - not installed" forKey:@"installedVersion"];
 	return(NO);
@@ -220,7 +221,7 @@
 
 -(BOOL)bakExists
 {
-	NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"name"]];
+	NSString *bakPath = [NSString stringWithFormat:@"/Users/frontrow/Documents/Backups/%@.bak/",[_theInformation valueForKey:@"Name"]];
 	if([_man fileExistsAtPath:bakPath]){return (YES);}
 	[_theInformation setObject:@"0.0 - not Backed up" forKey:@"backupVersion"];
 	return(NO);
@@ -228,13 +229,13 @@
 
 -(BOOL)frapUpToDate
 {
-	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"name"]];
+	NSString *frapPath= [NSString stringWithFormat:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/%@.frappliance/",[_theInformation valueForKey:@"Name"]];
 	NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
 	NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfFile:infoPath];
-	if(![[_theInformation objectForKey:@"name"] isEqualToString:@"nitoTV"])
+	if(![[_theInformation objectForKey:@"Name"] isEqualToString:@"nitoTV"])
 	{
-		NSLog(@"installed: %@, online: %@",[infoDict valueForKey:@"CFBundleVersion"],[_theInformation valueForKey:@"version"],nil);
-		if([[infoDict valueForKey:@"CFBundleVersion"] compare:[_theInformation valueForKey:@"version"]]!=NSOrderedAscending){return (YES);}
+		NSLog(@"installed: %@, online: %@",[infoDict valueForKey:@"CFBundleVersion"],[_theInformation valueForKey:@"Version"],nil);
+		if([[infoDict valueForKey:@"CFBundleVersion"] compare:[_theInformation valueForKey:@"Version"]]!=NSOrderedAscending){return (YES);}
 	}
 	else
 	{
@@ -248,8 +249,8 @@
 	if([[_items objectAtIndex:row] dimmed])
 		return;
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
-	NSString *thename= [_theInformation valueForKey:@"name"];
-	NSString *theOnlineVersion = [_theInformation valueForKey:@"version"];
+	NSString *thename= [_theInformation valueForKey:@"Name"];
+	NSString *theOnlineVersion = [_theInformation valueForKey:@"Version"];
 	NSString *thebackvers = [_theInformation valueForKey:@"bakvers"];
 	NSString *thecurrentvers = [_theInformation valueForKey:@"currentvers"];
 	NSDictionary * selectedOption = [_options objectAtIndex:row];
@@ -261,16 +262,16 @@
 		case kSMInInfo:
 			misc=@"!";
 			infoController=[[SMInfo alloc] init];
-			[infoController setTheName:[_theInformation valueForKey:@"name"]];
+			[infoController setTheName:[_theInformation valueForKey:@"Name"]];
 			[infoController setDescriptionWithURL:[_theInformation valueForKey:@"description"]];
-			[infoController setTheImage:[BRImage imageWithPath:[SMGeneralMethods getImagePath:[_theInformation valueForKey:@"name"]]]];
+			[infoController setTheImage:[BRImage imageWithPath:[SMGeneralMethods getImagePath:[_theInformation valueForKey:@"Name"]]]];
 			[infoController setVersions:theOnlineVersion withBak:thebackvers withCurrent:thecurrentvers];
 			[[self stack] pushController:infoController];
 			break;
 		case kSMInLicense:
 			misc=@"!";
 			infoController=[[SMInfo alloc] init];
-			[infoController setTheName:[NSString stringWithFormat:@"License for %@",[_theInformation valueForKey:@"name"]]];
+			[infoController setTheName:[NSString stringWithFormat:@"License for %@",[_theInformation valueForKey:@"Name"]]];
 			[infoController setDescriptionWithURL:[_theInformation valueForKey:@"license"]];
 			//[infoController setTheImage:[BRImage imageWithPath:[SMGeneralMethods getImagePath:[selectedOption valueForKey:NAME_KEY]]]];
 			[infoController setTheImage:[[SMThemeInfo sharedTheme] licenseImage]];
@@ -285,7 +286,7 @@
 			[_theInformation setObject:update forKey:@"update"];
 			id downloadController = nil;
 			downloadController =[[SMDownloaderInstaller alloc] init];
-			[_theInformation setObject:[_theInformation valueForKey:@"url"] forKey:@"downloadtext"];
+			[_theInformation setObject:[_theInformation valueForKey:@"URL"] forKey:@"downloadtext"];
 			[downloadController setInformationDict:_theInformation];
 			[[self stack] pushController: downloadController];
 			break;
@@ -379,7 +380,7 @@
 				[item setDimmed:NO];
 				[item setRightJustifiedText:[self installedVersion]];
 			}
-			if([[_theInformation valueForKey:@"name"] isEqualToString:@"SoftwareMenu"])
+			if([[_theInformation valueForKey:@"Name"] isEqualToString:@"SoftwareMenu"])
 			{
 				[item setDimmed:YES];
 			}
@@ -429,14 +430,14 @@
         
     }
 	[helperTask setLaunchPath:helperPath];
-	if([man fileExistsAtPath:[@"/System/Library/Finder/Contents/Plugins/" stringByAppendingPathComponent:[[_theInformation valueForKey:@"name"] stringByAppendingPathExtension:@"frappliance"]]])
+	if([man fileExistsAtPath:[@"/System/Library/Finder/Contents/Plugins/" stringByAppendingPathComponent:[[_theInformation valueForKey:@"Name"] stringByAppendingPathExtension:@"frappliance"]]])
 	{
 		NSLog(@"update");
-		[helperTask setArguments:[NSArray arrayWithObjects:@"-update", _outputPath,[[_theInformation valueForKey:@"name"] stringByAppendingPathExtension:@"frappliance"], nil]];
+		[helperTask setArguments:[NSArray arrayWithObjects:@"-update", _outputPath,[[_theInformation valueForKey:@"Name"] stringByAppendingPathExtension:@"frappliance"], nil]];
 	}
 	else
 	{
-		[helperTask setArguments:[NSArray arrayWithObjects:@"-i", _outputPath,[[_theInformation valueForKey:@"name"] stringByAppendingPathExtension:@"frappliance"], nil]];
+		[helperTask setArguments:[NSArray arrayWithObjects:@"-i", _outputPath,[[_theInformation valueForKey:@"Name"] stringByAppendingPathExtension:@"frappliance"], nil]];
 	}
 		
 	[helperTask launch];

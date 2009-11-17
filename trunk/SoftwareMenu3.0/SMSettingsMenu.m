@@ -160,8 +160,8 @@
 						 [NSNumber numberWithInt:0],
 						 [NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:6],
-						 [NSNumber numberWithInt:7],
+						 [NSNumber numberWithInt:9],
+						 [NSNumber numberWithInt:10],
 						 nil];
 	//NSArray * settingNames = [SMGeneralMethods menuItemOptions];
 	//NSArray * settingDisplays = [SMGeneralMethods menuItemNames];
@@ -377,7 +377,7 @@
 										 valueForKey:@"CFBundleVersion"]];
 			break;
 		case kSMSetSMInfo:
-			[item setRightJustifiedText:[[[NSBundle bundleForClass:[self class]] infoDictionary] valueForKey:@"CFBundleVersion"]];
+			[item setRightJustifiedText:[[[NSBundle bundleForClass:[self class]] infoDictionary] valueForKey:@"CFBundleShortVersionString"]];
 			break;
 		case kSMSetToggle:
 			if([SMGeneralMethods boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightJustifiedText:@"Shown"];}

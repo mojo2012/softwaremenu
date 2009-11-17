@@ -43,6 +43,7 @@
 		DD68A0BB10A7A90300B2F52A /* BRMainMenuController-SMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A0B910A7A90300B2F52A /* BRMainMenuController-SMExtensions.m */; };
 		DD68A1C610A7C3F300B2F52A /* SMMainMenuMediaControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */; };
 		DD68A1C710A7C3F300B2F52A /* SMMainMenuMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */; };
+		DD691CB010B1D92A003463F2 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD691CAF10B1D92A003463F2 /* AppleTV.framework */; };
 		DD7D159C10A899860011B3D1 /* SMSettingsToggles.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7D159A10A899860011B3D1 /* SMSettingsToggles.h */; };
 		DD7D159D10A899860011B3D1 /* SMSettingsToggles.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D159B10A899860011B3D1 /* SMSettingsToggles.m */; };
 		DD7F3DAF10A0ABEF00C5E31C /* BackRow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F3DAE10A0ABEF00C5E31C /* BackRow.h */; };
@@ -1473,13 +1474,11 @@
 		DDEF340510A657F500ECD73A /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEF340310A657F500ECD73A /* Extensions.h */; };
 		DDEF340610A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
 		DDEF340710A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
-		DDEF349C10A6844000ECD73A /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349B10A6844000ECD73A /* AppleTV.framework */; };
 		DDEF349F10A6845A00ECD73A /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */; };
 		DDFD76D810AE2DA700990214 /* SMPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F4F5C10A0E39200C5E31C /* SMPrefs.m */; };
 		DDFD76D910AE2DAB00990214 /* SMPrefs.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F4F5B10A0E39200C5E31C /* SMPrefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD76DC10AE2DB300990214 /* SMImageReturns.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F558F10A346A800C5E31C /* SMImageReturns.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD76DD10AE2DB300990214 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F559010A346A800C5E31C /* SMImageReturns.m */; };
-		DDFD76E310AE2DD700990214 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349B10A6844000ECD73A /* AppleTV.framework */; };
 		DDFD76E410AE2DD700990214 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */; };
 		DDFD773A10AE32EF00990214 /* SMMixed.pch in Headers */ = {isa = PBXBuildFile; fileRef = DDFD773910AE32EF00990214 /* SMMixed.pch */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD773C10AE333500990214 /* SMMixed.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFD773B10AE333500990214 /* SMMixed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1491,7 +1490,6 @@
 		DDFD7D0110AE37EC00990214 /* SMImageReturns.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F558F10A346A800C5E31C /* SMImageReturns.h */; };
 		DDFD7D0210AE37EC00990214 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F559010A346A800C5E31C /* SMImageReturns.m */; };
 		DDFD7D0310AE37FC00990214 /* SMSubclasses.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F54C410A2FFE100C5E31C /* SMSubclasses.m */; };
-		DDFD7DC610AE3ED000990214 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349B10A6844000ECD73A /* AppleTV.framework */; };
 		DDFD7DC710AE3ED000990214 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD689F3E10A75D6800B2F52A /* BackRow.framework */; };
 		DDFD7E6D10AE45BF00990214 /* SMM.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFD7E6C10AE45BF00990214 /* SMM.m */; };
 		DDFD7E8F10AE470D00990214 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F559010A346A800C5E31C /* SMImageReturns.m */; };
@@ -1649,6 +1647,7 @@
 		DD68A0B910A7A90300B2F52A /* BRMainMenuController-SMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BRMainMenuController-SMExtensions.m"; sourceTree = "<group>"; };
 		DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainMenuMediaControl.h; sourceTree = "<group>"; };
 		DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainMenuMediaControl.m; sourceTree = "<group>"; };
+		DD691CAF10B1D92A003463F2 /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = "/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/AppleTV.framework"; sourceTree = "<absolute>"; };
 		DD7D159A10A899860011B3D1 /* SMSettingsToggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingsToggles.h; sourceTree = "<group>"; };
 		DD7D159B10A899860011B3D1 /* SMSettingsToggles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingsToggles.m; sourceTree = "<group>"; };
 		DD7F3DAE10A0ABEF00C5E31C /* BackRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRow.h; sourceTree = "<group>"; };
@@ -3052,7 +3051,6 @@
 		DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loadUpdatesDownloadClass.m; sourceTree = "<group>"; };
 		DDEF340310A657F500ECD73A /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
 		DDEF340410A657F500ECD73A /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
-		DDEF349B10A6844000ECD73A /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = "/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/AppleTV.framework"; sourceTree = "<absolute>"; };
 		DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework"; sourceTree = "<absolute>"; };
 		DDFD75CA10AE182C00990214 /* SMM.frss-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMM.frss-Info.plist"; sourceTree = "<group>"; };
 		DDFD760B10AE1C1A00990214 /* SMMixed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMMixed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3166,10 +3164,10 @@
 			files = (
 				E20791A70F85C714005327E7 /* Foundation.framework in Frameworks */,
 				DDE85FEA10A39D75002D2FB8 /* QuartzCore.framework in Frameworks */,
-				DDEF349C10A6844000ECD73A /* AppleTV.framework in Frameworks */,
 				DDEF349F10A6845A00ECD73A /* iPhotoAccess.framework in Frameworks */,
 				DD689F3F10A75D6800B2F52A /* BackRow.framework in Frameworks */,
 				DDFD809D10AF613900990214 /* binutils.zip in Frameworks */,
+				DD691CB010B1D92A003463F2 /* AppleTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3184,7 +3182,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFD76E310AE2DD700990214 /* AppleTV.framework in Frameworks */,
 				DDFD76E410AE2DD700990214 /* iPhotoAccess.framework in Frameworks */,
 				DDFD7AF810AE33DB00990214 /* BackRow.framework in Frameworks */,
 			);
@@ -3194,7 +3191,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFD7DC610AE3ED000990214 /* AppleTV.framework in Frameworks */,
 				DDFD7DC710AE3ED000990214 /* BackRow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3250,9 +3246,9 @@
 			children = (
 				E20791A60F85C714005327E7 /* Foundation.framework */,
 				DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */,
-				DDEF349B10A6844000ECD73A /* AppleTV.framework */,
 				DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */,
 				DD689F3E10A75D6800B2F52A /* BackRow.framework */,
+				DD691CAF10B1D92A003463F2 /* AppleTV.framework */,
 			);
 			name = "Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -6917,6 +6913,7 @@
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)/../../TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+					"\"$(SRCROOT)/../../Desktop/TV Frameworks/3.0 FrameWorks\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../CustomControllerExample\"";
@@ -7014,6 +7011,7 @@
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)/../../TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+					"\"$(SRCROOT)/../../Desktop/TV Frameworks/3.0 FrameWorks\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../Projects/nitoTV/trunk/resources/take_two\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
