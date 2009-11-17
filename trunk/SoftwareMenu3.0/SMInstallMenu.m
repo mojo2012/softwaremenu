@@ -114,7 +114,7 @@
 	self=[super init];
 	[_theInformation release];
 	_theInformation = [dict mutableCopy];
-    NSLog(@"theInformation: %@",_theInformation);
+    //NSLog(@"theInformation: %@",_theInformation);
 	[_theInformation retain];
 	NSArray *layer_names = [NSArray arrayWithObjects:
 							@"Info",

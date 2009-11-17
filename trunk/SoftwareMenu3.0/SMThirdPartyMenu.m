@@ -160,7 +160,7 @@
 	[item3 setTitle:@"Restart Finder"];
 	[_items addObject: item3];
 	
-	NSLog(@"1");
+	//NSLog(@"1");
 	int sep1 = [_items count];
 
 	
@@ -341,15 +341,15 @@
 								 installed_version,@"InstalledVersion",
                                  objm,@"object",
 								 nil]];
-            NSLog(@"objm: %@",objm);
+           // NSLog(@"objm: %@",objm);
 			[item setTitle:[objm objectForKey:@"displayName"]];
 			[_items addObject: item];
 		}
-        NSLog(@"C.3");
+       // NSLog(@"C.3");
 	}
 	
 	int sep3 = [_items count];
-	NSLog(@"D");
+	//NSLog(@"D");
 	///////////////////UNTRUSTED//////////////////////
 	NSDictionary *loginItemDict2 = [NSDictionary dictionaryWithContentsOfFile:[NSString  stringWithFormat:@"/Users/frontrow/Library/Application Support/SoftwareMenu/Info3.plist"]];
 	feedCounts=[[loginItemDict2 allKeys] count];
@@ -364,11 +364,11 @@
 		[_locationDictss2 addObject:currentItems];
 	}
 	
-	NSLog(@"D.1");
+	//NSLog(@"D.1");
 	//NSSortDescriptor *nameDescriptors2 = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)] autorelease];
 	NSArray *ArraySortDescriptor2 = [NSArray arrayWithObjects:nameDescriptors, nil];
 	 NSArray *sortedArrays2 = [_locationDictss2 sortedArrayUsingDescriptors:ArraySortDescriptor2];	
-	NSLog(@"E");
+	//NSLog(@"E");
 	NSEnumerator *enumerator2 = [sortedArrays2 objectEnumerator];
 	//id obj2;
 	while((obj = [enumerator2 nextObject]) != nil) 
@@ -548,7 +548,7 @@
 			if([thename isEqualToString:@"softwaremenu"]) {thename = @"SoftwareMenu";}
             if ([[[_options objectAtIndex:fp8]allKeys]containsObject:@"object"]) {
                 NSDictionary *obj = [[_options objectAtIndex:fp8] objectForKey:@"object"];
-                NSLog(@"obj: %@",obj);
+                //NSLog(@"obj: %@",obj);
                 NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                        [obj objectForKey:@"Name"],@"name",
                                                        [obj valueForKey:@"Version"],@"version",

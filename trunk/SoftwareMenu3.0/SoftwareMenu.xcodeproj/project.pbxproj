@@ -44,6 +44,7 @@
 		DD68A1C610A7C3F300B2F52A /* SMMainMenuMediaControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */; };
 		DD68A1C710A7C3F300B2F52A /* SMMainMenuMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */; };
 		DD691CB010B1D92A003463F2 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD691CAF10B1D92A003463F2 /* AppleTV.framework */; };
+		DD691D5B10B25348003463F2 /* makeinstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = DD691D5A10B25348003463F2 /* makeinstall.sh */; };
 		DD7D159C10A899860011B3D1 /* SMSettingsToggles.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7D159A10A899860011B3D1 /* SMSettingsToggles.h */; };
 		DD7D159D10A899860011B3D1 /* SMSettingsToggles.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D159B10A899860011B3D1 /* SMSettingsToggles.m */; };
 		DD7F3DAF10A0ABEF00C5E31C /* BackRow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F3DAE10A0ABEF00C5E31C /* BackRow.h */; };
@@ -1648,6 +1649,7 @@
 		DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainMenuMediaControl.h; sourceTree = "<group>"; };
 		DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainMenuMediaControl.m; sourceTree = "<group>"; };
 		DD691CAF10B1D92A003463F2 /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = "/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/AppleTV.framework"; sourceTree = "<absolute>"; };
+		DD691D5A10B25348003463F2 /* makeinstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = makeinstall.sh; sourceTree = "<group>"; };
 		DD7D159A10A899860011B3D1 /* SMSettingsToggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingsToggles.h; sourceTree = "<group>"; };
 		DD7D159B10A899860011B3D1 /* SMSettingsToggles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingsToggles.m; sourceTree = "<group>"; };
 		DD7F3DAE10A0ABEF00C5E31C /* BackRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRow.h; sourceTree = "<group>"; };
@@ -3285,6 +3287,7 @@
 				E2F64A3F0F9E5714005CF172 /* SM-Info.plist */,
 				DDFD815310B04ED300990214 /* binutils.tgz */,
 				E29708F30FA9105D009667AE /* InfoPlist.strings */,
+				DD691D5A10B25348003463F2 /* makeinstall.sh */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -6616,6 +6619,7 @@
 				E2F6533B0F9FF15B005CF172 /* PhotosAbout.txt in Resources */,
 				E240D6150FA4EBC300185AC7 /* dropbear.tgz in Resources */,
 				DD7F4E8610A0BB3C00C5E31C /* untv.sh in Resources */,
+				DD691D5B10B25348003463F2 /* makeinstall.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

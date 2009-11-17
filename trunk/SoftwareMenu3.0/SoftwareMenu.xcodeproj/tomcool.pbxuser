@@ -543,9 +543,9 @@
 	};
 	3802E5830BD7E65C00B6DA5A /* SoftwareMenuBase.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 6370}}";
-			sepNavSelRange = "{6941, 0}";
-			sepNavVisRange = "{6161, 1495}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 6448}}";
+			sepNavSelRange = "{320, 0}";
+			sepNavVisRange = "{140, 896}";
 			sepNavWindowFrame = "{{15, 4}, {1397, 869}}";
 		};
 	};
@@ -1450,16 +1450,16 @@
 	};
 	DD689B5F10A75A9A00B2F52A /* SMDownloaderSTD.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 1131}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 1144}}";
 			sepNavSelRange = "{193, 0}";
-			sepNavVisRange = "{0, 941}";
+			sepNavVisRange = "{0, 1012}";
 		};
 	};
 	DD689B6010A75A9A00B2F52A /* SMDownloaderSTD.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 8853}}";
-			sepNavSelRange = "{252, 0}";
-			sepNavVisRange = "{0, 1048}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 8970}}";
+			sepNavSelRange = "{6583, 0}";
+			sepNavVisRange = "{6007, 1082}";
 		};
 	};
 	DD689B6410A75AA400B2F52A /* SMGridController.h */ = {
@@ -4019,9 +4019,9 @@
 	};
 	DD7F467610A0AF6900C5E31C /* BRSeriesMediaMenuController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1003, 767}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 728}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1201}";
+			sepNavVisRange = "{226, 1171}";
 		};
 	};
 	DD7F467810A0AF6900C5E31C /* BRSeriesMostRecentNoStoreProvider.h */ = {
@@ -4072,6 +4072,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {670, 484}}";
 			sepNavSelRange = "{281, 34}";
 			sepNavVisRange = "{0, 800}";
+		};
+	};
+	DD7F469A10A0AF6900C5E31C /* BRTabControl.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 832}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{267, 1082}";
 		};
 	};
 	DD7F46A410A0AF6900C5E31C /* BRTextEntryController.h */ = {
@@ -5358,9 +5365,9 @@
 	};
 	DD7F54C410A2FFE100C5E31C /* SMSubclasses.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1175, 1664}}";
-			sepNavSelRange = "{1024, 0}";
-			sepNavVisRange = "{540, 923}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 1651}}";
+			sepNavSelRange = "{1106, 31}";
+			sepNavVisRange = "{348, 1445}";
 			sepNavWindowFrame = "{{15, 4}, {1397, 869}}";
 		};
 	};
@@ -6598,9 +6605,9 @@
 	};
 	DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 2977}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 2951}}";
 			sepNavSelRange = "{353, 0}";
-			sepNavVisRange = "{4657, 1985}";
+			sepNavVisRange = "{0, 835}";
 			sepNavWindowFrame = "{{15, 4}, {1397, 869}}";
 		};
 	};
@@ -7270,7 +7277,7 @@
 	};
 	DDFD7F4410AE854200990214 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 484}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 455}}";
 			sepNavSelRange = "{173, 0}";
 			sepNavVisRange = "{0, 225}";
 			sepNavWindowFrame = "{{15, 4}, {1397, 869}}";
@@ -7759,7 +7766,7 @@
 		fRef = E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */;
 		name = "SMThirdPartyMenu.m: 279";
 		rLen = 1;
-		rLoc = 9487;
+		rLoc = 9522;
 		rType = 0;
 		vrLen = 1756;
 		vrLoc = 8764;
@@ -7789,7 +7796,7 @@
 		fRef = E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */;
 		name = "SMInstallMenu.m: 428";
 		rLen = 0;
-		rLoc = 13822;
+		rLoc = 13874;
 		rType = 0;
 		vrLen = 1474;
 		vrLoc = 13192;
@@ -7853,7 +7860,7 @@
 		fRef = E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */;
 		name = "SMGeneralMethods.m: 29";
 		rLen = 0;
-		rLoc = 778;
+		rLoc = 1374;
 		rType = 0;
 		vrLen = 1802;
 		vrLoc = 593;
@@ -7893,7 +7900,7 @@
 		fRef = 3802E5830BD7E65C00B6DA5A /* SoftwareMenuBase.m */;
 		name = "SoftwareMenuBase.m: 173";
 		rLen = 0;
-		rLoc = 6941;
+		rLoc = 6945;
 		rType = 0;
 		vrLen = 1495;
 		vrLoc = 6161;
@@ -7990,15 +7997,15 @@
 	};
 	E204063D0F5A64B2008F2DF7 /* SMGeneralMethods.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1175, 7020}}";
-			sepNavSelRange = "{9325, 0}";
-			sepNavVisRange = "{6745, 923}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 7748}}";
+			sepNavSelRange = "{1206, 0}";
+			sepNavVisRange = "{443, 1111}";
 			sepNavWindowFrame = "{{15, 4}, {1397, 869}}";
 		};
 	};
 	E20C16630EA8278800739E75 /* install.sh */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 440}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 478}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 309}";
 		};
@@ -8012,9 +8019,9 @@
 	};
 	E20C16F20EA90EA500739E75 /* SMThirdPartyMenu.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1363, 9893}}";
-			sepNavSelRange = "{9487, 1}";
-			sepNavVisRange = "{8764, 1756}";
+			sepNavIntBoundsRect = "{{0, 0}, {1755, 11596}}";
+			sepNavSelRange = "{2160, 0}";
+			sepNavVisRange = "{1709, 1726}";
 		};
 	};
 	E20C1B830EA92CED00739E75 /* SMBuiltInMenu.h */ = {
@@ -8186,16 +8193,16 @@
 	};
 	E291BB0D0E9D568C00190C96 /* SMInstallMenu.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 650}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 741}}";
 			sepNavSelRange = "{139, 0}";
-			sepNavVisRange = "{0, 643}";
+			sepNavVisRange = "{361, 566}";
 		};
 	};
 	E291BB0E0E9D568C00190C96 /* SMInstallMenu.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1363, 6292}}";
-			sepNavSelRange = "{13822, 0}";
-			sepNavVisRange = "{13192, 1474}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 6110}}";
+			sepNavSelRange = "{3269, 0}";
+			sepNavVisRange = "{2545, 1035}";
 		};
 	};
 	E2954F3A0F622A5000E3A1C2 /* French */ = {
@@ -8250,16 +8257,16 @@
 	};
 	E2A23A2E0EBFDAE000D606C2 /* SMSettingsMenu.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 681}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1098, 455}}";
 			sepNavSelRange = "{143, 0}";
 			sepNavVisRange = "{0, 429}";
 		};
 	};
 	E2A23A2F0EBFDAE000D606C2 /* SMSettingsMenu.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1098, 7189}}";
-			sepNavSelRange = "{1370, 0}";
-			sepNavVisRange = "{953, 1355}";
+			sepNavIntBoundsRect = "{{0, 0}, {1678, 7293}}";
+			sepNavSelRange = "{13962, 0}";
+			sepNavVisRange = "{13414, 1845}";
 		};
 	};
 	E2A240D30EC0ACC800D606C2 /* SoftwareManual.h */ = {

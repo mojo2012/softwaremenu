@@ -160,11 +160,11 @@ static BOOL checkedSS = NO;
 {    
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"isLocal == YES"];
     BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"a" predicate:pred mediaTypes:[NSSet setWithObject:[BRMediaType photo]]];    
-    NSLog(@"on blah");
+    //NSLog(@"on blah");
     
     if([SMGeneralMethods boolForKey:MAINMENU_SHOW_COLLECTIONS_BOOL])
     {
-        NSLog(@"Adding Photos");
+        //NSLog(@"Adding Photos");
         id a = [SMImageReturns photoCollectionForPath:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
         [store addObject:a];
     }
@@ -175,7 +175,7 @@ static BOOL checkedSS = NO;
     BRImageProxyProvider *iPP = [BRImageProxyProvider providerWithAssets:[NSArray arrayWithObject:iP]];
     [store addObject:iPP];
     BRPhotoDataStoreProvider *provider=[BRPhotoDataStoreProvider providerWithDataStore:store controlFactory:[SMPhotoControlFactory mainMenuFactory]];
-    NSLog(@"returning");
+  //  NSLog(@"returning");
     return [NSArray arrayWithObject:provider];
 }
 - (long)shelfColumnCount
@@ -194,7 +194,7 @@ static BOOL checkedSS = NO;
 {
     if(!checkedSS)
     {
-        NSLog(@"checking");
+        //NSLog(@"checking");
         [SMGeneralMethods helperFixPerm];
         [SMGeneralMethods checkScreensaver];
         checkedSS = YES;
@@ -408,7 +408,7 @@ static BOOL checkedSS = NO;
 		else
 		{
 			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
-			NSLog(@"launchPath: %@",launchPath);
+			//NSLog(@"launchPath: %@",launchPath);
 			[NSTask launchedTaskWithLaunchPath:@"/bin/bash/" arguments:[NSArray arrayWithObject:launchPath]];
 			return nil;
 		}
