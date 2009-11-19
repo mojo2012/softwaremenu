@@ -158,9 +158,9 @@
 	
 	
 }
--(void)initCustom
+-(id)initCustom
 {
-	
+	return self;
 }
 
 /*- (void)controlWillDeactivate;

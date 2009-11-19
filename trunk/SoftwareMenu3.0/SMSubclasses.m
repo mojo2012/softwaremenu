@@ -14,30 +14,33 @@
 
 
 @implementation SMPhotoBrowserController
-//This is what happens normally when you select an image
-/*-(void)_handleSelection:(id)arg1
-{
- //Example of how to get image information
-    NSLog(@"arg1: %@",arg1);
-    NSLog(@"arg1 provider: %@",[arg1 imageProxy]);
-    NSLog(@"arg1 provider object: %@",[[arg1 imageProxy] object]);
-    NSLog(@"arg1 provider object fullURL: %@",[[[arg1 imageProxy] object] fullURL]);
-    //[self _dumpFocusTree];
-}*/
-//What happens when you press slideshow button
+
 - (void)_handleSlideshowSelection:(id)arg1
 {
-    NSMutableDictionary *dict = [[BRSettingsFacade sharedInstance] slideshowPlaybackOptions];
-    id someClass = NSClassFromString(@"BRMediaPlayerController");
+//    NSMutableDictionary *dict = [[[BRSettingsFacade singleton] slideshowPlaybackOptions] mutableCopy];
+//    BOOL b = [SMPreferences playsMusicInSlideShow];
+//    if(b)
+//    {
+//        NSLog(@"play music");
+//    }
+   // [dict setObject:@"YES" forKey:@"PlayMusic"];
+    
+    //id someClass = NSClassFromString(@"BRMediaPlayerController");
     //int b;
-    id player = [[BRPhotoPlayer alloc ]init ];
+   // id player = [[BRPhotoPlayer alloc ]init ];
     
-    [player setPlayerSpecificOptions:dict];
+    //[player setPlayerSpecificOptions:dict];
+   // NSLog(@"optionsDict: %@",dict);
+    //[player setMediaAtIndex:0 inCollection:[SMImageReturns photoCollectionForPath:[SMPreferences photoFolderPath]] error:nil];
     
-    [player setMediaAtIndex:0 inCollection:[SMImageReturns photoCollectionForPath:[SMPreferences photoFolderPath]] error:nil];
-    
-    id controller_two = [someClass controllerForPlayer:player];
-    [[self stack] pushController:controller_two];
+   // id controller_two = [someClass controllerForPlayer:player];
+    //BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
+    //SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:[SMImageReturns dataStoreForPath:[SMPreferences photoFolderPath]] controlFactory:controlFactory];
+    id controller_three = [BRFullScreenPhotoController fullScreenPhotoControllerForProvider:_provider startIndex:0];
+    [[self stack] pushController:controller_three];
+    [controller_three _startSlideshow];
+    //[[BRMediaPlayerManager singleton] presentMediaAssetAtIndex:0 inCollection:[SMImageReturns photoCollectionForPath:[SMPreferences photoFolderPath]] options:nil];
+    //[[BRFullScreenPhotoController fullScreenPhotoControllerForProvider: startIndex:0] ]
 }
 
 //Nothing Really
@@ -48,6 +51,10 @@
 @end
 @implementation SMPhotoCollectionProvider
 //Adding something to return a collection
+-(BOOL)canHaveZeroData
+{
+    return NO;
+}
 -(id)collection
 {
     BRPhotoMediaCollection *collection = [BRPhotoMediaCollection collectionWithCollectionInfo:[NSDictionary dictionary]];
@@ -58,14 +65,6 @@
 }
 @end
 @implementation SMPhotoMediaCollection
-//-(void)setMediaAssets:(id)arg1
-//{
-//    [_mediaAssets release];
-//    [super setMediaAssets:arg1];
-//    _mediaAssets=arg1;
-//    [_mediaAssets retain];
-//    
-//}
 -(id)imageProxy
 {
     return [BRPhotoImageProxy imageProxyWithAsset:[self keyAsset]];  
@@ -107,11 +106,14 @@
 {
     return [[SMPhotoControlFactory alloc] initForMainMenu:YES];
 }
+//Returns the control shown on main menu
 -(id)controlForData:(id)arg1 currentControl:(id)arg2 requestedBy:(id)arg3
 {
     id returnObj;
+    //can have different objects and return the proper one
     if([arg1 isKindOfClass:[SMPhotoMediaCollection class]])
     {
+        //return a cycler control with images from the datastore
         BRDataStore *store = [SMImageReturns dataStoreForAssets:[arg1 mediaAssets]];
         BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory mainMenuFactory];
         SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];
@@ -123,10 +125,12 @@
     }
     else if([arg1 isKindOfClass:[BRImageProxyProvider class]])
     {
+        //return a simple image
         returnObj = [[BRAsyncImageControl alloc] init];
         [returnObj setDefaultImage:[[[arg1 dataAtIndex:0]asset] coverArt]];
         [returnObj setAcceptsFocus:NO];
     }
+    //returning nothing is also acceptable
     return returnObj;
 }
 @end

@@ -27,7 +27,8 @@ typedef enum
         kSMSSSShuffleMusic = 10,
         kSMSSSPAZ = 11,
         kSMSSSShufflePhotos=12,
-        kSMSSSRepeat = 13
+        kSMSSSRepeat = 13,
+        kSMSSSUSEA=14,
 	}kSMSSSMenu;
 @interface SMPhotosSettingsMenu : SMMediaMenuController {
 	NSMutableArray *	settingNames;

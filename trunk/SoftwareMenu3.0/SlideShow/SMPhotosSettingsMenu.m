@@ -299,12 +299,12 @@
             break;
         case kSMSSSPlayMusic:
             randomV=NO;
-            if([[BRSettingsFacade singleton] slideshowPlayMusic])
+            if([SMPreferences playsMusicInSlideShow])
             {
-                [[BRSettingsFacade singleton] setSlideshowPlayMusic:NO];
+                [SMPreferences setPlaysMusicInSlideShow:NO];
             }
             else {
-                [[BRSettingsFacade singleton] setSlideshowPlayMusic:YES];
+                [SMPreferences setPlaysMusicInSlideShow:YES];
             }
             break;
             
@@ -344,16 +344,7 @@
 	}
 	[[self list] reload];
 }
-- (void) textDidChange: (id) sender
-{
-	//Do Nothing Now
-}
-- (void) textDidEndEditing: (id) sender
-{
-	[[self stack] popController];
-	[SMPreferences setScreensaverSpinFrequency:[[sender stringValue] intValue]];
-	[[self list] reload];
-}
+
 - (id)itemForRow:(long)row					
 { 
 	//NSLog(@"itemForRow");
@@ -406,7 +397,7 @@
             break;
         case kSMSSSPlayMusic:
             i=0;
-            j=[[BRSettingsFacade singleton] slideshowPlayMusic];
+            j=[SMPreferences playsMusicInSlideShow];
             if (!j){[item setRightJustifiedText:@"(NO)"];}
             else  {[item setRightJustifiedText:@"(YES)"];}
             break;

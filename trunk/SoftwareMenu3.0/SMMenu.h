@@ -79,6 +79,7 @@
 /*
  *  Importing SubMenus For Photos
  */
+#import "SMScreensaverSettingsMenu.h"
 #import "SMPhotosSettingsMenu.h"
 #import "SMPhotosTransitionPreferences.h"
 

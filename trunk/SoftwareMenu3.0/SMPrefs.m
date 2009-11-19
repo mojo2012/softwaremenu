@@ -91,9 +91,9 @@
 }
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey
 {
-	//CFPreferencesSetAppValue((CFStringRef)theKey, (CFStringRef)inputString, myDomain);
+	CFPreferencesSetAppValue((CFStringRef)theKey, (CFStringRef)inputString, myDomain);
 	CFPreferencesAppSynchronize(myDomain);
-	CFRelease(inputString);
+	//CFRelease(inputString);
 }
 
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey
@@ -145,9 +145,14 @@
 {
     return [SMPreferences boolForKey:MAINMENU_SHOW_COLLECTIONS_BOOL];
 }
-+(NSArray *)photoFavorites
++(NSMutableArray *)photoFavorites
 {
-    return [SMPreferences arrayForKey:PHOTO_FAVORITES];
+    NSArray *array = [SMPreferences arrayForKey:PHOTO_FAVORITES];
+    if (array==nil)
+    {
+        array = [NSArray arrayWithObject:nil];
+    }
+    return [array mutableCopy];
 }
 +(void)setPhotoFavorites:(NSArray *)favorites
 {
@@ -164,6 +169,14 @@
 +(NSString *)ImagesPath
 {
     return [IMAGES_FOLDER stringByExpandingTildeInPath];
+}
++(void)setPlaysMusicInSlideShow:(BOOL)arg
+{
+    [SMPreferences setBool:arg forKey:SLIDESHOW_MUSIC_PLAY];
+}
++(BOOL)playsMusicInSlideShow
+{
+    return [SMPreferences boolForKey:SLIDESHOW_MUSIC_PLAY];
 }
 +(NSString *)trustedPlistURL
 {
@@ -199,7 +212,6 @@
     {
         a=60;//[[ATVSettingsFacade singleton]screenSaverPhotoSpinFrequency]
     }
-    NSLog(@"spin freq: %i",a);
     return a;
 }
 +(void)setScreensaverSpinFrequency:(int)freq
@@ -208,10 +220,75 @@
 }
 +(NSString *)slideshowType
 {
-    NSArray *array = [NSArray arrayWithObjects:SCREEN_SAVER_FLOATING,SCREEN_SAVER_SLIDESHOW,SCREEN_SAVER_PARADE,nil];
+    //NSArray *array = [NSArray arrayWithObjects:SCREEN_SAVER_FLOATING,SCREEN_SAVER_SLIDESHOW,SCREEN_SAVER_PARADE,nil];
     NSString *a = [SMPreferences stringForKey:SCREEN_SAVER_TYPE];
     if(a==nil)
         a=SCREEN_SAVER_FLOATING;
     return [a autorelease];
+}
++(NSString *)screensaverFolder
+{
+    NSString *folder = [SMPreferences stringForKey:SCREEN_SAVER_FOLDER];
+    if (folder == nil) 
+        folder = DEFAULT_IMAGES_PATH;
+    return folder;
+}
++(void)setScreensaverFolder:(NSString *)screensaverFolder
+{
+    [SMPreferences setString:screensaverFolder forKey:SCREEN_SAVER_FOLDER];
+}
++(long)screensaverSecondsPerSlide
+{
+    int a = [SMPreferences integerForKey:SCREEN_SAVER_SECONDS_PER_S];
+    if(a==nil || a==0)
+        a=60;
+    return a;
+}
++(void)setScreensaverSecondsPerSlide:(int)arg
+{
+    [SMPreferences setInteger:arg forKey:SCREEN_SAVER_SECONDS_PER_S];
+}
++(BOOL)screensaverPanAndZoom
+{
+    return [SMPreferences boolForKey:SCREEN_SAVER_PAN_AND_ZOOM];
+}
++(void)setScreensaverPanAndZoom:(BOOL)arg
+{
+    [SMPreferences setBool:arg forKey:SCREEN_SAVER_PAN_AND_ZOOM];
+}
++(BOOL)screensaverShufflePhotos
+{
+    return [SMPreferences boolForKey:SCREEN_SAVER_PHOTOS_SHUFFLE];
+}
++(void)setScreensaverShufflePhotos:(BOOL)arg
+{
+    [SMPreferences setBool:arg forKey:SCREEN_SAVER_PHOTOS_SHUFFLE];
+}
++(BOOL)screensaverRepeat
+{
+    return [SMPreferences boolForKey:SCREEN_SAVER_REPEAT];
+}
++(void)setScreensaverRepeat:(BOOL)arg
+{
+    [SMPreferences setBool:arg forKey:SCREEN_SAVER_REPEAT];
+}
++(NSString *)screensaverSelectedTransitionName
+{
+    NSString * a= [SMPreferences stringForKey:SCREEN_SAVER_TRANSITION];
+    if (a==nil) 
+        a=@"Dissolve";
+    return a;
+}
++(void)setScreensaverSelectedTransitionName:(NSString *)arg
+{
+    [SMPreferences stringForKey:SCREEN_SAVER_TRANSITION];
+}
++(BOOL)screensaverUseAppleProvider
+{
+    return [SMPreferences boolForKey:SCREEN_SAVER_USE_APPLE];
+}
++(void)setScreensaverUseAppleProvider:(BOOL)arg
+{
+    [SMPreferences setBool:arg forKey:SCREEN_SAVER_USE_APPLE];
 }
 @end

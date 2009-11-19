@@ -62,6 +62,9 @@
     BRControl *control = nil;
     NSLog([SMMPrefs slideshowType]);
     NSString *a =[SMMPrefs slideshowType];
+    NSLog(@"provider collection: %@",[[[ATVSettingsFacade singleton] providerForScreenSaver]collection]);
+    NSLog(@"provider data: %@",[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection] mediaAssets]);
+    NSLog(@"provider data: %@",[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection]imageProxy]);
     if ([a isEqualToString:@"Floating" ]) {
         control = _control;
     }
@@ -70,14 +73,38 @@
         BRPhotoPlayer *player = [[BRPhotoPlayer alloc] init];
         [player setPlayerSpecificOptions:[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions]];
         //NSString *a;
-        [player setMediaAtIndex:0 inCollection:[SMImageReturns photoCollectionForPath:[SMMPrefs photoFolderPath]] error:nil];
+        
+        id collection;
+        if ([SMPreferences screensaverUseAppleProvider]) {
+            collection = [[[ATVSettingsFacade singleton] providerForScreenSaver] collection];
+            id c =[BRFullScreenPhotoController fullScreenPhotoControllerForProvider:[[ATVSettingsFacade singleton] providerForScreenSaver] startIndex:0];
+            [c _startSlideshow];
+            return c;
+
+        }
+        else {
+            collection = [SMImageReturns photoCollectionForPath:[SMMPrefs photoFolderPath]];
+        }
+        [player setMediaAtIndex:0 inCollection:collection error:nil];
         control =[BRMediaPlayerController controllerForPlayer:player];
+
         
     }
     else 
     {
         control = [[BRMediaParadeControl alloc] init];
-        [control setImageProxies:[SMImageReturns imageProxiesForPath:[SMMPrefs photoFolderPath]]];
+        id proxies;
+        if ([SMPreferences screensaverUseAppleProvider]) {
+            //NSLog(@"use SS");
+            proxies = [NSArray arrayWithObject:[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection]imageProxy]];
+            //NSLog(@"proxies");
+        }
+        else{
+            //NSLog(@"use Old");
+            proxies = [SMImageReturns imageProxiesForPath:[SMMPrefs photoFolderPath]];
+        }
+        NSLog(@"proxies: %@",proxies);
+        [control setImageProxies:proxies];
     }
 
     return control;
@@ -86,7 +113,7 @@
 {
     self = [super init];
     _control= [[RUIPhloatoControl alloc] init];
-    NSLog(@"atv spin freq: %i",[SMMPrefs screensaverSpinFrequency]);
+    //NSLog(@"atv spin freq: %i",[SMMPrefs screensaverSpinFrequency]);
     //NSLog([SMMPrefs slideshowType]);
     [_control setSpinFrequency:[SMMPrefs screensaverSpinFrequency]];
 
@@ -101,8 +128,14 @@
     }
     
     
-    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
-    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];
+    id provider;
+    if ([SMPreferences screensaverUseAppleProvider]) {
+        provider = [[ATVSettingsFacade singleton] providerForScreenSaver];
+    }
+    else {
+        BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
+        provider = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];
+    }
     [_control setProvider:provider];
     return self;
 }

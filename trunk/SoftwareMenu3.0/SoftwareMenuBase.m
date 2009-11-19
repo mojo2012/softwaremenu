@@ -97,18 +97,18 @@ static BOOL checkedSS = NO;
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(downloaderDone:) name:kSMDownloaderDone object:nil];
     //checkTimer = [NSTimer scheduledTimerWithTimeInterval:30  target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
     id a;
-    if([SMGeneralMethods boolForKey:MAINMENU_SHOW_UPDATES_BOOL] && [SMGeneralMethods boolForKey:UPDATES_AVAILABLE])
+    if([SMPreferences boolForKey:MAINMENU_SHOW_UPDATES_BOOL] && [SMGeneralMethods boolForKey:UPDATES_AVAILABLE])
     {
         NSLog(@"Updates Available");
         a = [[BRMainMenuShelfErrorControl alloc] init];
         [a setText:@"Updates Available"];
         [a setSubtext:@"Please go to Third Party Menu to Update"];
     }
-    else if([SMGeneralMethods boolForKey:MAINMENU_PARADE_BOOL])
+    else if([SMPreferences boolForKey:MAINMENU_PARADE_BOOL])
     {
         
         a  = [[BRMediaParadeControl alloc] init];
-        [a setImageProxies:[SMImageReturns imageProxiesForPath:[SMGeneralMethods stringForKey:PHOTO_DIRECTORY_KEY]]];
+        [a setImageProxies:[SMImageReturns imageProxiesForPath:[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY]]];
     }
     else
     {

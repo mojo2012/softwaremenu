@@ -44,7 +44,7 @@
 
 // stack callbacks
 - (BOOL) isNetworkDependent;
-- (void)initCustom;
+- (id)initCustom;
 - (void)moveFiles2:(BOOL)original_status;
 - (void)setUpdateData:(NSDictionary *)updatedata;
 - (BOOL)returnBoolValue:(NSString *)thevalue;

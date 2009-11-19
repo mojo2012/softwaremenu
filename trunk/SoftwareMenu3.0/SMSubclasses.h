@@ -23,8 +23,6 @@
 }
 -(id)collection;
 @end
-@interface MEIPhotoMediaCollection
-@end
 @interface SMPhotoMediaCollection : BRPhotoMediaCollection
 @end
 @interface SMPhotoControlFactory : BRPhotoControlFactory

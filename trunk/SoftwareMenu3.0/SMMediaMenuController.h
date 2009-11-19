@@ -10,7 +10,7 @@
 
 
 @interface SMMediaMenuController : BRMediaMenuController {
-	int padding[64];
+	int padding[128];
 	NSMutableArray *	_items;
 	NSMutableArray *	_options;
 }

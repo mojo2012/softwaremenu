@@ -22,6 +22,16 @@
 #define SCREEN_SAVER_FLOATING   @"Floating"
 #define SCREEN_SAVER_PARADE     @"Parade"
 #define SCREEN_SAVER_SLIDESHOW  @"Slideshow"
+#define SCREEN_SAVER_FOLDER     @"ScreensaverFolder"
+#define SCREEN_SAVER_PLAYLIST          @"Screensaver_Playlist"
+#define SCREEN_SAVER_TRANSITION        @"Screensaver_Transition"
+#define SCREEN_SAVER_PAN_AND_ZOOM      @"Screensaver_Ken_Burns"
+#define SCREEN_SAVER_TRANSITION_DIS    @"Screensaver_Trans_Dis"
+#define SCREEN_SAVER_TRANSITION_RAND   @"Screensaver_Trans_Rand"
+#define SCREEN_SAVER_REPEAT            @"Screensaver_Repeat"
+#define SCREEN_SAVER_SECONDS_PER_S     @"Screensaver_Seconds"
+#define SCREEN_SAVER_PHOTOS_SHUFFLE    @"Screensaver_Photos_Shuffle"
+#define SCREEN_SAVER_USE_APPLE          @"Screensaver_Use_Apple"
 
 
 #define BASE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/"

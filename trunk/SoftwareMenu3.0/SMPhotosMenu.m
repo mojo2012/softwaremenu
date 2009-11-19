@@ -126,6 +126,7 @@
 					@"About",
 					@"SlideshowStart",
 					@"smSlideshowSettings",
+                    @"screensaverOptions",
                     @"startscreensaver",
 					nil];
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
@@ -133,6 +134,7 @@
 					   BRLocalizedString(@"Start Slideshow",@"Start Slideshow"),
 					   //BRLocalizedString(@"Slideshow Settings",@"Slideshow Settings"),
 					   BRLocalizedString(@"Slideshow Settings",@"Slideshow Settings"),
+                       BRLocalizedString(@"Screensaver Settings",@"Screensaver Settings"),
                        BRLocalizedString(@"Start ScreenSaver",@"Start ScreenSaver"),
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
@@ -140,6 +142,7 @@
 						   @"Starts the slideshow",
 						   //@"Settings from apple Photos menu",
 						   @"Settings For Slideshow",
+                           @"Settings For Screensaver",
                            @"Start Screensaver",
 						   nil];
 	settingNumberType = [[NSMutableArray alloc] initWithObjects:
@@ -147,6 +150,7 @@
 						 [NSNumber numberWithInt:1],
 						 //[NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:3],
+                         [NSNumber numberWithInt:5],
                          [NSNumber numberWithInt:4],
 						 nil];
 	
@@ -176,7 +180,7 @@
 	{
 		BRTextMenuItemLayer *item =[[BRTextMenuItemLayer alloc]init];
 		[item setTitle:[settingDisplays objectAtIndex:counter]];
-		//[_options addObject:[NSArray arrayWithObjects:[settingType objectAtIndex:counter],[settingNames objectAtIndex:counter],[settingDisplays objectAtIndex:counter],nil]];
+		[_options addObject:[NSArray arrayWithObjects:[settingType objectAtIndex:counter],[settingNames objectAtIndex:counter],[settingDisplays objectAtIndex:counter],nil]];
 		[_items addObject:item];
 		[paths addObject:@"nil"];
 		
@@ -365,8 +369,16 @@
 				break;
             case 4:
             {
-                [[ATVSettingsFacade singleton] setScreenSaverSelectedPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen\ Savers/SMM.frss/"];
+                [[ATVSettingsFacade singleton] setScreenSaverSelectedPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss/"];
                 [[ATVScreenSaverManager singleton] showScreenSaver];
+                break;
+            }
+            case 5:
+            {
+                id a =[[SMScreensaverSettingsMenu alloc] init];
+                //[a initCustom];
+                [[self stack] pushController:a];
+                break;
             }
 				
 				
@@ -463,7 +475,12 @@
 		case 3:
 			item = [BRTextMenuItemLayer menuItem];
 			[item setTitle:[settingDisplays objectAtIndex:row]];
+        case 4:
+            item = [BRTextMenuItemLayer menuItem];
+			[item setTitle:[settingDisplays objectAtIndex:row]];
 		default:
+            item = [BRTextMenuItemLayer menuItem];
+			[item setTitle:[settingDisplays objectAtIndex:row]];
 			break;
 	}
 	return item;

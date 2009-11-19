@@ -60,7 +60,8 @@
 
 -(id)initCustom
 {
-
+    [_paths removeAllObjects];
+    [_items removeAllObjects];
 	BRTextMenuItemLayer *thisFolder = [BRTextMenuItemLayer folderMenuItem];
 	[thisFolder setTitle:[NSString stringWithFormat:@"%@ Images",[path lastPathComponent],nil]];
 	[_paths addObject:path];
@@ -123,22 +124,25 @@
 			break;
 		case kBREventRemoteActionLeft:  // tap left
 
-            favorites = [[NSMutableArray alloc] init];
-				[favorites addObjectsFromArray:[SMPreferences photoFavorites]];
-				if(![favorites containsObject:[_paths objectAtIndex:row]])
-				{
-					[favorites addObject:[_paths objectAtIndex:row]];
-					//[SMGeneralMethods setArray:favorites forKey:@"PhotosFavorites"];
-                    [SMPreferences setPhotoFavorites:favorites];
-				}
-				[[self list] reload];
+//            favorites = [[NSMutableArray alloc] init];
+//				[favorites addObjectsFromArray:[SMPreferences photoFavorites]];
+//				if(![favorites containsObject:[_paths objectAtIndex:row]])
+//				{
+//					[favorites addObject:[_paths objectAtIndex:row]];
+//					//[SMGeneralMethods setArray:favorites forKey:@"PhotosFavorites"];
+//                    [SMPreferences setPhotoFavorites:favorites];
+//				}
+//				[[self list] reload];
 			/*favorites =[[NSMutableArray alloc] initWithObjects:nil];
-			[favorites release];
-			id controller = [[SMBrowserOptions alloc]initWithPath:[_paths objectAtIndex:row]];
-			[[self stack] pushController:controller];*/
+			[favorites release];*/
+        {
+            id controller = [[SMBrowserOptions alloc]initWithPath:[_paths objectAtIndex:row]];
+			[[self stack] pushController:controller];
 			
 			
-			break;
+			break;  
+        }
+
 		case kBREventRemoteActionRight:  // tap right
 				[SMGeneralMethods setString:[_paths objectAtIndex:row] forKey:@"PhotoDirectory"];
 				[[self list] reload];

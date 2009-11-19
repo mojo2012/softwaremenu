@@ -28,18 +28,33 @@
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
-
++(void)setPlaysMusicInSlideShow:(BOOL)arg;
++(BOOL)playsMusicInSlideShow;
 +(NSString *)scriptsPlistPath;
 +(NSString *)trustedPlistPath;
 +(NSString *)trustedPlistURL;
 +(NSString *)ImagesPath;
 +(void)setPhotoFavorites:(NSArray *)favorites;
-+(NSArray *)photoFavorites;
++(NSMutableArray *)photoFavorites;
 //+(BOOL)slideshowSS;
 +(void)setSlideshowSS:(BOOL)arg1;
 +(NSString *)photoFolderPath;
 +(void)setPhotoFolderPath:(NSString *)path;
++(NSString *)screensaverFolder;
++(void)setScreensaverFolder:(NSString *)screensaverFolder;
 +(long)screensaverSpinFrequency;
++(long)screensaverSecondsPerSlide;
++(void)setScreensaverSecondsPerSlide:(int)arg;
++(BOOL)screensaverPanAndZoom;
++(void)setScreensaverPanAndZoom:(BOOL)arg;
++(BOOL)screensaverShufflePhotos;
++(void)setScreensaverShufflePhotos:(BOOL)arg;
++(BOOL)screensaverRepeat;
++(void)setScreensaverRepeat:(BOOL)arg;
++(NSString *)screensaverSelectedTransitionName;
++(void)setScreensaverSelectedTransitionName:(NSString *)arg;
 +(NSString *)slideshowType;
++(BOOL)screensaverUseAppleProvider;
++(void)setScreensaverUseAppleProvider:(BOOL)arg;
 
 @end

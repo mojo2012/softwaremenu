@@ -1467,6 +1467,8 @@
 		DD7F516E10A12F5300C5E31C /* SMPhotosSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F516C10A12F5300C5E31C /* SMPhotosSettingsMenu.h */; };
 		DD7F516F10A12F5300C5E31C /* SMPhotosSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F516D10A12F5300C5E31C /* SMPhotosSettingsMenu.m */; };
 		DD7F54C510A2FFE100C5E31C /* SMSubclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F54C310A2FFE100C5E31C /* SMSubclasses.h */; };
+		DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */; };
+		DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */; };
 		DDE85FCC10A39C59002D2FB8 /* CALHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE85FCB10A39C59002D2FB8 /* CALHeader.h */; };
 		DDE85FEA10A39D75002D2FB8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */; };
 		DDE865D310A3AB91002D2FB8 /* AppleTV.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE865D210A3AB91002D2FB8 /* AppleTV.h */; };
@@ -3044,6 +3046,8 @@
 		DD7F54C410A2FFE100C5E31C /* SMSubclasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSubclasses.m; sourceTree = "<group>"; };
 		DD7F558F10A346A800C5E31C /* SMImageReturns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImageReturns.h; sourceTree = "<group>"; };
 		DD7F559010A346A800C5E31C /* SMImageReturns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImageReturns.m; sourceTree = "<group>"; };
+		DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreensaverSettingsMenu.h; sourceTree = "<group>"; };
+		DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreensaverSettingsMenu.m; sourceTree = "<group>"; };
 		DDE85FCB10A39C59002D2FB8 /* CALHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALHeader.h; sourceTree = "<group>"; };
 		DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DDE865D210A3AB91002D2FB8 /* AppleTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleTV.h; sourceTree = "<group>"; };
@@ -4838,6 +4842,8 @@
 				DD7F516D10A12F5300C5E31C /* SMPhotosSettingsMenu.m */,
 				DD7F516010A12F2A00C5E31C /* SMPhotosTransitionPreferences.h */,
 				DD7F516110A12F2A00C5E31C /* SMPhotosTransitionPreferences.m */,
+				DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */,
+				DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */,
 			);
 			name = Photos;
 			path = SlideShow;
@@ -6393,6 +6399,7 @@
 				DD50CC3C10AB3E17009CDF6B /* SMDefines.h in Headers */,
 				DDFD7CFF10AE37E400990214 /* SMPrefs.h in Headers */,
 				DDFD7D0110AE37EC00990214 /* SMImageReturns.h in Headers */,
+				DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6729,6 +6736,7 @@
 				DDFD7D0010AE37E400990214 /* SMPrefs.m in Sources */,
 				DDFD7D0210AE37EC00990214 /* SMImageReturns.m in Sources */,
 				DDFD7D0310AE37FC00990214 /* SMSubclasses.m in Sources */,
+				DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
