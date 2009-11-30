@@ -61,6 +61,7 @@
 - (int)DisableAppleShareServer;
 - (int)installScreenSaver;
 - (int)extractGZip:(NSString *)file toLocation:(NSString *)path;
+- (int)extractGZip:(NSString *)file toLocation:(NSString *)path withPath:(BOOL)with;
 - (int)extractTar:(NSString *)file toLocation:(NSString *)path;
 - (int)restart:(NSString *)value;
 - (int)runscript:(NSString *)scriptPath;
@@ -69,6 +70,8 @@
 
 - (BOOL)wasWritable;
 - (BOOL)makeSystemWritable;
+//- (BOOL)makeSystemWritable 
+- (void) makeSystemReadOnly;
 
 
 - (void)changePermissions:(NSString *)perms onFile:(NSString *)theFile isRecursive:(BOOL)isR;

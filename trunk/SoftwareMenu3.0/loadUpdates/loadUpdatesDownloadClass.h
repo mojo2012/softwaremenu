@@ -25,5 +25,5 @@
 -(int)downloadUpdates;
 -(void)getImages:(NSDictionary *)TrustedDict;
 -(int)checkPathForPath:(NSString *)pathFile;
-
+-(int)checkForUpdates;
 @end

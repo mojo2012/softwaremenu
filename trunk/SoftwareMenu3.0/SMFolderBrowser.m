@@ -113,7 +113,7 @@
 	//int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
 	
 	//NSLog(@"hashval =%i",hashVal);
-	NSMutableArray * favorites = nil;
+	//NSMutableArray * favorites = nil;
 	switch (remoteAction)
 	{
 		case kBREventRemoteActionUp:  // tap up
@@ -123,7 +123,7 @@
 			//NSLog(@"type down");
 			break;
 		case kBREventRemoteActionLeft:  // tap left
-
+        case kBREventRemoteActionRight:
 //            favorites = [[NSMutableArray alloc] init];
 //				[favorites addObjectsFromArray:[SMPreferences photoFavorites]];
 //				if(![favorites containsObject:[_paths objectAtIndex:row]])
@@ -142,11 +142,21 @@
 			
 			break;  
         }
-
-		case kBREventRemoteActionRight:  // tap right
-				[SMGeneralMethods setString:[_paths objectAtIndex:row] forKey:@"PhotoDirectory"];
-				[[self list] reload];
-			break;
+        case kBREventRemoteActionPlayHold:
+        {            
+            BRDataStore *store = [SMImageReturns dataStoreForPath:[_paths objectAtIndex:row]];
+            SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:[BRPhotoControlFactory standardFactory]];         
+            id controller4  = [SMPhotoBrowserController controllerForProvider:provider];
+            [controller4 setTitle:[[_paths objectAtIndex:row] lastPathComponent]];
+            [controller4 removeSButton];
+            
+            [[self stack] pushController:controller4];
+            
+        }
+//		case kBREventRemoteActionRight:  // tap right
+//				[SMGeneralMethods setString:[_paths objectAtIndex:row] forKey:@"PhotoDirectory"];
+//				[[self list] reload];
+//			break;
 		case kBREventRemoteActionPlay:  // tap play
 			/*selitem = [self selectedItem];
 			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];*/

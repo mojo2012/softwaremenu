@@ -59,7 +59,7 @@
 { 
 	NSLog(@"_options row:%@",_options);
 	BRTextMenuItemLayer *item = [_items objectAtIndex:row];
-	NSMutableArray *favorites = nil;
+	//NSMutableArray *favorites = nil;
 	switch ([[[_options objectAtIndex:row] valueForKey:LAYER_INT] intValue]) {
 		case 0:
 			if([[SMPreferences photoFolderPath] isEqualToString:_path])
@@ -88,7 +88,9 @@
         case 1:
         {
             NSMutableArray *a=[SMPreferences photoFavorites];
-            if ([a containsObject:_path]) {
+//            if(a==nil)
+//                a=[NSMutableArray array];
+            if (a!=nil && [a containsObject:_path]) {
                 [item setTitle:@"Remove From Favorites"];
             }
             else {
@@ -104,7 +106,7 @@
 }
 -(void)itemSelected:(long)row
 {
-	NSMutableArray * favorites = nil;
+	//NSMutableArray * favorites = nil;
 	//NSLog(@"_options selected: %@",_options);
 	//CFPreferencesAppSynchronize(myDomain);
 	switch ([[[_options objectAtIndex:row] valueForKey:LAYER_INT] intValue]) {
@@ -120,6 +122,8 @@
         case 1:
         {
             NSMutableArray *a=[SMPreferences photoFavorites];
+            if(a==nil)
+                a=[NSMutableArray array];
             if ([a containsObject:_path]) {
                 [a removeObject:_path];
             }

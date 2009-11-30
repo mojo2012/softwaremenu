@@ -13,9 +13,9 @@
 #import "SMSubclasses.h"
 #import "SMMPrefs.h"
 
-@protocol ATVScreenSaverPluginProtocol <NSObject>
-- (id)screenSaverControl;
-@end
+//@protocol ATVScreenSaverPluginProtocol <NSObject>
+//- (id)screenSaverControl;
+//@end
 
 @interface RUIPhloatoScreenSaver : NSObject <ATVScreenSaverPluginProtocol>
 {

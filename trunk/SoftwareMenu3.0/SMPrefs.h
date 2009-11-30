@@ -56,5 +56,9 @@
 +(NSString *)slideshowType;
 +(BOOL)screensaverUseAppleProvider;
 +(void)setScreensaverUseAppleProvider:(BOOL)arg;
++(void)setScreensaverSpinFrequency:(int)freq;
++(BOOL)strictApplianceInstallLimits;
++(NSString *)stringForBool:(BOOL)arg;
++(NSDictionary *)screensaverSlideshowPlaybackOptions;
 
 @end

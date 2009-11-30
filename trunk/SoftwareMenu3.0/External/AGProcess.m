@@ -467,7 +467,7 @@ AGGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 - (void)doProcargs
 {       
 	id args = [NSMutableArray array];
-	id env = [NSMutableDictionary dictionary];
+	NSMutableDictionary* env = [NSMutableDictionary dictionary];
 	int mib[3];
 
 	// make sure this is only executed once for an instance

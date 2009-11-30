@@ -15,9 +15,6 @@
 #import "SMPseudoCompat.h"
 #define	DOCUMENTS_FOLDER	@"/Users/frontrow/Documents/"
 
-//#define myDomain			(CFStringRef)@"org.quatermain.downloader"
-//static NSString * finalName = nil;
-//static NSString  const * kDefaultURLString = @"http://www.google.com";
 
 
 
@@ -55,11 +52,7 @@
 	_spinner =		[[BRWaitSpinnerControl alloc] init];
 	//_step =			[[BRTextControl alloc] init];
 	[self addControl: _sourceImage];
-	// work out our desired output path	
-	// lay out our UI
-	//NSLog(@"hello");
 	CGRect masterFrame = [[self parent] frame];
-	//NSLog(@"hello2");
 	CGRect frame = masterFrame;
 	
 	// header goes in a specific location
@@ -117,7 +110,7 @@
 }
 - (void)setNumber:(int)step withSteps:(int)numberOfSteps
 {
-    [_step setText:[[NSString alloc]initWithFormat:@"Step: %@/%@",step,numberOfSteps,nil] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedParagraphTextAttributes]];
+    [_step setText:[[NSString alloc]initWithFormat:@"Step: %@/%@",step,numberOfSteps,nil] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
 	
     CGRect masterFrame = [[self parent] frame];
 	
@@ -258,9 +251,6 @@
     //frame.size = txtSize;
     frame.size.width = masterFrame.size.width*0.6f;
 	frame.size.height = masterFrame.size.height*0.9f;
-	//struct CGSize shrinksize;
-	//shrinksize.width=
-	//[_sourceText shrinkTextToFitInBounds:{masterFrame.size.width*0.4f;masterFrame.size.height*0.45f;};]
 	[_sourceText setFrame: frame];
 }
 -(id)sourceImage
@@ -501,7 +491,7 @@
 		}
 		[self appendSourceTextSpace:@"Done"];
 	}
-	if(update_status && !original_status && [[tempoptions valueForKey:@"install_perian"] boolValue])
+	if(update_status && !original_status && NO)// [[tempoptions valueForKey:@"install_perian"] boolValue])
 	{
 		[self appendSourceText:BRLocalizedString(@"Installing Perian",@"Installing Perian")];
 		//step;

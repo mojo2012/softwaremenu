@@ -15,6 +15,7 @@
 #define DEFAULT_IMAGES_PATH		@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/DefaultPhotos/"
 #define PHOTO_DIRECTORY_KEY		@"PhotoDirectory"
 #define PHOTO_FAVORITES         @"PhotoFavorites"
+#define APPLIANCE_LIMITS_STRICT @"StrictLimits"
 
 //#define SCREEN_SAVER_SLIDESHOW  @"Screensaver_Slideshow"
 #define SCREEN_SAVER_SPIN_FREQ  @"Screensaver_Spin"
@@ -86,7 +87,7 @@ typedef enum {
 	kBREventRemoteActionLeft,
 	kBREventRemoteActionRight,
     
-	kBREventRemoteActionPlayHold = 20,
+	kBREventRemoteActionPlayHold = 21,
     
 	// Gestures, for originator kBREventOriginatorGesture
 	kBREventRemoteActionTap = 30,

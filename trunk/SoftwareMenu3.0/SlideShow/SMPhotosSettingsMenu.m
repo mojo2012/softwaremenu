@@ -97,11 +97,11 @@
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
 	[self setListTitle: BRLocalizedString(@"Custom Options",@"Custom Options")];
 	settingNames = [[NSMutableArray alloc] initWithObjects:
-					@"ScreensaverType",
-                    @"FloatingRotationDelay",
-					@"FloatingDefaults",
+//					@"ScreensaverType",
+//                    @"FloatingRotationDelay",
+//					@"FloatingDefaults",
 					@"defaultimages",
-					@"screensaverTimeOut",
+//					@"screensaverTimeOut",
 					@"timePerSlide",
                     SLIDESHOW_TRANSITION,
                     SLIDESHOW_PAN_AND_ZOOM,
@@ -115,11 +115,11 @@
 					nil];
     
     settingNumberType = [[NSMutableArray alloc] initWithObjects:
-						 [NSNumber numberWithInt:kSMSSSType],
-                         [NSNumber numberWithInt:kSMSSSRotation],
-						 [NSNumber numberWithInt:kSMSSSFDefaults], 
+//						 [NSNumber numberWithInt:kSMSSSType],
+//                         [NSNumber numberWithInt:kSMSSSRotation],
+//						 [NSNumber numberWithInt:kSMSSSFDefaults], 
 						 [NSNumber numberWithInt:kSMSSSDefaultImages],
-						 [NSNumber numberWithInt:kSMSSSTimeOut],
+//						 [NSNumber numberWithInt:kSMSSSTimeOut],
 						 [NSNumber numberWithInt:kSMSSSSlideTime],
                          [NSNumber numberWithInt:kSMSSSTransition],
                          [NSNumber numberWithInt:kSMSSSPAZ],
@@ -133,12 +133,12 @@
 						 nil];
     
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
-					   BRLocalizedString(@"Slide Show Type",@"Slide Show Type"),
-                       BRLocalizedString(@"Rotation Delay",@"Rotation Delay"),
-					   BRLocalizedString(@"Defaults",@"Defaults"),
+//					   BRLocalizedString(@"Slide Show Type",@"Slide Show Type"),
+//                       BRLocalizedString(@"Rotation Delay",@"Rotation Delay"),
+//					   BRLocalizedString(@"Defaults",@"Defaults"),
 
 					   BRLocalizedString(@"Set Apple Images",@"Set Apple Images"),
-                       					   BRLocalizedString(@"ScreenSaver Timeout",@"ScreenSaver Timeout"),
+//                       					   BRLocalizedString(@"ScreenSaver Timeout",@"ScreenSaver Timeout"),
 					   BRLocalizedString(@"Time Per Slide",@"Time Per Slide"),
                        BRLocalizedString(@"Transition Effect",@"Transition Effect"),
                        BRLocalizedString(@"Ken Burns Effect",@"Ken Burns Effect"),
@@ -152,11 +152,11 @@
                        
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
-						   @"Switches the SlideShow between different types:      SlideShow / Floating Images / Parade",
-                           @"Time Between different rotations",
-						   @"Set Floating Menu Back to Defaults",
+//						   @"Switches the SlideShow between different types:      SlideShow / Floating Images / Parade",
+//                           @"Time Between different rotations",
+//						   @"Set Floating Menu Back to Defaults",
 						   @"Set Image folder to flowery apple images",
-						   @"Set the screensaver timeout in minutes",
+//						   @"Set the screensaver timeout in minutes",
 						   @"Set Number of seconds per slide",
                            @"Set SlideShow Transition Effect",
                            @"Set SlideShow Ken Burns Effect",
@@ -276,7 +276,7 @@
 			break;
         case kSMSSSTransition:
             randomV = NO;
-            SMPhotosTransitionPreferences *TranMenu = [[SMPhotosTransitionPreferences alloc] init];
+            SMPhotosTransitionPreferences *TranMenu = [SMPhotosTransitionPreferences slideshowTransitionPreferences];
             //[menu initCustom];
             [[self stack] pushController:TranMenu];
             break;

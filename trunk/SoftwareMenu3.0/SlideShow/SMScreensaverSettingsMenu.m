@@ -256,7 +256,7 @@
 																	withBoxes:5
 																	  withKey:SCREEN_SAVER_SECONDS_PER_S];
 			[controller setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
-			[controller setValue:[NSNumber numberWithInt:1] forKey:@"options"];
+			//[controller setValue:[NSNumber numberWithInt:1] forKey:@"options"];
 			[controller setInitialValue:[SMPreferences screensaverSecondsPerSlide]];
 			[[self stack] pushController:controller];
             break;
@@ -283,7 +283,7 @@
         }
         case kSMSSSTransition:
         {
-            [[self stack] pushController:[[SMPhotosTransitionPreferences alloc] init]];
+            [[self stack] pushController:[SMPhotosTransitionPreferences screensaverTransitionPreferences]];
             break; 
         }
         case kSMSSSPAZ:

@@ -59,32 +59,46 @@
 }
 -(id)screenSaverControl
 {
-    BRControl *control = nil;
+    id control = nil;
     NSLog([SMMPrefs slideshowType]);
     NSString *a =[SMMPrefs slideshowType];
-    NSLog(@"provider collection: %@",[[[ATVSettingsFacade singleton] providerForScreenSaver]collection]);
-    NSLog(@"provider data: %@",[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection] mediaAssets]);
-    NSLog(@"provider data: %@",[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection]imageProxy]);
+    NSLog(@"provider: %@",[[ATVSettingsFacade singleton] providerForScreenSaver]);
+   // NSLog(@"provider data: %@",[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection] mediaAssets]);
+   // NSLog(@"provider data: %@",[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection]imageProxy]);
     if ([a isEqualToString:@"Floating" ]) {
         control = _control;
     }
     else if([a isEqualToString:@"Slideshow" ])
     {
         BRPhotoPlayer *player = [[BRPhotoPlayer alloc] init];
-        [player setPlayerSpecificOptions:[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions]];
+        //[player setPlayerSpecificOptions:[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions]];
+        [player setPlayerSpecificOptions:[SMPreferences screensaverSlideshowPlaybackOptions]];
         //NSString *a;
         
         id collection;
         if ([SMPreferences screensaverUseAppleProvider]) {
-            collection = [[[ATVSettingsFacade singleton] providerForScreenSaver] collection];
-            id c =[BRFullScreenPhotoController fullScreenPhotoControllerForProvider:[[ATVSettingsFacade singleton] providerForScreenSaver] startIndex:0];
-            [c _startSlideshow];
-            return c;
+            //collection = [[[ATVSettingsFacade singleton] providerForScreenSaver] collection];
+            collection = [[ATVSettingsFacade singleton] screenSaverCollection];
+            if ([collection isKindOfClass:[ATVDotMacCollection class]]) {
+                [[ATVDotMacMonitor sharedInstance] loadAssetsForCollection:collection];
+                NSLog(@"assets: %@",[collection mediaAssets]);
+            }
+            else 
+            {
+            }
+
+//            id d = [BRMediaPlayerManager playerForMediaAssetAtIndex:0 inCollection:[[[ATVSettingsFacade singleton] providerForScreenSaver]collection] error:nil];
+////            id c =[BRFullScreenPhotoController fullScreenPhotoControllerForProvider:[[ATVSettingsFacade singleton] providerForScreenSaver] startIndex:0];
+////            [c _startSlideshow];
+            //return [BRMediaPlayerController controllerForPlayer:d];
 
         }
         else {
             collection = [SMImageReturns photoCollectionForPath:[SMMPrefs photoFolderPath]];
         }
+        NSLog(@"options: %@",[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions]);
+        NSLog(@"options: %@",[player playerSpecificOptions]);
+        [player setMuted:YES];
         [player setMediaAtIndex:0 inCollection:collection error:nil];
         control =[BRMediaPlayerController controllerForPlayer:player];
 
@@ -96,8 +110,14 @@
         id proxies;
         if ([SMPreferences screensaverUseAppleProvider]) {
             //NSLog(@"use SS");
-            proxies = [NSArray arrayWithObject:[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection]imageProxy]];
+            int i;
+            id assets = [[[[ATVSettingsFacade singleton] providerForScreenSaver] collection] mediaAssets];
+            NSMutableArray *t = [NSMutableArray array];
+            for(i=0;i<[assets count];i++)
+                [t addObject:[[assets objectAtIndex:i] imageProxy]];
+            proxies = t;//[NSArray arrayWithObject:[[[[ATVSettingsFacade singleton] providerForScreenSaver] collection]imageProxy]];
             //NSLog(@"proxies");
+
         }
         else{
             //NSLog(@"use Old");
@@ -143,9 +163,9 @@
 {
     [_control setProvider:[[ATVSettingsFacade singleton] providerForScreenSaver]];
 }
-//-(void)dealloc
-//{
-//    [_control release];
-//    [super dealloc];
-//}
+-(void)dealloc
+{
+    [_control release];
+    [super dealloc];
+}
 @end

@@ -37,20 +37,7 @@
 
 -(id)init
 {
-    Class cls = [[NSBundle bundleWithPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"] principalClass];
-    if([[ATVScreenSaverManager singleton ] _allowedToLoadPrincipalClassNamed:[cls className]])
-    {
-        NSLog(@"allowed To Load");
-    }
-    
-    if([cls conformsToProtocol:@protocol(ATVScreenSaverPluginProtocol)])
-    {
-        NSLog(@"conforms to protocol");
-    }
-    if([[ATVScreenSaverManager singleton ]_validateBundleAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"])
-    {
-        NSLog(@"validated");
-    }
+
     //[[NSNotificationCenter defaultCenter] postNotificationName:@"BRAppliancePreviewChangedNotification" object:@"BRAppliancePreviewChangedNotification"];
 	self = [super init];
 	[self setListIcon:[[BRThemeInfo sharedTheme] gearImage] horizontalOffset:0.5f kerningFactor:0.2f];

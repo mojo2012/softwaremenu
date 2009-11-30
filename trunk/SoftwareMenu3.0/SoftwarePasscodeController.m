@@ -238,6 +238,7 @@
 {
 	if([[_passData allKeys] containsObject:@"options"])
 	{
+        NSLog(@"blah");
 		//Specific options
 		switch ([[_passData valueForKey:@"options"] intValue])
 		{
@@ -263,8 +264,9 @@
 	}
 	else if([self getKey]!=nil && ![self defaults])
 	{
+        NSLog(@"keyVal: %@", [self getKey]);
 		//SoftwareMenu Preferences values
-		[SMGeneralMethods setInteger:[[sender stringValue] intValue] forKey:[self getKey]];
+		[SMPreferences setInteger:[[sender stringValue] intValue] forKey:[self getKey]];
 	}
 	else if ([self defaults])
 	{
@@ -283,7 +285,7 @@
 {
 	NSString *key = nil;
 	key = [_passData valueForKey:KEY_KEY];
-	return [key autorelease];
+	return key;
 }
 -(NSString *)getChangePath
 {
@@ -293,7 +295,7 @@
 {
 	NSString *title = nil;
 	title = [_passData valueForKey:TITLE_KEY];
-	return [title autorelease];
+	return title;
 }
 -(int)getNumberOfBoxes
 {

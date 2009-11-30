@@ -342,53 +342,53 @@ NSFileManager *man = [NSFileManager defaultManager];
 	[_dlinks retain];
 	[_dlinks2 retain];
 	//[_downloadnumber retain];
-	NSMutableDictionary *tempoptions = [self getOptions];
-	if([tempoptions valueForKey:@"install_perian"])
-	{
-		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath]])
-		{
-			if(![self checkmd5:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath] withmd5:@"c0377cb6142f27270b1daf8ab151d1c6"])
-			{
-				[[NSFileManager defaultManager] removeFileAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath] handler:nil];
-				[_builtinfraps addObject:@"Perian 1.1.3"];
-				[_dlinks addObject:@"http://perian.cachefly.net/Perian_1.1.3.dmg"];
-				[_md5s addObject:@"c0377cb6142f27270b1daf8ab151d1c6"];
-				NSLog(@"install Perian");
-			}
-
-		}
-		else
-		{
-			[_builtinfraps addObject:@"Perian 1.1.3"];
-			[_dlinks addObject:@"http://perian.cachefly.net/Perian_1.1.3.dmg"];
-			[_md5s addObject:@"c0377cb6142f27270b1daf8ab151d1c6"];
-			NSLog(@"install Perian");
-		}
-
-	}
-	if([tempoptions valueForKey:@"do_usb_patch"])
-	{
-		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath]])
-		{
-			if(![self checkmd5:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath] withmd5:@"2c579f52ad69d12d95ea82ee3d9c4937"])
-			{
-				[[NSFileManager defaultManager] removeFileAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath] handler:nil];
-				[_builtinfraps addObject:@"Combo Update 10.4.9"];
-				[_dlinks addObject:@"http://supportdownload.apple.com/download.info.apple.com/Apple_Support_Area/Apple_Software_Updates/Mac_OS_X/downloads/061-3165.20070313.iU8y4/MacOSXUpdCombo10.4.9Intel.dmg"];
-				[_md5s addObject:@"2c579f52ad69d12d95ea82ee3d9c4937"];
-				NSLog(@"10.4.9");
-			}
-			
-		}
-		else
-		{
-			[_builtinfraps addObject:@"Combo Update 10.4.9"];
-			[_dlinks addObject:@"http://supportdownload.apple.com/download.info.apple.com/Apple_Support_Area/Apple_Software_Updates/Mac_OS_X/downloads/061-3165.20070313.iU8y4/MacOSXUpdCombo10.4.9Intel.dmg"];
-			[_md5s addObject:@"2c579f52ad69d12d95ea82ee3d9c4937"];
-			NSLog(@"10.4.9");
-		}
-		
-	}
+//	NSMutableDictionary *tempoptions = [self getOptions];
+//	if(NO)
+//	{
+//		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath]])
+//		{
+//			if(![self checkmd5:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath] withmd5:@"c0377cb6142f27270b1daf8ab151d1c6"])
+//			{
+//				[[NSFileManager defaultManager] removeFileAtPath:[@"~/Documents/Perian_1.1.3.dmg" stringByExpandingTildeInPath] handler:nil];
+//				[_builtinfraps addObject:@"Perian 1.1.3"];
+//				[_dlinks addObject:@"http://perian.cachefly.net/Perian_1.1.3.dmg"];
+//				[_md5s addObject:@"c0377cb6142f27270b1daf8ab151d1c6"];
+//				NSLog(@"install Perian");
+//			}
+//
+//		}
+//		else
+//		{
+//			[_builtinfraps addObject:@"Perian 1.1.3"];
+//			[_dlinks addObject:@"http://perian.cachefly.net/Perian_1.1.3.dmg"];
+//			[_md5s addObject:@"c0377cb6142f27270b1daf8ab151d1c6"];
+//			NSLog(@"install Perian");
+//		}
+//
+//	}
+//	if([tempoptions valueForKey:@"do_usb_patch"])
+//	{
+//		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath]])
+//		{
+//			if(![self checkmd5:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath] withmd5:@"2c579f52ad69d12d95ea82ee3d9c4937"])
+//			{
+//				[[NSFileManager defaultManager] removeFileAtPath:[@"~/Documents/MacOSXUpdCombo10.4.9Intel.dmg" stringByExpandingTildeInPath] handler:nil];
+//				[_builtinfraps addObject:@"Combo Update 10.4.9"];
+//				[_dlinks addObject:@"http://supportdownload.apple.com/download.info.apple.com/Apple_Support_Area/Apple_Software_Updates/Mac_OS_X/downloads/061-3165.20070313.iU8y4/MacOSXUpdCombo10.4.9Intel.dmg"];
+//				[_md5s addObject:@"2c579f52ad69d12d95ea82ee3d9c4937"];
+//				NSLog(@"10.4.9");
+//			}
+//			
+//		}
+//		else
+//		{
+//			[_builtinfraps addObject:@"Combo Update 10.4.9"];
+//			[_dlinks addObject:@"http://supportdownload.apple.com/download.info.apple.com/Apple_Support_Area/Apple_Software_Updates/Mac_OS_X/downloads/061-3165.20070313.iU8y4/MacOSXUpdCombo10.4.9Intel.dmg"];
+//			[_md5s addObject:@"2c579f52ad69d12d95ea82ee3d9c4937"];
+//			NSLog(@"10.4.9");
+//		}
+//		
+//	}
 
 	NSLog(@"here");
 	if ([_dlinks count]==0)

@@ -187,17 +187,32 @@
 	}
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	BOOL isDir;
-	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Current"];
+	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Current Photo Folder"];
+    
 	NSString *currentPath = [SMPreferences photoFolderPath];
     
     BRTextImageMenuItemLayer *current_item = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
-    [current_item setTitle:[SMGeneralMethods stringForKey:PHOTO_DIRECTORY_KEY]];
+    [current_item setTitle:[SMPreferences photoFolderPath]];
     NSNumber *numberofPhotos = [SMPhotoPreview numberOfPhotosForPath:currentPath];
     [current_item setSubtitle:[NSString stringWithFormat:@"(%@) Images in folder",numberofPhotos]];
-    [current_item setLoadsThumbnails:YES];
+    [current_item setLoadsThumbnails:NO];
     [current_item setThumbnailImage:[SMPhotoPreview firstPhotoForPath:currentPath]];
 		[_items addObject:current_item];
 		[paths addObject:currentPath];
+    
+    
+    [_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Current Screensaver Folder"];
+    NSString *ssfolder = [SMPreferences screensaverFolder];
+    BRTextImageMenuItemLayer *current_items = [BRTextImageMenuItemLayer twoLineFolderMenuItem];
+    [current_items setTitle:ssfolder];
+    NSNumber *numberofPhotoss = [SMPhotoPreview numberOfPhotosForPath:ssfolder];
+    [current_items setSubtitle:[NSString stringWithFormat:@"(%@) Images in folder",numberofPhotoss]];
+    [current_items setLoadsThumbnails:NO];
+    [current_items setThumbnailImage:[SMPhotoPreview firstPhotoForPath:ssfolder]];
+    [_items addObject:current_items];
+    [paths addObject:ssfolder];
+    
+    
     
 	[_dividers setObject:[NSNumber numberWithInt:[_items count]] forKey:@"Favorites"];
     
@@ -268,8 +283,9 @@
 	//[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
 	//[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
 	[list setDatasource: self];
-	if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current"]intValue])
-		[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current"]intValue] withLabel:@"Current"];
+    [[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current Photo Folder"] intValue] withLabel:@"Current Photo Folder"];
+	if([[_dividers valueForKey:@"Favorites"]intValue] != [[_dividers valueForKey:@"Current Screensaver Folder"]intValue])
+		[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Current Screensaver Folder"]intValue] withLabel:@"Current Screensaver Folder"];
 	if([[_dividers valueForKey:@"Volumes"]intValue] != [[_dividers valueForKey:@"Favorites"]intValue])
 		[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Favorites"]intValue] withLabel:@"Favorites"];
 	if([[_dividers valueForKey:@"Folders"]intValue] != [[_dividers valueForKey:@"Volumes"]intValue])
@@ -517,46 +533,46 @@
 			NSLog(@"type down");
 			break;
 		case kSMRemoteLeft:  // tap left
+        case kSMRemoteRight:
         {
             NSLog(@"type Left");
             if(row>=[settingNames count])
             {
-                NSMutableArray *favorites = [[SMPreferences photoFavorites] mutableCopy];
-                if([favorites containsObject:[paths objectAtIndex:row]])
-                {
-                    [favorites removeObjectAtIndex:[favorites indexOfObject:[paths objectAtIndex:row]]];
-                    [paths removeObjectAtIndex:row];
-                    [_items removeObjectAtIndex:row];
-                    [SMPreferences setPhotoFavorites:favorites];
-                    [[self list] reload];
-                }
-                break;
+                //[[SMBrowserOptions alloc ]initWithPath:[paths objectAtIndex:row]];
+                [[self stack]pushController:[[SMBrowserOptions alloc ]initWithPath:[paths objectAtIndex:row]]];
             }
-            
+            break;
         }
              
             
             
             
             
-        case kBREventRemoteActionRight:  // tap right
-            NSLog(@"type right");
-            if(row>=[settingNames count])
-            {
-                [SMGeneralMethods setString:[paths objectAtIndex:row] forKey:@"PhotoDirectory"];
-                [_tempPath release];
-                _tempPath = [paths objectAtIndex:row];
-                [_tempPath retain];
-                //[self initCustom];
-                [[self list] reload];
-			}
-            
-			break;
+//        case kBREventRemoteActionRight:  // tap right
+//            NSLog(@"type right");
+//            if(row>=[settingNames count])
+//            {
+//                [SMGeneralMethods setString:[paths objectAtIndex:row] forKey:@"PhotoDirectory"];
+//                [_tempPath release];
+//                _tempPath = [paths objectAtIndex:row];
+//                [_tempPath retain];
+//                //[self initCustom];
+//                [[self list] reload];
+//			}
+//            
+//			break;
 		case kSMRemotePlay:  // tap play
 			/*selitem = [self selectedItem];
 			 [[_items objectAtIndex:selitem] setWaitSpinnerActive:YES];*/
 			NSLog(@"type play");
 			break;
+        case kBREventRemoteActionPlayHold:
+        {
+            SMGridController *ll = [[SMGridController alloc] init];
+            //[ll drawSelf];
+            [[self stack] pushController:ll];
+            break;
+        }
 	}
 	return [super brEventAction:event];
 }

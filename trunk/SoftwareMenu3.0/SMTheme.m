@@ -205,13 +205,57 @@
 
 
 }
+-(id)trustedImage {
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_TRUSTED ofType:@"png"]] ;
+}
+-(id)testedImage {
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_TESTED ofType:@"png"]] ;
+}
+-(id)imageForFrap:(NSString *)frapName
+{
+    if ([frapName isEqualToString:@"SoftwareMenu"])
+        return [self softwareMenuImageShelf];
+    
+    return [BRImage imageWithPath:[SMGeneralMethods getImagePath:frapName]];
+}
 - (id)leftJustifiedParagraphTextAttributes
 {
 	NSMutableDictionary *myDict = [[NSMutableDictionary alloc] init];
 	
 	BRThemeInfo *theInfo = [[BRThemeInfo sharedTheme] settingsItemSmallTextAttributes];
 	id colorObject = [theInfo valueForKey:@"NSColor"];
+    NSLog(@"theInfo: %@", theInfo);
+    NSLog(@"thecolor: %@",colorObject);
+	[myDict setValue:[NSNumber numberWithInt:21] forKey:@"BRFontLines"];
+	[myDict setValue:[NSNumber numberWithInt:0] forKey:@"BRTextAlignmentKey"];
+	
+	if (YES)
+	{
+		
+        
+		id sizeObject = [theInfo valueForKey:@"BRFontPointSize"];
+		id fontObject = [theInfo valueForKey:@"BRFontName"];
+		[myDict setValue:sizeObject forKey:@"BRFontPointSize"];
+		[myDict setValue:fontObject forKey:@"BRFontName"];
+		//[myDict setValue:[NSNumber numberWithInt:24] forKey:@"BRFontPointSize"];
+		//[myDict setValue:@"HelveticaNeueATV-Medium" forKey:@"BRFontName"];
+		
+	} else {
+		[myDict setValue:@"LucidaGrande-Bold" forKey:@"BRFontName"];
+	}
+	
+	[myDict setValue:colorObject forKey:@"NSColor"];
+	return [myDict autorelease];
+}
+- (id)leftJustifiedTitleTextAttributess
+{
+	NSMutableDictionary *myDict = [[NSMutableDictionary alloc] init];
+	
+	BRThemeInfo *theInfo = [[BRThemeInfo sharedTheme] settingsItemSmallTextAttributes];
+	id colorObject = [theInfo valueForKey:@"NSColor"];
 	//NSLog(@"theInfo: %@", theInfo);
+    NSLog(@"theInfo: %@", theInfo);
+    NSLog(@"thecolor: %@",colorObject);
 	[myDict setValue:[NSNumber numberWithInt:21] forKey:@"BRFontLines"];
 	[myDict setValue:[NSNumber numberWithInt:0] forKey:@"BRTextAlignmentKey"];
 	

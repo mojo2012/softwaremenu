@@ -44,18 +44,26 @@
 -(void)setDescriptionWithURL:(NSString *)theDescriptionURL
 {
 	NSString *hello=[[NSString alloc] init];
-	if([theDescriptionURL isEqualToString:@"No description added"])
-	{
-		 hello=@"No description added";
-	}
-	else
-	{
-		hello = [[NSString alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:theDescriptionURL] encoding:NSUTF8StringEncoding error:NULL];
-		if([hello length]==0)
-		{
-			hello=@"The info file posted at the following URL does not exist";
-		}
-	}
+    if(theDescriptionURL ==nil)
+    {
+        hello = @"Nothing Added";
+    }
+    else {
+        if([theDescriptionURL isEqualToString:@"No description added"])
+        {
+            hello=@"No description added";
+        }
+        else
+        {
+            hello = [[NSString alloc] initWithContentsOfURL:[[NSURL alloc]initWithString:theDescriptionURL] encoding:NSUTF8StringEncoding error:NULL];
+            if([hello length]==0)
+            {
+                hello=@"The info file posted at the following URL does not exist";
+            }
+        }
+    }
+
+	
 	//NSLog(@"hello:%@",hello);
 	[self setDescription:hello];
 }
@@ -113,19 +121,20 @@
 	
 	[self setTitle: _theName];
 	[self setSourceImage: _theName];
-	
 	//[self setSourceText: @"hello"];   // this lays itself out
 	[self setSourceText:@"hello"];
 	//NSLog(@"theDescription:%@",_theDescription);
 	[self appendSourceText: _theDescription];
+    
 
 	//shrinksize.width=
 	//[_sourceText shrinkTextToFitInBounds:{masterFrame.size.width*0.4f;masterFrame.size.height*0.45f;};]
 	
 	// add the controls
-	[self addControl: _header];
-	[self addControl: _sourceImage];
 	[self addControl: _sourceText];
+    [self addControl: _header];
+    [self addControl: _sourceImage];
+    [_sourceText layoutSubcontrols];
 
 	//[self customStuff];
 
@@ -196,27 +205,31 @@
 }
 - (void) setSourceImage: (NSString *)name
 {
-	NSString *appPng = nil;
-	
-	appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
-	if([name isEqualToString:@"README"])
-	{
-		appPng = @"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/appleTVImage.png";
-	}
-	if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
-		appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
-	
-	id sp= [BRImage imageWithPath:appPng];
-	if([name isEqualToString:@"imageProvided"])
-	{
-		[_sourceImage setImage:_theImage];
-	}
-	else
-	{
-		[_sourceImage setImage:sp];
-	}
+        NSString *appPng = nil;
 	if(_theImage !=nil)
 		[_sourceImage setImage:_theImage];
+    else {
+
+        
+        appPng = [[SMThemeInfo sharedTheme] imageForFrap:name];
+        if([name isEqualToString:@"README"])
+        {
+            appPng = @"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/appleTVImage.png";
+        }
+        if(![[NSFileManager defaultManager] fileExistsAtPath:appPng])
+            appPng = [[NSBundle bundleForClass:[self class]] pathForResource:@"package" ofType:@"png"];
+        
+        id sp= [BRImage imageWithPath:appPng];
+        if([name isEqualToString:@"imageProvided"])
+        {
+            [_sourceImage setImage:_theImage];
+        }
+        else
+        {
+            [_sourceImage setImage:sp];
+        }
+    }
+
 	[_sourceImage setAutomaticDownsample:YES];
 	CGRect masterFrame = [[self parent] frame];
 	CGRect frame;
@@ -239,7 +252,7 @@
 	//   [_sourceText setTextAttributes: [[BRThemeInfo sharedTheme] paragraphTextAttributes]];
     //[_sourceText setText: srcText withAttributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
 	
-	//NSAttributedString *srcsText =[[NSAttributedString alloc]initWithString:srcText attributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
+//	NSAttributedString *srcsText =[[NSAttributedString alloc]initWithString:srcText attributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
 	[_sourceText setText:srcText];
     // layout this item
 	BRPasscodeEntryControl *hello = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
@@ -253,11 +266,11 @@
 	// CGSize txtSize = [_sourceText renderedSize];
 	
     CGRect frame;
-    frame.origin.x = masterFrame.size.width  * 0.05f;
-    frame.origin.y = (masterFrame.size.height * 0.05);// - txtSize.height;
+    frame.origin.x = masterFrame.size.width  * 0.01f;
+    frame.origin.y = (masterFrame.size.height * 0.01);// - txtSize.height;
     //frame.size = txtSize;
-    frame.size.width = masterFrame.size.width*0.65f;
-	frame.size.height = masterFrame.size.height*0.75f;
+    frame.size.width = masterFrame.size.width*0.72f;
+	frame.size.height = masterFrame.size.height*0.95f;
 	//struct CGSize shrinksize;
 	//shrinksize.width=
 	//[_sourceText shrinkTextToFitInBounds:{masterFrame.size.width*0.4f;masterFrame.size.height*0.45f;};]
@@ -268,7 +281,7 @@
 }
 - (void) setBakVers: (NSString *) srcText
 {
-    [_bakvers setText:[[NSString alloc]initWithFormat:@"Backup Vers: %@",srcText] withAttributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
+    [_bakvers setText:[[NSString alloc]initWithFormat:@"Backup Vers: %@",srcText] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
 
     CGRect masterFrame = [[self parent] frame];
 
@@ -284,7 +297,7 @@
 }
 - (void) setCurrVers: (NSString *) srcText
 {
-    [_currentvers setText:[[NSString alloc]initWithFormat:@"Installed Vers: %@",srcText] withAttributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
+    [_currentvers setText:[[NSString alloc]initWithFormat:@"Installed Vers: %@",srcText] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
 	
     CGRect masterFrame = [[self parent] frame];
 	
@@ -300,7 +313,7 @@
 }
 - (void) setOnlineVers: (NSString *) srcText
 {
-    [_onlinevers setText:[[NSString alloc]initWithFormat:@"Online Vers: %@",srcText] withAttributes:[[BRThemeInfo sharedTheme] paragraphTextAttributes]];
+    [_onlinevers setText:[[NSString alloc]initWithFormat:@"Online Vers: %@",srcText] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
 	
     CGRect masterFrame = [[self parent] frame];
 	

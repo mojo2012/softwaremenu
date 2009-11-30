@@ -26,5 +26,17 @@
 @interface SMPhotoMediaCollection : BRPhotoMediaCollection
 @end
 @interface SMPhotoControlFactory : BRPhotoControlFactory
+{
+    BOOL _mainmenu;
+}
 @end
+@interface SMButtonControl : BRButtonControl
+{
+    int padding [32];
+}
+
+-(BOOL)isEnabled;
+
+@end
+
 

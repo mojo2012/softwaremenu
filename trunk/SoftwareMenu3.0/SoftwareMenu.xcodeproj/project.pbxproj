@@ -1469,6 +1469,16 @@
 		DD7F54C510A2FFE100C5E31C /* SMSubclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F54C310A2FFE100C5E31C /* SMSubclasses.h */; };
 		DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */; };
 		DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */; };
+		DDACE50D10B61C32006D78E0 /* SMApplianceInstallerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */; };
+		DDACE50E10B61C32006D78E0 /* SMApplianceInstallerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDACE50C10B61C32006D78E0 /* SMApplianceInstallerController.m */; };
+		DDD4F65C10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h in Headers */ = {isa = PBXBuildFile; fileRef = DDD4F65A10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h */; };
+		DDD4F65D10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).m in Sources */ = {isa = PBXBuildFile; fileRef = DDD4F65B10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).m */; };
+		DDD4F76810BA0FF500E1D61B /* SMNewUpdaterProcess.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD4F76610BA0FF500E1D61B /* SMNewUpdaterProcess.h */; };
+		DDD4F76910BA0FF500E1D61B /* SMNewUpdaterProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD4F76710BA0FF500E1D61B /* SMNewUpdaterProcess.m */; };
+		DDD4F77D10BA36BA00E1D61B /* SMApplianceDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD4F77B10BA36BA00E1D61B /* SMApplianceDictionary.h */; };
+		DDD4F77E10BA36BA00E1D61B /* SMApplianceDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD4F77C10BA36BA00E1D61B /* SMApplianceDictionary.m */; };
+		DDD4F85D10BB41E800E1D61B /* trusted.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD4F85C10BB41E800E1D61B /* trusted.png */; };
+		DDD4F8DC10BB4D4B00E1D61B /* tested.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD4F8DB10BB4D4B00E1D61B /* tested.png */; };
 		DDE85FCC10A39C59002D2FB8 /* CALHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE85FCB10A39C59002D2FB8 /* CALHeader.h */; };
 		DDE85FEA10A39D75002D2FB8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */; };
 		DDE865D310A3AB91002D2FB8 /* AppleTV.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE865D210A3AB91002D2FB8 /* AppleTV.h */; };
@@ -1501,7 +1511,6 @@
 		DDFD7F6C10AE878700990214 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDFD7F4610AE855400990214 /* InfoPlist.strings */; };
 		DDFD7FF910AF03B100990214 /* SMM.frss in Resources */ = {isa = PBXBuildFile; fileRef = DDFD7D8A10AE3E2B00990214 /* SMM.frss */; };
 		DDFD807F10AF55C500990214 /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
-		DDFD809D10AF613900990214 /* binutils.zip in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFD809B10AF613400990214 /* binutils.zip */; };
 		DDFD80A010AF615500990214 /* binutils.zip in Resources */ = {isa = PBXBuildFile; fileRef = DDFD809B10AF613400990214 /* binutils.zip */; };
 		DDFD815410B04ED300990214 /* binutils.tgz in Resources */ = {isa = PBXBuildFile; fileRef = DDFD815310B04ED300990214 /* binutils.tgz */; };
 		DDFD823D10B0D59800990214 /* shelff.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFD823C10B0D59800990214 /* shelff.png */; };
@@ -1632,6 +1641,7 @@
 		3802E59A0BD8262D00B6DA5A /* BRLocalizedString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BRLocalizedString.h; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* SoftwareMenu.frappliance */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftwareMenu.frappliance; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD0E4C1310C0C6F5008876B5 /* installHelper2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installHelper2.m; sourceTree = "<group>"; };
 		DD50CC3B10AB3E17009CDF6B /* SMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDefines.h; sourceTree = "<group>"; };
 		DD50CE0710ACED03009CDF6B /* SMM.frss-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SMM.frss-Info.plist"; path = "../SMM.frss-Info.plist"; sourceTree = "<group>"; };
 		DD50D32D10AD09CE009CDF6B /* SMM.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMM.pch; path = ../SMM.pch; sourceTree = "<group>"; };
@@ -3048,6 +3058,16 @@
 		DD7F559010A346A800C5E31C /* SMImageReturns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImageReturns.m; sourceTree = "<group>"; };
 		DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreensaverSettingsMenu.h; sourceTree = "<group>"; };
 		DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreensaverSettingsMenu.m; sourceTree = "<group>"; };
+		DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMApplianceInstallerController.h; sourceTree = "<group>"; };
+		DDACE50C10B61C32006D78E0 /* SMApplianceInstallerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMApplianceInstallerController.m; sourceTree = "<group>"; };
+		DDD4F65A10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMApplianceInstaller (downloaderDelegate).h"; sourceTree = "<group>"; };
+		DDD4F65B10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMApplianceInstaller (downloaderDelegate).m"; sourceTree = "<group>"; };
+		DDD4F76610BA0FF500E1D61B /* SMNewUpdaterProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNewUpdaterProcess.h; sourceTree = "<group>"; };
+		DDD4F76710BA0FF500E1D61B /* SMNewUpdaterProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNewUpdaterProcess.m; sourceTree = "<group>"; };
+		DDD4F77B10BA36BA00E1D61B /* SMApplianceDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMApplianceDictionary.h; sourceTree = "<group>"; };
+		DDD4F77C10BA36BA00E1D61B /* SMApplianceDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMApplianceDictionary.m; sourceTree = "<group>"; };
+		DDD4F85C10BB41E800E1D61B /* trusted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trusted.png; sourceTree = "<group>"; };
+		DDD4F8DB10BB4D4B00E1D61B /* tested.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tested.png; sourceTree = "<group>"; };
 		DDE85FCB10A39C59002D2FB8 /* CALHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALHeader.h; sourceTree = "<group>"; };
 		DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DDE865D210A3AB91002D2FB8 /* AppleTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleTV.h; sourceTree = "<group>"; };
@@ -3172,7 +3192,6 @@
 				DDE85FEA10A39D75002D2FB8 /* QuartzCore.framework in Frameworks */,
 				DDEF349F10A6845A00ECD73A /* iPhotoAccess.framework in Frameworks */,
 				DD689F3F10A75D6800B2F52A /* BackRow.framework in Frameworks */,
-				DDFD809D10AF613900990214 /* binutils.zip in Frameworks */,
 				DD691CB010B1D92A003463F2 /* AppleTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3353,6 +3372,12 @@
 				DD689B7410A75AD000B2F52A /* SoftwarePasscodeController.m */,
 				DD68A0B810A7A90300B2F52A /* BRMainMenuController-SMExtensions.h */,
 				DD68A0B910A7A90300B2F52A /* BRMainMenuController-SMExtensions.m */,
+				DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */,
+				DDACE50C10B61C32006D78E0 /* SMApplianceInstallerController.m */,
+				DDD4F65A10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h */,
+				DDD4F65B10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).m */,
+				DDD4F77B10BA36BA00E1D61B /* SMApplianceDictionary.h */,
+				DDD4F77C10BA36BA00E1D61B /* SMApplianceDictionary.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -4794,6 +4819,8 @@
 		DD7F50BF10A12B5A00C5E31C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DDD4F8DB10BB4D4B00E1D61B /* tested.png */,
+				DDD4F85C10BB41E800E1D61B /* trusted.png */,
 				DDFD823C10B0D59800990214 /* shelff.png */,
 				DD7F50C010A12B5A00C5E31C /* AFP.png */,
 				DD7F50C110A12B5A00C5E31C /* applescript.png */,
@@ -4945,6 +4972,7 @@
 		E2E41DF70ECD04D700D1697E /* InstallHelper-bin */ = {
 			isa = PBXGroup;
 			children = (
+				DD0E4C1310C0C6F5008876B5 /* installHelper2.m */,
 				E2A35FEF0EAE030700FB6FD7 /* installHelper.m */,
 				E2A35FF00EAE030700FB6FD7 /* installHelperClass.h */,
 				E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */,
@@ -4993,6 +5021,8 @@
 				E29FA09D0F585603002BE2B0 /* SMUpdater.m */,
 				E26B10E10F6EFED40005E868 /* SMUOptions.h */,
 				E26B10E20F6EFED40005E868 /* SMUOptions.m */,
+				DDD4F76610BA0FF500E1D61B /* SMNewUpdaterProcess.h */,
+				DDD4F76710BA0FF500E1D61B /* SMNewUpdaterProcess.m */,
 			);
 			name = Updater;
 			sourceTree = "<group>";
@@ -6400,6 +6430,10 @@
 				DDFD7CFF10AE37E400990214 /* SMPrefs.h in Headers */,
 				DDFD7D0110AE37EC00990214 /* SMImageReturns.h in Headers */,
 				DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */,
+				DDACE50D10B61C32006D78E0 /* SMApplianceInstallerController.h in Headers */,
+				DDD4F65C10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h in Headers */,
+				DDD4F76810BA0FF500E1D61B /* SMNewUpdaterProcess.h in Headers */,
+				DDD4F77D10BA36BA00E1D61B /* SMApplianceDictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6561,6 +6595,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD4F8DC10BB4D4B00E1D61B /* tested.png in Resources */,
+				DDD4F85D10BB41E800E1D61B /* trusted.png in Resources */,
 				DDFD815410B04ED300990214 /* binutils.tgz in Resources */,
 				DDFD80A010AF615500990214 /* binutils.zip in Resources */,
 				DDFD7FF910AF03B100990214 /* SMM.frss in Resources */,
@@ -6737,6 +6773,10 @@
 				DDFD7D0210AE37EC00990214 /* SMImageReturns.m in Sources */,
 				DDFD7D0310AE37FC00990214 /* SMSubclasses.m in Sources */,
 				DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */,
+				DDACE50E10B61C32006D78E0 /* SMApplianceInstallerController.m in Sources */,
+				DDD4F65D10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).m in Sources */,
+				DDD4F76910BA0FF500E1D61B /* SMNewUpdaterProcess.m in Sources */,
+				DDD4F77E10BA36BA00E1D61B /* SMApplianceDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

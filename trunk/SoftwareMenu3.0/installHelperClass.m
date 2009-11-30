@@ -485,7 +485,7 @@
 
 - (int)installBinutilsToVolume:(NSString *)path
 {
-    NSString *basePath=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/binutils.zip";
+    //NSString *basePath=@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/binutils.zip";
     NSFileManager *man = [NSFileManager defaultManager];
     NSString *staging = @"/Users/frontrow/SM_Staging_folder";
     if(![man fileExistsAtPath:staging])
@@ -1463,7 +1463,7 @@
 }
 -(int)installScreenSaver
 {
-    BOOL read=YES;
+    //BOOL read=YES;
 
     [self makeSystemWritable];
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"])

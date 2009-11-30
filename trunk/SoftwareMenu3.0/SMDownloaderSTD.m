@@ -27,7 +27,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
  }
  - (void) enableScreenSaver{
  //reset screen saver to user settings
-	 NSLog(@"timeout: %@",[NSNumber numberWithInt:m_screen_saver_timeout]);
+	 //NSLog(@"timeout: %@",[NSNumber numberWithInt:m_screen_saver_timeout]);
  [[BRSettingsFacade singleton] setScreenSaverTimeout: m_screen_saver_timeout];
  [[BRSettingsFacade singleton] flushDiskChanges];
  }
@@ -210,7 +210,7 @@ static NSString  const * kDefaultURLString = @"http://www.google.com";
 	urlstr=[_theInformation valueForKey:@"URL"];
     if ( urlstr == nil )
 		urlstr = (NSString *)kDefaultURLString;
-	//[self disableScreenSaver];
+	[self disableScreenSaver];
 	
 	//NSLog(@"urlstr in beginDownload: %@",urlstr);
     NSURL * url = [NSURL URLWithString: urlstr];
@@ -424,7 +424,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
 {
     [self storeResumeData];
 	
-    //NSLog( @"Download encountered error '%d' (%@)", [error code],
+    NSLog( @"Download encountered error '%d'", [error code]);//,
 		 // [error localizedDescription] );
 	
     // show an alert for the returned error (hopefully it has nice
@@ -438,7 +438,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
     _gotLength += (long long) length;
     float percentage = 0.0f;
 	
-    ////NSLog( @"Got %u bytes, %lld total", length, _gotLength );
+    NSLog( @"Got %u bytes, %lld total", length, _gotLength );
 	
     // we'll handle the case where the NSURLResponse didn't include the
     // size of the source file

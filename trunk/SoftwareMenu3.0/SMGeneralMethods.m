@@ -99,7 +99,7 @@ static SMGeneralMethods *sharedInstance = nil;
 	}
 	return NO;
 }
-- (BOOL)nitoHelperCheckPerm
+- (BOOL)SMHelperCheckPerm
 {
 	NSString *helperPath = [[NSBundle bundleForClass:[SMInfo class]] pathForResource:@"installHelper" ofType:@""];
 	NSFileManager *man = [NSFileManager defaultManager];
@@ -304,32 +304,34 @@ static SMGeneralMethods *sharedInstance = nil;
 
 -(void)helperFixPerm
 {
-	if(![self helperCheckPerm])
-	{
-		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
-        NSLog(@"launchPath: %@",launchPath);
-		NSTask *task = [[NSTask alloc] init];
-		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
-		[task setArguments:args];
-		[task setLaunchPath:@"/bin/bash"];
-		[task launch];
-		[task waitUntilExit];
-	}
+//	if(![self helperCheckPerm])
+//	{
+//		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
+//        NSLog(@"launchPath: %@",launchPath);
+//		NSTask *task = [[NSTask alloc] init];
+//		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
+//		[task setArguments:args];
+//		[task setLaunchPath:@"/bin/bash"];
+//		[task launch];
+//		[task waitUntilExit];
+//	}
+    [self SMHelperCheckPerm];
 	return;
 }
 +(void)helperFixPerm
 {
-	if(![SMGeneralMethods helperCheckPerm])
-	{
-		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
-        NSLog(@"launchPath: %@",launchPath);
-		NSTask *task = [[NSTask alloc] init];
-		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
-		[task setArguments:args];
-		[task setLaunchPath:@"/bin/bash"];
-		[task launch];
-		[task waitUntilExit];
-	}
+//	if(![SMGeneralMethods helperCheckPerm])
+//	{
+//		NSString *launchPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FixPerm" ofType:@"sh"];
+//        NSLog(@"launchPath: %@",launchPath);
+//		NSTask *task = [[NSTask alloc] init];
+//		NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
+//		[task setArguments:args];
+//		[task setLaunchPath:@"/bin/bash"];
+//		[task launch];
+//		[task waitUntilExit];
+//	}
+    [[SMGeneralMethods sharedInstance] SMHelperCheckPerm];
 	return;
 }
 -(void)toggleUpdate
@@ -493,11 +495,11 @@ static SMGeneralMethods *sharedInstance = nil;
 {
 	if(settings)
 	{
-		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",@"SoftwareMenu.frappliance",nil];
+		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",@"Internet.frappliance",@"SoftwareMenu.frappliance",nil];
 	}
 	else
 	{
-		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",nil];
+		return [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",@"Internet.frappliance",nil];
 	}
 }
 +(int)runHelperApp:(NSArray *)options
@@ -539,6 +541,8 @@ static SMGeneralMethods *sharedInstance = nil;
 }
 +(NSString *)getImagePath:(NSString *)Name
 {
+    if([Name isEqualToString:@"SoftwareMenu"])
+        return [[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM_SHELF ofType:@"png"];
 	NSFileManager *man =[NSFileManager defaultManager];
 	NSString *filepath = nil;
 	NSArray *imageExtensions = [NSArray arrayWithObjects:
@@ -572,18 +576,22 @@ static SMGeneralMethods *sharedInstance = nil;
 }
 +(void)checkScreensaver
 {
-	[[SMGeneralMethods sharedInstance] helperFixPerm];
-	NSString *SMPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SMM" ofType:@"frss"];
-	int currentVersion = [[[[NSBundle bundleWithPath:SMPath] infoDictionary] valueForKey:@"CFBundleVersion"] intValue];
-	NSLog(@"SMVersion In package: %@",[NSNumber numberWithInt:currentVersion]);
-	int installedVersion = [[[[NSBundle bundleWithPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"] infoDictionary] valueForKey:@"CFBundleVersion"] intValue];
-	if (currentVersion >installedVersion)
-	{
-		NSLog(@"Updating Screen Saver to version: %@, (you had : %@)",[NSNumber numberWithInt:currentVersion],[NSNumber numberWithInt:installedVersion],nil);
-		//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"installScreensaver",@"0",@"0",nil]];
-		[NSTask launchedTaskWithLaunchPath:		[[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""] 
-								 arguments:		[NSArray arrayWithObjects:@"installScreensaver",@"0",@"0",nil]];
-	}
+    if([SMGeneralMethods OSGreaterThan:@"3.0"])
+    {
+        [[SMGeneralMethods sharedInstance] helperFixPerm];
+        NSString *SMPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SMM" ofType:@"frss"];
+        int currentVersion = [[[[NSBundle bundleWithPath:SMPath] infoDictionary] valueForKey:@"CFBundleVersion"] intValue];
+        NSLog(@"SMVersion In package: %@",[NSNumber numberWithInt:currentVersion]);
+        int installedVersion = [[[[NSBundle bundleWithPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"] infoDictionary] valueForKey:@"CFBundleVersion"] intValue];
+        if (currentVersion >installedVersion)
+        {
+            NSLog(@"Updating Screen Saver to version: %@, (you had : %@)",[NSNumber numberWithInt:currentVersion],[NSNumber numberWithInt:installedVersion],nil);
+            //[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"installScreensaver",@"0",@"0",nil]];
+            [NSTask launchedTaskWithLaunchPath:		[[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""] 
+                                     arguments:		[NSArray arrayWithObjects:@"installScreensaver",@"0",@"0",nil]];
+        }
+    }
+
 }
 
 @end

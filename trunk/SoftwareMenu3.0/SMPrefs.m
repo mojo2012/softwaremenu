@@ -8,9 +8,34 @@
 
 #import "SMPrefs.h"
 #import "SMDefines.h"
-
+static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef 
+											colorSpace, NSColor *color)
+{
+	NSColor *deviceColor = [color colorUsingColorSpaceName: 
+							NSDeviceRGBColorSpace];
+	
+	float components[4];
+	[deviceColor getRed: &components[0] green: &components[1] blue: 
+	 &components[2] alpha: &components[3]];
+	
+	return CGColorCreate (colorSpace, components);
+}
 @implementation SMPreferences
-
+//+(CGColorRef)color
+//{
+//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB ();
+//	NSColor *deviceColor = [[NSColor redColor] colorUsingColorSpaceName: 
+//							NSDeviceRGBColorSpace];
+//	
+//	float components[4];
+//	[deviceColor getRed: &components[0] green: &components[1] blue: 
+//	 &components[2] alpha: &components[3]];
+//	
+//	CGColorRef cgColor = CGColorCreate (colorSpace, components);
+//	[myDict setValue:cgColor forKey:@"NSColor"];
+//	CGColorSpaceRelease (colorSpace);
+//	CGColorRelease (cgColor);	
+//}
 + (NSString *)appleTVVersion
 {
 	NSDictionary *finderDict = [[NSBundle mainBundle] infoDictionary];
@@ -281,7 +306,7 @@
 }
 +(void)setScreensaverSelectedTransitionName:(NSString *)arg
 {
-    [SMPreferences stringForKey:SCREEN_SAVER_TRANSITION];
+    [SMPreferences setString:arg forKey:SCREEN_SAVER_TRANSITION];
 }
 +(BOOL)screensaverUseAppleProvider
 {
@@ -290,5 +315,28 @@
 +(void)setScreensaverUseAppleProvider:(BOOL)arg
 {
     [SMPreferences setBool:arg forKey:SCREEN_SAVER_USE_APPLE];
+}
++(NSDictionary *)screensaverSlideshowPlaybackOptions
+{
+    NSMutableDictionary *a = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithBool:NO],@"None",
+                              [NSNumber numberWithBool:YES],@"Random",
+                              [SMPreferences stringForBool:[SMPreferences screensaverPanAndZoom]],@"PanAndZoom",
+                              @"YES",@"RepeatSlideShow",
+                              [NSNumber numberWithInt:[SMPreferences screensaverSecondsPerSlide]],@"SecondsPerSlide",
+                              [NSNumber numberWithBool:[SMPreferences screensaverShufflePhotos]],@"ShuffleSlides",
+                              [SMPreferences screensaverSelectedTransitionName],@"TransitionName",
+                              @"NO",@"PlayMusic",
+                              nil];
+    return a;
+                            
+}
++(NSString *)stringForBool:(BOOL)arg
+{
+    return arg ? @"YES" : @"NO";
+}
++(BOOL)strictApplianceInstallLimits
+{
+    return [SMPreferences boolForKey:APPLIANCE_LIMITS_STRICT];
 }
 @end

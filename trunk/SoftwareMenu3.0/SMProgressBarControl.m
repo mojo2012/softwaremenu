@@ -44,7 +44,7 @@
     widgetFrame.origin.x = 0.0f;
     widgetFrame.origin.y = 0.0f;
     widgetFrame.size.width = frame.size.width;
-    widgetFrame.size.height = ceilf( frame.size.width * 0.068f );
+    widgetFrame.size.height = ceilf( frame.size.width * 0.1f );
     [_widget setFrame: widgetFrame];
 }
 

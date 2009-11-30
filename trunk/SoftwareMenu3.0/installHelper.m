@@ -44,7 +44,7 @@ int main (int argc, const char * argv[]) {
 				[ihc makeSystemWritable];
 				[ihc setRunPath:path];
 			NSLog(@"installhelper value; %@",value);
-				int rvalue = [ihc updateSelf:value];	
+				[ihc updateSelf:value];	
 				[pool release];
 				//return rvalue;
 
@@ -69,7 +69,7 @@ int main (int argc, const char * argv[]) {
 			NSLog(@"option: %@",option);
 			
 			[ihc setRunPath:path];
-			int returnvalue=[ihc removeFile:file];
+			[ihc removeFile:file];
 			[pool release];
 			//rvalue = 1;
 			
@@ -82,7 +82,7 @@ int main (int argc, const char * argv[]) {
 			NSLog(@"filelocation: %@",file);
 			
 			[ihc setRunPath:path];
-			int returnvalue=[ihc removeFile:file];
+			[ihc removeFile:file];
 			[pool release];
 			//rvalue = 1;
 			
@@ -148,7 +148,7 @@ int main (int argc, const char * argv[]) {
 			NSLog(@"option: %@",option);
 			
 			[ihc setRunPath:path];
-			int rvalue =[ihc updateSelf:value];
+			[ihc updateSelf:value];
 			[pool release];
 			//rvalue = 1;
 			
@@ -275,7 +275,7 @@ int main (int argc, const char * argv[]) {
 		{
 			
 			[ihc setRunPath:path];
-			int returnvalue=[ihc install_perian:value toVolume:value2];
+			[ihc install_perian:value toVolume:value2];
 			[pool release];
 			//return //returnvalue;
 		}

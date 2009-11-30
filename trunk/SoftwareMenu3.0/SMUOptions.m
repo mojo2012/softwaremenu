@@ -60,7 +60,7 @@
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
 
 	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
-	[self setListTitle: BRLocalizedString(@"UOptions",@"UOptions")];
+	[self setListTitle: BRLocalizedString(@"Update Options",@"Update Options")];
 	
 	//Set up Options, their descriptions and keys
 	_theDefaults = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"preserve",
@@ -128,7 +128,7 @@
 {	
 	int ii, counter;
 	ii=[_items count];
-	for(counter=1;counter<ii;counter++)
+	for(counter=0;counter<ii;counter++)
 	{
 		[_items removeLastObject];
 	}
@@ -175,7 +175,7 @@
 				}
 				if(![SMGeneralMethods boolForKey:@"retain_installed"])
 				{
-					[item3 setDimmed:YES];
+					//[item3 setDimmed:YES];
 				}
 				//[_options addObject:[NSArray arrayWithObjects:@"frapCopy",[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]],nil]];
 				[_items addObject:item3];

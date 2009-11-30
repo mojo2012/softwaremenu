@@ -47,6 +47,14 @@
 - (void)removeSButton
 {
     [_slideshowButton setText:@"Play"];
+    NSLog(@"grid: %@",_grid);
+    NSLog(@"controls: %@",[self controls]);
+    NSLog(@"grid controls: %@",[_grid controls]);
+    NSLog(@"grid requester: %@",[_grid providerRequester]);
+}
+-(id)returnGrid
+{
+    return _grid;
 }
 @end
 @implementation SMPhotoCollectionProvider
@@ -106,7 +114,17 @@
 {
     return [[SMPhotoControlFactory alloc] initForMainMenu:YES];
 }
++(id)standardFactory
+{
+    return [[SMPhotoControlFactory alloc] initForMainMenu:NO];
+}
 //Returns the control shown on main menu
+-(id)initForMainMenu:(BOOL)arg1
+{
+    self = [super initForMainMenu:arg1];
+    _mainmenu = arg1;
+    return self;
+}
 -(id)controlForData:(id)arg1 currentControl:(id)arg2 requestedBy:(id)arg3
 {
     id returnObj;
@@ -130,7 +148,22 @@
         [returnObj setDefaultImage:[[[arg1 dataAtIndex:0]asset] coverArt]];
         [returnObj setAcceptsFocus:NO];
     }
-    //returning nothing is also acceptable
+    else if([arg1 isKindOfClass:[BRPhotoMediaAsset class]])
+    {
+        returnObj = [[BRAsyncImageControl alloc] init];
+        [returnObj setDefaultImage:[arg1 coverArt]];
+        [returnObj setAcceptsFocus:YES];
+    }
+    //returning nothing is also acceptable only for main menu
     return returnObj;
 }
 @end
+@implementation SMButtonControl
+
+-(BOOL)isEnabled
+{
+    return _buttonEnabled;
+}
+
+@end
+

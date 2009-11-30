@@ -9,8 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface SMGridController : BRController {
-    int                     padding[32];
+@interface SMGridController : SMInfo {
+   // int                     padding[32];
     BRGridControl *         _gridControl;
     BRWaitSpinnerControl *  _spinner;
     BRCursorControl *       _cursorControl;

@@ -10,9 +10,13 @@
 
 
 @interface SMPhotosTransitionPreferences : SMMediaMenuController {
+    BOOL _screensaver;
     NSArray *transitions;
 }
--(id)initCustom;
+//-(id)initCustom;
++(SMPhotosTransitionPreferences *)screensaverTransitionPreferences;
++(SMPhotosTransitionPreferences *)slideshowTransitionPreferences;
+-(id)initForScreenSaver:(BOOL)val;
 @end
 @interface SMSlideShowPlaylistPreferences : SMPhotosTransitionPreferences
 @end

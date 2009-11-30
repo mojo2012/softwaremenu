@@ -30,7 +30,8 @@
 #define IMAGE_GREEN_GEM		@"green"
 #define	IMAGE_RED_GEM		@"red"
 #define IMAGE_GREY_GEM		@"grey"
-
+#define IMAGE_TRUSTED       @"trusted"
+#define IMAGE_TESTED        @"tested"
 @interface SMThemeInfo : NSObject{
 	
 }
@@ -67,6 +68,10 @@
 -(id)licenseImage;
 -(id)photosImage;
 
-//
--(id)leftJustifiedParagraphTextAttributes;
+
+//ApplianceControllerImage
+-(id)trustedImage;
+-(id)testedImage;
+-(id)imageForFrap:(NSString *)frapName;
+-(id)leftJustifiedTitleTextAttributess;
 @end

@@ -43,12 +43,7 @@
 			[meta setTitle:@"Refresh Menu"];
 			[meta setDescription:@"Refresh in case Info4.plist and/or Info3.plist was modified and change doesn't appear"];
 			break;
-		case kSMTpSm:
-		case KSMTpTrusted:
-			if([[[_options objectAtIndex:row] valueForKey:@"InstalledVersion"] isEqualToString:@"nil"] || ![[[_options objectAtIndex:row] valueForKey:@"UpToDate"] boolValue])
-				[meta setOnlineVersion:[[_options objectAtIndex:row] valueForKey:@"DisplayVersion"]];
-			if(![[[_options objectAtIndex:row] valueForKey:@"InstalledVersion"] isEqualToString:@"nil"])
-				[meta setInstalledVersion:[[_options objectAtIndex:row] valueForKey:@"InstalledVersion"]];
+		
 		case kSMTpUntrusted:
 			
 			
@@ -79,6 +74,23 @@
 			[meta setDev:[[_options objectAtIndex:row] valueForKey:@"Developer"]];
 			[meta setImagePath:appPng];
 			break;
+        case kSMTpSm:
+        case KSMTpTrusted:
+        {
+            SMApplianceDictionary *info = [[_options objectAtIndex:row] objectForKey:@"object"];
+            if (![info isInstalled] || ![info installedIsUpToDate])
+                [meta setOnlineVersion:[info displayVersion]];
+            if ([info isInstalled])
+                [meta setInstalledVersion:[info installedVersion]];
+            if ([info formatedReleaseDate]==nil)
+                [meta setTitle:[info displayName]];
+            else
+                [meta setTitle:[info formatedReleaseDate]];
+            [meta setDescription:[info shortDescription]];
+            if([info developer]!=nil)
+                [meta setDev:[info developer]];
+            [meta setImagePath:[SMGeneralMethods getImagePath:[info name]]];
+        }
 		
 	}
 
@@ -165,64 +177,22 @@
 
 	
 	NSDictionary *loginItemDict = [NSDictionary dictionaryWithContentsOfFile:[SMPreferences trustedPlistPath]];
-	
+	BRTextMenuItemLayer *SMItem = [BRTextMenuItemLayer folderMenuItem];
 	NSDictionary *SoftwareMenuInfo = [loginItemDict valueForKey:@"SoftwareMenu"];
-	NSString *SoftVers = [SoftwareMenuInfo valueForKey:@"Version"];
-	
-	NSString *frapSoftPath= [[NSString alloc] initWithString:[FRAP_PATH stringByAppendingString: @"SoftwareMenu.frappliance/"]];
-	NSString * infoSoftPath = [frapSoftPath stringByAppendingString:@"Contents/Info.plist"];
-	
-	NSDictionary * Softinfo =[NSDictionary dictionaryWithContentsOfFile:[NSString stringWithFormat:infoSoftPath]];
-	
-	NSString * current_soft_version =[[NSString alloc]initWithString:[Softinfo objectForKey:@"CFBundleVersion"]];
-	
-	int versLength = [SoftVers length];
-	
-	id item90 = [BRTextMenuItemLayer folderMenuItem];
-	BOOL SoftUpToDate =YES;
-	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
-	{
-		SoftUpToDate = NO;
-	}
-	NSDate *dateSoft = [SoftwareMenuInfo valueForKey:@"ReleaseDate"];
-	NSString *dateFormatSoft = nil;
-	//NSLog(@"date: %@",date);
-	if(dateSoft == nil)
-	{
-		dateFormatSoft = @"nil";
-	}
-	else
-	{
-		dateFormatSoft = [dateSoft descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil];
-	}
-	NSString *descSoft = [SoftwareMenuInfo valueForKey:@"ShortDescription"];
-	if(descSoft == nil)
-		descSoft = @"nil";
-	[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+    SMApplianceDictionary *SMDict = [[SMApplianceDictionary alloc] initWithDictionary:SoftwareMenuInfo];
+    [SMDict setIsTrusted:YES];
+    [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
 						 [NSNumber numberWithInt:4],@"Type",
-						 [SoftwareMenuInfo valueForKey:@"Developer"],@"Developer",
-						 descSoft,@"ShortDescription",
-						 dateFormatSoft,@"ReleaseDate",
-						 @"Really Pro Update",@"UpdateText",
-						 [NSNumber numberWithBool:SoftUpToDate],@"UpToDate",
-						 @"softwaremenu",@"Name",
-						 @"SoftwareMenu",@"DisplayName",
+                         SMDict,@"object",
 						 nil]];
-
-	[item90 setTitle:@"SoftwareMenu"];
-	NSLog(@"2");
-	
-	if([current_soft_version compare:SoftVers]==NSOrderedAscending)
+    
+	[SMItem setTitle:@"SoftwareMenu"];
+	if(![SMDict installedIsUpToDate])
 	{
-		if(versLength != 0)
-		{
-			[item90 setRightJustifiedText:@"Update Me"];
-			[item90 setIndentedLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] errorIcon], @"BRMenuIconImageKey",nil] largestOrdinal:4 iconAlignmentFactor:7];
-
-		}
+			[SMItem setRightJustifiedText:@"Update Me"];
+			[SMItem setIndentedLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] errorIcon], @"BRMenuIconImageKey",nil] largestOrdinal:4 iconAlignmentFactor:7];
 	}
-			
-		[_items addObject: item90];
+    [_items addObject: SMItem];
 
 	int sep2 = [_items count];	
 	
@@ -250,102 +220,47 @@
 	
 	
 	sortedArrays = [unsortedArray sortedArrayUsingDescriptors:ArraySortDescriptor];
-	NSLog(@"C");
 	
 	
 	NSEnumerator *enumerator = [sortedArrays objectEnumerator];
 	id obj;
 	while((obj = [enumerator nextObject]) != nil) 
 	{
-        NSMutableDictionary *objm = [self formatDict:obj];
-        
-
-
-
-		
-		NSString *onlineVersion = [objm valueForKey:@"Version"];
-        
-		NSString *frapPath= [FRAP_PATH stringByAppendingPathComponent:[[objm objectForKey:@"Name"] stringByAppendingPathExtension:@"frappliance"]];//[NSString stringWithFormat:@"%@%@.frappliance/",FRAP_PATH,thename,nil];
-		NSFileManager *manager = [NSFileManager defaultManager];
-		id item = [BRTextMenuItemLayer folderMenuItem];
-		NSString * current_version = nil;
-		NSString * installed_version = nil;
-//        NSLog(@"C.2");
-
-		if(![[objm objectForKey:@"Name"] isEqualToString:@"SoftwareMenu"] && [SMGeneralMethods isWithinRangeForDict:objm])
-		{
-			if ([manager fileExistsAtPath:frapPath])
-			{
-				//NSString * infoPath = [frapPath stringByAppendingString:@"Contents/Info.plist"];
-				NSDictionary * info =[NSDictionary dictionaryWithContentsOfFile:[frapPath stringByAppendingPathComponent:@"Contents/Info.plist"]];
-				current_version =[NSString stringWithString:[info objectForKey:@"CFBundleVersion"]];
-				installed_version = [info objectForKey:@"CFBundleShortVersionString"];
-				if(installed_version == nil)
-					installed_version = current_version;
-				
-				if([[frapPath lastPathComponent] isEqualToString:@"nitoTV.frappliance"])
-				{
-					NSLog(@"nito: %@",obj);
-					current_version = [info objectForKey:@"CFBundleShortVersionString"];
-					onlineVersion = [obj valueForKey:@"shortVersion"];
-					installed_version = [info objectForKey:@"CFBundleVersion"];
-				}
-				
-				if([current_version compare:onlineVersion]==NSOrderedSame)				{[item setRightJustifiedText:@"Up to Date"];}
-				else if ([current_version compare:onlineVersion]==NSOrderedAscending)	{[item setRightJustifiedText:@"New Version available"];}
-				else																	{[item setRightJustifiedText:@"Ahead of the curve"];}
-			}
-			else
-			{
-				[item setRightJustifiedText:@"Not Installed"];
-				installed_version = @"nil";
-			}
-			
-			//Adding option for Info
-			NSString *dev = [obj valueForKey:@"Developer"];
-			if(dev==nil)
-				dev = @"nil";
-			
-			NSString *desc = [obj valueForKey:@"ShortDescription"];
-			if(desc == nil)
-				desc = @"nil";
+        SMApplianceDictionary *objm = [[SMApplianceDictionary alloc] initWithDictionary:obj];
+        [objm setIsTrusted:YES];
+        if([objm isValid])
+        {
+            //NSString *onlineVersion = [objm valueForKey:@"Version"];
             
-			NSDate *date = [obj valueForKey:@"ReleaseDate"];
-			NSString *dateFormat = nil;
-			if(date == nil)
-			{
-				dateFormat = @"nil";
-			}
-			else
-			{
-				dateFormat = [date descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil];
-			}
-			BOOL uptodates = YES;
-			if ([current_version compare:onlineVersion]==NSOrderedAscending)
-				uptodates = NO;
-			NSString *updateText = [obj valueForKey:@"ShortChangeLog"];
-			if(updateText == nil)
-				updateText = desc;
+
+            id item = [BRTextMenuItemLayer folderMenuItem];
+            
+            if(![[objm name] isEqualToString:@"SoftwareMenu"] && [objm installOnCurrentOS])
+            {
+                if([objm isInstalled])
+                {
+                    if([objm installedIsUpToDate])
+                        [item setRightJustifiedText:@"Up to Date"];
+                    else
+                        [item setRightJustifiedText:@"New Version available"];
+                }
+                else
+                    [item setRightJustifiedText:@"Not Installed"];
+
+
+
+                //Adding option for Info
 				
-			[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-								 [NSNumber numberWithInt:5],@"Type",
-								 [objm objectForKey:@"Name"],@"Name",
-								 [objm objectForKey:@"displayName"],@"DisplayName",
-								 onlineVersion,@"OnlineVersion",
-								 dev,@"Developer",
-								 updateText,@"UpdateText",
-								 [NSNumber numberWithBool:uptodates],@"UpToDate",
-								 desc,@"ShortDescription",
-								 dateFormat,@"ReleaseDate",
-								 [objm objectForKey:@"displayVersion"],@"DisplayVersion",
-								 installed_version,@"InstalledVersion",
-                                 objm,@"object",
-								 nil]];
-           // NSLog(@"objm: %@",objm);
-			[item setTitle:[objm objectForKey:@"displayName"]];
-			[_items addObject: item];
-		}
-       // NSLog(@"C.3");
+                [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSNumber numberWithInt:5],@"Type",
+                                     objm,@"object",
+                                     nil]];
+                [item setTitle:[objm displayName]];
+                [_items addObject: item];
+            }
+            // NSLog(@"C.3"); 
+        }
+        
 	}
 	
 	int sep3 = [_items count];
@@ -378,29 +293,29 @@
         NSString *frapName;
         
         if([keys containsObject:@"name"])
-            frapName = [obj objectForKey:@"name"];
+            frapName = [objm objectForKey:@"name"];
         else
-            frapName = [obj objectForKey:@"Name"];
+            frapName = [objm objectForKey:@"Name"];
         
-		NSString *thename = [obj valueForKey:@"name"];
+		NSString *thename = [objm valueForKey:@"name"];
 		if (thename == nil)
-			thename = [obj valueForKey:@"Name"];
+			thename = [objm valueForKey:@"Name"];
         
         NSString *frapDisplayName;
         if ([keys containsObject:@"DisplayName"])
-            frapDisplayName=[obj objectForKey:@"DisplayName"];
+            frapDisplayName=[objm objectForKey:@"DisplayName"];
         else {
             frapDisplayName=frapName;
-            [obj setObject:frapName forKey:@"DisplayName"];
+            [objm setObject:frapName forKey:@"DisplayName"];
         }
         NSString *osMax;
         if([keys containsObject:@"osMax"])
-            osMax=[obj objectForKey:@"osMax"];
+            osMax=[objm objectForKey:@"osMax"];
         else
             osMax=@"20.0";
         NSString *osMin;
         if([keys containsObject:@"osMin"])
-            osMin=[obj objectForKey:@"osMin"];
+            osMin=[objm objectForKey:@"osMin"];
         else
             osMin=@"2.0";
         
@@ -411,7 +326,7 @@
             frapRealName = frapName;
         frapRealName = [[frapRealName stringByDeletingPathExtension] stringByAppendingPathExtension:@"frappliance"];
         
-		NSString *displayName = frapDisplayName;//[obj valueForKey:@"DisplayName"];
+		//NSString *displayName = frapDisplayName;//[obj valueForKey:@"DisplayName"];
 //		if (displayName == nil)
 //			displayName = thename;
 		NSString *onlineVersion = [obj valueForKey:@"Version"];
@@ -549,18 +464,19 @@
             if ([[[_options objectAtIndex:fp8]allKeys]containsObject:@"object"]) {
                 NSDictionary *obj = [[_options objectAtIndex:fp8] objectForKey:@"object"];
                 //NSLog(@"obj: %@",obj);
-                NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                       [obj objectForKey:@"Name"],@"name",
-                                                       [obj valueForKey:@"Version"],@"version",
-                                                       [obj valueForKey:@"displayName"],@"displayName",
-                                                       [obj valueForKey:@"shortVersion"],@"shortVersion", 
-                                                       [obj valueForKey:@"displayVersion"],@"displayVersion", 
-                                                       [obj objectForKey:@"description"],@"description",
-                                                       [obj objectForKey:@"license"],@"license",
-                                                       [obj objectForKey:@"URL"],@"url",
-                                                        nil];
+//                NSMutableDictionary *theInformation = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                                       [obj objectForKey:@"Name"],@"name",
+//                                                       [obj valueForKey:@"Version"],@"version",
+//                                                       [obj valueForKey:@"displayName"],@"displayName",
+//                                                       [obj valueForKey:@"shortVersion"],@"shortVersion", 
+//                                                       [obj valueForKey:@"displayVersion"],@"displayVersion", 
+//                                                       [obj objectForKey:@"description"],@"description",
+//                                                       [obj objectForKey:@"license"],@"license",
+//                                                       [obj objectForKey:@"URL"],@"url",
+//                                                        nil];
                                                        
-                id newController = [[SMInstallMenu alloc] initWithDictionary:obj];
+                //id newController = [[SMInstallMenu alloc] initWithDictionary:obj];
+                id newController =[[SMApplianceInstallerController alloc] initWithDictionary:obj];
                 //[newController setInformationDictionary:theInformation];
                 [[self stack] pushController: newController];
 
@@ -658,17 +574,20 @@
 		if([theTrustedURL isEqualToString:@"http://nitosoft.com/version.plist"])
 		{
 			NSMutableDictionary *nitoDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
+            [nitoDict setValuesForKeysWithDictionary:trustedSource];
 			[nitoDict setObject:@"nitoTV" forKey:@"name"];
-			[nitoDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"Version"];
-			[nitoDict setObject:[trustedSource valueForKey:@"displayVersionTwo"] forKey:@"displayVersion"];
-			[nitoDict setObject:[trustedSource valueForKey:@"versionTwo"] forKey:@"shortVersion"];
+			[nitoDict setObject:[nitoDict valueForKey:@"displayVersionTwo"] forKey:@"Version"];
+			[nitoDict setObject:[nitoDict valueForKey:@"displayVersionTwo"] forKey:@"displayVersion"];
+			[nitoDict setObject:[nitoDict valueForKey:@"versionTwo"] forKey:@"shortVersion"];
 			[nitoDict setObject:@"http://nitosoft.com/nitoTVTwo.tar.gz" forKey:@"theURL"];
-			[nitoDict setObject:[trustedSource valueForKey:@"ShortDescription"] forKey:@"ShortDescription"];
-			[nitoDict setObject:[trustedSource valueForKey:@"developer"] forKey:@"Developer"];
-			[nitoDict setObject:[trustedSource valueForKey:@"ReleaseDate"] forKey:@"ReleaseDate"];
-			[nitoDict setObject:[trustedSource valueForKey:@"ImageURL"] forKey:@"ImageURL"];
-            [nitoDict setObject:[trustedSource valueForKey:@"osMin"] forKey:@"osMin"];
-			[nitoDict setObject:[trustedSource valueForKey:@"osMax"] forKey:@"osMax"];
+//			[nitoDict setObject:[trustedSource valueForKey:@"ShortDescription"] forKey:@"ShortDescription"];
+//			[nitoDict setObject:[trustedSource valueForKey:@"developer"] forKey:@"Developer"];
+//			[nitoDict setObject:[trustedSource valueForKey:@"ReleaseDate"] forKey:@"ReleaseDate"];
+//			[nitoDict setObject:[trustedSource valueForKey:@"ImageURL"] forKey:@"ImageURL"];
+//            [nitoDict setObject:[trustedSource valueForKey:@"osMin"] forKey:@"osMin"];
+//			[nitoDict setObject:[trustedSource valueForKey:@"osMax"] forKey:@"osMax"];
+//            [nitoDict setObject:[trustedSource valueForKey:@"license"] forKey:@"license"];
+//            [nitoDict setObject:[trustedSource valueForKey:@"desc"] forKey:@"desc"];
             //NSLog(@"imageURL: %@",[nitoDict valueForKey:@"ImageURL"]);
 			[TrustedDict setObject:nitoDict forKey:@"NitoTV"];
 			[self writeToLog:@"nitoTV special loop"];

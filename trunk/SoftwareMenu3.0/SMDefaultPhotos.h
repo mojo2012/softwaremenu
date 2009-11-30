@@ -30,7 +30,7 @@
 -(id)initWithProvider:(id)provider dictionary:(NSDictionary *)dict path:(NSString *)thepath andPhotoConnection:(id)photoConnection;
 - (void)setPath:(NSString *)thepath;
 @end
-@interface SMDefaultPhotosAsset : NSObject
+@interface SMDefaultPhotosAsset : BRPhotoMediaAsset
 - (id)dateTaken;
 - (id)fullSizeArtID;
 - (id)fullSizeArt;

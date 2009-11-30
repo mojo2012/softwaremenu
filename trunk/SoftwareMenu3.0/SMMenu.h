@@ -15,6 +15,7 @@
  */
 #import "SMMedia.h"
 #import "SMMediaPreview.h"
+#import "SMApplianceDictionary.h"
 
 /*
  *  Importing Controllers
@@ -28,6 +29,8 @@
 #import "SMSubclasses.h"
 #import "SMMedia.h"
 #import "SMMediaPreview.h"
+#import "SMApplianceInstallerController.h"
+#import "SMApplianceInstaller (downloaderDelegate).h"
 
 /*
  *  Importing Controls

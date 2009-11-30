@@ -27,6 +27,7 @@ typedef enum
 	
 }
 - (void) startUpdate;
+-(NSMutableDictionary *)formatDict:(NSDictionary*)dict;
 -(void)writeToLog:(NSString *)strLog;
 -(id)initWithIdentifier:(NSString *)initId;
 -(id)initCustom;

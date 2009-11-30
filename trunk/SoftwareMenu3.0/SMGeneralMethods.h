@@ -57,5 +57,11 @@
 - (void)blockUpdate;
 - (NSString *)getImagePathforDict:(NSDictionary *)infoDict;
 + (NSString *)getImagePath:(NSString *)Name;
+-(BOOL)isRW;
++(void)checkPhotoDirPath;
++ (BOOL)isWithinRangeForDict:(NSDictionary *)dict;
++ (BOOL)isWithinRangeWithMin:(NSString *)osMin withMax:(NSString *)osMax;
++ (BOOL)OSGreaterThan:(NSString *)value;
++ (BOOL)OSLessThan:(NSString *)value;
 
 @end
