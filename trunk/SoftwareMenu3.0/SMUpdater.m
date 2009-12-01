@@ -158,7 +158,7 @@ NSFileManager *man = [NSFileManager defaultManager];
 	else if([[[_options objectAtIndex:fp8]objectAtIndex:0] isEqualToString:@"updating"])
 	{
 		_displays=[[_options objectAtIndex:fp8] objectAtIndex:3];
-		[self start_updating:[[_options objectAtIndex:fp8] objectAtIndex:2]];
+		[self start_updating_New:[[_options objectAtIndex:fp8] objectAtIndex:2]];
 	}
 	
 	
@@ -212,13 +212,101 @@ NSFileManager *man = [NSFileManager defaultManager];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:[[self list] datasource]];
 	[super willBePopped];
 }*/
+-(void)start_updating_New:(NSString *)xml_location
+{
+    NSMutableArray *dLinks = [[NSMutableArray alloc] init];
+    NSMutableArray *md5s   = [[NSMutableArray alloc] init];
+    NSMutableArray *finalDLinks= [[NSMutableArray alloc] init];
+    NSMutableArray *finalMD5s  = [[NSMutableArray alloc] init];
+//    NSData *outData = [NSData dataWithContentsOfURL:[NSURL URLWithString:xml_location]];
+    NSDictionary *vDict = [NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:xml_location]];
+//    NSLog(@"dict: %@",dict);
+//    NSString *error;
+//	NSPropertyListFormat format;
+//	id vDict;
+//	vDict = [NSPropertyListSerialization propertyListFromData:outData
+//			 
+//											 mutabilityOption:NSPropertyListImmutable
+//			 
+//													   format:&format
+//			 
+//											 errorDescription:&error];
+    [dLinks addObject:[[vDict valueForKey:@"OS"] valueForKey:@"UpdateURL"]];
+	[dLinks addObject:[[vDict valueForKey:@"EFI"] valueForKey:@"InstallerURL"]];
+	[dLinks addObject:[[vDict valueForKey:@"EFI"] valueForKey:@"UpdateURL"]];
+	[dLinks addObject:[[vDict valueForKey:@"IR"] valueForKey:@"InstallerURL"]];
+	[dLinks addObject:[[vDict valueForKey:@"IR"] valueForKey:@"UpdateURL"]];
+	[dLinks addObject:[[vDict valueForKey:@"SI"] valueForKey:@"InstallerURL"]];
+	[dLinks addObject:[[vDict valueForKey:@"SI"] valueForKey:@"UpdateURL"]];
+    [md5s addObject:[[vDict valueForKey:@"OS"] valueForKey:@"md5OS"]];
+	[md5s addObject:[[vDict valueForKey:@"EFI"] valueForKey:@"md5EFIins"]];
+	[md5s addObject:[[vDict valueForKey:@"EFI"] valueForKey:@"md5EFIupd"]];
+	[md5s addObject:[[vDict valueForKey:@"IR"] valueForKey:@"md5IRins"]];
+	[md5s addObject:[[vDict valueForKey:@"IR"] valueForKey:@"md5IRupd"]];
+	[md5s addObject:[[vDict valueForKey:@"SI"] valueForKey:@"md5SIins"]];
+	[md5s addObject:[[vDict valueForKey:@"SI"] valueForKey:@"md5SIupd"]];
+    NSLog(@"dLinks1: %@",dLinks);
+    if ([[SMGeneralMethods sharedInstance]checkblocker]) {
+        NSEnumerator *enumd=[dLinks objectEnumerator];
+        NSMutableArray *dLinks2=[[NSMutableArray alloc]init];
+        id obj;
+        while (obj=[enumd nextObject]) {
+            [dLinks2 addObject:[obj stringByReplacingAllOccurancesOfString:@"mesu.apple.com" withString:@"mesu.apple.com.edgesuite.net"]];
+        }
+        dLinks = dLinks2;
+        
+    }
+    NSString *atvpath=[@"~/Documents/" stringByExpandingTildeInPath];
+	NSString *foldername=[NSString stringWithFormat:@"ATV%@",_displays,nil];
+	atvpath=[atvpath stringByAppendingPathComponent:foldername];
+	NSFileManager *man = [NSFileManager defaultManager];
+    BOOL isDir;
+    if([man fileExistsAtPath:atvpath isDirectory:&isDir] && isDir)
+    {
+        int i;
+        for(i=0;i<[dLinks count];i++)
+        {
+            NSString *fileName=[[dLinks objectAtIndex:i] lastPathComponent];
+            NSString *filePath=[atvpath stringByAppendingPathComponent:fileName];
+            BOOL checkG=NO;
+            if([man fileExistsAtPath:filePath])
+            {
+                checkG=[self checkmd5:filePath withmd5:[md5s objectAtIndex:i]];
+                if(!checkG)
+                    [man removeFileAtPath:filePath handler:nil];
+            }
+            else if([[fileName pathExtension] isEqualToString:@"dmg"] && [man fileExistsAtPath:[atvpath stringByAppendingPathComponent:@"OS.dmg"]])
+            {
+                checkG=[self checkmd5:[atvpath stringByAppendingPathComponent:@"OS.dmg"] withmd5:[md5s objectAtIndex:i]];
+                if(checkG)
+                    [man removeFileAtPath:[atvpath stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
+            }
+            if(!checkG)
+            {
+                [finalMD5s addObject:[md5s objectAtIndex:i]];
+                [finalDLinks addObject:[dLinks objectAtIndex:i]];
+            }
+        }
+    }
+    else
+    {
+        finalMD5s=md5s;
+        finalDLinks=dLinks;
+    }
+    _downloadnumber=10;
+    SMDownloaderUpdate *a = [[SMDownloaderUpdate alloc] initWithFiles:finalDLinks withImage:[[SMThemeInfo sharedTheme]softwareMenuImage] withTitle:@"Downloading Files"];
+    [a setForceDestination:YES];
+    [[self stack] pushController:a];
 
+    
+    
+}
 -(void)start_updating:(NSString *)xml_location
 {
-	if ([[SMGeneralMethods sharedInstance] checkblocker])
-	{
-		[[SMGeneralMethods sharedInstance] toggleUpdate];
-	}
+//	if ([[SMGeneralMethods sharedInstance] checkblocker])
+//	{
+//		[[SMGeneralMethods sharedInstance] toggleUpdate];
+//	}
 	//NSLog(@"start updating");
 	NSMutableArray *dLinks = [[NSMutableArray alloc] init];
 	NSMutableArray *md5s   = [[NSMutableArray alloc] init];
@@ -250,20 +338,30 @@ NSFileManager *man = [NSFileManager defaultManager];
 	[dLinks addObject:irUpdater];
 	[dLinks addObject:siInstaller];
 	[dLinks addObject:siUpdater];
-	osURL = [[vDict valueForKey:@"OS"] valueForKey:@"md5OS"];
-	efiInstaller = [[vDict valueForKey:@"EFI"] valueForKey:@"md5EFIins"];
-	efiUpdater = [[vDict valueForKey:@"EFI"] valueForKey:@"md5EFIupd"];
-	irInstaller = [[vDict valueForKey:@"IR"] valueForKey:@"md5IRins"];
-	irUpdater = [[vDict valueForKey:@"IR"] valueForKey:@"md5IRupd"];
-	siInstaller = [[vDict valueForKey:@"SI"] valueForKey:@"md5SIins"];
-	siUpdater = [[vDict valueForKey:@"SI"] valueForKey:@"md5SIupd"];
-	[md5s addObject:osURL];
-	[md5s addObject:efiInstaller];
-	[md5s addObject:efiUpdater];
-	[md5s addObject:irInstaller];
-	[md5s addObject:irUpdater];
-	[md5s addObject:siInstaller];
-	[md5s addObject:siUpdater];
+    if ([[SMGeneralMethods sharedInstance]checkblocker]) {
+        NSEnumerator *enumd=[dLinks objectEnumerator];
+        NSMutableArray *dLinks2=[[NSMutableArray alloc]init];
+        id obj;
+        while (obj=[enumd nextObject]) {
+//            NSRange a = [obj rangeOfString:@"mesu.apple.com"];
+//            if(a!=NSNotFound)
+//                 
+//                [dLinks2 addObject:[obj stringByReplacingCharactersInSet:a withString:@"mesu.apple.com.edgesuite.net"]];
+//            else
+//                [dLinks2 addObject:obj];
+            [dLinks2 addObject:[obj stringByReplacingAllOccurancesOfString:@"mesu.apple.com" withString:@"mesu.apple.com.edgesuite.net"]];
+        }
+        dLinks = dLinks2;
+        
+    }
+
+	[md5s addObject:[[vDict valueForKey:@"OS"] valueForKey:@"md5OS"]];
+	[md5s addObject:[[vDict valueForKey:@"EFI"] valueForKey:@"md5EFIins"]];
+	[md5s addObject:[[vDict valueForKey:@"EFI"] valueForKey:@"md5EFIupd"]];
+	[md5s addObject:[[vDict valueForKey:@"IR"] valueForKey:@"md5IRins"]];
+	[md5s addObject:[[vDict valueForKey:@"IR"] valueForKey:@"md5IRupd"]];
+	[md5s addObject:[[vDict valueForKey:@"SI"] valueForKey:@"md5SIins"]];
+	[md5s addObject:[[vDict valueForKey:@"SI"] valueForKey:@"md5SIupd"]];
 	
 	_downloadnumber=0;
 	//[dLinks autorelease];

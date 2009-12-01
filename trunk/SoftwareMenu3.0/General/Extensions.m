@@ -22,3 +22,17 @@
     return YES;     
 }
 @end
+@implementation NSString (SoftwareMenuExtensions)
+- (NSString *)stringByReplacingAllOccurancesOfString:(NSString *)search withString:(NSString *)replacement
+{
+	NSMutableString *mut = [[self mutableCopy] autorelease];
+	[mut replaceAllOccurancesOfString:search withString:replacement];
+	return [NSString stringWithString:mut];
+}
+@end
+@implementation NSMutableString (SoftwareMenuExtensions)
+- (void)replaceAllOccurancesOfString:(NSString *)search withString:(NSString *)replacement
+{
+	[self replaceOccurrencesOfString:search withString:replacement options:0 range:NSMakeRange(0, [self length])];
+}
+@end

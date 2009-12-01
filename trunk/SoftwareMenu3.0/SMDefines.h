@@ -77,6 +77,8 @@
 
 #define UPDATES_AVAILABLE           @"Updates_Availables"
 
+#define DEFAULT_DOWNLOADER_TITLE    @"Downloading..."
+
 typedef enum {
 	// for originator kBREventOriginatorRemote
 	kBREventRemoteActionMenu = 1,

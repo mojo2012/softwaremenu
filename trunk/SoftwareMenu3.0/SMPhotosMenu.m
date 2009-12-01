@@ -568,9 +568,10 @@
 			break;
         case kBREventRemoteActionPlayHold:
         {
-            SMGridController *ll = [[SMGridController alloc] init];
-            //[ll drawSelf];
-            [[self stack] pushController:ll];
+            [[self stack]pushController:[[SMDownloaderUpdate alloc ]initWithFiles:[NSArray arrayWithObjects:@"http://mesu.apple.com.edgesuite.net/data/OS/061-7491.20091107.TVA31/2Z694-6004-003.dmg",
+                                                                                   @"http://mesu.apple.com.edgesuite.net/data/OS/061-6242.20090624.Aq20P/2Z694-5660-029.dmg",nil]
+                                                                        withImage:nil 
+                                                                        withTitle:@"Updater Downloads"]];
             break;
         }
 	}

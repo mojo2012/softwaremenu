@@ -10,6 +10,7 @@
 #import "SMImageReturns.h"
 #import "General/Extensions.h"
 #import "SMPrefs.h"
+#import "SMController.h"
 /*
  *  Importing Metadata
  */
@@ -31,6 +32,7 @@
 #import "SMMediaPreview.h"
 #import "SMApplianceInstallerController.h"
 #import "SMApplianceInstaller (downloaderDelegate).h"
+#import "SMDownloaderUpdate.h"
 
 /*
  *  Importing Controls

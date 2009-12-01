@@ -11,5 +11,11 @@
 
 @interface NSFileManager (SoftwareMenuExtensions)
 - (BOOL)constructPath:(NSString *)proposedPath;
+@end
 
+@interface NSString (SoftwareMenuExtensions)
+- (NSString *)stringByReplacingAllOccurancesOfString:(NSString *)search withString:(NSString *)replacement;
+@end
+@interface NSMutableString (SoftwareMenuExtensions)
+- (void)replaceAllOccurancesOfString:(NSString *)search withString:(NSString *)replacement;
 @end
