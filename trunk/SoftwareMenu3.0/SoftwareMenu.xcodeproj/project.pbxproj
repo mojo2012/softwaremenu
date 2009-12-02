@@ -1475,6 +1475,8 @@
 		DD85A42F10C566D200222B8C /* SMUpdaterPreprocess.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A42D10C566D200222B8C /* SMUpdaterPreprocess.m */; };
 		DD85A44310C57E1300222B8C /* SMUpdaterDownload.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85A44110C57E1300222B8C /* SMUpdaterDownload.h */; };
 		DD85A44410C57E1300222B8C /* SMUpdaterDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */; };
+		DD85AA1810C608B300222B8C /* SMUpdaterOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85AA1610C608B300222B8C /* SMUpdaterOptions.h */; };
+		DD85AA1910C608B300222B8C /* SMUpdaterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85AA1710C608B300222B8C /* SMUpdaterOptions.m */; };
 		DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */; };
 		DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */; };
 		DDACE50D10B61C32006D78E0 /* SMApplianceInstallerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */; };
@@ -3072,6 +3074,8 @@
 		DD85A42D10C566D200222B8C /* SMUpdaterPreprocess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterPreprocess.m; sourceTree = "<group>"; };
 		DD85A44110C57E1300222B8C /* SMUpdaterDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterDownload.h; sourceTree = "<group>"; };
 		DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterDownload.m; sourceTree = "<group>"; };
+		DD85AA1610C608B300222B8C /* SMUpdaterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterOptions.h; sourceTree = "<group>"; };
+		DD85AA1710C608B300222B8C /* SMUpdaterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterOptions.m; sourceTree = "<group>"; };
 		DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreensaverSettingsMenu.h; sourceTree = "<group>"; };
 		DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreensaverSettingsMenu.m; sourceTree = "<group>"; };
 		DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMApplianceInstallerController.h; sourceTree = "<group>"; };
@@ -5047,6 +5051,8 @@
 				DD85A42D10C566D200222B8C /* SMUpdaterPreprocess.m */,
 				DD85A44110C57E1300222B8C /* SMUpdaterDownload.h */,
 				DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */,
+				DD85AA1610C608B300222B8C /* SMUpdaterOptions.h */,
+				DD85AA1710C608B300222B8C /* SMUpdaterOptions.m */,
 			);
 			name = Updater;
 			sourceTree = "<group>";
@@ -6462,6 +6468,7 @@
 				DD85A31C10C47DA100222B8C /* SMController.h in Headers */,
 				DD85A42E10C566D200222B8C /* SMUpdaterPreprocess.h in Headers */,
 				DD85A44310C57E1300222B8C /* SMUpdaterDownload.h in Headers */,
+				DD85AA1810C608B300222B8C /* SMUpdaterOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6809,6 +6816,7 @@
 				DD85A31D10C47DA100222B8C /* SMController.m in Sources */,
 				DD85A42F10C566D200222B8C /* SMUpdaterPreprocess.m in Sources */,
 				DD85A44410C57E1300222B8C /* SMUpdaterDownload.m in Sources */,
+				DD85AA1910C608B300222B8C /* SMUpdaterOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

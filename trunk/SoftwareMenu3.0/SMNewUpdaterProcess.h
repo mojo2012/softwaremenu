@@ -13,7 +13,7 @@
 
     NSString *                  _folder;
     NSString *                  _version;
-    NSMutableArray *                   _textControls;
+    NSMutableArray *            _textControls;
     NSArray *                   _md5Array;
     NSArray *                   _files;
     NSString *                  _title;
@@ -33,32 +33,18 @@
     BRWaitSpinnerControl *      _spinner;
 
 }
--(void)processFiles;
 
 
-- (id) init;
 
 - (int)makeASRscan:(NSString *)drivepath;
 
 // stack callbacks
-- (BOOL) isNetworkDependent;
-- (id)initCustom;
 - (void)moveFiles2:(BOOL)original_status;
-- (void)setUpdateData:(NSDictionary *)updatedata;
-- (BOOL)returnBoolValue:(NSString *)thevalue;
 
 
-- (void) setNumber:(int)step withSteps:(int)numberOfSteps;
-- (void) setTitle: (NSString *) title;
-- (NSString *) title;
-- (void) setSourceImage:(NSString *)name;
-- (id) sourceImage;
-- (void) setSourceText: (NSMutableString *) text;
-- (NSString *) sourceText;
+
+
 - (NSMutableDictionary *)getOptions;
-- (void) setTheText:(NSMutableString *)srcText;
 - (void) cleanstuff;
-- (void) appendSourceText:(NSString *)srcText;
-- (void) appendSourceTextSpace:(NSString *)srcText;
 - (void) startDownloadingURL;
 @end

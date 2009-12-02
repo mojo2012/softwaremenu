@@ -20,6 +20,7 @@
 	NSMutableArray			*	_nonBuiltinFraps;
 	NSMutableDictionary		*	_theDefaults;
 	NSMutableDictionary		*	_optionDict;
+//    NSMutableArray          *   _newOptionKeys;
 	
 }
 -(id)initCustom;

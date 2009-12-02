@@ -57,6 +57,7 @@
     SMNewUpdaterProcess *a = [[SMNewUpdaterProcess alloc]initForFolder:folder withVersion:_version];
     [self _removeAllControls];
     [[self stack]swapController:a];
+    
 }
 -(void)dealloc
 {

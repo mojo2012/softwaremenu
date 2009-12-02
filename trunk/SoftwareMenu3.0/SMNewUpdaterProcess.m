@@ -104,7 +104,6 @@
     BRTextControl *textC=[_textControls lastObject];
     NSString *string = [[textC attributedString] string];
     string = [string stringByAppendingFormat:@"     %@",text,nil];
-    NSLog(@"newstring: %@",string);
     return;
     [textC setText:string withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
     CGRect frame = [textC frame];
@@ -411,7 +410,7 @@
 			[self addTextSpace:@"Done"];
 		}
 	}
-	//[self cleanstuff];
+	[self cleanstuff];
 	[self addText:@"Cleaned files"];
 	if(update_status)
 	{
@@ -475,6 +474,7 @@
 		[_spinner setSpins:NO];
         [_spinner removeFromParent];
 	}
+    //[_arrowControl setAffineTransform:CGAffineTransformMakeTranslation(30.0f,30.0f)];
 	
 }
 - (int)makeASRscan:(NSString *)drivepath
@@ -630,11 +630,7 @@
 
 -(void)layoutImage
 {
-    NSLog(@"layoutImage");
     [_imageControl removeFromParent];
-
-    //[_imageControl release];
-    //_imageControl = [[BRImageControl alloc] init];
     if (_image==nil)
         _image = [[BRThemeInfo sharedTheme] appleTVIcon];
     [_imageControl setImage:_image];
@@ -651,7 +647,6 @@
 }
 -(void)layoutHeader
 {
-    NSLog(@"layoutHeader");
     [_headerControl removeFromParent];
     if(_title == nil)
         _title = DEFAULT_DOWNLOADER_TITLE;

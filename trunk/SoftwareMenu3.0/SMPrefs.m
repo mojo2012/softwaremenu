@@ -164,8 +164,9 @@
     NSArray *array = [SMPreferences arrayForKey:PHOTO_FAVORITES];
     if (array==nil)
     {
-        array = [NSArray arrayWithObject:nil];
+        array = [NSArray array];
     }
+    NSLog(@"array: %@",array);
     return [array mutableCopy];
 }
 +(void)setPhotoFavorites:(NSArray *)favorites

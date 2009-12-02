@@ -19,7 +19,7 @@
 @implementation SMUpdaterOptions
 
 
-/*- (id) previewControlForItem: (long) item
+- (id) previewControlForItem: (long) item
 {
 	if(item >= [_items count])
 		return nil;
@@ -30,7 +30,7 @@
 		[meta setDefaultImage];
 		[meta setTitle:[[_items objectAtIndex:item] title]];
 		//[meta setTitle:[_items objectAtIndex:item]];
-		if(item>4)
+		if(item>6)
 		{
 			[meta setDescription:@"copy this frap over"];
 		}
@@ -51,7 +51,7 @@
 		
 	}
     return ( nil );
-}*/
+}
 -(id)init
 {
 	self=[super init];
@@ -238,9 +238,27 @@
 		//[_items addObject:item];
 	}
 }*/
+//-(void)itemSelected:(long)fp8
+//{
+//    if(fp8<[_optionKeys count])
+//    {
+//        NSMutableDictionary * tempDict = [self getOptions];
+//        if([[[_items objectAtIndex:fp8] rightJustifiedText] isEqualToString:@"YES"])
+//        {
+//            [[_items objectAtIndex:fp8] setRightJustifiedText:@"NO"];
+//            [tempDict setValue:[NSNumber numberWithBool:NO] forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+//        }
+//        else if([[[_items objectAtIndex:fp8] rightJustifiedText] isEqualToString:@"NO"])
+//        {
+//            [[_items objectAtIndex:fp8] setRightJustifiedText:@"YES"];
+//            [tempDict setValue:[NSNumber numberWithBool:YES] forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+//        }
+//        [SMGeneralMethods setDict:tempDict forKey:@"Updater_Options"];
+//        [[self list] reload];
+//    }
+//}
 -(void)itemSelected:(long)fp8
 {
-	NSLog(@"%@",[_options objectAtIndex:fp8]);
 	if([[[_options objectAtIndex:fp8] objectAtIndex:0] isEqualToString:@"options"])
 	{
 		[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
@@ -248,7 +266,6 @@
 		{
 			if([SMGeneralMethods boolForKey:@"retain_installed"])   {NSLog(@"retaining");}
 
-			NSLog(@"bye");
 			int i;
 			int ii;
 			int counter;
