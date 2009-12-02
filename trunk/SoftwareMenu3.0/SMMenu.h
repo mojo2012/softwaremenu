@@ -70,7 +70,8 @@
 /*
  *  Importing SubMenus For Settings-Updater
  */
-
+#import "SMNewUpdaterProcess.h"
+#import "SMUpdaterDownload.h"
 #import "SMUpdater.h"
 #import "SMUOptions.h"
 #import "SMUpdaterProcess.h"

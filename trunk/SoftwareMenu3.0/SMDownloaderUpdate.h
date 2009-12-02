@@ -27,6 +27,10 @@
     long long                   _totalLength;
     long long                   _gotLength;
     NSString        *           _outputPath;
+    NSMutableArray  *           _outputPaths;
+    NSDate          *           _startTime;
+    BRTextControl *             _timeControl;
+    NSDate          *           _lastUpdate;
 }   
 -(id)initWithFiles:(NSArray *)links withImage:(BRImage *)image withTitle:(NSString *)title;
 -(void)setmd5Array:(NSArray *)md5Array;
@@ -41,4 +45,7 @@
 -(void)setLinks:(NSArray *)links;
 -(NSArray *)links;
 -(void)layoutSubcontrols;
+-(void)setBoxText:(NSString*)text;
+-(void)setText:(NSString *)text;
+-(void)appendBoxText:(NSString *)append;
 @end

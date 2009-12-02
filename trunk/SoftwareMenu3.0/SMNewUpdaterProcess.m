@@ -14,57 +14,50 @@
 
 
 
+@interface SMNewUpdaterProcess (layout)
+-(void)layoutImage;
+-(void)layoutHeader;
+@end
 
 
 @implementation SMNewUpdaterProcess
-- (void) disableScreenSaver{
-	m_screen_saver_timeout = [[BRSettingsFacade singleton] screenSaverTimeout];
-	[[BRSettingsFacade singleton] setScreenSaverTimeout:-1];
-	[[BRSettingsFacade singleton] flushDiskChanges];
-}
-- (void) enableScreenSaver{
-	[[BRSettingsFacade singleton] setScreenSaverTimeout: m_screen_saver_timeout];
-	[[BRSettingsFacade singleton] flushDiskChanges];
-}
--(void)setUpdateData:(NSDictionary *)updatedata
+
+
+-(id)initForFolder:(NSString *)folder withVersion:(NSString *)Version
 {
-	_updateData=updatedata;
-	[_updateData retain];
+    if ( [super init] == nil )
+        return ( nil );
+    self = [super init];
+    _folder=folder;
+    [_folder retain];
+    _version=Version;
+    [_version retain];
+    _image = [BRImage imageWithPath:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/appleTVImage.png"];
+    [_image retain];
+    _title = BRLocalizedString(@"Patching",@"Patching");
+    [_title retain];
+    _spinner = [[BRWaitSpinnerControl alloc]init];
+
+    _headerControl = [[BRHeaderControl alloc] init];
+    _textControls=[[NSMutableArray alloc]init];
+    [_textControls retain];
+    _imageControl = [[BRImageControl alloc] init];
+    _arrowControl = [[BRImageControl alloc] init];
+    BRImage *arrow = [[BRThemeInfo sharedTheme]menuArrowImage];
+    [_arrowControl setImage:arrow];
+    [_arrowControl setAutomaticDownsample:YES];
+    [self disableScreenSaver];
+    return self;
+    
 }
-
-
-- (void) drawSelf
-
+-(void)drawSelf;
 {
-	_previousText =	[[NSMutableString alloc] init];
-	[self disableScreenSaver];
-	_theSourceText =[[NSMutableString alloc] initWithString:BRLocalizedString(@"Starting Update Processing",@"Starting Update Processing")];
-	_header =		[[BRHeaderControl alloc] init];
-	_sourceText =	[[BRScrollingTextBoxControl alloc] init];
-	_sourceImage =	[[BRImageControl alloc] init];
-	_spinner =		[[BRWaitSpinnerControl alloc] init];
-	//_step =			[[BRTextControl alloc] init];
-	[self addControl: _sourceImage];
-	CGRect masterFrame = [[self parent] frame];
-	CGRect frame = masterFrame;
-	
-	// header goes in a specific location
-	frame.origin.y = frame.size.height * 0.9f;
-	frame.size.height = [[BRThemeInfo sharedTheme] listIconHeight];
-	[_header setFrame: frame];
-    
-	
-	frame.size.width = masterFrame.size.width * 0.45f;
-	frame.size.height = ceilf( frame.size.width * 0.068f );
-	frame.origin.x = (masterFrame.size.width - frame.size.width) * 0.5f;
-	frame.origin.y = masterFrame.origin.y + (masterFrame.size.height * (1.0f / 8.0f));
-	NSString *name =  _downloadTitle;
-	if (name == nil)
-	{
-		name = BRLocalizedString(@"Updating",@"Updating");
-	}
-    
-	CGRect frame2 = masterFrame;
+    [self _removeAllControls];
+    //[self addText:@"haha"];
+    [self layoutImage];
+    [self layoutHeader];
+    CGRect masterFrame=[self getMasterFrame];
+    CGRect frame2 = masterFrame;
 	frame2.origin.x = masterFrame.size.width  * 0.71f;
     frame2.origin.y = (masterFrame.size.height * 0.13);// - txtSize.height;
 	
@@ -72,162 +65,87 @@
 	frame2.size.height = masterFrame.size.height*0.22f;
 	[_spinner setFrame:frame2];
 	[_spinner setSpins:YES];
-	[self setTitle: name];
-	[self setSourceImage: name];
-	[self setSourceText: [NSString stringWithFormat:BRLocalizedString(@"Processing Updates for ATV%@",@"Processing Updates for ATV%@"),[_updateData valueForKey:@"displays"]]];   // this lays itself out
-	[self addControl: _header];
-	[self addControl: _sourceText];
-	[self addControl:_spinner];
-
-	
-	
+    [self addControl:_spinner];
 }
-
-
-- (id) init {
-    if ( [super init] == nil )
-        return ( nil );
-	self = [super init];
-    return ( self );
-}
-
-- (void)setNumber:(int)step withSteps:(int)numberOfSteps
+//-(void)controlWasActivated
+//{
+//    [self layoutSubcontrols];
+//    [super controlWasActivated];
+//}
+-(void)addText:(NSString *)text
 {
-    [_step setText:[[NSString alloc]initWithFormat:@"Step: %@/%@",step,numberOfSteps,nil] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
-	
-    CGRect masterFrame = [[self parent] frame];
-	
-	
+    NSLog(@"text: %@",text);
+    CGRect masterFrame = [self getMasterFrame];
     CGRect frame;
-    frame.origin.x = masterFrame.size.width  * 0.7f;
-    frame.origin.y = (masterFrame.size.height * 0.1);// - txtSize.height;
-	
-    frame.size.width = masterFrame.size.width*0.25f;
-	frame.size.height = masterFrame.size.height*0.07f;
-	
-	[_step setFrame: frame];
+    BRTextControl *textC = [[BRTextControl alloc] init];
+    [textC setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
+    frame.size = [textC preferredFrameSize];
+    frame.origin.x=masterFrame.origin.x+masterFrame.size.width*0.1f;
+    if(frame.size.width>masterFrame.size.width*0.65f)
+        frame.size.width=masterFrame.size.width*0.65f;
+    if([_textControls count]==0)
+        frame.origin.y=masterFrame.size.height*0.75f;
+    else
+    {
+        CGRect oldframe=[[_textControls lastObject] frame];
+        frame.origin.y=oldframe.origin.y-frame.size.height*1.1f;
+    }
+    [textC setFrame:frame];
+    //[textC retain];
+    [self addControl:textC];
+    [_textControls addObject:textC];
+    [self setArrowForRect:frame];
 }
-
-- (void) dealloc
+-(void)addTextSpace:(NSString *)text
 {
-    //[self cancelDownload];
-	
-    [_header release];
-    [_sourceText release];
-    [_progressBar release];
-    [_downloader release];
-    [_outputPath release];
-	[_sourceImage release];
-	[_updateData release];
-	//[_sourceTheText release];
-	
-    [super dealloc];
+    
+    if([_textControls count]==0)
+        return;
+    BRTextControl *textC=[_textControls lastObject];
+    NSString *string = [[textC attributedString] string];
+    string = [string stringByAppendingFormat:@"     %@",text,nil];
+    NSLog(@"newstring: %@",string);
+    return;
+    [textC setText:string withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
+    CGRect frame = [textC frame];
+    frame.size.width=[textC preferredFrameSize].width;
+    [textC setFrame:frame];
 }
-
-- (void)controlWasActivated
+-(void)setArrowForRect:(CGRect)frame
 {
-	//NSLog(@"was Activated");
-	[self drawSelf];
-	[super controlWasActivated];
-	[self startDownloadingURL];
-	//[self processFiles];
-	
-	
+    [_arrowControl removeFromParent];
+    BRImage *arrow=[[BRThemeInfo sharedTheme] folderIcon];
+    CGRect newFrame;
+    newFrame.size.height=frame.size.height;
+    newFrame.size.width = frame.size.height*[arrow aspectRatio];
+    newFrame.origin.x=frame.origin.x-newFrame.size.width;
+    newFrame.origin.y=frame.origin.y;
+    [_arrowControl setFrame:newFrame];
+    [self addControl:_arrowControl];
+    
 }
-
-- (BOOL) isNetworkDependent
+-(NSMutableDictionary *)getOptions
 {
-    return  NO;
+	NSMutableDictionary *theoptions = [[SMGeneralMethods dictForKey:@"Updater_Options"] mutableCopy];
+	return theoptions;
 }
-
-
-- (void) setTitle: (NSString *) title
+-(void)controlWasActivated
 {
-    [_header setTitle: title];
+    NSLog(@"before");
+    [self drawSelf];
+    [super controlWasActivated];
+    NSLog(@"run");
+    [self startDownloadingURL];
 }
-
-
-- (NSString *) title
+-(void) run
 {
-    return ( [_header title] );
-}
-- (void) setSourceImage: (NSString *)name
-{
-	[_sourceImage setImage:[[BRThemeInfo sharedTheme]appleTVIcon]];
-	[_sourceImage setAutomaticDownsample:YES];
-	CGRect masterFrame = [[self parent] frame];
-	CGRect frame;
-	frame.origin.x = masterFrame.size.width *0.7f;
-	frame.origin.y = masterFrame.size.height *0.3f;
-	frame.size.width = masterFrame.size.height*0.4f; 
-	frame.size.height= masterFrame.size.height*0.3f;
-	[_sourceImage setFrame: frame];
-	
-}
-- (void) appendSourceText: (NSString *)srcText
-{
-	[_theSourceText appendString:[NSString stringWithFormat:@"\n%@",srcText]];
-	_previousText = srcText;
-	[self setSourceText:_theSourceText];
-}
--(void) appendSourceTextSpace:(NSString *)srcText
-{
-	[_theSourceText appendString:[NSString stringWithFormat:@"    ...  %@",srcText]];
-	[self setSourceText:_theSourceText];
-}
-
-- (void) setSourceText: (NSMutableString *) srcText
-{
-	NSAttributedString *srcsText =[[NSAttributedString alloc]initWithString:srcText attributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
-	[_sourceText setText:srcsText];
-    CGRect masterFrame = [[self parent] frame];
-    CGRect frame;
-    frame.origin.x = masterFrame.origin.x+masterFrame.size.width*0.05f;
-    frame.origin.y = (masterFrame.size.height * 0.0f);// - txtSize.height;
-    frame.size.width = masterFrame.size.width*0.6f;
-	frame.size.height = masterFrame.size.height*0.9f;
-	[_sourceText setFrame: frame];
-}
--(id)sourceImage
-{
-	return ([_sourceImage image]);
-}
-
-- (NSString *) sourceText
-{
-    return ( [_sourceText text] );
-}
-
-
-
-
-
-// NSURLDownload delegate methods
--(void) addDropbearBanner
-{
-	NSFileManager *man2 = [NSFileManager defaultManager];
-	if([man2 fileExistsAtPath:[@"~/.dropbear_banner" stringByExpandingTildeInPath]])
-	{
-		[man2 removeFileAtPath:[@"~/.dropbear_banner" stringByExpandingTildeInPath] handler:nil];
-	}
-	NSTask *task8 = [[NSTask alloc] init];
-	NSArray *args8 = [NSArray arrayWithObjects:@"Welcome to the AppleTV (via SoftwareMenu)",@">>",@"~/.dropbear_banner",nil];
-	[task8 setArguments:args8];
-	[task8 setLaunchPath:@"/bin/echo"];
-	[task8 launch];
-	[task8 waitUntilExit];
-}
--(void) processFiles
-{
-	NSLog(@"1");
-	//int numberOfSteps,step;
-	//step=0;
+    NSLog(@"1");
 	NSFileManager *man =[NSFileManager defaultManager];
 	NSMutableDictionary *tempoptions=[self getOptions];
 	BOOL original_status=[[tempoptions valueForKey:@"original"] boolValue];	
-
+	
 	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	[self appendSourceText:BRLocalizedString(@"Checking Permissions on Helper",@"Checking Permissions on Helper")];
+	[self addText:BRLocalizedString(@"Checking Permissions on Helper",@"Checking Permissions on Helper")];
 	////step//step;
 	//[self setNumber:step withSteps:numberOfSteps];
 	BOOL update_status=YES;
@@ -237,19 +155,21 @@
 	if(![SMGeneralMethods helperCheckPerm])
 	{
 		update_status=NO;
-		[self appendSourceText:@"	Error with Permissions"];
+		[self addText:@"	Error with Permissions"];
 	}
 	else
 	{
-		[self appendSourceTextSpace:BRLocalizedString(@"OK",@"OK")];
+		[self addTextSpace:BRLocalizedString(@"OK",@"OK")];
 		
 	}
-	
+	NSLog(@"2");
 	if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"] && update_status && !original_status)
 	{
 		NSTask *task8 = [[NSTask alloc] init];
-		[self appendSourceText:@"Unmounting volume at /Volumes/OSBBoot 1/"];
-        NSArray *args8 = [NSArray arrayWithObjects:@"-unmount",@"0",@"0",nil];
+		[self addText:@"Unmounting volume at /Volumes/OSBBoot 1/"];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
+		NSArray *args8 = [NSArray arrayWithObjects:@"-unmount",@"0",@"0",nil];
 		[task8 setArguments:args8];
 		[task8 setLaunchPath:helperLaunchPath];
 		[task8 launch];
@@ -257,38 +177,41 @@
 		if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"])
 		{
 			update_status=NO;
-			[self appendSourceText:@"	Volume \"/Volumes/OSBoot 1/\" could not umount"];
+			[self addText:@"	Volume \"/Volumes/OSBoot 1/\" could not umount"];
 		}
 		else
 		{
-			[self appendSourceTextSpace:@"Done"];
+			[self addTextSpace:@"Done"];
 		}
 		
 	}
 	
-	
+	NSLog(@"3");
 	if(update_status){
-		[self appendSourceText:BRLocalizedString(@"Blocking mesu.apple.com",@"Blocking mesu.apple.com")];
+		[self addText:BRLocalizedString(@"Blocking mesu.apple.com",@"Blocking mesu.apple.com")];
+		//step;
+		//[self setNumber:step withSteps:numberOfSteps];
 		[[SMGeneralMethods sharedInstance] blockUpdate];
-		[self appendSourceTextSpace:@"Done"];
+		[self addTextSpace:@"Done"];
 	}
 	
 	
 	if(update_status && !original_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"Convert .dmg to UDRW",@"Convert .dmg to UDRW")];
+		[self addText:BRLocalizedString(@"Convert .dmg to UDRW",@"Convert .dmg to UDRW")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
-		//[self makeDMGRW:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",[_updateData valueForKey:@"displays"],nil]];
-		[SMGeneralMethods convertDMG:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",[_updateData valueForKey:@"displays"],nil] toFormat:@"UDRW" withOutputLocation:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]];
-		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]])
+		//[self makeDMGRW:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",_version,nil]];
+        NSLog(@"/Users/frontrow/Documents/ATV%@/OS.dmg",_version);
+		[SMGeneralMethods convertDMG:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/OS.dmg",_version,nil] toFormat:@"UDRW" withOutputLocation:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",_version,nil]];
+		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",_version,nil]])
 		{
-			[self appendSourceText:@"Conversion to RW has failed"];
+			[self addText:@"Conversion to RW has failed"];
 			update_status=NO;
 		}
 		else
 		{
-			[self appendSourceTextSpace:BRLocalizedString(@"Converted",@"Converted")];
+			[self addTextSpace:BRLocalizedString(@"Converted",@"Converted")];
 		}
 	}
 	
@@ -296,11 +219,11 @@
 	
 	if(update_status && !original_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"Mount the .dmg",@"Mount the .dmg")];
+		[self addText:BRLocalizedString(@"Mount the .dmg",@"Mount the .dmg")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task3 = [[NSTask alloc] init];
-		NSArray *args3 = [NSArray arrayWithObjects:@"-mountconverted",[_updateData valueForKey:@"displays"],@"0",nil];
+		NSArray *args3 = [NSArray arrayWithObjects:@"-mountconverted",_version,@"0",nil];
 		[task3 setArguments:args3];
 		[task3 setLaunchPath:helperLaunchPath];
 		[task3 launch];
@@ -308,12 +231,12 @@
 		//NSLog(@"mounted");
 		if(![man fileExistsAtPath:@"/Volumes/OSBoot 1/"])
 		{
-			[self appendSourceText:@"Was Not Mounted"];
+			[self addText:@"Was Not Mounted"];
 			update_status=NO;
 		}
 		else
 		{
-			[self appendSourceTextSpace:BRLocalizedString(@"Mounted",@"Mounted")];
+			[self addTextSpace:BRLocalizedString(@"Mounted",@"Mounted")];
 			
 		}
 	}
@@ -321,11 +244,11 @@
 	if(update_status && !original_status)
 	{
 		
-		[self appendSourceText:BRLocalizedString(@"Adding Dropbear SSH and SoftwareMenu",@"Add Dropbear SSH and SoftwareMenu")];
+		[self addText:BRLocalizedString(@"Adding Dropbear SSH and SoftwareMenu",@"Add Dropbear SSH and SoftwareMenu")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task4 = [[NSTask alloc] init];
-		NSArray *args4 = [NSArray arrayWithObjects:@"-addFiles",[_updateData valueForKey:@"displays"],@"0",nil];
+		NSArray *args4 = [NSArray arrayWithObjects:@"-addFiles",_version,@"0",nil];
 		[task4 setArguments:args4];
 		[task4 setLaunchPath:helperLaunchPath];
 		[task4 launch];
@@ -333,16 +256,16 @@
 		if(![man fileExistsAtPath:@"/Volumes/OSBoot 1/usr/bin/dbclient"])
 		{
 			update_status=NO;
-			[self appendSourceText:@"Files were not copied properly"];
+			[self addText:@"Files were not copied properly"];
 		}
 		else
 		{
-			[self appendSourceTextSpace:BRLocalizedString(@"Done",@"Done")];
+			[self addTextSpace:BRLocalizedString(@"Done",@"Done")];
 		}
 	}
 	if(update_status && !original_status &&[SMGeneralMethods boolForKey:@"retain_installed"])
 	{
-		[self appendSourceText:BRLocalizedString (@"Moving Fraps",@"Moving Fraps")];
+		[self addText:BRLocalizedString (@"Moving Fraps",@"Moving Fraps")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		NSArray * builtinfraps = [[NSArray alloc] initWithObjects:@"Movies.frappliance",@"Music.frappliance",@"Photos.frappliance",@"Podcasts.frappliance",@"YT.frappliance",@"TV.frappliance",@"Settings.frappliance",@"SoftwareMenu.frappliance",nil];
@@ -363,12 +286,12 @@
 			}
 			
 		}		
-		[self appendSourceTextSpace:@"Done"];
+		[self addTextSpace:@"Done"];
 		
 	}
 	if(update_status && !original_status && [SMGeneralMethods boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
 	{
-		[self appendSourceText:@"Copying Builtin stuff"];
+		[self addText:@"Copying Builtin stuff"];
 		NSLog(@"retaining builtin");
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
@@ -391,11 +314,11 @@
 			
 			
 		}
-		[self appendSourceTextSpace:@"Done"];
+		[self addTextSpace:@"Done"];
 	}
 	if(update_status && !original_status && NO)// [[tempoptions valueForKey:@"install_perian"] boolValue])
 	{
-		[self appendSourceText:BRLocalizedString(@"Installing Perian",@"Installing Perian")];
+		[self addText:BRLocalizedString(@"Installing Perian",@"Installing Perian")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task41 = [[NSTask alloc] init];
@@ -408,18 +331,18 @@
 		int perianTerm=[task41 terminationStatus];
 		if(perianTerm == 0)
 		{
-			[self appendSourceTextSpace:@"Installed"];
+			[self addTextSpace:@"Installed"];
 		}
 		else
 		{
-			[self appendSourceText:@"	Perian Install Failed"];
+			[self addText:@"	Perian Install Failed"];
 			update_status = NO;
 		}
 	}
 	
 	if(update_status && !original_status)
 	{
-		[self appendSourceText:BRLocalizedString(@"Unmounting",@"Unmounting")];
+		[self addText:BRLocalizedString(@"Unmounting",@"Unmounting")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		NSTask *task5 = [[NSTask alloc] init];
@@ -432,32 +355,32 @@
 		//NSLog(@"unmounted");
 		if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"])
 		{
-			[self appendSourceText:@"Was not Unmounted"];
+			[self addText:@"Was not Unmounted"];
 			update_status=NO;
 		}
 		else
 		{
-			[self appendSourceTextSpace:BRLocalizedString(@"Unmounted",@"Unmounted")];
+			[self addTextSpace:BRLocalizedString(@"Unmounted",@"Unmounted")];
 		}
 	}
 	
 	if(update_status && !original_status)
 	{
 		
-		[self appendSourceText:BRLocalizedString(@"Converting to UDZO (read-only)",@"Converting to UDZO (read-only)")];
+		[self addText:BRLocalizedString(@"Converting to UDZO (read-only)",@"Converting to UDZO (read-only)")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
-		//[self makeDMGRO:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil]];
-		NSString *atvpath=[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil];
+		//[self makeDMGRO:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",_version,nil]];
+		NSString *atvpath=[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",_version,nil];
 		[SMGeneralMethods convertDMG:[atvpath stringByAppendingPathComponent:@"converted.dmg"] toFormat:@"UDZO" withOutputLocation:[atvpath stringByAppendingPathComponent:@"final.dmg"]];
-		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/final.dmg",[_updateData valueForKey:@"displays"],nil]])
+		if(![man fileExistsAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/final.dmg",_version,nil]])
 		{
 			update_status=NO;
-			[self appendSourceText:@"Conversion to RO failed"];
+			[self addText:@"Conversion to RO failed"];
 		}
 		else
 		{
-			[self appendSourceTextSpace:@"Done"];
+			[self addTextSpace:@"Done"];
 		}
 	}
 	
@@ -465,31 +388,31 @@
 	{
 		if(!original_status)
 		{
-			[self appendSourceText:BRLocalizedString(@"Moving Files to ~/Updates",@"Moving Files to ~/Updates")];
+			[self addText:BRLocalizedString(@"Moving Files to ~/Updates",@"Moving Files to ~/Updates")];
 		}
 		else
 		{
-			[self appendSourceText:BRLocalizedString(@"Moving Files to ~/Updates",@"Moving Files to ~/Updates")];
+			[self addText:BRLocalizedString(@"Moving Files to ~/Updates",@"Moving Files to ~/Updates")];
 		}
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		
-		//[self appendSourceText:[NSString stringWithFormat:BRLocalizedString(@"	Preserve: %@",@"	Preserve: %@"),[_updateData valueForKey:@"preserve"],nil]];
+		//[self addText:[NSString stringWithFormat:BRLocalizedString(@"	Preserve: %@",@"	Preserve: %@"),[_updateData valueForKey:@"preserve"],nil]];
 		[self moveFiles2:original_status];
-		//[self appendSourceText:@"	"];
+		//[self addText:@"	"];
 		if(![man fileExistsAtPath:[@"~/Updates/final.dmg" stringByExpandingTildeInPath]])
 		{
-			[self appendSourceText:@"Moving Failed"];
+			[self addText:@"Moving Failed"];
 			update_status=NO;
 		}
         
 		else
 		{
-			[self appendSourceTextSpace:@"Done"];
+			[self addTextSpace:@"Done"];
 		}
 	}
-	[self cleanstuff];
-	[self appendSourceText:@"Cleaned files"];
+	//[self cleanstuff];
+	[self addText:@"Cleaned files"];
 	if(update_status)
 	{
 		//[self addDropbearBanner];
@@ -504,7 +427,7 @@
 	{
 		int i;
 		//NSLog(@"making scan");
-		[self appendSourceText:BRLocalizedString(@"Doing ASR scan",@"Doing ASR scan")];
+		[self addText:BRLocalizedString(@"Doing ASR scan",@"Doing ASR scan")];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];
 		i=[self makeASRscan:@"/Users/frontrow/Updates/final.dmg"];
@@ -513,54 +436,45 @@
 		{
 			
 			
-			[self appendSourceText:@"error"];
+			[self addText:@"error"];
 			//NSLog(@"error");
 			update_status=NO;	
 		}
 		else
 		{
-			[self appendSourceTextSpace:@"Done"];
+			[self addTextSpace:@"Done"];
 		}
 		
 	}
 	
-	if(update_status && [[tempoptions valueForKey:@"updatenow"]boolValue])
+//	if(update_status && [[tempoptions valueForKey:@"updatenow"]boolValue])
+//	{
+//		[self addText:@"Launching OSUpdate, Please wait"];
+//		//step;
+//		//[self setNumber:step withSteps:numberOfSteps];
+//		NSTask *task7 = [[NSTask alloc] init];
+//		NSArray *args7 = [NSArray arrayWithObjects:@"-osupdate",@"0",@"0",nil];
+//		[task7 setArguments:args7];
+//		[task7 setLaunchPath:helperLaunchPath];
+//		[task7 launch];
+//		[task7 waitUntilExit]; 
+//		
+//	}
+	/*else*/ if(update_status)
 	{
-		[self appendSourceText:@"Launching OSUpdate, Please wait"];
-		//step;
-		//[self setNumber:step withSteps:numberOfSteps];
-		NSTask *task7 = [[NSTask alloc] init];
-		NSArray *args7 = [NSArray arrayWithObjects:@"-osupdate",@"0",@"0",nil];
-		[task7 setArguments:args7];
-		[task7 setLaunchPath:helperLaunchPath];
-		[task7 launch];
-		[task7 waitUntilExit]; 
-		
-	}
-	else if(update_status)
-	{
-		[self appendSourceText:BRLocalizedString(@"*Press Menu and launch the Update from the menu item",@"*Press Menu and launch the Update from the menu item")];
+		[self addText:BRLocalizedString(@"*Press Menu and launch the Update from the menu item",@"*Press Menu and launch the Update from the menu item")];
 		{
 			[_spinner setSpins:NO];
+            [_spinner removeFromParent];
 		}
 		
 	}
 	else if(!update_status)
 	{
-		[self appendSourceText:@"there was an error"];
+		[self addText:@"there was an error"];
 		[_spinner setSpins:NO];
+        [_spinner removeFromParent];
 	}
-	
-}
-
-- (BOOL)helperCheckPerm
-{
-	return [[SMGeneralMethods sharedInstance] helperCheckPerm];
-	
-}
-- (BOOL)recreateOnReselect
-{
-	return (YES);
 	
 }
 - (int)makeASRscan:(NSString *)drivepath
@@ -588,127 +502,19 @@
 	//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"]boolValue]);
 	if(![[tempoptions valueForKey:@"preserve"] boolValue])
 	{
-		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil] handler:nil];
+		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",_version,nil] handler:nil];
 		
 	}
 	else
 	{
-		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",[_updateData valueForKey:@"displays"],nil] handler:nil];
-		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/final.dmg",[_updateData valueForKey:@"displays"],nil] handler:nil];
+		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/converted.dmg",_version,nil] handler:nil];
+		[man removeFileAtPath:[NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/final.dmg",_version,nil] handler:nil];
 	}
 	if([man fileExistsAtPath:@"/Users/frontrow/dropbear/"])
 	{
 		[man removeFileAtPath:@"/Users/frontrow/dropbear/" handler:nil];
 	}
 	
-}
--(void)moveFiles2:(BOOL)original_status
-{
-	NSMutableDictionary *tempoptions = [self getOptions];
-	//NSLog(@"MoveFiles");
-	NSFileManager *man =[NSFileManager defaultManager];
-	if([man fileExistsAtPath:@"/Users/frontrow/Updates"])
-	{
-		[man removeFileAtPath:@"/Users/frontrow/Updates" handler:nil];
-	}
-	[man createDirectoryAtPath:@"/Users/frontrow/Updates" attributes:nil];
-	
-	
-	NSArray *dlinks=[_updateData valueForKey:@"dlinks"];
-	//NSLog(@"dlinks: %@",dlinks);
-	//NSString *original=[_updateData valueForKey:@"original"];
-	NSEnumerator *enum2 = [dlinks objectEnumerator];
-	id obje;
-	while((obje = [enum2 nextObject]) != nil)
-	{
-		
-		NSString *basename= [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",[_updateData valueForKey:@"displays"],nil];
-		NSString *updatename= @"/Users/frontrow/Updates";
-		if(![[obje pathExtension] isEqualToString:@"dmg"])
-		{
-			NSString *obje2=[obje lastPathComponent];
-			//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"] boolValue]);
-			if([[tempoptions valueForKey:@"preserve"] boolValue])
-			{
-				//NSLog(@"copying %@ to %@",[basename stringByAppendingPathComponent:obje2],[updatename stringByAppendingPathComponent:obje2]);
-				[man copyPath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
-				
-			}
-			else
-			{
-				[man movePath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
-			}
-		}
-		else
-		{
-			if(!original_status)
-			{
-				
-				[man movePath:[basename stringByAppendingPathComponent:@"final.dmg"] toPath:[updatename stringByAppendingPathComponent:@"final.dmg"] handler:nil];
-				
-			}
-			else
-			{
-				if([[tempoptions valueForKey:@"preserve"] boolValue])
-				{
-					[man copyPath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
-				}
-				else
-				{
-					[man movePath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
-				}
-			}
-		}
-		
-	}
-}
-
-- (void) makeDMGRO:(NSString *)drivepath
-{
-	
-	NSTask *mdTask = [[NSTask alloc] init];
-	NSPipe *mdip = [[NSPipe alloc] init];
-	[mdTask setLaunchPath:@"/usr/bin/hdiutil"];
-	[mdTask setArguments:[NSArray arrayWithObjects:@"convert", drivepath, @"-format", @"UDZO", @"-o", [[drivepath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"final.dmg"], nil]];
-	[mdTask setStandardOutput:mdip];
-	[mdTask setStandardError:mdip];
-	[mdTask launch];
-	[mdTask waitUntilExit];
-	//return (TRUE);
-	
-}
-- (void) makeDMGRW:(NSString *)drivepath
-{
-	//NSLog(@"converting");
-	NSTask *mdTask = [[NSTask alloc] init];
-	NSPipe *mdip = [[NSPipe alloc] init];
-	[mdTask setLaunchPath:@"/usr/bin/hdiutil"];
-	[mdTask setArguments:[NSArray arrayWithObjects:@"convert", drivepath, @"-format", @"UDRW", @"-o",[[drivepath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"converted.dmg"], nil]];
-	[mdTask setStandardOutput:mdip];
-	[mdTask setStandardError:mdip];
-	[mdTask launch];
-	[mdTask waitUntilExit];
-	//return (TRUE);
-	
-}
-
--(void)wasPushed
-{
-	//NSLog(@"wasPushed");
-	[super wasPushed];
-}
--(BOOL)returnBoolValue:(NSString *)thevalue
-{
-	if([thevalue isEqualToString:@"YES"])
-	{
-		return YES;
-	}
-	else if([thevalue isEqualToString:@"1"])
-	{
-		return YES;
-	}
-	else
-		return NO;
 }
 - (void)startDownloadingURL;
 {
@@ -745,28 +551,118 @@
     //  [error localizedDescription],
     //  [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
 	
-	[self processFiles];
+	[self run];
 }
 
 - (void)downloadDidFinish:(NSURLDownload *)download
 {
     // release the connection
     [download release];
-	[self processFiles];
+	[self run];
 	
     // do something with the data
 }
--(NSMutableDictionary *)getOptions
+-(void)moveFiles2:(BOOL)original_status
 {
-	NSMutableDictionary *theoptions = [[SMGeneralMethods dictForKey:@"Updater_Options"] mutableCopy];
-	return theoptions;
+	NSMutableDictionary *tempoptions = [self getOptions];
+	//NSLog(@"MoveFiles");
+	NSFileManager *man =[NSFileManager defaultManager];
+	if([man fileExistsAtPath:@"/Users/frontrow/Updates"])
+	{
+		[man removeFileAtPath:@"/Users/frontrow/Updates" handler:nil];
+	}
+	[man createDirectoryAtPath:@"/Users/frontrow/Updates" attributes:nil];
+	
+	
+	//NSArray *dlinks=[_updateData valueForKey:@"dlinks"];
+	//NSLog(@"dlinks: %@",dlinks);
+	//NSString *original=[_updateData valueForKey:@"original"];
+	id obje;
+    NSString *folder = [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",_version,nil];
+    NSArray *files = [man directoryContentsAtPath:folder];
+    NSEnumerator *enum2 = [files objectEnumerator];
+	while((obje = [enum2 nextObject]) != nil)
+	{
+		
+		NSString *basename= [NSString stringWithFormat:@"/Users/frontrow/Documents/ATV%@/",_version,nil];
+		NSString *updatename= @"/Users/frontrow/Updates";
+		if(![[obje pathExtension] isEqualToString:@"dmg"])
+		{
+			NSString *obje2=[obje lastPathComponent];
+			//NSLog(@"preserve: %d",[[_updateData valueForKey:@"preserve"] boolValue]);
+			if([[tempoptions valueForKey:@"preserve"] boolValue])
+			{
+				//NSLog(@"copying %@ to %@",[basename stringByAppendingPathComponent:obje2],[updatename stringByAppendingPathComponent:obje2]);
+				[man copyPath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
+				
+			}
+			else
+			{
+				[man movePath:[basename stringByAppendingPathComponent:obje2] toPath:[updatename stringByAppendingPathComponent:obje2] handler:nil];
+			}
+		}
+		else if([obje isEqualToString:@"final.dmg"])
+		{
+			if(!original_status)
+			{
+				
+				[man movePath:[basename stringByAppendingPathComponent:@"final.dmg"] toPath:[updatename stringByAppendingPathComponent:@"final.dmg"] handler:nil];
+				
+			}
+			else
+			{
+				if([[tempoptions valueForKey:@"preserve"] boolValue])
+				{
+					[man copyPath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
+				}
+				else
+				{
+					[man movePath:[basename stringByAppendingPathComponent:@"OS.dmg"] toPath:[updatename stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
+				}
+			}
+		}
+		
+	}
 }
--(void)setTheText:(NSMutableString *)srcText
-{
-    
-}
--(id)initCustom
-{
-    return self;
-}
+
 @end
+@implementation SMNewUpdaterProcess (layout)
+
+-(void)layoutImage
+{
+    NSLog(@"layoutImage");
+    [_imageControl removeFromParent];
+
+    //[_imageControl release];
+    //_imageControl = [[BRImageControl alloc] init];
+    if (_image==nil)
+        _image = [[BRThemeInfo sharedTheme] appleTVIcon];
+    [_imageControl setImage:_image];
+    [_imageControl setAutomaticDownsample:YES];
+	CGRect masterFrame = [self getMasterFrame];
+    float aspectRatio = [_image aspectRatio];
+	CGRect frame;
+	frame.origin.x = masterFrame.size.width *0.7f;
+	frame.origin.y = masterFrame.size.height *0.3f;
+	frame.size.width = masterFrame.size.height*0.4f; 
+	frame.size.height= frame.size.width/aspectRatio;
+    [_imageControl setFrame:frame];
+    [self addControl:_imageControl];
+}
+-(void)layoutHeader
+{
+    NSLog(@"layoutHeader");
+    [_headerControl removeFromParent];
+    if(_title == nil)
+        _title = DEFAULT_DOWNLOADER_TITLE;
+    [_headerControl setTitle:_title];
+    CGRect masterFrame = [self getMasterFrame];
+    CGRect frame=masterFrame;
+    frame.origin.y = frame.size.height * 0.82f;
+    frame.size.height = [[BRThemeInfo sharedTheme] listIconHeight];
+    [_headerControl setFrame:frame];
+    [self addControl:_headerControl];
+}
+
+@end
+

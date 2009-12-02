@@ -159,6 +159,7 @@ NSFileManager *man = [NSFileManager defaultManager];
 	{
 		_displays=[[_options objectAtIndex:fp8] objectAtIndex:3];
 		[self start_updating_New:[[_options objectAtIndex:fp8] objectAtIndex:2]];
+        //[self start_updating:[[_options objectAtIndex:fp8] objectAtIndex:2]];
 	}
 	
 	
@@ -278,7 +279,7 @@ NSFileManager *man = [NSFileManager defaultManager];
             else if([[fileName pathExtension] isEqualToString:@"dmg"] && [man fileExistsAtPath:[atvpath stringByAppendingPathComponent:@"OS.dmg"]])
             {
                 checkG=[self checkmd5:[atvpath stringByAppendingPathComponent:@"OS.dmg"] withmd5:[md5s objectAtIndex:i]];
-                if(checkG)
+                if(!checkG)
                     [man removeFileAtPath:[atvpath stringByAppendingPathComponent:@"OS.dmg"] handler:nil];
             }
             if(!checkG)
@@ -294,7 +295,7 @@ NSFileManager *man = [NSFileManager defaultManager];
         finalDLinks=dLinks;
     }
     _downloadnumber=10;
-    SMDownloaderUpdate *a = [[SMDownloaderUpdate alloc] initWithFiles:finalDLinks withImage:[[SMThemeInfo sharedTheme]softwareMenuImage] withTitle:@"Downloading Files"];
+    SMUpdaterDownload *a = [[SMUpdaterDownload alloc] initWithFiles:finalDLinks withImage:[BRImage imageWithPath:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/Downloads.png"] withTitle:@"Downloading Files" withVersion:_displays];
     [a setForceDestination:YES];
     [[self stack] pushController:a];
 

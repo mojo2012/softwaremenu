@@ -74,4 +74,5 @@
 -(id)testedImage;
 -(id)imageForFrap:(NSString *)frapName;
 -(id)leftJustifiedTitleTextAttributess;
+-(id)centerJustifiedRedText;
 @end

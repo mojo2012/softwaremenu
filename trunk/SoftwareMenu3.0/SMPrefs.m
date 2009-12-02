@@ -8,18 +8,7 @@
 
 #import "SMPrefs.h"
 #import "SMDefines.h"
-static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef 
-											colorSpace, NSColor *color)
-{
-	NSColor *deviceColor = [color colorUsingColorSpaceName: 
-							NSDeviceRGBColorSpace];
-	
-	float components[4];
-	[deviceColor getRed: &components[0] green: &components[1] blue: 
-	 &components[2] alpha: &components[3]];
-	
-	return CGColorCreate (colorSpace, components);
-}
+
 @implementation SMPreferences
 //+(CGColorRef)color
 //{

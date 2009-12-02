@@ -1471,6 +1471,10 @@
 		DD85A31710C4522200222B8C /* SMDownloaderUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A31510C4522200222B8C /* SMDownloaderUpdate.m */; };
 		DD85A31C10C47DA100222B8C /* SMController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85A31A10C47DA100222B8C /* SMController.h */; };
 		DD85A31D10C47DA100222B8C /* SMController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A31B10C47DA100222B8C /* SMController.m */; };
+		DD85A42E10C566D200222B8C /* SMUpdaterPreprocess.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85A42C10C566D200222B8C /* SMUpdaterPreprocess.h */; };
+		DD85A42F10C566D200222B8C /* SMUpdaterPreprocess.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A42D10C566D200222B8C /* SMUpdaterPreprocess.m */; };
+		DD85A44310C57E1300222B8C /* SMUpdaterDownload.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85A44110C57E1300222B8C /* SMUpdaterDownload.h */; };
+		DD85A44410C57E1300222B8C /* SMUpdaterDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */; };
 		DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */; };
 		DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */; };
 		DDACE50D10B61C32006D78E0 /* SMApplianceInstallerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */; };
@@ -3064,6 +3068,10 @@
 		DD85A31510C4522200222B8C /* SMDownloaderUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDownloaderUpdate.m; sourceTree = "<group>"; };
 		DD85A31A10C47DA100222B8C /* SMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMController.h; sourceTree = "<group>"; };
 		DD85A31B10C47DA100222B8C /* SMController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMController.m; sourceTree = "<group>"; };
+		DD85A42C10C566D200222B8C /* SMUpdaterPreprocess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterPreprocess.h; sourceTree = "<group>"; };
+		DD85A42D10C566D200222B8C /* SMUpdaterPreprocess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterPreprocess.m; sourceTree = "<group>"; };
+		DD85A44110C57E1300222B8C /* SMUpdaterDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterDownload.h; sourceTree = "<group>"; };
+		DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterDownload.m; sourceTree = "<group>"; };
 		DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreensaverSettingsMenu.h; sourceTree = "<group>"; };
 		DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreensaverSettingsMenu.m; sourceTree = "<group>"; };
 		DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMApplianceInstallerController.h; sourceTree = "<group>"; };
@@ -5035,6 +5043,10 @@
 				E26B10E20F6EFED40005E868 /* SMUOptions.m */,
 				DDD4F76610BA0FF500E1D61B /* SMNewUpdaterProcess.h */,
 				DDD4F76710BA0FF500E1D61B /* SMNewUpdaterProcess.m */,
+				DD85A42C10C566D200222B8C /* SMUpdaterPreprocess.h */,
+				DD85A42D10C566D200222B8C /* SMUpdaterPreprocess.m */,
+				DD85A44110C57E1300222B8C /* SMUpdaterDownload.h */,
+				DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */,
 			);
 			name = Updater;
 			sourceTree = "<group>";
@@ -6448,6 +6460,8 @@
 				DDD4F77D10BA36BA00E1D61B /* SMApplianceDictionary.h in Headers */,
 				DD85A31610C4522200222B8C /* SMDownloaderUpdate.h in Headers */,
 				DD85A31C10C47DA100222B8C /* SMController.h in Headers */,
+				DD85A42E10C566D200222B8C /* SMUpdaterPreprocess.h in Headers */,
+				DD85A44310C57E1300222B8C /* SMUpdaterDownload.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6793,6 +6807,8 @@
 				DDD4F77E10BA36BA00E1D61B /* SMApplianceDictionary.m in Sources */,
 				DD85A31710C4522200222B8C /* SMDownloaderUpdate.m in Sources */,
 				DD85A31D10C47DA100222B8C /* SMController.m in Sources */,
+				DD85A42F10C566D200222B8C /* SMUpdaterPreprocess.m in Sources */,
+				DD85A44410C57E1300222B8C /* SMUpdaterDownload.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

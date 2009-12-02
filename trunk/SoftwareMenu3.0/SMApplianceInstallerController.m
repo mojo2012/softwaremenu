@@ -34,7 +34,8 @@
     nframe.origin.y=masterFrame.origin.y+masterFrame.size.width*0.5f;
     [_names setFrame:nframe];
     _shelfControl = [[BRMediaShelfControl alloc] init];
-    [_shelfControl setProvider:[self getProviderForGrid]];
+    if([SMPreferences threePointZeroOrGreater])
+        [_shelfControl setProvider:[self getProviderForGrid]];
     [_shelfControl setColumnCount:7];
     [_shelfControl setCentered:NO];
     
@@ -313,7 +314,11 @@
 //        [store addObject:[assets objectAtIndex:i]];
 //    }
     id dSPfCClass = NSClassFromString(@"BRPhotoDataStoreProvider");
-    id tcControlFactory = [SMPhotoControlFactory standardFactory];
+    id tcControlFactory;// = [SMPhotoControlFactory standardFactory];
+    if ([SMPreferences threePointZeroOrGreater]) 
+        tcControlFactory = [SMPhotoControlFactory standardFactory];
+    else
+        tcControlFactory = [BRPhotoControlFactory standardFactory];
     id provider    = [dSPfCClass providerWithDataStore:store controlFactory:tcControlFactory];
     return provider;
 }

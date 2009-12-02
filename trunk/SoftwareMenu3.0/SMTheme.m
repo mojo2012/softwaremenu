@@ -9,6 +9,17 @@
 #import "SMTheme.h"
 
 @implementation SMThemeInfo
+static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef 
+											colorSpace, NSColor *color)
+{
+	NSColor *deviceColor = [color colorUsingColorSpaceName: 
+							NSDeviceRGBColorSpace];
+	float components[4];
+	[deviceColor getRed: &components[0] green: &components[1] blue: 
+	 &components[2] alpha: &components[3]];
+	
+	return CGColorCreate (colorSpace, components);
+}
 + (id)sharedTheme
 {
 	static SMThemeInfo *shared = nil;
@@ -254,8 +265,8 @@
 	BRThemeInfo *theInfo = [[BRThemeInfo sharedTheme] settingsItemSmallTextAttributes];
 	id colorObject = [theInfo valueForKey:@"NSColor"];
 	//NSLog(@"theInfo: %@", theInfo);
-    NSLog(@"theInfo: %@", theInfo);
-    NSLog(@"thecolor: %@",colorObject);
+//    NSLog(@"theInfo: %@", theInfo);
+//    NSLog(@"thecolor: %@",colorObject);
 	[myDict setValue:[NSNumber numberWithInt:21] forKey:@"BRFontLines"];
 	[myDict setValue:[NSNumber numberWithInt:0] forKey:@"BRTextAlignmentKey"];
 	
@@ -276,5 +287,18 @@
 	
 	[myDict setValue:colorObject forKey:@"NSColor"];
 	return [myDict autorelease];
+}
+-(id)centerJustifiedRedText
+{
+    NSMutableDictionary *fontDict = [[NSMutableDictionary alloc]init];
+    [fontDict setValue:[NSNumber numberWithInt:21] forKey:@"BRFontLines"];
+	[fontDict setValue:[NSNumber numberWithInt:2] forKey:@"BRTextAlignmentKey"];
+    BRThemeInfo *theInfo = [[BRThemeInfo sharedTheme] settingsItemSmallTextAttributes];
+    id sizeObject = [theInfo valueForKey:@"BRFontPointSize"];
+    id fontObject = [theInfo valueForKey:@"BRFontName"];
+    [fontDict setValue:sizeObject forKey:@"BRFontPointSize"];
+    [fontDict setValue:fontObject forKey:@"BRFontName"];
+    [fontDict setValue:CGColorCreateFromNSColor(CGColorSpaceCreateDeviceRGB(), [NSColor blackColor] ) forKey:@"NSColor"];
+    return [fontDict autorelease];
 }
 @end

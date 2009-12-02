@@ -9,25 +9,29 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface SMNewUpdaterProcess : BRController {
-    int		padding[16];
-    BRHeaderControl *       _header;
-    BRScrollingTextBoxControl *         _sourceText;
-	BRImageControl *		_sourceImage;
-    SMProgressBarControl *  _progressBar;
-	BRTextControl *			_step;
-    NSURLDownload *         _downloader;
-	BRWaitSpinnerControl *	_spinner;
-    NSString *              _outputPath;
-    long long               _totalLength;
-    long long               _gotLength;
-	NSMutableString *				_theSourceText;
-	NSString *				_downloadURL;
-	NSString *				_downloadTitle;
-	NSString *				_downloadText;
-	NSDictionary *			_updateData;
-	NSString *				_previousText;
-	int m_screen_saver_timeout;
+@interface SMNewUpdaterProcess : SMController {
+
+    NSString *                  _folder;
+    NSString *                  _version;
+    NSMutableArray *                   _textControls;
+    NSArray *                   _md5Array;
+    NSArray *                   _files;
+    NSString *                  _title;
+    BRImage *                   _image;
+    BRHeaderControl *           _headerControl;
+    BRScrollingTextControl *    _textBox;
+    BRTextControl *             _textControl;
+	BRImageControl *            _imageControl;
+    SMProgressBarControl *      _progressBar;
+    NSMutableString *			_boxText;
+    NSURLDownload   *           _downloader;
+    long long                   _totalLength;
+    long long                   _gotLength;
+    NSString        *           _outputPath;
+    NSMutableArray  *           _outputPaths;
+    BRImageControl  *           _arrowControl;
+    BRWaitSpinnerControl *      _spinner;
+
 }
 -(void)processFiles;
 

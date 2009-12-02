@@ -14,13 +14,17 @@
 -(void)layoutBox;
 -(void)layoutCurrentText;
 -(void)layoutProgressBar;
--(void)setBoxText:(NSString*)text;
--(void)appendBoxText:(NSString *)append;
+-(void)layoutTimeControl;
+
 @end
 @interface SMDownloaderUpdate (DownloaderMethods)
 + (NSString *) outputPathForURLString: (NSString *) urlstr;
 + (void) clearAllDownloadCaches;
 + (NSString *) downloadCachePath;
+- (void)process;
+-(void)cancelDownload;
+-(void)deleteDownload;
+-(BOOL)beginDownload;
 @end
 
 @implementation SMDownloaderUpdate
@@ -50,24 +54,32 @@
     _textBox = [[BRScrollingTextControl alloc] init];
     _progressBar = [[SMProgressBarControl alloc] init];
     _imageControl = [[BRImageControl alloc] init];
+    _outputPaths = [[NSMutableArray alloc] init];
+    _textControl=[[BRTextControl alloc] init];
+    _timeControl=[[BRTextControl alloc] init];
 
     [self layoutImage];
     [self layoutHeader];
     [self layoutProgressBar];
     [self layoutBox];
-    int i;
-    //[self setBoxText:@"blabla"];
-//    NSLog(@"%@",_files);
-//    for(i=0;i<[_files count];i++)
-//        [self appendBoxText:[_files objectAtIndex:i]];
-    [self beginDownload];
+    [self layoutCurrentText];
+    [self layoutTimeControl];
+    if([_files count]==0)
+        [self process];
+    else
+        [self beginDownload];
+}
+-(void)controlWasActivated
+{
+    [self layoutSubcontrols];
+    [super controlWasActivated];
 }
 -(void)setmd5Array:(NSArray *)md5Array
 {
     [_md5Array release];
     _md5Array = md5Array;
     [_md5Array retain];
-    if([_md5Array length]==[_files count])
+    if([_md5Array count]==[_files count])
         [self setCheckMD5:YES];
 }
 -(BOOL)checkMD5
@@ -120,6 +132,55 @@
 {
     _forceDestination=force;
 }
+-(void)setBoxText:(NSString *)text
+{
+    if (_textBox !=nil)
+        [_textBox setText:text];
+    _boxText=[text mutableCopy];
+}
+-(void)appendBoxText:(NSString *)append
+{
+    if(_boxText==nil)
+        [self setBoxText:append];
+    else {
+        NSString *text = [NSString stringWithFormat:@"%@\n%@",_boxText,append,nil];
+        [self setBoxText:text];
+    }
+}
+-(void)setText:(NSString *)text
+{
+    [_textControl removeFromParent];
+    CGRect masterFrame=[self getMasterFrame];
+    [_textControl setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
+    CGRect frame=[_textControl frame];
+    frame.size=[_textControl preferredFrameSize];
+    frame.origin.x=masterFrame.size.width*0.5f-frame.size.width*0.5f+masterFrame.origin.x;   
+    [_textControl setFrame:frame];
+    [self addControl:_textControl];
+}
+-(void)dealloc
+{
+    [_title release];
+    [_boxText release];
+    [_md5Array release];
+    [_files release];
+    [_headerControl release];
+    [_textControl release];
+    [_imageControl release];
+    [_progressBar release];
+    [_outputPath release];
+    [_outputPaths release];
+    [_image release];
+    if(_downloader !=nil)
+    {
+        [self cancelDownload];
+        [_downloader release];
+        _downloader = nil;
+    }
+    [_timeControl release];
+    [_textControl release];
+    [super dealloc];
+}
 @end
 @implementation SMDownloaderUpdate (LayoutMethods)
 -(void)layoutImage
@@ -160,7 +221,7 @@
     CGRect masterFrame = [self getMasterFrame];
     CGRect frame;
     frame.origin.x = masterFrame.size.width  * 0.025f;
-    frame.origin.y = (masterFrame.size.height * 0.2);
+    frame.origin.y = (masterFrame.size.height * 0.2f);
     frame.size.width = masterFrame.size.width*0.6f;
 	frame.size.height = masterFrame.size.height*0.65f;
 	[_textBox setFrame: frame];
@@ -180,20 +241,34 @@
     [_progressBar setCurrentValue:[_progressBar minValue]];
     [self addControl:_progressBar];
 }
--(void)setBoxText:(NSString *)text
+-(void)layoutCurrentText
 {
-    if (_textBox !=nil)
-        [_textBox setText:text];
-    _boxText=[text mutableCopy];
+    NSString *text=@"bla";
+    //[_textControl removeFromParent];
+    CGRect masterFrame= [self getMasterFrame];
+    [_textControl setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
+    CGRect frame;
+    CGRect pbframe=[_progressBar frame];
+    frame.origin.y=masterFrame.size.height*0.11f;
+//    frame.size.width=masterFrame.size.width*0.2f;
+//    frame.size.height=masterFrame.size.height*0.05f;
+    frame.size=[_textControl preferredFrameSize];
+    frame.origin.x=masterFrame.size.width*0.5f-frame.size.width*0.5f+masterFrame.origin.x;
+    [_textControl setFrame:frame];
+    [self addControl:_textControl];
 }
--(void)appendBoxText:(NSString *)append
+-(void)layoutTimeControl
 {
-    if(_boxText==nil)
-        [self setBoxText:append];
-    else {
-        NSString *text = [NSString stringWithFormat:@"%@\n%@",_boxText,append,nil];
-        [self setBoxText:text];
-    }
+    CGRect masterFrame= [self getMasterFrame];
+    CGRect pbframe=[_progressBar frame];
+    [_timeControl setText:@"        " withAttributes:[[SMThemeInfo sharedTheme]centerJustifiedRedText]];
+    CGRect frame;
+    frame.size=[_timeControl preferredFrameSize];
+    frame.origin.x=pbframe.origin.x;//masterFrame.origin.x+masterFrame.size.width*0.5f-frame.size.width;
+    frame.size.width=pbframe.size.width;
+    frame.origin.y=pbframe.origin.y+pbframe.size.height*0.7f-frame.size.height*0.5f;//+masterFrame.size.height*0.05f;
+    [_timeControl setFrame:frame];
+    [self addControl:_timeControl];
 }
 @end
 @implementation SMDownloaderUpdate (DownloaderMethods)
@@ -246,7 +321,13 @@
 {
     if ( _downloader != nil )
         return ( NO );
-	
+    [_startTime release];
+    _startTime = [NSDate date];
+    [_startTime retain];
+    [_lastUpdate release];
+    _lastUpdate=[NSDate date];
+    [_lastUpdate retain];
+
     // see if we can resume from the current data
 
 	
@@ -286,6 +367,7 @@
 - (void) cancelDownload
 {
     [_downloader cancel];
+    [self deleteDownload];
     //[self storeResumeData];
 }
 
@@ -302,11 +384,11 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
     [[NSFileManager defaultManager] createDirectoryAtPath: [_outputPath stringByDeletingLastPathComponent]
                                                attributes: nil];
     if (!_forceDestination) {
-        NSLog(@"not forcing");
         [_outputPath release];
         _outputPath = [[_outputPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:filename];
         [_outputPath retain];
     }
+    [self setText:[_outputPath lastPathComponent]];
     [self appendBoxText:_outputPath];
     [download setDestination: _outputPath allowOverwrite: YES];
     
@@ -340,6 +422,18 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
         percentage = [_progressBar percentage];
         if ( percentage >= 95.0f )
             [_progressBar setMaxValue: [_progressBar maxValue] + (float) (length << 3)];
+    }
+    else if((double)[[NSDate date] timeIntervalSinceDate:_lastUpdate]>(double)2)
+    {
+        //NSLog(@"startime: %@",_startTime);
+        double x= (double)_gotLength/(double)_totalLength;
+        double a = ((double)1.0f -x)/x*[[NSDate date] timeIntervalSinceDate:_startTime];///x;
+        NSLog(@"time left: %lf",a);
+        [_timeControl setText:[NSString stringWithFormat:@"%i seconds left",(int)a,nil] withAttributes:[[SMThemeInfo sharedTheme] centerJustifiedRedText]];
+       // _lastUpdate=[NSDate date];
+        [_lastUpdate release];
+        _lastUpdate=[NSDate date];
+        [_lastUpdate retain];
     }
 	
     [_progressBar setCurrentValue: _gotLength];
@@ -417,7 +511,7 @@ willResumeWithResponse: (NSURLResponse *) response
 
 - (void) downloadDidFinish: (NSURLDownload *) download
 {
-	
+	[_outputPaths addObject:_outputPath];
 	[self appendBoxText:@"download done"];
 	[_downloader autorelease];
     _downloader = nil;
@@ -428,7 +522,14 @@ willResumeWithResponse: (NSURLResponse *) response
         _current++;
         [self beginDownload];
     }
+    else
+        [self process];
 
+}
+-(void)process
+{
+    [self appendBoxText:@"All Files are Downloaded"];
+    [_progressBar removeFromParent];
 }
 @end
 
