@@ -14,11 +14,6 @@
 
 
 
-@interface SMNewUpdaterProcess (layout)
--(void)layoutImage;
--(void)layoutHeader;
-@end
-
 
 @implementation SMNewUpdaterProcess
 
@@ -58,8 +53,8 @@
     [self layoutHeader];
     CGRect masterFrame=[self getMasterFrame];
     CGRect frame2 = masterFrame;
-	frame2.origin.x = masterFrame.size.width  * 0.71f;
-    frame2.origin.y = (masterFrame.size.height * 0.13);// - txtSize.height;
+	frame2.origin.x = masterFrame.size.width  * 0.39f;
+    frame2.origin.y = (masterFrame.size.height * 0.05f);// - txtSize.height;
 	
     frame2.size.width = masterFrame.size.width*0.22f;
 	frame2.size.height = masterFrame.size.height*0.22f;
@@ -80,11 +75,11 @@
     BRTextControl *textC = [[BRTextControl alloc] init];
     [textC setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
     frame.size = [textC preferredFrameSize];
-    frame.origin.x=masterFrame.origin.x+masterFrame.size.width*0.1f;
+    frame.origin.x=masterFrame.origin.x+masterFrame.size.width*0.13f;
     if(frame.size.width>masterFrame.size.width*0.65f)
         frame.size.width=masterFrame.size.width*0.65f;
     if([_textControls count]==0)
-        frame.origin.y=masterFrame.size.height*0.75f;
+        frame.origin.y=masterFrame.size.height*0.7f;
     else
     {
         CGRect oldframe=[[_textControls lastObject] frame];
@@ -117,7 +112,7 @@
     CGRect newFrame;
     newFrame.size.height=frame.size.height;
     newFrame.size.width = frame.size.height*[arrow aspectRatio];
-    newFrame.origin.x=frame.origin.x-newFrame.size.width;
+    newFrame.origin.x=frame.origin.x-newFrame.size.width*1.5f;
     newFrame.origin.y=frame.origin.y;
     [_arrowControl setFrame:newFrame];
     [self addControl:_arrowControl];
@@ -518,6 +513,7 @@
 }
 - (void)startDownloadingURL;
 {
+    NSLog(@"Starting download :( needs to be changed");
     // create the request
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"selsettings" ofType:@"png"]]
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -626,38 +622,3 @@
 }
 
 @end
-@implementation SMNewUpdaterProcess (layout)
-
--(void)layoutImage
-{
-    [_imageControl removeFromParent];
-    if (_image==nil)
-        _image = [[BRThemeInfo sharedTheme] appleTVIcon];
-    [_imageControl setImage:_image];
-    [_imageControl setAutomaticDownsample:YES];
-	CGRect masterFrame = [self getMasterFrame];
-    float aspectRatio = [_image aspectRatio];
-	CGRect frame;
-	frame.origin.x = masterFrame.size.width *0.7f;
-	frame.origin.y = masterFrame.size.height *0.3f;
-	frame.size.width = masterFrame.size.height*0.4f; 
-	frame.size.height= frame.size.width/aspectRatio;
-    [_imageControl setFrame:frame];
-    [self addControl:_imageControl];
-}
--(void)layoutHeader
-{
-    [_headerControl removeFromParent];
-    if(_title == nil)
-        _title = DEFAULT_DOWNLOADER_TITLE;
-    [_headerControl setTitle:_title];
-    CGRect masterFrame = [self getMasterFrame];
-    CGRect frame=masterFrame;
-    frame.origin.y = frame.size.height * 0.82f;
-    frame.size.height = [[BRThemeInfo sharedTheme] listIconHeight];
-    [_headerControl setFrame:frame];
-    [self addControl:_headerControl];
-}
-
-@end
-
