@@ -329,4 +329,29 @@
 {
     return [SMPreferences boolForKey:APPLIANCE_LIMITS_STRICT];
 }
++(BOOL)strictApplianceLowerInstallLimit
+{
+    return [SMPreferences boolForKey:APPLIANCE_LOWER_STRICT];
+}
++(BOOL)strictApplianceUpperInstallLimit
+{
+    return [SMPreferences boolForKey:APPLIANCE_UPPER_STRICT];
+}
++(BOOL)keepFrapplianceOrder
+{
+    return ![SMPreferences boolForKey:LOOSE_FRAP_ORDER];
+}
++(void)setKeepFrapplianceOrder:(BOOL)arg
+{
+    [SMPreferences setBool:!arg forKey:LOOSE_FRAP_ORDER];
+}
++(NSDictionary *)frapOrderDict
+{
+    id a = [SMPreferences dictForKey:FRAP_ORDER_DICT];
+    return a==nil ? [NSDictionary dictionaryWithObjectsAndKeys:nil] : a;
+}
++(NSDictionary *)dictionaryForBundlePath:(NSString *)path
+{
+    return [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingPathComponent:@"Contents/Info.plist"]];
+}
 @end

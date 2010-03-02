@@ -12,6 +12,7 @@
 #include <sys/param.h>
 #include <sys/mount.h>
 #include <stdio.h>
+#include <stdlib.h>
 #import "AGProcess.h"
 
 @interface ATVSettingsHelper
@@ -35,7 +36,7 @@
 {
 	NSString *hello =[NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://softwaremenu.googlecode.com/files/counter.txt"]encoding:NSUTF8StringEncoding error:nil];
 	
-	NSLog(@"updating: %@",hello);
+	[self writeToLog:[NSString stringWithFormat:@"updating: %@",hello,nil]];
 	NSBundle *appleTVFramework = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/AppleTV.framework"];
 	[appleTVFramework load];
 	id settingsHelper = nil;
@@ -58,27 +59,27 @@
 }
 -(void)removeFrap:(NSString *)frapname
 {
-	NSLog(@"frapName: %@",frapname);
+	[self writeToLog:[NSString stringWithFormat:@"frapName: %@",frapname,nil]];
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Contents
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Frap Path
 	NSString *pluginPath = [ntvPath stringByDeletingLastPathComponent];
 	NSString *frapPath =[pluginPath stringByAppendingPathComponent:frapname];
-	NSLog(@"frapPath: %@, pluginPath: %@",frapPath,pluginPath);
+	[self writeToLog:[NSString stringWithFormat:@"frapPath: %@, pluginPath: %@",frapPath,pluginPath,nil]];
 	NSString *oldPath = [pluginPath stringByAppendingPathComponent:@"old"];
 	
 	NSFileManager *man = [NSFileManager defaultManager];
 	if([man fileExistsAtPath:frapPath])
 	{
-		NSLog(@"frap exists");
+		[self writeToLog:[NSString stringWithFormat:@"frap exists",nil]];
 		if(![man fileExistsAtPath:oldPath])
 			[man createDirectoryAtPath:oldPath attributes:nil];
 		
 		oldPath = [oldPath stringByAppendingPathComponent:frapname];
 		if ([man movePath:frapPath toPath:oldPath handler:nil])
 		{
-			NSLog(@"%@ moved successfully\n\n",frapname);
-			NSLog(@"old path -1: %@",[oldPath stringByDeletingLastPathComponent]);
+			[self writeToLog:[NSString stringWithFormat:@"%@ moved successfully\n\n",frapname,nil]];
+			[self writeToLog:[NSString stringWithFormat:@"old path -1: %@",[oldPath stringByDeletingLastPathComponent],nil]];
 			[man removeFileAtPath:[oldPath stringByDeletingLastPathComponent] handler:nil];
 			[man removeFileAtPath:frapPath handler:nil];
 			
@@ -95,17 +96,17 @@
 	}
 	else
 	{
-		NSLog(@"There was no File at path %@ anyway", filepath);
+		[self writeToLog:[NSString stringWithFormat:@"There was no File at path %@ anyway", filepath,nil]];
 		return 0;
 	}
 	if([man fileExistsAtPath:filepath])
 	{
-		NSLog(@"File was not deleted");
+		[self writeToLog:[NSString stringWithFormat:@"File was not deleted",nil]];
 		return 1;
 	}
 	else
 	{
-		NSLog(@"Files was deleted properly");
+		[self writeToLog:[NSString stringWithFormat:@"Files was deleted properly",nil]];
 		return 0;
 	}
 	
@@ -131,21 +132,21 @@
 		disabledPath = [disabledPath stringByAppendingPathComponent:frapname];
 		if ([man movePath:frapPath toPath:disabledPath handler:nil])
 		{
-			NSLog(@"%@ moved successfully\n\n",frapname);
+			[self writeToLog:[NSString stringWithFormat:@"%@ moved successfully\n\n",frapname,nil]];
 			//NSLog(@"old path -1: %@",[oldPath stringByDeletingLastPathComponent]);
 			//[man removeFileAtPath:[oldPath stringByDeletingLastPathComponent] handler:nil];
 			//[man removeFileAtPath:frapPath handler:nil];
 		}
 		else
 		{
-			NSLog(@"move failed");
+			[self writeToLog:[NSString stringWithFormat:@"move failed",nil]];
 		}
 		
 	}
 }
 -(void)showFrap:(NSString *)frapname
 {
-	NSLog(@"===showFrap===");
+	[self writeToLog:[NSString stringWithFormat:@"===showFrap===",nil]];
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Contents
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Frap Path
@@ -154,7 +155,7 @@
 	//NSLog(@"frapPath: %@, pluginPath: %@",frapPath,pluginPath);
 	NSString *disabledPath = [[pluginPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"Plugins (Disabled)"];
 	disabledPath = [disabledPath stringByAppendingPathComponent:frapname];
-	NSLog(@"disabledPath: %@ ; frapPath: %@ ",disabledPath,frapPath);
+	[self writeToLog:[NSString stringWithFormat:@"disabledPath: %@ ; frapPath: %@ ",disabledPath,frapPath,nil]];
 	NSFileManager *man = [NSFileManager defaultManager];
 	if([man fileExistsAtPath:disabledPath])
 	{
@@ -162,7 +163,7 @@
 		
 		if ([man movePath:disabledPath toPath:frapPath handler:nil])
 		{
-			NSLog(@"%@ moved successfully\n\n",frapname);
+			[self writeToLog:[NSString stringWithFormat:@"%@ moved successfully\n\n",frapname,nil]];
 			//NSLog(@"old path -1: %@",[oldPath stringByDeletingLastPathComponent]);
 			//[man removeFileAtPath:[oldPath stringByDeletingLastPathComponent] handler:nil];
 			//[man removeFileAtPath:disabledPath handler:nil];
@@ -189,17 +190,23 @@
 		
 		if ([man copyPath:frapPath toPath:[@"/Users/frontrow/Documents/Backups/" stringByAppendingPathComponent:frapbase] handler:nil])
 		{
-			NSLog(@"%@ moved successfully\n\n",frapname);
+			[self writeToLog:[NSString stringWithFormat:@"%@ moved successfully\n\n",frapname,nil]];
 			//NSLog(@"old path -1: %@",[oldPath stringByDeletingLastPathComponent]);
 			//[man removeFileAtPath:[oldPath stringByDeletingLastPathComponent] handler:nil];
 			//[man removeFileAtPath:disabledPath handler:nil];
 		}
 		
 }
-
+-(NSString *)pluginPath
+{
+    NSString *smPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
+	smPath = [smPath stringByDeletingLastPathComponent]; //Contents
+	smPath = [smPath stringByDeletingLastPathComponent]; //Frap Path
+	return [smPath stringByDeletingLastPathComponent];
+}
 -(void)restoreFrap:(NSString *)frapname
 {
-	NSLog(@"===restore===");
+	[self writeToLog:[NSString stringWithFormat:@"===restore===",nil]];
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Contents
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Frap Path
@@ -211,7 +218,7 @@
 	//NSLog(@"frapPath: %@, pluginPath: %@",frapPath,pluginPath);
 	//disabledPath = [disabledPath stringByAppendingPathComponent:frapname];
 	NSFileManager *man = [NSFileManager defaultManager];
-	NSLog(@"bakPath: %@, frapPath: %@",[@"/Users/frontrow/Documents/Backups/" stringByAppendingPathComponent:frapbase],frapPath);
+	[self writeToLog:[NSString stringWithFormat:@"bakPath: %@, frapPath: %@",[@"/Users/frontrow/Documents/Backups/" stringByAppendingPathComponent:frapbase],frapPath,nil]];
 	if([man fileExistsAtPath:frapPath])
 	{
 		[man removeFileAtPath:frapPath handler:nil];
@@ -219,7 +226,7 @@
 	
 	if ([man copyPath:[@"/Users/frontrow/Documents/Backups/" stringByAppendingPathComponent:frapbase] toPath:frapPath handler:nil])
 	{
-		NSLog(@"%@ moved successfully\n\n",frapname);
+		[self writeToLog:[NSString stringWithFormat:@"%@ moved successfully\n\n",frapname,nil]];
 		//NSLog(@"old path -1: %@",[oldPath stringByDeletingLastPathComponent]);
 		//[man removeFileAtPath:[oldPath stringByDeletingLastPathComponent] handler:nil];
 		//[man removeFileAtPath:disabledPath handler:nil];
@@ -235,7 +242,7 @@
 	NSString *thepathis =thepath;
 	if([[NSFileManager defaultManager] fileExistsAtPath:[@"/Library/Receipts/" stringByAppendingPathComponent:thenameis]])
 	{
-		NSLog(@"removing receipts at path : %@",[@"/Library/Receipts/" stringByAppendingPathComponent:thenameis]);
+		[self writeToLog:[NSString stringWithFormat:@"removing receipts at path : %@",[@"/Library/Receipts/" stringByAppendingPathComponent:thenameis],nil]];
 		NSTask * removeReceipt =[NSTask alloc];
 		NSArray *remargs = [NSArray arrayWithObjects:@"-rf",[@"/Library/Receipts/" stringByAppendingPathComponent:thenameis],nil];
 		[removeReceipt setArguments:remargs];
@@ -246,7 +253,7 @@
 		}
 	if([[NSFileManager defaultManager] fileExistsAtPath:[@"/Library/Receipts/" stringByAppendingPathComponent:thenameis]])
 	{
-		NSLog(@"Receipt is still here");
+		[self writeToLog:[NSString stringWithFormat:@"Receipt is still here",nil]];
 	}
 	
 	NSTask * install = [NSTask alloc];
@@ -256,13 +263,13 @@
 	[install setCurrentDirectoryPath:thepathis];
 	[install launch];
 	[install waitUntilExit];
-	NSLog(@"should be installed");
+	[self writeToLog:[NSString stringWithFormat:@"should be installed",nil]];
 }
 		
 
 -(void)installSelf:(NSString *)location
-
 {
+    [self writeToLog:[NSString stringWithFormat:@"installing",nil]];
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Contents
 	ntvPath = [ntvPath stringByDeletingLastPathComponent]; //Frap Path
@@ -270,10 +277,10 @@
 	
 	NSString *thename =[location lastPathComponent]; //Gets us the name of the file
 	NSString *thenameextension = [thename pathExtension];
-	NSLog(@"thenameext: %@",thenameextension);
+	[self writeToLog:[NSString stringWithFormat:@"thenameext: %@",thenameextension,nil]];
 	if([thenameextension isEqualToString:@"gz"] || [thenameextension isEqualToString:@"tgz"])
 	{
-		NSLog(@"extracting: gz");
+		[self writeToLog:[NSString stringWithFormat:@"extracting: gz",nil]];
 		[self extractGZip:location toLocation:[location stringByDeletingLastPathComponent]];
 	}
 	else if([thenameextension isEqualToString:@"zip"])
@@ -282,6 +289,7 @@
 		NSArray *args = [NSArray arrayWithObjects:location,nil];
 		[task setArguments:args];
 		[task setLaunchPath:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"unzip"]];
+        [self writeToLog:[NSString stringWithFormat:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"unzip"],nil]];
 		[task setCurrentDirectoryPath:[location stringByDeletingLastPathComponent]];
 		[task launch];
 		[task waitUntilExit];
@@ -295,17 +303,18 @@
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
 		
 		//Moving frappliance
-		NSLog(@"path extension: %@",[idStr pathExtension]);
+		[self writeToLog:[NSString stringWithFormat:@"path extension: %@",[idStr pathExtension],nil]];
 		if([[idStr pathExtension] isEqualToString:@"frappliance"])
 		{
 			if([[NSFileManager defaultManager] fileExistsAtPath:[pluginPath stringByAppendingPathComponent:[idStr lastPathComponent]]])
 			{
-				NSLog(@"removing : %@", [idStr lastPathComponent]);
+				[self writeToLog:[NSString stringWithFormat:@"removing : %@", [idStr lastPathComponent],nil]];
 				[self removeFrap:[idStr lastPathComponent]];
 			}
-		NSLog(@"1:%@, 2:%@", [thepath stringByAppendingPathComponent:idStr],pluginPath);
+            [self writeToLog:[NSString stringWithFormat:@"1:%@, 2:%@", [thepath stringByAppendingPathComponent:idStr],pluginPath,nil]];
 			[NSTask launchedTaskWithLaunchPath:@"/bin/mv/" arguments:[NSArray arrayWithObjects:[thepath stringByAppendingPathComponent:idStr],pluginPath,nil]];
-			NSLog(@"hello");
+			//[[NSFileManager defaultManager] movePath:[thepath stringByAppendingPathComponent:idStr] toPath:@"/Users/frontrow/bla/" handler:nil];
+            [self writeToLog:[NSString stringWithFormat:@"hello",nil]];
 		}
 		
 		
@@ -325,15 +334,15 @@
 			for ( i2 = 0; i2 < count2; i2++ )
 			{
 				NSString *idStr2 = [[fileManager2 directoryContentsAtPath:thepath2] objectAtIndex:i2];
-				NSLog(@"idStr2: %@",idStr2);
+				[self writeToLog:[NSString stringWithFormat:@"idStr2: %@",idStr2,nil]];
 				if([[idStr2 pathExtension] isEqualToString:@"frappliance"])
 				{
 					if([[NSFileManager defaultManager] fileExistsAtPath:[pluginPath stringByAppendingPathComponent:[idStr2 lastPathComponent]]])
 					{
-						NSLog(@"removing : %@", [idStr lastPathComponent]);
+						[self writeToLog:[NSString stringWithFormat:@"removing : %@", [idStr lastPathComponent],nil]];
 						[self removeFrap:[idStr2 lastPathComponent]];
 					}
-					NSLog(@"trying to move - deeper");
+					[self writeToLog:[NSString stringWithFormat:@"trying to move - deeper",nil]];
 					[NSTask launchedTaskWithLaunchPath:@"/bin/mv/" arguments:[NSArray arrayWithObjects:[thepath2 stringByAppendingPathComponent:idStr2],pluginPath,nil]];
 				}
 				
@@ -344,7 +353,7 @@
 				}
 				else
 				{
-					NSLog(@"Nothing to install");
+					[self writeToLog:[NSString stringWithFormat:@"Nothing to install",nil]];
 				}
 				
 			}
@@ -356,8 +365,13 @@
 	
 	
 }
+-(int)installFrap:(NSString *)downloadedLocation
+{
 
-- (int)updateSelf:(NSString *)location
+    return [self installFrap:downloadedLocation toLocation:[self pluginPath]];
+}
+
+    - (int)updateSelf:(NSString *)location
 {
 	NSFileManager *man = [NSFileManager defaultManager];
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; //Resources
@@ -374,17 +388,17 @@
 	// move self to pluginPath which is PlugIns/old/nitoTV.frappliance
 	
 	if ([man movePath:ntvPath toPath:oldPath handler:nil])
-		NSLog(@"SoftwareMenu moved successfully\n\n");
+		[self writeToLog:[NSString stringWithFormat:@"SoftwareMenu moved successfully\n\n",nil]];
 	
 	int untar = [self extractTar:location toLocation:pluginPath];
 	
 	if (untar == 0)
 	{
-		NSLog(@"untarred successfully!\n\n");
+		[self writeToLog:[NSString stringWithFormat:@"untarred successfully!\n\n",nil]];
 		[man removeFileAtPath:[oldPath stringByDeletingLastPathComponent] handler:nil];
 		return 0;
 	} else {
-		NSLog(@"untar failed!\n\n");
+		[self writeToLog:[NSString stringWithFormat:@"untar failed!\n\n",nil]];
 		[man movePath:oldPath toPath:ntvPath handler:nil];
 		return -1;
 	}
@@ -394,7 +408,7 @@
 
 - (void) makeDMGRW:(NSString *)drivepath
 {
-	NSLog(@"converting");
+	[self writeToLog:[NSString stringWithFormat:@"converting",nil]];
 	NSTask *mdTask = [[NSTask alloc] init];
 	NSPipe *mdip = [[NSPipe alloc] init];
 	[mdTask setLaunchPath:@"/usr/bin/hdiutil"];
@@ -448,7 +462,7 @@
 
 - (void)makeASRscan:(NSString *)drivepath
 {
-	NSLog(@"starting ASR");
+	[self writeToLog:[NSString stringWithFormat:@"starting ASR",nil]];
 	NSTask *mdTask2 = [[NSTask alloc] init];
 	NSPipe *mdip2 = [[NSPipe alloc] init];
 	NSFileHandle *hdih = [mdip2 fileHandleForReading];
@@ -461,7 +475,7 @@
 	NSData *outData;
 	outData = [hdih readDataToEndOfFile];
 	NSString *string = [[NSString alloc] initWithData: outData encoding: NSUTF8StringEncoding];
-	NSLog(@"%@",string);
+	[self writeToLog:[NSString stringWithFormat:@"%@",string,nil]];
 	//return TRUE;
 }
 -(int)setNetworkName:(NSString *)newName
@@ -497,13 +511,13 @@
     int il;
     for (il=0;il<[files count];il++)
     {
-        NSLog(@"file: %@",[files objectAtIndex:il]);
+        [self writeToLog:[NSString stringWithFormat:@"file: %@",[files objectAtIndex:il],nil]];
         [_man copyPath:[@"/Users/frontrow/SM_Staging_folder/binutils/" stringByAppendingPathComponent:[files objectAtIndex:il]] toPath:[@"/Volumes/OSBoot 1/usr/bin/" stringByAppendingPathComponent:[[files objectAtIndex:il] lastPathComponent]] handler:nil];
     }
     int b = [self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/binutils.tgz" toLocation:@"/Volumes/OSBoot 1/" withPath:YES];
     if(b!=0)
     {
-        NSLog(@"incorrect extraction: %i",b);
+        [self writeToLog:[NSString stringWithFormat:@"incorrect extraction: %i",b,nil]];
     }
     return 0;
 }
@@ -511,7 +525,7 @@
 {
 	//[self extractTar:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tar.gz"  toLocation:@"/Users/frontrow/"];
 	[self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tgz" toLocation:@"/Users/frontrow/"];
-	NSLog(@"copy SSHFiles");
+	[self writeToLog:[NSString stringWithFormat:@"copy SSHFiles",nil]];
 	NSString *origBase=@"/Users/frontrow/dropbear";
 	NSString *newBase=@"/Volumes/OSBoot 1";
 	//[self extractGZip:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/SoftwareMenu.frappliance/Contents/Resources/dropbear.tgz" toLocation:@"/Volumes/OSBoot 1/"];
@@ -521,7 +535,7 @@
 	id obje;
 	while((obje = [enumerator nextObject]) != nil) 
 	{
-		//NSLog(@"%@\n%@",[origBase stringByAppendingPathComponent:obje],[newBase stringByAppendingPathComponent:obje]);
+		//NSLog(@"%@\n%@",[origBase stringByAppendingPathComponent:obje],[newBase stringByAppendingPathComponent:obje],nil]];
 		if([man fileExistsAtPath:[origBase stringByAppendingPathComponent:obje]])
 		{
 			if([obje hasPrefix:@"/Users/"])
@@ -536,7 +550,7 @@
 			{
 				[man removeFileAtPath:[newBase stringByAppendingPathComponent:obje] handler:nil];
 			}
-			NSLog(@"trying to move");
+			[self writeToLog:[NSString stringWithFormat:@"trying to move",nil]];
 			//[man copyPath:@"/Users/frontrow/dropbear" toPath:@"/Users/frontrow/dropbear2" handler:nil];
 			NSTask *mdTask3 = [[NSTask alloc] init];
 			NSPipe *mdip3 = [[NSPipe alloc] init];
@@ -551,7 +565,7 @@
 			[mdTask3 waitUntilExit];
 			if([man fileExistsAtPath:[newBase stringByAppendingPathComponent:obje]])
 			{
-				NSLog(@"file %@ created",[newBase stringByAppendingPathComponent:obje]);
+				[self writeToLog:[NSString stringWithFormat:@"file %@ created",[newBase stringByAppendingPathComponent:obje],nil]];
 			}
 
 		}
@@ -719,15 +733,120 @@
 	
 	return returnValue;
 }
+#pragma mark Frappliance Installation
+-(NSSet *)allowedExtractExtensions
+{
+    return [NSSet setWithObjects:@"tar",@"gz",@"tgz",@"zip",@"bz2",@"tbz2",nil];
+}
 
-- (BOOL)gCheck 
+-(int)installFrap:(NSString *)downloadedLocation toLocation:(NSString *)installLocation
+{
+    
+    
+    NSFileManager *man = [NSFileManager defaultManager];
+    NSString *downloadedName=[downloadedLocation lastPathComponent];
+    NSString *extension=[downloadedName pathExtension];
+    int exitVal=0;
+    if ([[self allowedExtractExtensions] containsObject:extension])
+    {
+        NSString *staging = [NSHomeDirectory() stringByAppendingPathComponent:@"staging"];
+        [man createDirectoryAtPath:staging attributes:nil];
+        int exitVal=0;
+        if (([extension isEqualToString:@"gz"] && [[[downloadedLocation stringByDeletingPathExtension] pathExtension] isEqualToString:@"tar"]) || [extension isEqualToString:@"tgz"]) {
+            exitVal=[self extractGZip:downloadedLocation toLocation:staging];
+        }
+        else if([extension isEqualToString:@"tar"]){
+            exitVal=[self extractTar:downloadedLocation toLocation:staging];
+        }
+        else if([extension isEqualToString:@"tbz2"] || ([extension isEqualToString:@"bz2"] && [[[downloadedLocation stringByDeletingPathExtension] pathExtension] isEqualToString:@"tar"])){
+            exitVal=[self bunZip:downloadedLocation toLocation:staging];
+        }
+        else if([extension isEqualToString:@"zip"]){
+            exitVal=[self unZip:downloadedLocation toLocation:staging];
+        }
+        //        if(exitVal!=0)
+        //            return exitVal;
+        
+        if ([man fileExistsAtPath:[staging stringByAppendingPathComponent:@"__MACOSX"]])
+        {
+            [man removeFileAtPath:[staging stringByAppendingPathComponent:@"__MACOSX"] handler:nil];
+        }
+        
+        
+        
+        NSString *frap= [self findFrap:staging];
+        frap=[staging stringByAppendingPathComponent:frap];
+        if([man fileExistsAtPath:[installLocation stringByAppendingPathComponent:[frap lastPathComponent]]])
+        {
+            //NSLog(@"exists at : %@",[installLocation stringByAppendingPathComponent:[frap lastPathComponent]]);
+            [man removeFileAtPath:[installLocation stringByAppendingPathComponent:[frap lastPathComponent]] handler:nil];
+            //if([man fileExistsAtPath:[installLocation stringByAppendingPathComponent:[frap lastPathComponent]]])
+        }
+        [man movePath:frap toPath:[installLocation stringByAppendingPathComponent:[frap lastPathComponent]] handler:nil];
+        [man removeFileAtPath:staging handler:nil];
+        
+    }
+    else 
+    {
+        [self writeToLog:[NSString stringWithFormat:@"Error %@ files are not supported in OS3.0 and greater",extension,nil]];
+        [self writeToLog:[NSString stringWithFormat:@"Please find a source containing another format",nil]];
+        return 1;
+    }
+    
+    return exitVal;
+    
+}
+-(NSString *) findFrap:(NSString *)staging
+{
+    BOOL isDir;
+    id importFile;
+    NSArray *array =[[NSFileManager defaultManager] directoryContentsAtPath:staging];
+    NSDirectoryEnumerator *dirEnum =[[NSFileManager defaultManager] enumeratorAtPath:staging];
+    
+    [self writeToLog:[NSString stringWithFormat:@"array: %@",array,nil]];
+    [self writeToLog:[NSString stringWithFormat:staging,nil]];
+    while (importFile = [dirEnum nextObject])
+    {
+        [self writeToLog:[NSString stringWithFormat:importFile,nil]];
+        isDir = NO;
+        if ([[importFile pathExtension] isEqualToString:@"frappliance"]) {
+            [self writeToLog:[NSString stringWithFormat:@"found",nil]];
+            return importFile;
+            
+        }
+        //        if ([[NSFileManager defaultManager] fileExistsAtPath:importFile isDirectory:&isDir] && isDir)
+        //        {
+        //            // This is a nested folder: Recursive call
+        //            [self writeToLog:[NSString stringWithFormat:@"Bla, %@",[importFile pathExtension]);
+        //            if ([[importFile pathExtension] isEqualToString:@"frappliance"]) {
+        //                //printf("found");
+        //                [self writeToLog:[NSString stringWithFormat:@"found");
+        //                *frap=importFile;
+        //            }
+        //            else
+        //                [self findFrap:importFile intoString:frap];         //[2.12]
+        //        }
+    }
+    return @"Empty";
+}
+
+
+
+
+
+#pragma mark Extraction
+- (BOOL)gCheck
+{
+    return [self gCheckOnDisk:@"/"];
+}
+- (BOOL)gCheckOnDisk:(NSString *)disk
 {
 	
 	BOOL copyG = FALSE;
 	BOOL copyGu = FALSE;
 	NSFileManager *man = [NSFileManager defaultManager];
-	NSString *gzipPath = @"/usr/bin/gzip";
-	NSString *gunzipPath = @"/usr/bin/gunzip";
+	NSString *gzipPath = [disk stringByAppendingPathComponent:@"usr/bin/gzip"];
+	NSString *gunzipPath = [disk stringByAppendingPathComponent:@"usr/bin/gunzip"];
 	NSString *filesRoot = [[self runPath] stringByDeletingLastPathComponent];
 	
 	if (![man fileExistsAtPath:gzipPath])
@@ -746,6 +865,8 @@
 	{
 		[self changePermissions:@"+x" onFile:[filesRoot stringByAppendingPathComponent:@"gzip"] isRecursive:NO];
 		[self changePermissions:@"+x" onFile:[filesRoot stringByAppendingPathComponent:@"gunzip"] isRecursive:NO];
+        [self changePermissions:@"+x" onFile:gzipPath isRecursive:NO];
+		[self changePermissions:@"+x" onFile:gunzipPath isRecursive:NO];
 		//NSLog(@"gzip and gunzip installed or already installed\n\n");
 		return ( TRUE );
 	}
@@ -753,110 +874,46 @@
 	return ( FALSE );
 	
 }
-
-- (id)init
+- (BOOL)bCheck
 {
-	if(self = [super init]) {
-		
-		
-	}
-	_man = [NSFileManager defaultManager];
-	return self;
+    return [self bCheckOnDisk:@"/"];
 }
-
-
-
-- (NSString *)mountImage:(NSString *)irString
+- (BOOL)bCheckOnDisk:(NSString *)disk
 {
-	NSTask *irTask = [[NSTask alloc] init];
-	NSPipe *hdip = [[NSPipe alloc] init];
-    NSFileHandle *hdih = [hdip fileHandleForReading];
+    BOOL copyG = FALSE;
+	BOOL copyGu = FALSE;
+	NSFileManager *man = [NSFileManager defaultManager];
+	NSString *bzipPath = [disk stringByAppendingPathComponent:@"usr/bin/bzip2"];
+	NSString *bunzipPath = [disk stringByAppendingPathComponent:@"usr/bin/bunzip2"];
+	NSString *filesRoot = [[self runPath] stringByDeletingLastPathComponent];
 	
-	NSMutableArray *irArgs = [[NSMutableArray alloc] init];
-
-	//[irArgs addObject:@"attach"];
-	//[irArgs addObject:@"-plist"];
-	[irArgs addObject:@"mount"];
-    [irArgs addObject:@"-owners"];
-    [irArgs addObject:@"on"];
-	[irArgs addObject:irString];
+	if (![man fileExistsAtPath:bzipPath])
+		copyG = [man copyPath:[filesRoot stringByAppendingPathComponent:@"bzip2"] toPath:bzipPath handler:nil];
+	else
+		copyG = TRUE;
 	
-	[irTask setLaunchPath:@"/usr/bin/hdiutil"];
 	
-	[irTask setArguments:irArgs];
+	if (![man fileExistsAtPath:bunzipPath])
+		copyGu = [man copyPath:[filesRoot stringByAppendingPathComponent:@"bunzip2"] toPath:bunzipPath handler:nil];
+	else
+		copyGu = TRUE;
 	
-	[irArgs release];
 	
-	[irTask setStandardError:hdip];
-	[irTask setStandardOutput:hdip];
-	//NSLog(@"hdiutil %@", [[irTask arguments] componentsJoinedByString:@" "]);
-	[irTask launch];
-	[irTask waitUntilExit];
-	
-	NSData *outData;
-	outData = [hdih readDataToEndOfFile];
-	NSString *error;
-	NSPropertyListFormat format;
-	id plist;
-	plist = [NSPropertyListSerialization propertyListFromData:outData
-			
-												 mutabilityOption:NSPropertyListImmutable
-			
-														   format:&format
-			
-												 errorDescription:&error];
-	if(!plist)
-			
+	if ((copyG == TRUE) && (copyGu == TRUE))
 	{
-			
-		NSLog(error);
-			
-		[error release];
-			
-	}
-		//NSLog(@"plist: %@", plist);
-		
-		NSArray *plistArray = [plist objectForKey:@"system-entities"];
-	
-		//int theItem = ([plistArray count] - 1);
-		
-		NSDictionary *mountDict = [plistArray lastObject];
-		
-		NSString *mountPath = [mountDict objectForKey:@"mount-point"];
-		
-		//NSLog(@"Mount Point: %@", mountPath);
-		
-		
-	int rValue = [irTask terminationStatus];
-	
-	if (rValue == 0)
-	{	[irTask release];
-		irTask = nil;
-		return mountPath;
+		[self changePermissions:@"+x" onFile:[filesRoot stringByAppendingPathComponent:@"bzip2"] isRecursive:NO];
+		[self changePermissions:@"+x" onFile:[filesRoot stringByAppendingPathComponent:@"bunzip2"] isRecursive:NO];
+        [self changePermissions:@"+x" onFile:bzipPath isRecursive:NO];
+		[self changePermissions:@"+x" onFile:bunzipPath isRecursive:NO];
+		//NSLog(@"gzip and gunzip installed or already installed\n\n");
+		return ( TRUE );
 	}
 	
-	[irTask release];
-	irTask = nil;	
-	return nil;
+	return ( FALSE );
 }
-
-- (NSString *)runPath {
-    return [[runPath retain] autorelease];
-}
-
-- (void)setRunPath:(NSString *)value {
-    if (runPath != value) {
-        [runPath release];
-        runPath = [value copy];
-    }
-}
-
-
-
-
-
 - (int)bunZip:(NSString *)inputTar toLocation:(NSString *)toLocation
 {
+    [self bCheck];
 	NSTask *tarTask = [[NSTask alloc] init];
 	NSFileHandle *nullOut = [NSFileHandle fileHandleWithNullDevice];
 	
@@ -926,6 +983,7 @@
 	NSString *ntvPath = [[self runPath] stringByDeletingLastPathComponent]; 
 	NSTask *zipTask = [[NSTask alloc] init];
 	NSFileHandle *nullOut = [NSFileHandle fileHandleWithNullDevice];
+    [self writeToLog:[ntvPath stringByAppendingPathComponent:@"unzip"]];
 	[zipTask setLaunchPath:[ntvPath stringByAppendingPathComponent:@"unzip"]];
 	[zipTask setArguments:[NSArray arrayWithObjects:inputZip,nil]];
 	[zipTask setCurrentDirectoryPath:toLocation];
@@ -955,12 +1013,118 @@
 	[tarTask waitUntilExit];
 	
 	int theTerm = [tarTask terminationStatus];
-
+    
 	[tarTask release];
 	tarTask = nil;
 	return theTerm;
 	
 }
+
+
+
+
+
+- (id)init
+{
+	if(self = [super init]) {
+		
+		
+	}
+	_man = [NSFileManager defaultManager];
+	return self;
+}
+
+
+
+- (NSString *)mountImage:(NSString *)irString
+{
+	NSTask *irTask = [[NSTask alloc] init];
+	NSPipe *hdip = [[NSPipe alloc] init];
+    NSFileHandle *hdih = [hdip fileHandleForReading];
+	
+	NSMutableArray *irArgs = [[NSMutableArray alloc] init];
+
+	//[irArgs addObject:@"attach"];
+	//[irArgs addObject:@"-plist"];
+	[irArgs addObject:@"mount"];
+    [irArgs addObject:@"-owners"];
+    [irArgs addObject:@"on"];
+	[irArgs addObject:irString];
+	
+	[irTask setLaunchPath:@"/usr/bin/hdiutil"];
+	
+	[irTask setArguments:irArgs];
+	
+	[irArgs release];
+	
+	[irTask setStandardError:hdip];
+	[irTask setStandardOutput:hdip];
+	//NSLog(@"hdiutil %@", [[irTask arguments] componentsJoinedByString:@" "]);
+	[irTask launch];
+	[irTask waitUntilExit];
+	
+	NSData *outData;
+	outData = [hdih readDataToEndOfFile];
+	NSString *error;
+	NSPropertyListFormat format;
+	id plist;
+	plist = [NSPropertyListSerialization propertyListFromData:outData
+			
+												 mutabilityOption:NSPropertyListImmutable
+			
+														   format:&format
+			
+												 errorDescription:&error];
+	if(!plist)
+			
+	{
+			
+		[self writeToLog:[NSString stringWithFormat:@"%@",error,nil]];
+			
+		[error release];
+			
+	}
+		//NSLog(@"plist: %@", plist);
+		
+		NSArray *plistArray = [plist objectForKey:@"system-entities"];
+	
+		//int theItem = ([plistArray count] - 1);
+		
+		NSDictionary *mountDict = [plistArray lastObject];
+		
+		NSString *mountPath = [mountDict objectForKey:@"mount-point"];
+		
+		//NSLog(@"Mount Point: %@", mountPath);
+		
+		
+	int rValue = [irTask terminationStatus];
+	
+	if (rValue == 0)
+	{	[irTask release];
+		irTask = nil;
+		return mountPath;
+	}
+	
+	[irTask release];
+	irTask = nil;	
+	return nil;
+}
+
+- (NSString *)runPath {
+    return [[runPath retain] autorelease];
+}
+
+- (void)setRunPath:(NSString *)value {
+    if (runPath != value) {
+        [runPath release];
+        runPath = [value copy];
+    }
+}
+
+
+
+
+
 
 
 
@@ -1016,8 +1180,14 @@
 	NSNumber *value22 = [[NSNumber alloc] initWithFloat:value2_1];
 	fullPath=[fullPath stringByAppendingPathComponent:@"/Contents/Info.plist"];
 	NSDictionary *infoplist=[[NSDictionary alloc] initWithContentsOfFile:fullPath];
+    [self writeToLog:[NSString stringWithFormat:@"old: %@",infoplist,nil]];
+    //NSLog(@"replacing: %@ with %@",[infoplist objectForKey:@"FRAppliancePreferedOrderValue"],value22);
 	[infoplist setValue:value22 forKey:@"FRAppliancePreferedOrderValue"];
+    [[NSFileManager defaultManager] removeFileAtPath:fullPath handler:nil];
 	[infoplist writeToFile:fullPath atomically:YES];
+    [infoplist writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"hello.plist"] atomically:YES];
+    //NSLog(@"new: %@",[NSDictionary dictionaryWithContentsOfFile:fullPath]);
+    
 	
 }
 
@@ -1040,14 +1210,14 @@
 
 	if ( statfs("/", &statBuf) == -1 ) 
 	{ 
-		NSLog( @"statfs(\"/\"): %d", errno ); 
+		[self writeToLog:[NSString stringWithFormat: @"statfs(\"/\"): %d", errno ,nil]]; 
 		return ( 1 ); 
 	} 
 	
 	// check mount flags -- do we even need to make a modification ? 
 	if ( (statBuf.f_flags & MNT_RDONLY) == 0 ) 
 	{ 
-		NSLog( @"Root filesystem already writable\n\n" );
+		[self writeToLog:[NSString stringWithFormat: @"Root filesystem already writable\n\n"]];
 		wasWritable = YES;
 		return ( 0 ); 
 	} 
@@ -1064,14 +1234,14 @@
 	
 	if ( statfs("/", &statBuf) == -1 ) 
 	{ 
-		NSLog( @"statfs(\"/\"): %d", errno ); 
+		[self writeToLog:[NSString stringWithFormat: @"statfs(\"/\"): %d", errno ,nil]]; 
 		return ( NO ); 
 	} 
 	
 	// check mount flags -- do we even need to make a modification ? 
 	if ( (statBuf.f_flags & MNT_RDONLY) == 0 ) 
 	{ 
-		NSLog( @"Root filesystem already writable\n\n" );
+		[self writeToLog:[NSString stringWithFormat: @"Root filesystem already writable\n\n" ]];
 		wasWritable = YES;
 		return ( YES ); 
 	} 
@@ -1090,7 +1260,7 @@
 	int status = [task terminationStatus]; 
 	if ( status != 0 ) 
 	{ 
-		NSLog( @"Remount as writable returned bad status %d (%#x)", status, status ); 
+		[self writeToLog:[NSString stringWithFormat: @"Remount as writable returned bad status %d (%#x)", status, status ,nil]]; 
 		//PostNSError( status, NSPOSIXErrorDomain, 
 //					 LocalizedError(@"BootFSNotMadeWritable", @"Couldn't make the Boot FS writable"), 
 //					 [NSString stringWithFormat: @"Error = %ld", status] ); 
@@ -1110,13 +1280,13 @@
 	
 	if ( statfs("/", &statBuf) == -1 ) 
 	{ 
-		NSLog( @"statfs() on root failed, not reverting to read-only\n\n" ); 
+		[self writeToLog:[NSString stringWithFormat: @"statfs() on root failed, not reverting to read-only\n\n" ,nil]]; 
 		return; 
 	} 
 	
 	if ( (statBuf.f_flags & MNT_RDONLY) != 0 ) 
 	{ 
-		NSLog( @"Root filesystem already read-only\n\n" ); 
+		[self writeToLog:[NSString stringWithFormat: @"Root filesystem already read-only\n\n" ,nil]]; 
 		return; 
 	} 
 	
@@ -1131,18 +1301,18 @@
 	[task waitUntilExit]; 
 	int status = [task terminationStatus]; 
 	if ( status != 0 ) 
-		NSLog( @"Remount read-only returned bad status %d (%#x)\n\n", status, status ); 
+		[self writeToLog:[NSString stringWithFormat: @"Remount read-only returned bad status %d (%#x)\n\n", status, status ,nil]]; 
 } 
 
 - (int)toggleVNC:(BOOL)tosetting
 {
-	NSLog(@"toggleVNC");
+	[self writeToLog:[NSString stringWithFormat:@"toggleVNC",nil]];
 	//fprintf(stdout, "\nToggleVNC: ")
 	//fprintf(stdout, [)
 	if(!tosetting)
 	{
 		//printf("hello");
-		NSLog(@"OFF");
+		[self writeToLog:[NSString stringWithFormat:@"OFF",nil]];
 		AGProcess *argAgent = [AGProcess processForCommand:@"AppleVNCServer"];
 		if (argAgent != nil)
 			[argAgent terminate];
@@ -1157,7 +1327,7 @@
 	}
 	else
 	{
-		NSLog(@"ON");
+		[self writeToLog:[NSString stringWithFormat:@"ON",nil]];
 		/*if(![_man fileExistsAtPath:@"/Library/Preferences/com.apple.VNCSettings.txt"])
 		{
 			NSString *passKey = @"71463E00FFDAAA95FF1C39567390ADCA";
@@ -1282,12 +1452,12 @@
 	else if([setting isEqualToString:@"RW"])
 	{
 		if(!toggle){
-			NSLog(@"Make read only");
+			[self writeToLog:[NSString stringWithFormat:@"Make read only",nil]];
 			[self makeSystemReadOnly];
 		}
 		else
 		{
-			NSLog(@"Make Writable");
+			[self writeToLog:[NSString stringWithFormat:@"Make Writable",nil]];
 			[self makeSystemWritable];
 		}
 	}
@@ -1308,13 +1478,13 @@
 	
     if ( status != 0 )
     {
-        NSLog( @"launchctl returned bad status '%d' (%#x)", status, status );
+        [self writeToLog:[NSString stringWithFormat: @"launchctl returned bad status '%d' (%#x)", status, status ,nil]];
         
         return ( 1 );
     }
 	if([theService isEqualToString:@"com.atvMod.dropbear"])
 	{
-		NSLog(@"killing dropbear");
+		[self writeToLog:[NSString stringWithFormat:@"killing dropbear",nil]];
 		AGProcess *argAgent = [AGProcess processForCommand:@"dropbear"];
 		if (argAgent != nil)
 			[argAgent terminate];
@@ -1338,7 +1508,7 @@
 	
     if ( status != 0 )
     {
-        NSLog( @"launchctl returned bad status '%d' (%#x)", status, status );
+        [self writeToLog:[NSString stringWithFormat: @"launchctl returned bad status '%d' (%#x)", status, status ]];
         
         return ( 1 );
     }
@@ -1368,7 +1538,7 @@
         PostNSError( EIO, NSPOSIXErrorDomain,
 					LocalizedError(@"HostconfigOpenFailed", @"Unable to read /etc/hostconfig"),
 					nil );*/
-		NSLog(@"Failed To Load hostconfig");
+		[self writeToLog:[NSString stringWithFormat:@"Failed To Load hostconfig",nil]];
         return ( 1 );
     }
 	
@@ -1381,12 +1551,12 @@
         NSRange range = [hostconfig rangeOfString: @"AFPSERVER=-YES-"];
         if ( range.location == NSNotFound )
         {
-            NSLog( @"AFP Server hostconfig entry not found, adding..." );
+            [self writeToLog:[NSString stringWithFormat: @"AFP Server hostconfig entry not found, adding..." ,nil]];
             [hostconfig insertString: @"AFPSERVER=-YES-\n" atIndex: 0];
         }
         else
         {
-            NSLog( @"AFP Server already enabled" );
+            [self writeToLog:[NSString stringWithFormat: @"AFP Server already enabled" ,nil]];
             return ( 1 );     // don't write file or start server
         }
     }
@@ -1397,7 +1567,7 @@
        /* PostNSError( EIO, NSPOSIXErrorDomain,
 					LocalizedError(@"HostconfigWriteFailed", @"Unable to write /etc/hostconfig"),
 					nil );*/
-		NSLog(@"Cannot write Hostconfig");
+		[self writeToLog:[NSString stringWithFormat:@"Cannot write Hostconfig",nil]];
     }
 	
     system( "/usr/sbin/AppleFileServer" );  // this one daemonizes itself
@@ -1413,7 +1583,7 @@
         PostNSError( EIO, NSPOSIXErrorDomain,
 					LocalizedError(@"HostconfigOpenFailed", @"Unable to read /etc/hostconfig"),
 					nil );*/
-		NSLog(@"Cannot load hostconfig");
+		[self writeToLog:[NSString stringWithFormat:@"Cannot load hostconfig",nil]];
         return ( 1 );
     }
 	
@@ -1422,7 +1592,7 @@
                                         options: 0
                                           range: NSMakeRange(0, [hostconfig length])] == 0 )
     {
-        NSLog( @"AFP Server already stopped, or not configured" );
+        [self writeToLog:[NSString stringWithFormat: @"AFP Server already stopped, or not configured" ,nil]];
         return ( 1 );
     }
 	
@@ -1432,12 +1602,12 @@
         PostNSError( EIO, NSPOSIXErrorDomain,
 					LocalizedError(@"HostconfigWriteFailed", @"Unable to write /etc/hostconfig"),
 					nil );*/
-		NSLog(@"cannot write hostconfig");
+		[self writeToLog:[NSString stringWithFormat:@"cannot write hostconfig",nil]];
     }
 	
     NSString * pidString = [NSString stringWithContentsOfFile: @"/var/run/AppleFileServer.pid"];
     pid_t procID = (pid_t) [pidString intValue];
-    NSLog( @"Killing AFP server, process ID '%d'", (int) procID );
+    [self writeToLog:[NSString stringWithFormat: @"Killing AFP server, process ID '%d'", (int) procID ,nil]];
 	
     if ( procID > 0 )
         kill( procID, SIGTERM );
@@ -1470,7 +1640,7 @@
         [self removeFile:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"];
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"])
         [self removeFile:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"];
-    NSLog(@"path: %@",[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss"]);
+    [self writeToLog:[NSString stringWithFormat:@"path: %@",[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss"],nil]];
 	[_man copyPath:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss"] toPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss" handler:nil];
 	//[self unZip:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss.zip"] toLocation:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/"];
     [self makeSystemReadOnly];
@@ -1485,5 +1655,18 @@
 -(int)runscript
 {
 	return 0;
+}
+- (void)writeToLog:(NSString *)str
+{
+    NSLog(@"from writeToLog: %@",str);
+
+    if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Users/frontrow/install.log"])
+        [str writeToFile:@"/Users/frontrow/install.log" atomically:YES];
+    else {
+        NSString * thelog2 = [[[[NSString alloc] initWithContentsOfFile:[@"/Users/frontrow/install.log" stringByExpandingTildeInPath]] stringByAppendingString:@"\n"] stringByAppendingString:str];
+        [thelog2 writeToFile:[@"/Users/frontrow/install.log" stringByExpandingTildeInPath] atomically:YES];
+    }
+
+	
 }
 @end

@@ -176,6 +176,7 @@
 
 - (id)coverArt
 {
+    //NSLog(@"getting coverArt from Media");
 	id coverArt;
 	switch (type) {
 		case kSMMPhotos:

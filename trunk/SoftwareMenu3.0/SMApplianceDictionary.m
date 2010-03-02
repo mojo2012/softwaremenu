@@ -155,13 +155,18 @@
 
 -(NSString *)osMax
 {
-    if([_keys containsObject:@"osMax"])
-        return [_information objectForKey:@"osMax"];
+//    if([_keys containsObject:@"osMax"])
+//        return [_information objectForKey:@"osMax"];
     return nil;
 }
--(BOOL)strictLimits
+-(BOOL)strictUpperLimit
+{
+    return [SMPreferences strictApplianceUpperInstallLimit];
+}
+-(BOOL)strictLowerLimit
 {
     return YES;
+    //return [SMPreferences strictApplianceLowerInstallLimit];
 }
 -(BOOL)hasImage
 {
@@ -191,13 +196,17 @@
     BOOL lesser  = NO;
     if([self osMin]==nil)
         greater = YES;
-    else
+    else if([self strictLowerLimit])
         greater = [SMGeneralMethods OSGreaterThan:[self osMin]];
+    else
+        greater = YES;
     
     if([self osMax]==nil)
         lesser = YES;
-    else
+    else if([self strictUpperLimit])
         lesser = [SMGeneralMethods OSLessThan:[self osMax]];
+    else
+        lesser = YES;
     if(lesser && greater)
         return YES;
     return NO;
@@ -229,7 +238,7 @@
     if([self isInstalled])
     {
         NSString *frapPath= [FRAP_PATH stringByAppendingPathComponent:[[self name] stringByAppendingPathExtension:@"frappliance"]];
-        NSDictionary *infoDict = [[NSBundle bundleWithPath:frapPath] infoDictionary];
+        NSDictionary *infoDict = [SMPreferences dictionaryForBundlePath:frapPath];
         if(![[self name] isEqualToString:@"nitoTV"])
         {
             if([(NSString *)[infoDict valueForKey:@"CFBundleVersion"] compare:[self onlineVersionString]]!=NSOrderedAscending)
@@ -247,7 +256,7 @@
     if([self isBackedUp])
     {
         NSString *bakPath = [BAK_PATH stringByAppendingPathComponent:[[self name] stringByAppendingPathExtension:@"bak"]];
-        NSDictionary *infoDict = [[NSBundle bundleWithPath:bakPath] infoDictionary];
+        NSDictionary *infoDict = [SMPreferences dictionaryForBundlePath:bakPath];
         if(![[self name] isEqualToString:@"nitoTV"])
         {
             if([(NSString *)[infoDict objectForKey:@"CFBundleVersion"] compare:[self onlineVersionString]]!=NSOrderedAscending)
@@ -262,7 +271,7 @@
 -(NSString *)backupVersion
 {
 	NSString *bakPath = [BAK_PATH stringByAppendingPathComponent:[[self name] stringByAppendingPathExtension:@"bak"]];
-	NSDictionary * info =[[NSBundle bundleWithPath:bakPath]infoDictionary];
+	NSDictionary * info =[SMPreferences dictionaryForBundlePath:bakPath];
 	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[self name] isEqualToString:@"nitoTV"])
 		return [info objectForKey:@"CFBundleShortVersionString"];
 	else
@@ -272,7 +281,7 @@
 -(NSString *)installedVersion
 {
     NSString *frapPath= [FRAP_PATH stringByAppendingPathComponent:[[self name] stringByAppendingPathExtension:@"frappliance"]];
-	NSDictionary * info =[[NSBundle bundleWithPath:frapPath]infoDictionary];
+	NSDictionary * info =[SMPreferences dictionaryForBundlePath:frapPath];
 	if([[info allKeys] containsObject:@"CFBundleShortVersionString"] && ![[self name] isEqualToString:@"nitoTV"])
 		return [info objectForKey:@"CFBundleShortVersionString"];
 	else

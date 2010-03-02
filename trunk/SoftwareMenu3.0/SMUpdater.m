@@ -302,6 +302,30 @@ NSFileManager *man = [NSFileManager defaultManager];
     
     
 }
+- (BOOL)brEventAction:(BREvent *)event
+{
+	int remoteAction =[event remoteAction];
+	
+	if ([(BRControllerStack *)[self stack] peekController] != self)
+		return [super brEventAction:event];
+	NSLog(@"event: %i, value: %i",remoteAction, [event value]);
+    
+	if([event value] == 0)
+		return [super brEventAction:event];
+	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
+		remoteAction ++;
+	//NSMutableArray *favorites = nil;
+	switch (remoteAction)
+	{
+
+        case kBREventRemoteActionPlayHold:
+        {
+            [[self stack]pushController:[[SMUpdaterMenu alloc]init]];
+            break;
+        }
+	}
+	return [super brEventAction:event];
+}
 -(void)start_updating:(NSString *)xml_location
 {
 //	if ([[SMGeneralMethods sharedInstance] checkblocker])

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -43,7 +43,7 @@
 		DD68A0BB10A7A90300B2F52A /* BRMainMenuController-SMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A0B910A7A90300B2F52A /* BRMainMenuController-SMExtensions.m */; };
 		DD68A1C610A7C3F300B2F52A /* SMMainMenuMediaControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */; };
 		DD68A1C710A7C3F300B2F52A /* SMMainMenuMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */; };
-		DD691CB010B1D92A003463F2 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD691CAF10B1D92A003463F2 /* AppleTV.framework */; };
+		DD691CB010B1D92A003463F2 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD691CAF10B1D92A003463F2 /* iPhotoAccess.framework */; };
 		DD691D5B10B25348003463F2 /* makeinstall.sh in Resources */ = {isa = PBXBuildFile; fileRef = DD691D5A10B25348003463F2 /* makeinstall.sh */; };
 		DD7D159C10A899860011B3D1 /* SMSettingsToggles.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7D159A10A899860011B3D1 /* SMSettingsToggles.h */; };
 		DD7D159D10A899860011B3D1 /* SMSettingsToggles.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7D159B10A899860011B3D1 /* SMSettingsToggles.m */; };
@@ -1477,8 +1477,12 @@
 		DD85A44410C57E1300222B8C /* SMUpdaterDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */; };
 		DD85AA1810C608B300222B8C /* SMUpdaterOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85AA1610C608B300222B8C /* SMUpdaterOptions.h */; };
 		DD85AA1910C608B300222B8C /* SMUpdaterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85AA1710C608B300222B8C /* SMUpdaterOptions.m */; };
+		DD85ABDD10C9C68500222B8C /* SMUpdaterMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD85ABDB10C9C68500222B8C /* SMUpdaterMenu.h */; };
+		DD85ABDE10C9C68500222B8C /* SMUpdaterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD85ABDC10C9C68500222B8C /* SMUpdaterMenu.m */; };
 		DD8B827E10B4B70400202E9E /* SMScreensaverSettingsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */; };
 		DD8B827F10B4B70400202E9E /* SMScreensaverSettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */; };
+		DDAC05BE113DD86C0033C676 /* SoftwareMenuFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAC05BD113DD86C0033C676 /* SoftwareMenuFramework.framework */; };
+		DDAC05CF113DD8A90033C676 /* SoftwareMenuFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DDAC05BD113DD86C0033C676 /* SoftwareMenuFramework.framework */; };
 		DDACE50D10B61C32006D78E0 /* SMApplianceInstallerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */; };
 		DDACE50E10B61C32006D78E0 /* SMApplianceInstallerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDACE50C10B61C32006D78E0 /* SMApplianceInstallerController.m */; };
 		DDD4F65C10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h in Headers */ = {isa = PBXBuildFile; fileRef = DDD4F65A10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h */; };
@@ -1492,17 +1496,22 @@
 		DDE85FCC10A39C59002D2FB8 /* CALHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE85FCB10A39C59002D2FB8 /* CALHeader.h */; };
 		DDE85FEA10A39D75002D2FB8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */; };
 		DDE865D310A3AB91002D2FB8 /* AppleTV.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE865D210A3AB91002D2FB8 /* AppleTV.h */; };
+		DDECAD3011173C9600448929 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDECAD2F11173C9600448929 /* AppleTV.framework */; };
+		DDECAE6F11184A3200448929 /* bunzip2 in Resources */ = {isa = PBXBuildFile; fileRef = DDECAE6D11184A3200448929 /* bunzip2 */; };
+		DDECAE7011184A3200448929 /* bzip2 in Resources */ = {isa = PBXBuildFile; fileRef = DDECAE6E11184A3200448929 /* bzip2 */; };
+		DDECAF781118958E00448929 /* SMLoadAppliance.h in Headers */ = {isa = PBXBuildFile; fileRef = DDECAF761118958E00448929 /* SMLoadAppliance.h */; };
+		DDECAF791118958E00448929 /* SMLoadAppliance.m in Sources */ = {isa = PBXBuildFile; fileRef = DDECAF771118958E00448929 /* SMLoadAppliance.m */; };
+		DDECB6461118BC9500448929 /* OFlowMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DDECB6441118BC9500448929 /* OFlowMenu.h */; };
+		DDECB6471118BC9500448929 /* OFlowMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DDECB6451118BC9500448929 /* OFlowMenu.m */; };
 		DDEF2D5010A5D0AD00ECD73A /* loadUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF2D4F10A5D0AD00ECD73A /* loadUpdates.m */; };
 		DDEF2D5310A5D1C500ECD73A /* loadUpdatesDownloadClass.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */; };
 		DDEF340510A657F500ECD73A /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEF340310A657F500ECD73A /* Extensions.h */; };
 		DDEF340610A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
 		DDEF340710A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
-		DDEF349F10A6845A00ECD73A /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */; };
 		DDFD76D810AE2DA700990214 /* SMPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F4F5C10A0E39200C5E31C /* SMPrefs.m */; };
 		DDFD76D910AE2DAB00990214 /* SMPrefs.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F4F5B10A0E39200C5E31C /* SMPrefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD76DC10AE2DB300990214 /* SMImageReturns.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7F558F10A346A800C5E31C /* SMImageReturns.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD76DD10AE2DB300990214 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F559010A346A800C5E31C /* SMImageReturns.m */; };
-		DDFD76E410AE2DD700990214 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */; };
 		DDFD773A10AE32EF00990214 /* SMMixed.pch in Headers */ = {isa = PBXBuildFile; fileRef = DDFD773910AE32EF00990214 /* SMMixed.pch */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD773C10AE333500990214 /* SMMixed.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFD773B10AE333500990214 /* SMMixed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFD7AF810AE33DB00990214 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD689F3E10A75D6800B2F52A /* BackRow.framework */; };
@@ -1594,6 +1603,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DDAC058B113DD7D60033C676 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* SoftwareMenuFramework.framework */;
+			remoteInfo = SoftwareMenuFramework;
+		};
+		DDAC058F113DD7FF0033C676 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* SoftwareMenuFramework */;
+			remoteInfo = SoftwareMenuFramework;
+		};
 		DDE8648F10A3A4FC002D2FB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -1632,6 +1655,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		DDECB4CF1118A54C00448929 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "Copy Frameworks";
+			dstSubfolderSpec = 10;
+			files = (
+				DDAC05CF113DD8A90033C676 /* SoftwareMenuFramework.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDFD7C5810AE364700990214 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1655,6 +1688,7 @@
 		DD50CC3B10AB3E17009CDF6B /* SMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDefines.h; sourceTree = "<group>"; };
 		DD50CE0710ACED03009CDF6B /* SMM.frss-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SMM.frss-Info.plist"; path = "../SMM.frss-Info.plist"; sourceTree = "<group>"; };
 		DD50D32D10AD09CE009CDF6B /* SMM.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMM.pch; path = ../SMM.pch; sourceTree = "<group>"; };
+		DD675F0B1132D257009E27BF /* SMMixed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMMixed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD689B5F10A75A9A00B2F52A /* SMDownloaderSTD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDownloaderSTD.h; sourceTree = "<group>"; };
 		DD689B6010A75A9A00B2F52A /* SMDownloaderSTD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDownloaderSTD.m; sourceTree = "<group>"; };
 		DD689B6410A75AA400B2F52A /* SMGridController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGridController.h; sourceTree = "<group>"; };
@@ -1670,7 +1704,7 @@
 		DD68A0B910A7A90300B2F52A /* BRMainMenuController-SMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BRMainMenuController-SMExtensions.m"; sourceTree = "<group>"; };
 		DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainMenuMediaControl.h; sourceTree = "<group>"; };
 		DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainMenuMediaControl.m; sourceTree = "<group>"; };
-		DD691CAF10B1D92A003463F2 /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = "/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/AppleTV.framework"; sourceTree = "<absolute>"; };
+		DD691CAF10B1D92A003463F2 /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "/Users/tomcool/Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework"; sourceTree = "<absolute>"; };
 		DD691D5A10B25348003463F2 /* makeinstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = makeinstall.sh; sourceTree = "<group>"; };
 		DD7D159A10A899860011B3D1 /* SMSettingsToggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingsToggles.h; sourceTree = "<group>"; };
 		DD7D159B10A899860011B3D1 /* SMSettingsToggles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingsToggles.m; sourceTree = "<group>"; };
@@ -3076,8 +3110,12 @@
 		DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterDownload.m; sourceTree = "<group>"; };
 		DD85AA1610C608B300222B8C /* SMUpdaterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterOptions.h; sourceTree = "<group>"; };
 		DD85AA1710C608B300222B8C /* SMUpdaterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterOptions.m; sourceTree = "<group>"; };
+		DD85ABDB10C9C68500222B8C /* SMUpdaterMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterMenu.h; sourceTree = "<group>"; };
+		DD85ABDC10C9C68500222B8C /* SMUpdaterMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterMenu.m; sourceTree = "<group>"; };
 		DD8B827C10B4B70400202E9E /* SMScreensaverSettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreensaverSettingsMenu.h; sourceTree = "<group>"; };
 		DD8B827D10B4B70400202E9E /* SMScreensaverSettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreensaverSettingsMenu.m; sourceTree = "<group>"; };
+		DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftwareMenuFramework.xcodeproj; path = ../../DVLP/SoftwareMenuFramework/SoftwareMenuFramework.xcodeproj; sourceTree = SOURCE_ROOT; };
+		DDAC05BD113DD86C0033C676 /* SoftwareMenuFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SoftwareMenuFramework.framework; path = ../../DVLP/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework; sourceTree = SOURCE_ROOT; };
 		DDACE50B10B61C32006D78E0 /* SMApplianceInstallerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMApplianceInstallerController.h; sourceTree = "<group>"; };
 		DDACE50C10B61C32006D78E0 /* SMApplianceInstallerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMApplianceInstallerController.m; sourceTree = "<group>"; };
 		DDD4F65A10B85F9B00E1D61B /* SMApplianceInstaller (downloaderDelegate).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMApplianceInstaller (downloaderDelegate).h"; sourceTree = "<group>"; };
@@ -3091,15 +3129,25 @@
 		DDE85FCB10A39C59002D2FB8 /* CALHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALHeader.h; sourceTree = "<group>"; };
 		DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DDE865D210A3AB91002D2FB8 /* AppleTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleTV.h; sourceTree = "<group>"; };
+		DDECAD2F11173C9600448929 /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = "/Users/tomcool/Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/AppleTV.framework"; sourceTree = "<absolute>"; };
+		DDECAE6D11184A3200448929 /* bunzip2 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = bunzip2; sourceTree = "<group>"; };
+		DDECAE6E11184A3200448929 /* bzip2 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = bzip2; sourceTree = "<group>"; };
+		DDECAF761118958E00448929 /* SMLoadAppliance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoadAppliance.h; sourceTree = "<group>"; };
+		DDECAF771118958E00448929 /* SMLoadAppliance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoadAppliance.m; sourceTree = "<group>"; };
+		DDECB00311189F5600448929 /* SoftwareMenuMenus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoftwareMenuMenus-Info.plist"; sourceTree = "<group>"; };
+		DDECB4EF1118A5C300448929 /* SoftwareMenuFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoftwareMenuFramework-Info.plist"; sourceTree = "<group>"; };
+		DDECB4F91118A62800448929 /* SMFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFPreferences.h; sourceTree = "<group>"; };
+		DDECB4FA1118A62800448929 /* SMFPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFPreferences.m; sourceTree = "<group>"; };
+		DDECB4FD1118A63800448929 /* SoftwareMenuFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareMenuFramework.h; sourceTree = "<group>"; };
+		DDECB6441118BC9500448929 /* OFlowMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFlowMenu.h; sourceTree = "<group>"; };
+		DDECB6451118BC9500448929 /* OFlowMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OFlowMenu.m; sourceTree = "<group>"; };
 		DDEF2D2B10A5D02300ECD73A /* loadUpdates */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = loadUpdates; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDEF2D4F10A5D0AD00ECD73A /* loadUpdates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loadUpdates.m; sourceTree = "<group>"; };
 		DDEF2D5110A5D1C500ECD73A /* loadUpdatesDownloadClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadUpdatesDownloadClass.h; sourceTree = "<group>"; };
 		DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loadUpdatesDownloadClass.m; sourceTree = "<group>"; };
 		DDEF340310A657F500ECD73A /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
 		DDEF340410A657F500ECD73A /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
-		DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework"; sourceTree = "<absolute>"; };
 		DDFD75CA10AE182C00990214 /* SMM.frss-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMM.frss-Info.plist"; sourceTree = "<group>"; };
-		DDFD760B10AE1C1A00990214 /* SMMixed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMMixed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFD760C10AE1C1A00990214 /* SMMixed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMMixed-Info.plist"; sourceTree = "<group>"; };
 		DDFD76AD10AE2B7500990214 /* SMMPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMMPrefs.h; path = ../SMMPrefs.h; sourceTree = "<group>"; };
 		DDFD76AE10AE2B7500990214 /* SMMPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMMPrefs.m; path = ../SMMPrefs.m; sourceTree = "<group>"; };
@@ -3210,9 +3258,10 @@
 			files = (
 				E20791A70F85C714005327E7 /* Foundation.framework in Frameworks */,
 				DDE85FEA10A39D75002D2FB8 /* QuartzCore.framework in Frameworks */,
-				DDEF349F10A6845A00ECD73A /* iPhotoAccess.framework in Frameworks */,
 				DD689F3F10A75D6800B2F52A /* BackRow.framework in Frameworks */,
-				DD691CB010B1D92A003463F2 /* AppleTV.framework in Frameworks */,
+				DD691CB010B1D92A003463F2 /* iPhotoAccess.framework in Frameworks */,
+				DDECAD3011173C9600448929 /* AppleTV.framework in Frameworks */,
+				DDAC05BE113DD86C0033C676 /* SoftwareMenuFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3227,7 +3276,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFD76E410AE2DD700990214 /* iPhotoAccess.framework in Frameworks */,
 				DDFD7AF810AE33DB00990214 /* BackRow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3260,6 +3308,8 @@
 		089C166AFE841209C02AAC07 /* QuDownloader */ = {
 			isa = PBXGroup;
 			children = (
+				DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */,
+				DDECB4F71118A60B00448929 /* New Group */,
 				DDFD76ED10AE2E2F00990214 /* SMMixed */,
 				DD7F4F5310A0E33000C5E31C /* General */,
 				E2B7A1220F8AB2C6007B8BAB /* External */,
@@ -3282,6 +3332,8 @@
 				DDFD7E6C10AE45BF00990214 /* SMM.m */,
 				DDFD7F4610AE855400990214 /* InfoPlist.strings */,
 				DDFD7F4A10AE85A700990214 /* locversion.plist */,
+				DDECB00311189F5600448929 /* SoftwareMenuMenus-Info.plist */,
+				DDECB4EF1118A5C300448929 /* SoftwareMenuFramework-Info.plist */,
 			);
 			name = QuDownloader;
 			sourceTree = "<group>";
@@ -3289,11 +3341,12 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				DDAC05BD113DD86C0033C676 /* SoftwareMenuFramework.framework */,
 				E20791A60F85C714005327E7 /* Foundation.framework */,
 				DDE85FE910A39D75002D2FB8 /* QuartzCore.framework */,
-				DDEF349E10A6845A00ECD73A /* iPhotoAccess.framework */,
 				DD689F3E10A75D6800B2F52A /* BackRow.framework */,
-				DD691CAF10B1D92A003463F2 /* AppleTV.framework */,
+				DD691CAF10B1D92A003463F2 /* iPhotoAccess.framework */,
+				DDECAD2F11173C9600448929 /* AppleTV.framework */,
 			);
 			name = "Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -3301,6 +3354,8 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDECAE6D11184A3200448929 /* bunzip2 */,
+				DDECAE6E11184A3200448929 /* bzip2 */,
 				DDFD809B10AF613400990214 /* binutils.zip */,
 				E24C790F0F9D56B9001D4956 /* SM.frss.tgz */,
 				E240D6140FA4EBC300185AC7 /* dropbear.tgz */,
@@ -3362,8 +3417,8 @@
 				E2A35FE80EAE02B900FB6FD7 /* installHelper */,
 				E2F64A3E0F9E5714005CF172 /* SM.frss */,
 				DDEF2D2B10A5D02300ECD73A /* loadUpdates */,
-				DDFD760B10AE1C1A00990214 /* SMMixed.framework */,
 				DDFD7D8A10AE3E2B00990214 /* SMM.frss */,
+				DD675F0B1132D257009E27BF /* SMMixed.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4900,6 +4955,32 @@
 			path = SlideShow;
 			sourceTree = "<group>";
 		};
+		DDAC0588113DD7D60033C676 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDAC058C113DD7D60033C676 /* SoftwareMenuFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDECB4F71118A60B00448929 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				DDECB4F81118A61000448929 /* Preferences */,
+				DDECB4FD1118A63800448929 /* SoftwareMenuFramework.h */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		DDECB4F81118A61000448929 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				DDECB4F91118A62800448929 /* SMFPreferences.h */,
+				DDECB4FA1118A62800448929 /* SMFPreferences.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		DDEF2D4910A5D06A00ECD73A /* loadUpdates-bin */ = {
 			isa = PBXGroup;
 			children = (
@@ -4962,6 +5043,10 @@
 				E2F3C05B0F9821880090919D /* SMPhotosMenu.m */,
 				E2C720DB0E95BA1800572BD6 /* SoftwareMenuBase.h */,
 				3802E5830BD7E65C00B6DA5A /* SoftwareMenuBase.m */,
+				DDECAF761118958E00448929 /* SMLoadAppliance.h */,
+				DDECAF771118958E00448929 /* SMLoadAppliance.m */,
+				DDECB6441118BC9500448929 /* OFlowMenu.h */,
+				DDECB6451118BC9500448929 /* OFlowMenu.m */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -5053,6 +5138,8 @@
 				DD85A44210C57E1300222B8C /* SMUpdaterDownload.m */,
 				DD85AA1610C608B300222B8C /* SMUpdaterOptions.h */,
 				DD85AA1710C608B300222B8C /* SMUpdaterOptions.m */,
+				DD85ABDB10C9C68500222B8C /* SMUpdaterMenu.h */,
+				DD85ABDC10C9C68500222B8C /* SMUpdaterMenu.m */,
 			);
 			name = Updater;
 			sourceTree = "<group>";
@@ -6469,6 +6556,9 @@
 				DD85A42E10C566D200222B8C /* SMUpdaterPreprocess.h in Headers */,
 				DD85A44310C57E1300222B8C /* SMUpdaterDownload.h in Headers */,
 				DD85AA1810C608B300222B8C /* SMUpdaterOptions.h in Headers */,
+				DD85ABDD10C9C68500222B8C /* SMUpdaterMenu.h in Headers */,
+				DDECAF781118958E00448929 /* SMLoadAppliance.h in Headers */,
+				DDECB6461118BC9500448929 /* OFlowMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6483,6 +6573,8 @@
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
 				E2A1C3370F621A9C003E182A /* Headers */,
+				DD466A1010D13F860078429D /* ShellScript */,
+				DDECB4CF1118A54C00448929 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -6490,6 +6582,7 @@
 				DDE8649010A3A4FC002D2FB8 /* PBXTargetDependency */,
 				DDEF34D510A7418000ECD73A /* PBXTargetDependency */,
 				DDFD7FC910AEF56D00990214 /* PBXTargetDependency */,
+				DDAC0590113DD7FF0033C676 /* PBXTargetDependency */,
 			);
 			name = SoftwareMenu;
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -6529,7 +6622,7 @@
 			);
 			name = SMMixed;
 			productName = SMMixed;
-			productReference = DDFD760B10AE1C1A00990214 /* SMMixed.framework */;
+			productReference = DD675F0B1132D257009E27BF /* SMMixed.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DDFD7D8910AE3E2B00990214 /* SMM3 */ = {
@@ -6588,7 +6681,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "SoftwareMenu" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -6612,7 +6705,16 @@
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* QuDownloader */;
 			projectDirPath = "";
-			projectRoot = "";
+			projectReferences = (
+				{
+					ProductGroup = DDAC0588113DD7D60033C676 /* Products */;
+					ProjectRef = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
+				},
+			);
+			projectRoots = (
+				"",
+				..,
+			);
 			targets = (
 				8D5B49AC048680CD000E48DA /* SoftwareMenu */,
 				E2A35FE70EAE02B900FB6FD7 /* installHelper */,
@@ -6624,6 +6726,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DDAC058C113DD7D60033C676 /* SoftwareMenuFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SoftwareMenuFramework.framework;
+			remoteRef = DDAC058B113DD7D60033C676 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D5B49AF048680CD000E48DA /* Resources */ = {
@@ -6698,6 +6810,8 @@
 				E240D6150FA4EBC300185AC7 /* dropbear.tgz in Resources */,
 				DD7F4E8610A0BB3C00C5E31C /* untv.sh in Resources */,
 				DD691D5B10B25348003463F2 /* makeinstall.sh in Resources */,
+				DDECAE6F11184A3200448929 /* bunzip2 in Resources */,
+				DDECAE7011184A3200448929 /* bzip2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6763,6 +6877,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DD466A1010D13F860078429D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8D5B49B1048680CD000E48DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -6817,6 +6947,9 @@
 				DD85A42F10C566D200222B8C /* SMUpdaterPreprocess.m in Sources */,
 				DD85A44410C57E1300222B8C /* SMUpdaterDownload.m in Sources */,
 				DD85AA1910C608B300222B8C /* SMUpdaterOptions.m in Sources */,
+				DD85ABDE10C9C68500222B8C /* SMUpdaterMenu.m in Sources */,
+				DDECAF791118958E00448929 /* SMLoadAppliance.m in Sources */,
+				DDECB6471118BC9500448929 /* OFlowMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6876,6 +7009,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DDAC0590113DD7FF0033C676 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SoftwareMenuFramework;
+			targetProxy = DDAC058F113DD7FF0033C676 /* PBXContainerItemProxy */;
+		};
 		DDE8649010A3A4FC002D2FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E2A35FE70EAE02B900FB6FD7 /* installHelper */;
@@ -7006,6 +7144,8 @@
 					"\"$(SRCROOT)/../../TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)/../../Desktop/TV Frameworks/3.0 FrameWorks\"",
+					"\"$(SRCROOT)/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
+					"\"$(SRCROOT)/../../DVLP/SoftwareMenuFramework/build/Debug\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../CustomControllerExample\"";
@@ -7104,6 +7244,8 @@
 					"\"$(SRCROOT)/../../TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)/../../Desktop/TV Frameworks/3.0 FrameWorks\"",
+					"\"$(SRCROOT)/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
+					"\"$(SRCROOT)/../../DVLP/SoftwareMenuFramework/build/Debug\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/../../../Projects/nitoTV/trunk/resources/take_two\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_3 = "\"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks\"";
@@ -7165,8 +7307,7 @@
 		1DEB913F08733D840010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -7175,7 +7316,7 @@
 					dynamic_lookup,
 				);
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx10.4;
 				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = frappliance;
 			};
@@ -7184,8 +7325,7 @@
 		1DEB914008733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -7194,7 +7334,7 @@
 					dynamic_lookup,
 				);
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx10.4;
 				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = frappliance;
 			};

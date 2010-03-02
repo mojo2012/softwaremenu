@@ -1,12 +1,12 @@
 //
 //  SMPhotoPreview.m
-//  SoftwareMenu
+//  SoftwareMenuFramework
 //
 //  Created by Thomas on 4/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Thomas Cool. All rights reserved.
 //
 
-#import "SMPhotoPreview.h"
+
 
 
 @implementation SMPhotoPreview
@@ -14,20 +14,13 @@
 +(id)numberOfPhotosForPath:(NSString *)thepath
 {
 	int number = 0;
-	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
-								  @"jpg",
-								  @"jpeg",
-								  @"tif",
-								  @"tiff",
-								  @"png",
-								  @"gif",
-								  nil];
+    NSSet *coverArtExtension = [SMThemeInfo imageExtensions];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[[idStr pathExtension]lowercaseString]])
+		if([coverArtExtension containsObject:[[idStr pathExtension]lowercaseString]])
 		{
 			number ++;
 		}
@@ -42,20 +35,13 @@
 	BOOL isDir;
 	int number = 0;
 	int folders = 0;
-	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
-								  @"jpg",
-								  @"jpeg",
-								  @"tif",
-								  @"tiff",
-								  @"png",
-								  @"gif",
-								  nil];
+    NSSet *coverArtExtension = [SMThemeInfo imageExtensions];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
+		if([coverArtExtension containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			number ++;
 		}
@@ -70,26 +56,19 @@
 			[NSNumber numberWithInt:folders],@"Folders",
 			nil];
 	//NSLog(@"folders: %@",[NSNumber numberWithInt:folders]);
-
+    
 }
 +(id)firstPhotoForPath:(NSString *)thepath
 {
-	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
-								  @"jpg",
-								  @"jpeg",
-								  @"tif",
-								  @"tiff",
-								  @"png",
-								  @"gif",
-								  nil];
+    NSSet *coverArtExtension = [SMThemeInfo imageExtensions];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray * a = [fileManager directoryContentsAtPath:thepath];
 	long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
-
+    
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [a objectAtIndex:i];
-		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
+		if([coverArtExtension containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			return [BRImage imageWithPath:[thepath stringByAppendingPathComponent:idStr]];
 		}
@@ -97,19 +76,8 @@
 	}
 	return [[SMThemeInfo sharedTheme] folderIcon];
 }
-	
--(BOOL)usingTakeTwoDotThree
-{
-	if([(Class)NSClassFromString(@"BRController") instancesRespondToSelector:@selector(wasExhumed)])
-	{
-		return YES;
-	}
-	else
-	{
-		return NO;
-	}
-	
-}
+
+
 - (id) previewControlForItem: (long) item
 {
 	////NSLog(@"%@ %s", self, _cmd);
@@ -130,29 +98,19 @@
 	path=thepath;
 	[path retain];
 	self = [super init];
-	NSLog(@"after self");
 	[self setListTitle: [path lastPathComponent]];
 	[self setListIcon:[[SMThemeInfo sharedTheme] folderIcon] horizontalOffset:0.5f kerningFactor:0.2f];
 	
-	[self addLabel:@"com.tomcool420.Software.SoftwareMenu"];
+	[self addLabel:@"org.tomcool.Software.Shared"];
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	_paths = [[NSMutableArray alloc] initWithObjects:nil];
 	_man = [NSFileManager defaultManager];
-	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
-								  @"jpg",
-								  @"JPG",
-								  @"jpeg",
-								  @"tif",
-								  @"tiff",
-								  @"png",
-								  @"gif",
-								  nil];
+    NSSet *coverArtExtension = [SMThemeInfo imageExtensions];
 	long i, count = [[_man directoryContentsAtPath:path] count];
-	NSLog(@"contents at %@: %@",path,[_man directoryContentsAtPath:path]);
 	for ( i = 0; i < count; i++ )
 	{
 		NSString *idStr = [[_man directoryContentsAtPath:path] objectAtIndex:i];
-		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
+		if([coverArtExtension containsObject:[[idStr pathExtension] lowercaseString]])
 		{
 			BRTextMenuItemLayer * hello = [BRTextMenuItemLayer menuItem];
 			[hello setTitle:idStr];
@@ -199,7 +157,7 @@
 }
 -(id)initCustom
 {
-		return self;
+    return self;
 }
 
 
@@ -208,14 +166,9 @@
 - (id)itemForRow:(long)row					
 { 
 	BRTextMenuItemLayer *theitem = [_items objectAtIndex:row];
-	if([[_paths objectAtIndex:row] isEqualToString:[SMGeneralMethods stringForKey:@"PhotoDirectory"]])
-	{
-		[theitem setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] selectedSettingImage], @"BRMenuIconImageKey",nil]];
-	}
-	else
-	{
-		[theitem setLeftIconInfo:nil];
-	}
+    
+    [theitem setLeftIconInfo:nil];
+	
 	return theitem;
 }
 

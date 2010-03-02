@@ -133,6 +133,7 @@ static NSSet *coverArtExtentions = nil;
 
 - (void)_loadCoverArt
 {
+    //NSLog(@"load covert Art");
 	[super _loadCoverArt];
 	
 	/*See if it loaded something*/
@@ -241,6 +242,8 @@ static NSSet *coverArtExtentions = nil;
 			[keys addObject:key];
 		}
 	}
+    //NSLog(@"values : %@",values);
+    //NSLog(@"keys : %@",keys);
 	[metaLayer setMetadata:values withLabels:keys];
 	
 
@@ -257,6 +260,7 @@ static NSSet *coverArtExtentions = nil;
 }
 -(NSMutableDictionary *)getMetaData
 {
+    //NSLog(@"reflection: %f %f",[_reflectionLayer reflectionAmount],[_reflectionLayer reflectionOffset]);
 	BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
 	[metaLayer setTitle:[[self asset] title]];
 	[metaLayer setSummary:[[self asset] mediaSummary]];

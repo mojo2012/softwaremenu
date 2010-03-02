@@ -72,8 +72,11 @@
 	{
 		NSString *infoPath=[frapPath stringByAppendingPathComponent:@"/Contents/Info.plist"];
 		NSDictionary *infoplist=[[NSDictionary alloc] initWithContentsOfFile:infoPath];
-		NSNumber *preforder = [infoplist valueForKey:@"FRAppliancePreferedOrderValue"];
-		[theorders addObject:[[NSDictionary alloc] initWithObjectsAndKeys:preforder,@"order",frapPath,@"fullpath",[frapPath lastPathComponent],@"name",nil]];
+		id preforders = [infoplist valueForKey:@"FRAppliancePreferedOrderValue"];
+        if ([preforders respondsToSelector:@selector(floatValue)]) {
+            preforders=[NSNumber numberWithFloat:[preforders floatValue]];
+        }
+		[theorders addObject:[[NSDictionary alloc] initWithObjectsAndKeys:preforders,@"order",frapPath,@"fullpath",[frapPath lastPathComponent],@"name",nil]];
 	}
 	[theorders writeToFile:@"/Users/frontrow/orders.plist" atomically:YES];
 	//NSLog(@"the orders: %@",theorders);
@@ -145,7 +148,7 @@
 
 	while (anObject = [enumerator nextObject]) 
 	{
-		NSLog(@"anObject: %@",anObject);
+		//NSLog(@"anObject: %@",anObject);
 		id item = [[BRTextMenuItemLayer alloc] init];
 		[item setTitle:[[anObject valueForKey:@"name"] stringByDeletingPathExtension]];
 		[_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -161,6 +164,8 @@
 	[list setDatasource: self];
 	[[self list] addDividerAtIndex:marker1 withLabel:@"Frappliances"];
 	NSLog(@"3");
+    NSLog(@"last: %@",[[NSBundle bundleWithPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:[@"Sapphire" stringByAppendingPathExtension:@"frappliance"]]] infoDictionary]);
+
 	return self;
 }
 

@@ -33,6 +33,8 @@
 #import "SMApplianceInstallerController.h"
 #import "SMApplianceInstaller (downloaderDelegate).h"
 #import "SMDownloaderUpdate.h"
+#import "SMLoadAppliance.h"
+#import "OFlowMenu.h"
 
 /*
  *  Importing Controls
@@ -71,10 +73,12 @@
  *  Importing SubMenus For Settings-Updater
  */
 #import "SMNewUpdaterProcess.h"
+#import "SMUpdaterPreprocess.h"
 #import "SMUpdaterDownload.h"
 #import "SMUpdater.h"
 #import "SMUOptions.h"
 #import "SMUpdaterProcess.h"
+#import "SMUpdaterMenu.h"
 
 /*
  *  Importing SubMenus For Settings-Manual

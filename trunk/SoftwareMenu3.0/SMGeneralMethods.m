@@ -187,11 +187,11 @@ static SMGeneralMethods *sharedInstance = nil;
 //}
 +(NSArray *)menuItemNames
 {
-    return [NSArray arrayWithObjects:@"3rd Party",@"Built-in",@"Scripts",@"Restart Finder",@"Frap Mover",@"Console",@"Tweaks",@"Photos",nil];
+    return [NSArray arrayWithObjects:@"3rd Party",@"Built-in",@"Scripts",@"Restart Finder",@"Frap Mover",@"Console",@"Tweaks",@"Photos",@"Upgrader",nil];
 }
 + (NSArray *)menuItemOptions
 {
-	return [NSArray arrayWithObjects:@"SMdownloadable",@"SMbuiltin",@"SMscripts",@"SMreboot",@"SMmover",@"SMconsole",@"SMtweaks",@"SMphotos",nil];
+	return [NSArray arrayWithObjects:@"SMdownloadable",@"SMbuiltin",@"SMscripts",@"SMreboot",@"SMmover",@"SMconsole",@"SMtweaks",@"SMphotos",@"SMUpgrader",nil];
 }
 + (NSArray *)arrayForKey:(NSString *)theKey
 {
@@ -264,7 +264,13 @@ static SMGeneralMethods *sharedInstance = nil;
 	CFPreferencesSetAppValue((CFStringRef)theKey, (CFNumberRef)[NSNumber numberWithInt:theInt], myDomain);
 	CFPreferencesAppSynchronize(myDomain);
 }
-
++(int)remoteActionForBREvent:(BREvent *)event
+{
+    int remoteAction =[event remoteAction];
+    if([SMPreferences threePointZeroOrGreater] && [event originator]==3)
+        remoteAction--;
+    return remoteAction;
+}
 + (SMGeneralMethods *)sharedInstance
 {
     return sharedInstance ? sharedInstance : [[self alloc] init];

@@ -61,6 +61,7 @@
                                    [NSNumber numberWithInt:35],
                                    [NSNumber numberWithInt:kSMSetToggle],
                                    [NSNumber numberWithInt:kSMSetToggle],
+                                   [NSNumber numberWithInt:kSMSetToggle],
                                    //						   [NSNumber numberWithInt:kSMSetToggle],
 						   [NSNumber numberWithInt:kSMSetYNToggle],
                         
@@ -85,6 +86,7 @@
 						// BRLocalizedString(@"Photos",@"Photos"),
                                  BRLocalizedString(@"Menu Toggles",@"Menu Toggles"),
                                  BRLocalizedString(@"Collections on Shelf",@"Collections on Shelf"),
+                                 BRLocalizedString(@"Favorites on Main Menu",@"Favorites on Main Menu"),
                                  BRLocalizedString(@"Updates on Shelf",@"Updates on Shelf"),
                                  BRLocalizedString(@"Parade on Shelf",@"Parade on Shelf"),
 						 BRLocalizedString(@"Auto Restart Finder",@"Auto Restart Finder"),
@@ -108,6 +110,7 @@
 						//  @"Hide and Show this option from main menu",
                                       @"Shows and Hides menus under SoftwareMenu", 
                                       @"Shows Photo Collections on Main Menu",
+                                      @"Also Show favorites on Main Menu, show collections must be active",
                                       @"Shows available Updates on Main Menu",
                                       @"Display a Media Parade on main menu. gets Photos from SMPhoto Directory",
 						  @"Auto Restart the Finder after any action requirering a restart : (anytime you install or remove a plugin, etc)",
@@ -132,6 +135,7 @@
 //							 @"SMPhotos",
                                   @"nil",
                                   MAINMENU_SHOW_COLLECTIONS_BOOL,
+                                  MAINMENU_SHOW_FAVORIES_BOOL,
                                   MAINMENU_SHOW_UPDATES_BOOL,
                                   MAINMENU_PARADE_BOOL,
 							 @"ARF",
@@ -145,10 +149,10 @@
 	//[_settingsPrefNames retain];
 	NSArray *dividerPositions = [NSArray arrayWithObjects:
 						 [NSNumber numberWithInt:0],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:9],
+						 [NSNumber numberWithInt:3],
+						 [NSNumber numberWithInt:3],
 						 [NSNumber numberWithInt:10],
+						 [NSNumber numberWithInt:11],
 						 nil];
 	//NSArray * settingNames = [SMGeneralMethods menuItemOptions];
 	//NSArray * settingDisplays = [SMGeneralMethods menuItemNames];
@@ -238,7 +242,7 @@
 			break;
 			break;
 		case kSMSetUpdater:
-			newController = [[SMUpdater alloc] init];
+			newController = [[SMUpdaterMenu alloc] init];
 			//[newController initCustom];
 			[[self stack] pushController:newController];
 			break;

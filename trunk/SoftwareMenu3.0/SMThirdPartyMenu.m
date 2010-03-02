@@ -176,9 +176,13 @@
 	int sep1 = [_items count];
 
 	
-	NSDictionary *loginItemDict = [NSDictionary dictionaryWithContentsOfFile:[SMPreferences trustedPlistPath]];
+	NSMutableDictionary *loginItemDict = [[NSDictionary dictionaryWithContentsOfFile:[SMPreferences trustedPlistPath]] mutableCopy];
 	BRTextMenuItemLayer *SMItem = [BRTextMenuItemLayer folderMenuItem];
 	NSDictionary *SoftwareMenuInfo = [loginItemDict valueForKey:@"SoftwareMenu"];
+    if([[loginItemDict allKeys] containsObject:@"SoftwareMenu_Update1"])
+    {
+        [loginItemDict removeObjectForKey:@"SoftwareMenu_Update1"];
+    }
     SMApplianceDictionary *SMDict = [[SMApplianceDictionary alloc] initWithDictionary:SoftwareMenuInfo];
     [SMDict setIsTrusted:YES];
     [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:

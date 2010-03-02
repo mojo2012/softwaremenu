@@ -118,13 +118,19 @@ static BOOL checkedSS = NO;
         [a setProvider:[[self previewProvidersForIdentifier:@"nill" withNames:nil] objectAtIndex:0]];
         if([provider dataCount]==2)
             [a setCentered:NO];
-        else 
+        else if([provider dataCount]==3)
             [a setCentered:YES];
-        [a setColumnCount:[self shelfColumnCount]];
+        else
+            [a setCentered:NO];
+        [a setName:@"haha" forProvider:[provider dataAtIndex:0] ];
+        [a setColumnCount:3];//[self shelfColumnCount]];
         //[a setMinNumberOfShelfItems:3];
-        [a setFeatured:YES];
+        [a setFeatured:NO];
         [a setScrollable:YES];
         [a setShowAllTitles:YES];
+        [a setShowsDividers:YES];
+        //[a setTitles];
+        [a _reloadTitles];
     }
     
     return a;
@@ -162,7 +168,7 @@ static BOOL checkedSS = NO;
     BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"a" predicate:pred mediaTypes:[NSSet setWithObject:[BRMediaType photo]]];    
     //NSLog(@"on blah");
     
-    if([SMGeneralMethods boolForKey:MAINMENU_SHOW_COLLECTIONS_BOOL])
+    if([SMGeneralMethods boolForKey:MAINMENU_SHOW_COLLECTIONS_BOOL] && ![SMPreferences boolForKey:MAINMENU_SHOW_FAVORIES_BOOL])
     {
         //NSLog(@"Adding Photos");
         id a = [SMImageReturns photoCollectionForPath:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
@@ -174,6 +180,21 @@ static BOOL checkedSS = NO;
     BRPhotoImageProxy *iP = [BRPhotoImageProxy imageProxyWithAsset:meta];
     BRImageProxyProvider *iPP = [BRImageProxyProvider providerWithAssets:[NSArray arrayWithObject:iP]];
     [store addObject:iPP];
+
+    if([SMPreferences boolForKey:MAINMENU_SHOW_COLLECTIONS_BOOL] && [SMPreferences boolForKey:MAINMENU_SHOW_FAVORIES_BOOL])
+    {
+        id a = [SMImageReturns photoCollectionForPath:[SMGeneralMethods stringForKey:@"PhotoDirectory"]];
+        [store addObject:a];
+        int i;
+        id b = [[BRDividerControl alloc] init];
+        //[b addDividerWithLabel:@"hello"];
+        
+        [store addObject:b];
+        NSArray *favoritesArray = [SMPreferences photoFavorites];
+        //NSLog(@"%@",favoritesArray);
+        for(i=0;i<[favoritesArray count];i++)
+            [store addObject:[SMImageReturns photoCollectionForPath:[favoritesArray objectAtIndex:i]]];
+    }
     BRPhotoDataStoreProvider *provider=[BRPhotoDataStoreProvider providerWithDataStore:store controlFactory:[SMPhotoControlFactory mainMenuFactory]];
   //  NSLog(@"returning");
     return [NSArray arrayWithObject:provider];
@@ -336,6 +357,13 @@ static BOOL checkedSS = NO;
 															   identifier:@"SMsettings"
 														   preferredOrder:12];
 	[categories addObject:category6];
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:@"Sapphire.frappliance"]])
+//    {
+//        BRApplianceCategory *category7 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"nitoTV",@"nitoTV")
+//                                                                   identifier:@"nitoTV.frap"
+//                                                               preferredOrder:11];
+//        [categories addObject:category7];
+//    }
 		return categories;
 	
 }
@@ -414,6 +442,20 @@ static BOOL checkedSS = NO;
 		}
 
 	}
+//    else if([[identifier pathExtension]isEqualToString:@"frap"])
+//    {
+//        NSBundle *frap = [NSBundle bundleWithPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:@"nitoTV.frappliance"]];
+//        if(![frap isLoaded])
+//            [frap load];
+//        id a = [frap principalClass];
+//        id b = [[a alloc ]init] ;
+//        id c = [b applianceCategories];
+//        id d = [b controllerForIdentifier:[[c objectAtIndex:0] identifier] args:nil];
+//        id e = [[OFlowMenu alloc] initWithBundle:frap];
+//        //[e initWithBundle:b];
+//        NSLog(@"%@",e);
+//        return e;
+//    }
 	else
 	{
 		int i = [[SMGeneralMethods menuItemOptions] indexOfObject:identifier];
@@ -450,6 +492,9 @@ static BOOL checkedSS = NO;
 				newController = [[SMPhotosMenu alloc] init];
 				//[newController initCustom];
 				break;
+            case 8:
+                newController = [[SMUpdaterMenu alloc]init];
+                break;
 			default: 
 				newController = [[SMSettingsMenu alloc] init];
 				break;

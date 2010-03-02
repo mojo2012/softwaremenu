@@ -12,10 +12,15 @@
 #define BRLocalizedStringFromTableInBundle(key, tbl, obj, comment)	[BRLocalizedStringManager appliance:(obj) localizedStringForKey:(key) inFile:(tbl)]
 #define kSMDownloaderDone           @"kSMDownloaderDone"
 
+#define ATV_PLUGIN_PATH         @"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
 #define DEFAULT_IMAGES_PATH		@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/DefaultPhotos/"
 #define PHOTO_DIRECTORY_KEY		@"PhotoDirectory"
 #define PHOTO_FAVORITES         @"PhotoFavorites"
 #define APPLIANCE_LIMITS_STRICT @"StrictLimits"
+#define APPLIANCE_LOWER_STRICT  @"StrictLowerLimit"
+#define APPLIANCE_UPPER_STRICT  @"StrictUpperLimit"
+#define LOOSE_FRAP_ORDER        @"looseFrapOrder"
+#define FRAP_ORDER_DICT         @"FrapOrderDict"
 
 //#define SCREEN_SAVER_SLIDESHOW  @"Screensaver_Slideshow"
 #define SCREEN_SAVER_SPIN_FREQ  @"Screensaver_Spin"

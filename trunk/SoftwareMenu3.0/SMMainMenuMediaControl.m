@@ -19,7 +19,7 @@
     //id b = [a gimmeCurControl];
     if([[SMGeneralMethods menuItemOptions]containsObject:[a _currentCategoryIdentifier]])
     {
-        NSLog(@"current: %@",[a _currentCategoryIdentifier]);
+        //NSLog(@"current: %@",[a _currentCategoryIdentifier]);
         [self setDefaultImage:[self getImageForId:[a _currentCategoryIdentifier]]];
         [self layoutSubcontrols];
         _checkTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
@@ -49,13 +49,28 @@
 @implementation SMMainMenuShelfControl
 -(BOOL)brEventAction:(BREvent *)arg1
 {
-    NSLog(@"event: %@",arg1);
-    NSLog(@"event: %i",[arg1 remoteAction]);
-    if ([arg1 remoteAction]==5) {
-        NSLog(@"play");
-        NSLog(@"cells: %@",_cells);
+    //NSLog(@"event: %@",arg1);
+    //NSLog(@"event: %i",[arg1 remoteAction]);
+    if ([arg1 remoteAction]==kBREventRemoteActionPlay) {
+        //NSLog(@"play");
+        //NSLog(@"cells: %@",_cells);
+        //NSLog(@"titles: %@",_titles);
     }
     return [super brEventAction:arg1];
+}
+-(void)setTitles
+{
+    [_titles release];
+    NSMutableArray *a=[NSMutableArray arrayWithObjects:@"a",@"b",nil];
+    _titles= a;
+    [_titles retain];
+}
+-(BOOL)_isDividerAtIndex:(int)arg1
+{
+    if (arg1==2) {
+        return YES;
+    }
+    return NO;
 }
 @end
 

@@ -215,7 +215,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
     _gotLength += (long long) length;
     float percentage = 0.0f;
 	
-    NSLog( @"Got %u bytes, %lld total", length, _gotLength );
+    //NSLog( @"Got %u bytes, %lld total", length, _gotLength );
 	
     // we'll handle the case where the NSURLResponse didn't include the
     // size of the source file
@@ -304,10 +304,28 @@ willResumeWithResponse: (NSURLResponse *) response
     BOOL RO = NO;
     //[_author setText:@"Installing" withAttributes:[[SMThemeInfo sharedTheme]leftJustifiedTitleTextAttributess]];
 	[self setStatusText:@"Installing"];
+    NSFileManager *man = [NSFileManager defaultManager];
+
+    NSNumber *oldOrder=[NSNumber numberWithFloat:-1.f];
+//    if ([SMPreferences keepFrapplianceOrder])
+//    {
+//        NSLog([ATV_PLUGIN_PATH stringByAppendingPathComponent:[[_information name] stringByAppendingPathExtension:@"frappliance"]]);
+//
+//        if ([man fileExistsAtPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:[[_information name] stringByAppendingPathExtension:@"frappliance"]]]) {
+//            NSLog(@"found it");
+//            NSDictionary * infoDict= [SMPreferences dictionaryForBundlePath:
+//                                      [ATV_PLUGIN_PATH stringByAppendingPathComponent:[[_information name] stringByAppendingPathExtension:@"frappliance"]]];
+//            oldOrder = [infoDict objectForKey:@"FRAppliancePreferedOrderValue"];
+//       }
+//        else if ([[[SMPreferences frapOrderDict] allKeys] containsObject:[_information name]])
+//        {
+//            oldOrder = [[SMPreferences frapOrderDict] objectForKey:[_information name]];
+//        }
+//        NSLog(@"old order: %@",oldOrder);
+//    }
     //[self appendSourceText:@"Installing"];
 	NSTask *helperTask = [[NSTask alloc] init];
 	NSString *helperPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
-	NSFileManager *man = [NSFileManager defaultManager];
     
 	if (![[SMGeneralMethods sharedInstance] helperCheckPerm])
 	{
@@ -336,6 +354,15 @@ willResumeWithResponse: (NSURLResponse *) response
 	//int theTerm=[helperTask terminationStatus];
 	[helperTask waitUntilExit];
 	[helperTask release];
+//    NSDate *future1 = [NSDate dateWithTimeIntervalSinceNow: 5 ];
+//    [NSThread sleepUntilDate:future1];
+//    if([SMPreferences keepFrapplianceOrder]&& oldOrder!=nil)
+//    {
+//        NSLog(@"time to write");
+//        NSLog(@": %@",[[NSBundle bundleWithPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:[[_information name] stringByAppendingPathExtension:@"frappliance"]]] infoDictionary]);
+//        [SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-changeOrder",[ATV_PLUGIN_PATH stringByAppendingPathComponent:[[_information name] stringByAppendingPathExtension:@"frappliance"]] ,[oldOrder stringValue],nil]];
+//
+//    }
 	//[self appendSourceText:@"Press Menu When you are done"];
 	[SMGeneralMethods terminateFinder];
     //[_author setText:@"DoneI" withAttributes:[[SMThemeInfo sharedTheme]leftJustifiedTitleTextAttributess]];
@@ -344,6 +371,9 @@ willResumeWithResponse: (NSURLResponse *) response
     [NSThread sleepUntilDate:future];
     [self setupButtons];
     [self setupButtons];
+    NSLog(@"last: %@",[NSDictionary dictionaryWithContentsOfFile:[[ATV_PLUGIN_PATH stringByAppendingPathComponent:
+                                                                   [[_information name] stringByAppendingPathExtension:@"frappliance"]] 
+                                                                  stringByAppendingPathComponent:@"Contents/Info.plist"]]);
     [_statusText removeFromParent];
     [_progressBar removeFromParent];
     

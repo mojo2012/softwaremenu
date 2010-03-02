@@ -15,12 +15,12 @@
     BOOL                        _checkMD5;
     NSArray *                   _md5Array;
     NSArray *                   _files;
-    NSString *                  _title;
-    BRImage *                   _image;
-    BRHeaderControl *           _headerControl;
+//    NSString *                  _title;
+//    BRImage *                   _image;
+//    BRHeaderControl *           _headerControl;
     BRScrollingTextControl *    _textBox;
     BRTextControl *             _textControl;
-	BRImageControl *            _imageControl;
+//	BRImageControl *            _imageControl;
     SMProgressBarControl *      _progressBar;
     NSMutableString *			_boxText;
     NSURLDownload   *           _downloader;
@@ -31,6 +31,8 @@
     NSDate          *           _startTime;
     BRTextControl *             _timeControl;
     NSDate          *           _lastUpdate;
+    NSMutableArray *_textControls;
+    BRImageControl *_arrowControl;
 }   
 -(id)initWithFiles:(NSArray *)links withImage:(BRImage *)image withTitle:(NSString *)title;
 -(void)setmd5Array:(NSArray *)md5Array;
@@ -47,5 +49,6 @@
 -(void)layoutSubcontrols;
 -(void)setBoxText:(NSString*)text;
 -(void)setText:(NSString *)text;
+-(void)addText:(NSString *)text;
 -(void)appendBoxText:(NSString *)append;
 @end

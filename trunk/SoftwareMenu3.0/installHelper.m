@@ -55,8 +55,9 @@ int main (int argc, const char * argv[]) {
 			
 			[ihc setRunPath:path];
             //[ihc makeSystemWritable];
-			[ihc removeFrap:value2];
+			//[ihc removeFrap:value2];
 			[ihc installSelf:value];
+            //[ihc installFrap:value];
             //[ihc makeSystemReadOnly];
 			[pool release];
 			//rvalue = 1;

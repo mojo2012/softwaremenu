@@ -28,6 +28,7 @@
 + (void)setString:(NSString *)inputString forKey:(NSString *)theKey;
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey;
 + (void)switchBoolforKey:(NSString *)theKey;
++ (NSDictionary *)dictionaryForBundlePath:(NSString *)path;
 +(void)setPlaysMusicInSlideShow:(BOOL)arg;
 +(BOOL)playsMusicInSlideShow;
 +(NSString *)scriptsPlistPath;

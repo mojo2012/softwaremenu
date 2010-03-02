@@ -301,4 +301,19 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
     [fontDict setValue:CGColorCreateFromNSColor(CGColorSpaceCreateDeviceRGB(), [NSColor blackColor] ) forKey:@"NSColor"];
     return [fontDict autorelease];
 }
+-(CGColorRef)colorFromNSColor:(NSColor *)color
+{
+    return CGColorCreateFromNSColor(CGColorSpaceCreateDeviceRGB(), color );
+}
++(NSSet *)imageExtensions
+{
+    return [NSSet setWithObjects:
+            @"jpg",
+            @"jpeg",
+            @"tif",
+            @"tiff",
+            @"png",
+            @"gif",
+            nil];
+}
 @end

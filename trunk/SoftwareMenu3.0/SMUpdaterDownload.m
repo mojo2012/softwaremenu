@@ -12,24 +12,18 @@
 @implementation SMUpdaterDownload
 -(id)initWithFiles:(NSArray *)links withImage:(BRImage *)image withTitle:(NSString *)title withVersion:(NSString *)version
 {
-    if ( [super init] == nil )
+    self=[super initWithFiles:links withImage:image withTitle:title];
+    if (self == nil )
         return ( nil );
-    _forceDestination = FALSE;
-    _files = [links mutableCopy];
-    [_files retain];
     _version = version;
     [_version retain];
-    _image = image;
-    [_image retain];
-    _title = title;
-    [_title retain];
-    _boxText=nil;
-    _current = 0;
+
     return self;
     
 }
 -(void)process
 {
+    [self addText:@"Moving Files"];
     int i;
     NSString *folder = [[@"~/Documents" stringByExpandingTildeInPath]stringByAppendingPathComponent:[NSString stringWithFormat:@"ATV%@",_version,nil]];
     NSFileManager *man = [NSFileManager defaultManager];
@@ -52,7 +46,7 @@
         [man movePath:currenPath toPath:destination handler:nil];
         NSLog(@"moving %@ to %@",currenPath, destination);
     }
-    [self appendBoxText:@"Moved Files"];
+    [self addText:@"Files Moved"];
     NSLog(@"version before : %@",_version);
     SMNewUpdaterProcess *a = [[SMNewUpdaterProcess alloc]initForFolder:folder withVersion:_version];
     [self _removeAllControls];

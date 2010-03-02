@@ -63,5 +63,6 @@
 + (BOOL)isWithinRangeWithMin:(NSString *)osMin withMax:(NSString *)osMax;
 + (BOOL)OSGreaterThan:(NSString *)value;
 + (BOOL)OSLessThan:(NSString *)value;
++(int)remoteActionForBREvent:(BREvent *)event;
 
 @end

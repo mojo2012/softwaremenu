@@ -98,7 +98,10 @@
         [control setText:@"As perian is the swiss army knife of quicktime codecs, nitoTV strives to be swiss knife for the AppleTV. it features both mplayer and quicktime support, mounting network shares, emulators and other applications support, weather and more. It also features a smart installer that can fix almost all the damage done to AppleTV OS by Apple using its smart installer." withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
     else
         [control setText:@"Ac dolor ac adipiscing amet bibendum nullam, massa lacus molestie ut libero nec, diam et, pharetra sodales eget, feugiat ullamcorper id tempor eget id vitae. Mauris pretium eget aliquet, lectus tincidunt. Porttitor mollis imperdiet libero senectus pulvinar. Etiam molestie mauris ligula eget laoreet, vehicula eleifend. Repellat orci eget erat et, sem cum, ultricies sollicitudin amet eleifend dolor nullam erat, malesuada est leo ac.\nAc dolor ac adipiscing amet bibendum nullam, massa lacus molestie ut libero nec, diam et, pharetra sodales eget, feugiat ullamcorper id tempor eget id vitae. Mauris pretium eget aliquet, lectus tincidunt. Porttitor mollis imperdiet libero senectus pulvinar. Etiam molestie mauris ligula eget laoreet, vehicula eleifend. Repellat orci eget erat et, sem cum, ultricies sollicitudin amet eleifend dolor nullam erat, malesuada est leo ac." withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
-
+    if([_information shortDescription]!=nil)
+        [control setText:[_information shortDescription] withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
+    else
+        [control setText:@"no description" withAttributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
     //    NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"blah blah blah blah blah blah blah blah balh \n blah \n blah" 
 //                                                                 attributes:[[SMThemeInfo sharedTheme] leftJustifiedTitleTextAttributess]];
 	//[_header setFrame: frame];
@@ -230,8 +233,8 @@
     
     
     
-    if ([_information isTrusted]) {
-        NSLog(@"isTRusted");
+    if ([_information isTrusted] && [_information installOnCurrentOS]) {
+        NSLog(@"isTRusted and tested");
         CGRect masterFrame = [[self parent] frame];
         CGRect frame;
         frame.size.height= nframe.size.height;
@@ -251,10 +254,44 @@
         frame.origin.x=frame.origin.x-frame.size.width*1.2f;
         [_testedImage setFrame:frame];
         [_testedImage retain];
+        
         [self addControl:_testedImage];
-
-
     }
+    else if([_information isTrusted])
+    {
+        NSLog(@"isTRusted");
+        CGRect masterFrame = [[self parent] frame];
+        CGRect frame;
+        frame.size.height= nframe.size.height;
+        frame.size.width = nframe.size.height; 
+        frame.origin.x = masterFrame.origin.x + masterFrame.size.width *0.95f-frame.size.width;
+        frame.origin.y = nframe.origin.y;
+        _trustedImage = [[BRImageControl alloc] init];
+        [_trustedImage setAutomaticDownsample:YES];
+        [_trustedImage setImage:[[SMThemeInfo sharedTheme] trustedImage]];// imageForFrap:[_information name]]];
+        [_trustedImage setFrame:frame];
+        [_trustedImage retain];
+        [self addControl:_trustedImage];
+    }
+    else {
+        NSLog(@"tested");
+        CGRect masterFrame = [[self parent] frame];
+        CGRect frame;
+        frame.size.height= nframe.size.height;
+        frame.size.width = nframe.size.height; 
+        frame.origin.x = masterFrame.origin.x + masterFrame.size.width *0.95f-frame.size.width;
+        frame.origin.y = nframe.origin.y;
+
+        _testedImage = [[BRImageControl alloc] init];
+        
+        [_testedImage setAutomaticDownsample:YES];
+        [_testedImage setImage:[[SMThemeInfo sharedTheme] testedImage]];// imageForFrap:[_information name]]];
+        [_testedImage setFrame:frame];
+        [_testedImage retain];
+        
+        [self addControl:_testedImage];
+    }
+
     //[self addControl:_trustedGrid];
 
 
@@ -337,10 +374,16 @@
     [_trustedImage release];
     [_testedImage release];
     //[_trustedGrid release];
-    [_shelfControl release];
+    if([SMPreferences threePointZeroOrGreater])
+    {        
+        [_shelfControl release];
+        [_gridNames release];
+
+
+        
+    }
     [_licenseButton release];
     [_infoButton release];
-    [_gridNames release];
     
     [super dealloc];
 }
@@ -503,7 +546,7 @@
             }
             else if([_infoButton isFocused])
             {
-                NSLog(@"info");
+                //NSLog(@"info");
                 SMInfo *infoController=[[SMInfo alloc] init];
                 [infoController setTheName:[_information name]];
                 [infoController setDescriptionWithURL:[_information informationURL]];
@@ -512,7 +555,7 @@
             }
             else if([_shelfControl isFocused])
             {
-                NSLog(@"shelf is focused: %@", [_shelfControl focusedControl]); 
+                //NSLog(@"shelf is focused: %@", [_shelfControl focusedControl]); 
                 [self _handleSelectionForShelf];
             }
                 
@@ -545,7 +588,7 @@
 -(void)_handleSelectionForShelf
 {
     int i =[_shelfControl focusedIndex];
-    NSLog(@"control: %@",[[_gridNames objectAtIndex:i] name]);
+    //NSLog(@"control: %@",[[_gridNames objectAtIndex:i] name]);
     SMApplianceInstallerController *a = [[SMApplianceInstallerController alloc]initWithDictionary:[_gridNames objectAtIndex:i]];
     [[self stack] swapController:a];
 }
@@ -572,11 +615,11 @@
 {
 
        // NSString *appPng = nil;
-    NSString * b = [[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM_SHELF ofType:@"png"];
-    BRPhotoMediaAsset *a = [[BRPhotoMediaAsset alloc] init];
-    [a setFullURL:b];
-    [a setCoverArtURL:b];
-    [a setThumbURL:b];
+//    NSString * b = [[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM_SHELF ofType:@"png"];
+//    BRPhotoMediaAsset *a = [[BRPhotoMediaAsset alloc] init];
+//    [a setFullURL:b];
+//    [a setCoverArtURL:b];
+//    [a setThumbURL:b];
     //[a imageProxy];
     //[_sourceImagel setImageProxy:[a imageProxy]];
         //appPng = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:@"png"];
@@ -588,18 +631,40 @@
 //
 //            [_sourceImage setImage:sp];
 //        if(_theImage !=nil)
-            [_sourceImages setImage:[[SMThemeInfo sharedTheme] imageForFrap:[_information name]]];
+    BRImage *image=[[SMThemeInfo sharedTheme] imageForFrap:[_information name]];
+            [_sourceImages setImage:image];
         [_sourceImages setAutomaticDownsample:YES];
         CGRect masterFrame = [[self parent] frame];
+        float aspectRatio = [image aspectRatio];
         CGRect frame;
         frame.origin.x = masterFrame.size.width *0.05f;
         frame.origin.y = masterFrame.size.height *0.4f;
         frame.size.width = masterFrame.size.height*0.4f; 
         frame.size.height= masterFrame.size.height*0.4f;
+        frame.size.height= frame.size.width/aspectRatio;
+        if (frame.size.height>masterFrame.size.height*0.55f)
+            frame.size.height=masterFrame.size.height*0.55f;
         [_sourceImages setFrame: frame];
     //[_sourceImagel setFrame:frame];
         
 }
+//-(void)layoutImage
+//{
+//    [_imageControl removeFromParent];
+//    if (_image==nil)
+//        _image = [[BRThemeInfo sharedTheme] appleTVIcon];
+//    [_imageControl setImage:_image];
+//    [_imageControl setAutomaticDownsample:YES];
+//	CGRect masterFrame = [self getMasterFrame];
+//    float aspectRatio = [_image aspectRatio];
+//	CGRect frame;
+//	frame.origin.x = masterFrame.size.width *0.7f;
+//	frame.origin.y = masterFrame.size.height *0.3f;
+//	frame.size.width = masterFrame.size.height*0.4f; 
+//	frame.size.height= frame.size.width/aspectRatio;
+//    [_imageControl setFrame:frame];
+//    [self addControl:_imageControl];
+//}
 -(void)controlWasActivated
 {
 	[self drawSelf];

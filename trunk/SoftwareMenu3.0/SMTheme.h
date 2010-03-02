@@ -37,6 +37,7 @@
 }
 + (SMThemeInfo *)sharedInstance;
 +(id)sharedTheme;
++(NSSet *)imageExtensions;
 -(id)imageForString:(NSString *)imageName;
 -(id)softwareMenuImageShelf;
 -(id)softwareMenuImage;
@@ -75,4 +76,7 @@
 -(id)imageForFrap:(NSString *)frapName;
 -(id)leftJustifiedTitleTextAttributess;
 -(id)centerJustifiedRedText;
+
+//CGColor stuff
+-(CGColorRef)colorFromNSColor:(NSColor *)color;
 @end

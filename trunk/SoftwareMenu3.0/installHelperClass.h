@@ -36,20 +36,19 @@
 - (void)restoreFrap:(NSString *)value;
 - (void)backupFrap:(NSString *)value;
 - (void)changeOrder:(NSString *)value toOrder:(NSString *)value2;
-- (void)makeDMGRW:(NSString *)dmgPath;
-- (void)makeDMGRO:(NSString *)dmgPath;
-- (void)mountDrive:(NSString *)dmgPath;
-- (void)unMountDrive:(NSString *)drive;
-- (void)makeASRscan:(NSString *)dmgPath;
-- (void)copySSHFiles;
-- (void)OSUpdate;
-- (int)toggleUpdate;
-- (int)blockUpdate;
+
 - (int)runscript;
 - (int)isWritable;
-
-- (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
+-(int)installFrap:(NSString *)downloadedLocation;
+-(NSSet *)allowedExtractExtensions;
+-(int)installFrap:(NSString *)downloadedLocation toLocation:(NSString *)installLocation;
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;
+- (int)installScreenSaver;
+
+- (int)restart:(NSString *)value;
+- (int)runscript:(NSString *)scriptPath;
+//-(void) findFrap:(NSString *)staging intoString:(NSString **)frap;
+#pragma mark Tweaks
 - (int)toggleTweak:(NSString *)setting toValue:(NSString *)fp8;
 - (int)toggleVNC:(BOOL)tosetting;
 - (int)toggleSSH:(BOOL)tosetting;
@@ -59,21 +58,37 @@
 - (int)disableService:(NSString *)theService;
 - (int)EnableAppleShareServer;
 - (int)DisableAppleShareServer;
-- (int)installScreenSaver;
+- (int)toggleUpdate;
+- (int)blockUpdate;
+
+#pragma mark Extraction
+- (BOOL)gCheck;
+- (BOOL)gCheckOnDisk:(NSString *)disk;
+- (BOOL)bCheck;
+- (BOOL)bCheckOnDisk:(NSString *)disk;
 - (int)extractGZip:(NSString *)file toLocation:(NSString *)path;
 - (int)extractGZip:(NSString *)file toLocation:(NSString *)path withPath:(BOOL)with;
 - (int)extractTar:(NSString *)file toLocation:(NSString *)path;
-- (int)restart:(NSString *)value;
-- (int)runscript:(NSString *)scriptPath;
-- (void)changeOwner:(NSString *)owner onFile:(NSString *)file isRecursive:(BOOL)recursive;
+- (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
+
+#pragma mark Patching DMG
+- (void)makeDMGRW:(NSString *)dmgPath;
+- (void)makeDMGRO:(NSString *)dmgPath;
+- (void)mountDrive:(NSString *)dmgPath;
+- (void)unMountDrive:(NSString *)drive;
+- (void)makeASRscan:(NSString *)dmgPath;
+- (void)copySSHFiles;
+- (void)OSUpdate;
 - (NSString *)mountImage:(NSString *)image;
 
+
+#pragma mark writable
 - (BOOL)wasWritable;
 - (BOOL)makeSystemWritable;
-//- (BOOL)makeSystemWritable 
 - (void) makeSystemReadOnly;
-
-
+- (void)writeToLog:(NSString *)str;
+#pragma mark Permissions
 - (void)changePermissions:(NSString *)perms onFile:(NSString *)theFile isRecursive:(BOOL)isR;
+- (void)changeOwner:(NSString *)owner onFile:(NSString *)file isRecursive:(BOOL)recursive;
 
 @end

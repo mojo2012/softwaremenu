@@ -42,10 +42,17 @@
     [_title retain];
     _boxText=nil;
     _current = 0;
+    _textControls=[[NSMutableArray alloc]init];
+    [_textControls retain];
+    _arrowControl = [[BRImageControl alloc] init];
+    BRImage *arrow = [[BRThemeInfo sharedTheme]menuArrowImage];
+    [_arrowControl setImage:arrow];
+    [_arrowControl setAutomaticDownsample:YES];
+    
     return self;
     
 }
--(void)layoutSubcontrols
+-(void)drawSelf;
 {
     [self _removeAllControls];
     [self disableScreenSaver];
@@ -61,7 +68,7 @@
     [self layoutImage];
     [self layoutHeader];
     [self layoutProgressBar];
-    [self layoutBox];
+    //[self layoutBox];
     [self layoutCurrentText];
     [self layoutTimeControl];
     if([_files count]==0)
@@ -69,9 +76,47 @@
     else
         [self beginDownload];
 }
+-(void)addText:(NSString *)text
+{
+    NSLog(@"text: %@",text);
+    NSLog(@"textcontrols: %@",_textControls);
+    CGRect masterFrame = [self getMasterFrame];
+    CGRect frame;
+    BRTextControl *textC = [[BRTextControl alloc] init];
+    [textC setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
+    frame.size = [textC preferredFrameSize];
+    frame.origin.x=masterFrame.origin.x+masterFrame.size.width*0.13f;
+    if(frame.size.width>masterFrame.size.width*0.65f)
+        frame.size.width=masterFrame.size.width*0.65f;
+    if([_textControls count]==0)
+        frame.origin.y=masterFrame.size.height*0.7f;
+    else
+    {
+        CGRect oldframe=[[_textControls lastObject] frame];
+        frame.origin.y=oldframe.origin.y-frame.size.height*1.1f;
+    }
+    [textC setFrame:frame];
+    //[textC retain];
+    [self addControl:textC];
+    [_textControls addObject:textC];
+    [self setArrowForRect:frame];
+}
+-(void)setArrowForRect:(CGRect)frame
+{
+    [_arrowControl removeFromParent];
+    BRImage *arrow=[[BRThemeInfo sharedTheme] folderIcon];
+    CGRect newFrame;
+    newFrame.size.height=frame.size.height;
+    newFrame.size.width = frame.size.height*[arrow aspectRatio];
+    newFrame.origin.x=frame.origin.x-newFrame.size.width*1.5f;
+    newFrame.origin.y=frame.origin.y;
+    [_arrowControl setFrame:newFrame];
+    [self addControl:_arrowControl];
+    
+}
 -(void)controlWasActivated
 {
-    [self layoutSubcontrols];
+    [self drawSelf];
     [super controlWasActivated];
 }
 -(void)setmd5Array:(NSArray *)md5Array
@@ -243,7 +288,7 @@
 }
 -(void)layoutCurrentText
 {
-    NSString *text=@"bla";
+    NSString *text=@"";
     //[_textControl removeFromParent];
     CGRect masterFrame= [self getMasterFrame];
     [_textControl setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
@@ -388,8 +433,8 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
         _outputPath = [[_outputPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:filename];
         [_outputPath retain];
     }
-    [self setText:[_outputPath lastPathComponent]];
-    [self appendBoxText:_outputPath];
+    //[self setText:[_outputPath lastPathComponent]];
+    [self addText:[_outputPath lastPathComponent]];
     [download setDestination: _outputPath allowOverwrite: YES];
     
 }
@@ -512,7 +557,7 @@ willResumeWithResponse: (NSURLResponse *) response
 - (void) downloadDidFinish: (NSURLDownload *) download
 {
 	[_outputPaths addObject:_outputPath];
-	[self appendBoxText:@"download done"];
+	//[self appendBoxText:@"download done"];
 	[_downloader autorelease];
     _downloader = nil;
 	[self enableScreenSaver];
@@ -522,9 +567,58 @@ willResumeWithResponse: (NSURLResponse *) response
         _current++;
         [self beginDownload];
     }
+    else if([self checkMD5])
+        [self startCheckMD5];
     else
         [self process];
 
+}
+-(void)startCheckMD5
+{
+    [self addText:@"Checking MD5"];
+    if ([_outputPaths count]==[_md5Array count] && [_outputPaths count]==[_files count]) {
+        int i;
+        for(i=0;i<[_outputPaths count];i++)
+            if(![self checkmd5ForFile:[_outputPaths objectAtIndex:i] withExpectedmd5:[_md5Array objectAtIndex:i]])
+                 [[self stack] swapController:[BRAlertController alertOfType:0 titled:@"Wrong MD5" primaryText:nil secondaryText:nil]];
+                 
+    }
+    [self addText:@"Process"];
+    [self process];
+                 
+}
+-(BOOL)checkmd5ForFile:(NSString *)path withExpectedmd5:(NSString *)md5
+{
+    
+    //NSLog(@"%@ %s", self, _cmd);
+    NSTask *mdTask = [[NSTask alloc] init];
+    NSPipe *mdip = [[NSPipe alloc] init];
+    NSString *fullPath = path;
+    NSFileHandle *mdih = [mdip fileHandleForReading];
+    [mdTask setLaunchPath:@"/sbin/md5"];
+    
+    [mdTask setArguments:[NSArray arrayWithObjects:@"-q", fullPath, nil]];
+    [mdTask setStandardOutput:mdip];
+    [mdTask setStandardError:mdip];
+    [mdTask launch];
+    [mdTask waitUntilExit];
+    NSData *outData;
+    outData = [mdih readDataToEndOfFile];
+    NSString *temp = [[NSString alloc] initWithData:outData encoding:NSASCIIStringEncoding];
+    temp = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    //int theTerm = [mdTask terminationStatus];
+    //NSLog(@"md5: %@", temp);
+    NSLog(@"file: %@",path);
+    NSLog(@"expected md5: %@",md5);
+    NSLog(@"returned md5: %@",temp);
+    if ([temp isEqualToString:md5])
+    {
+        //NSLog(@"file at %@ is OK", path);
+        return YES;
+        
+    }
+    
+    return NO;
 }
 -(void)process
 {

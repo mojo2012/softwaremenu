@@ -128,6 +128,7 @@
 -(id)controlForData:(id)arg1 currentControl:(id)arg2 requestedBy:(id)arg3
 {
     id returnObj;
+    //NSLog(@"class: %@",[arg1 class]);
     //can have different objects and return the proper one
     if([arg1 isKindOfClass:[SMPhotoMediaCollection class]])
     {
@@ -146,13 +147,18 @@
         //return a simple image
         returnObj = [[BRAsyncImageControl alloc] init];
         [returnObj setDefaultImage:[[[arg1 dataAtIndex:0]asset] coverArt]];
-        [returnObj setAcceptsFocus:NO];
+        [returnObj setAcceptsFocus:YES];
     }
     else if([arg1 isKindOfClass:[BRPhotoMediaAsset class]])
     {
         returnObj = [[BRAsyncImageControl alloc] init];
         [returnObj setDefaultImage:[arg1 coverArt]];
         [returnObj setAcceptsFocus:YES];
+    }
+    else if([arg1 isKindOfClass:[BRDividerControl class]])
+    {
+        NSLog(@"divider");
+        returnObj=arg1;
     }
     //returning nothing is also acceptable only for main menu
     return returnObj;

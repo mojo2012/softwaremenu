@@ -16,12 +16,12 @@
     NSMutableArray *            _textControls;
     NSArray *                   _md5Array;
     NSArray *                   _files;
-    NSString *                  _title;
-    BRImage *                   _image;
-    BRHeaderControl *           _headerControl;
+//    NSString *                  _title;
+//    BRImage *                   _image;
+//    BRHeaderControl *           _headerControl;
     BRScrollingTextControl *    _textBox;
     BRTextControl *             _textControl;
-	BRImageControl *            _imageControl;
+//	BRImageControl *            _imageControl;
     SMProgressBarControl *      _progressBar;
     NSMutableString *			_boxText;
     NSURLDownload   *           _downloader;
@@ -30,7 +30,7 @@
     NSString        *           _outputPath;
     NSMutableArray  *           _outputPaths;
     BRImageControl  *           _arrowControl;
-    BRWaitSpinnerControl *      _spinner;
+ //   BRWaitSpinnerControl *      _spinner;
 
 }
 
