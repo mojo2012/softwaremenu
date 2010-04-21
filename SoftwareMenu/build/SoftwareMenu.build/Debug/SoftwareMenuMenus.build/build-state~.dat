@@ -1,70 +1,0 @@
-TSoftwareMenuMenus
-v7
-r0
-t286826448.851361
-cCheck dependencies
-cSymLink /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/Current A
-cSymLink /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Resources Versions/Current/Resources
-cProcessInfoPlistFile /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/A/Resources/Info.plist SoftwareMenuMenus-Info.plist
-cTouch /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance
-
-N/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance
-t1265133648
-s136
-
-N/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Resources
-t3
-s26
-
-N/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/A/Resources/Info.plist
-t1265133648
-s683
-
-N/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/Current
-t3
-s1
-
-NSoftwareMenuMenus-Info.plist
-c000000004B6867D600000000000002BC
-t1265133526
-s700
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies286826448#286826448#0(0"0(0#1#0"4300885448#0"0#
-
-CProcessInfoPlistFile /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/A/Resources/Info.plist SoftwareMenuMenus-Info.plist
-s286826448.846687
-e286826448.849295
-r1
-xProcessInfoPlistFile
-x/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/A/Resources/Info.plist
-xSoftwareMenuMenus-Info.plist
-lSLF07#2@36"Process SoftwareMenuMenus-Info.plist286826448#286826448#0(0"0(0#0#75"/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/SoftwareMenuMenus-Info.plist4300885448#274"    cd /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0    builtin-infoPlistUtility SoftwareMenuMenus-Info.plist -expandbuildsettings -platform macosx -o /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/A/Resources/Info.plist0#
-
-CSymLink /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Resources Versions/Current/Resources
-s286826448.803154
-e286826448.846610
-r1
-xSymLink
-x/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Resources
-xVersions/Current/Resources
-lSLF07#2@106"Process /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Resources286826448#286826448#0(0"0(0#0#0"4300885448#196"    cd /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0    /bin/ln -sf Versions/Current/Resources /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Resources0#
-
-CSymLink /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/Current A
-s286826448.795184
-e286826448.846474
-r1
-xSymLink
-x/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/Current
-xA
-lSLF07#2@113"Process /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/Current286826448#286826448#0(0"0(0#0#0"4300885448#178"    cd /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0    /bin/ln -sf A /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance/Versions/Current0#
-
-CTouch /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance
-s286826448.849352
-e286826448.851336
-r1
-xTouch
-x/Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance
-lSLF07#2@94"Touch /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance286826448#286826448#0(0"0(0#0#0"4300885448#165"    cd /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0    /usr/bin/touch -c /Users/tomcool/SoftwareMenuSVN/SoftwareMenu3.0/build/Debug/SoftwareMenuMenus.frappliance0#
-
