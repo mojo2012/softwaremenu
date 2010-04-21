@@ -1,0 +1,10 @@
+/* 
+   infoPlist.strings
+   SoftwareMenu
+
+   Created by Thomas Cool on 11/13/09.
+   Copyright 2009 Thomas Cool. All rights reserved.
+ */
+
+CFBundleName = "Software Menu Saver";
+NSHumanReadableCopyright = "© Thomas Cool, 2009";

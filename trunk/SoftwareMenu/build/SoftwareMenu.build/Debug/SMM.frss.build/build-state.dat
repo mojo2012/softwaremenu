@@ -1,0 +1,1005 @@
+TSMM.frss
+v7
+r0
+t279854571.810707
+cCheck dependencies
+cProcessInfoPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist SMM.frss-Info.plist
+cCopyPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/SMM.frss-Info.plist SMM3.0/SMM.frss-Info.plist
+cProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMImageReturns.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cLd /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/MacOS/SMM normal i386
+
+N/Developer/SDKs/MacOSX10.4u.sdk
+c000000004A1199E200000000000000EE
+t1242667490
+s238
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h
+c000000004628C8C90000000000001504
+t1177077961
+s5380
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c0000000045C1662200000000000002A8
+t1170302498
+s680
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c00000000462EB9B00000000000001382
+t1177467312
+s4994
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObject.h
+c00000000462EB9B20000000000000BBF
+t1177467314
+s3007
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/BackRow
+c000000004AF347A200000000002D6B90
+t1257457570
+s2976656
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BackRow.h
+c000000004AF0C8EA000000000000B02C
+t1257294058
+s45100
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_types.h
+c0000000046F234F30000000000001C1B
+t1190278387
+s7195
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/syslog.h
+c00000000463BAA5A00000000000003EC
+t1178315354
+s1004
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/include/limits.h
+c000000004A1192350000000000000C7E
+t1242665525
+s3198
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/AppleTV.h
+c000000004AF86A8A000000000001F7C0
+t1257794186
+s128960
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/BRLocalizedString.h
+c0000000049B3D60000000000000001C6
+t1236522496
+s454
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/BRMainMenuController-SMExtensions.h
+c000000004AF9B63400000000000001C3
+t1257879092
+s451
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/BackRowUtilstwo.h
+c0000000049F8E46600000000000005DD
+t1241048166
+s1501
+i<syslog.h>
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/External/AGProcess.h
+c0000000049FAECF900000000000027AB
+t1241181433
+s10155
+i<Foundation/NSObject.h>
+i<mach/mach_types.h>
+i<limits.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/Extensions.h
+c000000004AF653B9000000000000010A
+t1257657273
+s266
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPreferences.h
+c000000004AFDE37600000000000005A7
+t1258152822
+s1447
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.h
+c000000004AFDF27800000000000005B7
+t1258156664
+s1463
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.m
+c000000004AFDF9AE0000000000001733
+t1258158510
+s5939
+i"SMPrefs.h"
+i"SMDefines.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SM.pch
+c000000004AF7409A00000000000000ED
+t1257717914
+s237
+i<Foundation/Foundation.h>
+i<Backrow/Backrow.h>
+i"AppleTV.h"
+i"SMMenu.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMBrowserOptions.h
+c000000004AF745600000000000000128
+t1257719136
+s296
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMBuiltInMenu.h
+c000000004AF74560000000000000010A
+t1257719136
+s266
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMDefaultPhotos.h
+c000000004AF7456000000000000002E7
+t1257719136
+s743
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMDefines.h
+c000000004AFD5DE60000000000000E76
+t1258118630
+s3702
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMDownloaderSTD.h
+c000000004AF7438E0000000000000A33
+t1257718670
+s2611
+i<CoreData/CoreData.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMFolderBrowser.h
+c000000004AF74560000000000000016E
+t1257719136
+s366
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMFrappMover.h
+c000000004AF745600000000000000150
+t1257719136
+s336
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMGeneralMethods.h
+c000000004AFB06E70000000000000841
+t1257965287
+s2113
+i<syslog.h>
+i<Foundation/Foundation.h>
+i"External/AGProcess.h"
+i"BackRowUtilstwo.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMGridController.h
+c000000004AF4350600000000000001B9
+t1257518342
+s441
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.h
+c000000004AFDE52900000000000001FD
+t1258153257
+s509
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m
+c000000004AFDE51C0000000000000DFC
+t1258153244
+s3580
+i"SMImageReturns.h"
+i"SMSubclasses.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMInfo.h
+c0000000049F8E2C20000000000000754
+t1241047746
+s1876
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMInstallMenu.h
+c000000004AF74560000000000000039F
+t1257719136
+s927
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.h
+c000000004AFDFB2300000000000008E8
+t1258158883
+s2280
+i<Cocoa/Cocoa.h>
+i<BackRow/BackRow.h>
+i"AppleTV.h"
+i"SMImageReturns.h"
+i"SMSubclasses.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m
+c000000004AFDFB120000000000001125
+t1258158866
+s4389
+i"SMM.h"
+i"SMDefines.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch
+c000000004AFE0355000000000000013A
+t1258160981
+s314
+i<Foundation/Foundation.h>
+i<Backrow/Backrow.h>
+i"AppleTV.h"
+i"SMImageReturns.h"
+i"SMSubclasses.h"
+i"SMMPrefs.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/English.lproj/infoPlist.strings
+c000000004AFDE0E200000000000000E0
+t1258152162
+s224
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.frss-Info.plist
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.h
+c000000004AFDFB2300000000000008E8
+t1258158883
+s2280
+i<Cocoa/Cocoa.h>
+i<BackRow/BackRow.h>
+i"AppleTV.h"
+i"SMImageReturns.h"
+i"SMSubclasses.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m
+c000000004AFE05D2000000000000113E
+t1258161618
+s4414
+i"SMM.h"
+i"SMDefines.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch
+c000000004AFE0355000000000000013A
+t1258160981
+s314
+i<Foundation/Foundation.h>
+i<Backrow/Backrow.h>
+i"AppleTV.h"
+i"SMImageReturns.h"
+i"SMSubclasses.h"
+i"SMMPrefs.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM3.0/English.lproj/infoPlist.strings
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.h
+c000000004AFDF41700000000000005BC
+t1258157079
+s1468
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m
+c000000004AFDF41B0000000000001742
+t1258157083
+s5954
+i"SMMPrefs.h"
+i"SMDefines.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/infoPlist.strings
+c000000004AFDE0AC0000000000000089
+t1258152108
+s137
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.h
+c000000004AFDF41700000000000005BC
+t1258157079
+s1468
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.m
+c000000004AFDF41B0000000000001742
+t1258157083
+s5954
+i"SMMPrefs.h"
+i"SMDefines.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMainMenuMediaControl.h
+c000000004AF968CC0000000000000187
+t1257859276
+s391
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMedia.h
+c0000000049EFC8E80000000000000AB6
+t1240451304
+s2742
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMediaMenuController.h
+c000000004AF747590000000000000207
+t1257719641
+s519
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMediaPreview.h
+c000000004AF0F0180000000000000899
+t1257304088
+s2201
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMenu.h
+c000000004AFB06D200000000000006FD
+t1257965266
+s1789
+i<BackRow/BackRow.h>
+i"SMDefines.h"
+i"SMTheme.h"
+i"SMGeneralMethods.h"
+i"SMPseudoCompat.h"
+i"SMImageReturns.h"
+i"General/Extensions.h"
+i"General/SMPreferences.h"
+i"SMMedia.h"
+i"SMMediaPreview.h"
+i"BRMainMenuController-SMExtensions.h"
+i"SMDownloaderSTD.h"
+i"SMInfo.h"
+i"SMGridController.h"
+i"SMMediaMenuController.h"
+i"SoftwarePasscodeController.h"
+i"SMSubclasses.h"
+i"SMMedia.h"
+i"SMMediaPreview.h"
+i"SMProgressBarControl.h"
+i"SMMainMenuMediaControl.h"
+i"SMBuiltInMenu.h"
+i"SMTweaks.h"
+i"SMScriptsMenu.h"
+i"SMSettingsMenu.h"
+i"SMFrappMover.h"
+i"SMPhotosMenu.h"
+i"SoftwareMenuBase.h"
+i"SMInstallMenu.h"
+i"SMThirdPartyMenu.h"
+i"SMSettingsToggles.h"
+i"SMUpdater.h"
+i"SMUOptions.h"
+i"SMUpdaterProcess.h"
+i"SoftwareManual.h"
+i"SoftwareManualInfo.h"
+i"SMPhotosSettingsMenu.h"
+i"SMPhotosTransitionPreferences.h"
+i"SMFolderBrowser.h"
+i"SMBrowserOptions.h"
+i"SMPhotoPreview.h"
+i"External/AGProcess.h"
+i"SMDefaultPhotos.h"
+i"BRLocalizedString.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMPhotoPreview.h
+c000000004AF74560000000000000022C
+t1257719136
+s556
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMPhotosMenu.h
+c000000004AFA2D3100000000000004C0
+t1257909553
+s1216
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMProgressBarControl.h
+c000000004AF7437A0000000000000335
+t1257718650
+s821
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMPseudoCompat.h
+c000000004AF86B300000000000000312
+t1257794352
+s786
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMScriptsMenu.h
+c000000004AF7456000000000000001A4
+t1257719136
+s420
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSettingsMenu.h
+c000000004AF7456000000000000001AD
+t1257719136
+s429
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSettingsToggles.h
+c000000004AF86350000000000000013F
+t1257792336
+s319
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.h
+c000000004AF99B9E0000000000000239
+t1257872286
+s569
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m
+c000000004AFDFF6F0000000000000E8C
+t1258159983
+s3724
+i"SMSubclasses.h"
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMTheme.h
+c000000004AF0857C0000000000000612
+t1257276796
+s1554
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMThirdPartyMenu.h
+c000000004AF745600000000000000281
+t1257719136
+s641
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMTweaks.h
+c000000004AF86B560000000000000520
+t1257794390
+s1312
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMUOptions.h
+c000000004AF7291A0000000000000273
+t1257711898
+s627
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMUpdater.h
+c000000004AF76A0B00000000000002A9
+t1257728523
+s681
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMUpdaterProcess.h
+c0000000049F91D190000000000000760
+t1241062681
+s1888
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SlideShow/SMPhotosSettingsMenu.h
+c000000004AF7456000000000000004EA
+t1257719136
+s1258
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SlideShow/SMPhotosTransitionPreferences.h
+c000000004AF745600000000000000185
+t1257719136
+s389
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SoftwareManual.h
+c000000004AF7456000000000000002CD
+t1257719136
+s717
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SoftwareManualInfo.h
+c0000000049B3D600000000000000032A
+t1236522496
+s810
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SoftwareMenuBase.h
+c000000004AF86ABB00000000000003E5
+t1257794235
+s997
+i<CoreData/CoreData.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SoftwarePasscodeController.h
+c000000004AF36BDB00000000000006BB
+t1257466843
+s1723
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.bundle
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.bundle/Contents/Info.plist
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.frss
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.frss/Contents/Info.plist
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/MacOS/SMM
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj/infoPlist.strings
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/SMM.frss-Info.plist
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/infoPlist.strings
+t2
+s0
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMMixed.framework/SMMixed
+c000000004AFE00AE000000000000A144
+t1258160302
+s41284
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMImageReturns.o
+t1258161771
+s20048
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.LinkFileList
+c000000004AFE00AE0000000000000166
+t1258160302
+s358
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o
+t1258161771
+s31460
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o
+t1258161771
+s28248
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMPrefs.o
+t1258158540
+s27496
+
+N/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMSubclasses.o
+t2
+s0
+
+N/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/AppleTV.framework/AppleTV
+c000000004AE980FF0000000000126504
+t1256816895
+s1205508
+
+N/Users/tomcool/Desktop/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework/iPhotoAccess
+c000000004AE980FF000000000004EA84
+t1256816895
+s322180
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-arlffksefadiuadwgemilrmbknuq/AppKit.h.gch
+t2
+s0
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-eqpgxokgbxctptfbmvlafbllekok/AppKit.h.gch
+t1257966619
+s29701312
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-gvgfbrpmwixwztbantlsvyxagijd/AppKit.h.gch
+t1258076488
+s29701312
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SM-ckqsbwurpendcfbidbakrnoennae/SM.pch.gch
+t2
+s0
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ckorxyfubkpdysbmrigmcosddtdn/SMM.pch.gch
+t1258157133
+s39437308
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch.gch
+t1258160305
+s39420896
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch
+t1258161771
+s39437308
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fbwslrdbmmfiixextwfwtjelqpfg/SMM.pch.gch
+t1258152826
+s39437308
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ffcvyocoqjribifkqgrgkvhntdxb/SMM.pch.gch
+t1258083017
+s39437308
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fobielgovuhpokdgmrlrtozqoect/SMM.pch.gch
+t1258153435
+s39437308
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fstljmoxbrjjbdgexipfyjafzcti/SMM.pch.gch
+t1258158540
+s39437308
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-hgrcylwigbingxagblgznkdpvuci/SMM.pch.gch
+t2
+s0
+
+NSMM.frss-Info.plist
+c000000004AFDDF6E0000000000000322
+t1258151790
+s802
+
+NSMM3.0/SMM.frss-Info.plist
+c000000004AFDDF6E0000000000000322
+t1258151790
+s802
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies279854567#279854567#0(0"0(0#1#0"4300882208#0"0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMImageReturns.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279854571.467366
+e279854571.638491
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMImageReturns.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@66"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m279854571#279854571#0(0"0(0#0#58"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m4300882208#1642"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMImageReturns.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMImageReturns.o0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279853105.917231
+e279853106.111569
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m: In function '-[SMM screenSaverControl]':
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: 'SMPrefs' may not respond to '+photoFolderPath'
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: (Messages without a matching method signature
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: will be assumed to return 'id' and accept
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: '...' as arguments.)
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m: In function '-[SMM init]':
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:97: warning: 'SMPrefs' may not respond to '+photoFolderPath'
+lSLF07#2@55"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m279853105#279853106#0(676"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m: In function '-[SMM screenSaverControl]':/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: 'SMPrefs' may not respond to '+photoFolderPath'/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: (Messages without a matching method signature/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: will be assumed to return 'id' and accept/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:83: warning: '...' as arguments.)/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m: In function '-[SMM init]':/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m:97: warning: 'SMPrefs' may not respond to '+photoFolderPath'3(22@47"'SMPrefs' may not respond to '+photoFolderPath'279853105#90#109#0(6@47"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m279851666#83#0#83#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)279853105#199#107#0(6@47"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m279851666#83#0#83#0#0"0(22@47"'SMPrefs' may not respond to '+photoFolderPath'279853105#567#109#0(6@47"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m279851666#97#0#97#0#26"'*' may not respond to '*'0(0#0#47"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m4300882208#1620"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279854571.466434
+e279854571.629336
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m: In function '-[SMM screenSaverControl]':
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: 'BRControl' may not respond to '-setImageProxies:'
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: (Messages without a matching method signature
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: will be assumed to return 'id' and accept
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: '...' as arguments.)
+lSLF07#2@62"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m279854571#279854571#0(529"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m: In function '-[SMM screenSaverControl]':/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: 'BRControl' may not respond to '-setImageProxies:'/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: (Messages without a matching method signature/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: will be assumed to return 'id' and accept/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m:80: warning: '...' as arguments.)2(22@50"'BRControl' may not respond to '-setImageProxies:'279854571#97#119#0(6@54"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m279854418#80#0#80#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)279854571#216#114#0(6@54"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m279854418#80#0#80#0#0"0(0#0#54"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m4300882208#1627"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.o0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279854571.629455
+e279854571.764308
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@67"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m279854571#279854571#0(0"0(0#0#59"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m4300882208#1637"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMMPrefs.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279853106.111673
+e279853106.252572
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@60"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.m279853106#279853106#0(0"0(0#0#52"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.m4300882208#1630"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMMPrefs.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMMPrefs.o0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMPrefs.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279851340.619760
+e279851340.746060
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMPrefs.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@67"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.m279851340#279851340#0(0"0(0#0#59"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.m4300882208#1636"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fstljmoxbrjjbdgexipfyjafzcti/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/General/SMPrefs.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMPrefs.o0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMSubclasses.o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s279852757.500462
+e279852757.616124
+r0
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMSubclasses.o
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m: In function '-[SMPhotoBrowserController _handleSlideshowSelection:]':
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m:37: error: 'DEFAULT_IMAGES_PATH' undeclared (first use in this function)
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m:37: error: (Each undeclared identifier is reported only once
+o/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m:37: error: for each function it appears in.)
+lSLF07#2@64"Compile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m279852757#279852757#0(478"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m: In function '-[SMPhotoBrowserController _handleSlideshowSelection:]':/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m:37: error: 'DEFAULT_IMAGES_PATH' undeclared (first use in this function)/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m:37: error: (Each undeclared identifier is reported only once/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m:37: error: for each function it appears in.)1(4@61"'DEFAULT_IMAGES_PATH' undeclared (first use in this function)279852757#128#130#0(6@56"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m279852752#37#0#37#0#43"'*' undeclared (first use in this function)0(0#0#56"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m4300882208#1638"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMSubclasses.m -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMSubclasses.o1#
+
+CCopyPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/SMM.frss-Info.plist SMM3.0/SMM.frss-Info.plist
+s279854567.912412
+e279854568.053082
+r0
+xCopyPlistFile
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/SMM.frss-Info.plist
+xSMM3.0/SMM.frss-Info.plist
+ocp: SMM3.0/SMM.frss-Info.plist: No such file or directory
+lSLF07#2@31"Copy SMM3.0/SMM.frss-Info.plist279854567#279854568#0(177"cp: SMM3.0/SMM.frss-Info.plist: No such file or directoryCommand /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist failed with exit code 11(4@118"Command /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist failed with exit code 1279854568#18446744073709551615#0#0(1@0"0(0#0#68"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.frss-Info.plist4300882208#258"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist SMM3.0/SMM.frss-Info.plist --outdir /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources1#
+
+CCopyStringsFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj/infoPlist.strings SMM3.0/English.lproj/infoPlist.strings
+s279853102.788743
+e279853103.278417
+r1
+xCopyStringsFile
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj/infoPlist.strings
+xSMM3.0/English.lproj/infoPlist.strings
+lSLF07#2@43"Copy SMM3.0/English.lproj/infoPlist.strings279853102#279853103#0(0"0(0#0#80"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/English.lproj/infoPlist.strings4300882208#375"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 SMM3.0/English.lproj/infoPlist.strings --outdir /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj0#
+
+CCopyStringsFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj/infoPlist.strings SMM3.0/SMM3.0/English.lproj/infoPlist.strings
+s279853788.804304
+e279853788.829182
+r0
+xCopyStringsFile
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj/infoPlist.strings
+xSMM3.0/SMM3.0/English.lproj/infoPlist.strings
+oSMM3.0/SMM3.0/English.lproj/infoPlist.strings: No such file or directory 
+lSLF07#2@50"Copy SMM3.0/SMM3.0/English.lproj/infoPlist.strings279853788#279853788#0(195"SMM3.0/SMM3.0/English.lproj/infoPlist.strings: No such file or directory Command /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings failed with exit code 11(4@120"Command /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings failed with exit code 1279853788#18446744073709551615#0#0(1@0"0(0#0#87"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM3.0/English.lproj/infoPlist.strings4300882208#382"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 SMM3.0/SMM3.0/English.lproj/infoPlist.strings --outdir /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/English.lproj1#
+
+CCopyStringsFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Resources/infoPlist.strings SMM3.0/infoPlist.strings
+r0
+
+CLd /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/MacOS/SMM normal i386
+s279854571.764401
+e279854571.810625
+r1
+xLd
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/MacOS/SMM
+xnormal
+xi386
+lSLF07#2@86"Link /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/MacOS/SMM279854571#279854571#0(0"0(0#0#0"4300882208#798"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch i386 -bundle -isysroot /Developer/SDKs/MacOSX10.4u.sdk -L/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -filelist /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/Objects-normal/i386/SMM.LinkFileList -mmacosx-version-min=10.4 -undefined dynamic_lookup -framework BackRow -framework AppleTV -framework iPhotoAccess -framework SMMixed -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/MacOS/SMM0#
+
+CProcessInfoPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.bundle/Contents/Info.plist SMM.frss-Info.plist
+r0
+
+CProcessInfoPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.frss/Contents/Info.plist SMM.frss-Info.plist
+r0
+
+CProcessInfoPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist SMM.frss-Info.plist
+s279854567.894453
+e279854567.912325
+r1
+xProcessInfoPlistFile
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist
+xSMM.frss-Info.plist
+lSLF07#2@27"Process SMM.frss-Info.plist279854567#279854567#0(0"0(0#0#61"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.frss-Info.plist4300882208#222"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    builtin-infoPlistUtility SMM.frss-Info.plist -expandbuildsettings -platform macosx -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist0#
+
+CProcessInfoPlistFile /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist SMM3.0/SMM.frss-Info.plist
+s279854069.830299
+e279854069.839498
+r1
+xProcessInfoPlistFile
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist
+xSMM3.0/SMM.frss-Info.plist
+lSLF07#2@34"Process SMM3.0/SMM.frss-Info.plist279854069#279854069#0(0"0(0#0#68"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.frss-Info.plist4300882208#229"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    builtin-infoPlistUtility SMM3.0/SMM.frss-Info.plist -expandbuildsettings -platform macosx -o /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss/Contents/Info.plist0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-arlffksefadiuadwgemilrmbknuq/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-eqpgxokgbxctptfbmvlafbllekok/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-gvgfbrpmwixwztbantlsvyxagijd/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+s279769284.012410
+e279769288.350254
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-gvgfbrpmwixwztbantlsvyxagijd/AppKit.h.gch
+x/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@102"Precompile /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h279769284#279769288#0(0"0(0#0#91"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h4300882208#1556"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-gvgfbrpmwixwztbantlsvyxagijd/AppKit.h.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SM-ckqsbwurpendcfbidbakrnoennae/SM.pch.gch SM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ckorxyfubkpdysbmrigmcosddtdn/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279849930.470501
+e279849933.526510
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ckorxyfubkpdysbmrigmcosddtdn/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279849930#279849933#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279849931#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279849931#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279849892#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279849931#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279849931#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279849931#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ckorxyfubkpdysbmrigmcosddtdn/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279853103.278528
+e279853105.917038
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279853103#279853105#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279853103#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279853103#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279851688#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279853103#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279853103#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279853103#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-comcxsojkpjecyfvnycwubgfnxak/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279854568.053197
+e279854571.466245
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279854568#279854571#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279854569#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279854569#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279853781#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279854569#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279854569#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279854569#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch SMM3.0/SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279854069.840235
+e279854073.725627
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch
+xSMM3.0/SMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@25"Precompile SMM3.0/SMM.pch279854069#279854073#0(550"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279854071#358#192#4(7@78"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch279854071#18446744073709551615#0#0(6@56"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch279853781#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279854071#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279854071#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279854071#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#56"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch4300882208#1517"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-cqrxfbxqypzxlzfufxmumiirjzdm/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fbwslrdbmmfiixextwfwtjelqpfg/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279845624.113824
+e279845626.666734
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fbwslrdbmmfiixextwfwtjelqpfg/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279845624#279845626#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279845624#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279845624#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279845175#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279845624#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279845624#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279845624#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fbwslrdbmmfiixextwfwtjelqpfg/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ffcvyocoqjribifkqgrgkvhntdxb/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279775814.950079
+e279775817.693017
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ffcvyocoqjribifkqgrgkvhntdxb/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279775814#279775817#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279775815#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279775815#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279775814#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279775815#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279775815#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279775815#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-ffcvyocoqjribifkqgrgkvhntdxb/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fobielgovuhpokdgmrlrtozqoect/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279846233.294818
+e279846235.746938
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fobielgovuhpokdgmrlrtozqoect/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279846233#279846235#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279846233#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279846233#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279846225#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279846233#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279846233#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279846233#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fobielgovuhpokdgmrlrtozqoect/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fstljmoxbrjjbdgexipfyjafzcti/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279851337.458120
+e279851340.264523
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fstljmoxbrjjbdgexipfyjafzcti/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,
+o                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,
+o                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'
+lSLF07#2@18"Precompile SMM.pch279851337#279851340#0(543"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h:9,                 from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h:903,                 from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch:12:/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h:9: warning: duplicate declaration for protocol 'DOMEventListener'1(22@53"Duplicate declaration for protocol 'DOMEventListener'279851338#351#192#4(7@71"In file included from /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279851338#18446744073709551615#0#0(6@49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch279850637#12#0#12#0#0"0(7@129"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h279851338#18446744073709551615#0#0(6@107"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/Backrow.framework/PrivateHeaders/Backrow.h278986858#903#0#903#0#0"0(7@136"In file included from /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h279851338#18446744073709551615#0#0(6@114"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventBridge.h278986240#9#0#9#0#0"0(13@182"Duplicate declaration for protocol 'DOMEventListener' in /Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h279851338#18446744073709551615#0#0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(6@125"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/DOMEventListener-Protocol.h278986240#9#0#9#0#0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fstljmoxbrjjbdgexipfyjafzcti/SMM.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-hgrcylwigbingxagblgznkdpvuci/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s279853856.946589
+e279853856.989733
+r0
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-hgrcylwigbingxagblgznkdpvuci/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oi686-apple-darwin10-gcc-4.0.1: /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch: No such file or directory
+oi686-apple-darwin10-gcc-4.0.1: warning: '-x objective-c-header' after last input file has no effect
+oi686-apple-darwin10-gcc-4.0.1: no input files
+lSLF07#2@18"Precompile SMM.pch279853856#279853856#0(313"i686-apple-darwin10-gcc-4.0.1: /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch: No such file or directoryi686-apple-darwin10-gcc-4.0.1: warning: '-x objective-c-header' after last input file has no effecti686-apple-darwin10-gcc-4.0.1: no input filesCommand /Developer/usr/bin/gcc-4.0 failed with exit code 11(4@58"Command /Developer/usr/bin/gcc-4.0 failed with exit code 1279853856#18446744073709551615#0#0(1@0"0(0#0#49"/Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch4300882208#1510"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-generated-files.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-own-target-headers.hmap -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/SMM-project-headers.hmap -F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/Desktop/SM/SoftwareMenu3.0/../../TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/include -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources/i386 -I/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/SoftwareMenu.build/Debug/SMM.frss.build/DerivedSources -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-hgrcylwigbingxagblgznkdpvuci/SMM.pch.gch1#
+
+CTouch /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss
+s279854420.446346
+e279854420.453997
+r1
+xTouch
+x/Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss
+lSLF07#2@68"Touch /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss279854420#279854420#0(0"0(0#0#0"4300882208#134"    cd /Users/tomcool/Desktop/SM/SoftwareMenu3.0    /usr/bin/touch -c /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss0#
+
+CTouch /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.bundle
+r0
+
+CTouch /Users/tomcool/Desktop/SM/SoftwareMenu3.0/build/Debug/SMM.frss.frss
+r0
+

@@ -1,0 +1,1725 @@
+TSoftwareMenuFramework
+v7
+r0
+t293568217.143725
+cCheck dependencies
+cSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/Current A
+cSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Resources Versions/Current/Resources
+cSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Headers Versions/Current/Headers
+cSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/SoftwareMenuFramework Versions/Current/SoftwareMenuFramework
+cProcessInfoPlistFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/Info.plist Info.plist
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SoftwareMenuFramework.h SoftwareMenuFramework.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTheme.h SMFTheme.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaPreview.h SMFMediaPreview.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTogglesMenu.h SMFTogglesMenu.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFFolderBrowser.h SMFFolderBrowser.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedMethods.h SMFSharedMethods.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarControl.h SMFProgressBarControl.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPhotoPreview.h SMFPhotoPreview.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFBaseAsset.h SMFBaseAsset.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFController.h SMFController.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPreferences.h SMFPreferences.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCompat.h SMFCompat.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFGlobalValues.h SMFGlobalValues.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPluginAsset.h Assets/SMFPluginAsset.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPasscodeController.h SMFPasscodeController.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCenteredMenuController.h SMFCenteredMenuController.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarMenuItem.h SMFProgressBarMenuItem.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFInvocationCenteredMenuController.h SMFInvocationCenteredMenuController.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFDownloaderUpdate.h SMFDownloaderUpdate.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaMenuController.h SMFMediaMenuController.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedFunctions.h SMFSharedFunctions.h
+cCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSimpleDirectoryChooserController.h SMFSimpleDirectoryChooserController.h
+cCopyStringsFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/AFP.png AFP.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/applescript.png applescript.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/folderIcon.png folderIcon.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/FTP.png FTP.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/green.png green.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/grey.png grey.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/info.png info.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/package.png package.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/red.png red.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/script.png script.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/selsettings.png selsettings.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/standby.png standby.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/syspref.png syspref.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/tested.png tested.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trashempty.png trashempty.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trusted.png trusted.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/VNC.png VNC.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/web.png web.png
+cCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/notfound.png notfound.png
+cProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch.gch SoftwareMenuFramework_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTheme.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaPreview.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTogglesMenu.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFFolderBrowser.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedMethods.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/AGProcess.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarControl.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPhotoPreview.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFBaseAsset.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPreferences.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCompat.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFGlobalValues.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPluginAsset.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPasscodeController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCenteredMenuController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarMenuItem.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFInvocationCenteredMenuController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFDownloaderUpdate.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaMenuController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedFunctions.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSimpleDirectoryChooserController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework normal i386
+cTouch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework
+cStrip /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework
+
+N/Developer/SDKs/MacOSX10.4u.sdk
+c000000004BCC8D6B00000000000000EE
+t1271696747
+s238
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c0000000045C1662200000000000002A8
+t1170302498
+s680
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c00000000462EB9B00000000000001382
+t1177467312
+s4994
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSObject.h
+c00000000462EB9B20000000000000BBF
+t1177467314
+s3007
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/BackRow
+c000000004AF347A200000000002D6B90
+t1257457570
+s2976656
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BackRow.h
+c000000004AF0C8EA000000000000B02C
+t1257294058
+s45100
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_host.h
+c00000000463BAA5B000000000000516E
+t1178315355
+s20846
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_port.h
+c00000000463BAA5B0000000000006D94
+t1178315355
+s28052
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_traps.h
+c0000000046F234F30000000000000D6B
+t1190278387
+s3435
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/mach_types.h
+c0000000046F234F30000000000001C1B
+t1190278387
+s7195
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/shared_memory_server.h
+c0000000046F234F40000000000000E1B
+t1190278388
+s3611
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/task.h
+c00000000463BAA5B00000000000004CF
+t1178315355
+s1231
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/thread_act.h
+c00000000463BAA5B00000000000004E7
+t1178315355
+s1255
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/mach/vm_map.h
+c00000000463BAA5B0000000000007219
+t1178315355
+s29209
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/objc/objc-class.h
+c0000000046288CAE0000000000001962
+t1177062574
+s6498
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/signal.h
+c00000000463BAA5A00000000000012C4
+t1178315354
+s4804
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/sys/param.h
+c0000000046F2351400000000000025D9
+t1190278420
+s9689
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/sys/sysctl.h
+c0000000046F23515000000000000704C
+t1190278421
+s28748
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/sys/types.h
+c0000000046F235160000000000002641
+t1190278422
+s9793
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/unistd.h
+c00000000463BAA5A0000000000004EED
+t1178315354
+s20205
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/include/limits.h
+c000000004B56947C0000000000000C7E
+t1263965308
+s3198
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/AppleTV.framework/AppleTV
+c000000004AE980FF0000000000126504
+t1256816895
+s1205508
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework/iPhotoAccess
+c000000004AE980FF000000000004EA84
+t1256816895
+s322180
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AFP.png
+c0000000049DD6A7C0000000000004042
+t1239247484
+s16450
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.h
+c0000000049FAECF900000000000027AB
+t1241181433
+s10155
+i<Foundation/NSObject.h>
+i<mach/mach_types.h>
+i<limits.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m
+c000000004B0C5C780000000000008310
+t1259101304
+s33552
+i"AGProcess.h"
+i<Foundation/Foundation.h>
+i<mach/mach_host.h>
+i<mach/mach_port.h>
+i<mach/mach_traps.h>
+i<mach/shared_memory_server.h>
+i<mach/task.h>
+i<mach/thread_act.h>
+i<mach/vm_map.h>
+i<sys/param.h>
+i<sys/sysctl.h>
+i<sys/types.h>
+i<signal.h>
+i<unistd.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AppleTV.h
+c000000004B00A5EF000000000001F80A
+t1258333679
+s129034
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.h
+c000000004B840EC000000000000001B3
+t1266945728
+s435
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m
+c000000004B8FCE640000000000000661
+t1267715684
+s1633
+i"SMFPluginAsset.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/English.lproj/InfoPlist.strings
+c000000004B68A2A50000000000000030
+t1265148581
+s48
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/FTP.png
+c0000000049DD6F630000000000004028
+t1239248739
+s16424
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.h
+c000000004B93028E0000000000000258
+t1267925646
+s600
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m
+c000000004BC94FB6000000000000087F
+t1271484342
+s2175
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.h
+c000000004B8669220000000000000258
+t1267099938
+s600
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m
+c000000004B866E210000000000000843
+t1267101217
+s2115
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.h
+c000000004B85A534000000000000128C
+t1267049780
+s4748
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m
+c000000004B85A5200000000000000462
+t1267049760
+s1122
+i"SMFCompat.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.h
+c000000004B703793000000000000055C
+t1265645459
+s1372
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m
+c000000004B8FCE230000000000000D22
+t1267715619
+s3362
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.h
+c000000004B8EBBE7000000000000078B
+t1267645415
+s1931
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m
+c000000004B8EC9A00000000000004E6F
+t1267648928
+s20079
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.h
+c000000004B696FD5000000000000015B
+t1265201109
+s347
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m
+c000000004B9F1D760000000000000CD2
+t1268718966
+s3282
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.h
+c000000004B82F76C0000000000000111
+t1266874220
+s273
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m
+c000000004B82F7600000000000000135
+t1266874208
+s309
+i"SMFGlobalValues.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.h
+c000000004B895FEF00000000000001CD
+t1267294191
+s461
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m
+c000000004B89666B00000000000003C0
+t1267295851
+s960
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.h
+c000000004B696FD5000000000000022E
+t1265201109
+s558
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m
+c000000004B9FBD96000000000000077C
+t1268759958
+s1916
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.h
+c000000004B9F1E490000000000000497
+t1268719177
+s1175
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m
+c000000004BA1081D0000000000002AE9
+t1268844573
+s10985
+i<objc/objc-class.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.h
+c000000004BCDCBF3000000000000089F
+t1271778291
+s2207
+i<Foundation/Foundation.h>
+i<CoreData/CoreData.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m
+c000000004BCDCBEB0000000000002568
+t1271778283
+s9576
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.h
+c000000004B69F72B0000000000000237
+t1265235755
+s567
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m
+c000000004BCF45F1000000000000153C
+t1271875057
+s5436
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.h
+c000000004B82F8CE000000000000050C
+t1266874574
+s1292
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m
+c000000004B85A65D0000000000001555
+t1267050077
+s5461
+i"AGProcess.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.h
+c000000004B696E480000000000000336
+t1265200712
+s822
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m
+c000000004B89547200000000000008E8
+t1267291250
+s2280
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.h
+c000000004B894823000000000000063E
+t1267288099
+s1598
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m
+c000000004B89635F0000000000000D14
+t1267295071
+s3348
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.h
+c000000004B8EBCC80000000000000159
+t1267645640
+s345
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m
+c000000004B8EBD0F00000000000004B2
+t1267645711
+s1202
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.h
+c000000004B696C1F00000000000000E2
+t1265200159
+s226
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m
+c000000004B696FD4000000000000066F
+t1265201108
+s1647
+i"AGProcess.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.h
+c000000004B8FCCDA000000000000020D
+t1267715290
+s525
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m
+c000000004B8FCDD1000000000000139E
+t1267715537
+s5022
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.h
+c000000004B6A15870000000000000640
+t1265243527
+s1600
+i<Foundation/Foundation.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m
+c000000004B9EB4780000000000001D02
+t1268692088
+s7426
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.h
+c000000004B696FD50000000000000146
+t1265201109
+s326
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m
+c000000004B696F7C00000000000005EF
+t1265201020
+s1519
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework.h
+c000000004B9F1CC40000000000000C64
+t1268718788
+s3172
+i"SMFProgressBarMenuItem.h"
+i"SMFPasscodeController.h"
+i"SMFGlobalValues.h"
+i"SMFMediaMenuController.h"
+i"SMFCenteredMenuController.h"
+i"SMFSimpleDirectoryChooserController.h"
+i"SMFTheme.h"
+i"SMFMediaPreview.h"
+i"SMFTogglesMenu.h"
+i"SMFCompat.h"
+i"SMFPreferences.h"
+i"SMFSharedFunctions.h"
+i"SMFFolderBrowser.h"
+i"SMFPhotoPreview.h"
+i"SMFSharedMethods.h"
+i"SMFProgressBarControl.h"
+i"SMFBaseAsset.h"
+i"SMFController.h"
+i"SMFDownloaderUpdate.h"
+i"SMFInvocationCenteredMenuController.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework_Prefix.pch
+c000000004B68A3FB0000000000000100
+t1265148923
+s256
+i<Cocoa/Cocoa.h>
+i<Backrow/Backrow.h>
+i"AppleTV.h"
+i"SoftwareMenuFramework.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/VNC.png
+c0000000049DD433F000000000000DB26
+t1239237439
+s56102
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/applescript.png
+c0000000049B3D6000000000000003DD6
+t1236522496
+s15830
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework
+t1271875417
+s204
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Headers
+t3
+s24
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Resources
+t3
+s26
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/SoftwareMenuFramework
+t3
+s38
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFBaseAsset.h
+t1271875414
+s600
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCenteredMenuController.h
+t1271875414
+s600
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCompat.h
+t1271875414
+s4748
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFController.h
+t1271875414
+s1372
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFDownloaderUpdate.h
+t1271875414
+s1931
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFFolderBrowser.h
+t1271875414
+s347
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFGlobalValues.h
+t1271875414
+s273
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFInvocationCenteredMenuController.h
+t1271875414
+s461
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaMenuController.h
+t1271875414
+s558
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaPreview.h
+t1271875414
+s1175
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPasscodeController.h
+t1271875414
+s2207
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPhotoPreview.h
+t1271875414
+s567
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPluginAsset.h
+t1271875414
+s435
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPreferences.h
+t1271875414
+s1292
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarControl.h
+t1271875414
+s822
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarMenuItem.h
+t1271875414
+s1598
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedFunctions.h
+t1271875414
+s345
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedMethods.h
+t1271875414
+s226
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSimpleDirectoryChooserController.h
+t1271875414
+s525
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTheme.h
+t1271875414
+s1600
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTogglesMenu.h
+t1271875414
+s326
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SoftwareMenuFramework.h
+t1271875414
+s3172
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/AFP.png
+t1271875415
+s16450
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/English.lproj/InfoPlist.strings
+t1271875415
+s92
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/FTP.png
+t1271875415
+s16424
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/Info.plist
+t1271875414
+s765
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/VNC.png
+t1271875415
+s56102
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/applescript.png
+t1271875415
+s15830
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/folderIcon.png
+t1271875415
+s85644
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/green.png
+t1271875415
+s4099
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/grey.png
+t1271875415
+s2631
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/info.png
+t1271875415
+s10284
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/notfound.png
+t1271875415
+s61746
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/package.png
+t1271875415
+s32428
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/red.png
+t1271875415
+s4118
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/script.png
+t1271875415
+s10461
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/selsettings.png
+t1271875415
+s741
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/standby.png
+t1271875415
+s10873
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/syspref.png
+t1271875415
+s43536
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/tested.png
+t1271875415
+s4322
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trashempty.png
+t1271875415
+s9911
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trusted.png
+t1271875415
+s4431
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/web.png
+t1271875415
+s12906
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework
+t1271875417
+s186712
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/Current
+t3
+s1
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/AGProcess.o
+t1271875234
+s73760
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFBaseAsset.o
+t1271875234
+s19220
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCenteredMenuController.o
+t1271875234
+s26952
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCompat.o
+t1271875234
+s10428
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFController.o
+t1271875234
+s27016
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFDownloaderUpdate.o
+t1271875235
+s79740
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFFolderBrowser.o
+t1271875233
+s34000
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFGlobalValues.o
+t1271875234
+s6744
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFInvocationCenteredMenuController.o
+t1271875235
+s19688
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaMenuController.o
+t1271875235
+s30216
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaPreview.o
+t1271875233
+s35212
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPasscodeController.o
+t1271875234
+s50096
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPhotoPreview.o
+t1271875234
+s36600
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPluginAsset.o
+t1271875234
+s13332
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPreferences.o
+t1271875234
+s25324
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarControl.o
+t1271875234
+s20040
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarMenuItem.o
+t1271875235
+s28252
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedFunctions.o
+t1271875235
+s11084
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedMethods.o
+t1271875233
+s13152
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSimpleDirectoryChooserController.o
+t1271875235
+s30852
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTheme.o
+t1271875233
+s34208
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTogglesMenu.o
+t1271875233
+s24416
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SoftwareMenuFramework.LinkFileList
+c000000004BCF45A30000000000000EEC
+t1271874979
+s3820
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/folderIcon.png
+c0000000049EBB1F60000000000014E8C
+t1240183286
+s85644
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/green.png
+c0000000049F299340000000000001003
+t1240635700
+s4099
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/grey.png
+c0000000049F33F8E0000000000000A47
+t1240678286
+s2631
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/info.png
+c0000000034CB925A000000000000282C
+t885756506
+s10284
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/notfound.png
+c000000004B69FFD0000000000000F132
+t1265237968
+s61746
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/package.png
+c0000000049B3D6000000000000007EAC
+t1236522496
+s32428
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/red.png
+c0000000049F298E20000000000001016
+t1240635618
+s4118
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/script.png
+c0000000049B3D60000000000000028DD
+t1236522496
+s10461
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/selsettings.png
+c0000000049B3D60000000000000002E5
+t1236522496
+s741
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/standby.png
+c0000000034CB924C0000000000002A79
+t885756492
+s10873
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/syspref.png
+c0000000049DD447F000000000000AA10
+t1239237759
+s43536
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/tested.png
+c000000004B06219F00000000000010E2
+t1258693023
+s4322
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/trashempty.png
+c0000000034CB924400000000000026B7
+t885756484
+s9911
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/trusted.png
+c000000004B061D07000000000000114F
+t1258691847
+s4431
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/web.png
+c0000000034CB9144000000000000326A
+t885756228
+s12906
+
+N/Users/tomcool/Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/AppleTV.framework/AppleTV
+c000000004AE980FF0000000000126504
+t1256816895
+s1205508
+
+N/Users/tomcool/Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework/iPhotoAccess
+c000000004AE980FF000000000004EA84
+t1256816895
+s322180
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch.gch
+t1271875233
+s39527616
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-fsdipalcvhhtephemoyaqfajoxta/SoftwareMenuFramework_Prefix.pch.gch
+t1271874983
+s39527616
+
+NInfo.plist
+c000000004BCDCCE90000000000000354
+t1271778537
+s852
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies293568214#293568214#0(0"0(0#1#0"4300911832#0"0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/AGProcess.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.897399
+e293568034.304159
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/AGProcess.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@84"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m293568033#293568034#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m4300911832#1902"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AGProcess.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/AGProcess.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFBaseAsset.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.304268
+e293568034.462599
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFBaseAsset.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@87"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m293568034#293568034#0(0"0(0#0#79"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m4300911832#1908"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFBaseAsset.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCenteredMenuController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.813090
+e293568034.977517
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCenteredMenuController.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@100"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m293568034#293568034#0(0"0(0#0#92"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m4300911832#1934"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCenteredMenuController.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCompat.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.503955
+e293568034.637547
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCompat.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@84"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m293568034#293568034#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m4300911832#1902"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFCompat.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.337076
+e293568034.503859
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFController.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@88"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m293568034#293568034#0(0"0(0#0#80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m4300911832#1910"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFController.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFDownloaderUpdate.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568035.135950
+e293568035.442348
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFDownloaderUpdate.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate drawSelf]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: 'SMFDownloaderUpdate' may not respond to '-preProcess'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: (Messages without a matching method signature
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: will be assumed to return 'id' and accept
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: '...' as arguments.)
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate addText:]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:107: warning: 'SMFDownloaderUpdate' may not respond to '-setArrowForRect:'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: At top level:
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:248: warning: incomplete implementation of class 'SMFDownloaderUpdate'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:248: warning: method definition for '-layoutSubcontrols' not found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(LayoutMethods) layoutCurrentText]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:315: warning: unused variable 'pbframe'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(LayoutMethods) layoutTimeControl]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:326: warning: unused variable 'masterFrame'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(DownloaderMethods) downloadDidFinish:]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:594: warning: 'SMFDownloaderUpdate' may not respond to '-startCheckMD5'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:596: warning: 'SMFDownloaderUpdate' may not respond to '-preProcess'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(DownloaderMethods) startCheckMD5]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:605: warning: 'SMFDownloaderUpdate' may not respond to '-checkmd5ForFile:withExpectedmd5:'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:610: warning: 'SMFDownloaderUpdate' may not respond to '-preProcess'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(DownloaderMethods) preProcess]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:656: warning: multiple methods named '-invoke' found
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSInvocation.h:87: warning: using '-(void)invoke'
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BRAsyncTask-TaskManagerHelpers.h:10: warning: also found '-(id)invoke'
+lSLF07#2@94"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m293568035#293568035#0(3560"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate drawSelf]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: 'SMFDownloaderUpdate' may not respond to '-preProcess'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: (Messages without a matching method signature/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: will be assumed to return 'id' and accept/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:80: warning: '...' as arguments.)/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate addText:]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:107: warning: 'SMFDownloaderUpdate' may not respond to '-setArrowForRect:'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: At top level:/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:248: warning: incomplete implementation of class 'SMFDownloaderUpdate'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:248: warning: method definition for '-layoutSubcontrols' not found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(LayoutMethods) layoutCurrentText]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:315: warning: unused variable 'pbframe'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(LayoutMethods) layoutTimeControl]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:326: warning: unused variable 'masterFrame'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(DownloaderMethods) downloadDidFinish:]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:594: warning: 'SMFDownloaderUpdate' may not respond to '-startCheckMD5'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:596: warning: 'SMFDownloaderUpdate' may not respond to '-preProcess'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(DownloaderMethods) startCheckMD5]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:605: warning: 'SMFDownloaderUpdate' may not respond to '-checkmd5ForFile:withExpectedmd5:'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:610: warning: 'SMFDownloaderUpdate' may not respond to '-preProcess'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m: In function '-[SMFDownloaderUpdate(DownloaderMethods) preProcess]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m:656: warning: multiple methods named '-invoke' found/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSInvocation.h:87: warning: using '-(void)invoke'/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BRAsyncTask-TaskManagerHelpers.h:10: warning: also found '-(id)invoke'15(22@54"'SMFDownloaderUpdate' may not respond to '-preProcess'293568035#135#155#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#80#0#80#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)293568035#290#146#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#80#0#80#0#0"0(22@60"'SMFDownloaderUpdate' may not respond to '-setArrowForRect:'293568035#834#162#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#107#0#107#0#26"'*' may not respond to '*'0(23@13"At top level:293568035#996#102#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#0#0#0#0#0"0(22@56"Incomplete implementation of class 'SMFDownloaderUpdate'293568035#1098#158#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#248#0#248#0#38"incomplete implementation of class '*'0(22@52"Method definition for '-layoutSubcontrols' not found293568035#1256#154#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#248#0#248#0#35"method definition for '*' not found0(22@25"Unused variable 'pbframe'293568035#1569#127#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#315#0#315#0#19"unused variable '*'0(22@29"Unused variable 'masterFrame'293568035#1855#131#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#326#0#326#0#19"unused variable '*'0(22@57"'SMFDownloaderUpdate' may not respond to '-startCheckMD5'293568035#2150#159#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#594#0#594#0#26"'*' may not respond to '*'0(22@54"'SMFDownloaderUpdate' may not respond to '-preProcess'293568035#2309#156#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#596#0#596#0#26"'*' may not respond to '*'0(22@76"'SMFDownloaderUpdate' may not respond to '-checkmd5ForFile:withExpectedmd5:'293568035#2624#178#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#605#0#605#0#26"'*' may not respond to '*'0(22@54"'SMFDownloaderUpdate' may not respond to '-preProcess'293568035#2802#156#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#610#0#610#0#26"'*' may not respond to '*'0(22@38"Multiple methods named '-invoke' found293568035#3114#140#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m289341728#656#0#656#0#0"0(22@21"Using '-(void)invoke'293568035#3254#137#0(6@101"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSInvocation.h199160113#87#0#87#0#0"0(22@24"Also found '-(id)invoke'293568035#3391#169#0(6@130"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BRAsyncTask-TaskManagerHelpers.h278986238#10#0#10#0#0"0(0#0#86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m4300911832#1922"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFDownloaderUpdate.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFFolderBrowser.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.669079
+e293568033.897300
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFFolderBrowser.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@91"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m293568033#293568033#0(0"0(0#0#83"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m4300911832#1916"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFFolderBrowser.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFGlobalValues.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.637646
+e293568034.788325
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFGlobalValues.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@90"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m293568034#293568034#0(0"0(0#0#82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m4300911832#1914"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFGlobalValues.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFInvocationCenteredMenuController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.998685
+e293568035.135855
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFInvocationCenteredMenuController.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m: In function '-[SMFInvocationCenteredMenuController itemSelected:]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m:31: warning: multiple methods named '-invoke' found
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSInvocation.h:87: warning: using '-(void)invoke'
+o/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BRAsyncTask-TaskManagerHelpers.h:10: warning: also found '-(id)invoke'
+lSLF07#2@110"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m293568034#293568035#0(633"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m: In function '-[SMFInvocationCenteredMenuController itemSelected:]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m:31: warning: multiple methods named '-invoke' found/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSInvocation.h:87: warning: using '-(void)invoke'/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BRAsyncTask-TaskManagerHelpers.h:10: warning: also found '-(id)invoke'3(22@38"Multiple methods named '-invoke' found293568035#172#155#0(6@102"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m288988651#31#0#31#0#0"0(22@21"Using '-(void)invoke'293568035#327#137#0(6@101"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSInvocation.h199160113#87#0#87#0#0"0(22@24"Also found '-(id)invoke'293568035#464#169#0(6@130"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BRAsyncTask-TaskManagerHelpers.h278986238#10#0#10#0#0"0(0#0#102"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m4300911832#1954"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFInvocationCenteredMenuController.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaMenuController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568035.154702
+e293568035.329480
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaMenuController.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@97"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m293568035#293568035#0(0"0(0#0#89"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m4300911832#1928"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaMenuController.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaPreview.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.450706
+e293568033.669014
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaPreview.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m: In function '-[SMFMediaPreview getPluginMetaData]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: no '-onlineVersion' method found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: (Messages without a matching method signature
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: will be assumed to return 'id' and accept
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: '...' as arguments.)
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:372: warning: no '-installedVersion' method found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:381: warning: no '-developer' method found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m: At top level:
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: incomplete implementation of class 'SMFMediaPreview'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: method definition for '-setSimpleMetaDataWithTitle:andSummary:' not found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: method definition for '-setCustomMetaData:' not found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: method definition for '-setUtilityData:' not found
+lSLF07#2@90"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m293568033#293568033#0(1643"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m: In function '-[SMFMediaPreview getPluginMetaData]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: no '-onlineVersion' method found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: (Messages without a matching method signature/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: will be assumed to return 'id' and accept/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:363: warning: '...' as arguments.)/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:372: warning: no '-installedVersion' method found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:381: warning: no '-developer' method found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m: At top level:/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: incomplete implementation of class 'SMFMediaPreview'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: method definition for '-setSimpleMetaDataWithTitle:andSummary:' not found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: method definition for '-setCustomMetaData:' not found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m:391: warning: method definition for '-setUtilityData:' not found9(22@32"No '-onlineVersion' method found293568033#136#130#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#363#0#363#0#19"no '*' method found0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)293568033#266#143#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#363#0#363#0#0"0(22@35"No '-installedVersion' method found293568033#666#133#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#372#0#372#0#19"no '*' method found0(22@28"No '-developer' method found293568033#799#126#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#381#0#381#0#19"no '*' method found0(23@13"At top level:293568033#925#98#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#0#0#0#0#0"0(22@52"Incomplete implementation of class 'SMFMediaPreview'293568033#1023#150#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#391#0#391#0#38"incomplete implementation of class '*'0(22@73"Method definition for '-setSimpleMetaDataWithTitle:andSummary:' not found293568033#1173#171#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#391#0#391#0#35"method definition for '*' not found0(22@53"Method definition for '-setCustomMetaData:' not found293568033#1344#151#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#391#0#391#0#35"method definition for '*' not found0(22@50"Method definition for '-setUtilityData:' not found293568033#1495#148#0(6@82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m290537373#391#0#391#0#35"method definition for '*' not found0(0#0#82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m4300911832#1914"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFMediaPreview.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPasscodeController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.788426
+e293568034.998587
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPasscodeController.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@96"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m293568034#293568034#0(0"0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m4300911832#1926"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPasscodeController.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPhotoPreview.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.153883
+e293568034.336978
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPhotoPreview.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@90"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m293568034#293568034#0(0"0(0#0#82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m4300911832#1914"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPhotoPreview.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPluginAsset.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.648807
+e293568034.812990
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPluginAsset.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m:54: warning: incomplete implementation of class 'SMFPluginAsset'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m:54: warning: method definition for '-setOnlineVersion' not found
+lSLF07#2@96"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m293568034#293568034#0(308"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m:54: warning: incomplete implementation of class 'SMFPluginAsset'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m:54: warning: method definition for '-setOnlineVersion' not found2(22@51"Incomplete implementation of class 'SMFPluginAsset'293568034#0#154#0(6@88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m289408484#54#0#54#0#38"incomplete implementation of class '*'0(22@51"Method definition for '-setOnlineVersion' not found293568034#154#154#0(6@88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m289408484#54#0#54#0#35"method definition for '*' not found0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m4300911832#1919"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPluginAsset.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPreferences.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.462703
+e293568034.648711
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPreferences.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@89"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m293568034#293568034#0(0"0(0#0#81"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m4300911832#1912"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFPreferences.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarControl.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.991868
+e293568034.153792
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarControl.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@96"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m293568033#293568034#0(0"0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m4300911832#1926"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarControl.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarMenuItem.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568034.977726
+e293568035.154597
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarMenuItem.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@97"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m293568034#293568035#0(0"0(0#0#89"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m4300911832#1928"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFProgressBarMenuItem.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedFunctions.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568035.329578
+e293568035.464858
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedFunctions.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@93"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m293568035#293568035#0(0"0(0#0#85"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m4300911832#1920"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedFunctions.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedMethods.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.850531
+e293568033.991764
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedMethods.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@91"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m293568033#293568033#0(0"0(0#0#83"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m4300911832#1916"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSharedMethods.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSimpleDirectoryChooserController.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568035.442456
+e293568035.593682
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSimpleDirectoryChooserController.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@110"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m293568035#293568035#0(0"0(0#0#102"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m4300911832#1954"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFSimpleDirectoryChooserController.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTheme.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.449666
+e293568033.667812
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTheme.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m: In function '-[SMFThemeInfo centerJustifiedRedText]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m:203: warning: passing argument 1 of 'setObject:forKey:' from incompatible pointer type
+lSLF07#2@83"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m293568033#293568033#0(294"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m: In function '-[SMFThemeInfo centerJustifiedRedText]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m:203: warning: passing argument 1 of 'setObject:forKey:' from incompatible pointer type1(22@72"Passing argument 1 of 'setObject:forKey:' from incompatible pointer type293568033#131#163#0(6@75"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m290384888#203#0#203#0#56"passing argument * of '*' from incompatible pointer type0(0#0#75"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m4300911832#1900"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTheme.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTogglesMenu.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568033.668098
+e293568033.850426
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTogglesMenu.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@89"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m293568033#293568033#0(0"0(0#0#81"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m4300911832#1912"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SMFTogglesMenu.o0#
+
+CCopyStringsFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+s293568214.985781
+e293568215.462951
+r1
+xCopyStringsFile
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings293568214#293568215#0(0"0(0#0#96"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/English.lproj/InfoPlist.strings4300911832#439"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/English.lproj0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFBaseAsset.h SMFBaseAsset.h
+s293568214.302781
+e293568214.447887
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFBaseAsset.h
+xSMFBaseAsset.h
+lSLF07#2@19"Copy SMFBaseAsset.h293568214#293568214#0(0"0(0#0#79"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.h4300911832#428"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFBaseAsset.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCenteredMenuController.h SMFCenteredMenuController.h
+s293568214.448034
+e293568214.831975
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCenteredMenuController.h
+xSMFCenteredMenuController.h
+lSLF07#2@32"Copy SMFCenteredMenuController.h293568214#293568214#0(0"0(0#0#92"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.h4300911832#441"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCenteredMenuController.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCompat.h SMFCompat.h
+s293568214.367578
+e293568214.507746
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFCompat.h
+xSMFCompat.h
+lSLF07#2@16"Copy SMFCompat.h293568214#293568214#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.h4300911832#425"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFCompat.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFController.h SMFController.h
+s293568214.303223
+e293568214.459566
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFController.h
+xSMFController.h
+lSLF07#2@20"Copy SMFController.h293568214#293568214#0(0"0(0#0#80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.h4300911832#429"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFController.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFDownloaderUpdate.h SMFDownloaderUpdate.h
+s293568214.485041
+e293568214.772213
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFDownloaderUpdate.h
+xSMFDownloaderUpdate.h
+lSLF07#2@26"Copy SMFDownloaderUpdate.h293568214#293568214#0(0"0(0#0#86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.h4300911832#435"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFDownloaderUpdate.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFFolderBrowser.h SMFFolderBrowser.h
+s293568214.299989
+e293568214.484951
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFFolderBrowser.h
+xSMFFolderBrowser.h
+lSLF07#2@23"Copy SMFFolderBrowser.h293568214#293568214#0(0"0(0#0#83"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.h4300911832#432"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFFolderBrowser.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFGlobalValues.h SMFGlobalValues.h
+s293568214.399115
+e293568214.471962
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFGlobalValues.h
+xSMFGlobalValues.h
+lSLF07#2@22"Copy SMFGlobalValues.h293568214#293568214#0(0"0(0#0#82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.h4300911832#431"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFGlobalValues.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFInvocationCenteredMenuController.h SMFInvocationCenteredMenuController.h
+s293568214.472043
+e293568214.985675
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFInvocationCenteredMenuController.h
+xSMFInvocationCenteredMenuController.h
+lSLF07#2@42"Copy SMFInvocationCenteredMenuController.h293568214#293568214#0(0"0(0#0#102"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.h4300911832#451"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFInvocationCenteredMenuController.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaMenuController.h SMFMediaMenuController.h
+s293568214.485779
+e293568214.738972
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaMenuController.h
+xSMFMediaMenuController.h
+lSLF07#2@29"Copy SMFMediaMenuController.h293568214#293568214#0(0"0(0#0#89"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.h4300911832#438"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaMenuController.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaPreview.h SMFMediaPreview.h
+s293568214.298975
+e293568214.367452
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFMediaPreview.h
+xSMFMediaPreview.h
+lSLF07#2@22"Copy SMFMediaPreview.h293568214#293568214#0(0"0(0#0#82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.h4300911832#431"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFMediaPreview.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPasscodeController.h SMFPasscodeController.h
+s293568214.424633
+e293568214.817368
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPasscodeController.h
+xSMFPasscodeController.h
+lSLF07#2@28"Copy SMFPasscodeController.h293568214#293568214#0(0"0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.h4300911832#437"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPasscodeController.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPhotoPreview.h SMFPhotoPreview.h
+s293568214.301853
+e293568214.415812
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPhotoPreview.h
+xSMFPhotoPreview.h
+lSLF07#2@22"Copy SMFPhotoPreview.h293568214#293568214#0(0"0(0#0#82"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.h4300911832#431"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPhotoPreview.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPluginAsset.h Assets/SMFPluginAsset.h
+s293568214.415960
+e293568214.697859
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPluginAsset.h
+xAssets/SMFPluginAsset.h
+lSLF07#2@28"Copy Assets/SMFPluginAsset.h293568214#293568214#0(0"0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.h4300911832#437"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Assets/SMFPluginAsset.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPreferences.h SMFPreferences.h
+s293568214.342939
+e293568214.534409
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFPreferences.h
+xSMFPreferences.h
+lSLF07#2@21"Copy SMFPreferences.h293568214#293568214#0(0"0(0#0#81"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.h4300911832#430"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFPreferences.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarControl.h SMFProgressBarControl.h
+s293568214.301196
+e293568214.424554
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarControl.h
+xSMFProgressBarControl.h
+lSLF07#2@28"Copy SMFProgressBarControl.h293568214#293568214#0(0"0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.h4300911832#437"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarControl.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarMenuItem.h SMFProgressBarMenuItem.h
+s293568214.459662
+e293568214.744098
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFProgressBarMenuItem.h
+xSMFProgressBarMenuItem.h
+lSLF07#2@29"Copy SMFProgressBarMenuItem.h293568214#293568214#0(0"0(0#0#89"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.h4300911832#438"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFProgressBarMenuItem.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedFunctions.h SMFSharedFunctions.h
+s293568214.507849
+e293568214.753568
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedFunctions.h
+xSMFSharedFunctions.h
+lSLF07#2@25"Copy SMFSharedFunctions.h293568214#293568214#0(0"0(0#0#85"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.h4300911832#434"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedFunctions.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedMethods.h SMFSharedMethods.h
+s293568214.300678
+e293568214.399033
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSharedMethods.h
+xSMFSharedMethods.h
+lSLF07#2@23"Copy SMFSharedMethods.h293568214#293568214#0(0"0(0#0#83"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.h4300911832#432"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSharedMethods.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSimpleDirectoryChooserController.h SMFSimpleDirectoryChooserController.h
+s293568214.534546
+e293568214.790983
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFSimpleDirectoryChooserController.h
+xSMFSimpleDirectoryChooserController.h
+lSLF07#2@42"Copy SMFSimpleDirectoryChooserController.h293568214#293568214#0(0"0(0#0#102"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.h4300911832#451"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFSimpleDirectoryChooserController.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTheme.h SMFTheme.h
+s293568214.298511
+e293568214.685434
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTheme.h
+xSMFTheme.h
+lSLF07#2@15"Copy SMFTheme.h293568214#293568214#0(0"0(0#0#75"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.h4300911832#424"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTheme.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTogglesMenu.h SMFTogglesMenu.h
+s293568214.299444
+e293568214.485727
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SMFTogglesMenu.h
+xSMFTogglesMenu.h
+lSLF07#2@21"Copy SMFTogglesMenu.h293568214#293568214#0(0"0(0#0#81"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.h4300911832#430"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SMFTogglesMenu.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpHeader build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SoftwareMenuFramework.h SoftwareMenuFramework.h
+s293568214.297738
+e293568214.342840
+r1
+xCpHeader
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Headers/SoftwareMenuFramework.h
+xSoftwareMenuFramework.h
+lSLF07#2@28"Copy SoftwareMenuFramework.h293568214#293568214#0(0"0(0#0#88"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework.h4300911832#437"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework.h /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Headers0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/AFP.png AFP.png
+s293568214.986982
+e293568215.042507
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/AFP.png
+xAFP.png
+lSLF07#2@12"Copy AFP.png293568214#293568215#0(0"0(0#0#72"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AFP.png4300911832#423"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/AFP.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/FTP.png FTP.png
+s293568214.995533
+e293568215.078418
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/FTP.png
+xFTP.png
+lSLF07#2@12"Copy FTP.png293568214#293568215#0(0"0(0#0#72"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/FTP.png4300911832#423"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/FTP.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/VNC.png VNC.png
+s293568215.104220
+e293568215.221332
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/VNC.png
+xVNC.png
+lSLF07#2@12"Copy VNC.png293568215#293568215#0(0"0(0#0#72"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/VNC.png4300911832#423"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/VNC.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/applescript.png applescript.png
+s293568214.988592
+e293568215.042624
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/applescript.png
+xapplescript.png
+lSLF07#2@20"Copy applescript.png293568214#293568215#0(0"0(0#0#80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/applescript.png4300911832#431"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/applescript.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/folderIcon.png folderIcon.png
+s293568214.989211
+e293568215.201590
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/folderIcon.png
+xfolderIcon.png
+lSLF07#2@19"Copy folderIcon.png293568214#293568215#0(0"0(0#0#79"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/folderIcon.png4300911832#430"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/folderIcon.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/green.png green.png
+s293568214.997817
+e293568215.098949
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/green.png
+xgreen.png
+lSLF07#2@14"Copy green.png293568214#293568215#0(0"0(0#0#74"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/green.png4300911832#425"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/green.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/grey.png grey.png
+s293568214.998328
+e293568215.129227
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/grey.png
+xgrey.png
+lSLF07#2@13"Copy grey.png293568214#293568215#0(0"0(0#0#73"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/grey.png4300911832#424"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/grey.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/info.png info.png
+s293568214.998794
+e293568215.080504
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/info.png
+xinfo.png
+lSLF07#2@13"Copy info.png293568214#293568215#0(0"0(0#0#73"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/info.png4300911832#424"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/info.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/notfound.png notfound.png
+s293568215.129314
+e293568215.220906
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/notfound.png
+xnotfound.png
+lSLF07#2@17"Copy notfound.png293568215#293568215#0(0"0(0#0#77"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/notfound.png4300911832#428"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/notfound.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/package.png package.png
+s293568215.002834
+e293568215.104138
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/package.png
+xpackage.png
+lSLF07#2@16"Copy package.png293568215#293568215#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/package.png4300911832#427"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/package.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/red.png red.png
+s293568215.006837
+e293568215.109023
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/red.png
+xred.png
+lSLF07#2@12"Copy red.png293568215#293568215#0(0"0(0#0#72"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/red.png4300911832#423"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/red.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/script.png script.png
+s293568215.042695
+e293568215.080393
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/script.png
+xscript.png
+lSLF07#2@15"Copy script.png293568215#293568215#0(0"0(0#0#75"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/script.png4300911832#426"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/script.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/selsettings.png selsettings.png
+s293568215.043351
+e293568215.153129
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/selsettings.png
+xselsettings.png
+lSLF07#2@20"Copy selsettings.png293568215#293568215#0(0"0(0#0#80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/selsettings.png4300911832#431"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/selsettings.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/standby.png standby.png
+s293568215.078509
+e293568215.090656
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/standby.png
+xstandby.png
+lSLF07#2@16"Copy standby.png293568215#293568215#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/standby.png4300911832#427"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/standby.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/syspref.png syspref.png
+s293568215.080567
+e293568215.201301
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/syspref.png
+xsyspref.png
+lSLF07#2@16"Copy syspref.png293568215#293568215#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/syspref.png4300911832#427"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/syspref.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/tested.png tested.png
+s293568215.085357
+e293568215.155272
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/tested.png
+xtested.png
+lSLF07#2@15"Copy tested.png293568215#293568215#0(0"0(0#0#75"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/tested.png4300911832#426"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/tested.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trashempty.png trashempty.png
+s293568215.090736
+e293568215.155070
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trashempty.png
+xtrashempty.png
+lSLF07#2@19"Copy trashempty.png293568215#293568215#0(0"0(0#0#79"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/trashempty.png4300911832#430"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/trashempty.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trusted.png trusted.png
+s293568215.099036
+e293568215.155175
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/trusted.png
+xtrusted.png
+lSLF07#2@16"Copy trusted.png293568215#293568215#0(0"0(0#0#76"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/trusted.png4300911832#427"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/trusted.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CCpResource build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/web.png web.png
+s293568215.109110
+e293568215.155491
+r1
+xCpResource
+xbuild/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/web.png
+xweb.png
+lSLF07#2@12"Copy web.png293568215#293568215#0(0"0(0#0#72"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/web.png4300911832#423"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/web.png /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources0#
+
+CLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework normal i386
+s293568215.466371
+e293568217.073234
+r1
+xLd
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework
+xnormal
+xi386
+old: warning: directory '/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks' following -F not found
+old: warning: directory '/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks' following -F not found
+lSLF07#2@146"Link /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework293568215#293568217#0(345"ld: warning: directory '/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks' following -F not foundld: warning: directory '/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks' following -F not found2(22@157"Directory '/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks' following -F not found293568217#0#167#0(6@0"293568217#0#0#0#0#0"0(22@160"Directory '/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks' following -F not found293568217#167#170#0(6@0"293568217#0#0#0#0#0"0(0#0#0"4300911832#1433"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch i386 -dynamiclib -isysroot /Developer/SDKs/MacOSX10.4u.sdk -L/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -filelist /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/Objects-normal/i386/SoftwareMenuFramework.LinkFileList -install_name /Library/Frameworks/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework -mmacosx-version-min=10.4 -framework Cocoa -framework BackRow -framework AppleTV -framework iPhotoAccess -single_module -compatibility_version 1 -current_version 1 -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework0#
+
+CProcessInfoPlistFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/Info.plist Info.plist
+s293568214.267840
+e293568214.297675
+r1
+xProcessInfoPlistFile
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/Info.plist
+xInfo.plist
+lSLF07#2@18"Process Info.plist293568214#293568214#0(0"0(0#0#75"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Info.plist4300911832#294"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    builtin-infoPlistUtility Info.plist -expandbuildsettings -platform macosx -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/Resources/Info.plist0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch.gch SoftwareMenuFramework_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568024.982117
+e293568033.449450
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch.gch
+xSoftwareMenuFramework_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@43"Precompile SoftwareMenuFramework_Prefix.pch293568024#293568033#0(0"0(0#0#97"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework_Prefix.pch4300911832#1760"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework_Prefix.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-czffdqzdvkbkcsatsafzooiuccnk/SoftwareMenuFramework_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-fsdipalcvhhtephemoyaqfajoxta/SoftwareMenuFramework_Prefix.pch.gch SoftwareMenuFramework_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s293567781.230197
+e293567783.752531
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-fsdipalcvhhtephemoyaqfajoxta/SoftwareMenuFramework_Prefix.pch.gch
+xSoftwareMenuFramework_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@43"Precompile SoftwareMenuFramework_Prefix.pch293567781#293567783#0(0"0(0#0#97"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework_Prefix.pch4300911832#1624"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/SoftwareMenuFramework.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks" -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/SoftwareMenuFramework.build/DerivedSources -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework_Prefix.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SoftwareMenuFramework_Prefix-fsdipalcvhhtephemoyaqfajoxta/SoftwareMenuFramework_Prefix.pch.gch0#
+
+CStrip /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework
+s293568217.113195
+e293568217.143671
+r1
+xStrip
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework
+lSLF07#2@82"Strip build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework293568217#293568217#0(0"0(0#0#141"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework4300911832#246"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /Developer/usr/bin/strip -S /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/A/SoftwareMenuFramework0#
+
+CSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Headers Versions/Current/Headers
+s293568214.262322
+e293568214.266638
+r1
+xSymLink
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Headers
+xVersions/Current/Headers
+lSLF07#2@124"Process /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Headers293568214#293568214#0(0"0(0#0#0"4300911832#230"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /bin/ln -sf Versions/Current/Headers /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Headers0#
+
+CSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Resources Versions/Current/Resources
+s293568214.234204
+e293568214.262254
+r1
+xSymLink
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Resources
+xVersions/Current/Resources
+lSLF07#2@126"Process /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Resources293568214#293568214#0(0"0(0#0#0"4300911832#234"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /bin/ln -sf Versions/Current/Resources /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Resources0#
+
+CSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/SoftwareMenuFramework Versions/Current/SoftwareMenuFramework
+s293568214.264088
+e293568214.267780
+r1
+xSymLink
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/SoftwareMenuFramework
+xVersions/Current/SoftwareMenuFramework
+lSLF07#2@138"Process /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/SoftwareMenuFramework293568214#293568214#0(0"0(0#0#0"4300911832#258"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /bin/ln -sf Versions/Current/SoftwareMenuFramework /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/SoftwareMenuFramework0#
+
+CSymLink /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/Current A
+s293568214.199552
+e293568214.262134
+r1
+xSymLink
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/Current
+xA
+lSLF07#2@133"Process /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/Current293568214#293568214#0(0"0(0#0#0"4300911832#216"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /bin/ln -sf A /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework/Versions/Current0#
+
+CTouch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework
+s293568217.073413
+e293568217.112991
+r1
+xTouch
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework
+lSLF07#2@114"Touch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework293568217#293568217#0(0"0(0#0#0"4300911832#203"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    /usr/bin/touch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/SoftwareMenuFramework.framework0#
+

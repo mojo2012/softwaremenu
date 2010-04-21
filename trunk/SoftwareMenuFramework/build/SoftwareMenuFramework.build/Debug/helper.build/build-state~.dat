@@ -1,0 +1,173 @@
+Thelper
+v7
+r0
+t293567779.679079
+cCheck dependencies
+cProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Helper.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helperClass.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Extensions.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/helper normal i386
+
+N/Developer/SDKs/MacOSX10.4u.sdk
+c000000004BCC8D6B00000000000000EE
+t1271696747
+s238
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h
+c000000004628C8C90000000000001504
+t1177077961
+s5380
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c00000000462EB9B00000000000001382
+t1177467312
+s4994
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/stdio.h
+c00000000463BAA5A0000000000003B7F
+t1178315354
+s15231
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/stdlib.h
+c00000000463BAA5A0000000000002647
+t1178315354
+s9799
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/sys/mount.h
+c0000000046F2351400000000000039FD
+t1190278420
+s14845
+
+N/Developer/SDKs/MacOSX10.4u.sdk/usr/include/sys/param.h
+c0000000046F2351400000000000025D9
+t1190278420
+s9689
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.h
+c000000004B930B6D0000000000000221
+t1267927917
+s545
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m
+c000000004B930B6A00000000000004D7
+t1267927914
+s1239
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/helper
+t1271874979
+s29016
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Extensions.o
+t1271874978
+s9748
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Helper.o
+t1271874978
+s9588
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helper.LinkFileList
+c000000004BCF459F00000000000001C2
+t1271874975
+s450
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helperClass.o
+t1271874978
+s21208
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m
+c000000004B9BC74300000000000004EE
+t1268500291
+s1262
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.h
+c000000004B8ECB490000000000000189
+t1267649353
+s393
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m
+c000000004B9BC7B00000000000001538
+t1268500400
+s5432
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h.gch
+t1271874977
+s29746396
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies293567775#293567775#0(0"0(0#1#0"9007697477435492#0"0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Extensions.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293567778.293982
+e293567778.410433
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Extensions.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@85"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m293567778#293567778#0(0"0(0#0#77"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m4300911832#1812"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-generated-files.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-own-target-headers.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-all-target-headers.hmap -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-project-headers.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/Extensions.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Extensions.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Helper.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293567778.017560
+e293567778.293891
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Helper.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m: In function 'main':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: 'helperClass' may not respond to '-restartFinder'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: (Messages without a matching method signature
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: will be assumed to return 'id' and accept
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: '...' as arguments.)
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: assignment makes integer from pointer without a cast
+lSLF07#2@88"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m293567778#293567778#0(784"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m: In function 'main':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: 'helperClass' may not respond to '-restartFinder'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: (Messages without a matching method signature/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: will be assumed to return 'id' and accept/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: '...' as arguments.)/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m:43: warning: assignment makes integer from pointer without a cast3(22@49"'helperClass' may not respond to '-restartFinder'293567778#102#144#0(6@80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m290193091#43#0#43#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)293567778#246#140#0(6@80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m290193091#43#0#43#0#0"0(22@52"Assignment makes integer from pointer without a cast293567778#637#147#0(6@80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m290193091#43#0#43#0#0"0(0#0#80"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m5705889669690254336#1811"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-generated-files.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-own-target-headers.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-all-target-headers.hmap -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-project-headers.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/Helper.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/Helper.o0#
+
+CCompileC build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helperClass.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293567778.018955
+e293567778.318747
+r1
+xCompileC
+xbuild/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helperClass.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@93"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m293567778#293567778#0(0"0(0#0#85"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m4300911832#1821"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-generated-files.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-own-target-headers.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-all-target-headers.hmap -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-project-headers.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/helper/helperClass.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helperClass.o0#
+
+CLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/helper normal i386
+s293567778.410526
+e293567779.678957
+r1
+xLd
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/helper
+xnormal
+xi386
+lSLF07#2@88"Link /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/helper293567778#293567779#0(0"0(0#0#0"4300911832#676"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -L/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -filelist /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/Objects-normal/i386/helper.LinkFileList -mmacosx-version-min=10.4 -framework Foundation -framework AppKit -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/helper0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+s293567775.627114
+e293567778.017255
+r1
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h.gch
+x/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+lSLF07#2@102"Precompile /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h293567775#293567778#0(0"0(0#0#91"/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h5994127708226745344#1677"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-generated-files.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-own-target-headers.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-all-target-headers.hmap -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/helper-project-headers.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/build/SoftwareMenuFramework.build/Debug/helper.build/DerivedSources -c /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-csnkrvtpxxbuifaymiusywpkdmuv/AppKit.h.gch0#
+

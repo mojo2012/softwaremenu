@@ -1,0 +1,200 @@
+TSMM3
+v7
+r0
+t293568097.904149
+cCheck dependencies
+cProcessInfoPlistFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Info.plist SMM3-Info.plist
+cCopyStringsFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Resources/English.lproj/InfoPlist.strings SMM3.0/English.lproj/InfoPlist.strings
+cProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fqhoenuvokoskxgyswqbighomyhe/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+
+N/Developer/SDKs/MacOSX10.4u.sdk
+c000000004BCC8D6B00000000000000EE
+t1271696747
+s238
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c00000000462EB9B00000000000001382
+t1177467312
+s4994
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/BackRow
+c000000004AF347A200000000002D6B90
+t1257457570
+s2976656
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BackRow.h
+c000000004AF0C8EA000000000000B02C
+t1257294058
+s45100
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/Classes/Controllers/SMSubclasses.h
+c000000004B0BF875000000000000028A
+t1259075701
+s650
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/Classes/Controllers/SMSubclasses.m
+c000000004B69E5A9000000000000143D
+t1265231273
+s5181
+i"SMSubclasses.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/Classes/SharedClasses/SMPrefs.h
+c000000004BBE19F60000000000000AA4
+t1270749686
+s2724
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/Headers/../SMDefines.h
+c000000004BBE100900000000000011C7
+t1270747145
+s4551
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/Headers/AppleTV.h
+c000000004B00A5EF000000000001F80A
+t1258333679
+s129034
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch
+c000000004AFE0FC60000000000000179
+t1258164166
+s377
+i<Foundation/Foundation.h>
+i<Backrow/Backrow.h>
+i"AppleTV.h"
+i"SMM.h"
+i"SMPrefs.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/English.lproj/InfoPlist.strings
+c000000004B00ACD000000000000000E2
+t1258335440
+s226
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.h
+c000000004B05C5290000000000000958
+t1258669353
+s2392
+i<BackRow/BackRow.h>
+i"AppleTV.h"
+i"SMImageReturns.h"
+i"SMSubclasses.h"
+i"SMMPrefs.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.m
+c000000004BA145BF0000000000001A2A
+t1268860351
+s6698
+i"SMM.h"
+i"SMDefines.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMMPrefs.h
+c000000004AFDF41700000000000005BC
+t1258157079
+s1468
+i<Cocoa/Cocoa.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMMPrefs.m
+c000000004BA1448B00000000000018A2
+t1268860043
+s6306
+i"SMMPrefs.h"
+i"SMDefines.h"
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss
+t2
+s0
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Info.plist
+t1271875295
+s786
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/MacOS/SMM
+t2
+s0
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Resources/English.lproj/InfoPlist.strings
+t1271875295
+s452
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMM.LinkFileList
+c000000004BCF46DF0000000000000182
+t1271875295
+s386
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMM.o
+t2
+s0
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMMPrefs.o
+t2
+s0
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMSubclasses.o
+t2
+s0
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fqhoenuvokoskxgyswqbighomyhe/SMM.pch.gch
+t2
+s0
+
+NSMM3-Info.plist
+c000000004BA145C90000000000000312
+t1268860361
+s786
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies293568095#293568095#0(0"0(0#1#0"4300911832#0"0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMM.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.m normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CCompileC build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMMPrefs.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMMPrefs.m normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CCompileC build/SoftwareMenu.build/Debug/SMM3.build/Objects-normal/i386/SMSubclasses.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/Classes/Controllers/SMSubclasses.m normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CCopyStringsFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Resources/English.lproj/InfoPlist.strings SMM3.0/English.lproj/InfoPlist.strings
+s293568095.064209
+e293568095.357977
+r1
+xCopyStringsFile
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Resources/English.lproj/InfoPlist.strings
+xSMM3.0/English.lproj/InfoPlist.strings
+lSLF07#2@43"Copy SMM3.0/English.lproj/InfoPlist.strings293568095#293568095#0(0"0(0#0#94"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/English.lproj/InfoPlist.strings4300911832#403"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 SMM3.0/English.lproj/InfoPlist.strings --outdir /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Resources/English.lproj0#
+
+CLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/MacOS/SMM normal i386
+r0
+
+CProcessInfoPlistFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Info.plist SMM3-Info.plist
+s293568095.046892
+e293568095.064151
+r1
+xProcessInfoPlistFile
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Info.plist
+xSMM3-Info.plist
+lSLF07#2@23"Process SMM3-Info.plist293568095#293568095#0(0"0(0#0#71"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3-Info.plist4300911832#246"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    builtin-infoPlistUtility SMM3-Info.plist -expandbuildsettings -platform macosx -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss/Contents/Info.plist0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fqhoenuvokoskxgyswqbighomyhe/SMM.pch.gch SMM.pch normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568095.358116
+e293568097.903929
+r0
+xProcessPCH
+x/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fqhoenuvokoskxgyswqbighomyhe/SMM.pch.gch
+xSMM.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+oIn file included from /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch:17:
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.h:12:27: error: SMImageReturns.h: No such file or directory
+lSLF07#2@18"Precompile SMM.pch293568095#293568097#0(217"In file included from /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch:17:/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.h:12:27: error: SMImageReturns.h: No such file or directory1(4@43"SMImageReturns.h: No such file or directory293568096#90#127#2(7@85"In file included from /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch293568096#18446744073709551615#0#0(6@63"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch279856966#17#0#17#0#0"0(13@115"SMImageReturns.h: No such file or directory in /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.h293568096#18446744073709551615#0#0(6@68"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.h280362153#12#0#12#0#0"0(6@68"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM3.0/SMM.h280362153#12#0#12#0#28"*: No such file or directory0(0#0#63"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch4300911832#1640"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/SMM-generated-files.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/SMM-own-target-headers.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/SMM-all-target-headers.hmap -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/SMM-project-headers.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug "-F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/../../TV Frameworks/3.0 FrameWorks" -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMM3.build/DerivedSources -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMM.pch -o /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/SMM-fqhoenuvokoskxgyswqbighomyhe/SMM.pch.gch1#
+
+CTouch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMM.frss
+r0
+

@@ -1,0 +1,3357 @@
+/Users/tomcool/Desktop/Photo.frss/Contents/MacOS/Photo:
+
+md5: e8f7f6147d2818ef13633c5851e47465
+
+(__TEXT,__text) section
+	+0	00001b24  e800000000			  calll		  0x00001b29
+	+5	00001b29  58					  popl		  %eax
+	+6	00001b2a  ffb0d7440000			  pushl		  0x000044d7(%eax)
+   +12	00001b30  8b80db440000			  movl		  0x000044db(%eax),%eax
+   +18	00001b36  ffe0					  jmp		  *%eax
+   +20	00001b38  e800000000			  calll		  0x00001b3d
+   +25	00001b3d  58					  popl		  %eax
+   +26	00001b3e  8b80cb440000			  movl		  0x000044cb(%eax),%eax
+   +32	00001b44  ffe0					  jmp		  *%eax
+
+	+0	00001b46  55					  pushl		  %ebp
+	+1	00001b47  89e5					  movl		  %esp,%ebp
+	+3	00001b49  83ec08				  subl		  $0x08,%esp
+	+6	00001b4c  8b4508				  movl		  0x08(%ebp),%eax
+	+9	00001b4f  c70001000000			  movl		  $0x00000001,(%eax)
+   +15	00001b55  c9					  leave
+   +16	00001b56  c3					  ret
+
+	+0	00001b57  55					  pushl		  %ebp
+	+1	00001b58  89e5					  movl		  %esp,%ebp
+	+3	00001b5a  53					  pushl		  %ebx
+	+4	00001b5b  83ec24				  subl		  $0x24,%esp
+	+7	00001b5e  e8893d0000			  calll		  0x000058ec
+   +12	00001b63  8b4508				  movl		  0x08(%ebp),%eax
+   +15	00001b66  8945f4				  movl		  %eax,0xf4(%ebp)
+   +18	00001b69  8b45f4				  movl		  0xf4(%ebp),%eax
+   +21	00001b6c  8b5004				  movl		  0x04(%eax),%edx
+   +24	00001b6f  8b4508				  movl		  0x08(%ebp),%eax
+   +27	00001b72  89442408				  movl		  %eax,0x08(%esp)
+   +31	00001b76  8b4508				  movl		  0x08(%ebp),%eax
+   +34	00001b79  89442404				  movl		  %eax,0x04(%esp)
+   +38	00001b7d  8d83e3ffffff			  leal		  0xffffffe3(%ebx),%eax
+   +44	00001b83  890424				  movl		  %eax,(%esp)
+   +47	00001b86  ffd2					  call		  *%edx
+   +49	00001b88  85c0					  testl		  %eax,%eax
+   +51	00001b8a  7409					  je		  0x00001b95
+   +53	00001b8c  8b45f4				  movl		  0xf4(%ebp),%eax
+   +56	00001b8f  c700ffffffff			  movl		  $0xffffffff,(%eax)
+   +62	00001b95  83c424				  addl		  $0x24,%esp
+   +65	00001b98  5b					  popl		  %ebx
+   +66	00001b99  5d					  popl		  %ebp
+   +67	00001b9a  c3					  ret
+
+	+0	00001b9b  55					  pushl		  %ebp
+	+1	00001b9c  89e5					  movl		  %esp,%ebp
+	+3	00001b9e  53					  pushl		  %ebx
+	+4	00001b9f  83ec34				  subl		  $0x34,%esp
+	+7	00001ba2  e8453d0000			  calll		  0x000058ec
+   +12	00001ba7  c745f000000000		  movl		  $0x00000000,0xf0(%ebp)
+   +19	00001bae  8b4508				  movl		  0x08(%ebp),%eax
+   +22	00001bb1  8945f4				  movl		  %eax,0xf4(%ebp)
+   +25	00001bb4  8d45f0				  leal		  0xf0(%ebp),%eax
+   +28	00001bb7  89442408				  movl		  %eax,0x08(%esp)
+   +32	00001bbb  8d45f0				  leal		  0xf0(%ebp),%eax
+   +35	00001bbe  89442404				  movl		  %eax,0x04(%esp)
+   +39	00001bc2  8d83b0ffffff			  leal		  0xffffffb0(%ebx),%eax
+   +45	00001bc8  890424				  movl		  %eax,(%esp)
+   +48	00001bcb  8b4508				  movl		  0x08(%ebp),%eax
+   +51	00001bce  ffd0					  call		  *%eax
+   +53	00001bd0  85c0					  testl		  %eax,%eax
+   +55	00001bd2  7409					  je		  0x00001bdd
+   +57	00001bd4  c745e4ffffffff		  movl		  $0xffffffff,0xe4(%ebp)
+   +64	00001bdb  eb2a					  jmp		  0x00001c07
+   +66	00001bdd  8d45f0				  leal		  0xf0(%ebp),%eax
+   +69	00001be0  890424				  movl		  %eax,(%esp)
+   +72	00001be3  8b450c				  movl		  0x0c(%ebp),%eax
+   +75	00001be6  ffd0					  call		  *%eax
+   +77	00001be8  8b45f0				  movl		  0xf0(%ebp),%eax
+   +80	00001beb  85c0					  testl		  %eax,%eax
+   +82	00001bed  7512					  jne		  0x00001c01
+   +84	00001bef  8d45f0				  leal		  0xf0(%ebp),%eax
+   +87	00001bf2  890424				  movl		  %eax,(%esp)
+   +90	00001bf5  8b450c				  movl		  0x0c(%ebp),%eax
+   +93	00001bf8  ffd0					  call		  *%eax
+   +95	00001bfa  c745f000000000		  movl		  $0x00000000,0xf0(%ebp)
+  +102	00001c01  8b45f0				  movl		  0xf0(%ebp),%eax
+  +105	00001c04  8945e4				  movl		  %eax,0xe4(%ebp)
+  +108	00001c07  8b45e4				  movl		  0xe4(%ebp),%eax
+  +111	00001c0a  83c434				  addl		  $0x34,%esp
+  +114	00001c0d  5b					  popl		  %ebx
+  +115	00001c0e  5d					  popl		  %ebp
+  +116	00001c0f  c3					  ret
+
+	+0	00001c10  55					  pushl		  %ebp
+	+1	00001c11  89e5					  movl		  %esp,%ebp
+	+3	00001c13  53					  pushl		  %ebx
+	+4	00001c14  83ec34				  subl		  $0x34,%esp
+	+7	00001c17  e8d03c0000			  calll		  0x000058ec
+   +12	00001c1c  8d45e8				  leal		  0xe8(%ebp),%eax
+   +15	00001c1f  89442404				  movl		  %eax,0x04(%esp)
+   +19	00001c23  c704240e000000		  movl		  $0x0000000e,(%esp)
+   +26	00001c2a  e8ef530000			  calll		  0x0000701e				    __keymgr_get_and_lock_processwide_ptr_2
+   +31	00001c2f  85c0					  testl		  %eax,%eax
+   +33	00001c31  740c					  je		  0x00001c3f
+   +35	00001c33  c745e400000000		  movl		  $0x00000000,0xe4(%ebp)
+   +42	00001c3a  e935010000			  jmpl		  0x00001d74
+   +47	00001c3f  8b45e8				  movl		  0xe8(%ebp),%eax
+   +50	00001c42  8945ec				  movl		  %eax,0xec(%ebp)
+   +53	00001c45  837dec00				  cmpl		  $0x00,0xec(%ebp)
+   +57	00001c49  7529					  jne		  0x00001c74
+   +59	00001c4b  c744240401000000		  movl		  $0x00000001,0x04(%esp)
+   +67	00001c53  c7042414000000		  movl		  $0x00000014,(%esp)
+   +74	00001c5a  e8c4530000			  calll		  0x00007023				    _calloc
+   +79	00001c5f  8945ec				  movl		  %eax,0xec(%ebp)
+   +82	00001c62  837dec00				  cmpl		  $0x00,0xec(%ebp)
+   +86	00001c66  750c					  jne		  0x00001c74
+   +88	00001c68  c745e400000000		  movl		  $0x00000000,0xe4(%ebp)
+   +95	00001c6f  e900010000			  jmpl		  0x00001d74
+  +100	00001c74  8b45ec				  movl		  0xec(%ebp),%eax
+  +103	00001c77  0fb64003				  movzbl	  0x03(%eax),%eax
+  +107	00001c7b  84c0					  testb		  %al,%al
+  +109	00001c7d  0f85cf000000			  jnel		  0x00001d52
+  +115	00001c83  c744240410000000		  movl		  $0x00000010,0x04(%esp)
+  +123	00001c8b  8d83fc2f0000			  leal		  0x00002ffc(%ebx),%eax		    /usr/lib/libSystem.B.dylib
+  +129	00001c91  890424				  movl		  %eax,(%esp)
+  +132	00001c94  e867530000			  calll		  0x00007000				    _dlopen
+  +137	00001c99  8945f0				  movl		  %eax,0xf0(%ebp)
+  +140	00001c9c  837df000				  cmpl		  $0x00,0xf0(%ebp)
+  +144	00001ca0  0f84b4000000			  jel		  0x00001d5a
+  +150	00001ca6  8d8318300000			  leal		  0x00003018(%ebx),%eax		    __cxa_atexit
+  +156	00001cac  89442404				  movl		  %eax,0x04(%esp)
+  +160	00001cb0  8b45f0				  movl		  0xf0(%ebp),%eax
+  +163	00001cb3  890424				  movl		  %eax,(%esp)
+  +166	00001cb6  e85e530000			  calll		  0x00007019				    _dlsym
+  +171	00001cbb  89c2					  movl		  %eax,%edx
+  +173	00001cbd  8b45ec				  movl		  0xec(%ebp),%eax
+  +176	00001cc0  895008				  movl		  %edx,0x08(%eax)
+  +179	00001cc3  8d8328300000			  leal		  0x00003028(%ebx),%eax		    __cxa_finalize
+  +185	00001cc9  89442404				  movl		  %eax,0x04(%esp)
+  +189	00001ccd  8b45f0				  movl		  0xf0(%ebp),%eax
+  +192	00001cd0  890424				  movl		  %eax,(%esp)
+  +195	00001cd3  e841530000			  calll		  0x00007019				    _dlsym
+  +200	00001cd8  89c2					  movl		  %eax,%edx
+  +202	00001cda  8b45ec				  movl		  0xec(%ebp),%eax
+  +205	00001cdd  89500c				  movl		  %edx,0x0c(%eax)
+  +208	00001ce0  8b45ec				  movl		  0xec(%ebp),%eax
+  +211	00001ce3  8b4008				  movl		  0x08(%eax),%eax
+  +214	00001ce6  85c0					  testl		  %eax,%eax
+  +216	00001ce8  7470					  je		  0x00001d5a
+  +218	00001cea  8b45ec				  movl		  0xec(%ebp),%eax
+  +221	00001ced  8b400c				  movl		  0x0c(%eax),%eax
+  +224	00001cf0  85c0					  testl		  %eax,%eax
+  +226	00001cf2  7466					  je		  0x00001d5a
+  +228	00001cf4  8b45ec				  movl		  0xec(%ebp),%eax
+  +231	00001cf7  8b500c				  movl		  0x0c(%eax),%edx
+  +234	00001cfa  8b45ec				  movl		  0xec(%ebp),%eax
+  +237	00001cfd  8b4008				  movl		  0x08(%eax),%eax
+  +240	00001d00  89542404				  movl		  %edx,0x04(%esp)
+  +244	00001d04  890424				  movl		  %eax,(%esp)
+  +247	00001d07  e88ffeffff			  calll		  0x00001b9b
+  +252	00001d0c  8945f4				  movl		  %eax,0xf4(%ebp)
+  +255	00001d0f  837df4ff				  cmpl		  $0xff,0xf4(%ebp)
+  +259	00001d13  7445					  je		  0x00001d5a
+  +261	00001d15  837df400				  cmpl		  $0x00,0xf4(%ebp)
+  +265	00001d19  7509					  jne		  0x00001d24
+  +267	00001d1b  8b45ec				  movl		  0xec(%ebp),%eax
+  +270	00001d1e  c6400302				  movb		  $0x02,0x03(%eax)
+  +274	00001d22  eb2e					  jmp		  0x00001d52
+  +276	00001d24  8d8338300000			  leal		  0x00003038(%ebx),%eax		    atexit
+  +282	00001d2a  89442404				  movl		  %eax,0x04(%esp)
+  +286	00001d2e  8b45f0				  movl		  0xf0(%ebp),%eax
+  +289	00001d31  890424				  movl		  %eax,(%esp)
+  +292	00001d34  e8e0520000			  calll		  0x00007019				    _dlsym
+  +297	00001d39  89c2					  movl		  %eax,%edx
+  +299	00001d3b  8b45ec				  movl		  0xec(%ebp),%eax
+  +302	00001d3e  895010				  movl		  %edx,0x10(%eax)
+  +305	00001d41  8b45ec				  movl		  0xec(%ebp),%eax
+  +308	00001d44  8b4010				  movl		  0x10(%eax),%eax
+  +311	00001d47  85c0					  testl		  %eax,%eax
+  +313	00001d49  740f					  je		  0x00001d5a
+  +315	00001d4b  8b45ec				  movl		  0xec(%ebp),%eax
+  +318	00001d4e  c6400310				  movb		  $0x10,0x03(%eax)
+  +322	00001d52  8b45ec				  movl		  0xec(%ebp),%eax
+  +325	00001d55  8945e4				  movl		  %eax,0xe4(%ebp)
+  +328	00001d58  eb1a					  jmp		  0x00001d74
+  +330	00001d5a  8b45ec				  movl		  0xec(%ebp),%eax
+  +333	00001d5d  89442404				  movl		  %eax,0x04(%esp)
+  +337	00001d61  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +344	00001d68  e8a7520000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+  +349	00001d6d  c745e400000000		  movl		  $0x00000000,0xe4(%ebp)
+  +356	00001d74  8b45e4				  movl		  0xe4(%ebp),%eax
+  +359	00001d77  83c434				  addl		  $0x34,%esp
+  +362	00001d7a  5b					  popl		  %ebx
+  +363	00001d7b  5d					  popl		  %ebp
+  +364	00001d7c  c3					  ret
+
+	+0	00001d7d  55					  pushl		  %ebp
+	+1	00001d7e  89e5					  movl		  %esp,%ebp
+	+3	00001d80  83ec38				  subl		  $0x38,%esp
+	+6	00001d83  c7042410000000		  movl		  $0x00000010,(%esp)
+   +13	00001d8a  e880520000			  calll		  0x0000700f				    _malloc
+   +18	00001d8f  8945f0				  movl		  %eax,0xf0(%ebp)
+   +21	00001d92  837df000				  cmpl		  $0x00,0xf0(%ebp)
+   +25	00001d96  751c					  jne		  0x00001db4
+   +27	00001d98  8b4508				  movl		  0x08(%ebp),%eax
+   +30	00001d9b  89442404				  movl		  %eax,0x04(%esp)
+   +34	00001d9f  c704240e000000		  movl		  $0x0000000e,(%esp)
+   +41	00001da6  e869520000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+   +46	00001dab  c745e0ffffffff		  movl		  $0xffffffff,0xe0(%ebp)
+   +53	00001db2  eb5d					  jmp		  0x00001e11
+   +55	00001db4  8b4df0				  movl		  0xf0(%ebp),%ecx
+   +58	00001db7  8b550c				  movl		  0x0c(%ebp),%edx
+   +61	00001dba  8b02					  movl		  (%edx),%eax
+   +63	00001dbc  894104				  movl		  %eax,0x04(%ecx)
+   +66	00001dbf  8b4204				  movl		  0x04(%edx),%eax
+   +69	00001dc2  894108				  movl		  %eax,0x08(%ecx)
+   +72	00001dc5  8b4208				  movl		  0x08(%edx),%eax
+   +75	00001dc8  89410c				  movl		  %eax,0x0c(%ecx)
+   +78	00001dcb  8b4508				  movl		  0x08(%ebp),%eax
+   +81	00001dce  8b5004				  movl		  0x04(%eax),%edx
+   +84	00001dd1  8b45f0				  movl		  0xf0(%ebp),%eax
+   +87	00001dd4  8910					  movl		  %edx,(%eax)
+   +89	00001dd6  8b5508				  movl		  0x08(%ebp),%edx
+   +92	00001dd9  8b45f0				  movl		  0xf0(%ebp),%eax
+   +95	00001ddc  894204				  movl		  %eax,0x04(%edx)
+   +98	00001ddf  8b4508				  movl		  0x08(%ebp),%eax
+  +101	00001de2  89442404				  movl		  %eax,0x04(%esp)
+  +105	00001de6  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +112	00001ded  e822520000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+  +117	00001df2  8945f4				  movl		  %eax,0xf4(%ebp)
+  +120	00001df5  837df400				  cmpl		  $0x00,0xf4(%ebp)
+  +124	00001df9  7509					  jne		  0x00001e04
+  +126	00001dfb  c745e400000000		  movl		  $0x00000000,0xe4(%ebp)
+  +133	00001e02  eb07					  jmp		  0x00001e0b
+  +135	00001e04  c745e4ffffffff		  movl		  $0xffffffff,0xe4(%ebp)
+  +142	00001e0b  8b45e4				  movl		  0xe4(%ebp),%eax
+  +145	00001e0e  8945e0				  movl		  %eax,0xe0(%ebp)
+  +148	00001e11  8b45e0				  movl		  0xe0(%ebp),%eax
+  +151	00001e14  c9					  leave
+  +152	00001e15  c3					  ret
+
+	+0	00001e16  55					  pushl		  %ebp
+	+1	00001e17  89e5					  movl		  %esp,%ebp
+	+3	00001e19  83ec38				  subl		  $0x38,%esp
+	+6	00001e1c  8b4508				  movl		  0x08(%ebp),%eax
+	+9	00001e1f  8b4004				  movl		  0x04(%eax),%eax
+   +12	00001e22  8945f4				  movl		  %eax,0xf4(%ebp)
+   +15	00001e25  837df400				  cmpl		  $0x00,0xf4(%ebp)
+   +19	00001e29  0f849e000000			  jel		  0x00001ecd
+   +25	00001e2f  8b45f4				  movl		  0xf4(%ebp),%eax
+   +28	00001e32  3b450c				  cmpl		  0x0c(%ebp),%eax
+   +31	00001e35  0f8492000000			  jel		  0x00001ecd
+   +37	00001e3b  8b45f4				  movl		  0xf4(%ebp),%eax
+   +40	00001e3e  8b10					  movl		  (%eax),%edx
+   +42	00001e40  8b4508				  movl		  0x08(%ebp),%eax
+   +45	00001e43  895004				  movl		  %edx,0x04(%eax)
+   +48	00001e46  8b4508				  movl		  0x08(%ebp),%eax
+   +51	00001e49  89442404				  movl		  %eax,0x04(%esp)
+   +55	00001e4d  c704240e000000		  movl		  $0x0000000e,(%esp)
+   +62	00001e54  e8bb510000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+   +67	00001e59  8b45f4				  movl		  0xf4(%ebp),%eax
+   +70	00001e5c  8b4008				  movl		  0x08(%eax),%eax
+   +73	00001e5f  8945e4				  movl		  %eax,0xe4(%ebp)
+   +76	00001e62  837de405				  cmpl		  $0x05,0xe4(%ebp)
+   +80	00001e66  7741					  ja		  0x00001ea9
+   +82	00001e68  b801000000			  movl		  $0x00000001,%eax
+   +87	00001e6d  89c2					  movl		  %eax,%edx
+   +89	00001e6f  0fb64de4				  movzbl	  0xe4(%ebp),%ecx
+   +93	00001e73  d3e2					  shll		  %cl,%edx
+   +95	00001e75  8955e0				  movl		  %edx,0xe0(%ebp)
+   +98	00001e78  8b45e0				  movl		  0xe0(%ebp),%eax
+  +101	00001e7b  83e015				  andl		  $0x15,%eax
+  +104	00001e7e  85c0					  testl		  %eax,%eax
+  +106	00001e80  750c					  jne		  0x00001e8e
+  +108	00001e82  8b45e0				  movl		  0xe0(%ebp),%eax
+  +111	00001e85  83e02a				  andl		  $0x2a,%eax
+  +114	00001e88  85c0					  testl		  %eax,%eax
+  +116	00001e8a  750c					  jne		  0x00001e98
+  +118	00001e8c  eb1b					  jmp		  0x00001ea9
+  +120	00001e8e  8b45f4				  movl		  0xf4(%ebp),%eax
+  +123	00001e91  8b4004				  movl		  0x04(%eax),%eax
+  +126	00001e94  ffd0					  call		  *%eax
+  +128	00001e96  eb11					  jmp		  0x00001ea9
+  +130	00001e98  8b45f4				  movl		  0xf4(%ebp),%eax
+  +133	00001e9b  8b5004				  movl		  0x04(%eax),%edx
+  +136	00001e9e  8b45f4				  movl		  0xf4(%ebp),%eax
+  +139	00001ea1  8b400c				  movl		  0x0c(%eax),%eax
+  +142	00001ea4  890424				  movl		  %eax,(%esp)
+  +145	00001ea7  ffd2					  call		  *%edx
+  +147	00001ea9  8b45f4				  movl		  0xf4(%ebp),%eax
+  +150	00001eac  890424				  movl		  %eax,(%esp)
+  +153	00001eaf  e856510000			  calll		  0x0000700a				    _free
+  +158	00001eb4  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +165	00001ebb  e845510000			  calll		  0x00007005				    __keymgr_get_and_lock_processwide_ptr
+  +170	00001ec0  894508				  movl		  %eax,0x08(%ebp)
+  +173	00001ec3  837d0800				  cmpl		  $0x00,0x08(%ebp)
+  +177	00001ec7  0f854fffffff			  jnel		  0x00001e1c
+  +183	00001ecd  8b4508				  movl		  0x08(%ebp),%eax
+  +186	00001ed0  c9					  leave
+  +187	00001ed1  c3					  ret
+
+	+0	00001ed2  55					  pushl		  %ebp
+	+1	00001ed3  89e5					  movl		  %esp,%ebp
+	+3	00001ed5  83ec28				  subl		  $0x28,%esp
+	+6	00001ed8  8b4508				  movl		  0x08(%ebp),%eax
+	+9	00001edb  8945e8				  movl		  %eax,0xe8(%ebp)
+   +12	00001ede  c745f000000000		  movl		  $0x00000000,0xf0(%ebp)
+   +19	00001ee5  c645f700				  movb		  $0x00,0xf7(%ebp)
+   +23	00001ee9  c704240e000000		  movl		  $0x0000000e,(%esp)
+   +30	00001ef0  e810510000			  calll		  0x00007005				    __keymgr_get_and_lock_processwide_ptr
+   +35	00001ef5  8945ec				  movl		  %eax,0xec(%ebp)
+   +38	00001ef8  837dec00				  cmpl		  $0x00,0xec(%ebp)
+   +42	00001efc  742d					  je		  0x00001f2b
+   +44	00001efe  8b45ec				  movl		  0xec(%ebp),%eax
+   +47	00001f01  0fb64002				  movzbl	  0x02(%eax),%eax
+   +51	00001f05  8845f7				  movb		  %al,0xf7(%ebp)
+   +54	00001f08  8b45ec				  movl		  0xec(%ebp),%eax
+   +57	00001f0b  c6400201				  movb		  $0x01,0x02(%eax)
+   +61	00001f0f  8b45ec				  movl		  0xec(%ebp),%eax
+   +64	00001f12  8b4004				  movl		  0x04(%eax),%eax
+   +67	00001f15  8945f0				  movl		  %eax,0xf0(%ebp)
+   +70	00001f18  8b45ec				  movl		  0xec(%ebp),%eax
+   +73	00001f1b  89442404				  movl		  %eax,0x04(%esp)
+   +77	00001f1f  c704240e000000		  movl		  $0x0000000e,(%esp)
+   +84	00001f26  e8e9500000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+   +89	00001f2b  8b45e8				  movl		  0xe8(%ebp),%eax
+   +92	00001f2e  8b4004				  movl		  0x04(%eax),%eax
+   +95	00001f31  85c0					  testl		  %eax,%eax
+   +97	00001f33  7412					  je		  0x00001f47
+   +99	00001f35  8b45e8				  movl		  0xe8(%ebp),%eax
+  +102	00001f38  8b10					  movl		  (%eax),%edx
+  +104	00001f3a  8b45e8				  movl		  0xe8(%ebp),%eax
+  +107	00001f3d  8b4008				  movl		  0x08(%eax),%eax
+  +110	00001f40  890424				  movl		  %eax,(%esp)
+  +113	00001f43  ffd2					  call		  *%edx
+  +115	00001f45  eb07					  jmp		  0x00001f4e
+  +117	00001f47  8b45e8				  movl		  0xe8(%ebp),%eax
+  +120	00001f4a  8b00					  movl		  (%eax),%eax
+  +122	00001f4c  ffd0					  call		  *%eax
+  +124	00001f4e  837dec00				  cmpl		  $0x00,0xec(%ebp)
+  +128	00001f52  740f					  je		  0x00001f63
+  +130	00001f54  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +137	00001f5b  e8a5500000			  calll		  0x00007005				    __keymgr_get_and_lock_processwide_ptr
+  +142	00001f60  8945ec				  movl		  %eax,0xec(%ebp)
+  +145	00001f63  837dec00				  cmpl		  $0x00,0xec(%ebp)
+  +149	00001f67  7415					  je		  0x00001f7e
+  +151	00001f69  8b45f0				  movl		  0xf0(%ebp),%eax
+  +154	00001f6c  89442404				  movl		  %eax,0x04(%esp)
+  +158	00001f70  8b45ec				  movl		  0xec(%ebp),%eax
+  +161	00001f73  890424				  movl		  %eax,(%esp)
+  +164	00001f76  e89bfeffff			  calll		  0x00001e16
+  +169	00001f7b  8945ec				  movl		  %eax,0xec(%ebp)
+  +172	00001f7e  837dec00				  cmpl		  $0x00,0xec(%ebp)
+  +176	00001f82  741d					  je		  0x00001fa1
+  +178	00001f84  8b45ec				  movl		  0xec(%ebp),%eax
+  +181	00001f87  0fb655f7				  movzbl	  0xf7(%ebp),%edx
+  +185	00001f8b  885002				  movb		  %dl,0x02(%eax)
+  +188	00001f8e  8b45ec				  movl		  0xec(%ebp),%eax
+  +191	00001f91  89442404				  movl		  %eax,0x04(%esp)
+  +195	00001f95  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +202	00001f9c  e873500000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+  +207	00001fa1  c9					  leave
+  +208	00001fa2  c3					  ret
+
+	+0	00001fa3  55					  pushl		  %ebp
+	+1	00001fa4  89e5					  movl		  %esp,%ebp
+	+3	00001fa6  53					  pushl		  %ebx
+	+4	00001fa7  83ec44				  subl		  $0x44,%esp
+	+7	00001faa  e83d390000			  calll		  0x000058ec
+   +12	00001faf  e85cfcffff			  calll		  0x00001c10
+   +17	00001fb4  8945dc				  movl		  %eax,0xdc(%ebp)
+   +20	00001fb7  837ddc00				  cmpl		  $0x00,0xdc(%ebp)
+   +24	00001fbb  750c					  jne		  0x00001fc9
+   +26	00001fbd  c745d4ffffffff		  movl		  $0xffffffff,0xd4(%ebp)
+   +33	00001fc4  e967010000			  jmpl		  0x00002130
+   +38	00001fc9  8b45dc				  movl		  0xdc(%ebp),%eax
+   +41	00001fcc  0fb64002				  movzbl	  0x02(%eax),%eax
+   +45	00001fd0  84c0					  testb		  %al,%al
+   +47	00001fd2  750b					  jne		  0x00001fdf
+   +49	00001fd4  8b45dc				  movl		  0xdc(%ebp),%eax
+   +52	00001fd7  0fb64003				  movzbl	  0x03(%eax),%eax
+   +56	00001fdb  3c01					  cmpb		  $0x01,%al
+   +58	00001fdd  751a					  jne		  0x00001ff9
+   +60	00001fdf  8b4508				  movl		  0x08(%ebp),%eax
+   +63	00001fe2  89442404				  movl		  %eax,0x04(%esp)
+   +67	00001fe6  8b45dc				  movl		  0xdc(%ebp),%eax
+   +70	00001fe9  890424				  movl		  %eax,(%esp)
+   +73	00001fec  e88cfdffff			  calll		  0x00001d7d
+   +78	00001ff1  8945d4				  movl		  %eax,0xd4(%ebp)
+   +81	00001ff4  e937010000			  jmpl		  0x00002130
+   +86	00001ff9  8b45dc				  movl		  0xdc(%ebp),%eax
+   +89	00001ffc  0fb64003				  movzbl	  0x03(%eax),%eax
+   +93	00002000  3c0f					  cmpb		  $0x0f,%al
+   +95	00002002  0f86a7000000			  jbel		  0x000020af
+  +101	00002008  8b4508				  movl		  0x08(%ebp),%eax
+  +104	0000200b  8b4004				  movl		  0x04(%eax),%eax
+  +107	0000200e  85c0					  testl		  %eax,%eax
+  +109	00002010  7457					  je		  0x00002069
+  +111	00002012  8b45dc				  movl		  0xdc(%ebp),%eax
+  +114	00002015  8b4008				  movl		  0x08(%eax),%eax
+  +117	00002018  8945e4				  movl		  %eax,0xe4(%ebp)
+  +120	0000201b  8b45dc				  movl		  0xdc(%ebp),%eax
+  +123	0000201e  89442404				  movl		  %eax,0x04(%esp)
+  +127	00002022  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +134	00002029  e8e64f0000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+  +139	0000202e  8945e0				  movl		  %eax,0xe0(%ebp)
+  +142	00002031  837de000				  cmpl		  $0x00,0xe0(%ebp)
+  +146	00002035  740c					  je		  0x00002043
+  +148	00002037  c745d4ffffffff		  movl		  $0xffffffff,0xd4(%ebp)
+  +155	0000203e  e9ed000000			  jmpl		  0x00002130
+  +160	00002043  8b4508				  movl		  0x08(%ebp),%eax
+  +163	00002046  8b5008				  movl		  0x08(%eax),%edx
+  +166	00002049  8b4508				  movl		  0x08(%ebp),%eax
+  +169	0000204c  8b08					  movl		  (%eax),%ecx
+  +171	0000204e  8b450c				  movl		  0x0c(%ebp),%eax
+  +174	00002051  89442408				  movl		  %eax,0x08(%esp)
+  +178	00002055  89542404				  movl		  %edx,0x04(%esp)
+  +182	00002059  890c24				  movl		  %ecx,(%esp)
+  +185	0000205c  8b45e4				  movl		  0xe4(%ebp),%eax
+  +188	0000205f  ffd0					  call		  *%eax
+  +190	00002061  8945d4				  movl		  %eax,0xd4(%ebp)
+  +193	00002064  e9c7000000			  jmpl		  0x00002130
+  +198	00002069  8b45dc				  movl		  0xdc(%ebp),%eax
+  +201	0000206c  8b4010				  movl		  0x10(%eax),%eax
+  +204	0000206f  8945e8				  movl		  %eax,0xe8(%ebp)
+  +207	00002072  8b45dc				  movl		  0xdc(%ebp),%eax
+  +210	00002075  89442404				  movl		  %eax,0x04(%esp)
+  +214	00002079  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +221	00002080  e88f4f0000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+  +226	00002085  8945e0				  movl		  %eax,0xe0(%ebp)
+  +229	00002088  837de000				  cmpl		  $0x00,0xe0(%ebp)
+  +233	0000208c  740c					  je		  0x0000209a
+  +235	0000208e  c745d4ffffffff		  movl		  $0xffffffff,0xd4(%ebp)
+  +242	00002095  e996000000			  jmpl		  0x00002130
+  +247	0000209a  8b4508				  movl		  0x08(%ebp),%eax
+  +250	0000209d  8b00					  movl		  (%eax),%eax
+  +252	0000209f  890424				  movl		  %eax,(%esp)
+  +255	000020a2  8b45e8				  movl		  0xe8(%ebp),%eax
+  +258	000020a5  ffd0					  call		  *%eax
+  +260	000020a7  8945d4				  movl		  %eax,0xd4(%ebp)
+  +263	000020aa  e981000000			  jmpl		  0x00002130
+  +268	000020af  8b45dc				  movl		  0xdc(%ebp),%eax
+  +271	000020b2  8b4008				  movl		  0x08(%eax),%eax
+  +274	000020b5  8945ec				  movl		  %eax,0xec(%ebp)
+  +277	000020b8  8b45dc				  movl		  0xdc(%ebp),%eax
+  +280	000020bb  89442404				  movl		  %eax,0x04(%esp)
+  +284	000020bf  c704240e000000		  movl		  $0x0000000e,(%esp)
+  +291	000020c6  e8494f0000			  calll		  0x00007014				    __keymgr_set_and_unlock_processwide_ptr
+  +296	000020cb  8945f4				  movl		  %eax,0xf4(%ebp)
+  +299	000020ce  837df400				  cmpl		  $0x00,0xf4(%ebp)
+  +303	000020d2  7409					  je		  0x000020dd
+  +305	000020d4  c745d4ffffffff		  movl		  $0xffffffff,0xd4(%ebp)
+  +312	000020db  eb53					  jmp		  0x00002130
+  +314	000020dd  c704240c000000		  movl		  $0x0000000c,(%esp)
+  +321	000020e4  e8264f0000			  calll		  0x0000700f				    _malloc
+  +326	000020e9  8945f0				  movl		  %eax,0xf0(%ebp)
+  +329	000020ec  837df000				  cmpl		  $0x00,0xf0(%ebp)
+  +333	000020f0  7509					  jne		  0x000020fb
+  +335	000020f2  c745d4ffffffff		  movl		  $0xffffffff,0xd4(%ebp)
+  +342	000020f9  eb35					  jmp		  0x00002130
+  +344	000020fb  8b4df0				  movl		  0xf0(%ebp),%ecx
+  +347	000020fe  8b5508				  movl		  0x08(%ebp),%edx
+  +350	00002101  8b02					  movl		  (%edx),%eax
+  +352	00002103  8901					  movl		  %eax,(%ecx)
+  +354	00002105  8b4204				  movl		  0x04(%edx),%eax
+  +357	00002108  894104				  movl		  %eax,0x04(%ecx)
+  +360	0000210b  8b4208				  movl		  0x08(%edx),%eax
+  +363	0000210e  894108				  movl		  %eax,0x08(%ecx)
+  +366	00002111  8b450c				  movl		  0x0c(%ebp),%eax
+  +369	00002114  89442408				  movl		  %eax,0x08(%esp)
+  +373	00002118  8b45f0				  movl		  0xf0(%ebp),%eax
+  +376	0000211b  89442404				  movl		  %eax,0x04(%esp)
+  +380	0000211f  8d8323ffffff			  leal		  0xffffff23(%ebx),%eax
+  +386	00002125  890424				  movl		  %eax,(%esp)
+  +389	00002128  8b45ec				  movl		  0xec(%ebp),%eax
+  +392	0000212b  ffd0					  call		  *%eax
+  +394	0000212d  8945d4				  movl		  %eax,0xd4(%ebp)
+  +397	00002130  8b45d4				  movl		  0xd4(%ebp),%eax
+  +400	00002133  83c444				  addl		  $0x44,%esp
+  +403	00002136  5b					  popl		  %ebx
+  +404	00002137  5d					  popl		  %ebp
+  +405	00002138  c3					  ret
+
+	+0	00002139  55					  pushl		  %ebp
+	+1	0000213a  89e5					  movl		  %esp,%ebp
+	+3	0000213c  83ec28				  subl		  $0x28,%esp
+	+6	0000213f  8b4508				  movl		  0x08(%ebp),%eax
+	+9	00002142  8945ec				  movl		  %eax,0xec(%ebp)
+   +12	00002145  c745f001000000		  movl		  $0x00000001,0xf0(%ebp)
+   +19	0000214c  8b450c				  movl		  0x0c(%ebp),%eax
+   +22	0000214f  8945f4				  movl		  %eax,0xf4(%ebp)
+   +25	00002152  8b4510				  movl		  0x10(%ebp),%eax
+   +28	00002155  89442404				  movl		  %eax,0x04(%esp)
+   +32	00002159  8d45ec				  leal		  0xec(%ebp),%eax
+   +35	0000215c  890424				  movl		  %eax,(%esp)
+   +38	0000215f  e83ffeffff			  calll		  0x00001fa3
+   +43	00002164  c9					  leave
+   +44	00002165  c3					  ret
+
+	+0	00002166  55					  pushl		  %ebp
+	+1	00002167  89e5					  movl		  %esp,%ebp
+	+3	00002169  53					  pushl		  %ebx
+	+4	0000216a  83ec24				  subl		  $0x24,%esp
+	+7	0000216d  e87a370000			  calll		  0x000058ec
+   +12	00002172  8b4508				  movl		  0x08(%ebp),%eax
+   +15	00002175  8945ec				  movl		  %eax,0xec(%ebp)
+   +18	00002178  c745f000000000		  movl		  $0x00000000,0xf0(%ebp)
+   +25	0000217f  8d832e4f0000			  leal		  0x00004f2e(%ebx),%eax
+   +31	00002185  8b00					  movl		  (%eax),%eax
+   +33	00002187  89442404				  movl		  %eax,0x04(%esp)
+   +37	0000218b  8d45ec				  leal		  0xec(%ebp),%eax
+   +40	0000218e  890424				  movl		  %eax,(%esp)
+   +43	00002191  e80dfeffff			  calll		  0x00001fa3
+   +48	00002196  83c424				  addl		  $0x24,%esp
+   +51	00002199  5b					  popl		  %ebx
+   +52	0000219a  5d					  popl		  %ebp
+   +53	0000219b  c3					  ret
+
+-(id)[RUIPhotoScreenSaver init]
+	+0	0000219c  90					  nop
+	+1	0000219d  90					  nop
+	+2	0000219e  90					  nop
+	+3	0000219f  90					  nop
+	+4	000021a0  90					  nop
+	+5	000021a1  90					  nop
+
+	+0	000021a2  55					  pushl		  %ebp
+	+1	000021a3  89e5					  movl		  %esp,%ebp
+	+3	000021a5  56					  pushl		  %esi
+	+4	000021a6  53					  pushl		  %ebx
+	+5	000021a7  83ec20				  subl		  $0x20,%esp
+	+8	000021aa  e83d370000			  calll		  0x000058ec
+   +13	000021af  8b4508				  movl		  0x08(%ebp),%eax
+   +16	000021b2  8945f0				  movl		  %eax,0xf0(%ebp)
+   +19	000021b5  8b8395610000			  movl		  0x00006195(%ebx),%eax		    RUIPhloatoScreenSaver
+   +25	000021bb  8945f4				  movl		  %eax,0xf4(%ebp)
+   +28	000021be  8d55f0				  leal		  0xf0(%ebp),%edx
+   +31	000021c1  8b8305600000			  movl		  0x00006005(%ebx),%eax		    init
+   +37	000021c7  89442404				  movl		  %eax,0x04(%esp)
+   +41	000021cb  891424				  movl		  %edx,(%esp)
+   +44	000021ce  e8554e0000			  calll		  0x00007028				    -[[(%esp,1) super] init]
+   +49	000021d3  89c6					  movl		  %eax,%esi
+   +51	000021d5  85c0					  testl		  %eax,%eax
+   +53	000021d7  7440					  je		  0x00002219
+   +55	000021d9  8b8301600000			  movl		  0x00006001(%ebx),%eax		    sharedInstance
+   +61	000021df  89442404				  movl		  %eax,0x04(%esp)
+   +65	000021e3  8b834d610000			  movl		  0x0000614d(%ebx),%eax		    ATVSettingsFacade
+   +71	000021e9  890424				  movl		  %eax,(%esp)
+   +74	000021ec  e83c4e0000			  calll		  0x0000702d				    +[ATVSettingsFacade sharedInstance]
+   +79	000021f1  8b93fd5f0000			  movl		  0x00005ffd(%ebx),%edx		    providerForScreenSaver
+   +85	000021f7  89542404				  movl		  %edx,0x04(%esp)
+   +89	000021fb  890424				  movl		  %eax,(%esp)
+   +92	000021fe  e82a4e0000			  calll		  0x0000702d				    -[(%esp,1) providerForScreenSaver]
+   +97	00002203  89442408				  movl		  %eax,0x08(%esp)
+  +101	00002207  8b83f95f0000			  movl		  0x00005ff9(%ebx),%eax		    setProvider:
+  +107	0000220d  89442404				  movl		  %eax,0x04(%esp)
+  +111	00002211  893424				  movl		  %esi,(%esp)
+  +114	00002214  e8144e0000			  calll		  0x0000702d				    -[(%esp,1) setProvider:]
+  +119	00002219  89f0					  movl		  %esi,%eax
+  +121	0000221b  83c420				  addl		  $0x20,%esp
+  +124	0000221e  5b					  popl		  %ebx
+  +125	0000221f  5e					  popl		  %esi
+  +126	00002220  5d					  popl		  %ebp
+  +127	00002221  c3					  ret
+
+-(void)[RUIPhloatoArtLoader setMaxSize:]
+	+0	00002222  90					  nop
+	+1	00002223  90					  nop
+	+2	00002224  90					  nop
+	+3	00002225  90					  nop
+	+4	00002226  90					  nop
+	+5	00002227  90					  nop
+
+	+0	00002228  55					  pushl		  %ebp
+	+1	00002229  89e5					  movl		  %esp,%ebp
+	+3	0000222b  8b4510				  movl		  0x10(%ebp),%eax
+	+6	0000222e  8b5514				  movl		  0x14(%ebp),%edx
+	+9	00002231  8b4d08				  movl		  0x08(%ebp),%ecx
+   +12	00002234  894138				  movl		  %eax,0x38(%ecx)
+   +15	00002237  89513c				  movl		  %edx,0x3c(%ecx)
+   +18	0000223a  5d					  popl		  %ebp
+   +19	0000223b  c3					  ret
+
+-(id)[RUIPhloatoArtLoader finalFormForImage:]
+	+0	0000223c  90					  nop
+	+1	0000223d  90					  nop
+	+2	0000223e  90					  nop
+	+3	0000223f  90					  nop
+	+4	00002240  90					  nop
+	+5	00002241  90					  nop
+
+	+0	00002242  55					  pushl		  %ebp
+	+1	00002243  89e5					  movl		  %esp,%ebp
+	+3	00002245  57					  pushl		  %edi
+	+4	00002246  56					  pushl		  %esi
+	+5	00002247  53					  pushl		  %ebx
+	+6	00002248  81ec3c010000			  subl		  $0x0000013c,%esp
+   +12	0000224e  e899360000			  calll		  0x000058ec
+   +17	00002253  c78538ffffff00000000	  movl		  $0x00000000,0xffffff38(%ebp)
+   +27	0000225d  c7853cffffff00000000	  movl		  $0x00000000,0xffffff3c(%ebp)
+   +37	00002267  c78530ffffff00000000	  movl		  $0x00000000,0xffffff30(%ebp)
+   +47	00002271  c78534ffffff00000000	  movl		  $0x00000000,0xffffff34(%ebp)
+   +57	0000227b  8b7508				  movl		  0x08(%ebp),%esi
+   +60	0000227e  8b836d5f0000			  movl		  0x00005f6d(%ebx),%eax		    pixelBounds
+   +66	00002284  89442404				  movl		  %eax,0x04(%esp)
+   +70	00002288  8b4510				  movl		  0x10(%ebp),%eax
+   +73	0000228b  890424				  movl		  %eax,(%esp)
+   +76	0000228e  e89a4d0000			  calll		  0x0000702d				    -[(%esp,1) pixelBounds]
+   +81	00002293  899548ffffff			  movl		  %edx,0xffffff48(%ebp)
+   +87	00002299  898558ffffff			  movl		  %eax,0xffffff58(%ebp)
+   +93	0000229f  f30f108558ffffff		  movss		  0xffffff58(%ebp),%xmm0
+  +101	000022a7  0f2e4638				  ucomiss	  0x38(%esi),%xmm0
+  +105	000022ab  770e					  ja		  0x000022bb
+  +107	000022ad  f30f108d48ffffff		  movss		  0xffffff48(%ebp),%xmm1
+  +115	000022b5  0f2e4e3c				  ucomiss	  0x3c(%esi),%xmm1
+  +119	000022b9  766c					  jbe		  0x00002327
+  +121	000022bb  8b4638				  movl		  0x38(%esi),%eax
+  +124	000022be  8b563c				  movl		  0x3c(%esi),%edx
+  +127	000022c1  8d4d88				  leal		  0x88(%ebp),%ecx
+  +130	000022c4  89442408				  movl		  %eax,0x08(%esp)
+  +134	000022c8  8954240c				  movl		  %edx,0x0c(%esp)
+  +138	000022cc  f30f108558ffffff		  movss		  0xffffff58(%ebp),%xmm0
+  +146	000022d4  f30f5e8548ffffff		  divss		  0xffffff48(%ebp),%xmm0
+  +154	000022dc  f30f11442404			  movss		  %xmm0,0x04(%esp)
+  +160	000022e2  890c24				  movl		  %ecx,(%esp)
+  +163	000022e5  e85c4d0000			  calll		  0x00007046				    _ScaleFrameForAspectRatio
+  +168	000022ea  83ec04				  subl		  $0x04,%esp
+  +171	000022ed  8b4588				  movl		  0x88(%ebp),%eax
+  +174	000022f0  894598				  movl		  %eax,0x98(%ebp)
+  +177	000022f3  8b458c				  movl		  0x8c(%ebp),%eax
+  +180	000022f6  89459c				  movl		  %eax,0x9c(%ebp)
+  +183	000022f9  8b4590				  movl		  0x90(%ebp),%eax
+  +186	000022fc  8945a0				  movl		  %eax,0xa0(%ebp)
+  +189	000022ff  8b4594				  movl		  0x94(%ebp),%eax
+  +192	00002302  8945a4				  movl		  %eax,0xa4(%ebp)
+  +195	00002305  8b45a4				  movl		  0xa4(%ebp),%eax
+  +198	00002308  890424				  movl		  %eax,(%esp)
+  +201	0000230b  e8594d0000			  calll		  0x00007069				    _ceilf
+  +206	00002310  d99d48ffffff			  fstps		  0xffffff48(%ebp)
+  +212	00002316  8b45a0				  movl		  0xa0(%ebp),%eax
+  +215	00002319  890424				  movl		  %eax,(%esp)
+  +218	0000231c  e8484d0000			  calll		  0x00007069				    _ceilf
+  +223	00002321  d99d58ffffff			  fstps		  0xffffff58(%ebp)
+  +229	00002327  f30f108558ffffff		  movss		  0xffffff58(%ebp),%xmm0
+  +237	0000232f  f30f5e831d3b0000		  divss		  0x00003b1d(%ebx),%xmm0
+  +245	00002337  f30f110424			  movss		  %xmm0,(%esp)
+  +250	0000233c  e8284d0000			  calll		  0x00007069				    _ceilf
+  +255	00002341  d99d2cffffff			  fstps		  0xffffff2c(%ebp)
+  +261	00002347  f30f10852cffffff		  movss		  0xffffff2c(%ebp),%xmm0
+  +269	0000234f  f30f5983213b0000		  mulss		  0x00003b21(%ebx),%xmm0
+  +277	00002357  f30f110424			  movss		  %xmm0,(%esp)
+  +282	0000235c  e8084d0000			  calll		  0x00007069				    _ceilf
+  +287	00002361  d99d28ffffff			  fstps		  0xffffff28(%ebp)
+  +293	00002367  f30f108558ffffff		  movss		  0xffffff58(%ebp),%xmm0
+  +301	0000236f  0f28c8				  movaps	  %xmm0,%xmm1
+  +304	00002372  0f57c0				  xorps		  %xmm0,%xmm0
+  +307	00002375  f30f5fc8				  maxss		  %xmm0,%xmm1
+  +311	00002379  f30f10936d3b0000		  movss		  0x00003b6d(%ebx),%xmm2
+  +319	00002381  0f28da				  movaps	  %xmm2,%xmm3
+  +322	00002384  f30fc2d902			  cmpss		  $0x2,%xmm1,%xmm3
+  +327	00002389  8d837d3b0000			  leal		  0x00003b7d(%ebx),%eax
+  +333	0000238f  0f2800				  movaps	  (%eax),%xmm0
+  +336	00002392  f30fc2c102			  cmpss		  $0x2,%xmm1,%xmm0
+  +341	00002397  0f298518ffffff		  movaps	  %xmm0,0xffffff18(%ebp)
+  +348	0000239e  0f28c3				  movaps	  %xmm3,%xmm0
+  +351	000023a1  0f54c2				  andps		  %xmm2,%xmm0
+  +354	000023a4  660f72f31f			  pslld		  $0x1f,%xmm3
+  +359	000023a9  0f5cc8				  subps		  %xmm0,%xmm1
+  +362	000023ac  f30f5bc9				  cvttps2dq	  %xmm1,%xmm1
+  +366	000023b0  660ffecb				  paddd		  %xmm3,%xmm1
+  +370	000023b4  660feb8d18ffffff		  por		  0xffffff18(%ebp),%xmm1
+  +378	000023bc  660f7f8d08ffffff		  movdqa	  %xmm1,0xffffff08(%ebp)
+  +386	000023c4  8bb508ffffff			  movl		  0xffffff08(%ebp),%esi
+  +392	000023ca  0f2995d8feffff		  movaps	  %xmm2,0xfffffed8(%ebp)
+  +399	000023d1  e87a4c0000			  calll		  0x00007050				    _BRThemeRGBColorSpace
+  +404	000023d6  89c7					  movl		  %eax,%edi
+  +406	000023d8  c744241802200000		  movl		  $0x00002002,0x18(%esp)
+  +414	000023e0  89442414				  movl		  %eax,0x14(%esp)
+  +418	000023e4  c1e602				  shll		  $0x02,%esi
+  +421	000023e7  89742410				  movl		  %esi,0x10(%esp)
+  +425	000023eb  c744240c08000000		  movl		  $0x00000008,0x0c(%esp)
+  +433	000023f3  f30f108d48ffffff		  movss		  0xffffff48(%ebp),%xmm1
+  +441	000023fb  0f28c1				  movaps	  %xmm1,%xmm0
+  +444	000023fe  0f57c9				  xorps		  %xmm1,%xmm1
+  +447	00002401  f30f5fc1				  maxss		  %xmm1,%xmm0
+  +451	00002405  0f2895d8feffff		  movaps	  0xfffffed8(%ebp),%xmm2
+  +458	0000240c  0f28da				  movaps	  %xmm2,%xmm3
+  +461	0000240f  f30fc2d802			  cmpss		  $0x2,%xmm0,%xmm3
+  +466	00002414  8d837d3b0000			  leal		  0x00003b7d(%ebx),%eax
+  +472	0000241a  0f2808				  movaps	  (%eax),%xmm1
+  +475	0000241d  0f298df8feffff		  movaps	  %xmm1,0xfffffef8(%ebp)
+  +482	00002424  f30fc2c802			  cmpss		  $0x2,%xmm0,%xmm1
+  +487	00002429  0f54d3				  andps		  %xmm3,%xmm2
+  +490	0000242c  660f72f31f			  pslld		  $0x1f,%xmm3
+  +495	00002431  0f5cc2				  subps		  %xmm2,%xmm0
+  +498	00002434  f30f5bc0				  cvttps2dq	  %xmm0,%xmm0
+  +502	00002438  660ffec3				  paddd		  %xmm3,%xmm0
+  +506	0000243c  660febc1				  por		  %xmm1,%xmm0
+  +510	00002440  660f7f85e8feffff		  movdqa	  %xmm0,0xfffffee8(%ebp)
+  +518	00002448  8b85e8feffff			  movl		  0xfffffee8(%ebp),%eax
+  +524	0000244e  89442408				  movl		  %eax,0x08(%esp)
+  +528	00002452  8b9508ffffff			  movl		  0xffffff08(%ebp),%edx
+  +534	00002458  89542404				  movl		  %edx,0x04(%esp)
+  +538	0000245c  c7042400000000		  movl		  $0x00000000,(%esp)
+  +545	00002463  e8ed4b0000			  calll		  0x00007055				    _CGBitmapContextCreate
+  +550	00002468  898544ffffff			  movl		  %eax,0xffffff44(%ebp)
+  +556	0000246e  c744240403000000		  movl		  $0x00000003,0x04(%esp)
+  +564	00002476  890424				  movl		  %eax,(%esp)
+  +567	00002479  e8dc4b0000			  calll		  0x0000705a				    _CGContextSetInterpolationQuality
+  +572	0000247e  f30f108528ffffff		  movss		  0xffffff28(%ebp),%xmm0
+  +580	00002486  0f57838d3b0000		  xorps		  0x00003b8d(%ebx),%xmm0
+  +587	0000248d  f30f118534ffffff		  movss		  %xmm0,0xffffff34(%ebp)
+  +595	00002495  f30f108d28ffffff		  movss		  0xffffff28(%ebp),%xmm1
+  +603	0000249d  f30f118d30ffffff		  movss		  %xmm1,0xffffff30(%ebp)
+  +611	000024a5  f30f11856cffffff		  movss		  %xmm0,0xffffff6c(%ebp)
+  +619	000024ad  31f6					  xorl		  %esi,%esi
+  +621	000024af  8975b8				  movl		  %esi,0xb8(%ebp)
+  +624	000024b2  8975bc				  movl		  %esi,0xbc(%ebp)
+  +627	000024b5  8975c0				  movl		  %esi,0xc0(%ebp)
+  +630	000024b8  c745c46666663f		  movl		  $0x3f666666,0xc4(%ebp)	    '?fff'
+  +637	000024bf  8d45b8				  leal		  0xb8(%ebp),%eax
+  +640	000024c2  89442404				  movl		  %eax,0x04(%esp)
+  +644	000024c6  893c24				  movl		  %edi,(%esp)
+  +647	000024c9  e8964b0000			  calll		  0x00007064				    _CGColorCreate
+  +652	000024ce  89c7					  movl		  %eax,%edi
+  +654	000024d0  d98534ffffff			  flds		  0xffffff34(%ebp)
+  +660	000024d6  d99d3cffffff			  fstps		  0xffffff3c(%ebp)
+  +666	000024dc  f30f108528ffffff		  movss		  0xffffff28(%ebp),%xmm0
+  +674	000024e4  f30f118538ffffff		  movss		  %xmm0,0xffffff38(%ebp)
+  +682	000024ec  89442410				  movl		  %eax,0x10(%esp)
+  +686	000024f0  f30f108d2cffffff		  movss		  0xffffff2c(%ebp),%xmm1
+  +694	000024f8  f30f114c240c			  movss		  %xmm1,0x0c(%esp)
+  +700	000024fe  8b8538ffffff			  movl		  0xffffff38(%ebp),%eax
+  +706	00002504  8b953cffffff			  movl		  0xffffff3c(%ebp),%edx
+  +712	0000250a  89442404				  movl		  %eax,0x04(%esp)
+  +716	0000250e  89542408				  movl		  %edx,0x08(%esp)
+  +720	00002512  8b9544ffffff			  movl		  0xffffff44(%ebp),%edx
+  +726	00002518  891424				  movl		  %edx,(%esp)
+  +729	0000251b  e83f4b0000			  calll		  0x0000705f				    _CGContextSetShadowWithColor
+  +734	00002520  893c24				  movl		  %edi,(%esp)
+  +737	00002523  e80f4b0000			  calll		  0x00007037				    _CGColorRelease
+  +742	00002528  f30f10852cffffff		  movss		  0xffffff2c(%ebp),%xmm0
+  +750	00002530  f30f588548ffffff		  addss		  0xffffff48(%ebp),%xmm0
+  +758	00002538  f30f1145d4			  movss		  %xmm0,0xd4(%ebp)
+  +763	0000253d  f30f108d2cffffff		  movss		  0xffffff2c(%ebp),%xmm1
+  +771	00002545  f30f588d58ffffff		  addss		  0xffffff58(%ebp),%xmm1
+  +779	0000254d  f30f114dd0			  movss		  %xmm1,0xd0(%ebp)
+  +784	00002552  8975cc				  movl		  %esi,0xcc(%ebp)
+  +787	00002555  8975c8				  movl		  %esi,0xc8(%ebp)
+  +790	00002558  8d9578ffffff			  leal		  0xffffff78(%ebp),%edx
+  +796	0000255e  f30f10852cffffff		  movss		  0xffffff2c(%ebp),%xmm0
+  +804	00002566  f30f11442418			  movss		  %xmm0,0x18(%esp)
+  +810	0000256c  f30f11442414			  movss		  %xmm0,0x14(%esp)
+  +816	00002572  8b45c8				  movl		  0xc8(%ebp),%eax
+  +819	00002575  89442404				  movl		  %eax,0x04(%esp)
+  +823	00002579  8b45cc				  movl		  0xcc(%ebp),%eax
+  +826	0000257c  89442408				  movl		  %eax,0x08(%esp)
+  +830	00002580  8b45d0				  movl		  0xd0(%ebp),%eax
+  +833	00002583  8944240c				  movl		  %eax,0x0c(%esp)
+  +837	00002587  8b45d4				  movl		  0xd4(%ebp),%eax
+  +840	0000258a  89442410				  movl		  %eax,0x10(%esp)
+  +844	0000258e  891424				  movl		  %edx,(%esp)
+  +847	00002591  e8b54a0000			  calll		  0x0000704b				    _CGRectInset
+  +852	00002596  83ec04				  subl		  $0x04,%esp
+  +855	00002599  8b8578ffffff			  movl		  0xffffff78(%ebp),%eax
+  +861	0000259f  8945a8				  movl		  %eax,0xa8(%ebp)
+  +864	000025a2  8b857cffffff			  movl		  0xffffff7c(%ebp),%eax
+  +870	000025a8  8945ac				  movl		  %eax,0xac(%ebp)
+  +873	000025ab  8b4580				  movl		  0x80(%ebp),%eax
+  +876	000025ae  8945b0				  movl		  %eax,0xb0(%ebp)
+  +879	000025b1  8b4584				  movl		  0x84(%ebp),%eax
+  +882	000025b4  8945b4				  movl		  %eax,0xb4(%ebp)
+  +885	000025b7  f30f104dac			  movss		  0xac(%ebp),%xmm1
+  +890	000025bc  f30f118d74ffffff		  movss		  %xmm1,0xffffff74(%ebp)
+  +898	000025c4  f30f1045a8			  movss		  0xa8(%ebp),%xmm0
+  +903	000025c9  f30f118570ffffff		  movss		  %xmm0,0xffffff70(%ebp)
+  +911	000025d1  8b83695f0000			  movl		  0x00005f69(%ebx),%eax		    image
+  +917	000025d7  89442404				  movl		  %eax,0x04(%esp)
+  +921	000025db  8b4510				  movl		  0x10(%ebp),%eax
+  +924	000025de  890424				  movl		  %eax,(%esp)
+  +927	000025e1  e8474a0000			  calll		  0x0000702d				    -[(%esp,1) image]
+  +932	000025e6  f30f10856cffffff		  movss		  0xffffff6c(%ebp),%xmm0
+  +940	000025ee  f30f588574ffffff		  addss		  0xffffff74(%ebp),%xmm0
+  +948	000025f6  f30f1145ac			  movss		  %xmm0,0xac(%ebp)
+  +953	000025fb  f30f108d28ffffff		  movss		  0xffffff28(%ebp),%xmm1
+  +961	00002603  f30f588d70ffffff		  addss		  0xffffff70(%ebp),%xmm1
+  +969	0000260b  f30f114da8			  movss		  %xmm1,0xa8(%ebp)
+  +974	00002610  8b7da8				  movl		  0xa8(%ebp),%edi
+  +977	00002613  897dd8				  movl		  %edi,0xd8(%ebp)
+  +980	00002616  8b75ac				  movl		  0xac(%ebp),%esi
+  +983	00002619  8975dc				  movl		  %esi,0xdc(%ebp)
+  +986	0000261c  8b4db0				  movl		  0xb0(%ebp),%ecx
+  +989	0000261f  894de0				  movl		  %ecx,0xe0(%ebp)
+  +992	00002622  8b55b4				  movl		  0xb4(%ebp),%edx
+  +995	00002625  8955e4				  movl		  %edx,0xe4(%ebp)
+  +998	00002628  89442414				  movl		  %eax,0x14(%esp)
+ +1002	0000262c  897c2404				  movl		  %edi,0x04(%esp)
+ +1006	00002630  89742408				  movl		  %esi,0x08(%esp)
+ +1010	00002634  894c240c				  movl		  %ecx,0x0c(%esp)
+ +1014	00002638  89542410				  movl		  %edx,0x10(%esp)
+ +1018	0000263c  8b8544ffffff			  movl		  0xffffff44(%ebp),%eax
+ +1024	00002642  890424				  movl		  %eax,(%esp)
+ +1027	00002645  e8f7490000			  calll		  0x00007041				    _CGContextDrawImage
+ +1032	0000264a  8b9544ffffff			  movl		  0xffffff44(%ebp),%edx
+ +1038	00002650  891424				  movl		  %edx,(%esp)
+ +1041	00002653  e8da490000			  calll		  0x00007032				    _CGBitmapContextCreateImage
+ +1046	00002658  89c6					  movl		  %eax,%esi
+ +1048	0000265a  8b83655f0000			  movl		  0x00005f65(%ebx),%eax		    autorelease
+ +1054	00002660  89442404				  movl		  %eax,0x04(%esp)
+ +1058	00002664  893424				  movl		  %esi,(%esp)
+ +1061	00002667  e8c1490000			  calll		  0x0000702d				    -[(%esp,1) autorelease]
+ +1066	0000266c  8b8544ffffff			  movl		  0xffffff44(%ebp),%eax
+ +1072	00002672  890424				  movl		  %eax,(%esp)
+ +1075	00002675  e8c2490000			  calll		  0x0000703c				    _CGContextRelease
+ +1080	0000267a  89f0					  movl		  %esi,%eax
+ +1082	0000267c  8d65f4				  leal		  0xf4(%ebp),%esp
+ +1085	0000267f  5b					  popl		  %ebx
+ +1086	00002680  5e					  popl		  %esi
+ +1087	00002681  5f					  popl		  %edi
+ +1088	00002682  5d					  popl		  %ebp
+ +1089	00002683  c3					  ret
+
+-(void)[RUIPhloatoControl dealloc]
+	+0	00002684  90					  nop
+	+1	00002685  90					  nop
+	+2	00002686  90					  nop
+	+3	00002687  90					  nop
+	+4	00002688  90					  nop
+	+5	00002689  90					  nop
+
+	+0	0000268a  55					  pushl		  %ebp
+	+1	0000268b  89e5					  movl		  %esp,%ebp
+	+3	0000268d  56					  pushl		  %esi
+	+4	0000268e  53					  pushl		  %ebx
+	+5	0000268f  83ec20				  subl		  $0x20,%esp
+	+8	00002692  e855320000			  calll		  0x000058ec
+   +13	00002697  8b7508				  movl		  0x08(%ebp),%esi
+   +16	0000269a  8b83b55b0000			  movl		  0x00005bb5(%ebx),%eax		    defaultCenter
+   +22	000026a0  89442404				  movl		  %eax,0x04(%esp)
+   +26	000026a4  8b83815c0000			  movl		  0x00005c81(%ebx),%eax		    NSNotificationCenter
+   +32	000026aa  890424				  movl		  %eax,(%esp)
+   +35	000026ad  e87b490000			  calll		  0x0000702d				    +[NSNotificationCenter defaultCenter]
+   +40	000026b2  89742408				  movl		  %esi,0x08(%esp)
+   +44	000026b6  8b93b15b0000			  movl		  0x00005bb1(%ebx),%edx		    removeObserver:
+   +50	000026bc  89542404				  movl		  %edx,0x04(%esp)
+   +54	000026c0  890424				  movl		  %eax,(%esp)
+   +57	000026c3  e865490000			  calll		  0x0000702d				    -[(%esp,1) removeObserver:]
+   +62	000026c8  8b561c				  movl		  0x1c(%esi),%edx
+   +65	000026cb  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+   +73	000026d3  8b83ad5b0000			  movl		  0x00005bad(%ebx),%eax		    setPullsImages:
+   +79	000026d9  89442404				  movl		  %eax,0x04(%esp)
+   +83	000026dd  891424				  movl		  %edx,(%esp)
+   +86	000026e0  e848490000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+   +91	000026e5  8b561c				  movl		  0x1c(%esi),%edx
+   +94	000026e8  8b83a95b0000			  movl		  0x00005ba9(%ebx),%eax		    release
+  +100	000026ee  89442404				  movl		  %eax,0x04(%esp)
+  +104	000026f2  891424				  movl		  %edx,(%esp)
+  +107	000026f5  e833490000			  calll		  0x0000702d				    -[(%esp,1) release]
+  +112	000026fa  8b5620				  movl		  0x20(%esi),%edx
+  +115	000026fd  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+  +123	00002705  8b83ad5b0000			  movl		  0x00005bad(%ebx),%eax		    setPullsImages:
+  +129	0000270b  89442404				  movl		  %eax,0x04(%esp)
+  +133	0000270f  891424				  movl		  %edx,(%esp)
+  +136	00002712  e816490000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +141	00002717  8b5620				  movl		  0x20(%esi),%edx
+  +144	0000271a  8b83a95b0000			  movl		  0x00005ba9(%ebx),%eax		    release
+  +150	00002720  89442404				  movl		  %eax,0x04(%esp)
+  +154	00002724  891424				  movl		  %edx,(%esp)
+  +157	00002727  e801490000			  calll		  0x0000702d				    -[(%esp,1) release]
+  +162	0000272c  8b5624				  movl		  0x24(%esi),%edx
+  +165	0000272f  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+  +173	00002737  8b83ad5b0000			  movl		  0x00005bad(%ebx),%eax		    setPullsImages:
+  +179	0000273d  89442404				  movl		  %eax,0x04(%esp)
+  +183	00002741  891424				  movl		  %edx,(%esp)
+  +186	00002744  e8e4480000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +191	00002749  8b5624				  movl		  0x24(%esi),%edx
+  +194	0000274c  8b83a95b0000			  movl		  0x00005ba9(%ebx),%eax		    release
+  +200	00002752  89442404				  movl		  %eax,0x04(%esp)
+  +204	00002756  891424				  movl		  %edx,(%esp)
+  +207	00002759  e8cf480000			  calll		  0x0000702d				    -[(%esp,1) release]
+  +212	0000275e  8975f0				  movl		  %esi,0xf0(%ebp)
+  +215	00002761  8b832d5d0000			  movl		  0x00005d2d(%ebx),%eax		    BRControl
+  +221	00002767  8945f4				  movl		  %eax,0xf4(%ebp)
+  +224	0000276a  8d55f0				  leal		  0xf0(%ebp),%edx
+  +227	0000276d  8b83a55b0000			  movl		  0x00005ba5(%ebx),%eax		    dealloc
+  +233	00002773  89442404				  movl		  %eax,0x04(%esp)
+  +237	00002777  891424				  movl		  %edx,(%esp)
+  +240	0000277a  e8a9480000			  calll		  0x00007028				    -[[(%esp,1) super] dealloc]
+  +245	0000277f  83c420				  addl		  $0x20,%esp
+  +248	00002782  5b					  popl		  %ebx
+  +249	00002783  5e					  popl		  %esi
+  +250	00002784  5d					  popl		  %ebp
+  +251	00002785  c3					  ret
+
+-(void)[RUIPhloatoControl setProvider:]
+	+0	00002786  90					  nop
+	+1	00002787  90					  nop
+	+2	00002788  90					  nop
+	+3	00002789  90					  nop
+	+4	0000278a  90					  nop
+	+5	0000278b  90					  nop
+
+	+0	0000278c  55					  pushl		  %ebp
+	+1	0000278d  89e5					  movl		  %esp,%ebp
+	+3	0000278f  57					  pushl		  %edi
+	+4	00002790  56					  pushl		  %esi
+	+5	00002791  53					  pushl		  %ebx
+	+6	00002792  83ec2c				  subl		  $0x2c,%esp
+	+9	00002795  e852310000			  calll		  0x000058ec
+   +14	0000279a  8b4508				  movl		  0x08(%ebp),%eax
+   +17	0000279d  8945e4				  movl		  %eax,0xe4(%ebp)
+   +20	000027a0  8b4510				  movl		  0x10(%ebp),%eax
+   +23	000027a3  8945e0				  movl		  %eax,0xe0(%ebp)
+   +26	000027a6  8b839e5a0000			  movl		  0x00005a9e(%ebx),%eax		    dataCount
+   +32	000027ac  89442404				  movl		  %eax,0x04(%esp)
+   +36	000027b0  8b45e0				  movl		  0xe0(%ebp),%eax
+   +39	000027b3  890424				  movl		  %eax,(%esp)
+   +42	000027b6  e872480000			  calll		  0x0000702d				    -[(%esp,1) dataCount]
+   +47	000027bb  89c2					  movl		  %eax,%edx
+   +49	000027bd  c1ea1f				  shrl		  $0x1f,%edx
+   +52	000027c0  01c2					  addl		  %eax,%edx
+   +54	000027c2  d1fa					  sarl		  %edx
+   +56	000027c4  bf01000000			  movl		  $0x00000001,%edi
+   +61	000027c9  85d2					  testl		  %edx,%edx
+   +63	000027cb  0f4ffa				  cmovgl	  %edx,%edi
+   +66	000027ce  8b45e4				  movl		  0xe4(%ebp),%eax
+   +69	000027d1  8b501c				  movl		  0x1c(%eax),%edx
+   +72	000027d4  8b839a5a0000			  movl		  0x00005a9a(%ebx),%eax		    provider
+   +78	000027da  89442404				  movl		  %eax,0x04(%esp)
+   +82	000027de  891424				  movl		  %edx,(%esp)
+   +85	000027e1  e847480000			  calll		  0x0000702d				    -[(%esp,1) provider]
+   +90	000027e6  89c6					  movl		  %eax,%esi
+   +92	000027e8  8b83965a0000			  movl		  0x00005a96(%ebx),%eax		    flushQueue
+   +98	000027ee  89442404				  movl		  %eax,0x04(%esp)
+  +102	000027f2  893424				  movl		  %esi,(%esp)
+  +105	000027f5  e833480000			  calll		  0x0000702d				    -[(%esp,1) flushQueue]
+  +110	000027fa  b803000000			  movl		  $0x00000003,%eax
+  +115	000027ff  83ff04				  cmpl		  $0x04,%edi
+  +118	00002802  0f4cc7				  cmovll	  %edi,%eax
+  +121	00002805  89442408				  movl		  %eax,0x08(%esp)
+  +125	00002809  8b83925a0000			  movl		  0x00005a92(%ebx),%eax		    setSegmentCount:
+  +131	0000280f  89442404				  movl		  %eax,0x04(%esp)
+  +135	00002813  893424				  movl		  %esi,(%esp)
+  +138	00002816  e812480000			  calll		  0x0000702d				    -[(%esp,1) setSegmentCount:]
+  +143	0000281b  8b45e0				  movl		  0xe0(%ebp),%eax
+  +146	0000281e  89442408				  movl		  %eax,0x08(%esp)
+  +150	00002822  8b830e5a0000			  movl		  0x00005a0e(%ebx),%eax		    setProvider:
+  +156	00002828  89442404				  movl		  %eax,0x04(%esp)
+  +160	0000282c  893424				  movl		  %esi,(%esp)
+  +163	0000282f  e8f9470000			  calll		  0x0000702d				    -[(%esp,1) setProvider:]
+  +168	00002834  8b45e4				  movl		  0xe4(%ebp),%eax
+  +171	00002837  8b5020				  movl		  0x20(%eax),%edx
+  +174	0000283a  8b839a5a0000			  movl		  0x00005a9a(%ebx),%eax		    provider
+  +180	00002840  89442404				  movl		  %eax,0x04(%esp)
+  +184	00002844  891424				  movl		  %edx,(%esp)
+  +187	00002847  e8e1470000			  calll		  0x0000702d				    -[(%esp,1) provider]
+  +192	0000284c  89c6					  movl		  %eax,%esi
+  +194	0000284e  8b83965a0000			  movl		  0x00005a96(%ebx),%eax		    flushQueue
+  +200	00002854  89442404				  movl		  %eax,0x04(%esp)
+  +204	00002858  893424				  movl		  %esi,(%esp)
+  +207	0000285b  e8cd470000			  calll		  0x0000702d				    -[(%esp,1) flushQueue]
+  +212	00002860  b806000000			  movl		  $0x00000006,%eax
+  +217	00002865  83ff07				  cmpl		  $0x07,%edi
+  +220	00002868  0f4cc7				  cmovll	  %edi,%eax
+  +223	0000286b  89442408				  movl		  %eax,0x08(%esp)
+  +227	0000286f  8b83925a0000			  movl		  0x00005a92(%ebx),%eax		    setSegmentCount:
+  +233	00002875  89442404				  movl		  %eax,0x04(%esp)
+  +237	00002879  893424				  movl		  %esi,(%esp)
+  +240	0000287c  e8ac470000			  calll		  0x0000702d				    -[(%esp,1) setSegmentCount:]
+  +245	00002881  8b45e0				  movl		  0xe0(%ebp),%eax
+  +248	00002884  89442408				  movl		  %eax,0x08(%esp)
+  +252	00002888  8b830e5a0000			  movl		  0x00005a0e(%ebx),%eax		    setProvider:
+  +258	0000288e  89442404				  movl		  %eax,0x04(%esp)
+  +262	00002892  893424				  movl		  %esi,(%esp)
+  +265	00002895  e893470000			  calll		  0x0000702d				    -[(%esp,1) setProvider:]
+  +270	0000289a  8b45e4				  movl		  0xe4(%ebp),%eax
+  +273	0000289d  8b5024				  movl		  0x24(%eax),%edx
+  +276	000028a0  8b839a5a0000			  movl		  0x00005a9a(%ebx),%eax		    provider
+  +282	000028a6  89442404				  movl		  %eax,0x04(%esp)
+  +286	000028aa  891424				  movl		  %edx,(%esp)
+  +289	000028ad  e87b470000			  calll		  0x0000702d				    -[(%esp,1) provider]
+  +294	000028b2  89c6					  movl		  %eax,%esi
+  +296	000028b4  8b83965a0000			  movl		  0x00005a96(%ebx),%eax		    flushQueue
+  +302	000028ba  89442404				  movl		  %eax,0x04(%esp)
+  +306	000028be  893424				  movl		  %esi,(%esp)
+  +309	000028c1  e867470000			  calll		  0x0000702d				    -[(%esp,1) flushQueue]
+  +314	000028c6  b80c000000			  movl		  $0x0000000c,%eax
+  +319	000028cb  83ff0d				  cmpl		  $0x0d,%edi
+  +322	000028ce  0f4cc7				  cmovll	  %edi,%eax
+  +325	000028d1  89442408				  movl		  %eax,0x08(%esp)
+  +329	000028d5  8b83925a0000			  movl		  0x00005a92(%ebx),%eax		    setSegmentCount:
+  +335	000028db  89442404				  movl		  %eax,0x04(%esp)
+  +339	000028df  893424				  movl		  %esi,(%esp)
+  +342	000028e2  e846470000			  calll		  0x0000702d				    -[(%esp,1) setSegmentCount:]
+  +347	000028e7  8b45e0				  movl		  0xe0(%ebp),%eax
+  +350	000028ea  894510				  movl		  %eax,0x10(%ebp)
+  +353	000028ed  8b830e5a0000			  movl		  0x00005a0e(%ebx),%eax		    setProvider:
+  +359	000028f3  89450c				  movl		  %eax,0x0c(%ebp)
+  +362	000028f6  897508				  movl		  %esi,0x08(%ebp)
+  +365	000028f9  83c42c				  addl		  $0x2c,%esp
+  +368	000028fc  5b					  popl		  %ebx
+  +369	000028fd  5e					  popl		  %esi
+  +370	000028fe  5f					  popl		  %edi
+  +371	000028ff  5d					  popl		  %ebp
+  +372	00002900  e928470000			  jmpl		  0x0000702d
+  +377	00002905  90					  nop
+
+-(void)[RUIPhloatoControl setSpinFrequency:]
+	+0	00002906  90					  nop
+	+1	00002907  90					  nop
+	+2	00002908  90					  nop
+	+3	00002909  90					  nop
+	+4	0000290a  90					  nop
+	+5	0000290b  90					  nop
+
+	+0	0000290c  55					  pushl		  %ebp
+	+1	0000290d  89e5					  movl		  %esp,%ebp
+	+3	0000290f  8b5510				  movl		  0x10(%ebp),%edx
+	+6	00002912  8b4508				  movl		  0x08(%ebp),%eax
+	+9	00002915  89502c				  movl		  %edx,0x2c(%eax)
+   +12	00002918  5d					  popl		  %ebp
+   +13	00002919  c3					  ret
+
+-(float)[RUIPhloatoControl spinFrequency]
+	+0	0000291a  90					  nop
+	+1	0000291b  90					  nop
+	+2	0000291c  90					  nop
+	+3	0000291d  90					  nop
+	+4	0000291e  90					  nop
+	+5	0000291f  90					  nop
+
+	+0	00002920  55					  pushl		  %ebp
+	+1	00002921  89e5					  movl		  %esp,%ebp
+	+3	00002923  8b4508				  movl		  0x08(%ebp),%eax
+	+6	00002926  d9402c				  flds		  0x2c(%eax)
+	+9	00002929  5d					  popl		  %ebp
+   +10	0000292a  c3					  ret
+   +11	0000292b  90					  nop
+
+-(void)[RUIPhloatoControl controlWasActivated]
+	+0	0000292c  90					  nop
+	+1	0000292d  90					  nop
+	+2	0000292e  90					  nop
+	+3	0000292f  90					  nop
+	+4	00002930  90					  nop
+	+5	00002931  90					  nop
+
+	+0	00002932  55					  pushl		  %ebp
+	+1	00002933  89e5					  movl		  %esp,%ebp
+	+3	00002935  56					  pushl		  %esi
+	+4	00002936  53					  pushl		  %ebx
+	+5	00002937  83ec20				  subl		  $0x20,%esp
+	+8	0000293a  e8ad2f0000			  calll		  0x000058ec
+   +13	0000293f  8b7508				  movl		  0x08(%ebp),%esi
+   +16	00002942  8975f0				  movl		  %esi,0xf0(%ebp)
+   +19	00002945  8b83855a0000			  movl		  0x00005a85(%ebx),%eax		    BRControl
+   +25	0000294b  8945f4				  movl		  %eax,0xf4(%ebp)
+   +28	0000294e  8d55f0				  leal		  0xf0(%ebp),%edx
+   +31	00002951  8b83e9580000			  movl		  0x000058e9(%ebx),%eax		    controlWasActivated
+   +37	00002957  89442404				  movl		  %eax,0x04(%esp)
+   +41	0000295b  891424				  movl		  %edx,(%esp)
+   +44	0000295e  e8c5460000			  calll		  0x00007028				    -[[(%esp,1) super] controlWasActivated]
+   +49	00002963  8b83e5580000			  movl		  0x000058e5(%ebx),%eax		    _startWhenReady
+   +55	00002969  89442404				  movl		  %eax,0x04(%esp)
+   +59	0000296d  893424				  movl		  %esi,(%esp)
+   +62	00002970  e8b8460000			  calll		  0x0000702d				    -[(%esp,1) _startWhenReady]
+   +67	00002975  83c420				  addl		  $0x20,%esp
+   +70	00002978  5b					  popl		  %ebx
+   +71	00002979  5e					  popl		  %esi
+   +72	0000297a  5d					  popl		  %ebp
+   +73	0000297b  c3					  ret
+
+-(void)[RUIPhloatoControl controlWasDeactivated]
+	+0	0000297c  90					  nop
+	+1	0000297d  90					  nop
+	+2	0000297e  90					  nop
+	+3	0000297f  90					  nop
+	+4	00002980  90					  nop
+	+5	00002981  90					  nop
+
+	+0	00002982  55					  pushl		  %ebp
+	+1	00002983  89e5					  movl		  %esp,%ebp
+	+3	00002985  56					  pushl		  %esi
+	+4	00002986  53					  pushl		  %ebx
+	+5	00002987  83ec20				  subl		  $0x20,%esp
+	+8	0000298a  e85d2f0000			  calll		  0x000058ec
+   +13	0000298f  8b7508				  movl		  0x08(%ebp),%esi
+   +16	00002992  8975f0				  movl		  %esi,0xf0(%ebp)
+   +19	00002995  8b83355a0000			  movl		  0x00005a35(%ebx),%eax		    BRControl
+   +25	0000299b  8945f4				  movl		  %eax,0xf4(%ebp)
+   +28	0000299e  8d55f0				  leal		  0xf0(%ebp),%edx
+   +31	000029a1  8b8391580000			  movl		  0x00005891(%ebx),%eax		    controlWasDeactivated
+   +37	000029a7  89442404				  movl		  %eax,0x04(%esp)
+   +41	000029ab  891424				  movl		  %edx,(%esp)
+   +44	000029ae  e875460000			  calll		  0x00007028				    -[[(%esp,1) super] controlWasDeactivated]
+   +49	000029b3  8b838d580000			  movl		  0x0000588d(%ebx),%eax		    _stopUpdates
+   +55	000029b9  89442404				  movl		  %eax,0x04(%esp)
+   +59	000029bd  893424				  movl		  %esi,(%esp)
+   +62	000029c0  e868460000			  calll		  0x0000702d				    -[(%esp,1) _stopUpdates]
+   +67	000029c5  83c420				  addl		  $0x20,%esp
+   +70	000029c8  5b					  popl		  %ebx
+   +71	000029c9  5e					  popl		  %esi
+   +72	000029ca  5d					  popl		  %ebp
+   +73	000029cb  c3					  ret
+
+-(BOOL)[RUIPhloatoControl(ImageQueuing) _allQueuesReady]
+	+0	000029cc  90					  nop
+	+1	000029cd  90					  nop
+	+2	000029ce  90					  nop
+	+3	000029cf  90					  nop
+	+4	000029d0  90					  nop
+	+5	000029d1  90					  nop
+
+	+0	000029d2  55					  pushl		  %ebp
+	+1	000029d3  89e5					  movl		  %esp,%ebp
+	+3	000029d5  56					  pushl		  %esi
+	+4	000029d6  53					  pushl		  %ebx
+	+5	000029d7  83ec10				  subl		  $0x10,%esp
+	+8	000029da  e80d2f0000			  calll		  0x000058ec
+   +13	000029df  8b7508				  movl		  0x08(%ebp),%esi
+   +16	000029e2  8b561c				  movl		  0x1c(%esi),%edx
+   +19	000029e5  8b8355580000			  movl		  0x00005855(%ebx),%eax		    provider
+   +25	000029eb  89442404				  movl		  %eax,0x04(%esp)
+   +29	000029ef  891424				  movl		  %edx,(%esp)
+   +32	000029f2  e836460000			  calll		  0x0000702d				    -[(%esp,1) provider]
+   +37	000029f7  8b9339580000			  movl		  0x00005839(%ebx),%edx		    queueReady
+   +43	000029fd  89542404				  movl		  %edx,0x04(%esp)
+   +47	00002a01  890424				  movl		  %eax,(%esp)
+   +50	00002a04  e824460000			  calll		  0x0000702d				    -[(%esp,1) queueReady]
+   +55	00002a09  84c0					  testb		  %al,%al
+   +57	00002a0b  7457					  je		  0x00002a64
+   +59	00002a0d  8b5620				  movl		  0x20(%esi),%edx
+   +62	00002a10  8b8355580000			  movl		  0x00005855(%ebx),%eax		    provider
+   +68	00002a16  89442404				  movl		  %eax,0x04(%esp)
+   +72	00002a1a  891424				  movl		  %edx,(%esp)
+   +75	00002a1d  e80b460000			  calll		  0x0000702d				    -[(%esp,1) provider]
+   +80	00002a22  8b9339580000			  movl		  0x00005839(%ebx),%edx		    queueReady
+   +86	00002a28  89542404				  movl		  %edx,0x04(%esp)
+   +90	00002a2c  890424				  movl		  %eax,(%esp)
+   +93	00002a2f  e8f9450000			  calll		  0x0000702d				    -[(%esp,1) queueReady]
+   +98	00002a34  84c0					  testb		  %al,%al
+  +100	00002a36  742c					  je		  0x00002a64
+  +102	00002a38  8b5624				  movl		  0x24(%esi),%edx
+  +105	00002a3b  8b8355580000			  movl		  0x00005855(%ebx),%eax		    provider
+  +111	00002a41  89442404				  movl		  %eax,0x04(%esp)
+  +115	00002a45  891424				  movl		  %edx,(%esp)
+  +118	00002a48  e8e0450000			  calll		  0x0000702d				    -[(%esp,1) provider]
+  +123	00002a4d  8b9339580000			  movl		  0x00005839(%ebx),%edx		    queueReady
+  +129	00002a53  89542404				  movl		  %edx,0x04(%esp)
+  +133	00002a57  890424				  movl		  %eax,(%esp)
+  +136	00002a5a  e8ce450000			  calll		  0x0000702d				    -[(%esp,1) queueReady]
+  +141	00002a5f  0fbec0				  movsbl	  %al,%eax
+  +144	00002a62  eb02					  jmp		  0x00002a66
+  +146	00002a64  31c0					  xorl		  %eax,%eax
+  +148	00002a66  83c410				  addl		  $0x10,%esp
+  +151	00002a69  5b					  popl		  %ebx
+  +152	00002a6a  5e					  popl		  %esi
+  +153	00002a6b  5d					  popl		  %ebp
+  +154	00002a6c  c3					  ret
+  +155	00002a6d  90					  nop
+
+-(void)[RUIPhloatoControl(ImageQueuing) _startWhenReady]
+	+0	00002a6e  90					  nop
+	+1	00002a6f  90					  nop
+	+2	00002a70  90					  nop
+	+3	00002a71  90					  nop
+	+4	00002a72  90					  nop
+	+5	00002a73  90					  nop
+
+	+0	00002a74  55					  pushl		  %ebp
+	+1	00002a75  89e5					  movl		  %esp,%ebp
+	+3	00002a77  56					  pushl		  %esi
+	+4	00002a78  53					  pushl		  %ebx
+	+5	00002a79  83ec20				  subl		  $0x20,%esp
+	+8	00002a7c  e86b2e0000			  calll		  0x000058ec
+   +13	00002a81  8b7508				  movl		  0x08(%ebp),%esi
+   +16	00002a84  8b8393570000			  movl		  0x00005793(%ebx),%eax		    _allQueuesReady
+   +22	00002a8a  89442404				  movl		  %eax,0x04(%esp)
+   +26	00002a8e  893424				  movl		  %esi,(%esp)
+   +29	00002a91  e897450000			  calll		  0x0000702d				    -[(%esp,1) _allQueuesReady]
+   +34	00002a96  84c0					  testb		  %al,%al
+   +36	00002a98  7509					  jne		  0x00002aa3
+   +38	00002a9a  c6463001				  movb		  $0x01,0x30(%esi)
+   +42	00002a9e  e9ce000000			  jmpl		  0x00002b71
+   +47	00002aa3  c6463000				  movb		  $0x00,0x30(%esi)
+   +51	00002aa7  8b838f570000			  movl		  0x0000578f(%ebx),%eax		    active
+   +57	00002aad  89442404				  movl		  %eax,0x04(%esp)
+   +61	00002ab1  893424				  movl		  %esi,(%esp)
+   +64	00002ab4  e874450000			  calll		  0x0000702d				    -[(%esp,1) active]
+   +69	00002ab9  84c0					  testb		  %al,%al
+   +71	00002abb  0f84b0000000			  jel		  0x00002b71
+   +77	00002ac1  8b5628				  movl		  0x28(%esi),%edx
+   +80	00002ac4  8b838b570000			  movl		  0x0000578b(%ebx),%eax		    invalidate
+   +86	00002aca  89442404				  movl		  %eax,0x04(%esp)
+   +90	00002ace  891424				  movl		  %edx,(%esp)
+   +93	00002ad1  e857450000			  calll		  0x0000702d				    -[(%esp,1) invalidate]
+   +98	00002ad6  c744241c01000000		  movl		  $0x00000001,0x1c(%esp)
+  +106	00002ade  c744241800000000		  movl		  $0x00000000,0x18(%esp)
+  +114	00002ae6  8b8387570000			  movl		  0x00005787(%ebx),%eax		    _fireSpinAnimation:
+  +120	00002aec  89442414				  movl		  %eax,0x14(%esp)
+  +124	00002af0  89742410				  movl		  %esi,0x10(%esp)
+  +128	00002af4  f30f5a462c			  cvtss2sd	  0x2c(%esi),%xmm0
+  +133	00002af9  f20f11442408			  movsd		  %xmm0,0x08(%esp)
+  +139	00002aff  8b8383570000			  movl		  0x00005783(%ebx),%eax		    scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+  +145	00002b05  89442404				  movl		  %eax,0x04(%esp)
+  +149	00002b09  8b8393580000			  movl		  0x00005893(%ebx),%eax		    NSTimer
+  +155	00002b0f  890424				  movl		  %eax,(%esp)
+  +158	00002b12  e816450000			  calll		  0x0000702d				    +[NSTimer scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:]
+  +163	00002b17  894628				  movl		  %eax,0x28(%esi)
+  +166	00002b1a  8b561c				  movl		  0x1c(%esi),%edx
+  +169	00002b1d  c744240801000000		  movl		  $0x00000001,0x08(%esp)
+  +177	00002b25  8b83c3570000			  movl		  0x000057c3(%ebx),%eax		    setPullsImages:
+  +183	00002b2b  89442404				  movl		  %eax,0x04(%esp)
+  +187	00002b2f  891424				  movl		  %edx,(%esp)
+  +190	00002b32  e8f6440000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +195	00002b37  8b5620				  movl		  0x20(%esi),%edx
+  +198	00002b3a  c744240801000000		  movl		  $0x00000001,0x08(%esp)
+  +206	00002b42  8b83c3570000			  movl		  0x000057c3(%ebx),%eax		    setPullsImages:
+  +212	00002b48  89442404				  movl		  %eax,0x04(%esp)
+  +216	00002b4c  891424				  movl		  %edx,(%esp)
+  +219	00002b4f  e8d9440000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +224	00002b54  8b5624				  movl		  0x24(%esi),%edx
+  +227	00002b57  c744240801000000		  movl		  $0x00000001,0x08(%esp)
+  +235	00002b5f  8b83c3570000			  movl		  0x000057c3(%ebx),%eax		    setPullsImages:
+  +241	00002b65  89442404				  movl		  %eax,0x04(%esp)
+  +245	00002b69  891424				  movl		  %edx,(%esp)
+  +248	00002b6c  e8bc440000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +253	00002b71  83c420				  addl		  $0x20,%esp
+  +256	00002b74  5b					  popl		  %ebx
+  +257	00002b75  5e					  popl		  %esi
+  +258	00002b76  5d					  popl		  %ebp
+  +259	00002b77  c3					  ret
+
+-(void)[RUIPhloatoControl(ImageQueuing) _stopUpdates]
+	+0	00002b78  90					  nop
+	+1	00002b79  90					  nop
+	+2	00002b7a  90					  nop
+	+3	00002b7b  90					  nop
+	+4	00002b7c  90					  nop
+	+5	00002b7d  90					  nop
+
+	+0	00002b7e  55					  pushl		  %ebp
+	+1	00002b7f  89e5					  movl		  %esp,%ebp
+	+3	00002b81  56					  pushl		  %esi
+	+4	00002b82  53					  pushl		  %ebx
+	+5	00002b83  83ec10				  subl		  $0x10,%esp
+	+8	00002b86  e8612d0000			  calll		  0x000058ec
+   +13	00002b8b  8b7508				  movl		  0x08(%ebp),%esi
+   +16	00002b8e  8b5628				  movl		  0x28(%esi),%edx
+   +19	00002b91  8b8381560000			  movl		  0x00005681(%ebx),%eax		    invalidate
+   +25	00002b97  89442404				  movl		  %eax,0x04(%esp)
+   +29	00002b9b  891424				  movl		  %edx,(%esp)
+   +32	00002b9e  e88a440000			  calll		  0x0000702d				    -[(%esp,1) invalidate]
+   +37	00002ba3  c7462800000000		  movl		  $0x00000000,0x28(%esi)
+   +44	00002baa  8b561c				  movl		  0x1c(%esi),%edx
+   +47	00002bad  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+   +55	00002bb5  8b83b9560000			  movl		  0x000056b9(%ebx),%eax		    setPullsImages:
+   +61	00002bbb  89442404				  movl		  %eax,0x04(%esp)
+   +65	00002bbf  891424				  movl		  %edx,(%esp)
+   +68	00002bc2  e866440000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+   +73	00002bc7  8b5620				  movl		  0x20(%esi),%edx
+   +76	00002bca  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+   +84	00002bd2  8b83b9560000			  movl		  0x000056b9(%ebx),%eax		    setPullsImages:
+   +90	00002bd8  89442404				  movl		  %eax,0x04(%esp)
+   +94	00002bdc  891424				  movl		  %edx,(%esp)
+   +97	00002bdf  e849440000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +102	00002be4  8b5624				  movl		  0x24(%esi),%edx
+  +105	00002be7  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+  +113	00002bef  8b83b9560000			  movl		  0x000056b9(%ebx),%eax		    setPullsImages:
+  +119	00002bf5  89442404				  movl		  %eax,0x04(%esp)
+  +123	00002bf9  891424				  movl		  %edx,(%esp)
+  +126	00002bfc  e82c440000			  calll		  0x0000702d				    -[(%esp,1) setPullsImages:]
+  +131	00002c01  83c410				  addl		  $0x10,%esp
+  +134	00002c04  5b					  popl		  %ebx
+  +135	00002c05  5e					  popl		  %esi
+  +136	00002c06  5d					  popl		  %ebp
+  +137	00002c07  c3					  ret
+
+-(void)[RUIPhloatoControl(ImageQueuing) _queueReady:]
+	+0	00002c08  90					  nop
+	+1	00002c09  90					  nop
+	+2	00002c0a  90					  nop
+	+3	00002c0b  90					  nop
+	+4	00002c0c  90					  nop
+	+5	00002c0d  90					  nop
+
+	+0	00002c0e  55					  pushl		  %ebp
+	+1	00002c0f  89e5					  movl		  %esp,%ebp
+	+3	00002c11  e8da2c0000			  calll		  0x000058f0
+	+8	00002c16  8b5508				  movl		  0x08(%ebp),%edx
+   +11	00002c19  807a3000				  cmpb		  $0x00,0x30(%edx)
+   +15	00002c1d  740f					  je		  0x00002c2e
+   +17	00002c1f  8b810e560000			  movl		  0x0000560e(%ecx),%eax		    _startWhenReady
+   +23	00002c25  89450c				  movl		  %eax,0x0c(%ebp)
+   +26	00002c28  5d					  popl		  %ebp
+   +27	00002c29  e9ff430000			  jmpl		  0x0000702d
+   +32	00002c2e  5d					  popl		  %ebp
+   +33	00002c2f  c3					  ret
+
+-(void)[RUIPhloatoControl(Provider) _addProviderToPlane:withMaxImageSize:]
+	+0	00002c30  90					  nop
+	+1	00002c31  90					  nop
+	+2	00002c32  90					  nop
+	+3	00002c33  90					  nop
+	+4	00002c34  90					  nop
+	+5	00002c35  90					  nop
+
+	+0	00002c36  55					  pushl		  %ebp
+	+1	00002c37  89e5					  movl		  %esp,%ebp
+	+3	00002c39  57					  pushl		  %edi
+	+4	00002c3a  56					  pushl		  %esi
+	+5	00002c3b  53					  pushl		  %ebx
+	+6	00002c3c  83ec3c				  subl		  $0x3c,%esp
+	+9	00002c3f  e8a82c0000			  calll		  0x000058ec
+   +14	00002c44  8b7d08				  movl		  0x08(%ebp),%edi
+   +17	00002c47  8b4510				  movl		  0x10(%ebp),%eax
+   +20	00002c4a  8945e4				  movl		  %eax,0xe4(%ebp)
+   +23	00002c4d  8b4514				  movl		  0x14(%ebp),%eax
+   +26	00002c50  8b5518				  movl		  0x18(%ebp),%edx
+   +29	00002c53  8945d8				  movl		  %eax,0xd8(%ebp)
+   +32	00002c56  8955dc				  movl		  %edx,0xdc(%ebp)
+   +35	00002c59  8b8334560000			  movl		  0x00005634(%ebx),%eax		    alloc
+   +41	00002c5f  89442404				  movl		  %eax,0x04(%esp)
+   +45	00002c63  8b83cc560000			  movl		  0x000056cc(%ebx),%eax		    RUIPhloatoArtLoader
+   +51	00002c69  890424				  movl		  %eax,(%esp)
+   +54	00002c6c  e8bc430000			  calll		  0x0000702d				    +[RUIPhloatoArtLoader alloc]
+   +59	00002c71  8b9370550000			  movl		  0x00005570(%ebx),%edx		    init
+   +65	00002c77  89542404				  movl		  %edx,0x04(%esp)
+   +69	00002c7b  890424				  movl		  %eax,(%esp)
+   +72	00002c7e  e8aa430000			  calll		  0x0000702d				    -[(%esp,1) init]
+   +77	00002c83  89c6					  movl		  %eax,%esi
+   +79	00002c85  c744240801000000		  movl		  $0x00000001,0x08(%esp)
+   +87	00002c8d  8b83bc550000			  movl		  0x000055bc(%ebx),%eax		    setFillStrategy:
+   +93	00002c93  89442404				  movl		  %eax,0x04(%esp)
+   +97	00002c97  893424				  movl		  %esi,(%esp)
+  +100	00002c9a  e88e430000			  calll		  0x0000702d				    -[(%esp,1) setFillStrategy:]
+  +105	00002c9f  8b45d8				  movl		  0xd8(%ebp),%eax
+  +108	00002ca2  8b55dc				  movl		  0xdc(%ebp),%edx
+  +111	00002ca5  89442408				  movl		  %eax,0x08(%esp)
+  +115	00002ca9  8954240c				  movl		  %edx,0x0c(%esp)
+  +119	00002cad  8b83b8550000			  movl		  0x000055b8(%ebx),%eax		    setMaxSize:
+  +125	00002cb3  89442404				  movl		  %eax,0x04(%esp)
+  +129	00002cb7  893424				  movl		  %esi,(%esp)
+  +132	00002cba  e86e430000			  calll		  0x0000702d				    -[(%esp,1) setMaxSize:]
+  +137	00002cbf  c744240801000000		  movl		  $0x00000001,0x08(%esp)
+  +145	00002cc7  8b83b4550000			  movl		  0x000055b4(%ebx),%eax		    setRandomize:
+  +151	00002ccd  89442404				  movl		  %eax,0x04(%esp)
+  +155	00002cd1  893424				  movl		  %esi,(%esp)
+  +158	00002cd4  e854430000			  calll		  0x0000702d				    -[(%esp,1) setRandomize:]
+  +163	00002cd9  8b8308560000			  movl		  0x00005608(%ebx),%eax		    defaultCenter
+  +169	00002cdf  89442404				  movl		  %eax,0x04(%esp)
+  +173	00002ce3  8b83d4560000			  movl		  0x000056d4(%ebx),%eax		    NSNotificationCenter
+  +179	00002ce9  890424				  movl		  %eax,(%esp)
+  +182	00002cec  e83c430000			  calll		  0x0000702d				    +[NSNotificationCenter defaultCenter]
+  +187	00002cf1  89742414				  movl		  %esi,0x14(%esp)
+  +191	00002cf5  8b9374440000			  movl		  0x00004474(%ebx),%edx
+  +197	00002cfb  8b12					  movl		  (%edx),%edx
+  +199	00002cfd  89542410				  movl		  %edx,0x10(%esp)
+  +203	00002d01  8b93b0550000			  movl		  0x000055b0(%ebx),%edx		    _queueReady:
+  +209	00002d07  8954240c				  movl		  %edx,0x0c(%esp)
+  +213	00002d0b  897c2408				  movl		  %edi,0x08(%esp)
+  +217	00002d0f  8b93ac550000			  movl		  0x000055ac(%ebx),%edx		    addObserver:selector:name:object:
+  +223	00002d15  89542404				  movl		  %edx,0x04(%esp)
+  +227	00002d19  890424				  movl		  %eax,(%esp)
+  +230	00002d1c  e80c430000			  calll		  0x0000702d				    -[(%esp,1) addObserver:selector:name:object:]
+  +235	00002d21  89742408				  movl		  %esi,0x08(%esp)
+  +239	00002d25  8b8364550000			  movl		  0x00005564(%ebx),%eax		    setProvider:
+  +245	00002d2b  89442404				  movl		  %eax,0x04(%esp)
+  +249	00002d2f  8b55e4				  movl		  0xe4(%ebp),%edx
+  +252	00002d32  891424				  movl		  %edx,(%esp)
+  +255	00002d35  e8f3420000			  calll		  0x0000702d				    -[(%esp,1) setProvider:]
+  +260	00002d3a  8b83fc550000			  movl		  0x000055fc(%ebx),%eax		    release
+  +266	00002d40  89450c				  movl		  %eax,0x0c(%ebp)
+  +269	00002d43  897508				  movl		  %esi,0x08(%ebp)
+  +272	00002d46  83c43c				  addl		  $0x3c,%esp
+  +275	00002d49  5b					  popl		  %ebx
+  +276	00002d4a  5e					  popl		  %esi
+  +277	00002d4b  5f					  popl		  %edi
+  +278	00002d4c  5d					  popl		  %ebp
+  +279	00002d4d  e9db420000			  jmpl		  0x0000702d
+
+-(void)[RUIPhloatoControl(SpinAnimation) _fireSpinAnimation:]
+	+0	00002d52  90					  nop
+	+1	00002d53  90					  nop
+	+2	00002d54  90					  nop
+	+3	00002d55  90					  nop
+	+4	00002d56  90					  nop
+	+5	00002d57  90					  nop
+
+	+0	00002d58  55					  pushl		  %ebp
+	+1	00002d59  89e5					  movl		  %esp,%ebp
+	+3	00002d5b  57					  pushl		  %edi
+	+4	00002d5c  56					  pushl		  %esi
+	+5	00002d5d  53					  pushl		  %ebx
+	+6	00002d5e  81ec0c030000			  subl		  $0x0000030c,%esp
+   +12	00002d64  e8832b0000			  calll		  0x000058ec
+   +17	00002d69  c78578fdffff00000000	  movl		  $0x00000000,0xfffffd78(%ebp)
+   +27	00002d73  c7857cfdffff00000000	  movl		  $0x00000000,0xfffffd7c(%ebp)
+   +37	00002d7d  8b8383540000			  movl		  0x00005483(%ebx),%eax		    maxBounds
+   +43	00002d83  89442404				  movl		  %eax,0x04(%esp)
+   +47	00002d87  8b83a3550000			  movl		  0x000055a3(%ebx),%eax		    BRWindow
+   +53	00002d8d  890424				  movl		  %eax,(%esp)
+   +56	00002d90  e898420000			  calll		  0x0000702d				    +[BRWindow maxBounds]
+   +61	00002d95  89859cfdffff			  movl		  %eax,0xfffffd9c(%ebp)
+   +67	00002d9b  e8e7420000			  calll		  0x00007087				    _arc4random
+   +72	00002da0  89c1					  movl		  %eax,%ecx
+   +74	00002da2  bad34d6210			  movl		  $0x10624dd3,%edx
+   +79	00002da7  f7e2					  mull		  %edx
+   +81	00002da9  c1ea06				  shrl		  $0x06,%edx
+   +84	00002dac  8d1492				  leal		  (%edx,%edx,4),%edx
+   +87	00002daf  8d1492				  leal		  (%edx,%edx,4),%edx
+   +90	00002db2  8d1492				  leal		  (%edx,%edx,4),%edx
+   +93	00002db5  c1e203				  shll		  $0x03,%edx
+   +96	00002db8  29d1					  subl		  %edx,%ecx
+   +98	00002dba  89ca					  movl		  %ecx,%edx
+  +100	00002dbc  7806					  js		  0x00002dc4
+  +102	00002dbe  f30f2ac1				  cvtsi2ss	  %ecx,%xmm0
+  +106	00002dc2  eb11					  jmp		  0x00002dd5
+  +108	00002dc4  89c8					  movl		  %ecx,%eax
+  +110	00002dc6  d1e8					  shrl		  %eax
+  +112	00002dc8  83e201				  andl		  $0x01,%edx
+  +115	00002dcb  09d0					  orl		  %edx,%eax
+  +117	00002dcd  f30f2ac0				  cvtsi2ss	  %eax,%xmm0
+  +121	00002dd1  f30f58c0				  addss		  %xmm0,%xmm0
+  +125	00002dd5  0f28c8				  movaps	  %xmm0,%xmm1
+  +128	00002dd8  f30f5e8b13300000		  divss		  0x00003013(%ebx),%xmm1
+  +136	00002de0  f30f10859cfdffff		  movss		  0xfffffd9c(%ebp),%xmm0
+  +144	00002de8  f30f59831b300000		  mulss		  0x0000301b(%ebx),%xmm0
+  +152	00002df0  f30f59c8				  mulss		  %xmm0,%xmm1
+  +156	00002df4  8b837f540000			  movl		  0x0000547f(%ebx),%eax		    position
+  +162	00002dfa  89442404				  movl		  %eax,0x04(%esp)
+  +166	00002dfe  8b5508				  movl		  0x08(%ebp),%edx
+  +169	00002e01  891424				  movl		  %edx,(%esp)
+  +172	00002e04  f30f118d58fdffff		  movss		  %xmm1,0xfffffd58(%ebp)
+  +180	00002e0c  e81c420000			  calll		  0x0000702d				    -[(%esp,1) position]
+  +185	00002e11  8995a0fdffff			  movl		  %edx,0xfffffda0(%ebp)
+  +191	00002e17  898554fdffff			  movl		  %eax,0xfffffd54(%ebp)
+  +197	00002e1d  f30f109554fdffff		  movss		  0xfffffd54(%ebp),%xmm2
+  +205	00002e25  0f28c2				  movaps	  %xmm2,%xmm0
+  +208	00002e28  f30f10959cfdffff		  movss		  0xfffffd9c(%ebp),%xmm2
+  +216	00002e30  f30f59931f300000		  mulss		  0x0000301f(%ebx),%xmm2
+  +224	00002e38  0f2ed0				  ucomiss	  %xmm0,%xmm2
+  +227	00002e3b  f30f108d58fdffff		  movss		  0xfffffd58(%ebp),%xmm1
+  +235	00002e43  761e					  jbe		  0x00002e63
+  +237	00002e45  f30f58c8				  addss		  %xmm0,%xmm1
+  +241	00002e49  f30f118da4fdffff		  movss		  %xmm1,0xfffffda4(%ebp)
+  +249	00002e51  f30f108323300000		  movss		  0x00003023(%ebx),%xmm0
+  +257	00002e59  f30f118584fdffff		  movss		  %xmm0,0xfffffd84(%ebp)
+  +265	00002e61  eb1c					  jmp		  0x00002e7f
+  +267	00002e63  f30f5cc1				  subss		  %xmm1,%xmm0
+  +271	00002e67  f30f1185a4fdffff		  movss		  %xmm0,0xfffffda4(%ebp)
+  +279	00002e6f  f30f109327300000		  movss		  0x00003027(%ebx),%xmm2
+  +287	00002e77  f30f119584fdffff		  movss		  %xmm2,0xfffffd84(%ebp)
+  +295	00002e7f  8b8317550000			  movl		  0x00005517(%ebx),%eax		    layer
+  +301	00002e85  89442404				  movl		  %eax,0x04(%esp)
+  +305	00002e89  8b4508				  movl		  0x08(%ebp),%eax
+  +308	00002e8c  890424				  movl		  %eax,(%esp)
+  +311	00002e8f  e899410000			  calll		  0x0000702d				    -[(%esp,1) layer]
+  +316	00002e94  8d8d28feffff			  leal		  0xfffffe28(%ebp),%ecx
+  +322	00002e9a  8b937b540000			  movl		  0x0000547b(%ebx),%edx		    sublayerTransform
+  +328	00002ea0  89542408				  movl		  %edx,0x08(%esp)
+  +332	00002ea4  89442404				  movl		  %eax,0x04(%esp)
+  +336	00002ea8  890c24				  movl		  %ecx,(%esp)
+  +339	00002eab  e8dc410000			  calll		  0x0000708c				    -(struct)[0x04(%esp,1) sublayerTransform]
+  +344	00002eb0  83ec04				  subl		  $0x04,%esp
+  +347	00002eb3  8b8528feffff			  movl		  0xfffffe28(%ebp),%eax
+  +353	00002eb9  8985e8feffff			  movl		  %eax,0xfffffee8(%ebp)
+  +359	00002ebf  8b852cfeffff			  movl		  0xfffffe2c(%ebp),%eax
+  +365	00002ec5  8985ecfeffff			  movl		  %eax,0xfffffeec(%ebp)
+  +371	00002ecb  8b8530feffff			  movl		  0xfffffe30(%ebp),%eax
+  +377	00002ed1  8985f0feffff			  movl		  %eax,0xfffffef0(%ebp)
+  +383	00002ed7  8b8534feffff			  movl		  0xfffffe34(%ebp),%eax
+  +389	00002edd  8985f4feffff			  movl		  %eax,0xfffffef4(%ebp)
+  +395	00002ee3  8b8538feffff			  movl		  0xfffffe38(%ebp),%eax
+  +401	00002ee9  8985f8feffff			  movl		  %eax,0xfffffef8(%ebp)
+  +407	00002eef  8b853cfeffff			  movl		  0xfffffe3c(%ebp),%eax
+  +413	00002ef5  8985fcfeffff			  movl		  %eax,0xfffffefc(%ebp)
+  +419	00002efb  8b8540feffff			  movl		  0xfffffe40(%ebp),%eax
+  +425	00002f01  898500ffffff			  movl		  %eax,0xffffff00(%ebp)
+  +431	00002f07  8b8544feffff			  movl		  0xfffffe44(%ebp),%eax
+  +437	00002f0d  898504ffffff			  movl		  %eax,0xffffff04(%ebp)
+  +443	00002f13  8b8548feffff			  movl		  0xfffffe48(%ebp),%eax
+  +449	00002f19  898508ffffff			  movl		  %eax,0xffffff08(%ebp)
+  +455	00002f1f  8b854cfeffff			  movl		  0xfffffe4c(%ebp),%eax
+  +461	00002f25  89850cffffff			  movl		  %eax,0xffffff0c(%ebp)
+  +467	00002f2b  8b8550feffff			  movl		  0xfffffe50(%ebp),%eax
+  +473	00002f31  898510ffffff			  movl		  %eax,0xffffff10(%ebp)
+  +479	00002f37  8b8554feffff			  movl		  0xfffffe54(%ebp),%eax
+  +485	00002f3d  898514ffffff			  movl		  %eax,0xffffff14(%ebp)
+  +491	00002f43  8b8558feffff			  movl		  0xfffffe58(%ebp),%eax
+  +497	00002f49  898518ffffff			  movl		  %eax,0xffffff18(%ebp)
+  +503	00002f4f  8b855cfeffff			  movl		  0xfffffe5c(%ebp),%eax
+  +509	00002f55  89851cffffff			  movl		  %eax,0xffffff1c(%ebp)
+  +515	00002f5b  8b8560feffff			  movl		  0xfffffe60(%ebp),%eax
+  +521	00002f61  898520ffffff			  movl		  %eax,0xffffff20(%ebp)
+  +527	00002f67  8b8564feffff			  movl		  0xfffffe64(%ebp),%eax
+  +533	00002f6d  898524ffffff			  movl		  %eax,0xffffff24(%ebp)
+  +539	00002f73  8b8377540000			  movl		  0x00005477(%ebx),%eax		    array
+  +545	00002f79  89442404				  movl		  %eax,0x04(%esp)
+  +549	00002f7d  8b839f550000			  movl		  0x0000559f(%ebx),%eax		    NSMutableArray
+  +555	00002f83  890424				  movl		  %eax,(%esp)
+  +558	00002f86  e8a2400000			  calll		  0x0000702d				    +[NSMutableArray array]
+  +563	00002f8b  898588fdffff			  movl		  %eax,0xfffffd88(%ebp)
+  +569	00002f91  c7858cfdffff00000000	  movl		  $0x00000000,0xfffffd8c(%ebp)
+  +579	00002f9b  8d95e8fdffff			  leal		  0xfffffde8(%ebp),%edx
+  +585	00002fa1  899570fdffff			  movl		  %edx,0xfffffd70(%ebp)
+  +591	00002fa7  8d85a8fdffff			  leal		  0xfffffda8(%ebp),%eax
+  +597	00002fad  89856cfdffff			  movl		  %eax,0xfffffd6c(%ebp)
+  +603	00002fb3  f30f108584fdffff		  movss		  0xfffffd84(%ebp),%xmm0
+  +611	00002fbb  f30f11442410			  movss		  %xmm0,0x10(%esp)
+  +617	00002fc1  c744240c5a000000		  movl		  $0x0000005a,0x0c(%esp)	    'Z'
+  +625	00002fc9  8b858cfdffff			  movl		  0xfffffd8c(%ebp),%eax
+  +631	00002fcf  89442408				  movl		  %eax,0x08(%esp)
+  +635	00002fd3  8b8373540000			  movl		  0x00005473(%ebx),%eax		    _rotationForFrame:totalFrameCount:directionFactor:
+  +641	00002fd9  89442404				  movl		  %eax,0x04(%esp)
+  +645	00002fdd  8b5508				  movl		  0x08(%ebp),%edx
+  +648	00002fe0  891424				  movl		  %edx,(%esp)
+  +651	00002fe3  e88b400000			  calll		  0x00007073				    -(double)[(%esp,1) _rotationForFrame:totalFrameCount:directionFactor:]
+  +656	00002fe8  d99d90fdffff			  fstps		  0xfffffd90(%ebp)
+  +662	00002fee  c744240c5a000000		  movl		  $0x0000005a,0x0c(%esp)	    'Z'
+  +670	00002ff6  8b858cfdffff			  movl		  0xfffffd8c(%ebp),%eax
+  +676	00002ffc  89442408				  movl		  %eax,0x08(%esp)
+  +680	00003000  8b836f540000			  movl		  0x0000546f(%ebx),%eax		    _zTranslationForFrame:totalFrameCount:
+  +686	00003006  89442404				  movl		  %eax,0x04(%esp)
+  +690	0000300a  8b5508				  movl		  0x08(%ebp),%edx
+  +693	0000300d  891424				  movl		  %edx,(%esp)
+  +696	00003010  e85e400000			  calll		  0x00007073				    -(double)[(%esp,1) _zTranslationForFrame:totalFrameCount:]
+  +701	00003015  d99d94fdffff			  fstps		  0xfffffd94(%ebp)
+  +707	0000301b  f30f108590fdffff		  movss		  0xfffffd90(%ebp),%xmm0
+  +715	00003023  f30f110424			  movss		  %xmm0,(%esp)
+  +720	00003028  e841400000			  calll		  0x0000706e				    _sinf
+  +725	0000302d  d99d98fdffff			  fstps		  0xfffffd98(%ebp)
+  +731	00003033  f30f109594fdffff		  movss		  0xfffffd94(%ebp),%xmm2
+  +739	0000303b  f30f599598fdffff		  mulss		  0xfffffd98(%ebp),%xmm2
+  +747	00003043  f30f119598fdffff		  movss		  %xmm2,0xfffffd98(%ebp)
+  +755	0000304b  f30f108590fdffff		  movss		  0xfffffd90(%ebp),%xmm0
+  +763	00003053  f30f110424			  movss		  %xmm0,(%esp)
+  +768	00003058  e81b400000			  calll		  0x00007078				    _cosf
+  +773	0000305d  d99d74fdffff			  fstps		  0xfffffd74(%ebp)
+  +779	00003063  f30f109594fdffff		  movss		  0xfffffd94(%ebp),%xmm2
+  +787	0000306b  f30f599574fdffff		  mulss		  0xfffffd74(%ebp),%xmm2
+  +795	00003073  f30f119594fdffff		  movss		  %xmm2,0xfffffd94(%ebp)
+  +803	0000307b  8b85e8feffff			  movl		  0xfffffee8(%ebp),%eax
+  +809	00003081  898528ffffff			  movl		  %eax,0xffffff28(%ebp)
+  +815	00003087  8b95ecfeffff			  movl		  0xfffffeec(%ebp),%edx
+  +821	0000308d  89952cffffff			  movl		  %edx,0xffffff2c(%ebp)
+  +827	00003093  8b85f0feffff			  movl		  0xfffffef0(%ebp),%eax
+  +833	00003099  898530ffffff			  movl		  %eax,0xffffff30(%ebp)
+  +839	0000309f  8b95f4feffff			  movl		  0xfffffef4(%ebp),%edx
+  +845	000030a5  899534ffffff			  movl		  %edx,0xffffff34(%ebp)
+  +851	000030ab  8b85f8feffff			  movl		  0xfffffef8(%ebp),%eax
+  +857	000030b1  898538ffffff			  movl		  %eax,0xffffff38(%ebp)
+  +863	000030b7  8b95fcfeffff			  movl		  0xfffffefc(%ebp),%edx
+  +869	000030bd  89953cffffff			  movl		  %edx,0xffffff3c(%ebp)
+  +875	000030c3  8b8500ffffff			  movl		  0xffffff00(%ebp),%eax
+  +881	000030c9  898540ffffff			  movl		  %eax,0xffffff40(%ebp)
+  +887	000030cf  8b9504ffffff			  movl		  0xffffff04(%ebp),%edx
+  +893	000030d5  899544ffffff			  movl		  %edx,0xffffff44(%ebp)
+  +899	000030db  8b8508ffffff			  movl		  0xffffff08(%ebp),%eax
+  +905	000030e1  898548ffffff			  movl		  %eax,0xffffff48(%ebp)
+  +911	000030e7  8b950cffffff			  movl		  0xffffff0c(%ebp),%edx
+  +917	000030ed  89954cffffff			  movl		  %edx,0xffffff4c(%ebp)
+  +923	000030f3  8b8510ffffff			  movl		  0xffffff10(%ebp),%eax
+  +929	000030f9  898550ffffff			  movl		  %eax,0xffffff50(%ebp)
+  +935	000030ff  8bbd14ffffff			  movl		  0xffffff14(%ebp),%edi
+  +941	00003105  89bd54ffffff			  movl		  %edi,0xffffff54(%ebp)
+  +947	0000310b  8bb518ffffff			  movl		  0xffffff18(%ebp),%esi
+  +953	00003111  89b558ffffff			  movl		  %esi,0xffffff58(%ebp)
+  +959	00003117  8b8d1cffffff			  movl		  0xffffff1c(%ebp),%ecx
+  +965	0000311d  898d5cffffff			  movl		  %ecx,0xffffff5c(%ebp)
+  +971	00003123  8b9520ffffff			  movl		  0xffffff20(%ebp),%edx
+  +977	00003129  899560ffffff			  movl		  %edx,0xffffff60(%ebp)
+  +983	0000312f  8b8524ffffff			  movl		  0xffffff24(%ebp),%eax
+  +989	00003135  898564ffffff			  movl		  %eax,0xffffff64(%ebp)
+  +995	0000313b  c744245000000000		  movl		  $0x00000000,0x50(%esp)
+ +1003	00003143  c744244c000080bf		  movl		  $0xbf800000,0x4c(%esp)
+ +1011	0000314b  c744244800000000		  movl		  $0x00000000,0x48(%esp)
+ +1019	00003153  f30f108590fdffff		  movss		  0xfffffd90(%ebp),%xmm0
+ +1027	0000315b  f30f11442444			  movss		  %xmm0,0x44(%esp)
+ +1033	00003161  8b85e8feffff			  movl		  0xfffffee8(%ebp),%eax
+ +1039	00003167  89442404				  movl		  %eax,0x04(%esp)
+ +1043	0000316b  8b85ecfeffff			  movl		  0xfffffeec(%ebp),%eax
+ +1049	00003171  89442408				  movl		  %eax,0x08(%esp)
+ +1053	00003175  8b85f0feffff			  movl		  0xfffffef0(%ebp),%eax
+ +1059	0000317b  8944240c				  movl		  %eax,0x0c(%esp)
+ +1063	0000317f  8b85f4feffff			  movl		  0xfffffef4(%ebp),%eax
+ +1069	00003185  89442410				  movl		  %eax,0x10(%esp)
+ +1073	00003189  8b85f8feffff			  movl		  0xfffffef8(%ebp),%eax
+ +1079	0000318f  89442414				  movl		  %eax,0x14(%esp)
+ +1083	00003193  8b85fcfeffff			  movl		  0xfffffefc(%ebp),%eax
+ +1089	00003199  89442418				  movl		  %eax,0x18(%esp)
+ +1093	0000319d  8b8500ffffff			  movl		  0xffffff00(%ebp),%eax
+ +1099	000031a3  8944241c				  movl		  %eax,0x1c(%esp)
+ +1103	000031a7  8b8504ffffff			  movl		  0xffffff04(%ebp),%eax
+ +1109	000031ad  89442420				  movl		  %eax,0x20(%esp)
+ +1113	000031b1  8b8508ffffff			  movl		  0xffffff08(%ebp),%eax
+ +1119	000031b7  89442424				  movl		  %eax,0x24(%esp)
+ +1123	000031bb  8b850cffffff			  movl		  0xffffff0c(%ebp),%eax
+ +1129	000031c1  89442428				  movl		  %eax,0x28(%esp)
+ +1133	000031c5  8b8510ffffff			  movl		  0xffffff10(%ebp),%eax
+ +1139	000031cb  8944242c				  movl		  %eax,0x2c(%esp)
+ +1143	000031cf  897c2430				  movl		  %edi,0x30(%esp)
+ +1147	000031d3  89742434				  movl		  %esi,0x34(%esp)
+ +1151	000031d7  894c2438				  movl		  %ecx,0x38(%esp)
+ +1155	000031db  8954243c				  movl		  %edx,0x3c(%esp)
+ +1159	000031df  8b9524ffffff			  movl		  0xffffff24(%ebp),%edx
+ +1165	000031e5  89542440				  movl		  %edx,0x40(%esp)
+ +1169	000031e9  8b8570fdffff			  movl		  0xfffffd70(%ebp),%eax
+ +1175	000031ef  890424				  movl		  %eax,(%esp)
+ +1178	000031f2  e88b3e0000			  calll		  0x00007082				    _CATransform3DRotate
+ +1183	000031f7  83ec04				  subl		  $0x04,%esp
+ +1186	000031fa  8b95e8fdffff			  movl		  0xfffffde8(%ebp),%edx
+ +1192	00003200  8995a8feffff			  movl		  %edx,0xfffffea8(%ebp)
+ +1198	00003206  8b85ecfdffff			  movl		  0xfffffdec(%ebp),%eax
+ +1204	0000320c  8985acfeffff			  movl		  %eax,0xfffffeac(%ebp)
+ +1210	00003212  8b95f0fdffff			  movl		  0xfffffdf0(%ebp),%edx
+ +1216	00003218  8995b0feffff			  movl		  %edx,0xfffffeb0(%ebp)
+ +1222	0000321e  8b85f4fdffff			  movl		  0xfffffdf4(%ebp),%eax
+ +1228	00003224  8985b4feffff			  movl		  %eax,0xfffffeb4(%ebp)
+ +1234	0000322a  8b95f8fdffff			  movl		  0xfffffdf8(%ebp),%edx
+ +1240	00003230  8995b8feffff			  movl		  %edx,0xfffffeb8(%ebp)
+ +1246	00003236  8b85fcfdffff			  movl		  0xfffffdfc(%ebp),%eax
+ +1252	0000323c  8985bcfeffff			  movl		  %eax,0xfffffebc(%ebp)
+ +1258	00003242  8b9500feffff			  movl		  0xfffffe00(%ebp),%edx
+ +1264	00003248  8995c0feffff			  movl		  %edx,0xfffffec0(%ebp)
+ +1270	0000324e  8b8504feffff			  movl		  0xfffffe04(%ebp),%eax
+ +1276	00003254  8985c4feffff			  movl		  %eax,0xfffffec4(%ebp)
+ +1282	0000325a  8b9508feffff			  movl		  0xfffffe08(%ebp),%edx
+ +1288	00003260  8995c8feffff			  movl		  %edx,0xfffffec8(%ebp)
+ +1294	00003266  8b850cfeffff			  movl		  0xfffffe0c(%ebp),%eax
+ +1300	0000326c  8985ccfeffff			  movl		  %eax,0xfffffecc(%ebp)
+ +1306	00003272  8b9510feffff			  movl		  0xfffffe10(%ebp),%edx
+ +1312	00003278  8995d0feffff			  movl		  %edx,0xfffffed0(%ebp)
+ +1318	0000327e  8bbd14feffff			  movl		  0xfffffe14(%ebp),%edi
+ +1324	00003284  89bdd4feffff			  movl		  %edi,0xfffffed4(%ebp)
+ +1330	0000328a  8bb518feffff			  movl		  0xfffffe18(%ebp),%esi
+ +1336	00003290  89b5d8feffff			  movl		  %esi,0xfffffed8(%ebp)
+ +1342	00003296  8b8d1cfeffff			  movl		  0xfffffe1c(%ebp),%ecx
+ +1348	0000329c  898ddcfeffff			  movl		  %ecx,0xfffffedc(%ebp)
+ +1354	000032a2  8b9520feffff			  movl		  0xfffffe20(%ebp),%edx
+ +1360	000032a8  8995e0feffff			  movl		  %edx,0xfffffee0(%ebp)
+ +1366	000032ae  8b8524feffff			  movl		  0xfffffe24(%ebp),%eax
+ +1372	000032b4  8985e4feffff			  movl		  %eax,0xfffffee4(%ebp)
+ +1378	000032ba  8b85e8fdffff			  movl		  0xfffffde8(%ebp),%eax
+ +1384	000032c0  898568ffffff			  movl		  %eax,0xffffff68(%ebp)
+ +1390	000032c6  8b85ecfdffff			  movl		  0xfffffdec(%ebp),%eax
+ +1396	000032cc  89856cffffff			  movl		  %eax,0xffffff6c(%ebp)
+ +1402	000032d2  8b85f0fdffff			  movl		  0xfffffdf0(%ebp),%eax
+ +1408	000032d8  898570ffffff			  movl		  %eax,0xffffff70(%ebp)
+ +1414	000032de  8b85f4fdffff			  movl		  0xfffffdf4(%ebp),%eax
+ +1420	000032e4  898574ffffff			  movl		  %eax,0xffffff74(%ebp)
+ +1426	000032ea  8b85f8fdffff			  movl		  0xfffffdf8(%ebp),%eax
+ +1432	000032f0  898578ffffff			  movl		  %eax,0xffffff78(%ebp)
+ +1438	000032f6  8b85fcfdffff			  movl		  0xfffffdfc(%ebp),%eax
+ +1444	000032fc  89857cffffff			  movl		  %eax,0xffffff7c(%ebp)
+ +1450	00003302  8b8500feffff			  movl		  0xfffffe00(%ebp),%eax
+ +1456	00003308  894580				  movl		  %eax,0x80(%ebp)
+ +1459	0000330b  8b8504feffff			  movl		  0xfffffe04(%ebp),%eax
+ +1465	00003311  894584				  movl		  %eax,0x84(%ebp)
+ +1468	00003314  8b8508feffff			  movl		  0xfffffe08(%ebp),%eax
+ +1474	0000331a  894588				  movl		  %eax,0x88(%ebp)
+ +1477	0000331d  8b850cfeffff			  movl		  0xfffffe0c(%ebp),%eax
+ +1483	00003323  89458c				  movl		  %eax,0x8c(%ebp)
+ +1486	00003326  8b8510feffff			  movl		  0xfffffe10(%ebp),%eax
+ +1492	0000332c  894590				  movl		  %eax,0x90(%ebp)
+ +1495	0000332f  897d94				  movl		  %edi,0x94(%ebp)
+ +1498	00003332  897598				  movl		  %esi,0x98(%ebp)
+ +1501	00003335  894d9c				  movl		  %ecx,0x9c(%ebp)
+ +1504	00003338  8955a0				  movl		  %edx,0xa0(%ebp)
+ +1507	0000333b  8b8524feffff			  movl		  0xfffffe24(%ebp),%eax
+ +1513	00003341  8945a4				  movl		  %eax,0xa4(%ebp)
+ +1516	00003344  f30f108594fdffff		  movss		  0xfffffd94(%ebp),%xmm0
+ +1524	0000334c  f30f1144244c			  movss		  %xmm0,0x4c(%esp)
+ +1530	00003352  c744244800000000		  movl		  $0x00000000,0x48(%esp)
+ +1538	0000335a  f30f109598fdffff		  movss		  0xfffffd98(%ebp),%xmm2
+ +1546	00003362  f30f11542444			  movss		  %xmm2,0x44(%esp)
+ +1552	00003368  8b85e8fdffff			  movl		  0xfffffde8(%ebp),%eax
+ +1558	0000336e  89442404				  movl		  %eax,0x04(%esp)
+ +1562	00003372  8b85ecfdffff			  movl		  0xfffffdec(%ebp),%eax
+ +1568	00003378  89442408				  movl		  %eax,0x08(%esp)
+ +1572	0000337c  8b85f0fdffff			  movl		  0xfffffdf0(%ebp),%eax
+ +1578	00003382  8944240c				  movl		  %eax,0x0c(%esp)
+ +1582	00003386  8b85f4fdffff			  movl		  0xfffffdf4(%ebp),%eax
+ +1588	0000338c  89442410				  movl		  %eax,0x10(%esp)
+ +1592	00003390  8b85f8fdffff			  movl		  0xfffffdf8(%ebp),%eax
+ +1598	00003396  89442414				  movl		  %eax,0x14(%esp)
+ +1602	0000339a  8b85fcfdffff			  movl		  0xfffffdfc(%ebp),%eax
+ +1608	000033a0  89442418				  movl		  %eax,0x18(%esp)
+ +1612	000033a4  8b8500feffff			  movl		  0xfffffe00(%ebp),%eax
+ +1618	000033aa  8944241c				  movl		  %eax,0x1c(%esp)
+ +1622	000033ae  8b8504feffff			  movl		  0xfffffe04(%ebp),%eax
+ +1628	000033b4  89442420				  movl		  %eax,0x20(%esp)
+ +1632	000033b8  8b8508feffff			  movl		  0xfffffe08(%ebp),%eax
+ +1638	000033be  89442424				  movl		  %eax,0x24(%esp)
+ +1642	000033c2  8b850cfeffff			  movl		  0xfffffe0c(%ebp),%eax
+ +1648	000033c8  89442428				  movl		  %eax,0x28(%esp)
+ +1652	000033cc  8b8510feffff			  movl		  0xfffffe10(%ebp),%eax
+ +1658	000033d2  8944242c				  movl		  %eax,0x2c(%esp)
+ +1662	000033d6  897c2430				  movl		  %edi,0x30(%esp)
+ +1666	000033da  89742434				  movl		  %esi,0x34(%esp)
+ +1670	000033de  894c2438				  movl		  %ecx,0x38(%esp)
+ +1674	000033e2  8954243c				  movl		  %edx,0x3c(%esp)
+ +1678	000033e6  8b9524feffff			  movl		  0xfffffe24(%ebp),%edx
+ +1684	000033ec  89542440				  movl		  %edx,0x40(%esp)
+ +1688	000033f0  8b856cfdffff			  movl		  0xfffffd6c(%ebp),%eax
+ +1694	000033f6  890424				  movl		  %eax,(%esp)
+ +1697	000033f9  e87f3c0000			  calll		  0x0000707d				    _CATransform3DTranslate
+ +1702	000033fe  83ec04				  subl		  $0x04,%esp
+ +1705	00003401  8b95a8fdffff			  movl		  0xfffffda8(%ebp),%edx
+ +1711	00003407  899568feffff			  movl		  %edx,0xfffffe68(%ebp)
+ +1717	0000340d  8b85acfdffff			  movl		  0xfffffdac(%ebp),%eax
+ +1723	00003413  89856cfeffff			  movl		  %eax,0xfffffe6c(%ebp)
+ +1729	00003419  8b95b0fdffff			  movl		  0xfffffdb0(%ebp),%edx
+ +1735	0000341f  899570feffff			  movl		  %edx,0xfffffe70(%ebp)
+ +1741	00003425  8b85b4fdffff			  movl		  0xfffffdb4(%ebp),%eax
+ +1747	0000342b  898574feffff			  movl		  %eax,0xfffffe74(%ebp)
+ +1753	00003431  8b95b8fdffff			  movl		  0xfffffdb8(%ebp),%edx
+ +1759	00003437  899578feffff			  movl		  %edx,0xfffffe78(%ebp)
+ +1765	0000343d  8b85bcfdffff			  movl		  0xfffffdbc(%ebp),%eax
+ +1771	00003443  89857cfeffff			  movl		  %eax,0xfffffe7c(%ebp)
+ +1777	00003449  8b95c0fdffff			  movl		  0xfffffdc0(%ebp),%edx
+ +1783	0000344f  899580feffff			  movl		  %edx,0xfffffe80(%ebp)
+ +1789	00003455  8b85c4fdffff			  movl		  0xfffffdc4(%ebp),%eax
+ +1795	0000345b  898584feffff			  movl		  %eax,0xfffffe84(%ebp)
+ +1801	00003461  8b95c8fdffff			  movl		  0xfffffdc8(%ebp),%edx
+ +1807	00003467  899588feffff			  movl		  %edx,0xfffffe88(%ebp)
+ +1813	0000346d  8b85ccfdffff			  movl		  0xfffffdcc(%ebp),%eax
+ +1819	00003473  89858cfeffff			  movl		  %eax,0xfffffe8c(%ebp)
+ +1825	00003479  8b95d0fdffff			  movl		  0xfffffdd0(%ebp),%edx
+ +1831	0000347f  899590feffff			  movl		  %edx,0xfffffe90(%ebp)
+ +1837	00003485  8bbdd4fdffff			  movl		  0xfffffdd4(%ebp),%edi
+ +1843	0000348b  89bd94feffff			  movl		  %edi,0xfffffe94(%ebp)
+ +1849	00003491  8bb5d8fdffff			  movl		  0xfffffdd8(%ebp),%esi
+ +1855	00003497  89b598feffff			  movl		  %esi,0xfffffe98(%ebp)
+ +1861	0000349d  8b8ddcfdffff			  movl		  0xfffffddc(%ebp),%ecx
+ +1867	000034a3  898d9cfeffff			  movl		  %ecx,0xfffffe9c(%ebp)
+ +1873	000034a9  8b95e0fdffff			  movl		  0xfffffde0(%ebp),%edx
+ +1879	000034af  8995a0feffff			  movl		  %edx,0xfffffea0(%ebp)
+ +1885	000034b5  8b85e4fdffff			  movl		  0xfffffde4(%ebp),%eax
+ +1891	000034bb  8985a4feffff			  movl		  %eax,0xfffffea4(%ebp)
+ +1897	000034c1  8b85a8fdffff			  movl		  0xfffffda8(%ebp),%eax
+ +1903	000034c7  8945a8				  movl		  %eax,0xa8(%ebp)
+ +1906	000034ca  8b85acfdffff			  movl		  0xfffffdac(%ebp),%eax
+ +1912	000034d0  8945ac				  movl		  %eax,0xac(%ebp)
+ +1915	000034d3  8b85b0fdffff			  movl		  0xfffffdb0(%ebp),%eax
+ +1921	000034d9  8945b0				  movl		  %eax,0xb0(%ebp)
+ +1924	000034dc  8b85b4fdffff			  movl		  0xfffffdb4(%ebp),%eax
+ +1930	000034e2  8945b4				  movl		  %eax,0xb4(%ebp)
+ +1933	000034e5  8b85b8fdffff			  movl		  0xfffffdb8(%ebp),%eax
+ +1939	000034eb  8945b8				  movl		  %eax,0xb8(%ebp)
+ +1942	000034ee  8b85bcfdffff			  movl		  0xfffffdbc(%ebp),%eax
+ +1948	000034f4  8945bc				  movl		  %eax,0xbc(%ebp)
+ +1951	000034f7  8b85c0fdffff			  movl		  0xfffffdc0(%ebp),%eax
+ +1957	000034fd  8945c0				  movl		  %eax,0xc0(%ebp)
+ +1960	00003500  8b85c4fdffff			  movl		  0xfffffdc4(%ebp),%eax
+ +1966	00003506  8945c4				  movl		  %eax,0xc4(%ebp)
+ +1969	00003509  8b85c8fdffff			  movl		  0xfffffdc8(%ebp),%eax
+ +1975	0000350f  8945c8				  movl		  %eax,0xc8(%ebp)
+ +1978	00003512  8b85ccfdffff			  movl		  0xfffffdcc(%ebp),%eax
+ +1984	00003518  8945cc				  movl		  %eax,0xcc(%ebp)
+ +1987	0000351b  8b85d0fdffff			  movl		  0xfffffdd0(%ebp),%eax
+ +1993	00003521  8945d0				  movl		  %eax,0xd0(%ebp)
+ +1996	00003524  897dd4				  movl		  %edi,0xd4(%ebp)
+ +1999	00003527  8975d8				  movl		  %esi,0xd8(%ebp)
+ +2002	0000352a  894ddc				  movl		  %ecx,0xdc(%ebp)
+ +2005	0000352d  8955e0				  movl		  %edx,0xe0(%ebp)
+ +2008	00003530  8b85e4fdffff			  movl		  0xfffffde4(%ebp),%eax
+ +2014	00003536  8945e4				  movl		  %eax,0xe4(%ebp)
+ +2017	00003539  8b85a8fdffff			  movl		  0xfffffda8(%ebp),%eax
+ +2023	0000353f  89442408				  movl		  %eax,0x08(%esp)
+ +2027	00003543  8b85acfdffff			  movl		  0xfffffdac(%ebp),%eax
+ +2033	00003549  8944240c				  movl		  %eax,0x0c(%esp)
+ +2037	0000354d  8b85b0fdffff			  movl		  0xfffffdb0(%ebp),%eax
+ +2043	00003553  89442410				  movl		  %eax,0x10(%esp)
+ +2047	00003557  8b85b4fdffff			  movl		  0xfffffdb4(%ebp),%eax
+ +2053	0000355d  89442414				  movl		  %eax,0x14(%esp)
+ +2057	00003561  8b85b8fdffff			  movl		  0xfffffdb8(%ebp),%eax
+ +2063	00003567  89442418				  movl		  %eax,0x18(%esp)
+ +2067	0000356b  8b85bcfdffff			  movl		  0xfffffdbc(%ebp),%eax
+ +2073	00003571  8944241c				  movl		  %eax,0x1c(%esp)
+ +2077	00003575  8b85c0fdffff			  movl		  0xfffffdc0(%ebp),%eax
+ +2083	0000357b  89442420				  movl		  %eax,0x20(%esp)
+ +2087	0000357f  8b85c4fdffff			  movl		  0xfffffdc4(%ebp),%eax
+ +2093	00003585  89442424				  movl		  %eax,0x24(%esp)
+ +2097	00003589  8b85c8fdffff			  movl		  0xfffffdc8(%ebp),%eax
+ +2103	0000358f  89442428				  movl		  %eax,0x28(%esp)
+ +2107	00003593  8b85ccfdffff			  movl		  0xfffffdcc(%ebp),%eax
+ +2113	00003599  8944242c				  movl		  %eax,0x2c(%esp)
+ +2117	0000359d  8b85d0fdffff			  movl		  0xfffffdd0(%ebp),%eax
+ +2123	000035a3  89442430				  movl		  %eax,0x30(%esp)
+ +2127	000035a7  897c2434				  movl		  %edi,0x34(%esp)
+ +2131	000035ab  89742438				  movl		  %esi,0x38(%esp)
+ +2135	000035af  894c243c				  movl		  %ecx,0x3c(%esp)
+ +2139	000035b3  89542440				  movl		  %edx,0x40(%esp)
+ +2143	000035b7  8b95e4fdffff			  movl		  0xfffffde4(%ebp),%edx
+ +2149	000035bd  89542444				  movl		  %edx,0x44(%esp)
+ +2153	000035c1  8b836b540000			  movl		  0x0000546b(%ebx),%eax		    valueWithCATransform3D:
+ +2159	000035c7  89442404				  movl		  %eax,0x04(%esp)
+ +2163	000035cb  8b839b550000			  movl		  0x0000559b(%ebx),%eax		    NSValue
+ +2169	000035d1  890424				  movl		  %eax,(%esp)
+ +2172	000035d4  e8543a0000			  calll		  0x0000702d				    +[NSValue valueWithCATransform3D:]
+ +2177	000035d9  89442408				  movl		  %eax,0x08(%esp)
+ +2181	000035dd  8b8367540000			  movl		  0x00005467(%ebx),%eax		    addObject:
+ +2187	000035e3  89442404				  movl		  %eax,0x04(%esp)
+ +2191	000035e7  8b8588fdffff			  movl		  0xfffffd88(%ebp),%eax
+ +2197	000035ed  890424				  movl		  %eax,(%esp)
+ +2200	000035f0  e8383a0000			  calll		  0x0000702d				    -[(%esp,1) addObject:]
+ +2205	000035f5  83858cfdffff01		  addl		  $0x01,0xfffffd8c(%ebp)
+ +2212	000035fc  83bd8cfdffff5a		  cmpl		  $0x5a,0xfffffd8c(%ebp)
+ +2219	00003603  0f85aaf9ffff			  jnel		  0x00002fb3
+ +2225	00003609  8d83a3320000			  leal		  0x000032a3(%ebx),%eax		    sublayerTransform
+ +2231	0000360f  89442408				  movl		  %eax,0x08(%esp)
+ +2235	00003613  8b83fb540000			  movl		  0x000054fb(%ebx),%eax		    animationWithKeyPath:
+ +2241	00003619  89442404				  movl		  %eax,0x04(%esp)
+ +2245	0000361d  8b8397550000			  movl		  0x00005597(%ebx),%eax		    CAKeyframeAnimation
+ +2251	00003623  890424				  movl		  %eax,(%esp)
+ +2254	00003626  e8023a0000			  calll		  0x0000702d				    +[CAKeyframeAnimation animationWithKeyPath:]
+ +2259	0000362b  89c6					  movl		  %eax,%esi
+ +2261	0000362d  8b9588fdffff			  movl		  0xfffffd88(%ebp),%edx
+ +2267	00003633  89542408				  movl		  %edx,0x08(%esp)
+ +2271	00003637  8b8363540000			  movl		  0x00005463(%ebx),%eax		    setValues:
+ +2277	0000363d  89442404				  movl		  %eax,0x04(%esp)
+ +2281	00003641  893424				  movl		  %esi,(%esp)
+ +2284	00003644  e8e4390000			  calll		  0x0000702d				    -[(%esp,1) setValues:]
+ +2289	00003649  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+ +2297	00003651  c744240c00000840		  movl		  $0x40080000,0x0c(%esp)
+ +2305	00003659  8b83f7540000			  movl		  0x000054f7(%ebx),%eax		    setDuration:
+ +2311	0000365f  89442404				  movl		  %eax,0x04(%esp)
+ +2315	00003663  893424				  movl		  %esi,(%esp)
+ +2318	00003666  e8c2390000			  calll		  0x0000702d				    -[(%esp,1) setDuration:]
+ +2323	0000366b  8d83b3320000			  leal		  0x000032b3(%ebx),%eax		    zRot
+ +2329	00003671  8944240c				  movl		  %eax,0x0c(%esp)
+ +2333	00003675  89742408				  movl		  %esi,0x08(%esp)
+ +2337	00003679  8b835f540000			  movl		  0x0000545f(%ebx),%eax		    addAnimation:forKey:
+ +2343	0000367f  89442404				  movl		  %eax,0x04(%esp)
+ +2347	00003683  8b4508				  movl		  0x08(%ebp),%eax
+ +2350	00003686  890424				  movl		  %eax,(%esp)
+ +2353	00003689  e89f390000			  calll		  0x0000702d				    -[(%esp,1) addAnimation:forKey:]
+ +2358	0000368e  8b95a0fdffff			  movl		  0xfffffda0(%ebp),%edx
+ +2364	00003694  89957cfdffff			  movl		  %edx,0xfffffd7c(%ebp)
+ +2370	0000369a  f30f1085a4fdffff		  movss		  0xfffffda4(%ebp),%xmm0
+ +2378	000036a2  f30f118578fdffff		  movss		  %xmm0,0xfffffd78(%ebp)
+ +2386	000036aa  8b8578fdffff			  movl		  0xfffffd78(%ebp),%eax
+ +2392	000036b0  8b957cfdffff			  movl		  0xfffffd7c(%ebp),%edx
+ +2398	000036b6  89442408				  movl		  %eax,0x08(%esp)
+ +2402	000036ba  8954240c				  movl		  %edx,0x0c(%esp)
+ +2406	000036be  8b835b540000			  movl		  0x0000545b(%ebx),%eax		    setPosition:
+ +2412	000036c4  89442404				  movl		  %eax,0x04(%esp)
+ +2416	000036c8  8b5508				  movl		  0x08(%ebp),%edx
+ +2419	000036cb  891424				  movl		  %edx,(%esp)
+ +2422	000036ce  e85a390000			  calll		  0x0000702d				    -[(%esp,1) setPosition:]
+ +2427	000036d3  8d65f4				  leal		  0xf4(%ebp),%esp
+ +2430	000036d6  5b					  popl		  %ebx
+ +2431	000036d7  5e					  popl		  %esi
+ +2432	000036d8  5f					  popl		  %edi
+ +2433	000036d9  5d					  popl		  %ebp
+ +2434	000036da  c3					  ret
+ +2435	000036db  90					  nop
+
+-(float)[RUIPhloatoControl(SpinAnimation) _zTranslationForFrame:totalFrameCount:]
+	+0	000036dc  90					  nop
+	+1	000036dd  90					  nop
+	+2	000036de  90					  nop
+	+3	000036df  90					  nop
+	+4	000036e0  90					  nop
+	+5	000036e1  90					  nop
+
+	+0	000036e2  55					  pushl		  %ebp
+	+1	000036e3  89e5					  movl		  %esp,%ebp
+	+3	000036e5  83ec04				  subl		  $0x04,%esp
+	+6	000036e8  e803220000			  calll		  0x000058f0
+   +11	000036ed  f30f2a4510			  cvtsi2ss	  0x10(%ebp),%xmm0
+   +16	000036f2  f30f2a4d14			  cvtsi2ss	  0x14(%ebp),%xmm1
+   +21	000036f7  f30f5ec1				  divss		  %xmm1,%xmm0
+   +25	000036fb  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+   +29	000036ff  f20f109183280000		  movsd		  0x00002883(%ecx),%xmm2
+   +37	00003707  f20f59c2				  mulsd		  %xmm2,%xmm0
+   +41	0000370b  f20f5ac0				  cvtsd2ss	  %xmm0,%xmm0
+   +45	0000370f  f30f5ac8				  cvtss2sd	  %xmm0,%xmm1
+   +49	00003713  660f2e898b280000		  ucomisd	  0x0000288b(%ecx),%xmm1
+   +57	0000371b  7327					  jae		  0x00003744
+   +59	0000371d  7a25					  jp		  0x00003744
+   +61	0000371f  f20f598993280000		  mulsd		  0x00002893(%ecx),%xmm1
+   +69	00003727  f20f5eca				  divsd		  %xmm2,%xmm1
+   +73	0000372b  f20f5ac1				  cvtsd2ss	  %xmm1,%xmm0
+   +77	0000372f  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+   +81	00003733  660f28c8				  movapd	  %xmm0,%xmm1
+   +85	00003737  f20f59899b280000		  mulsd		  0x0000289b(%ecx),%xmm1
+   +93	0000373f  e9ac000000			  jmpl		  0x000037f0
+   +98	00003744  660f2e89a3280000		  ucomisd	  0x000028a3(%ecx),%xmm1
+  +106	0000374c  732c					  jae		  0x0000377a
+  +108	0000374e  7a2a					  jp		  0x0000377a
+  +110	00003750  f20f598993280000		  mulsd		  0x00002893(%ecx),%xmm1
+  +118	00003758  f20f5eca				  divsd		  %xmm2,%xmm1
+  +122	0000375c  f20f5c89ab280000		  subsd		  0x000028ab(%ecx),%xmm1
+  +130	00003764  f20f5ac1				  cvtsd2ss	  %xmm1,%xmm0
+  +134	00003768  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+  +138	0000376c  660f28c8				  movapd	  %xmm0,%xmm1
+  +142	00003770  f20f5989b3280000		  mulsd		  0x000028b3(%ecx),%xmm1
+  +150	00003778  eb34					  jmp		  0x000037ae
+  +152	0000377a  660f2e89cb280000		  ucomisd	  0x000028cb(%ecx),%xmm1
+  +160	00003782  7344					  jae		  0x000037c8
+  +162	00003784  7a42					  jp		  0x000037c8
+  +164	00003786  f20f598993280000		  mulsd		  0x00002893(%ecx),%xmm1
+  +172	0000378e  f20f5eca				  divsd		  %xmm2,%xmm1
+  +176	00003792  f20f5c89ab280000		  subsd		  0x000028ab(%ecx),%xmm1
+  +184	0000379a  f20f5ac1				  cvtsd2ss	  %xmm1,%xmm0
+  +188	0000379e  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+  +192	000037a2  660f28c8				  movapd	  %xmm0,%xmm1
+  +196	000037a6  f20f5989d3280000		  mulsd		  0x000028d3(%ecx),%xmm1
+  +204	000037ae  f20f59c8				  mulsd		  %xmm0,%xmm1
+  +208	000037b2  f20f59c1				  mulsd		  %xmm1,%xmm0
+  +212	000037b6  f20f5881bb280000		  addsd		  0x000028bb(%ecx),%xmm0
+  +220	000037be  f20f5981c3280000		  mulsd		  0x000028c3(%ecx),%xmm0
+  +228	000037c6  eb30					  jmp		  0x000037f8
+  +230	000037c8  f20f108193280000		  movsd		  0x00002893(%ecx),%xmm0
+  +238	000037d0  f20f59c8				  mulsd		  %xmm0,%xmm1
+  +242	000037d4  f20f5eca				  divsd		  %xmm2,%xmm1
+  +246	000037d8  f20f5cc8				  subsd		  %xmm0,%xmm1
+  +250	000037dc  f20f5ac1				  cvtsd2ss	  %xmm1,%xmm0
+  +254	000037e0  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+  +258	000037e4  660f28c8				  movapd	  %xmm0,%xmm1
+  +262	000037e8  f20f5989db280000		  mulsd		  0x000028db(%ecx),%xmm1
+  +270	000037f0  f20f59c8				  mulsd		  %xmm0,%xmm1
+  +274	000037f4  f20f59c1				  mulsd		  %xmm1,%xmm0
+  +278	000037f8  f20f5ac0				  cvtsd2ss	  %xmm0,%xmm0
+  +282	000037fc  f30f1145fc			  movss		  %xmm0,0xfc(%ebp)
+  +287	00003801  d945fc				  flds		  0xfc(%ebp)
+  +290	00003804  c9					  leave
+  +291	00003805  c3					  ret
+
+-(float)[RUIPhloatoControl(SpinAnimation) _rotationForFrame:totalFrameCount:directionFactor:]
+	+0	00003806  90					  nop
+	+1	00003807  90					  nop
+	+2	00003808  90					  nop
+	+3	00003809  90					  nop
+	+4	0000380a  90					  nop
+	+5	0000380b  90					  nop
+
+	+0	0000380c  55					  pushl		  %ebp
+	+1	0000380d  89e5					  movl		  %esp,%ebp
+	+3	0000380f  83ec04				  subl		  $0x04,%esp
+	+6	00003812  e8d9200000			  calll		  0x000058f0
+   +11	00003817  f30f5a4518			  cvtss2sd	  0x18(%ebp),%xmm0
+   +16	0000381c  f20f58c0				  addsd		  %xmm0,%xmm0
+   +20	00003820  8b81a9380000			  movl		  0x000038a9(%ecx),%eax
+   +26	00003826  f20f5900				  mulsd		  (%eax),%xmm0
+   +30	0000382a  f20f5ad0				  cvtsd2ss	  %xmm0,%xmm2
+   +34	0000382e  f30f2a4510			  cvtsi2ss	  0x10(%ebp),%xmm0
+   +39	00003833  f30f2a4d14			  cvtsi2ss	  0x14(%ebp),%xmm1
+   +44	00003838  f30f5ec1				  divss		  %xmm1,%xmm0
+   +48	0000383c  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+   +52	00003840  f20f108959270000		  movsd		  0x00002759(%ecx),%xmm1
+   +60	00003848  f20f59c1				  mulsd		  %xmm1,%xmm0
+   +64	0000384c  f20f5ac0				  cvtsd2ss	  %xmm0,%xmm0
+   +68	00003850  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+   +72	00003854  660f2e8179270000		  ucomisd	  0x00002779(%ecx),%xmm0
+   +80	0000385c  7335					  jae		  0x00003893
+   +82	0000385e  7a33					  jp		  0x00003893
+   +84	00003860  f20f58c0				  addsd		  %xmm0,%xmm0
+   +88	00003864  f20f5ec1				  divsd		  %xmm1,%xmm0
+   +92	00003868  f20f5ac8				  cvtsd2ss	  %xmm0,%xmm1
+   +96	0000386c  f30f5ac9				  cvtss2sd	  %xmm1,%xmm1
+  +100	00003870  f30f5ac2				  cvtss2sd	  %xmm2,%xmm0
+  +104	00003874  f20f598189270000		  mulsd		  0x00002789(%ecx),%xmm0
+  +112	0000387c  f20f59c1				  mulsd		  %xmm1,%xmm0
+  +116	00003880  f20f59c1				  mulsd		  %xmm1,%xmm0
+  +120	00003884  f20f59c8				  mulsd		  %xmm0,%xmm1
+  +124	00003888  f20f5ac9				  cvtsd2ss	  %xmm1,%xmm1
+  +128	0000388c  f30f114dfc			  movss		  %xmm1,0xfc(%ebp)
+  +133	00003891  eb41					  jmp		  0x000038d4
+  +135	00003893  f20f5cc1				  subsd		  %xmm1,%xmm0
+  +139	00003897  f20f58c0				  addsd		  %xmm0,%xmm0
+  +143	0000389b  f20f5ec1				  divsd		  %xmm1,%xmm0
+  +147	0000389f  f20f5ac0				  cvtsd2ss	  %xmm0,%xmm0
+  +151	000038a3  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+  +155	000038a7  f30f5ad2				  cvtss2sd	  %xmm2,%xmm2
+  +159	000038ab  660f28c8				  movapd	  %xmm0,%xmm1
+  +163	000038af  f20f598989270000		  mulsd		  0x00002789(%ecx),%xmm1
+  +171	000038b7  f20f59c8				  mulsd		  %xmm0,%xmm1
+  +175	000038bb  f20f59c1				  mulsd		  %xmm1,%xmm0
+  +179	000038bf  f20f588191270000		  addsd		  0x00002791(%ecx),%xmm0
+  +187	000038c7  f20f59d0				  mulsd		  %xmm0,%xmm2
+  +191	000038cb  f20f5ad2				  cvtsd2ss	  %xmm2,%xmm2
+  +195	000038cf  f30f1155fc			  movss		  %xmm2,0xfc(%ebp)
+  +200	000038d4  d945fc				  flds		  0xfc(%ebp)
+  +203	000038d7  c9					  leave
+  +204	000038d8  c3					  ret
+  +205	000038d9  90					  nop
+
+-(id)[RUIPhloatoControl init]
+	+0	000038da  90					  nop
+	+1	000038db  90					  nop
+	+2	000038dc  90					  nop
+	+3	000038dd  90					  nop
+	+4	000038de  90					  nop
+	+5	000038df  90					  nop
+
+	+0	000038e0  55					  pushl		  %ebp
+	+1	000038e1  89e5					  movl		  %esp,%ebp
+	+3	000038e3  57					  pushl		  %edi
+	+4	000038e4  56					  pushl		  %esi
+	+5	000038e5  53					  pushl		  %ebx
+	+6	000038e6  81eccc010000			  subl		  $0x000001cc,%esp
+   +12	000038ec  e8fb1f0000			  calll		  0x000058ec
+   +17	000038f1  c78590feffff00000000	  movl		  $0x00000000,0xfffffe90(%ebp)
+   +27	000038fb  c78594feffff00000000	  movl		  $0x00000000,0xfffffe94(%ebp)
+   +37	00003905  c78588feffff00000000	  movl		  $0x00000000,0xfffffe88(%ebp)
+   +47	0000390f  c7858cfeffff00000000	  movl		  $0x00000000,0xfffffe8c(%ebp)
+   +57	00003919  c78580feffff00000000	  movl		  $0x00000000,0xfffffe80(%ebp)
+   +67	00003923  c78584feffff00000000	  movl		  $0x00000000,0xfffffe84(%ebp)
+   +77	0000392d  8b4508				  movl		  0x08(%ebp),%eax
+   +80	00003930  8945e0				  movl		  %eax,0xe0(%ebp)
+   +83	00003933  8b83d34a0000			  movl		  0x00004ad3(%ebx),%eax		    BRControl
+   +89	00003939  8945e4				  movl		  %eax,0xe4(%ebp)
+   +92	0000393c  8d55e0				  leal		  0xe0(%ebp),%edx
+   +95	0000393f  8b83c3480000			  movl		  0x000048c3(%ebx),%eax		    init
+  +101	00003945  89442404				  movl		  %eax,0x04(%esp)
+  +105	00003949  891424				  movl		  %edx,(%esp)
+  +108	0000394c  e8d7360000			  calll		  0x00007028				    -[[(%esp,1) super] init]
+  +113	00003951  85c0					  testl		  %eax,%eax
+  +115	00003953  750f					  jne		  0x00003964
+  +117	00003955  c7859cfeffff00000000	  movl		  $0x00000000,0xfffffe9c(%ebp)
+  +127	0000395f  e9b2070000			  jmpl		  0x00004116
+  +132	00003964  89859cfeffff			  movl		  %eax,0xfffffe9c(%ebp)
+  +138	0000396a  e822370000			  calll		  0x00007091				    _BRThemeColorBlack
+  +143	0000396f  89442408				  movl		  %eax,0x08(%esp)
+  +147	00003973  8b8393490000			  movl		  0x00004993(%ebx),%eax		    setBackgroundColor:
+  +153	00003979  89442404				  movl		  %eax,0x04(%esp)
+  +157	0000397d  8b859cfeffff			  movl		  0xfffffe9c(%ebp),%eax
+  +163	00003983  890424				  movl		  %eax,(%esp)
+  +166	00003986  e8a2360000			  calll		  0x0000702d				    -[(%esp,1) setBackgroundColor:]
+  +171	0000398b  8b83b7370000			  movl		  0x000037b7(%ebx),%eax
+  +177	00003991  8b5038				  movl		  0x38(%eax),%edx
+  +180	00003994  8b4834				  movl		  0x34(%eax),%ecx
+  +183	00003997  8b7030				  movl		  0x30(%eax),%esi
+  +186	0000399a  8b7828				  movl		  0x28(%eax),%edi
+  +189	0000399d  f30f104024			  movss		  0x24(%eax),%xmm0
+  +194	000039a2  f30f114584			  movss		  %xmm0,0x84(%ebp)
+  +199	000039a7  f30f104020			  movss		  0x20(%eax),%xmm0
+  +204	000039ac  f30f114580			  movss		  %xmm0,0x80(%ebp)
+  +209	000039b1  f30f10401c			  movss		  0x1c(%eax),%xmm0
+  +214	000039b6  f30f11857cffffff		  movss		  %xmm0,0xffffff7c(%ebp)
+  +222	000039be  f30f104018			  movss		  0x18(%eax),%xmm0
+  +227	000039c3  f30f118578ffffff		  movss		  %xmm0,0xffffff78(%ebp)
+  +235	000039cb  f30f104014			  movss		  0x14(%eax),%xmm0
+  +240	000039d0  f30f118574ffffff		  movss		  %xmm0,0xffffff74(%ebp)
+  +248	000039d8  f30f104010			  movss		  0x10(%eax),%xmm0
+  +253	000039dd  f30f118570ffffff		  movss		  %xmm0,0xffffff70(%ebp)
+  +261	000039e5  f30f10400c			  movss		  0x0c(%eax),%xmm0
+  +266	000039ea  f30f11856cffffff		  movss		  %xmm0,0xffffff6c(%ebp)
+  +274	000039f2  f30f104008			  movss		  0x08(%eax),%xmm0
+  +279	000039f7  f30f118568ffffff		  movss		  %xmm0,0xffffff68(%ebp)
+  +287	000039ff  f30f104004			  movss		  0x04(%eax),%xmm0
+  +292	00003a04  f30f118564ffffff		  movss		  %xmm0,0xffffff64(%ebp)
+  +300	00003a0c  f30f1000				  movss		  (%eax),%xmm0
+  +304	00003a10  f30f118560ffffff		  movss		  %xmm0,0xffffff60(%ebp)
+  +312	00003a18  8b403c				  movl		  0x3c(%eax),%eax
+  +315	00003a1b  89459c				  movl		  %eax,0x9c(%ebp)
+  +318	00003a1e  895598				  movl		  %edx,0x98(%ebp)
+  +321	00003a21  894d94				  movl		  %ecx,0x94(%ebp)
+  +324	00003a24  897590				  movl		  %esi,0x90(%ebp)
+  +327	00003a27  897d88				  movl		  %edi,0x88(%ebp)
+  +330	00003a2a  c7458c6f1283ba		  movl		  $0xba83126f,0x8c(%ebp)
+  +337	00003a31  8d95d8feffff			  leal		  0xfffffed8(%ebp),%edx
+  +343	00003a37  c744244c0000afc4		  movl		  $0xc4af0000,0x4c(%esp)
+  +351	00003a3f  31c0					  xorl		  %eax,%eax
+  +353	00003a41  89442448				  movl		  %eax,0x48(%esp)
+  +357	00003a45  89442444				  movl		  %eax,0x44(%esp)
+  +361	00003a49  8b8560ffffff			  movl		  0xffffff60(%ebp),%eax
+  +367	00003a4f  89442404				  movl		  %eax,0x04(%esp)
+  +371	00003a53  8b8564ffffff			  movl		  0xffffff64(%ebp),%eax
+  +377	00003a59  89442408				  movl		  %eax,0x08(%esp)
+  +381	00003a5d  8b8568ffffff			  movl		  0xffffff68(%ebp),%eax
+  +387	00003a63  8944240c				  movl		  %eax,0x0c(%esp)
+  +391	00003a67  8b856cffffff			  movl		  0xffffff6c(%ebp),%eax
+  +397	00003a6d  89442410				  movl		  %eax,0x10(%esp)
+  +401	00003a71  8b8570ffffff			  movl		  0xffffff70(%ebp),%eax
+  +407	00003a77  89442414				  movl		  %eax,0x14(%esp)
+  +411	00003a7b  8b8574ffffff			  movl		  0xffffff74(%ebp),%eax
+  +417	00003a81  89442418				  movl		  %eax,0x18(%esp)
+  +421	00003a85  8b8578ffffff			  movl		  0xffffff78(%ebp),%eax
+  +427	00003a8b  8944241c				  movl		  %eax,0x1c(%esp)
+  +431	00003a8f  8b857cffffff			  movl		  0xffffff7c(%ebp),%eax
+  +437	00003a95  89442420				  movl		  %eax,0x20(%esp)
+  +441	00003a99  8b4580				  movl		  0x80(%ebp),%eax
+  +444	00003a9c  89442424				  movl		  %eax,0x24(%esp)
+  +448	00003aa0  8b4584				  movl		  0x84(%ebp),%eax
+  +451	00003aa3  89442428				  movl		  %eax,0x28(%esp)
+  +455	00003aa7  8b4588				  movl		  0x88(%ebp),%eax
+  +458	00003aaa  8944242c				  movl		  %eax,0x2c(%esp)
+  +462	00003aae  8b458c				  movl		  0x8c(%ebp),%eax
+  +465	00003ab1  89442430				  movl		  %eax,0x30(%esp)
+  +469	00003ab5  8b4590				  movl		  0x90(%ebp),%eax
+  +472	00003ab8  89442434				  movl		  %eax,0x34(%esp)
+  +476	00003abc  8b4594				  movl		  0x94(%ebp),%eax
+  +479	00003abf  89442438				  movl		  %eax,0x38(%esp)
+  +483	00003ac3  8b4598				  movl		  0x98(%ebp),%eax
+  +486	00003ac6  8944243c				  movl		  %eax,0x3c(%esp)
+  +490	00003aca  8b459c				  movl		  0x9c(%ebp),%eax
+  +493	00003acd  89442440				  movl		  %eax,0x40(%esp)
+  +497	00003ad1  891424				  movl		  %edx,(%esp)
+  +500	00003ad4  e8a4350000			  calll		  0x0000707d				    _CATransform3DTranslate
+  +505	00003ad9  83ec04				  subl		  $0x04,%esp
+  +508	00003adc  8b85d8feffff			  movl		  0xfffffed8(%ebp),%eax
+  +514	00003ae2  898520ffffff			  movl		  %eax,0xffffff20(%ebp)
+  +520	00003ae8  8b85dcfeffff			  movl		  0xfffffedc(%ebp),%eax
+  +526	00003aee  898524ffffff			  movl		  %eax,0xffffff24(%ebp)
+  +532	00003af4  8b85e0feffff			  movl		  0xfffffee0(%ebp),%eax
+  +538	00003afa  898528ffffff			  movl		  %eax,0xffffff28(%ebp)
+  +544	00003b00  8b85e4feffff			  movl		  0xfffffee4(%ebp),%eax
+  +550	00003b06  89852cffffff			  movl		  %eax,0xffffff2c(%ebp)
+  +556	00003b0c  8b85e8feffff			  movl		  0xfffffee8(%ebp),%eax
+  +562	00003b12  898530ffffff			  movl		  %eax,0xffffff30(%ebp)
+  +568	00003b18  8b85ecfeffff			  movl		  0xfffffeec(%ebp),%eax
+  +574	00003b1e  898534ffffff			  movl		  %eax,0xffffff34(%ebp)
+  +580	00003b24  8b85f0feffff			  movl		  0xfffffef0(%ebp),%eax
+  +586	00003b2a  898538ffffff			  movl		  %eax,0xffffff38(%ebp)
+  +592	00003b30  8b85f4feffff			  movl		  0xfffffef4(%ebp),%eax
+  +598	00003b36  89853cffffff			  movl		  %eax,0xffffff3c(%ebp)
+  +604	00003b3c  8b85f8feffff			  movl		  0xfffffef8(%ebp),%eax
+  +610	00003b42  898540ffffff			  movl		  %eax,0xffffff40(%ebp)
+  +616	00003b48  8b85fcfeffff			  movl		  0xfffffefc(%ebp),%eax
+  +622	00003b4e  898544ffffff			  movl		  %eax,0xffffff44(%ebp)
+  +628	00003b54  8b8500ffffff			  movl		  0xffffff00(%ebp),%eax
+  +634	00003b5a  898548ffffff			  movl		  %eax,0xffffff48(%ebp)
+  +640	00003b60  8b8504ffffff			  movl		  0xffffff04(%ebp),%eax
+  +646	00003b66  89854cffffff			  movl		  %eax,0xffffff4c(%ebp)
+  +652	00003b6c  8b8508ffffff			  movl		  0xffffff08(%ebp),%eax
+  +658	00003b72  898550ffffff			  movl		  %eax,0xffffff50(%ebp)
+  +664	00003b78  8b850cffffff			  movl		  0xffffff0c(%ebp),%eax
+  +670	00003b7e  898554ffffff			  movl		  %eax,0xffffff54(%ebp)
+  +676	00003b84  8b8510ffffff			  movl		  0xffffff10(%ebp),%eax
+  +682	00003b8a  898558ffffff			  movl		  %eax,0xffffff58(%ebp)
+  +688	00003b90  8b8514ffffff			  movl		  0xffffff14(%ebp),%eax
+  +694	00003b96  89855cffffff			  movl		  %eax,0xffffff5c(%ebp)
+  +700	00003b9c  8bb55cffffff			  movl		  0xffffff5c(%ebp),%esi
+  +706	00003ba2  8bbd58ffffff			  movl		  0xffffff58(%ebp),%edi
+  +712	00003ba8  f30f108554ffffff		  movss		  0xffffff54(%ebp),%xmm0
+  +720	00003bb0  f30f1185d4feffff		  movss		  %xmm0,0xfffffed4(%ebp)
+  +728	00003bb8  f30f108550ffffff		  movss		  0xffffff50(%ebp),%xmm0
+  +736	00003bc0  f30f1185d0feffff		  movss		  %xmm0,0xfffffed0(%ebp)
+  +744	00003bc8  f30f108548ffffff		  movss		  0xffffff48(%ebp),%xmm0
+  +752	00003bd0  f30f1185ccfeffff		  movss		  %xmm0,0xfffffecc(%ebp)
+  +760	00003bd8  f30f108544ffffff		  movss		  0xffffff44(%ebp),%xmm0
+  +768	00003be0  f30f1185c8feffff		  movss		  %xmm0,0xfffffec8(%ebp)
+  +776	00003be8  f30f108540ffffff		  movss		  0xffffff40(%ebp),%xmm0
+  +784	00003bf0  f30f1185c4feffff		  movss		  %xmm0,0xfffffec4(%ebp)
+  +792	00003bf8  f30f10853cffffff		  movss		  0xffffff3c(%ebp),%xmm0
+  +800	00003c00  f30f1185c0feffff		  movss		  %xmm0,0xfffffec0(%ebp)
+  +808	00003c08  f30f108538ffffff		  movss		  0xffffff38(%ebp),%xmm0
+  +816	00003c10  f30f1185bcfeffff		  movss		  %xmm0,0xfffffebc(%ebp)
+  +824	00003c18  f30f108534ffffff		  movss		  0xffffff34(%ebp),%xmm0
+  +832	00003c20  f30f1185b8feffff		  movss		  %xmm0,0xfffffeb8(%ebp)
+  +840	00003c28  f30f108530ffffff		  movss		  0xffffff30(%ebp),%xmm0
+  +848	00003c30  f30f1185b4feffff		  movss		  %xmm0,0xfffffeb4(%ebp)
+  +856	00003c38  f30f10852cffffff		  movss		  0xffffff2c(%ebp),%xmm0
+  +864	00003c40  f30f1185b0feffff		  movss		  %xmm0,0xfffffeb0(%ebp)
+  +872	00003c48  f30f108528ffffff		  movss		  0xffffff28(%ebp),%xmm0
+  +880	00003c50  f30f1185acfeffff		  movss		  %xmm0,0xfffffeac(%ebp)
+  +888	00003c58  f30f108524ffffff		  movss		  0xffffff24(%ebp),%xmm0
+  +896	00003c60  f30f1185a8feffff		  movss		  %xmm0,0xfffffea8(%ebp)
+  +904	00003c68  f30f108520ffffff		  movss		  0xffffff20(%ebp),%xmm0
+  +912	00003c70  f30f1185a4feffff		  movss		  %xmm0,0xfffffea4(%ebp)
+  +920	00003c78  f30f10854cffffff		  movss		  0xffffff4c(%ebp),%xmm0
+  +928	00003c80  f30f1185a0feffff		  movss		  %xmm0,0xfffffea0(%ebp)
+  +936	00003c88  8b838f490000			  movl		  0x0000498f(%ebx),%eax		    layer
+  +942	00003c8e  89442404				  movl		  %eax,0x04(%esp)
+  +946	00003c92  8b859cfeffff			  movl		  0xfffffe9c(%ebp),%eax
+  +952	00003c98  890424				  movl		  %eax,(%esp)
+  +955	00003c9b  e88d330000			  calll		  0x0000702d				    -[(%esp,1) layer]
+  +960	00003ca0  8975dc				  movl		  %esi,0xdc(%ebp)
+  +963	00003ca3  897dd8				  movl		  %edi,0xd8(%ebp)
+  +966	00003ca6  f30f1085d4feffff		  movss		  0xfffffed4(%ebp),%xmm0
+  +974	00003cae  f30f1145d4			  movss		  %xmm0,0xd4(%ebp)
+  +979	00003cb3  f30f1085d0feffff		  movss		  0xfffffed0(%ebp),%xmm0
+  +987	00003cbb  f30f1145d0			  movss		  %xmm0,0xd0(%ebp)
+  +992	00003cc0  f30f1085ccfeffff		  movss		  0xfffffecc(%ebp),%xmm0
+ +1000	00003cc8  f30f1145c8			  movss		  %xmm0,0xc8(%ebp)
+ +1005	00003ccd  f30f1085c8feffff		  movss		  0xfffffec8(%ebp),%xmm0
+ +1013	00003cd5  f30f1145c4			  movss		  %xmm0,0xc4(%ebp)
+ +1018	00003cda  f30f1085c4feffff		  movss		  0xfffffec4(%ebp),%xmm0
+ +1026	00003ce2  f30f1145c0			  movss		  %xmm0,0xc0(%ebp)
+ +1031	00003ce7  f30f1085c0feffff		  movss		  0xfffffec0(%ebp),%xmm0
+ +1039	00003cef  f30f1145bc			  movss		  %xmm0,0xbc(%ebp)
+ +1044	00003cf4  f30f1085bcfeffff		  movss		  0xfffffebc(%ebp),%xmm0
+ +1052	00003cfc  f30f1145b8			  movss		  %xmm0,0xb8(%ebp)
+ +1057	00003d01  f30f1085b8feffff		  movss		  0xfffffeb8(%ebp),%xmm0
+ +1065	00003d09  f30f1145b4			  movss		  %xmm0,0xb4(%ebp)
+ +1070	00003d0e  f30f1085b4feffff		  movss		  0xfffffeb4(%ebp),%xmm0
+ +1078	00003d16  f30f1145b0			  movss		  %xmm0,0xb0(%ebp)
+ +1083	00003d1b  f30f1085b0feffff		  movss		  0xfffffeb0(%ebp),%xmm0
+ +1091	00003d23  f30f1145ac			  movss		  %xmm0,0xac(%ebp)
+ +1096	00003d28  f30f1085acfeffff		  movss		  0xfffffeac(%ebp),%xmm0
+ +1104	00003d30  f30f1145a8			  movss		  %xmm0,0xa8(%ebp)
+ +1109	00003d35  f30f1085a8feffff		  movss		  0xfffffea8(%ebp),%xmm0
+ +1117	00003d3d  f30f1145a4			  movss		  %xmm0,0xa4(%ebp)
+ +1122	00003d42  f30f1085a4feffff		  movss		  0xfffffea4(%ebp),%xmm0
+ +1130	00003d4a  f30f1145a0			  movss		  %xmm0,0xa0(%ebp)
+ +1135	00003d4f  f30f1085a0feffff		  movss		  0xfffffea0(%ebp),%xmm0
+ +1143	00003d57  f30f1145cc			  movss		  %xmm0,0xcc(%ebp)
+ +1148	00003d5c  8b55a0				  movl		  0xa0(%ebp),%edx
+ +1151	00003d5f  89542408				  movl		  %edx,0x08(%esp)
+ +1155	00003d63  8b55a4				  movl		  0xa4(%ebp),%edx
+ +1158	00003d66  8954240c				  movl		  %edx,0x0c(%esp)
+ +1162	00003d6a  8b55a8				  movl		  0xa8(%ebp),%edx
+ +1165	00003d6d  89542410				  movl		  %edx,0x10(%esp)
+ +1169	00003d71  8b55ac				  movl		  0xac(%ebp),%edx
+ +1172	00003d74  89542414				  movl		  %edx,0x14(%esp)
+ +1176	00003d78  8b55b0				  movl		  0xb0(%ebp),%edx
+ +1179	00003d7b  89542418				  movl		  %edx,0x18(%esp)
+ +1183	00003d7f  8b55b4				  movl		  0xb4(%ebp),%edx
+ +1186	00003d82  8954241c				  movl		  %edx,0x1c(%esp)
+ +1190	00003d86  8b55b8				  movl		  0xb8(%ebp),%edx
+ +1193	00003d89  89542420				  movl		  %edx,0x20(%esp)
+ +1197	00003d8d  8b55bc				  movl		  0xbc(%ebp),%edx
+ +1200	00003d90  89542424				  movl		  %edx,0x24(%esp)
+ +1204	00003d94  8b55c0				  movl		  0xc0(%ebp),%edx
+ +1207	00003d97  89542428				  movl		  %edx,0x28(%esp)
+ +1211	00003d9b  8b55c4				  movl		  0xc4(%ebp),%edx
+ +1214	00003d9e  8954242c				  movl		  %edx,0x2c(%esp)
+ +1218	00003da2  8b55c8				  movl		  0xc8(%ebp),%edx
+ +1221	00003da5  89542430				  movl		  %edx,0x30(%esp)
+ +1225	00003da9  8b55cc				  movl		  0xcc(%ebp),%edx
+ +1228	00003dac  89542434				  movl		  %edx,0x34(%esp)
+ +1232	00003db0  8b55d0				  movl		  0xd0(%ebp),%edx
+ +1235	00003db3  89542438				  movl		  %edx,0x38(%esp)
+ +1239	00003db7  8b55d4				  movl		  0xd4(%ebp),%edx
+ +1242	00003dba  8954243c				  movl		  %edx,0x3c(%esp)
+ +1246	00003dbe  8b55d8				  movl		  0xd8(%ebp),%edx
+ +1249	00003dc1  89542440				  movl		  %edx,0x40(%esp)
+ +1253	00003dc5  8b55dc				  movl		  0xdc(%ebp),%edx
+ +1256	00003dc8  89542444				  movl		  %edx,0x44(%esp)
+ +1260	00003dcc  8b938b490000			  movl		  0x0000498b(%ebx),%edx		    setSublayerTransform:
+ +1266	00003dd2  89542404				  movl		  %edx,0x04(%esp)
+ +1270	00003dd6  890424				  movl		  %eax,(%esp)
+ +1273	00003dd9  e84f320000			  calll		  0x0000702d				    -[(%esp,1) setSublayerTransform:]
+ +1278	00003dde  8b8387490000			  movl		  0x00004987(%ebx),%eax		    alloc
+ +1284	00003de4  89442404				  movl		  %eax,0x04(%esp)
+ +1288	00003de8  8b83374a0000			  movl		  0x00004a37(%ebx),%eax		    RUIPhloatoPlane
+ +1294	00003dee  890424				  movl		  %eax,(%esp)
+ +1297	00003df1  e837320000			  calll		  0x0000702d				    +[RUIPhloatoPlane alloc]
+ +1302	00003df6  c744241008000000		  movl		  $0x00000008,0x10(%esp)
+ +1310	00003dfe  8b93c3370000			  movl		  0x000037c3(%ebx),%edx
+ +1316	00003e04  8954240c				  movl		  %edx,0x0c(%esp)
+ +1320	00003e08  8b959cfeffff			  movl		  0xfffffe9c(%ebp),%edx
+ +1326	00003e0e  89542408				  movl		  %edx,0x08(%esp)
+ +1330	00003e12  8b9383490000			  movl		  0x00004983(%ebx),%edx		    initWithPlaneLayer:positionTable:count:
+ +1336	00003e18  89542404				  movl		  %edx,0x04(%esp)
+ +1340	00003e1c  890424				  movl		  %eax,(%esp)
+ +1343	00003e1f  e809320000			  calll		  0x0000702d				    -[(%esp,1) initWithPlaneLayer:positionTable:count:]
+ +1348	00003e24  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1354	00003e2a  89411c				  movl		  %eax,0x1c(%ecx)
+ +1357	00003e2d  d983a3240000			  flds		  0x000024a3(%ebx)
+ +1363	00003e33  d99594feffff			  fsts		  0xfffffe94(%ebp)
+ +1369	00003e39  d99d90feffff			  fstps		  0xfffffe90(%ebp)
+ +1375	00003e3f  8b9590feffff			  movl		  0xfffffe90(%ebp),%edx
+ +1381	00003e45  8b8d94feffff			  movl		  0xfffffe94(%ebp),%ecx
+ +1387	00003e4b  8954240c				  movl		  %edx,0x0c(%esp)
+ +1391	00003e4f  894c2410				  movl		  %ecx,0x10(%esp)
+ +1395	00003e53  89442408				  movl		  %eax,0x08(%esp)
+ +1399	00003e57  8b837f490000			  movl		  0x0000497f(%ebx),%eax		    _addProviderToPlane:withMaxImageSize:
+ +1405	00003e5d  89442404				  movl		  %eax,0x04(%esp)
+ +1409	00003e61  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1415	00003e67  890c24				  movl		  %ecx,(%esp)
+ +1418	00003e6a  e8be310000			  calll		  0x0000702d				    -[(%esp,1) _addProviderToPlane:withMaxImageSize:]
+ +1423	00003e6f  8b859cfeffff			  movl		  0xfffffe9c(%ebp),%eax
+ +1429	00003e75  8b501c				  movl		  0x1c(%eax),%edx
+ +1432	00003e78  c74424085c8f823f		  movl		  $0x3f828f5c,0x08(%esp)
+ +1440	00003e80  8b837b490000			  movl		  0x0000497b(%ebx),%eax		    setFrameMultiplier:
+ +1446	00003e86  89442404				  movl		  %eax,0x04(%esp)
+ +1450	00003e8a  891424				  movl		  %edx,(%esp)
+ +1453	00003e8d  e89b310000			  calll		  0x0000702d				    -[(%esp,1) setFrameMultiplier:]
+ +1458	00003e92  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1464	00003e98  8b511c				  movl		  0x1c(%ecx),%edx
+ +1467	00003e9b  c74424080000af44		  movl		  $0x44af0000,0x08(%esp)
+ +1475	00003ea3  8b8377490000			  movl		  0x00004977(%ebx),%eax		    setZPosition:
+ +1481	00003ea9  89442404				  movl		  %eax,0x04(%esp)
+ +1485	00003ead  891424				  movl		  %edx,(%esp)
+ +1488	00003eb0  e878310000			  calll		  0x0000702d				    -[(%esp,1) setZPosition:]
+ +1493	00003eb5  8b8387490000			  movl		  0x00004987(%ebx),%eax		    alloc
+ +1499	00003ebb  89442404				  movl		  %eax,0x04(%esp)
+ +1503	00003ebf  8b83374a0000			  movl		  0x00004a37(%ebx),%eax		    RUIPhloatoPlane
+ +1509	00003ec5  890424				  movl		  %eax,(%esp)
+ +1512	00003ec8  e860310000			  calll		  0x0000702d				    +[RUIPhloatoPlane alloc]
+ +1517	00003ecd  c74424100d000000		  movl		  $0x0000000d,0x10(%esp)
+ +1525	00003ed5  8b93bf370000			  movl		  0x000037bf(%ebx),%edx
+ +1531	00003edb  8954240c				  movl		  %edx,0x0c(%esp)
+ +1535	00003edf  8b959cfeffff			  movl		  0xfffffe9c(%ebp),%edx
+ +1541	00003ee5  89542408				  movl		  %edx,0x08(%esp)
+ +1545	00003ee9  8b9383490000			  movl		  0x00004983(%ebx),%edx		    initWithPlaneLayer:positionTable:count:
+ +1551	00003eef  89542404				  movl		  %edx,0x04(%esp)
+ +1555	00003ef3  890424				  movl		  %eax,(%esp)
+ +1558	00003ef6  e832310000			  calll		  0x0000702d				    -[(%esp,1) initWithPlaneLayer:positionTable:count:]
+ +1563	00003efb  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1569	00003f01  894120				  movl		  %eax,0x20(%ecx)
+ +1572	00003f04  d983a7240000			  flds		  0x000024a7(%ebx)
+ +1578	00003f0a  d9958cfeffff			  fsts		  0xfffffe8c(%ebp)
+ +1584	00003f10  d99d88feffff			  fstps		  0xfffffe88(%ebp)
+ +1590	00003f16  8b9588feffff			  movl		  0xfffffe88(%ebp),%edx
+ +1596	00003f1c  8b8d8cfeffff			  movl		  0xfffffe8c(%ebp),%ecx
+ +1602	00003f22  8954240c				  movl		  %edx,0x0c(%esp)
+ +1606	00003f26  894c2410				  movl		  %ecx,0x10(%esp)
+ +1610	00003f2a  89442408				  movl		  %eax,0x08(%esp)
+ +1614	00003f2e  8b837f490000			  movl		  0x0000497f(%ebx),%eax		    _addProviderToPlane:withMaxImageSize:
+ +1620	00003f34  89442404				  movl		  %eax,0x04(%esp)
+ +1624	00003f38  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1630	00003f3e  890c24				  movl		  %ecx,(%esp)
+ +1633	00003f41  e8e7300000			  calll		  0x0000702d				    -[(%esp,1) _addProviderToPlane:withMaxImageSize:]
+ +1638	00003f46  8b859cfeffff			  movl		  0xfffffe9c(%ebp),%eax
+ +1644	00003f4c  8b5020				  movl		  0x20(%eax),%edx
+ +1647	00003f4f  c74424080000c843		  movl		  $0x43c80000,0x08(%esp)
+ +1655	00003f57  8b8377490000			  movl		  0x00004977(%ebx),%eax		    setZPosition:
+ +1661	00003f5d  89442404				  movl		  %eax,0x04(%esp)
+ +1665	00003f61  891424				  movl		  %edx,(%esp)
+ +1668	00003f64  e8c4300000			  calll		  0x0000702d				    -[(%esp,1) setZPosition:]
+ +1673	00003f69  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1679	00003f6f  8b5120				  movl		  0x20(%ecx),%edx
+ +1682	00003f72  be9a99993f			  movl		  $0x3f99999a,%esi
+ +1687	00003f77  89742408				  movl		  %esi,0x08(%esp)
+ +1691	00003f7b  8b837b490000			  movl		  0x0000497b(%ebx),%eax		    setFrameMultiplier:
+ +1697	00003f81  89442404				  movl		  %eax,0x04(%esp)
+ +1701	00003f85  891424				  movl		  %edx,(%esp)
+ +1704	00003f88  e8a0300000			  calll		  0x0000702d				    -[(%esp,1) setFrameMultiplier:]
+ +1709	00003f8d  8b8387490000			  movl		  0x00004987(%ebx),%eax		    alloc
+ +1715	00003f93  89442404				  movl		  %eax,0x04(%esp)
+ +1719	00003f97  8b83374a0000			  movl		  0x00004a37(%ebx),%eax		    RUIPhloatoPlane
+ +1725	00003f9d  890424				  movl		  %eax,(%esp)
+ +1728	00003fa0  e888300000			  calll		  0x0000702d				    +[RUIPhloatoPlane alloc]
+ +1733	00003fa5  c744241014000000		  movl		  $0x00000014,0x10(%esp)
+ +1741	00003fad  8b93cb370000			  movl		  0x000037cb(%ebx),%edx
+ +1747	00003fb3  8954240c				  movl		  %edx,0x0c(%esp)
+ +1751	00003fb7  8b959cfeffff			  movl		  0xfffffe9c(%ebp),%edx
+ +1757	00003fbd  89542408				  movl		  %edx,0x08(%esp)
+ +1761	00003fc1  8b9383490000			  movl		  0x00004983(%ebx),%edx		    initWithPlaneLayer:positionTable:count:
+ +1767	00003fc7  89542404				  movl		  %edx,0x04(%esp)
+ +1771	00003fcb  890424				  movl		  %eax,(%esp)
+ +1774	00003fce  e85a300000			  calll		  0x0000702d				    -[(%esp,1) initWithPlaneLayer:positionTable:count:]
+ +1779	00003fd3  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1785	00003fd9  894124				  movl		  %eax,0x24(%ecx)
+ +1788	00003fdc  c7442408008089c4		  movl		  $0xc4898000,0x08(%esp)
+ +1796	00003fe4  8b9377490000			  movl		  0x00004977(%ebx),%edx		    setZPosition:
+ +1802	00003fea  89542404				  movl		  %edx,0x04(%esp)
+ +1806	00003fee  890424				  movl		  %eax,(%esp)
+ +1809	00003ff1  e837300000			  calll		  0x0000702d				    -[(%esp,1) setZPosition:]
+ +1814	00003ff6  d983ab240000			  flds		  0x000024ab(%ebx)
+ +1820	00003ffc  d99584feffff			  fsts		  0xfffffe84(%ebp)
+ +1826	00004002  d99d80feffff			  fstps		  0xfffffe80(%ebp)
+ +1832	00004008  8b8580feffff			  movl		  0xfffffe80(%ebp),%eax
+ +1838	0000400e  8b9584feffff			  movl		  0xfffffe84(%ebp),%edx
+ +1844	00004014  8944240c				  movl		  %eax,0x0c(%esp)
+ +1848	00004018  89542410				  movl		  %edx,0x10(%esp)
+ +1852	0000401c  8b959cfeffff			  movl		  0xfffffe9c(%ebp),%edx
+ +1858	00004022  8b4224				  movl		  0x24(%edx),%eax
+ +1861	00004025  89442408				  movl		  %eax,0x08(%esp)
+ +1865	00004029  8b837f490000			  movl		  0x0000497f(%ebx),%eax		    _addProviderToPlane:withMaxImageSize:
+ +1871	0000402f  89442404				  movl		  %eax,0x04(%esp)
+ +1875	00004033  891424				  movl		  %edx,(%esp)
+ +1878	00004036  e8f22f0000			  calll		  0x0000702d				    -[(%esp,1) _addProviderToPlane:withMaxImageSize:]
+ +1883	0000403b  8b8d9cfeffff			  movl		  0xfffffe9c(%ebp),%ecx
+ +1889	00004041  8b5124				  movl		  0x24(%ecx),%edx
+ +1892	00004044  89742408				  movl		  %esi,0x08(%esp)
+ +1896	00004048  8b837b490000			  movl		  0x0000497b(%ebx),%eax		    setFrameMultiplier:
+ +1902	0000404e  89442404				  movl		  %eax,0x04(%esp)
+ +1906	00004052  891424				  movl		  %edx,(%esp)
+ +1909	00004055  e8d32f0000			  calll		  0x0000702d				    -[(%esp,1) setFrameMultiplier:]
+ +1914	0000405a  8dbb3b270000			  leal		  0x0000273b(%ebx),%edi		    position
+ +1920	00004060  897c2408				  movl		  %edi,0x08(%esp)
+ +1924	00004064  8b8373490000			  movl		  0x00004973(%ebx),%eax		    animationWithKeyPath:
+ +1930	0000406a  89442404				  movl		  %eax,0x04(%esp)
+ +1934	0000406e  8b83334a0000			  movl		  0x00004a33(%ebx),%eax		    CABasicAnimation
+ +1940	00004074  890424				  movl		  %eax,(%esp)
+ +1943	00004077  e8b12f0000			  calll		  0x0000702d				    +[CABasicAnimation animationWithKeyPath:]
+ +1948	0000407c  89c6					  movl		  %eax,%esi
+ +1950	0000407e  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+ +1958	00004086  c744240c00000840		  movl		  $0x40080000,0x0c(%esp)
+ +1966	0000408e  8b836f490000			  movl		  0x0000496f(%ebx),%eax		    setDuration:
+ +1972	00004094  89442404				  movl		  %eax,0x04(%esp)
+ +1976	00004098  893424				  movl		  %esi,(%esp)
+ +1979	0000409b  e88d2f0000			  calll		  0x0000702d				    -[(%esp,1) setDuration:]
+ +1984	000040a0  8b83bb370000			  movl		  0x000037bb(%ebx),%eax
+ +1990	000040a6  8b00					  movl		  (%eax),%eax
+ +1992	000040a8  89442408				  movl		  %eax,0x08(%esp)
+ +1996	000040ac  8b836b490000			  movl		  0x0000496b(%ebx),%eax		    functionWithName:
+ +2002	000040b2  89442404				  movl		  %eax,0x04(%esp)
+ +2006	000040b6  8b832f4a0000			  movl		  0x00004a2f(%ebx),%eax		    CAMediaTimingFunction
+ +2012	000040bc  890424				  movl		  %eax,(%esp)
+ +2015	000040bf  e8692f0000			  calll		  0x0000702d				    +[CAMediaTimingFunction functionWithName:]
+ +2020	000040c4  89442408				  movl		  %eax,0x08(%esp)
+ +2024	000040c8  8b8367490000			  movl		  0x00004967(%ebx),%eax		    setTimingFunction:
+ +2030	000040ce  89442404				  movl		  %eax,0x04(%esp)
+ +2034	000040d2  893424				  movl		  %esi,(%esp)
+ +2037	000040d5  e8532f0000			  calll		  0x0000702d				    -[(%esp,1) setTimingFunction:]
+ +2042	000040da  897c240c				  movl		  %edi,0x0c(%esp)
+ +2046	000040de  89742408				  movl		  %esi,0x08(%esp)
+ +2050	000040e2  8b8363490000			  movl		  0x00004963(%ebx),%eax		    dictionaryWithObject:forKey:
+ +2056	000040e8  89442404				  movl		  %eax,0x04(%esp)
+ +2060	000040ec  8b832b4a0000			  movl		  0x00004a2b(%ebx),%eax		    NSDictionary
+ +2066	000040f2  890424				  movl		  %eax,(%esp)
+ +2069	000040f5  e8332f0000			  calll		  0x0000702d				    +[NSDictionary dictionaryWithObject:forKey:]
+ +2074	000040fa  89442408				  movl		  %eax,0x08(%esp)
+ +2078	000040fe  8b835f490000			  movl		  0x0000495f(%ebx),%eax		    setActions:
+ +2084	00004104  89442404				  movl		  %eax,0x04(%esp)
+ +2088	00004108  8b859cfeffff			  movl		  0xfffffe9c(%ebp),%eax
+ +2094	0000410e  890424				  movl		  %eax,(%esp)
+ +2097	00004111  e8172f0000			  calll		  0x0000702d				    -[(%esp,1) setActions:]
+ +2102	00004116  8b859cfeffff			  movl		  0xfffffe9c(%ebp),%eax
+ +2108	0000411c  8d65f4				  leal		  0xf4(%ebp),%esp
+ +2111	0000411f  5b					  popl		  %ebx
+ +2112	00004120  5e					  popl		  %esi
+ +2113	00004121  5f					  popl		  %edi
+ +2114	00004122  5d					  popl		  %ebp
+ +2115	00004123  c3					  ret
+
+-(id)[RUIPhloatoPlane initWithPlaneLayer:positionTable:count:]
+	+0	00004124  90					  nop
+	+1	00004125  90					  nop
+	+2	00004126  90					  nop
+	+3	00004127  90					  nop
+	+4	00004128  90					  nop
+	+5	00004129  90					  nop
+
+	+0	0000412a  55					  pushl		  %ebp
+	+1	0000412b  89e5					  movl		  %esp,%ebp
+	+3	0000412d  56					  pushl		  %esi
+	+4	0000412e  53					  pushl		  %ebx
+	+5	0000412f  83ec20				  subl		  $0x20,%esp
+	+8	00004132  e8b5170000			  calll		  0x000058ec
+   +13	00004137  8b4508				  movl		  0x08(%ebp),%eax
+   +16	0000413a  8945f0				  movl		  %eax,0xf0(%ebp)
+   +19	0000413d  8b83cd420000			  movl		  0x000042cd(%ebx),%eax		    NSObject
+   +25	00004143  8945f4				  movl		  %eax,0xf4(%ebp)
+   +28	00004146  8d55f0				  leal		  0xf0(%ebp),%edx
+   +31	00004149  8b837d400000			  movl		  0x0000407d(%ebx),%eax		    init
+   +37	0000414f  89442404				  movl		  %eax,0x04(%esp)
+   +41	00004153  891424				  movl		  %edx,(%esp)
+   +44	00004156  e8cd2e0000			  calll		  0x00007028				    -[[(%esp,1) super] init]
+   +49	0000415b  89c6					  movl		  %eax,%esi
+   +51	0000415d  85c0					  testl		  %eax,%eax
+   +53	0000415f  7504					  jne		  0x00004165
+   +55	00004161  31c0					  xorl		  %eax,%eax
+   +57	00004163  eb72					  jmp		  0x000041d7
+   +59	00004165  8b4510				  movl		  0x10(%ebp),%eax
+   +62	00004168  894604				  movl		  %eax,0x04(%esi)
+   +65	0000416b  8b4514				  movl		  0x14(%ebp),%eax
+   +68	0000416e  894624				  movl		  %eax,0x24(%esi)
+   +71	00004171  8b4518				  movl		  0x18(%ebp),%eax
+   +74	00004174  89462c				  movl		  %eax,0x2c(%esi)
+   +77	00004177  8b8341410000			  movl		  0x00004141(%ebx),%eax		    alloc
+   +83	0000417d  89442404				  movl		  %eax,0x04(%esp)
+   +87	00004181  8b83d1410000			  movl		  0x000041d1(%ebx),%eax		    NSMutableArray
+   +93	00004187  890424				  movl		  %eax,(%esp)
+   +96	0000418a  e89e2e0000			  calll		  0x0000702d				    +[NSMutableArray alloc]
+  +101	0000418f  8b937d400000			  movl		  0x0000407d(%ebx),%edx		    init
+  +107	00004195  89542404				  movl		  %edx,0x04(%esp)
+  +111	00004199  890424				  movl		  %eax,(%esp)
+  +114	0000419c  e88c2e0000			  calll		  0x0000702d				    -[(%esp,1) init]
+  +119	000041a1  89460c				  movl		  %eax,0x0c(%esi)
+  +122	000041a4  8b8341410000			  movl		  0x00004141(%ebx),%eax		    alloc
+  +128	000041aa  89442404				  movl		  %eax,0x04(%esp)
+  +132	000041ae  8b83f9410000			  movl		  0x000041f9(%ebx),%eax		    RUIPhloatoPlaneDelegate
+  +138	000041b4  890424				  movl		  %eax,(%esp)
+  +141	000041b7  e8712e0000			  calll		  0x0000702d				    +[RUIPhloatoPlaneDelegate alloc]
+  +146	000041bc  89742408				  movl		  %esi,0x08(%esp)
+  +150	000041c0  8b93b9410000			  movl		  0x000041b9(%ebx),%edx		    initWithPlane:
+  +156	000041c6  89542404				  movl		  %edx,0x04(%esp)
+  +160	000041ca  890424				  movl		  %eax,(%esp)
+  +163	000041cd  e85b2e0000			  calll		  0x0000702d				    -[(%esp,1) initWithPlane:]
+  +168	000041d2  894610				  movl		  %eax,0x10(%esi)
+  +171	000041d5  89f0					  movl		  %esi,%eax
+  +173	000041d7  83c420				  addl		  $0x20,%esp
+  +176	000041da  5b					  popl		  %ebx
+  +177	000041db  5e					  popl		  %esi
+  +178	000041dc  5d					  popl		  %ebp
+  +179	000041dd  c3					  ret
+
+-(void)[RUIPhloatoPlane dealloc]
+	+0	000041de  90					  nop
+	+1	000041df  90					  nop
+	+2	000041e0  90					  nop
+	+3	000041e1  90					  nop
+	+4	000041e2  90					  nop
+	+5	000041e3  90					  nop
+
+	+0	000041e4  55					  pushl		  %ebp
+	+1	000041e5  89e5					  movl		  %esp,%ebp
+	+3	000041e7  56					  pushl		  %esi
+	+4	000041e8  53					  pushl		  %ebx
+	+5	000041e9  83ec20				  subl		  $0x20,%esp
+	+8	000041ec  e8fb160000			  calll		  0x000058ec
+   +13	000041f1  8b7508				  movl		  0x08(%ebp),%esi
+   +16	000041f4  8b5610				  movl		  0x10(%esi),%edx
+   +19	000041f7  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+   +27	000041ff  8b83fb400000			  movl		  0x000040fb(%ebx),%eax		    setPlane:
+   +33	00004205  89442404				  movl		  %eax,0x04(%esp)
+   +37	00004209  891424				  movl		  %edx,(%esp)
+   +40	0000420c  e81c2e0000			  calll		  0x0000702d				    -[(%esp,1) setPlane:]
+   +45	00004211  8b5610				  movl		  0x10(%esi),%edx
+   +48	00004214  8b834f400000			  movl		  0x0000404f(%ebx),%eax		    release
+   +54	0000421a  89442404				  movl		  %eax,0x04(%esp)
+   +58	0000421e  891424				  movl		  %edx,(%esp)
+   +61	00004221  e8072e0000			  calll		  0x0000702d				    -[(%esp,1) release]
+   +66	00004226  8b560c				  movl		  0x0c(%esi),%edx
+   +69	00004229  8b834f400000			  movl		  0x0000404f(%ebx),%eax		    release
+   +75	0000422f  89442404				  movl		  %eax,0x04(%esp)
+   +79	00004233  891424				  movl		  %edx,(%esp)
+   +82	00004236  e8f22d0000			  calll		  0x0000702d				    -[(%esp,1) release]
+   +87	0000423b  8b5608				  movl		  0x08(%esi),%edx
+   +90	0000423e  8b834f400000			  movl		  0x0000404f(%ebx),%eax		    release
+   +96	00004244  89442404				  movl		  %eax,0x04(%esp)
+  +100	00004248  891424				  movl		  %edx,(%esp)
+  +103	0000424b  e8dd2d0000			  calll		  0x0000702d				    -[(%esp,1) release]
+  +108	00004250  8975f0				  movl		  %esi,0xf0(%ebp)
+  +111	00004253  8b8313420000			  movl		  0x00004213(%ebx),%eax		    NSObject
+  +117	00004259  8945f4				  movl		  %eax,0xf4(%ebp)
+  +120	0000425c  8d55f0				  leal		  0xf0(%ebp),%edx
+  +123	0000425f  8b834b400000			  movl		  0x0000404b(%ebx),%eax		    dealloc
+  +129	00004265  89442404				  movl		  %eax,0x04(%esp)
+  +133	00004269  891424				  movl		  %edx,(%esp)
+  +136	0000426c  e8b72d0000			  calll		  0x00007028				    -[[(%esp,1) super] dealloc]
+  +141	00004271  83c420				  addl		  $0x20,%esp
+  +144	00004274  5b					  popl		  %ebx
+  +145	00004275  5e					  popl		  %esi
+  +146	00004276  5d					  popl		  %ebp
+  +147	00004277  c3					  ret
+
+-(void)[RUIPhloatoPlane setProvider:]
+	+0	00004278  90					  nop
+	+1	00004279  90					  nop
+	+2	0000427a  90					  nop
+	+3	0000427b  90					  nop
+	+4	0000427c  90					  nop
+	+5	0000427d  90					  nop
+
+	+0	0000427e  55					  pushl		  %ebp
+	+1	0000427f  89e5					  movl		  %esp,%ebp
+	+3	00004281  57					  pushl		  %edi
+	+4	00004282  56					  pushl		  %esi
+	+5	00004283  53					  pushl		  %ebx
+	+6	00004284  83ec1c				  subl		  $0x1c,%esp
+	+9	00004287  e860160000			  calll		  0x000058ec
+   +14	0000428c  8b7d08				  movl		  0x08(%ebp),%edi
+   +17	0000428f  8b7510				  movl		  0x10(%ebp),%esi
+   +20	00004292  8b835c400000			  movl		  0x0000405c(%ebx),%eax		    retain
+   +26	00004298  89442404				  movl		  %eax,0x04(%esp)
+   +30	0000429c  893424				  movl		  %esi,(%esp)
+   +33	0000429f  e8892d0000			  calll		  0x0000702d				    -[(%esp,1) retain]
+   +38	000042a4  8b5708				  movl		  0x08(%edi),%edx
+   +41	000042a7  8b83b43f0000			  movl		  0x00003fb4(%ebx),%eax		    release
+   +47	000042ad  89442404				  movl		  %eax,0x04(%esp)
+   +51	000042b1  891424				  movl		  %edx,(%esp)
+   +54	000042b4  e8742d0000			  calll		  0x0000702d				    -[(%esp,1) release]
+   +59	000042b9  897708				  movl		  %esi,0x08(%edi)
+   +62	000042bc  83c41c				  addl		  $0x1c,%esp
+   +65	000042bf  5b					  popl		  %ebx
+   +66	000042c0  5e					  popl		  %esi
+   +67	000042c1  5f					  popl		  %edi
+   +68	000042c2  5d					  popl		  %ebp
+   +69	000042c3  c3					  ret
+
+-(id)[RUIPhloatoPlane provider]
+	+0	000042c4  90					  nop
+	+1	000042c5  90					  nop
+	+2	000042c6  90					  nop
+	+3	000042c7  90					  nop
+	+4	000042c8  90					  nop
+	+5	000042c9  90					  nop
+
+	+0	000042ca  55					  pushl		  %ebp
+	+1	000042cb  89e5					  movl		  %esp,%ebp
+	+3	000042cd  8b4508				  movl		  0x08(%ebp),%eax
+	+6	000042d0  8b4008				  movl		  0x08(%eax),%eax
+	+9	000042d3  5d					  popl		  %ebp
+   +10	000042d4  c3					  ret
+   +11	000042d5  90					  nop
+
+-(void)[RUIPhloatoPlane setPullsImages:]
+	+0	000042d6  90					  nop
+	+1	000042d7  90					  nop
+	+2	000042d8  90					  nop
+	+3	000042d9  90					  nop
+	+4	000042da  90					  nop
+	+5	000042db  90					  nop
+
+	+0	000042dc  55					  pushl		  %ebp
+	+1	000042dd  89e5					  movl		  %esp,%ebp
+	+3	000042df  e80c160000			  calll		  0x000058f0
+	+8	000042e4  8b5508				  movl		  0x08(%ebp),%edx
+   +11	000042e7  8b4510				  movl		  0x10(%ebp),%eax
+   +14	000042ea  384220				  cmpb		  %al,0x20(%edx)
+   +17	000042ed  7415					  je		  0x00004304
+   +19	000042ef  884220				  movb		  %al,0x20(%edx)
+   +22	000042f2  8b8100400000			  movl		  0x00004000(%ecx),%eax		    _updateImagePuller
+   +28	000042f8  89450c				  movl		  %eax,0x0c(%ebp)
+   +31	000042fb  895508				  movl		  %edx,0x08(%ebp)
+   +34	000042fe  5d					  popl		  %ebp
+   +35	000042ff  e9292d0000			  jmpl		  0x0000702d
+   +40	00004304  5d					  popl		  %ebp
+   +41	00004305  c3					  ret
+
+-(BOOL)[RUIPhloatoPlane pullsImages]
+	+0	00004306  90					  nop
+	+1	00004307  90					  nop
+	+2	00004308  90					  nop
+	+3	00004309  90					  nop
+	+4	0000430a  90					  nop
+	+5	0000430b  90					  nop
+
+	+0	0000430c  55					  pushl		  %ebp
+	+1	0000430d  89e5					  movl		  %esp,%ebp
+	+3	0000430f  8b4508				  movl		  0x08(%ebp),%eax
+	+6	00004312  0fbe4020				  movsbl	  0x20(%eax),%eax
+   +10	00004316  5d					  popl		  %ebp
+   +11	00004317  c3					  ret
+
+-(void)[RUIPhloatoPlane setZPosition:]
+	+0	00004318  90					  nop
+	+1	00004319  90					  nop
+	+2	0000431a  90					  nop
+	+3	0000431b  90					  nop
+	+4	0000431c  90					  nop
+	+5	0000431d  90					  nop
+
+	+0	0000431e  55					  pushl		  %ebp
+	+1	0000431f  89e5					  movl		  %esp,%ebp
+	+3	00004321  57					  pushl		  %edi
+	+4	00004322  56					  pushl		  %esi
+	+5	00004323  53					  pushl		  %ebx
+	+6	00004324  83ec1c				  subl		  $0x1c,%esp
+	+9	00004327  e8c0150000			  calll		  0x000058ec
+   +14	0000432c  8b7d08				  movl		  0x08(%ebp),%edi
+   +17	0000432f  f30f104510			  movss		  0x10(%ebp),%xmm0
+   +22	00004334  0f2e471c				  ucomiss	  0x1c(%edi),%xmm0
+   +26	00004338  7a02					  jp		  0x0000433c
+   +28	0000433a  7461					  je		  0x0000439d
+   +30	0000433c  f30f11471c			  movss		  %xmm0,0x1c(%edi)
+   +35	00004341  8b570c				  movl		  0x0c(%edi),%edx
+   +38	00004344  8b83b43f0000			  movl		  0x00003fb4(%ebx),%eax		    objectEnumerator
+   +44	0000434a  89442404				  movl		  %eax,0x04(%esp)
+   +48	0000434e  891424				  movl		  %edx,(%esp)
+   +51	00004351  e8d72c0000			  calll		  0x0000702d				    -[(%esp,1) objectEnumerator]
+   +56	00004356  89c6					  movl		  %eax,%esi
+   +58	00004358  eb2b					  jmp		  0x00004385
+   +60	0000435a  8b83543f0000			  movl		  0x00003f54(%ebx),%eax		    layer
+   +66	00004360  89442404				  movl		  %eax,0x04(%esp)
+   +70	00004364  891424				  movl		  %edx,(%esp)
+   +73	00004367  e8c12c0000			  calll		  0x0000702d				    -[(%esp,1) layer]
+   +78	0000436c  8b571c				  movl		  0x1c(%edi),%edx
+   +81	0000436f  89542408				  movl		  %edx,0x08(%esp)
+   +85	00004373  8b933c3f0000			  movl		  0x00003f3c(%ebx),%edx		    setZPosition:
+   +91	00004379  89542404				  movl		  %edx,0x04(%esp)
+   +95	0000437d  890424				  movl		  %eax,(%esp)
+   +98	00004380  e8a82c0000			  calll		  0x0000702d				    -[(%esp,1) setZPosition:]
+  +103	00004385  8b83b03f0000			  movl		  0x00003fb0(%ebx),%eax		    nextObject
+  +109	0000438b  89442404				  movl		  %eax,0x04(%esp)
+  +113	0000438f  893424				  movl		  %esi,(%esp)
+  +116	00004392  e8962c0000			  calll		  0x0000702d				    -[(%esp,1) nextObject]
+  +121	00004397  89c2					  movl		  %eax,%edx
+  +123	00004399  85c0					  testl		  %eax,%eax
+  +125	0000439b  75bd					  jne		  0x0000435a
+  +127	0000439d  83c41c				  addl		  $0x1c,%esp
+  +130	000043a0  5b					  popl		  %ebx
+  +131	000043a1  5e					  popl		  %esi
+  +132	000043a2  5f					  popl		  %edi
+  +133	000043a3  5d					  popl		  %ebp
+  +134	000043a4  c3					  ret
+  +135	000043a5  90					  nop
+
+-(float)[RUIPhloatoPlane zPosition]
+	+0	000043a6  90					  nop
+	+1	000043a7  90					  nop
+	+2	000043a8  90					  nop
+	+3	000043a9  90					  nop
+	+4	000043aa  90					  nop
+	+5	000043ab  90					  nop
+
+	+0	000043ac  55					  pushl		  %ebp
+	+1	000043ad  89e5					  movl		  %esp,%ebp
+	+3	000043af  8b4508				  movl		  0x08(%ebp),%eax
+	+6	000043b2  d9401c				  flds		  0x1c(%eax)
+	+9	000043b5  5d					  popl		  %ebp
+   +10	000043b6  c3					  ret
+   +11	000043b7  90					  nop
+
+-(void)[RUIPhloatoPlane setFrameMultiplier:]
+	+0	000043b8  90					  nop
+	+1	000043b9  90					  nop
+	+2	000043ba  90					  nop
+	+3	000043bb  90					  nop
+	+4	000043bc  90					  nop
+	+5	000043bd  90					  nop
+
+	+0	000043be  55					  pushl		  %ebp
+	+1	000043bf  89e5					  movl		  %esp,%ebp
+	+3	000043c1  8b5510				  movl		  0x10(%ebp),%edx
+	+6	000043c4  8b4508				  movl		  0x08(%ebp),%eax
+	+9	000043c7  895018				  movl		  %edx,0x18(%eax)
+   +12	000043ca  5d					  popl		  %ebp
+   +13	000043cb  c3					  ret
+
+-(float)[RUIPhloatoPlane frameMultiplier]
+	+0	000043cc  90					  nop
+	+1	000043cd  90					  nop
+	+2	000043ce  90					  nop
+	+3	000043cf  90					  nop
+	+4	000043d0  90					  nop
+	+5	000043d1  90					  nop
+
+	+0	000043d2  55					  pushl		  %ebp
+	+1	000043d3  89e5					  movl		  %esp,%ebp
+	+3	000043d5  8b4508				  movl		  0x08(%ebp),%eax
+	+6	000043d8  d94018				  flds		  0x18(%eax)
+	+9	000043db  5d					  popl		  %ebp
+   +10	000043dc  c3					  ret
+   +11	000043dd  90					  nop
+
+-(void)[RUIPhloatoPlane(ImageManagement) _updateImagePuller]
+	+0	000043de  90					  nop
+	+1	000043df  90					  nop
+	+2	000043e0  90					  nop
+	+3	000043e1  90					  nop
+	+4	000043e2  90					  nop
+	+5	000043e3  90					  nop
+
+	+0	000043e4  55					  pushl		  %ebp
+	+1	000043e5  89e5					  movl		  %esp,%ebp
+	+3	000043e7  56					  pushl		  %esi
+	+4	000043e8  53					  pushl		  %ebx
+	+5	000043e9  83ec10				  subl		  $0x10,%esp
+	+8	000043ec  e8fb140000			  calll		  0x000058ec
+   +13	000043f1  8b7508				  movl		  0x08(%ebp),%esi
+   +16	000043f4  8b5614				  movl		  0x14(%esi),%edx
+   +19	000043f7  8b831b3e0000			  movl		  0x00003e1b(%ebx),%eax		    invalidate
+   +25	000043fd  89442404				  movl		  %eax,0x04(%esp)
+   +29	00004401  891424				  movl		  %edx,(%esp)
+   +32	00004404  e8242c0000			  calll		  0x0000702d				    -[(%esp,1) invalidate]
+   +37	00004409  c7461400000000		  movl		  $0x00000000,0x14(%esi)
+   +44	00004410  807e2000				  cmpb		  $0x00,0x20(%esi)
+   +48	00004414  741a					  je		  0x00004430
+   +50	00004416  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+   +58	0000441e  8b83e73e0000			  movl		  0x00003ee7(%ebx),%eax		    _addNextImage:
+   +64	00004424  89442404				  movl		  %eax,0x04(%esp)
+   +68	00004428  893424				  movl		  %esi,(%esp)
+   +71	0000442b  e8fd2b0000			  calll		  0x0000702d				    -[(%esp,1) _addNextImage:]
+   +76	00004430  83c410				  addl		  $0x10,%esp
+   +79	00004433  5b					  popl		  %ebx
+   +80	00004434  5e					  popl		  %esi
+   +81	00004435  5d					  popl		  %ebp
+   +82	00004436  c3					  ret
+   +83	00004437  90					  nop
+
+-(void)[RUIPhloatoPlane(ImageManagement) _createImagePuller]
+	+0	00004438  90					  nop
+	+1	00004439  90					  nop
+	+2	0000443a  90					  nop
+	+3	0000443b  90					  nop
+	+4	0000443c  90					  nop
+	+5	0000443d  90					  nop
+
+	+0	0000443e  55					  pushl		  %ebp
+	+1	0000443f  89e5					  movl		  %esp,%ebp
+	+3	00004441  56					  pushl		  %esi
+	+4	00004442  53					  pushl		  %ebx
+	+5	00004443  83ec20				  subl		  $0x20,%esp
+	+8	00004446  e8a1140000			  calll		  0x000058ec
+   +13	0000444b  8b7508				  movl		  0x08(%ebp),%esi
+   +16	0000444e  c744241c00000000		  movl		  $0x00000000,0x1c(%esp)
+   +24	00004456  c744241800000000		  movl		  $0x00000000,0x18(%esp)
+   +32	0000445e  8b838d3e0000			  movl		  0x00003e8d(%ebx),%eax		    _addNextImage:
+   +38	00004464  89442414				  movl		  %eax,0x14(%esp)
+   +42	00004468  89742410				  movl		  %esi,0x10(%esp)
+   +46	0000446c  8b5628				  movl		  0x28(%esi),%edx
+   +49	0000446f  8b4624				  movl		  0x24(%esi),%eax
+   +52	00004472  f30f1044d004			  movss		  0x04(%eax,%edx,8),%xmm0
+   +58	00004478  f30f5e8355190000		  divss		  0x00001955(%ebx),%xmm0
+   +66	00004480  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+   +70	00004484  f20f11442408			  movsd		  %xmm0,0x08(%esp)
+   +76	0000448a  8b83b93d0000			  movl		  0x00003db9(%ebx),%eax		    scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+   +82	00004490  89442404				  movl		  %eax,0x04(%esp)
+   +86	00004494  8b83c93e0000			  movl		  0x00003ec9(%ebx),%eax		    NSTimer
+   +92	0000449a  890424				  movl		  %eax,(%esp)
+   +95	0000449d  e88b2b0000			  calll		  0x0000702d				    +[NSTimer scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:]
+  +100	000044a2  894614				  movl		  %eax,0x14(%esi)
+  +103	000044a5  83c420				  addl		  $0x20,%esp
+  +106	000044a8  5b					  popl		  %ebx
+  +107	000044a9  5e					  popl		  %esi
+  +108	000044aa  5d					  popl		  %ebp
+  +109	000044ab  c3					  ret
+
+-(void)[RUIPhloatoPlane(ImageManagement) _addNextImage:]
+	+0	000044ac  90					  nop
+	+1	000044ad  90					  nop
+	+2	000044ae  90					  nop
+	+3	000044af  90					  nop
+	+4	000044b0  90					  nop
+	+5	000044b1  90					  nop
+
+	+0	000044b2  55					  pushl		  %ebp
+	+1	000044b3  89e5					  movl		  %esp,%ebp
+	+3	000044b5  57					  pushl		  %edi
+	+4	000044b6  56					  pushl		  %esi
+	+5	000044b7  53					  pushl		  %ebx
+	+6	000044b8  81ecdc000000			  subl		  $0x000000dc,%esp
+   +12	000044be  e829140000			  calll		  0x000058ec
+   +17	000044c3  c78570ffffff00000000	  movl		  $0x00000000,0xffffff70(%ebp)
+   +27	000044cd  c78574ffffff00000000	  movl		  $0x00000000,0xffffff74(%ebp)
+   +37	000044d7  c78568ffffff00000000	  movl		  $0x00000000,0xffffff68(%ebp)
+   +47	000044e1  c7856cffffff00000000	  movl		  $0x00000000,0xffffff6c(%ebp)
+   +57	000044eb  8b4508				  movl		  0x08(%ebp),%eax
+   +60	000044ee  c7401400000000		  movl		  $0x00000000,0x14(%eax)
+   +67	000044f5  8b5008				  movl		  0x08(%eax),%edx
+   +70	000044f8  8b83113e0000			  movl		  0x00003e11(%ebx),%eax		    nextImage
+   +76	000044fe  89442404				  movl		  %eax,0x04(%esp)
+   +80	00004502  891424				  movl		  %edx,(%esp)
+   +83	00004505  e8232b0000			  calll		  0x0000702d				    -[(%esp,1) nextImage]
+   +88	0000450a  89c6					  movl		  %eax,%esi
+   +90	0000450c  8b830d3e0000			  movl		  0x00003e0d(%ebx),%eax		    control
+   +96	00004512  89442404				  movl		  %eax,0x04(%esp)
+  +100	00004516  8b83693e0000			  movl		  0x00003e69(%ebx),%eax		    BRControl
+  +106	0000451c  890424				  movl		  %eax,(%esp)
+  +109	0000451f  e8092b0000			  calll		  0x0000702d				    +[BRControl control]
+  +114	00004524  898564ffffff			  movl		  %eax,0xffffff64(%ebp)
+  +120	0000452a  8b83bd3d0000			  movl		  0x00003dbd(%ebx),%eax		    layer
+  +126	00004530  89442404				  movl		  %eax,0x04(%esp)
+  +130	00004534  8b9564ffffff			  movl		  0xffffff64(%ebp),%edx
+  +136	0000453a  891424				  movl		  %edx,(%esp)
+  +139	0000453d  e8eb2a0000			  calll		  0x0000702d				    -[(%esp,1) layer]
+  +144	00004542  89742408				  movl		  %esi,0x08(%esp)
+  +148	00004546  8b93093e0000			  movl		  0x00003e09(%ebx),%edx		    setContents:
+  +154	0000454c  89542404				  movl		  %edx,0x04(%esp)
+  +158	00004550  890424				  movl		  %eax,(%esp)
+  +161	00004553  e8d52a0000			  calll		  0x0000702d				    -[(%esp,1) setContents:]
+  +166	00004558  8b9564ffffff			  movl		  0xffffff64(%ebp),%edx
+  +172	0000455e  85d2					  testl		  %edx,%edx
+  +174	00004560  0f84bb030000			  jel		  0x00004921
+  +180	00004566  8b4d08				  movl		  0x08(%ebp),%ecx
+  +183	00004569  8b5104				  movl		  0x04(%ecx),%edx
+  +186	0000456c  8d4d98				  leal		  0x98(%ebp),%ecx
+  +189	0000456f  8b83053e0000			  movl		  0x00003e05(%ebx),%eax		    bounds
+  +195	00004575  89442408				  movl		  %eax,0x08(%esp)
+  +199	00004579  89542404				  movl		  %edx,0x04(%esp)
+  +203	0000457d  890c24				  movl		  %ecx,(%esp)
+  +206	00004580  e8072b0000			  calll		  0x0000708c				    -(struct)[0x04(%esp,1) bounds]
+  +211	00004585  83ec04				  subl		  $0x04,%esp
+  +214	00004588  8b4598				  movl		  0x98(%ebp),%eax
+  +217	0000458b  8945b0				  movl		  %eax,0xb0(%ebp)
+  +220	0000458e  8b459c				  movl		  0x9c(%ebp),%eax
+  +223	00004591  8945b4				  movl		  %eax,0xb4(%ebp)
+  +226	00004594  8b45a0				  movl		  0xa0(%ebp),%eax
+  +229	00004597  8945b8				  movl		  %eax,0xb8(%ebp)
+  +232	0000459a  8b45a4				  movl		  0xa4(%ebp),%eax
+  +235	0000459d  8945bc				  movl		  %eax,0xbc(%ebp)
+  +238	000045a0  8b45b8				  movl		  0xb8(%ebp),%eax
+  +241	000045a3  8b55bc				  movl		  0xbc(%ebp),%edx
+  +244	000045a6  89957cffffff			  movl		  %edx,0xffffff7c(%ebp)
+  +250	000045ac  894580				  movl		  %eax,0x80(%ebp)
+  +253	000045af  8b8b012c0000			  movl		  0x00002c01(%ebx),%ecx
+  +259	000045b5  8b31					  movl		  (%ecx),%esi
+  +261	000045b7  8b7904				  movl		  0x04(%ecx),%edi
+  +264	000045ba  89956cffffff			  movl		  %edx,0xffffff6c(%ebp)
+  +270	000045c0  898568ffffff			  movl		  %eax,0xffffff68(%ebp)
+  +276	000045c6  89742408				  movl		  %esi,0x08(%esp)
+  +280	000045ca  897c240c				  movl		  %edi,0x0c(%esp)
+  +284	000045ce  8b8568ffffff			  movl		  0xffffff68(%ebp),%eax
+  +290	000045d4  8b956cffffff			  movl		  0xffffff6c(%ebp),%edx
+  +296	000045da  890424				  movl		  %eax,(%esp)
+  +299	000045dd  89542404				  movl		  %edx,0x04(%esp)
+  +303	000045e1  e8b02a0000			  calll		  0x00007096				    _CGSizeEqualToSize
+  +308	000045e6  85c0					  testl		  %eax,%eax
+  +310	000045e8  7473					  je		  0x0000465d
+  +312	000045ea  8b4d08				  movl		  0x08(%ebp),%ecx
+  +315	000045ed  8b5104				  movl		  0x04(%ecx),%edx
+  +318	000045f0  8b83bd3d0000			  movl		  0x00003dbd(%ebx),%eax		    layer
+  +324	000045f6  89442404				  movl		  %eax,0x04(%esp)
+  +328	000045fa  891424				  movl		  %edx,(%esp)
+  +331	000045fd  e82b2a0000			  calll		  0x0000702d				    -[(%esp,1) layer]
+  +336	00004602  8b93013e0000			  movl		  0x00003e01(%ebx),%edx		    layoutIfNeeded
+  +342	00004608  89542404				  movl		  %edx,0x04(%esp)
+  +346	0000460c  890424				  movl		  %eax,(%esp)
+  +349	0000460f  e8192a0000			  calll		  0x0000702d				    -[(%esp,1) layoutIfNeeded]
+  +354	00004614  8b4508				  movl		  0x08(%ebp),%eax
+  +357	00004617  8b5004				  movl		  0x04(%eax),%edx
+  +360	0000461a  8d4d88				  leal		  0x88(%ebp),%ecx
+  +363	0000461d  8b83053e0000			  movl		  0x00003e05(%ebx),%eax		    bounds
+  +369	00004623  89442408				  movl		  %eax,0x08(%esp)
+  +373	00004627  89542404				  movl		  %edx,0x04(%esp)
+  +377	0000462b  890c24				  movl		  %ecx,(%esp)
+  +380	0000462e  e8592a0000			  calll		  0x0000708c				    -(struct)[0x04(%esp,1) bounds]
+  +385	00004633  83ec04				  subl		  $0x04,%esp
+  +388	00004636  8b4588				  movl		  0x88(%ebp),%eax
+  +391	00004639  8945c0				  movl		  %eax,0xc0(%ebp)
+  +394	0000463c  8b458c				  movl		  0x8c(%ebp),%eax
+  +397	0000463f  8945c4				  movl		  %eax,0xc4(%ebp)
+  +400	00004642  8b4590				  movl		  0x90(%ebp),%eax
+  +403	00004645  8945c8				  movl		  %eax,0xc8(%ebp)
+  +406	00004648  8b4594				  movl		  0x94(%ebp),%eax
+  +409	0000464b  8945cc				  movl		  %eax,0xcc(%ebp)
+  +412	0000464e  8b45c8				  movl		  0xc8(%ebp),%eax
+  +415	00004651  8b55cc				  movl		  0xcc(%ebp),%edx
+  +418	00004654  89957cffffff			  movl		  %edx,0xffffff7c(%ebp)
+  +424	0000465a  894580				  movl		  %eax,0x80(%ebp)
+  +427	0000465d  f30f104580			  movss		  0x80(%ebp),%xmm0
+  +432	00004662  f30f5983e1180000		  mulss		  0x000018e1(%ebx),%xmm0
+  +440	0000466a  f30f114584			  movss		  %xmm0,0x84(%ebp)
+  +445	0000466f  f30f1145dc			  movss		  %xmm0,0xdc(%ebp)
+  +450	00004674  f30f1145d8			  movss		  %xmm0,0xd8(%ebp)
+  +455	00004679  31c0					  xorl		  %eax,%eax
+  +457	0000467b  8945d4				  movl		  %eax,0xd4(%ebp)
+  +460	0000467e  8945d0				  movl		  %eax,0xd0(%ebp)
+  +463	00004681  8b45d0				  movl		  0xd0(%ebp),%eax
+  +466	00004684  89442408				  movl		  %eax,0x08(%esp)
+  +470	00004688  8b45d4				  movl		  0xd4(%ebp),%eax
+  +473	0000468b  8944240c				  movl		  %eax,0x0c(%esp)
+  +477	0000468f  8b45d8				  movl		  0xd8(%ebp),%eax
+  +480	00004692  89442410				  movl		  %eax,0x10(%esp)
+  +484	00004696  8b45dc				  movl		  0xdc(%ebp),%eax
+  +487	00004699  89442414				  movl		  %eax,0x14(%esp)
+  +491	0000469d  8b83fd3d0000			  movl		  0x00003dfd(%ebx),%eax		    setBounds:
+  +497	000046a3  89442404				  movl		  %eax,0x04(%esp)
+  +501	000046a7  8b8564ffffff			  movl		  0xffffff64(%ebp),%eax
+  +507	000046ad  890424				  movl		  %eax,(%esp)
+  +510	000046b0  e878290000			  calll		  0x0000702d				    -[(%esp,1) setBounds:]
+  +515	000046b5  c744240801000000		  movl		  $0x00000001,0x08(%esp)
+  +523	000046bd  8b83f93d0000			  movl		  0x00003df9(%ebx),%eax		    setContentMode:
+  +529	000046c3  89442404				  movl		  %eax,0x04(%esp)
+  +533	000046c7  8b9564ffffff			  movl		  0xffffff64(%ebp),%edx
+  +539	000046cd  891424				  movl		  %edx,(%esp)
+  +542	000046d0  e858290000			  calll		  0x0000702d				    -[(%esp,1) setContentMode:]
+  +547	000046d5  8b4d08				  movl		  0x08(%ebp),%ecx
+  +550	000046d8  f30f104118			  movss		  0x18(%ecx),%xmm0
+  +555	000046dd  f30f10957cffffff		  movss		  0xffffff7c(%ebp),%xmm2
+  +563	000046e5  f30f59d0				  mulss		  %xmm0,%xmm2
+  +567	000046e9  f30f108bc5180000		  movss		  0x000018c5(%ebx),%xmm1
+  +575	000046f1  f30f105d80			  movss		  0x80(%ebp),%xmm3
+  +580	000046f6  f30f59d9				  mulss		  %xmm1,%xmm3
+  +584	000046fa  8b5128				  movl		  0x28(%ecx),%edx
+  +587	000046fd  8b4124				  movl		  0x24(%ecx),%eax
+  +590	00004700  f30f594580			  mulss		  0x80(%ebp),%xmm0
+  +595	00004705  f30f59c1				  mulss		  %xmm1,%xmm0
+  +599	00004709  f30f58c3				  addss		  %xmm3,%xmm0
+  +603	0000470d  f30f5904d0			  mulss		  (%eax,%edx,8),%xmm0
+  +608	00004712  f30f58c3				  addss		  %xmm3,%xmm0
+  +612	00004716  f30f104d84			  movss		  0x84(%ebp),%xmm1
+  +617	0000471b  0f578b9d1a0000		  xorps		  0x00001a9d(%ebx),%xmm1
+  +624	00004722  f30f5cca				  subss		  %xmm2,%xmm1
+  +628	00004726  f30f118d74ffffff		  movss		  %xmm1,0xffffff74(%ebp)
+  +636	0000472e  f30f118570ffffff		  movss		  %xmm0,0xffffff70(%ebp)
+  +644	00004736  8b8570ffffff			  movl		  0xffffff70(%ebp),%eax
+  +650	0000473c  8b9574ffffff			  movl		  0xffffff74(%ebp),%edx
+  +656	00004742  89442408				  movl		  %eax,0x08(%esp)
+  +660	00004746  8954240c				  movl		  %edx,0x0c(%esp)
+  +664	0000474a  8b83013d0000			  movl		  0x00003d01(%ebx),%eax		    setPosition:
+  +670	00004750  89442404				  movl		  %eax,0x04(%esp)
+  +674	00004754  8b9564ffffff			  movl		  0xffffff64(%ebp),%edx
+  +680	0000475a  891424				  movl		  %edx,(%esp)
+  +683	0000475d  f30f118548ffffff		  movss		  %xmm0,0xffffff48(%ebp)
+  +691	00004765  f30f119538ffffff		  movss		  %xmm2,0xffffff38(%ebp)
+  +699	0000476d  e8bb280000			  calll		  0x0000702d				    -[(%esp,1) setPosition:]
+  +704	00004772  f30f108548ffffff		  movss		  0xffffff48(%ebp),%xmm0
+  +712	0000477a  f30f1145e0			  movss		  %xmm0,0xe0(%ebp)
+  +717	0000477f  f30f104584			  movss		  0x84(%ebp),%xmm0
+  +722	00004784  f30f58857cffffff		  addss		  0xffffff7c(%ebp),%xmm0
+  +730	0000478c  f30f109538ffffff		  movss		  0xffffff38(%ebp),%xmm2
+  +738	00004794  f30f58d0				  addss		  %xmm0,%xmm2
+  +742	00004798  f30f1155e4			  movss		  %xmm2,0xe4(%ebp)
+  +747	0000479d  8d83791b0000			  leal		  0x00001b79(%ebx),%eax		    position
+  +753	000047a3  89442408				  movl		  %eax,0x08(%esp)
+  +757	000047a7  8b83a13d0000			  movl		  0x00003da1(%ebx),%eax		    animationWithKeyPath:
+  +763	000047ad  89442404				  movl		  %eax,0x04(%esp)
+  +767	000047b1  8b83613e0000			  movl		  0x00003e61(%ebx),%eax		    CABasicAnimation
+  +773	000047b7  890424				  movl		  %eax,(%esp)
+  +776	000047ba  e86e280000			  calll		  0x0000702d				    +[CABasicAnimation animationWithKeyPath:]
+  +781	000047bf  89c6					  movl		  %eax,%esi
+  +783	000047c1  8b45e0				  movl		  0xe0(%ebp),%eax
+  +786	000047c4  8b55e4				  movl		  0xe4(%ebp),%edx
+  +789	000047c7  89442408				  movl		  %eax,0x08(%esp)
+  +793	000047cb  8954240c				  movl		  %edx,0x0c(%esp)
+  +797	000047cf  8b83f53d0000			  movl		  0x00003df5(%ebx),%eax		    valueWithPoint:
+  +803	000047d5  89442404				  movl		  %eax,0x04(%esp)
+  +807	000047d9  8b83413e0000			  movl		  0x00003e41(%ebx),%eax		    NSValue
+  +813	000047df  890424				  movl		  %eax,(%esp)
+  +816	000047e2  e846280000			  calll		  0x0000702d				    +[NSValue valueWithPoint:]
+  +821	000047e7  89442408				  movl		  %eax,0x08(%esp)
+  +825	000047eb  8b83f13d0000			  movl		  0x00003df1(%ebx),%eax		    setToValue:
+  +831	000047f1  89442404				  movl		  %eax,0x04(%esp)
+  +835	000047f5  893424				  movl		  %esi,(%esp)
+  +838	000047f8  e830280000			  calll		  0x0000702d				    -[(%esp,1) setToValue:]
+  +843	000047fd  f30f108be5180000		  movss		  0x000018e5(%ebx),%xmm1
+  +851	00004805  8b4508				  movl		  0x08(%ebp),%eax
+  +854	00004808  f30f104018			  movss		  0x18(%eax),%xmm0
+  +859	0000480d  f30f59c1				  mulss		  %xmm1,%xmm0
+  +863	00004811  f30f58c1				  addss		  %xmm1,%xmm0
+  +867	00004815  f30f5ac0				  cvtss2sd	  %xmm0,%xmm0
+  +871	00004819  f20f11442408			  movsd		  %xmm0,0x08(%esp)
+  +877	0000481f  8b839d3d0000			  movl		  0x00003d9d(%ebx),%eax		    setDuration:
+  +883	00004825  89442404				  movl		  %eax,0x04(%esp)
+  +887	00004829  893424				  movl		  %esi,(%esp)
+  +890	0000482c  e8fc270000			  calll		  0x0000702d				    -[(%esp,1) setDuration:]
+  +895	00004831  c744240800000000		  movl		  $0x00000000,0x08(%esp)
+  +903	00004839  8b83ed3d0000			  movl		  0x00003ded(%ebx),%eax		    setRemovedOnCompletion:
+  +909	0000483f  89442404				  movl		  %eax,0x04(%esp)
+  +913	00004843  893424				  movl		  %esi,(%esp)
+  +916	00004846  e8e2270000			  calll		  0x0000702d				    -[(%esp,1) setRemovedOnCompletion:]
+  +921	0000484b  8d83891b0000			  leal		  0x00001b89(%ebx),%eax		    forwards
+  +927	00004851  89442408				  movl		  %eax,0x08(%esp)
+  +931	00004855  8b83e93d0000			  movl		  0x00003de9(%ebx),%eax		    setFillMode:
+  +937	0000485b  89442404				  movl		  %eax,0x04(%esp)
+  +941	0000485f  893424				  movl		  %esi,(%esp)
+  +944	00004862  e8c6270000			  calll		  0x0000702d				    -[(%esp,1) setFillMode:]
+  +949	00004867  8b5508				  movl		  0x08(%ebp),%edx
+  +952	0000486a  8b4210				  movl		  0x10(%edx),%eax
+  +955	0000486d  89442408				  movl		  %eax,0x08(%esp)
+  +959	00004871  8b83e53d0000			  movl		  0x00003de5(%ebx),%eax		    setDelegate:
+  +965	00004877  89442404				  movl		  %eax,0x04(%esp)
+  +969	0000487b  893424				  movl		  %esi,(%esp)
+  +972	0000487e  e8aa270000			  calll		  0x0000702d				    -[(%esp,1) setDelegate:]
+  +977	00004883  8d83991b0000			  leal		  0x00001b99(%ebx),%eax		    upwardMobility
+  +983	00004889  8944240c				  movl		  %eax,0x0c(%esp)
+  +987	0000488d  89742408				  movl		  %esi,0x08(%esp)
+  +991	00004891  8b83053d0000			  movl		  0x00003d05(%ebx),%eax		    addAnimation:forKey:
+  +997	00004897  89442404				  movl		  %eax,0x04(%esp)
+ +1001	0000489b  8b8d64ffffff			  movl		  0xffffff64(%ebp),%ecx
+ +1007	000048a1  890c24				  movl		  %ecx,(%esp)
+ +1010	000048a4  e884270000			  calll		  0x0000702d				    -[(%esp,1) addAnimation:forKey:]
+ +1015	000048a9  8b83bd3d0000			  movl		  0x00003dbd(%ebx),%eax		    layer
+ +1021	000048af  89442404				  movl		  %eax,0x04(%esp)
+ +1025	000048b3  8b8564ffffff			  movl		  0xffffff64(%ebp),%eax
+ +1031	000048b9  890424				  movl		  %eax,(%esp)
+ +1034	000048bc  e86c270000			  calll		  0x0000702d				    -[(%esp,1) layer]
+ +1039	000048c1  8b4d08				  movl		  0x08(%ebp),%ecx
+ +1042	000048c4  8b511c				  movl		  0x1c(%ecx),%edx
+ +1045	000048c7  89542408				  movl		  %edx,0x08(%esp)
+ +1049	000048cb  8b93a53d0000			  movl		  0x00003da5(%ebx),%edx		    setZPosition:
+ +1055	000048d1  89542404				  movl		  %edx,0x04(%esp)
+ +1059	000048d5  890424				  movl		  %eax,(%esp)
+ +1062	000048d8  e850270000			  calll		  0x0000702d				    -[(%esp,1) setZPosition:]
+ +1067	000048dd  8b4508				  movl		  0x08(%ebp),%eax
+ +1070	000048e0  8b5004				  movl		  0x04(%eax),%edx
+ +1073	000048e3  8b8d64ffffff			  movl		  0xffffff64(%ebp),%ecx
+ +1079	000048e9  894c2408				  movl		  %ecx,0x08(%esp)
+ +1083	000048ed  8b83e13d0000			  movl		  0x00003de1(%ebx),%eax		    addControl:
+ +1089	000048f3  89442404				  movl		  %eax,0x04(%esp)
+ +1093	000048f7  891424				  movl		  %edx,(%esp)
+ +1096	000048fa  e82e270000			  calll		  0x0000702d				    -[(%esp,1) addControl:]
+ +1101	000048ff  8b4508				  movl		  0x08(%ebp),%eax
+ +1104	00004902  8b500c				  movl		  0x0c(%eax),%edx
+ +1107	00004905  8b8d64ffffff			  movl		  0xffffff64(%ebp),%ecx
+ +1113	0000490b  894c2408				  movl		  %ecx,0x08(%esp)
+ +1117	0000490f  8b830d3d0000			  movl		  0x00003d0d(%ebx),%eax		    addObject:
+ +1123	00004915  89442404				  movl		  %eax,0x04(%esp)
+ +1127	00004919  891424				  movl		  %edx,(%esp)
+ +1130	0000491c  e80c270000			  calll		  0x0000702d				    -[(%esp,1) addObject:]
+ +1135	00004921  8b83dd3d0000			  movl		  0x00003ddd(%ebx),%eax		    _createImagePuller
+ +1141	00004927  89442404				  movl		  %eax,0x04(%esp)
+ +1145	0000492b  8b4508				  movl		  0x08(%ebp),%eax
+ +1148	0000492e  890424				  movl		  %eax,(%esp)
+ +1151	00004931  e8f7260000			  calll		  0x0000702d				    -[(%esp,1) _createImagePuller]
+ +1156	00004936  8b8564ffffff			  movl		  0xffffff64(%ebp),%eax
+ +1162	0000493c  85c0					  testl		  %eax,%eax
+ +1164	0000493e  7418					  je		  0x00004958
+ +1166	00004940  8b5508				  movl		  0x08(%ebp),%edx
+ +1169	00004943  8b4228				  movl		  0x28(%edx),%eax
+ +1172	00004946  83c001				  addl		  $0x01,%eax
+ +1175	00004949  894228				  movl		  %eax,0x28(%edx)
+ +1178	0000494c  3b422c				  cmpl		  0x2c(%edx),%eax
+ +1181	0000494f  7c07					  jl		  0x00004958
+ +1183	00004951  c7422800000000		  movl		  $0x00000000,0x28(%edx)
+ +1190	00004958  8d65f4				  leal		  0xf4(%ebp),%esp
+ +1193	0000495b  5b					  popl		  %ebx
+ +1194	0000495c  5e					  popl		  %esi
+ +1195	0000495d  5f					  popl		  %edi
+ +1196	0000495e  5d					  popl		  %ebp
+ +1197	0000495f  c3					  ret
+
+-(void)[RUIPhloatoPlane(AnimationDelegates) animationDidStop:finished:]
+	+0	00004960  90					  nop
+	+1	00004961  90					  nop
+	+2	00004962  90					  nop
+	+3	00004963  90					  nop
+	+4	00004964  90					  nop
+	+5	00004965  90					  nop
+
+	+0	00004966  55					  pushl		  %ebp
+	+1	00004967  89e5					  movl		  %esp,%ebp
+	+3	00004969  57					  pushl		  %edi
+	+4	0000496a  56					  pushl		  %esi
+	+5	0000496b  53					  pushl		  %ebx
+	+6	0000496c  83ec2c				  subl		  $0x2c,%esp
+	+9	0000496f  e8780f0000			  calll		  0x000058ec
+   +14	00004974  8b4508				  movl		  0x08(%ebp),%eax
+   +17	00004977  8945dc				  movl		  %eax,0xdc(%ebp)
+   +20	0000497a  8b4510				  movl		  0x10(%ebp),%eax
+   +23	0000497d  8945d8				  movl		  %eax,0xd8(%ebp)
+   +26	00004980  807d1400				  cmpb		  $0x00,0x14(%ebp)
+   +30	00004984  0f84ad000000			  jel		  0x00004a37
+   +36	0000498a  8b45dc				  movl		  0xdc(%ebp),%eax
+   +39	0000498d  8b500c				  movl		  0x0c(%eax),%edx
+   +42	00004990  8b8328390000			  movl		  0x00003928(%ebx),%eax		    count
+   +48	00004996  89442404				  movl		  %eax,0x04(%esp)
+   +52	0000499a  891424				  movl		  %edx,(%esp)
+   +55	0000499d  e88b260000			  calll		  0x0000702d				    -[(%esp,1) count]
+   +60	000049a2  8945e4				  movl		  %eax,0xe4(%ebp)
+   +63	000049a5  31ff					  xorl		  %edi,%edi
+   +65	000049a7  8d83e8160000			  leal		  0x000016e8(%ebx),%eax		    upwardMobility
+   +71	000049ad  8945e0				  movl		  %eax,0xe0(%ebp)
+   +74	000049b0  eb3f					  jmp		  0x000049f1
+   +76	000049b2  8b45dc				  movl		  0xdc(%ebp),%eax
+   +79	000049b5  8b500c				  movl		  0x0c(%eax),%edx
+   +82	000049b8  897c2408				  movl		  %edi,0x08(%esp)
+   +86	000049bc  8b8324390000			  movl		  0x00003924(%ebx),%eax		    objectAtIndex:
+   +92	000049c2  89442404				  movl		  %eax,0x04(%esp)
+   +96	000049c6  891424				  movl		  %edx,(%esp)
+   +99	000049c9  e85f260000			  calll		  0x0000702d				    -[(%esp,1) objectAtIndex:]
+  +104	000049ce  89c6					  movl		  %eax,%esi
+  +106	000049d0  8b45e0				  movl		  0xe0(%ebp),%eax
+  +109	000049d3  89442408				  movl		  %eax,0x08(%esp)
+  +113	000049d7  8b8320390000			  movl		  0x00003920(%ebx),%eax		    animationForKey:
+  +119	000049dd  89442404				  movl		  %eax,0x04(%esp)
+  +123	000049e1  893424				  movl		  %esi,(%esp)
+  +126	000049e4  e844260000			  calll		  0x0000702d				    -[(%esp,1) animationForKey:]
+  +131	000049e9  3b45d8				  cmpl		  0xd8(%ebp),%eax
+  +134	000049ec  7419					  je		  0x00004a07
+  +136	000049ee  83c701				  addl		  $0x01,%edi
+  +139	000049f1  397de4				  cmpl		  %edi,0xe4(%ebp)
+  +142	000049f4  7fbc					  jg		  0x000049b2
+  +144	000049f6  397de4				  cmpl		  %edi,0xe4(%ebp)
+  +147	000049f9  753c					  jne		  0x00004a37
+  +149	000049fb  83c42c				  addl		  $0x2c,%esp
+  +152	000049fe  5b					  popl		  %ebx
+  +153	000049ff  5e					  popl		  %esi
+  +154	00004a00  5f					  popl		  %edi
+  +155	00004a01  5d					  popl		  %ebp
+  +156	00004a02  e994260000			  jmpl		  0x0000709b
+  +161	00004a07  8b831c390000			  movl		  0x0000391c(%ebx),%eax		    removeFromParent
+  +167	00004a0d  89442404				  movl		  %eax,0x04(%esp)
+  +171	00004a11  893424				  movl		  %esi,(%esp)
+  +174	00004a14  e814260000			  calll		  0x0000702d				    -[(%esp,1) removeFromParent]
+  +179	00004a19  8b45dc				  movl		  0xdc(%ebp),%eax
+  +182	00004a1c  8b500c				  movl		  0x0c(%eax),%edx
+  +185	00004a1f  897c2408				  movl		  %edi,0x08(%esp)
+  +189	00004a23  8b8318390000			  movl		  0x00003918(%ebx),%eax		    removeObjectAtIndex:
+  +195	00004a29  89442404				  movl		  %eax,0x04(%esp)
+  +199	00004a2d  891424				  movl		  %edx,(%esp)
+  +202	00004a30  e8f8250000			  calll		  0x0000702d				    -[(%esp,1) removeObjectAtIndex:]
+  +207	00004a35  ebbf					  jmp		  0x000049f6
+  +209	00004a37  83c42c				  addl		  $0x2c,%esp
+  +212	00004a3a  5b					  popl		  %ebx
+  +213	00004a3b  5e					  popl		  %esi
+  +214	00004a3c  5f					  popl		  %edi
+  +215	00004a3d  5d					  popl		  %ebp
+  +216	00004a3e  c3					  ret
+  +217	00004a3f  90					  nop
+
+-(id)[RUIPhloatoPlaneDelegate initWithPlane:]
+	+0	00004a40  90					  nop
+	+1	00004a41  90					  nop
+	+2	00004a42  90					  nop
+	+3	00004a43  90					  nop
+	+4	00004a44  90					  nop
+	+5	00004a45  90					  nop
+
+	+0	00004a46  55					  pushl		  %ebp
+	+1	00004a47  89e5					  movl		  %esp,%ebp
+	+3	00004a49  53					  pushl		  %ebx
+	+4	00004a4a  83ec24				  subl		  $0x24,%esp
+	+7	00004a4d  e89a0e0000			  calll		  0x000058ec
+   +12	00004a52  8b4508				  movl		  0x08(%ebp),%eax
+   +15	00004a55  8945f0				  movl		  %eax,0xf0(%ebp)
+   +18	00004a58  8b83f2390000			  movl		  0x000039f2(%ebx),%eax		    NSObject
+   +24	00004a5e  8945f4				  movl		  %eax,0xf4(%ebp)
+   +27	00004a61  8d55f0				  leal		  0xf0(%ebp),%edx
+   +30	00004a64  8b8362370000			  movl		  0x00003762(%ebx),%eax		    init
+   +36	00004a6a  89442404				  movl		  %eax,0x04(%esp)
+   +40	00004a6e  891424				  movl		  %edx,(%esp)
+   +43	00004a71  e8b2250000			  calll		  0x00007028				    -[[(%esp,1) super] init]
+   +48	00004a76  85c0					  testl		  %eax,%eax
+   +50	00004a78  7406					  je		  0x00004a80
+   +52	00004a7a  8b5510				  movl		  0x10(%ebp),%edx
+   +55	00004a7d  895004				  movl		  %edx,0x04(%eax)
+   +58	00004a80  83c424				  addl		  $0x24,%esp
+   +61	00004a83  5b					  popl		  %ebx
+   +62	00004a84  5d					  popl		  %ebp
+   +63	00004a85  c3					  ret
+
+-(void)[RUIPhloatoPlaneDelegate setPlane:]
+	+0	00004a86  90					  nop
+	+1	00004a87  90					  nop
+	+2	00004a88  90					  nop
+	+3	00004a89  90					  nop
+	+4	00004a8a  90					  nop
+	+5	00004a8b  90					  nop
+
+	+0	00004a8c  55					  pushl		  %ebp
+	+1	00004a8d  89e5					  movl		  %esp,%ebp
+	+3	00004a8f  8b5510				  movl		  0x10(%ebp),%edx
+	+6	00004a92  8b4508				  movl		  0x08(%ebp),%eax
+	+9	00004a95  895004				  movl		  %edx,0x04(%eax)
+   +12	00004a98  5d					  popl		  %ebp
+   +13	00004a99  c3					  ret
+
+-(void)[RUIPhloatoPlaneDelegate animationDidStop:finished:]
+	+0	00004a9a  90					  nop
+	+1	00004a9b  90					  nop
+	+2	00004a9c  90					  nop
+	+3	00004a9d  90					  nop
+	+4	00004a9e  90					  nop
+	+5	00004a9f  90					  nop
+
+	+0	00004aa0  55					  pushl		  %ebp
+	+1	00004aa1  89e5					  movl		  %esp,%ebp
+	+3	00004aa3  e8480e0000			  calll		  0x000058f0
+	+8	00004aa8  8b4508				  movl		  0x08(%ebp),%eax
+   +11	00004aab  8b5004				  movl		  0x04(%eax),%edx
+   +14	00004aae  0fbe4514				  movsbl	  0x14(%ebp),%eax
+   +18	00004ab2  894514				  movl		  %eax,0x14(%ebp)
+   +21	00004ab5  8b81e0370000			  movl		  0x000037e0(%ecx),%eax		    animationDidStop:finished:
+   +27	00004abb  89450c				  movl		  %eax,0x0c(%ebp)
+   +30	00004abe  895508				  movl		  %edx,0x08(%ebp)
+   +33	00004ac1  5d					  popl		  %ebp
+   +34	00004ac2  e966250000			  jmpl		  0x0000702d
+   +39	00004ac7  90					  nop
+
+-(id)[RUIPhloatoScreenSaver init]
+	+0	00004ac8  90					  nop
+	+1	00004ac9  90					  nop
+	+2	00004aca  90					  nop
+	+3	00004acb  90					  nop
+	+4	00004acc  90					  nop
+	+5	00004acd  90					  nop
+
+	+0	00004ace  55					  pushl		  %ebp
+	+1	00004acf  89e5					  movl		  %esp,%ebp
+	+3	00004ad1  57					  pushl		  %edi
+	+4	00004ad2  56					  pushl		  %esi
+	+5	00004ad3  53					  pushl		  %ebx
+	+6	00004ad4  83ec2c				  subl		  $0x2c,%esp
+	+9	00004ad7  e8100e0000			  calll		  0x000058ec
+   +14	00004adc  8b4508				  movl		  0x08(%ebp),%eax
+   +17	00004adf  8945e0				  movl		  %eax,0xe0(%ebp)
+   +20	00004ae2  8b83a8390000			  movl		  0x000039a8(%ebx),%eax		    NSObject
+   +26	00004ae8  8945e4				  movl		  %eax,0xe4(%ebp)
+   +29	00004aeb  8d55e0				  leal		  0xe0(%ebp),%edx
+   +32	00004aee  8b83d8360000			  movl		  0x000036d8(%ebx),%eax		    init
+   +38	00004af4  89442404				  movl		  %eax,0x04(%esp)
+   +42	00004af8  891424				  movl		  %edx,(%esp)
+   +45	00004afb  e828250000			  calll		  0x00007028				    -[[(%esp,1) super] init]
+   +50	00004b00  89c7					  movl		  %eax,%edi
+   +52	00004b02  85c0					  testl		  %eax,%eax
+   +54	00004b04  7504					  jne		  0x00004b0a
+   +56	00004b06  31c0					  xorl		  %eax,%eax
+   +58	00004b08  eb77					  jmp		  0x00004b81
+   +60	00004b0a  8b83d4360000			  movl		  0x000036d4(%ebx),%eax		    sharedInstance
+   +66	00004b10  89442404				  movl		  %eax,0x04(%esp)
+   +70	00004b14  8b8320380000			  movl		  0x00003820(%ebx),%eax		    ATVSettingsFacade
+   +76	00004b1a  890424				  movl		  %eax,(%esp)
+   +79	00004b1d  e80b250000			  calll		  0x0000702d				    +[ATVSettingsFacade sharedInstance]
+   +84	00004b22  8b931c380000			  movl		  0x0000381c(%ebx),%edx		    screenSaverPhotoSpinFrequency
+   +90	00004b28  89542404				  movl		  %edx,0x04(%esp)
+   +94	00004b2c  890424				  movl		  %eax,(%esp)
+   +97	00004b2f  e8f9240000			  calll		  0x0000702d				    -[(%esp,1) screenSaverPhotoSpinFrequency]
+  +102	00004b34  89c6					  movl		  %eax,%esi
+  +104	00004b36  8b839c370000			  movl		  0x0000379c(%ebx),%eax		    alloc
+  +110	00004b3c  89442404				  movl		  %eax,0x04(%esp)
+  +114	00004b40  8b8358380000			  movl		  0x00003858(%ebx),%eax		    RUIPhloatoControl
+  +120	00004b46  890424				  movl		  %eax,(%esp)
+  +123	00004b49  e8df240000			  calll		  0x0000702d				    +[RUIPhloatoControl alloc]
+  +128	00004b4e  8b93d8360000			  movl		  0x000036d8(%ebx),%edx		    init
+  +134	00004b54  89542404				  movl		  %edx,0x04(%esp)
+  +138	00004b58  890424				  movl		  %eax,(%esp)
+  +141	00004b5b  e8cd240000			  calll		  0x0000702d				    -[(%esp,1) init]
+  +146	00004b60  894704				  movl		  %eax,0x04(%edi)
+  +149	00004b63  f30f2ac6				  cvtsi2ss	  %esi,%xmm0
+  +153	00004b67  f30f11442408			  movss		  %xmm0,0x08(%esp)
+  +159	00004b6d  8b9318380000			  movl		  0x00003818(%ebx),%edx		    setSpinFrequency:
+  +165	00004b73  89542404				  movl		  %edx,0x04(%esp)
+  +169	00004b77  890424				  movl		  %eax,(%esp)
+  +172	00004b7a  e8ae240000			  calll		  0x0000702d				    -[(%esp,1) setSpinFrequency:]
+  +177	00004b7f  89f8					  movl		  %edi,%eax
+  +179	00004b81  83c42c				  addl		  $0x2c,%esp
+  +182	00004b84  5b					  popl		  %ebx
+  +183	00004b85  5e					  popl		  %esi
+  +184	00004b86  5f					  popl		  %edi
+  +185	00004b87  5d					  popl		  %ebp
+  +186	00004b88  c3					  ret
+  +187	00004b89  90					  nop
+
+-(void)[RUIPhloatoScreenSaver dealloc]
+	+0	00004b8a  90					  nop
+	+1	00004b8b  90					  nop
+	+2	00004b8c  90					  nop
+	+3	00004b8d  90					  nop
+	+4	00004b8e  90					  nop
+	+5	00004b8f  90					  nop
+
+	+0	00004b90  55					  pushl		  %ebp
+	+1	00004b91  89e5					  movl		  %esp,%ebp
+	+3	00004b93  56					  pushl		  %esi
+	+4	00004b94  53					  pushl		  %ebx
+	+5	00004b95  83ec20				  subl		  $0x20,%esp
+	+8	00004b98  e84f0d0000			  calll		  0x000058ec
+   +13	00004b9d  8b7508				  movl		  0x08(%ebp),%esi
+   +16	00004ba0  8b5604				  movl		  0x04(%esi),%edx
+   +19	00004ba3  8b83a3360000			  movl		  0x000036a3(%ebx),%eax		    release
+   +25	00004ba9  89442404				  movl		  %eax,0x04(%esp)
+   +29	00004bad  891424				  movl		  %edx,(%esp)
+   +32	00004bb0  e878240000			  calll		  0x0000702d				    -[(%esp,1) release]
+   +37	00004bb5  8975f0				  movl		  %esi,0xf0(%ebp)
+   +40	00004bb8  8b83e7380000			  movl		  0x000038e7(%ebx),%eax		    NSObject
+   +46	00004bbe  8945f4				  movl		  %eax,0xf4(%ebp)
+   +49	00004bc1  8d55f0				  leal		  0xf0(%ebp),%edx
+   +52	00004bc4  8b839f360000			  movl		  0x0000369f(%ebx),%eax		    dealloc
+   +58	00004bca  89442404				  movl		  %eax,0x04(%esp)
+   +62	00004bce  891424				  movl		  %edx,(%esp)
+   +65	00004bd1  e852240000			  calll		  0x00007028				    -[[(%esp,1) super] dealloc]
+   +70	00004bd6  83c420				  addl		  $0x20,%esp
+   +73	00004bd9  5b					  popl		  %ebx
+   +74	00004bda  5e					  popl		  %esi
+   +75	00004bdb  5d					  popl		  %ebp
+   +76	00004bdc  c3					  ret
+   +77	00004bdd  90					  nop
+
+-(id)[RUIPhloatoScreenSaver screenSaverControl]
+	+0	00004bde  90					  nop
+	+1	00004bdf  90					  nop
+	+2	00004be0  90					  nop
+	+3	00004be1  90					  nop
+	+4	00004be2  90					  nop
+	+5	00004be3  90					  nop
+
+	+0	00004be4  55					  pushl		  %ebp
+	+1	00004be5  89e5					  movl		  %esp,%ebp
+	+3	00004be7  8b4508				  movl		  0x08(%ebp),%eax
+	+6	00004bea  8b4004				  movl		  0x04(%eax),%eax
+	+9	00004bed  5d					  popl		  %ebp
+   +10	00004bee  c3					  ret
+   +11	00004bef  90					  nop
+
+-(void)[RUIPhloatoScreenSaver setProvider:]
+	+0	00004bf0  90					  nop
+	+1	00004bf1  90					  nop
+	+2	00004bf2  90					  nop
+	+3	00004bf3  90					  nop
+	+4	00004bf4  90					  nop
+	+5	00004bf5  90					  nop
+
+	+0	00004bf6  55					  pushl		  %ebp
+	+1	00004bf7  89e5					  movl		  %esp,%ebp
+	+3	00004bf9  e8f20c0000			  calll		  0x000058f0
+	+8	00004bfe  8b4508				  movl		  0x08(%ebp),%eax
+   +11	00004c01  8b5004				  movl		  0x04(%eax),%edx
+   +14	00004c04  8b81aa350000			  movl		  0x000035aa(%ecx),%eax		    setProvider:
+   +20	00004c0a  89450c				  movl		  %eax,0x0c(%ebp)
+   +23	00004c0d  895508				  movl		  %edx,0x08(%ebp)
+   +26	00004c10  5d					  popl		  %ebp
+   +27	00004c11  e917240000			  jmpl		  0x0000702d
+
+(__TEXT,__textcoal_nt) section
+	+0	000058ec  8b1c24				  movl		  (%esp),%ebx
+	+3	000058ef  c3					  ret
+
+	+0	000058f0  8b0c24				  movl		  (%esp),%ecx
+	+3	000058f3  c3					  ret

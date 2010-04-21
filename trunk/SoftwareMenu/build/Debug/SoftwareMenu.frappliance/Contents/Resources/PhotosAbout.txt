@@ -1,0 +1,36 @@
+Software Menu Photos Menu
+
+
+********* QUICK AND DIRTY **********
+1. Uses:
+	View pictures without using Iphoto
+2. Viewing method:
+	Floating Images / or Iphoto Slideshow
+3. from where: 
+	Basically any folder on TV can be used
+
+
+********* MENU DESCRIPTION *********
+About: 
+	This Menu
+Start: 
+	Starts the slideshow with preselected options
+Standard Options: 
+	Options provided by apple for slideshows (change as you want)
+Custom Options:
+	Options made by yours truly. 
+	Includes switching screensaver mode
+	and rotation delays
+
+********* Current Folder ************
+Shows Current Folder
+	To set current Folder, select a folder and press right arrow
+
+*********** Favorites ***************
+Shows Selected Favorites
+	To add something to favorites, press left arrow on any folder
+	To remove from favorites, press left arrow on the folder under favorites
+
+************ Volumes ****************
+All Disks mounted under /Volumes/
+
