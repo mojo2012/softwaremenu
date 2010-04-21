@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'SoftwareMenuFramework' target in the 'SoftwareMenuFramework' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#import <Backrow/Backrow.h>
+#import "AppleTV.h"
+#import "SoftwareMenuFramework.h"
+#endif

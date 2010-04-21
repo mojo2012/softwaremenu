@@ -1,0 +1,141 @@
+TSMSlideshow
+v7
+r0
+t293568531.024938
+cCheck dependencies
+cProcessInfoPlistFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/Info.plist SMSlideshow-Info.plist
+cProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-dpbipulpymoovygzyinbqwcpzwut/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+cCompileC build/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m normal i386 objective-c com.apple.compilers.gcc.4_0
+cLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/MacOS/SMSlideshow normal i386
+cTouch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext
+
+N/Developer/SDKs/MacOSX10.4u.sdk
+c000000004BCC8D6B00000000000000EE
+t1271696747
+s238
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h
+c000000004628C8C90000000000001504
+t1177077961
+s5380
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/BackRow
+c000000004AF347A200000000002D6B90
+t1257457570
+s2976656
+
+N/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks/BackRow.framework/PrivateHeaders/BackRow.h
+c000000004AF0C8EA000000000000B02C
+t1257294058
+s45100
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext
+t1271875301
+s102
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/Info.plist
+t1271875301
+s734
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/MacOS/SMSlideshow
+t1271875301
+s30384
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.LinkFileList
+c000000004BCF46E5000000000000008B
+t1271875301
+s139
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.o
+t1271875301
+s42712
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.h
+c000000004BA1402F0000000000000321
+t1268858927
+s801
+i<Cocoa/Cocoa.h>
+i<BackRow/BackRow.h>
+
+N/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m
+c000000004BC9C8E90000000000002AB8
+t1271515369
+s10936
+i"SMSlideshow.h"
+
+N/var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-dpbipulpymoovygzyinbqwcpzwut/AppKit.h.gch
+t1271875293
+s29701312
+
+NSMSlideshow-Info.plist
+c000000004B9A9D9400000000000002FB
+t1268424084
+s763
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies293568531#293568531#0(0"0(0#1#0"4300911832#0"0#
+
+CCompileC build/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m normal i386 objective-c com.apple.compilers.gcc.4_0
+s293568101.549848
+e293568101.850306
+r1
+xCompileC
+xbuild/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.o
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_0
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: In function '-[SMSlideshowMext backgroundControl]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: 'BRControl' may not respond to '-setAutomaticDownsample:'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: (Messages without a matching method signature
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: will be assumed to return 'id' and accept
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: '...' as arguments.)
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:43: warning: 'BRControl' may not respond to '-setImage:'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: In function '-[SMSlideshowMext callN]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:91: warning: 'BRControl' may not respond to '-_nextSlide'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:92: warning: 'BRControl' may not respond to '-_prefetchNextImage'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: In function '-[SMSlideshowMext updateImage]':
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:99: warning: 'BRControl' may not respond to '-setImage:'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: At top level:
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:307: warning: incomplete implementation of category 'private'
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:307: warning: method definition for '-loadImagesPaths' not found
+o/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:27: warning: '_control' defined but not used
+lSLF07#2@94"Compile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293568101#293568101#0(2090"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: In function '-[SMSlideshowMext backgroundControl]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: 'BRControl' may not respond to '-setAutomaticDownsample:'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: (Messages without a matching method signature/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: will be assumed to return 'id' and accept/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:36: warning: '...' as arguments.)/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:43: warning: 'BRControl' may not respond to '-setImage:'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: In function '-[SMSlideshowMext callN]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:91: warning: 'BRControl' may not respond to '-_nextSlide'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:92: warning: 'BRControl' may not respond to '-_prefetchNextImage'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: In function '-[SMSlideshowMext updateImage]':/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:99: warning: 'BRControl' may not respond to '-setImage:'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m: At top level:/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:307: warning: incomplete implementation of category 'private'/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:307: warning: method definition for '-loadImagesPaths' not found/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m:27: warning: '_control' defined but not used10(22@57"'BRControl' may not respond to '-setAutomaticDownsample:'293568101#140#158#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#36#0#36#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)293568101#298#146#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#36#0#36#0#0"0(22@43"'BRControl' may not respond to '-setImage:'293568101#707#144#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#43#0#43#0#26"'*' may not respond to '*'0(22@44"'BRControl' may not respond to '-_nextSlide'293568101#979#145#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#91#0#91#0#26"'*' may not respond to '*'0(22@52"'BRControl' may not respond to '-_prefetchNextImage'293568101#1124#153#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#92#0#92#0#26"'*' may not respond to '*'0(22@43"'BRControl' may not respond to '-setImage:'293568101#1411#144#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#99#0#99#0#26"'*' may not respond to '*'0(23@13"At top level:293568101#1555#102#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#0#0#0#0#0"0(22@47"Incomplete implementation of category 'private'293568101#1657#149#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#307#0#307#0#0"0(22@50"Method definition for '-loadImagesPaths' not found293568101#1806#152#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#307#0#307#0#35"method definition for '*' not found0(22@31"'_control' defined but not used293568101#1958#132#0(6@86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m293208169#27#0#27#0#24"'*' defined but not used0(0#0#86"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m4300911832#1780"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mfix-and-continue -mmacosx-version-min=10.4 -gdwarf-2 -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/SMSlideshow-generated-files.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/SMSlideshow-own-target-headers.hmap -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/SMSlideshow-all-target-headers.hmap -iquote /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/SMSlideshow-project-headers.hmap -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/include -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/DerivedSources/i386 -I/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/DerivedSources -include /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-dpbipulpymoovygzyinbqwcpzwut/AppKit.h -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/mext/SMSlideshow/SMSlideshow.m -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.o0#
+
+CLd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/MacOS/SMSlideshow normal i386
+s293568101.850391
+e293568101.893792
+r1
+xLd
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/MacOS/SMSlideshow
+xnormal
+xi386
+lSLF07#2@116"Link /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/MacOS/SMSlideshow293568101#293568101#0(0"0(0#0#0"4300911832#749"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch i386 -bundle -isysroot /Developer/SDKs/MacOSX10.4u.sdk -L/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug -F/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/PrivateFrameworks -filelist /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/SoftwareMenu.build/Debug/SMSlideshow.build/Objects-normal/i386/SMSlideshow.LinkFileList -mmacosx-version-min=10.4 -undefined dynamic_lookup -framework BackRow -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/MacOS/SMSlideshow0#
+
+CProcessInfoPlistFile /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/Info.plist SMSlideshow-Info.plist
+s293568101.534729
+e293568101.549722
+r1
+xProcessInfoPlistFile
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/Info.plist
+xSMSlideshow-Info.plist
+lSLF07#2@30"Process SMSlideshow-Info.plist293568101#293568101#0(0"0(0#0#78"/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SMSlideshow-Info.plist4300911832#261"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    builtin-infoPlistUtility SMSlideshow-Info.plist -expandbuildsettings -platform macosx -o /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext/Contents/Info.plist0#
+
+CProcessPCH /var/folders/pa/pakg2lzfH1KFvz2RJNIRJE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AppKit-dpbipulpymoovygzyinbqwcpzwut/AppKit.h.gch /Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.h normal i386 objective-c com.apple.compilers.gcc.4_0
+r0
+
+CTouch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext
+s293568101.893888
+e293568101.896127
+r1
+xTouch
+x/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext
+lSLF07#2@90"Touch /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext293568101#293568101#0(0"0(0#0#0"4300911832#170"    cd /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu    /usr/bin/touch -c /Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/build/Debug/SMSlideshow.mext0#
+
