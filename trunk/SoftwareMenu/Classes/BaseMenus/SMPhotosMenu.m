@@ -433,14 +433,14 @@
     SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
     
     SMPhotoBrowserController* controller4  = [SMPhotoBrowserController controllerForProvider:provider];
-    [controller4 setTitle:[[SMGeneralMethods stringForKey:path] lastPathComponent]];
+    [controller4 setTitle:[[SMPreferences stringForKey:path] lastPathComponent]];
     //[controller4 setColumnCount:2];
     [controller4 removeSButton];
     [[[BRApplicationStackManager singleton] stack] pushController:controller4];
 }
 +(void)startSlideshow
 {
-    [SMGeneralMethods setString:@"SlideShow" forKey:@"SlideShowType"];
+    [SMPreferences setString:@"SlideShow" forKey:@"SlideShowType"];
     
     
     
@@ -448,7 +448,7 @@
     
     NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
     
-    NSArray *assets=[SMImageReturns mediaAssetsForPath:[SMGeneralMethods stringForKey:PHOTO_DIRECTORY_KEY]];
+    NSArray *assets=[SMImageReturns mediaAssetsForPath:[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY]];
     BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"Hello" predicate:_pred mediaTypes:_set];
     int i =0;
     for (i=0;i<[assets count];i++)
@@ -461,7 +461,7 @@
     SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
     
     id controller4  = [SMPhotoBrowserController controllerForProvider:provider];
-    [controller4 setTitle:[[SMGeneralMethods stringForKey:PHOTO_DIRECTORY_KEY] lastPathComponent]];
+    [controller4 setTitle:[[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY] lastPathComponent]];
     [controller4 setColumnCount:2];
     [controller4 removeSButton];
     
@@ -510,14 +510,14 @@
 				break;
 			case kSMSSStart:
 				isDir = NO;
-				theDir = [SMGeneralMethods stringForKey:@"PhotoDirectory"];
+				theDir = [SMPreferences stringForKey:@"PhotoDirectory"];
 				if([_man fileExistsAtPath:theDir isDirectory:&isDir] && isDir){}
 				else{
 					//NSLog(@"setDefault");
 					theDir = DEFAULT_IMAGES_PATH;
 				}
 
-				if([[SMGeneralMethods stringForKey:@"SlideShowType"] isEqualToString:@"Floating Images"])
+				if([[SMPreferences stringForKey:@"SlideShowType"] isEqualToString:@"Floating Images"])
 				{
 					//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"installScreenSaver",@"0",@"0",nil]];
 					NSLog(@"wrong SS");

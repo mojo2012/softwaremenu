@@ -43,6 +43,7 @@ typedef enum _SMMountTypes{
 + (void)switchBoolforKey:(NSString *)theKey;
 + (void)restartFinder;
 + (void)checkFolders;
+- (void)checkFolders;
 + (void)checkScreensaver;
 + (void)terminateFinder;
 + (NSArray *)arrayForKey:(NSString *)theKey;

@@ -31,7 +31,15 @@
 + (NSDictionary *)dictionaryForBundlePath:(NSString *)path;
 +(void)setPlaysMusicInSlideShow:(BOOL)arg;
 +(BOOL)playsMusicInSlideShow;
+
+#pragma mark SCRIPTS
++(BOOL)defaultScriptRunAsRoot;
++(BOOL)defaultScriptWait;
++(BOOL)setDefaultScriptRunAsRoot:(BOOL)inputBool;
++(BOOL)setDefaultScriptWait:(BOOL)inputBool;
 +(NSString *)scriptsPlistPath;
+
+
 +(NSString *)trustedPlistPath;
 +(NSString *)trustedPlistURL;
 +(NSString *)ImagesPath;

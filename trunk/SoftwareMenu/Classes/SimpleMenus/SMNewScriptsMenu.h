@@ -10,8 +10,12 @@
 
 
 @interface SMNewScriptsMenu : SMFMediaMenuController {
-    NSMutableArray *_scripts;
-    NSMutableArray *_scriptOptions;
+    NSMutableArray          *_scripts;
+    NSMutableDictionary     *_scriptOptions;
 }
-
++(NSString *)scriptsPlistPath;
++(NSString *)scriptsPath;
++(NSDictionary *)defaultScriptOptions;
++(void)runScript:(NSString *)path displayResult:(BOOL)display asRoot:(BOOL)root;
++(void)runScript:(NSString *)path displayResult:(BOOL)display;
 @end

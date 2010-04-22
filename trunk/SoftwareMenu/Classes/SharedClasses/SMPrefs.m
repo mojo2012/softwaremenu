@@ -173,6 +173,22 @@
 {
     [SMPreferences setArray:favorites forKey:PHOTO_FAVORITES];
 }
++(BOOL)defaultScriptRunAsRoot
+{
+    return [SMPreferences boolForKey:@"ScriptsDefaultRoot"];
+}
++(BOOL)defaultScriptWait
+{
+    return [SMPreferences boolForKey:@"ScriptDefaultWait"];
+}
++(BOOL)setDefaultScriptRunAsRoot:(BOOL)inputBool
+{
+    [SMPreferences setBool:inputBool forKey:@"ScriptsDefaultRoot"];
+}
++(BOOL)setDefaultScriptWait:(BOOL)inputBool
+{
+    [SMPreferences setBool:inputBool forKey:@"ScriptDefaultWait"];
+}
 +(NSString *)scriptsPlistPath
 {
     return [[@"~/Library/Preferences/SoftwareMenu" stringByAppendingPathComponent:SCRIPTS_PLIST] stringByExpandingTildeInPath];

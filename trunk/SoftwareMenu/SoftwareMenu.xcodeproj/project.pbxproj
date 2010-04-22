@@ -1519,7 +1519,6 @@
 		DD8E48681143447D00B6C2F8 /* SMUpdaterDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E48661143447D00B6C2F8 /* SMUpdaterDownload.m */; };
 		DD8E487B114344E300B6C2F8 /* SMUpdaterMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8E4879114344E300B6C2F8 /* SMUpdaterMenu.h */; };
 		DD8E487C114344E300B6C2F8 /* SMUpdaterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E487A114344E300B6C2F8 /* SMUpdaterMenu.m */; };
-		DDBC1E97117E41EC00C2CCA9 /* softwaremenu.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = DDBC1E96117E41EC00C2CCA9 /* softwaremenu.xcdatamodel */; };
 		DDBD31D9117A189100186809 /* SapphireTVDirectory.h in Headers */ = {isa = PBXBuildFile; fileRef = DDBD31D8117A189100186809 /* SapphireTVDirectory.h */; };
 		DDBD31DB117A18A900186809 /* SapphireEntityDirectory.h in Headers */ = {isa = PBXBuildFile; fileRef = DDBD31DA117A18A900186809 /* SapphireEntityDirectory.h */; };
 		DDC31B9B116CE8F600FA71BE /* SMConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC31B99116CE8F600FA71BE /* SMConnection.h */; };
@@ -1696,7 +1695,6 @@
 		E236DA3C0F64368E003C02CA /* SM.pch in Headers */ = {isa = PBXBuildFile; fileRef = E236DA3B0F64368E003C02CA /* SM.pch */; };
 		E25CC0910F6228B00024A371 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E25CC08F0F6228B00024A371 /* Localizable.strings */; };
 		E273B2430F647CAC00E516B5 /* readmeupd.txt in Resources */ = {isa = PBXBuildFile; fileRef = E273B2420F647CAC00E516B5 /* readmeupd.txt */; };
-		E2A240D50EC0ACC800D606C2 /* SoftwareManual.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */; };
 		E2A35FF20EAE030700FB6FD7 /* installHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A35FEF0EAE030700FB6FD7 /* installHelper.m */; };
 		E2A35FF30EAE030700FB6FD7 /* installHelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */; };
 		E2A360870EAE376E00FB6FD7 /* installHelper in Resources */ = {isa = PBXBuildFile; fileRef = E2A35FE80EAE02B900FB6FD7 /* installHelper */; };
@@ -1742,6 +1740,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DDE0AD7D114AD12F00CF9926;
 			remoteInfo = SMSlideshow;
+		};
+		DDE33E951180AA4D0099242E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* SoftwareMenuFramework */;
+			remoteInfo = SoftwareMenuFramework;
 		};
 		DDE8648F10A3A4FC002D2FB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3306,7 +3311,6 @@
 		DD8E4879114344E300B6C2F8 /* SMUpdaterMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterMenu.h; sourceTree = "<group>"; };
 		DD8E487A114344E300B6C2F8 /* SMUpdaterMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterMenu.m; sourceTree = "<group>"; };
 		DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftwareMenuFramework.xcodeproj; path = ../SoftwareMenuFramework/SoftwareMenuFramework.xcodeproj; sourceTree = "<group>"; };
-		DDBC1E96117E41EC00C2CCA9 /* softwaremenu.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = softwaremenu.xcdatamodel; sourceTree = "<group>"; };
 		DDBD31D8117A189100186809 /* SapphireTVDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireTVDirectory.h; sourceTree = "<group>"; };
 		DDBD31DA117A18A900186809 /* SapphireEntityDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireEntityDirectory.h; sourceTree = "<group>"; };
 		DDC31B99116CE8F600FA71BE /* SMConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMConnection.h; sourceTree = "<group>"; };
@@ -3497,8 +3501,6 @@
 		E2954F3A0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2954F3B0F622A5000E3A1C2 /* French */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 10; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E29708E30FA90F74009667AE /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E2A240D30EC0ACC800D606C2 /* SoftwareManual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareManual.h; sourceTree = "<group>"; };
-		E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareManual.m; sourceTree = "<group>"; };
 		E2A35FE80EAE02B900FB6FD7 /* installHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = installHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A35FEF0EAE030700FB6FD7 /* installHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installHelper.m; sourceTree = "<group>"; };
 		E2A35FF00EAE030700FB6FD7 /* installHelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installHelperClass.h; sourceTree = "<group>"; };
@@ -3589,7 +3591,6 @@
 				DDEF2D4910A5D06A00ECD73A /* loadUpdates-bin */,
 				E2E41DF70ECD04D700D1697E /* installHelper */,
 				DD8E465B1142EC0800B6C2F8 /* Classes */,
-				08FB77AFFE84173DC02AAC07 /* Class */,
 				DD7F50BF10A12B5A00C5E31C /* Images */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
@@ -3657,15 +3658,6 @@
 				E29708F30FA9105D009667AE /* InfoPlist.strings */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		08FB77AFFE84173DC02AAC07 /* Class */ = {
-			isa = PBXGroup;
-			children = (
-				DD689FD510A775CE00B2F52A /* Shared */,
-				E2ABBFF90ECFDCBB004771BB /* Settings */,
-			);
-			name = Class;
 			sourceTree = "<group>";
 		};
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
@@ -5112,13 +5104,6 @@
 			name = Controls;
 			sourceTree = "<group>";
 		};
-		DD689FD510A775CE00B2F52A /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Shared;
-			sourceTree = "<group>";
-		};
 		DD7F4E8410A0BB2F00C5E31C /* script */ = {
 			isa = PBXGroup;
 			children = (
@@ -5213,7 +5198,6 @@
 				DD8E4847114343BA00B6C2F8 /* SharedClasses */,
 				DD8E465C1142EC1E00B6C2F8 /* ThirdParty */,
 				DD8E4855114343C500B6C2F8 /* Updater */,
-				DDBC1E96117E41EC00C2CCA9 /* softwaremenu.xcdatamodel */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -5577,14 +5561,6 @@
 			path = SMM3.0;
 			sourceTree = "<group>";
 		};
-		E2ABBFF90ECFDCBB004771BB /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				E2F652820F9FDA87005CF172 /* Manual */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
 		E2B7A1220F8AB2C6007B8BAB /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -5604,15 +5580,6 @@
 				E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */,
 			);
 			path = installHelper;
-			sourceTree = "<group>";
-		};
-		E2F652820F9FDA87005CF172 /* Manual */ = {
-			isa = PBXGroup;
-			children = (
-				E2A240D30EC0ACC800D606C2 /* SoftwareManual.h */,
-				E2A240D40EC0ACC800D606C2 /* SoftwareManual.m */,
-			);
-			name = Manual;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -7068,6 +7035,7 @@
 				DDE0AC2E114ACA8000CF9926 /* PBXTargetDependency */,
 				DDE0AD76114AD0E900CF9926 /* PBXTargetDependency */,
 				DDE0AD93114AD15400CF9926 /* PBXTargetDependency */,
+				DDE33E961180AA4D0099242E /* PBXTargetDependency */,
 			);
 			name = SoftwareMenu;
 			productInstallPath = "$(HOME)/Library/Bundles";
@@ -7478,7 +7446,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2A240D50EC0ACC800D606C2 /* SoftwareManual.m in Sources */,
 				E2B7A18F0F8AD1CA007B8BAB /* AGProcess.m in Sources */,
 				DDEF340610A657F500ECD73A /* Extensions.m in Sources */,
 				DD68A1C710A7C3F300B2F52A /* SMMainMenuMediaControl.m in Sources */,
@@ -7520,7 +7487,6 @@
 				DDE6386E1178FB690041DBA9 /* SMMovieAsset.m in Sources */,
 				DDE638DE11790C240041DBA9 /* BRMediaPlayerController (SMExtensions).m in Sources */,
 				DDE638F51179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.m in Sources */,
-				DDBC1E97117E41EC00C2CCA9 /* softwaremenu.xcdatamodel in Sources */,
 				DD67965D117F6241000B3C94 /* SMBuiltInMenu.m in Sources */,
 				DD67965F117F6241000B3C94 /* SMFrappMover.m in Sources */,
 				DD679661117F6241000B3C94 /* SMPhotosMenu.m in Sources */,
@@ -7616,6 +7582,11 @@
 			isa = PBXTargetDependency;
 			target = DDE0AD7D114AD12F00CF9926 /* SMSlideshow */;
 			targetProxy = DDE0AD92114AD15400CF9926 /* PBXContainerItemProxy */;
+		};
+		DDE33E961180AA4D0099242E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SoftwareMenuFramework;
+			targetProxy = DDE33E951180AA4D0099242E /* PBXContainerItemProxy */;
 		};
 		DDE8649010A3A4FC002D2FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

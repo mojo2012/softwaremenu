@@ -596,6 +596,7 @@ shouldMakeNewConnection:(NSConnection *)conn
         return ( nil );
 	
     t=0;
+    [[SMGeneralMethods sharedInstance] checkFolders];
     if(TRUE)
     {
         [self startChatter];
@@ -732,7 +733,7 @@ shouldMakeNewConnection:(NSConnection *)conn
 				newController = [[SMBuiltInMenu alloc] init];
 				break;
 			case 2:
-				newController = [[SMScriptsMenu alloc] init];
+				newController = [[SMNewScriptsMenu alloc] init];
 				//[newController initCustom];
 				break;
 			case 3:
