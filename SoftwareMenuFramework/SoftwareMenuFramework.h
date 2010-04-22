@@ -21,7 +21,7 @@
 
 #define BASE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/"
 
-#define IMAGES_FOLDER				@"~/Library/Application Support/SoftwareMenu/Images"
+#define IMAGES_FOLDER				[@"~/Library/Application Support/SoftwareMenu/Images" stringByExpandingTildeInPath]
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
 #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
 
