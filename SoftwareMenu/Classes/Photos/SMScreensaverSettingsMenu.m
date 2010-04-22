@@ -21,7 +21,7 @@
     //	{
     //		SMFBaseAsset	*meta = [[SMFBaseAsset alloc] init];
     //		[meta setTitle:(NSString *)[[_items objectAtIndex:item] title]];
-    //		[meta setCoverArt:[SMPhotoPreview firstPhotoForPath:[SMGeneralMethods stringForKey:@"PhotoDirectory"]]];
+    //		[meta setCoverArt:[SMPhotoPreview firstPhotoForPath:[SMPreferences stringForKey:@"PhotoDirectory"]]];
     //		SMFMediaPreview *preview =[[SMFMediaPreview alloc] init];
     //		[preview setAssetMeta:meta];
     //		return preview;
@@ -263,15 +263,15 @@
             NSLog(@"aa: %@",a);
             if([a isEqualToString:@"Floating"])
 			{
-				[SMGeneralMethods setString:@"Parade" forKey:@"ScreensaverType"];
+				[SMPreferences setString:@"Parade" forKey:@"ScreensaverType"];
 			}
 			else if([a isEqualToString:@"Parade"])
             {
-                [SMGeneralMethods setString:@"Slideshow" forKey:@"ScreensaverType"];
+                [SMPreferences setString:@"Slideshow" forKey:@"ScreensaverType"];
             }
             else 
             {
-                [SMGeneralMethods setString:@"Floating" forKey:@"ScreensaverType"];
+                [SMPreferences setString:@"Floating" forKey:@"ScreensaverType"];
             }
             
             break;
@@ -288,7 +288,7 @@
 			[newController setInitialValue:[SMPreferences screensaverSpinFrequency]];
             _returnType=kSMSSSRotation;
 			[[self stack] pushController:newController];
-			//i = [SMGeneralMethods integerForKey:SCREEN_SAVER_SPIN_FREQ];
+			//i = [SMPreferences integerForKey:SCREEN_SAVER_SPIN_FREQ];
             
 			break;
         }

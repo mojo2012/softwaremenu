@@ -73,6 +73,7 @@
 #import "Classes/BaseMenus/SMBuiltInMenu.h"
 #import "Classes/BaseMenus/SMTweaks.h"
 #import "Classes/BaseMenus/SMScriptsMenu.h"
+#import "Classes/SimpleMenus/SMNewScriptsMenu.h"
 #import "Classes/BaseMenus/SMSettingsMenu.h"
 #import "Classes/BaseMenus/SMFrappMover.h"
 #import "Classes/BaseMenus/SMPhotosMenu.h"
@@ -107,7 +108,7 @@
 /*
  *  Importing SubMenus For Settings-Manual
  */
-#import "SoftwareManual.h"
+//#import "SoftwareManual.h"
 //#import "SoftwareManualInfo.h"
 
 /*

@@ -27,7 +27,7 @@
 //	{
 //		SMFBaseAsset	*meta = [[SMFBaseAsset alloc] init];
 //		[meta setTitle:(NSString *)[[_items objectAtIndex:item] title]];
-//		[meta setCoverArt:[SMPhotoPreview firstPhotoForPath:[SMGeneralMethods stringForKey:@"PhotoDirectory"]]];
+//		[meta setCoverArt:[SMPhotoPreview firstPhotoForPath:[SMPreferences stringForKey:@"PhotoDirectory"]]];
 //		SMFMediaPreview *preview =[[SMFMediaPreview alloc] init];
 //		[preview setAssetMeta:meta];
 //		return preview;
@@ -200,7 +200,7 @@
 	{
             
 		case kSMSSSDefaultImages:
-			[SMGeneralMethods setString:DEFAULT_IMAGES_PATH forKey:PHOTO_DIRECTORY_KEY];
+			[SMPreferences setString:DEFAULT_IMAGES_PATH forKey:PHOTO_DIRECTORY_KEY];
 			break;
 		case kSMSSSType:
         {
@@ -208,15 +208,15 @@
             //NSLog(@"aa: %@",a);
             if([a isEqualToString:@"Floating"])
 			{
-				[SMGeneralMethods setString:@"Parade" forKey:@"ScreensaverType"];
+				[SMPreferences setString:@"Parade" forKey:@"ScreensaverType"];
 			}
 			else if([a isEqualToString:@"Parade"])
             {
-                [SMGeneralMethods setString:@"Slideshow" forKey:@"ScreensaverType"];
+                [SMPreferences setString:@"Slideshow" forKey:@"ScreensaverType"];
             }
             else 
             {
-                [SMGeneralMethods setString:@"Floating" forKey:@"ScreensaverType"];
+                [SMPreferences setString:@"Floating" forKey:@"ScreensaverType"];
             }
 
             break;
@@ -234,7 +234,7 @@
 			//[newController setInitialValue:[SMPreferences screensaverSpinFrequency]];
             
 			[[self stack] pushController:newController];
-			i = [SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY];
+			i = [SMPreferences integerForKey:PHOTO_SPIN_FREQUENCY];
 			break;
         }
 			
@@ -270,7 +270,7 @@
             break;
 		case kSMSSSFDefaults:
 			randomV = NO;
-			[SMGeneralMethods setInteger:60 forKey:PHOTO_SPIN_FREQUENCY];
+			[SMPreferences setInteger:60 forKey:PHOTO_SPIN_FREQUENCY];
 			break;
         case kSMSSSTransition:
             randomV = NO;
@@ -355,7 +355,7 @@
 	switch ([[settingNumberType objectAtIndex:row] intValue])
 	{
 		case kSMSSSDefaultImages:
-			usedString = [SMGeneralMethods stringForKey:PHOTO_DIRECTORY_KEY];
+			usedString = [SMPreferences stringForKey:PHOTO_DIRECTORY_KEY];
 			if([usedString isEqualToString:DEFAULT_IMAGES_PATH])
 			{
 				[item setRightJustifiedText:@"Default"];
@@ -378,7 +378,7 @@
 				[item setRightJustifiedText:usedString];
 			break;
 		case kSMSSSRotation:
-//			i = [SMGeneralMethods integerForKey:PHOTO_SPIN_FREQUENCY];
+//			i = [SMPreferences integerForKey:PHOTO_SPIN_FREQUENCY];
 //			if(i==nil || i == 0)
 //				i=60;
 //			[item setRightJustifiedText:[NSString stringWithFormat:@"(%@ seconds)",[NSNumber numberWithInt:i],nil]];

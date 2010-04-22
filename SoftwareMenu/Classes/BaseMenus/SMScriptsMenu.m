@@ -81,13 +81,14 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
 	long i, count = [[fileManager directoryContentsAtPath:SCRIPTS_FOLDER] count];
 	//NSLog(@"_runoption 2: %@",_runoption);
+    BOOL python = [SMGeneralMethods pythonIsInstalled];
 	for ( i = 0; i < count; i++ )
 	{
         
 		NSString *idStr = [[fileManager directoryContentsAtPath:SCRIPTS_FOLDER] objectAtIndex:i];
 		if([[idStr pathExtension] isEqualToString:@"sh"])
             [scripts addObject:idStr];
-        if([[idStr pathExtension] isEqualToString:@"py"])
+        if([[idStr pathExtension] isEqualToString:@"py"] && python)
             [scripts addObject:idStr];
     }
     return scripts;
@@ -188,6 +189,26 @@
 	id item0 = [[BRTextMenuItemLayer alloc] init];
 	[item0 setTitle:BRLocalizedString(@"Refresh",@"Refresh")];
 	[_items addObject:item0];
+    
+    
+    [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                         [NSNumber numberWithInt:5],LAYER_TYPE,
+                         @"Root",LAYER_NAME,
+                         nil]];
+    [item0 release];
+    item0=[BRTextMenuItemLayer menuItem];
+    [item0 setTitle:BRLocalizedString(@"Run as Root",@"Run scripts as root")];
+    [_items addObject:item0];
+    
+    
+    [_options addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                         [NSNumber numberWithInt:6],LAYER_TYPE,
+                         @"Wait",LAYER_NAME,
+                         nil]];
+    [item0 release];
+    item0=[BRTextMenuItemLayer menuItem];
+    [item0 setTitle:BRLocalizedString(@"Wait For Return",@"Wait For Script Returns")];
+    [_items addObject:item0];
 	
 	
 	

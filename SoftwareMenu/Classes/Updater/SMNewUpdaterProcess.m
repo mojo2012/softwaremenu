@@ -262,7 +262,7 @@
 			[self addTextSpace:BRLocalizedString(@"Done",@"Done")];
 		}
 	}
-	if(update_status && !original_status &&[SMGeneralMethods boolForKey:@"retain_installed"])
+	if(update_status && !original_status &&[SMPreferences boolForKey:@"retain_installed"])
 	{
 		[self addText:BRLocalizedString (@"Moving Fraps",@"Moving Fraps")];
 		//step;
@@ -278,7 +278,7 @@
 			if(![builtinfraps containsObject:idStr])
 			{
                 
-				if([SMGeneralMethods boolForKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]])
+				if([SMPreferences boolForKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]])
 				{
                     [man copyPath:[thepath stringByAppendingPathComponent:idStr] toPath:[newbase stringByAppendingPathComponent:idStr] handler:nil];
 				}
@@ -288,7 +288,7 @@
 		[self addTextSpace:@"Done"];
 		
 	}
-	if(update_status && !original_status && [SMGeneralMethods boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
+	if(update_status && !original_status && [SMPreferences boolForKey:@"retain_builtin"] && [[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Plugins (Disabled)/"])
 	{
 		[self addText:@"Copying Builtin stuff"];
 		NSLog(@"retaining builtin");

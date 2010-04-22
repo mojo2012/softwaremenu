@@ -237,7 +237,7 @@
 			break;
 		case kSMSetToggle:
 		case kSMSetYNToggle:
-			[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]];
+			[SMPreferences switchBoolforKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]];
 			[[self list] reload];
 			break;
 			break;
@@ -247,16 +247,16 @@
 			[[self stack] pushController:newController];
 			break;
 		case kSMSetBlocker:
-			[[SMGeneralMethods sharedInstance] helperFixPerm];
+			[[SMPreferences sharedInstance] helperFixPerm];
             [[SMHelper helperManager] toggleUpdate];
 			//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-toggleUpdate",@"0",@"0",nil]];
 			[[self list] reload];
 			break;
-		case kSMSetUntrusted:
-			newController = [[SoftwareManual alloc] init];
-			[newController initWithIdentifier:nil];
-			[[self stack] pushController:newController];
-            break;
+//		case kSMSetUntrusted:
+//			newController = [[SoftwareManual alloc] init];
+//			[newController initWithIdentifier:nil];
+//			[[self stack] pushController:newController];
+//            break;
         case 35:
             newController = [[SMSettingsToggles alloc] init];
             [[self stack] pushController:newController];
@@ -304,8 +304,8 @@
 			switch ([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
 			{
 				case kSMSetSPos:
-					i=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-					if(i>0)		{[SMGeneralMethods setInteger:i-1 forKey:@"ScriptsPosition"];}
+					i=[SMPreferences integerForKey:@"ScriptsPosition"];
+					if(i>0)		{[SMPreferences setInteger:i-1 forKey:@"ScriptsPosition"];}
 					[[self list] reload];
 					break;
 			}
@@ -316,8 +316,8 @@
 			switch ([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
 			{
 				case kSMSetSPos:
-					i=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-					if(i<5)		{[SMGeneralMethods setInteger:i+1 forKey:@"ScriptsPosition"];}
+					i=[SMPreferences integerForKey:@"ScriptsPosition"];
+					if(i<5)		{[SMPreferences setInteger:i+1 forKey:@"ScriptsPosition"];}
 					[[self list] reload];
 					break;
 			}
@@ -372,18 +372,18 @@
 			[item setRightJustifiedText:[[[NSBundle bundleForClass:[self class]] infoDictionary] valueForKey:@"CFBundleShortVersionString"]];
 			break;
 		case kSMSetToggle:
-			if([SMGeneralMethods boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightJustifiedText:@"Shown"];}
+			if([SMPreferences boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightJustifiedText:@"Shown"];}
 			else																						{[item setRightJustifiedText:@"Hidden"];}
 			break;
 		case kSMSetYNToggle:
-			if([SMGeneralMethods boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];}
+			if([SMPreferences boolForKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]])		{[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];}
 			else																						{[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];}
 			break;
 		case kSMSetSPos:
-			if(![SMGeneralMethods boolForKey:@"SMM"])			{[item setDimmed:YES];}
+			if(![SMPreferences boolForKey:@"SMM"])			{[item setDimmed:YES];}
 			else												{[item setDimmed:NO];}
 			int j=0;
-			j=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
+			j=[SMPreferences integerForKey:@"ScriptsPosition"];
 			[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] airportImageForSignalStrength:j], @"BRMenuIconImageKey",nil]];
 			break;
 		case kSMSetBlocker:

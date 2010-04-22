@@ -526,6 +526,10 @@ static SMGeneralMethods *sharedInstance = nil;
 }
 +(void)checkFolders
 {
+    [[SMGeneralMethods sharedInstance] checkFolders];
+}
+-(void)checkFolders
+{
 	NSFileManager *man =[NSFileManager defaultManager];
 //	if (![man fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath]])
 //		[man createDirectoryAtPath:[@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath] attributes:nil];

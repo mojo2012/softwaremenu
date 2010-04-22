@@ -70,7 +70,7 @@
 					[NSNumber numberWithBool:NO],@"retain_builtin",
 					nil];
 	_optionDict=[self getOptions];
-	if([_optionDict count]==0){[SMGeneralMethods setDict:_theDefaults forKey:@"Updater_Options"];
+	if([_optionDict count]==0){[SMPreferences setDict:_theDefaults forKey:@"Updater_Options"];
 								_optionDict=[self getOptions];}
 	
 	_optionDescriptions = [[NSMutableArray alloc] initWithObjects:BRLocalizedString(@"Saves downloaded file so you don't have to redownload them later.",@"Saves downloaded file so you don't have to redownload them later."),
@@ -161,17 +161,17 @@
 			{
 				id item3 = [[BRTextMenuItemLayer alloc] init];
 				[item3 setTitle:[idStr stringByDeletingPathExtension]];
-				if([SMGeneralMethods boolForKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]])
+				if([SMPreferences boolForKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]])
 				{
 					[item3 setRightJustifiedText:BRLocalizedString(@"YES",@"YES")];
 					
 				}
 				else
 				{
-					[SMGeneralMethods setBool:NO forKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]];
+					[SMPreferences setBool:NO forKey:[@"copy_" stringByAppendingString:[idStr stringByDeletingPathExtension]]];
 					[item3 setRightJustifiedText:BRLocalizedString(@"NO",@"NO")];
 				}
-				if(![SMGeneralMethods boolForKey:@"retain_installed"])
+				if(![SMPreferences boolForKey:@"retain_installed"])
 				{
 					//[item3 setDimmed:YES];
 				}
@@ -194,14 +194,14 @@
 /*-(id)itemForRow:(long)row
 {
 	NSLog(@"row: %d",row);
-	if(row>=[_optionNames count] && ![SMGeneralMethods boolForKey:@"retain_installed"]) return (nil);
+	if(row>=[_optionNames count] && ![SMPreferences boolForKey:@"retain_installed"]) return (nil);
 	if(row<[_optionNames count])
 	{
 		NSLog(@"returning item2");
 		id item2 = [[BRTextMenuItemLayer alloc] init];
 		[item2 setTitle:[_optionNames objectAtIndex:row]];
 		NSLog(@"title %@", [item2 title]);
-		if([SMGeneralMethods boolForKey:[_optionKeys objectAtIndex:row]])
+		if([SMPreferences boolForKey:[_optionKeys objectAtIndex:row]])
 		{
 			[item2 setRightJustifiedText:BRLocalizedString(@"YES",@"YES")];
 			NSLog(@"YES");
@@ -210,7 +210,7 @@
 		{
 			NSLog(@"NO");
 			[item2 setRightJustifiedText:BRLocalizedString(@"NO",@"NO")];
-			[SMGeneralMethods setBool:NO forKey:[_optionKeys objectAtIndex:row]];
+			[SMPreferences setBool:NO forKey:[_optionKeys objectAtIndex:row]];
 		}
 		return item2;
 	}
@@ -222,13 +222,13 @@
 		NSString * rowTitle = [[_nonBuiltinFraps objectAtIndex:1] stringByDeletingPathExtension];
 		id item = [[BRTextMenuItemLayer alloc] init];
 		[item setTitle:rowTitle];
-		if([SMGeneralMethods boolForKey:[@"copy_" stringByAppendingString:rowTitle]])
+		if([SMPreferences boolForKey:[@"copy_" stringByAppendingString:rowTitle]])
 		{
 			[item setRightJustifiedText:@"YES"];
 		}
 		else
 		{
-			[SMGeneralMethods setBool:NO forKey:[@"copy_" stringByAppendingString:rowTitle]];
+			[SMPreferences setBool:NO forKey:[@"copy_" stringByAppendingString:rowTitle]];
 			[item setRightJustifiedText:@"NO"];
 		}
 		return item;
@@ -251,7 +251,7 @@
 //            [[_items objectAtIndex:fp8] setRightJustifiedText:@"YES"];
 //            [tempDict setValue:[NSNumber numberWithBool:YES] forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 //        }
-//        [SMGeneralMethods setDict:tempDict forKey:@"Updater_Options"];
+//        [SMPreferences setDict:tempDict forKey:@"Updater_Options"];
 //        [[self list] reload];
 //    }
 //}
@@ -259,10 +259,10 @@
 {
 	if([[[_options objectAtIndex:fp8] objectAtIndex:0] isEqualToString:@"options"])
 	{
-		[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+		[SMPreferences switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		if([[[_options objectAtIndex:fp8] objectAtIndex:1] isEqualToString:@"retain_installed"])
 		{
-			if([SMGeneralMethods boolForKey:@"retain_installed"])   {NSLog(@"retaining");}
+			if([SMPreferences boolForKey:@"retain_installed"])   {NSLog(@"retaining");}
 
 			int i;
 			int ii;
@@ -270,7 +270,7 @@
 			i=[_items count];
 			ii=6;//[_optionNames count];
 			BOOL retain =NO;
-			if([SMGeneralMethods boolForKey:@"retain_installed"])   {retain = YES;}
+			if([SMPreferences boolForKey:@"retain_installed"])   {retain = YES;}
 			for(counter=ii;counter<i;counter++)
 			{
 				if(retain)
@@ -286,13 +286,13 @@
 	}
 	if([[[_options objectAtIndex:fp8] objectAtIndex:0] isEqualToString:@"frapCopy"])
 	{
-		if([SMGeneralMethods boolForKey:[[_options objectAtIndex:fp8] objectAtIndex:1]])
+		if([SMPreferences boolForKey:[[_options objectAtIndex:fp8] objectAtIndex:1]])
 		{
-			[SMGeneralMethods setBool:NO forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+			[SMPreferences setBool:NO forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		}
 		else
 		{
-			[SMGeneralMethods setBool:YES	forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+			[SMPreferences setBool:YES	forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 		}
 	}
 	NSMutableDictionary * tempDict = [self getOptions];
@@ -301,17 +301,17 @@
 		[[_items objectAtIndex:fp8] setRightJustifiedText:@"NO"];
 		
 		[tempDict setValue:[NSNumber numberWithBool:NO] forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
-		//[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+		//[SMPreferences switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 	}
 	else if([[[_items objectAtIndex:fp8] rightJustifiedText] isEqualToString:@"NO"])
 	{
 		[[_items objectAtIndex:fp8] setRightJustifiedText:@"YES"];
 		[tempDict setValue:[NSNumber numberWithBool:YES] forKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 
-		//[SMGeneralMethods switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
+		//[SMPreferences switchBoolforKey:[[_options objectAtIndex:fp8] objectAtIndex:1]];
 
 	}
-	[SMGeneralMethods setDict:tempDict forKey:@"Updater_Options"];
+	[SMPreferences setDict:tempDict forKey:@"Updater_Options"];
 	[[self list] reload];
 }
 
@@ -341,7 +341,7 @@
 
 -(NSMutableDictionary *)getOptions
 {
-	NSMutableDictionary *theoptions = [[SMGeneralMethods dictForKey:@"Updater_Options"] mutableCopy];
+	NSMutableDictionary *theoptions = [[SMPreferences dictForKey:@"Updater_Options"] mutableCopy];
 	return theoptions;
 }
 - (void)wasExhumedByPoppingController:(id)fp8

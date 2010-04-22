@@ -301,12 +301,12 @@ willResumeWithResponse: (NSURLResponse *) response
 }
 -(void) processdownload
 {
-    BOOL RO = NO;
+//    BOOL RO = NO;
     //[_author setText:@"Installing" withAttributes:[[SMThemeInfo sharedTheme]leftJustifiedTitleTextAttributess]];
 	[self setStatusText:@"Installing"];
-    NSFileManager *man = [NSFileManager defaultManager];
+//    NSFileManager *man = [NSFileManager defaultManager];
 
-    NSNumber *oldOrder=[NSNumber numberWithFloat:-1.f];
+//    NSNumber *oldOrder=[NSNumber numberWithFloat:-1.f];
 //    if ([SMPreferences keepFrapplianceOrder])
 //    {
 //        NSLog([ATV_PLUGIN_PATH stringByAppendingPathComponent:[[_information name] stringByAppendingPathExtension:@"frappliance"]]);

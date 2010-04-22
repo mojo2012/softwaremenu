@@ -111,7 +111,7 @@
 	//CFPreferencesAppSynchronize(myDomain);
 	switch ([[[_options objectAtIndex:row] valueForKey:LAYER_INT] intValue]) {
 		case 0:
-			[SMGeneralMethods setString:_path forKey:PHOTO_DIRECTORY_KEY];
+			[SMPreferences setString:_path forKey:PHOTO_DIRECTORY_KEY];
 			[[self list] reload];
 			break;
         case 6:

@@ -49,9 +49,9 @@
 #define BASE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/"
 #define FRAP_PATH					@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
 #define BAK_PATH					@"/Users/frontrow/Documents/Backups/"
-#define SCRIPTS_FOLDER				@"/Users/frontrow/Documents/scripts/"
- 
-#define IMAGES_FOLDER				@"~/Library/Application Support/SoftwareMenu/Images"
+#define SCRIPTS_FOLDER				[@"~/Documents/scripts/" stringByExpandingTildeInPath]
+#define SUPPORT_FOLDER              [@"~/Library/Application Support/SoftwareMenu/" stringByExpandingTildeInPath]
+#define IMAGES_FOLDER				[@"~/Library/Application Support/SoftwareMenu/Images" stringByExpandingTildeInPath]
 #define NAME_KEY					@"name_key_image"
 #define TYPE_KEY					@"type_key_image"
 #define SCRIPT_KEY					@"script_key_image"
