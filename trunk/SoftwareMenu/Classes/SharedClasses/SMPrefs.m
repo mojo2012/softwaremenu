@@ -173,6 +173,7 @@
 {
     [SMPreferences setArray:favorites forKey:PHOTO_FAVORITES];
 }
+#pragma mark SCRIPTS
 +(BOOL)defaultScriptRunAsRoot
 {
     return [SMPreferences boolForKey:@"ScriptsDefaultRoot"];
@@ -193,6 +194,19 @@
 {
     return [[@"~/Library/Preferences/SoftwareMenu" stringByAppendingPathComponent:SCRIPTS_PLIST] stringByExpandingTildeInPath];
 }
++(BOOL)showScriptsOnMainMenu
+{
+    return ![SMPreferences boolForKey:@"HideScriptsMainMenu"];
+}
++(void)setShowScriptsOnMainMenu:(BOOL)show
+{
+    [SMPreferences setBool:!show forKey:@"HideScriptsMainMenu"];
+}
++(int)mainMenuScriptsPosition
+{
+    [SMPreferences integerForKey:@"ScriptsPosition"];
+}
+
 +(NSString *)trustedPlistPath
 {
     return [[@"~/Library/Preferences/SoftwareMenu" stringByAppendingPathComponent:TRUSTED_PLIST] stringByExpandingTildeInPath];

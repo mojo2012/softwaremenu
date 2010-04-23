@@ -38,6 +38,9 @@
 +(void)setDefaultScriptRunAsRoot:(BOOL)inputBool;
 +(void)setDefaultScriptWait:(BOOL)inputBool;
 +(NSString *)scriptsPlistPath;
++(BOOL)showScriptsOnMainMenu;
++(void)setShowScriptsOnMainMenu:(BOOL)show;
++(int)mainMenuScriptsPosition;
 
 
 +(NSString *)trustedPlistPath;
