@@ -45,6 +45,30 @@
             [NSNumber numberWithBool:FALSE],MAIN_KEY,
             nil];
 }
++(void)runScript:(NSString *)path withDictionary:(NSDictionary *)dict
+{
+    if (path==nil) {
+        return;
+    }
+    if (dict==nil) {
+        [SMNewScriptsMenu runScript:path displayResult:NO];
+    }
+    NSDictionary *defaultD=[SMNewScriptsMenu defaultScriptOptions];
+    BOOL root=[defaultD objectForKey:ROOT_KEY];
+    if ([dict objectForKey:ROOT_KEY]!=nil) {
+        root=[[dict objectForKey:ROOT_KEY] boolValue];
+    }
+    
+    BOOL display=[defaultD objectForKey:WAIT_KEY];
+    if ([dict objectForKey:WAIT_KEY]!=nil) {
+        display=[[dict objectForKey:WAIT_KEY] boolValue];
+    }
+    
+    [SMNewScriptsMenu runScript:path displayResult:display asRoot:root];
+    
+    
+    
+}
 +(void)runScript:(NSString *)path displayResult:(BOOL)display asRoot:(BOOL)root
 {
     if (!root) {

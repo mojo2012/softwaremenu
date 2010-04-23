@@ -17,6 +17,7 @@
 +(NSString *)scriptsPath;
 +(NSDictionary *)scriptsOptions;
 +(NSDictionary *)defaultScriptOptions;
++(void)runScript:(NSString *)path withDictionary:(NSDictionary *)dict;
 +(void)runScript:(NSString *)path displayResult:(BOOL)display asRoot:(BOOL)root;
 +(void)runScript:(NSString *)path displayResult:(BOOL)display;
 @end
