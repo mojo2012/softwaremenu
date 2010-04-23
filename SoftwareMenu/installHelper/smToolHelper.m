@@ -1005,7 +1005,7 @@
         }
         
     }
-
+    return 0;
 }
 #pragma mark Logging
 -(void)logTaskWithPath:(NSString *)path withOptions:(NSArray *)options
