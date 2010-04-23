@@ -10,6 +10,13 @@
 #define BRLocalizedString(key, comment)								[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:nil]
 #define BRLocalizedStringFromTable(key, tbl, comment)				[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:(tbl)]
 #define BRLocalizedStringFromTableInBundle(key, tbl, obj, comment)	[BRLocalizedStringManager appliance:(obj) localizedStringForKey:(key) inFile:(tbl)]
+#ifdef DEBUG
+#    define DLog(...) NSLog(__VA_ARGS__)
+#else
+#    define DLog(...) do {} while (0)
+#endif
+#define ALog(...) NSLog(__VA_ARGS__)
+
 #define kSMDownloaderDone           @"kSMDownloaderDone"
 #define kSMDefaultImage         [[SMThemeInfo sharedTheme]softwareMenuImage]
 
