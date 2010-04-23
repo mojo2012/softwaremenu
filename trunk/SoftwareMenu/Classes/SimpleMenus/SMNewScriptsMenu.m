@@ -24,6 +24,15 @@
 {
     return SCRIPTS_FOLDER;
 }
++(NSDictionary *)scriptsOptions
+{
+    if ([[NSFileManager defaultManager]fileExistsAtPath:[SMNewScriptsMenu scriptsPlistPath]]) {
+        return [NSDictionary dictionaryWithContentsOfFile:[SMNewScriptsMenu scriptsPlistPath]];
+    }
+    
+    return [NSDictionary dictionary];
+    
+}
 +(NSDictionary *)defaultScriptOptions
 {
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -96,13 +105,15 @@
 -(id)previewControlForItem:(long)row
 {
     if (row>[self itemCount]) {
+        NSLog(@"nil return");
         return nil;
     }
     if (row<[_items count]) {
+        NSLog(@"super");
         return [super previewControlForItem:row];
     }
     row-=[_items count];
-    
+    NSLog(@"scripts: %@",_scripts);
     SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
     SMFBaseAsset *asset=[[SMFBaseAsset alloc] init];
     [asset setTitle:[[_scripts objectAtIndex:row] title]];
@@ -110,7 +121,8 @@
     [asset setCoverArt:[[BRThemeInfo sharedTheme] scriptImage]];
     [preview setAsset:asset];
     [asset release];
-    return [preview autorelease];
+    NSLog(@"preview: %@",preview);
+    return preview;
 }
 -(id)init
 {

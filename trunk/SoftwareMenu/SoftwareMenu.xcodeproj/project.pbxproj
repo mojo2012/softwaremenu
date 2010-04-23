@@ -1532,6 +1532,8 @@
 		DDC3FEA21170A23D008E529C /* SapphireBasicDirectoryFunctionsDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC3FEA11170A23D008E529C /* SapphireBasicDirectoryFunctionsDefines.h */; };
 		DDC3FEA81170A280008E529C /* SapphireFileMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC3FEA71170A280008E529C /* SapphireFileMetaData.h */; };
 		DDC3FEB21170A30E008E529C /* SapphireDirectoryMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC3FEB11170A30E008E529C /* SapphireDirectoryMetaData.h */; };
+		DDC6A95911815E1F0048A8C9 /* SMScriptOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC6A95611815E1F0048A8C9 /* SMScriptOptions.h */; };
+		DDC6A95A11815E1F0048A8C9 /* SMScriptOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC6A95711815E1F0048A8C9 /* SMScriptOptions.m */; };
 		DDD1B78F114D059F00C7111C /* SMYahooWeather.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD1B78D114D059F00C7111C /* SMYahooWeather.h */; };
 		DDD1B799114D098900C7111C /* SMYahooWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD1B78E114D059F00C7111C /* SMYahooWeather.m */; };
 		DDD4F85D10BB41E800E1D61B /* trusted.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD4F85C10BB41E800E1D61B /* trusted.png */; };
@@ -1745,7 +1747,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* SoftwareMenuFramework */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = SoftwareMenuFramework;
 		};
 		DDE8648F10A3A4FC002D2FB8 /* PBXContainerItemProxy */ = {
@@ -3324,6 +3326,8 @@
 		DDC3FEA11170A23D008E529C /* SapphireBasicDirectoryFunctionsDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireBasicDirectoryFunctionsDefines.h; sourceTree = "<group>"; };
 		DDC3FEA71170A280008E529C /* SapphireFileMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireFileMetaData.h; sourceTree = "<group>"; };
 		DDC3FEB11170A30E008E529C /* SapphireDirectoryMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireDirectoryMetaData.h; sourceTree = "<group>"; };
+		DDC6A95611815E1F0048A8C9 /* SMScriptOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScriptOptions.h; sourceTree = "<group>"; };
+		DDC6A95711815E1F0048A8C9 /* SMScriptOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScriptOptions.m; sourceTree = "<group>"; };
 		DDD1B78D114D059F00C7111C /* SMYahooWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMYahooWeather.h; sourceTree = "<group>"; };
 		DDD1B78E114D059F00C7111C /* SMYahooWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMYahooWeather.m; sourceTree = "<group>"; };
 		DDD4F85C10BB41E800E1D61B /* trusted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trusted.png; sourceTree = "<group>"; };
@@ -3679,6 +3683,8 @@
 			children = (
 				DD2426BB1152A22000CDCD20 /* SMNewScriptsMenu.h */,
 				DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */,
+				DDC6A95611815E1F0048A8C9 /* SMScriptOptions.h */,
+				DDC6A95711815E1F0048A8C9 /* SMScriptOptions.m */,
 			);
 			path = SimpleMenus;
 			sourceTree = "<group>";
@@ -7009,6 +7015,7 @@
 				DD67A38F117F732B000B3C94 /* ChatterServer.h in Headers */,
 				DD67A3B0117F7406000B3C94 /* SMSettingsToggles.h in Headers */,
 				DD0DBB55117F7FB300C1B052 /* SMImageReturns.h in Headers */,
+				DDC6A95911815E1F0048A8C9 /* SMScriptOptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7500,6 +7507,7 @@
 				DD67A390117F732B000B3C94 /* ChatterServer.m in Sources */,
 				DD67A3B1117F7406000B3C94 /* SMSettingsToggles.m in Sources */,
 				DD0DBB56117F7FB300C1B052 /* SMImageReturns.m in Sources */,
+				DDC6A95A11815E1F0048A8C9 /* SMScriptOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
