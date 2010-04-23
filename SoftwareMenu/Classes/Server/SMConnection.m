@@ -269,7 +269,6 @@ static SMConnection *singleton = nil;
         default:
             break;
     }
-    
 }
 -(void)scriptEvent:(NSDictionary *)dict fromConnection:(SimpleCocoaConnection *)con
 {
@@ -279,7 +278,7 @@ static SMConnection *singleton = nil;
         case 0:         //Get Scripts
             [rdict setObject:[dict objectForKey:kSMSACTION] forKey:kSMSACTION];
             [rdict setObject:[dict objectForKey:kSMSTYPE] forKey:kSMSTYPE];
-            [rdict setObject:[SMScriptsMenu scripts] forKey:kSMSRETURN];
+            [rdict setObject:[SMNewScriptsMenu scripts] forKey:kSMSRETURN];
             [rdict setObject:kSMSSCRIPTS forKey:kSMSTARGET];
             [self sendPlist:rdict toConnection:con];
             break;
@@ -297,7 +296,7 @@ static SMConnection *singleton = nil;
         case 2:         //Run Script
         {
             NSString *scriptsPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Scripts"];
-            [SMScriptsMenu runScript:[scriptsPath stringByAppendingPathComponent:[dict objectForKey:@"Name"]] 
+            [SMNewScriptsMenu runScript:[scriptsPath stringByAppendingPathComponent:[dict objectForKey:@"Name"]] 
                        displayResult:[[dict objectForKey:@"Display"]boolValue]];
             [self sendMessage:[NSString stringWithFormat:@"Running script: %@ as root",[dict objectForKey:@"Name"],nil]
                  toConnection:con];

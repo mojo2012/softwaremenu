@@ -651,7 +651,7 @@ typedef enum _smRemoteTypes{
 #pragma mark SCRIPTS
 - (bycopy NSArray *)scripts
 {
-    return [SMScriptsMenu scripts];
+    return [SMNewScriptsMenu scripts];
 }
 
 - (oneway void)runscript:(in bycopy NSString *)path asRoot:(BOOL)root displayOutput:(BOOL)output
@@ -660,7 +660,7 @@ typedef enum _smRemoteTypes{
         [[SMHelper helperManager] runscript:path withOption1:nil withOption2:nil];
     }
     else {
-        [SMScriptsMenu runScript:path displayResult:output];
+        [SMNewScriptsMenu runScript:path displayResult:output];
     }
 
 }
