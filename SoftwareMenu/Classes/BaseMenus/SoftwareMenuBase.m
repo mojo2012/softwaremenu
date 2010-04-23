@@ -8,7 +8,9 @@
 // Updated by nito 08-20-08 - works in 2.x
 
 
-
+#ifdef DEBUG
+#define FrameworkCopyOnSame     
+#endif
 
 #import "SoftwareMenuBase.h"
 #import "../DistributedObjects/SMDOprotocol.h"
@@ -172,7 +174,7 @@ static BOOL checkedSS = NO;
 }
 +(void)initialize
 {
-    NSLog(@"initializing Software Menu");
+    DLog(@"initializing Software Menu");
     NSString *frameworkPath=[[[NSBundle bundleForClass:[self class]] bundlePath]
                              stringByAppendingPathComponent:@"Contents/Frameworks/SoftwareMenuFramework.framework"];
     
@@ -187,7 +189,7 @@ static BOOL checkedSS = NO;
     BOOL copy=NO;
     if (![man fileExistsAtPath:lframework]) {
         copy=YES;
-        NSLog(@"doesn't exist");
+        ALog(@"Software Menu Framework is not installed");
     }
     else {
         
@@ -195,15 +197,20 @@ static BOOL checkedSS = NO;
         NSString *cur=[[[NSBundle bundleWithPath:lframework]infoDictionary] objectForKey:@"CFBundleVersion"];
         NSString *ins=[vDict objectForKey:@"CFBundleVersion"];
         if ([cur compare:ins]==NSOrderedAscending) {
-            NSLog(@"Framework needs to be updated");
+            ALog(@"Software Menu Framework needs to be updated");
             [man removeFileAtPath:lframework handler:nil];
             copy=YES;            
         }
         else if([cur compare:ins]==NSOrderedSame){
-            NSLog(@"Framework is Up to Date");
+
+#ifdef FrameworkCopyOnSame
+            copy=YES;
+            DLog(@"Copying framework because debugging");
+#endif
+            ALog(@"Software Menu Framework is Up to Date");
         }
         else {
-            NSLog(@"Installed is higher that what Plugin is carrying");
+            DLog(@"Installed is higher that what Plugin is carrying");
         }
 
         
@@ -222,17 +229,17 @@ static BOOL checkedSS = NO;
 
 //    NSNumber *cur=[[[NSBundle bundleWithPath:lframework]infoDictionary] objectForKey:@"CFBundleVersion"];
     if ([[NSBundle bundleWithPath:lframework] isLoaded]) {
-        NSLog(@"bundle is already loaded");
+        DLog(@"bundle is already loaded");
     }
     else {
-        NSLog(@"wasn't loaded yet");
+        DLog(@"wasn't loaded yet");
     }
 
     if([[NSBundle bundleWithPath:lframework] load])
-        NSLog(@"Software Menu Framework loaded");
+        ALog(@"Software Menu Framework loaded");
     else
     {
-        NSLog(@"Error, framework failed to load\nAborting.");
+        ALog(@"Error, framework failed to load\nAborting.");
         //exit(1);
     }
     
@@ -356,73 +363,60 @@ static BOOL checkedSS = NO;
 	/************
 	 *reading settings on what scripts to add to front menu
 	 ************/
-	scripts = [[NSMutableDictionary alloc] initWithDictionary:nil];
-	
-	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
-	{
-		NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]];
-		if([[tempdict allKeys] count]!=0)
-		{
-			if([[tempdict allKeys] containsObject:@"BoolFormat1"])
-				[scripts addEntriesFromDictionary:tempdict];
-
-			/*id onBoot = [[tempdict valueForKey:[[tempdict allKeys] objectAtIndex:0]] valueForKey:@"onBoot"];
-			if(![onBoot isKindOfClass:[NSString class]])
-				[scripts addEntriesFromDictionary:tempdict];*/
-		}
-		
-	}
+    _scripts = [SMNewScriptsMenu scriptsOptions];
 	//NSLog(@"scripts: %@", scripts);
 	
 	
 	
 	
-	/************
-	 *Display 3rd Party Menu Option
-	 ************/
-	/*if ([SMGeneralMethods boolForKey:@"3rdParty"])
-	{
-
-	BRApplianceCategory *category2 = [BRApplianceCategory categoryWithName:@"3rd Party Plugins" 
-															   identifier:@"downloadable"
-														   preferredOrder:1.5];
-		[categories addObject:category2];
-	}*/
-	
-	
+#define MAIN_KEY        @"mainmenu"
 	/************
 	 *Show Scripts Selected
 	 ************/
-	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
-	{
-		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
-		{
-			//NSLog(@"ok trying");
-			NSFileManager *fileManager = [NSFileManager defaultManager];
-			NSString *thepath = @"/Users/frontrow/Documents/scripts/";
-			long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
-			for ( i = 0; i < count; i++ )
-			{
-				NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-				//NSLog(@"%@",idStr);
-				//NSLog(@"%@", [idStr pathExtension]);
-				if([[idStr pathExtension] isEqualToString:@"sh"])
-				{
-					//NSLog(@"onBoot: %@", [[scripts valueForKey:idStr] valueForKey:@"onBoot"]);
-					if([[[scripts valueForKey:idStr] valueForKey:@"onBoot"] boolValue])
-					{
-						//long n=nil;
-						int jtwo=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-						BRApplianceCategory *category3 =[BRApplianceCategory categoryWithName:idStr
-																				   identifier:idStr
-																			   preferredOrder:jtwo];
-						[categories addObject:category3];
-					}
-				}
-			}
-			
-		}
-	}
+    if ([SMPreferences showScriptsOnMainMenu]) {
+        NSArray *scripts=[SMNewScriptsMenu scripts];
+        int i,count = [scripts count];
+        DLog(@"Looping Over Scripts");
+        for(i=0;i<count;i++)
+        {
+            NSString *script = [scripts objectAtIndex:i];
+            NSDictionary *dict=[_scripts objectForKey:script];
+            if (dict!=nil && [[dict objectForKey:MAIN_KEY] boolValue]) {
+                BRApplianceCategory *cat = [BRApplianceCategory categoryWithName:script identifier:script preferredOrder:[SMPreferences mainMenuScriptsPosition]];
+                [categories addObject:cat];
+            }
+        }
+    }
+//	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
+//	{
+//		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
+//		{
+//			//NSLog(@"ok trying");
+//			NSFileManager *fileManager = [NSFileManager defaultManager];
+//			NSString *thepath = @"/Users/frontrow/Documents/scripts/";
+//			long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
+//			for ( i = 0; i < count; i++ )
+//			{
+//				NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
+//				//NSLog(@"%@",idStr);
+//				//NSLog(@"%@", [idStr pathExtension]);
+//				if([[idStr pathExtension] isEqualToString:@"sh"])
+//				{
+//					//NSLog(@"onBoot: %@", [[scripts valueForKey:idStr] valueForKey:@"onBoot"]);
+//					if([[[scripts valueForKey:idStr] valueForKey:@"onBoot"] boolValue])
+//					{
+//						//long n=nil;
+//						int jtwo=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
+//						BRApplianceCategory *category3 =[BRApplianceCategory categoryWithName:idStr
+//																				   identifier:idStr
+//																			   preferredOrder:jtwo];
+//						[categories addObject:category3];
+//					}
+//				}
+//			}
+//			
+//		}
+//	}
 	
 	/*if (![[show_hide valueForKey:@"builtin"] isEqualToString:@"Hidden"])
 	{
@@ -455,7 +449,7 @@ static BOOL checkedSS = NO;
 	}*/
 	/*BRApplianceCategory *category6 =[BRApplianceCategory categoryWithName:@"Update2"identifier:@"update2" preferredOrder:4];
 	[categories addObject:category6];*/
-	[scripts retain];
+	[_scripts retain];
     BRApplianceCategory *category7 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"MainMenuControl",@"MainMenuControl")
 															   identifier:@"mainmenucontrol"
 														   preferredOrder:12];
@@ -518,7 +512,7 @@ static BOOL checkedSS = NO;
 
         }
     }
-    NSLog(@"Starting SoftwareMenu DO Server on port %i",startPort);
+    ALog(@"Starting SoftwareMenu Distributed Objects Server on port %i",startPort);
     [[NSSocketPortNameServer sharedInstance] removePortForName:@"SoftwareMenu"];
     [[NSSocketPortNameServer sharedInstance] registerPort:receivePort name:@"SoftwareMenu"];
 
@@ -582,7 +576,7 @@ shouldMakeNewConnection:(NSConnection *)conn
 //        NSLog(@"port: %@",[[allC objectAtIndex:i] receivePort]);
 //    }
     //NSLog(@"connections: %@",[NSConnection allConnections]);
-    NSLog(@"creating new connection: %d total connections", 
+    DLog(@"creating new connection: %d total connections", 
           [[NSConnection allConnections] count]);
     return YES;
 }
@@ -593,7 +587,7 @@ shouldMakeNewConnection:(NSConnection *)conn
 //        NSLog(@"2 is Valid");
 //    }
     NSConnection *connection = [note object];
-    NSLog(@"connection did die: %@", connection);
+    DLog(@"connection did die: %@", connection);
 }
 - (id) init
 {
@@ -622,7 +616,7 @@ shouldMakeNewConnection:(NSConnection *)conn
     if ([SMPreferences customMainMenu]) {
         id rootController = [[[BRApplicationStackManager singleton]stack] rootController];
         if ([rootController isKindOfClass:[BRMainMenuController class]]) {
-            NSLog(@"orly?,%i",t);
+            DLog(@"orly?,%i",t);
         }
         [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
 
@@ -674,59 +668,10 @@ shouldMakeNewConnection:(NSConnection *)conn
     }
 	else if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
-
-			NSDictionary *tempdict = [NSDictionary dictionaryWithContentsOfFile:[[SMPreferences scriptsPlistPath] stringByExpandingTildeInPath]];
-
-		if([[[tempdict valueForKey:identifier] valueForKey:@"runoption"] isEqualToString:@"FaW"])
-		{
-			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
-			NSTask *task = [[NSTask alloc] init];
-			NSArray *args = [NSArray arrayWithObjects:launchPath,nil];
-			[task setArguments:args];
-			[task setLaunchPath:@"/bin/bash"];
-			NSPipe *outPipe = [[NSPipe alloc] init];
-			
-			[task setStandardOutput:outPipe];
-			[task setStandardError:outPipe];
-			NSFileHandle *file;
-			file = [outPipe fileHandleForReading];
-			
-			[task launch];
-			NSData *data;
-			data = [ file readDataToEndOfFile];
-			NSString *string;
-			string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-			NSString *the_text = [[[[@"Script Path:   " stringByAppendingString:launchPath] stringByAppendingString:@"\n\n\n"] stringByAppendingString:@"Result:\n"] stringByAppendingString:string];
-			BRScrollingTextControl *textControls = [[BRScrollingTextControl alloc] init];
-			[textControls setTitle:identifier];
-			[textControls setText:the_text];
-			newController =  [BRController controllerWithContentControl:textControls];
-			return newController;
-			
-		}
-		else
-		{
-			NSString *launchPath = [@"/Users/frontrow/Documents/scripts/" stringByAppendingString:identifier];
-			//NSLog(@"launchPath: %@",launchPath);
-			[NSTask launchedTaskWithLaunchPath:@"/bin/bash/" arguments:[NSArray arrayWithObject:launchPath]];
-			return nil;
-		}
+        [SMNewScriptsMenu runScript:[[SMNewScriptsMenu scriptsPath] stringByAppendingPathComponent:identifier]
+                     withDictionary:[_scripts objectForKey:identifier]];
 
 	}
-//    else if([[identifier pathExtension]isEqualToString:@"frap"])
-//    {
-//        NSBundle *frap = [NSBundle bundleWithPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:@"nitoTV.frappliance"]];
-//        if(![frap isLoaded])
-//            [frap load];
-//        id a = [frap principalClass];
-//        id b = [[a alloc ]init] ;
-//        id c = [b applianceCategories];
-//        id d = [b controllerForIdentifier:[[c objectAtIndex:0] identifier] args:nil];
-//        id e = [[OFlowMenu alloc] initWithBundle:frap];
-//        //[e initWithBundle:b];
-//        NSLog(@"%@",e);
-//        return e;
-//    }
 	else
 	{
 		int i = [[SMGeneralMethods menuItemOptions] indexOfObject:identifier];

@@ -22,7 +22,7 @@
 	NSString *theversion;
 	NSString *theURL;
 	NSString *thename;
-	NSMutableDictionary *scripts;
+	NSDictionary *_scripts;
     NSTimer *checkTimer;
     SimpleCocoaServer *server;
     int t;
