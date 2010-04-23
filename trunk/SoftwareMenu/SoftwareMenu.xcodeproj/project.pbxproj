@@ -1731,7 +1731,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
 			remoteInfo = SoftwareMenu;
 		};
 		DD306D30117F7A5A00B95222 /* PBXContainerItemProxy */ = {
@@ -7742,6 +7742,7 @@
 				INFOPLIST_PREFIX_HEADER = "$(TARGET_BUILD_DIR)/include/SVNRevision.h";
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = /System/Library/CoreServices/Finder.app/Contents/PlugIns;
+				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = SoftwareMenu;
 				SYMROOT = ../build;
 				WRAPPER_EXTENSION = frappliance;
