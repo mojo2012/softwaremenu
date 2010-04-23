@@ -28,7 +28,8 @@
 		SMFMediaPreview *preview =[[SMFMediaPreview alloc] init];
 		[preview setShowsMetadataImmediately:YES];
 		[preview setAsset:meta];
-		return [preview autorelease];
+        [meta release];
+		return preview;
 	}
     return ( nil );
 }
