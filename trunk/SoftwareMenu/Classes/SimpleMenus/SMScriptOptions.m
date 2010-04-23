@@ -12,6 +12,9 @@
 #define CUST_KEY        @"custom"
 #define MAIN_KEY        @"mainmenu"
 
+@interface SMScriptOptions (Private)
+-(void)save;
+@end
 
 @implementation SMScriptOptions
 -(NSString *)scriptName
@@ -78,5 +81,30 @@
             break;
     }
     return item;
+}
+-(void)itemSelected:(long)arg1
+{
+    NSArray *ar=[NSArray arrayWithObjects:CUST_KEY,ROOT_KEY,WAIT_KEY,MAIN_KEY,nil];
+    [_scriptOptions setObject:[NSNumber numberWithBool:![[_scriptOptions objectForKey:[ar objectAtIndex:arg1]] boolValue]] forKey:[ar objectAtIndex:arg1]];
+    [[self list]reload];
+}
+-(void)wasPopped
+{
+    NSLog(@"control was popped");
+    NSLog(@"options: %@",_scriptOptions);
+    [self save];
+    [super wasPopped];
+}
+
+@end
+@implementation SMScriptOptions (Private)
+-(void)save
+{
+    NSMutableDictionary *opts = [[SMNewScriptsMenu scriptsOptions] mutableCopy];
+    
+    if (_scriptOptions!=nil) {
+        [opts setObject:_scriptOptions forKey:_scriptName];
+        [opts writeToFile:[SMNewScriptsMenu scriptsPlistPath] atomically:YES];
+    }
 }
 @end
