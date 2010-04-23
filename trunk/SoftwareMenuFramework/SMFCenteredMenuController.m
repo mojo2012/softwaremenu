@@ -30,8 +30,9 @@
     _items = [[NSMutableArray alloc]init];
     _options = [[NSMutableArray alloc] init];
     [[self list] setDatasource:self];
-     [self setUseCenteredLayout:YES];
-     return self;
+    [self setUseCenteredLayout:YES];
+    [self setMenuWidthFactor:2.0];
+    return self;
 }
 - (void)dealloc
 {
