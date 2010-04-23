@@ -79,6 +79,10 @@
 #import "Classes/BaseMenus/SMPhotosMenu.h"
 
 /*
+ *  Scripts
+ */
+#import "Classes/SimpleMenus/SMScriptOptions.h"
+/*
  *  Importing Base Appliance
  */
 #import "Classes/BaseMenus/SoftwareMenuBase.h"
