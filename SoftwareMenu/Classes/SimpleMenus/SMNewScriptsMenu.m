@@ -10,6 +10,9 @@
 #define CUST_KEY        @"custom"
 #define MAIN_KEY        @"mainmenu"
 
+
+
+
 #import "SMNewScriptsMenu.h"
 @interface SMNewScriptsMenu (Private)
 -(void)save;
@@ -159,24 +162,14 @@
     
     item = [BRTextMenuItemLayer menuItem];
     [item setTitle:BRLocalizedString(@"Run As Root",@"Run As Root")];
-    if ([SMPreferences defaultScriptRunAsRoot]) {
-        [item setRightJustifiedText:@"YES"];
-    }
-    else {
-        [item setRightJustifiedText:@"NO"];
-    }
+    
     [_items addObject:item];
     [_options addObject:[NSNumber numberWithInt:2]];
     
     item = [BRTextMenuItemLayer menuItem];
     [item setTitle:BRLocalizedString(@"Run And Wait ",@"Run And Wait")];
     [_items addObject:item];
-    if ([SMPreferences defaultScriptWait]) {
-        [item setRightJustifiedText:@"YES"];
-    }
-    else {
-        [item setRightJustifiedText:@"NO"];
-    }
+
     [_options addObject:[NSNumber numberWithInt:3]];
     [[self list] addDividerAtIndex:[_items count] withLabel:BRLocalizedString(@"Scripts",@"Scripts")];
 
@@ -222,6 +215,7 @@
         }
     }
     [self save];
+    [[self list]reload];
 }
 -(NSString *)titleForRow:(long)row
 {
@@ -240,7 +234,25 @@
 -(id)itemForRow:(long)row
 {
     if (row<[_items count]) {
-        return [_items objectAtIndex:row];
+        BRTextMenuItemLayer *item = [_items objectAtIndex:row];
+        if (row==2) {
+            if ([SMPreferences defaultScriptRunAsRoot]) {
+                [item setRightJustifiedText:@"YES"];
+            }
+            else {
+                [item setRightJustifiedText:@"NO"];
+            }
+        }
+        else if(row==3)
+        {
+            if ([SMPreferences defaultScriptWait]) {
+                [item setRightJustifiedText:@"YES"];
+            }
+            else {
+                [item setRightJustifiedText:@"NO"];
+            }
+        }
+        return item;
     }
     else if(row<([_items count]+[_scripts count]))
     {
@@ -279,6 +291,7 @@
     else {
         row-=[_items count];
         NSString *filename=[[_scripts objectAtIndex:row] title];
+        NSLog(@"row %i, filename %@",row, filename);
         NSString *path = [SCRIPTS_FOLDER stringByAppendingPathComponent:filename];
         NSDictionary *infoDict=[_scriptOptions objectForKey:filename];
         if ([[filename pathExtension] isEqualToString:@"sh"]) {
@@ -293,6 +306,7 @@
                 
         }
     }
+    [[self list] reload];
 
 }
 - (BOOL)brEventAction:(BREvent *)event
@@ -317,25 +331,17 @@
 	switch (remoteAction)
 	{
 		case kBREventRemoteActionLeft:  // tap left
+            case kBREventRemoteActionRight:  // tap right
 			NSLog(@"tap left");
-            if (row>[_items count]) 
+            if (row>=[_items count]) 
             {
-                row-=row;
+                row-=[_items count];
                 SMScriptOptions * scopt=[[SMScriptOptions alloc] initWithScriptName:[[_scripts objectAtIndex:row] title]];
                 [[self stack] pushController:scopt];
             }
             
 			
 			break;
-		case kBREventRemoteActionRight:  // tap right
-			NSLog(@"type right");
-            if (row>[_items count]) 
-            {
-                row-=row;
-                SMScriptOptions * scopt=[[SMScriptOptions alloc] initWithScriptName:[[_scripts objectAtIndex:row] title]];
-                [[self stack] pushController:scopt];
-            }
-            break;
         default:
             break;
 	}
@@ -353,6 +359,13 @@
         _scriptOptions=nil;
     }
     [super dealloc];
+}
+-(void)wasExhumed
+{
+    NSLog(@"New Scripts Was Exhumed");
+    [self everyLoad];
+    [self _updatePreview];
+    //[[self list] reload];
 }
 @end
 @implementation SMNewScriptsMenu (Private)
