@@ -105,30 +105,46 @@
 -(id)previewControlForItem:(long)row
 {
     if (row>[self itemCount]) {
-        NSLog(@"nil return");
         return nil;
     }
     if (row<[_items count]) {
-        NSLog(@"super");
         return [super previewControlForItem:row];
     }
-    row-=[_items count];
-    NSLog(@"scripts: %@",_scripts);
-    SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
-    SMFBaseAsset *asset=[[SMFBaseAsset alloc] init];
-    [asset setTitle:[[_scripts objectAtIndex:row] title]];
-    //[asset setSummary:[settingDescriptions objectAtIndex:arg1]];
-    [asset setCoverArt:[[BRThemeInfo sharedTheme] scriptImage]];
-    [preview setAsset:asset];
-    [asset release];
-    NSLog(@"preview: %@",preview);
-    return preview;
+    else {
+        row-=[_items count];
+        SMFBaseAsset *asset=[[SMFBaseAsset alloc] init];
+        [asset setTitle:[[_scripts objectAtIndex:row] title]];
+        //[asset setSummary:[settingDescriptions objectAtIndex:arg1]];
+        NSDictionary *opts = [_scriptOptions objectForKey:[[_scripts objectAtIndex:row] title]];
+        [asset setCoverArt:[[SMThemeInfo sharedTheme] scriptImage]];
+        [asset setCustomKeys:[NSArray arrayWithObjects:
+                              BRLocalizedString(@"Custom Settings",@"Custom Settings"),
+                              BRLocalizedString(@"Run as Root",@"Run as Root"),
+                              BRLocalizedString(@"Wait for Result",@"Wait for Result"),
+                              BRLocalizedString(@"Show on Main Menu",@"Show on Main Menu"),
+                              nil] 
+                  forObjects:[NSArray arrayWithObjects:
+                              ([[opts objectForKey:CUST_KEY] boolValue]?@"YES":@"NO"),
+                              ([[opts objectForKey:ROOT_KEY] boolValue]?@"YES":@"NO"),
+                              ([[opts objectForKey:WAIT_KEY] boolValue]?@"YES":@"NO"),
+                              ([[opts objectForKey:MAIN_KEY] boolValue]?@"YES":@"NO"),
+                              nil]];
+        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
+        [preview setAsset:asset];
+        [preview setShowsMetadataImmediately:YES];
+        [asset release];
+        return preview;
+    }
+
+    
+    
+    return nil;
 }
 -(id)init
 {
     self=[super init];
     [[SMGeneralMethods sharedInstance]checkFolders];
-
+    [self setListTitle:BRLocalizedString(@"Scripts",@"Scripts")];
     BRTextMenuItemLayer *item = [BRTextMenuItemLayer folderMenuItem];
     [item setTitle:BRLocalizedString(@"About",@"About")];
     [_items addObject:item];
@@ -207,7 +223,16 @@
     }
     [self save];
 }
-
+-(NSString *)titleForRow:(long)row
+{
+    if (row>[self itemCount]) {
+        return nil;
+    }
+    if (row<[_items count])
+        return [[_items objectAtIndex:row] title];
+    row-=[_items count];
+    return [[_scripts objectAtIndex:row] title];
+}
 -(long)itemCount
 {
     return (long)([_scripts count]+[_items count]);
@@ -269,6 +294,65 @@
         }
     }
 
+}
+- (BOOL)brEventAction:(BREvent *)event
+{
+	int remoteAction =[event remoteAction];
+	
+	if ([(BRControllerStack *)[self stack] peekController] != self)
+	{
+		NSLog(@"not SMMenu");
+		return [super brEventAction:event];
+	}
+	
+	if([event value] == 0)
+		return [super brEventAction:event];
+	
+	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
+		remoteAction ++;
+	long row = [self getSelection];
+	
+	
+
+	switch (remoteAction)
+	{
+		case kBREventRemoteActionLeft:  // tap left
+			NSLog(@"tap left");
+            if (row>[_items count]) 
+            {
+                row-=row;
+                SMScriptOptions * scopt=[[SMScriptOptions alloc] initWithScriptName:[[_scripts objectAtIndex:row] title]];
+                [[self stack] pushController:scopt];
+            }
+            
+			
+			break;
+		case kBREventRemoteActionRight:  // tap right
+			NSLog(@"type right");
+            if (row>[_items count]) 
+            {
+                row-=row;
+                SMScriptOptions * scopt=[[SMScriptOptions alloc] initWithScriptName:[[_scripts objectAtIndex:row] title]];
+                [[self stack] pushController:scopt];
+            }
+            break;
+        default:
+            break;
+	}
+	return [super brEventAction:event];
+}
+
+-(void)dealloc
+{
+    if (_scripts!=nil) {
+        [_scripts release];
+        _scripts=nil;
+    }
+    if (_scriptOptions=nil) {
+        [_scriptOptions release];
+        _scriptOptions=nil;
+    }
+    [super dealloc];
 }
 @end
 @implementation SMNewScriptsMenu (Private)
