@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0b2.1</string>
+	<string>1.0b2.2 (SVN_REVISION)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>63</string>
+	<string>1.0b2.2 (SVN_REVISION)</string>
 	<key>FRApplianceDataSourceType</key>
 	<string>All</string>
 	<key>FRAppliancePreferedOrderValue</key>
