@@ -181,11 +181,11 @@
 {
     return [SMPreferences boolForKey:@"ScriptDefaultWait"];
 }
-+(BOOL)setDefaultScriptRunAsRoot:(BOOL)inputBool
++(void)setDefaultScriptRunAsRoot:(BOOL)inputBool
 {
     [SMPreferences setBool:inputBool forKey:@"ScriptsDefaultRoot"];
 }
-+(BOOL)setDefaultScriptWait:(BOOL)inputBool
++(void)setDefaultScriptWait:(BOOL)inputBool
 {
     [SMPreferences setBool:inputBool forKey:@"ScriptDefaultWait"];
 }

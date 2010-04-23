@@ -7,29 +7,41 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		E2F64FF80F9F562B005CF172 /* Complete */ = {
+		DD029FB511820B0000F29494 /* GetSVNRev */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = E2F650250F9F5663005CF172 /* Build configuration list for PBXAggregateTarget "Complete" */;
+			buildConfigurationList = DD029FB811820B1F00F29494 /* Build configuration list for PBXAggregateTarget "GetSVNRev" */;
 			buildPhases = (
+				DD029FB411820B0000F29494 /* ShellScript */,
 			);
 			dependencies = (
-				E2F650020F9F5642005CF172 /* PBXTargetDependency */,
-				E2F650000F9F563F005CF172 /* PBXTargetDependency */,
 			);
-			name = Complete;
-			productName = Complete;
+			name = GetSVNRev;
+			productName = GetSVNRev;
+		};
+		DD1B22BE118216750087EA6B /* Make Installer */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DD1B22C21182167F0087EA6B /* Build configuration list for PBXAggregateTarget "Make Installer" */;
+			buildPhases = (
+				DD1B22BD118216750087EA6B /* ShellScript */,
+			);
+			dependencies = (
+				DD1B22C4118216AA0087EA6B /* PBXTargetDependency */,
+			);
+			name = "Make Installer";
+			productName = "Make Installer";
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		DD0DBB41117F7EFD00C1B052 /* SoftwareMenuFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB40117F7EFD00C1B052 /* SoftwareMenuFramework.framework */; };
+		DD029F5E1181FF0E00F29494 /* SoftwareMenuFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = DD306D31117F7A5A00B95222 /* SoftwareMenuFramework.framework */; };
 		DD0DBB55117F7FB300C1B052 /* SMImageReturns.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0DBB53117F7FB300C1B052 /* SMImageReturns.h */; };
 		DD0DBB56117F7FB300C1B052 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB54117F7FB300C1B052 /* SMImageReturns.m */; };
 		DD0DBB57117F7FB300C1B052 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB54117F7FB300C1B052 /* SMImageReturns.m */; };
 		DD0DBB62117F800A00C1B052 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB61117F800A00C1B052 /* AppleTV.framework */; };
 		DD0DBB64117F800A00C1B052 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB63117F800A00C1B052 /* iPhotoAccess.framework */; };
 		DD13FB3610AA65FE00972367 /* AGProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A18D0F8AD1CA007B8BAB /* AGProcess.m */; };
+		DD1B22D4118218400087EA6B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = DD1B22D3118218400087EA6B /* LICENSE.txt */; };
 		DD2426BD1152A22000CDCD20 /* SMNewScriptsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2426BB1152A22000CDCD20 /* SMNewScriptsMenu.h */; };
 		DD2426BE1152A22000CDCD20 /* SMNewScriptsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */; };
 		DD2426C311541FBA00CDCD20 /* SMHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2426C111541FBA00CDCD20 /* SMHelper.h */; };
@@ -1708,6 +1720,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DD029FB911820B4700F29494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD029FB511820B0000F29494;
+			remoteInfo = GetSVNRev;
+		};
+		DD1B22C3118216AA0087EA6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
+			remoteInfo = SoftwareMenu;
+		};
 		DD306D30117F7A5A00B95222 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
@@ -1764,20 +1790,6 @@
 			remoteGlobalIDString = DDFD7D8910AE3E2B00990214;
 			remoteInfo = SMM3;
 		};
-		E2F64FFF0F9F563F005CF172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
-			remoteInfo = SoftwareMenu;
-		};
-		E2F650010F9F5642005CF172 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2A35FE70EAE02B900FB6FD7;
-			remoteInfo = installHelper;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1800,6 +1812,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DD029F5E1181FF0E00F29494 /* SoftwareMenuFramework.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1815,6 +1828,7 @@
 		DD0DBB54117F7FB300C1B052 /* SMImageReturns.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMImageReturns.m; path = Classes/Photos/SMImageReturns.m; sourceTree = SOURCE_ROOT; };
 		DD0DBB61117F800A00C1B052 /* AppleTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleTV.framework; path = "/Users/tomcool/Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/AppleTV.framework"; sourceTree = "<absolute>"; };
 		DD0DBB63117F800A00C1B052 /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "/Users/tomcool/Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework"; sourceTree = "<absolute>"; };
+		DD1B22D3118218400087EA6B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		DD2426BB1152A22000CDCD20 /* SMNewScriptsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNewScriptsMenu.h; sourceTree = "<group>"; };
 		DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNewScriptsMenu.m; sourceTree = "<group>"; };
 		DD2426C111541FBA00CDCD20 /* SMHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHelper.h; sourceTree = "<group>"; };
@@ -3523,7 +3537,6 @@
 			files = (
 				E20791A70F85C714005327E7 /* Foundation.framework in Frameworks */,
 				DD689F3F10A75D6800B2F52A /* BackRow.framework in Frameworks */,
-				DD0DBB41117F7EFD00C1B052 /* SoftwareMenuFramework.framework in Frameworks */,
 				DD0DBB62117F800A00C1B052 /* AppleTV.framework in Frameworks */,
 				DD0DBB64117F800A00C1B052 /* iPhotoAccess.framework in Frameworks */,
 			);
@@ -3591,7 +3604,6 @@
 				DD7F4F5310A0E33000C5E31C /* General */,
 				E2B7A1220F8AB2C6007B8BAB /* External */,
 				DD7F4E8410A0BB2F00C5E31C /* script */,
-				19C28FB8FE9D52D311CA2CBB /* Products */,
 				DDEF2D4910A5D06A00ECD73A /* loadUpdates-bin */,
 				E2E41DF70ECD04D700D1697E /* installHelper */,
 				DD8E465B1142EC0800B6C2F8 /* Classes */,
@@ -3607,6 +3619,7 @@
 				DDE0A85B114AC65D00CF9926 /* SMParade.mext-Info.plist */,
 				DDE0AD4B114ACDE600CF9926 /* SMWeather-Info.plist */,
 				DDE0AD7F114AD12F00CF9926 /* SMSlideshow-Info.plist */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
 			name = QuDownloader;
 			sourceTree = "<group>";
@@ -3626,6 +3639,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DD1B22D3118218400087EA6B /* LICENSE.txt */,
 				DD679613117F5EDB000B3C94 /* backup.sh */,
 				DD679614117F5EDB000B3C94 /* FixPerm.sh */,
 				DD679615117F5EDB000B3C94 /* hello.sh */,
@@ -7037,6 +7051,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DD029FBA11820B4700F29494 /* PBXTargetDependency */,
 				DDE8649010A3A4FC002D2FB8 /* PBXTargetDependency */,
 				DDFD7FC910AEF56D00990214 /* PBXTargetDependency */,
 				DDE0AC2E114ACA8000CF9926 /* PBXTargetDependency */,
@@ -7193,12 +7208,13 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* SoftwareMenu */,
 				E2A35FE70EAE02B900FB6FD7 /* installHelper */,
-				E2F64FF80F9F562B005CF172 /* Complete */,
 				DDEF2D2A10A5D02300ECD73A /* loadUpdates */,
 				DDFD7D8910AE3E2B00990214 /* SMM3 */,
 				DDE0A859114AC65D00CF9926 /* SMParade */,
 				DDE0AD49114ACDE600CF9926 /* SMWeather */,
 				DDE0AD7D114AD12F00CF9926 /* SMSlideshow */,
+				DD029FB511820B0000F29494 /* GetSVNRev */,
+				DD1B22BE118216750087EA6B /* Make Installer */,
 			);
 		};
 /* End PBXProject section */
@@ -7299,6 +7315,7 @@
 				DD67962E117F5EDB000B3C94 /* restore.sh in Resources */,
 				DD67962F117F5EDB000B3C94 /* Show.sh in Resources */,
 				DD679630117F5EDB000B3C94 /* untv.sh in Resources */,
+				DD1B22D4118218400087EA6B /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7433,6 +7450,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DD029FB411820B0000F29494 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.svn/dir-wcprops",
+			);
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/include/SVNRevision.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source script/getSVNRevision.sh";
+		};
+		DD1B22BD118216750087EA6B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source script/createInstaller";
+		};
 		DD466A1010D13F860078429D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -7576,6 +7621,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DD029FBA11820B4700F29494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD029FB511820B0000F29494 /* GetSVNRev */;
+			targetProxy = DD029FB911820B4700F29494 /* PBXContainerItemProxy */;
+		};
+		DD1B22C4118216AA0087EA6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
+			targetProxy = DD1B22C3118216AA0087EA6B /* PBXContainerItemProxy */;
+		};
 		DDE0AC2E114ACA8000CF9926 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DDE0A859114AC65D00CF9926 /* SMParade */;
@@ -7605,16 +7660,6 @@
 			isa = PBXTargetDependency;
 			target = DDFD7D8910AE3E2B00990214 /* SMM3 */;
 			targetProxy = DDFD7FC810AEF56D00990214 /* PBXContainerItemProxy */;
-		};
-		E2F650000F9F563F005CF172 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
-			targetProxy = E2F64FFF0F9F563F005CF172 /* PBXContainerItemProxy */;
-		};
-		E2F650020F9F5642005CF172 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E2A35FE70EAE02B900FB6FD7 /* installHelper */;
-			targetProxy = E2F650010F9F5642005CF172 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -7682,8 +7727,6 @@
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
-					"\"$(SRCROOT)/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
-					"\"$(SRCROOT)/../../DVLP/SoftwareMenuFramework/build/Debug\"",
 					"\"$(SRCROOT)/../SoftwareMenuFramework/build/Debug\"",
 					"\"$(SRCROOT)/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
 				);
@@ -7695,8 +7738,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SM.pch;
 				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-C";
+				INFOPLIST_PREFIX_HEADER = "$(TARGET_BUILD_DIR)/include/SVNRevision.h";
+				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = /System/Library/CoreServices/Finder.app/Contents/PlugIns;
 				PRODUCT_NAME = SoftwareMenu;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = frappliance;
 				ZERO_LINK = NO;
 			};
@@ -7710,8 +7757,6 @@
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
-					"\"$(SRCROOT)/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
-					"\"$(SRCROOT)/../../DVLP/SoftwareMenuFramework/build/Debug\"",
 					"\"$(SRCROOT)/../SoftwareMenuFramework/build/Debug\"",
 					"\"$(SRCROOT)/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
 				);
@@ -7721,6 +7766,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SM.pch;
 				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-C";
+				INFOPLIST_PREFIX_HEADER = "$(TARGET_BUILD_DIR)/include/SVNRevision.h";
+				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = /System/Library/CoreServices/Finder.app/Contents/PlugIns;
 				LIBRARY_SEARCH_PATHS = "$(LIBRARY_SEARCH_PATHS_QUOTED_1)";
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
@@ -7734,6 +7782,7 @@
 					QTKit,
 				);
 				PRODUCT_NAME = SoftwareMenu;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = frappliance;
 			};
 			name = Release;
@@ -7774,6 +7823,52 @@
 			};
 			name = Release;
 		};
+		DD029FB611820B0100F29494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = GetSVNRev;
+				SYMROOT = ../build;
+			};
+			name = Debug;
+		};
+		DD029FB711820B0100F29494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = GetSVNRev;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		DD1B22BF118216750087EA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Make Installer";
+				SYMROOT = ../build;
+			};
+			name = Debug;
+		};
+		DD1B22C0118216750087EA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Make Installer";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		DDE0A85C114AC65E00CF9926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -7799,6 +7894,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMParade;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = mext;
 			};
 			name = Debug;
@@ -7827,6 +7923,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMParade;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = mext;
 				ZERO_LINK = NO;
 			};
@@ -7856,6 +7953,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMWeather;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = mext;
 			};
 			name = Debug;
@@ -7883,6 +7981,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMWeather;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = mext;
 				ZERO_LINK = NO;
 			};
@@ -7911,6 +8010,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMSlideshow;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = mext;
 			};
 			name = Debug;
@@ -7937,6 +8037,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMSlideshow;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = mext;
 				ZERO_LINK = NO;
 			};
@@ -7962,6 +8063,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = loadUpdates;
+				SYMROOT = ../build;
 			};
 			name = Debug;
 		};
@@ -7984,6 +8086,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = loadUpdates;
+				SYMROOT = ../build;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8012,6 +8115,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMM;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = frss;
 			};
 			name = Debug;
@@ -8039,6 +8143,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SMM;
+				SYMROOT = ../build;
 				WRAPPER_EXTENSION = frss;
 				ZERO_LINK = NO;
 			};
@@ -8069,6 +8174,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = installHelper;
+				SYMROOT = ../build;
 			};
 			name = Debug;
 		};
@@ -8100,27 +8206,6 @@
 			};
 			name = Release;
 		};
-		E2F64FF90F9F562B005CF172 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = Complete;
-			};
-			name = Debug;
-		};
-		E2F64FFA0F9F562B005CF172 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = Complete;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -8138,6 +8223,24 @@
 			buildConfigurations = (
 				1DEB913F08733D840010E9CD /* Debug */,
 				1DEB914008733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD029FB811820B1F00F29494 /* Build configuration list for PBXAggregateTarget "GetSVNRev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD029FB611820B0100F29494 /* Debug */,
+				DD029FB711820B0100F29494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD1B22C21182167F0087EA6B /* Build configuration list for PBXAggregateTarget "Make Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD1B22BF118216750087EA6B /* Debug */,
+				DD1B22C0118216750087EA6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -8192,15 +8295,6 @@
 			buildConfigurations = (
 				E2A35FEA0EAE02B900FB6FD7 /* Debug */,
 				E2A35FEB0EAE02B900FB6FD7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2F650250F9F5663005CF172 /* Build configuration list for PBXAggregateTarget "Complete" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2F64FF90F9F562B005CF172 /* Debug */,
-				E2F64FFA0F9F562B005CF172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

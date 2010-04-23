@@ -11,7 +11,7 @@
 
 @interface SMBuiltInMenu : SMFMediaMenuController
 {
-}
+} 
 -(BOOL)checkExists:(NSString *)thename;
 +(NSArray *)frapArrays;
 @end

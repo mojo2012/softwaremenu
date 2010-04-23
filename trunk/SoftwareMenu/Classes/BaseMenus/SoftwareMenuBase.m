@@ -221,6 +221,13 @@ static BOOL checkedSS = NO;
     
 
 //    NSNumber *cur=[[[NSBundle bundleWithPath:lframework]infoDictionary] objectForKey:@"CFBundleVersion"];
+    if ([[NSBundle bundleWithPath:lframework] isLoaded]) {
+        NSLog(@"bundle is already loaded");
+    }
+    else {
+        NSLog(@"wasn't loaded yet");
+    }
+
     if([[NSBundle bundleWithPath:lframework] load])
         NSLog(@"Software Menu Framework loaded");
     else

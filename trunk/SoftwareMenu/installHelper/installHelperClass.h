@@ -48,6 +48,7 @@
 -(int)installFrap:(NSString *)downloadedLocation toLocation:(NSString *)installLocation;
 - (int)install_perian:(NSString *)perian_path toVolume:(NSString*)targetVolume;
 - (int)installScreenSaver;
+- (NSString *) findFrap:(NSString *)staging;
 
 - (int)restart:(NSString *)value;
 - (int)runscript:(NSString *)scriptPath;
@@ -75,6 +76,7 @@
 - (int)extractGZip:(NSString *)file toLocation:(NSString *)path withPath:(BOOL)with;
 - (int)extractTar:(NSString *)file toLocation:(NSString *)path;
 - (int)unZip:(NSString *)zipPath toLocation:(NSString *)location;
+- (int)bunZip:(NSString *)inputTar toLocation:(NSString *)toLocation;
 
 #pragma mark Patching DMG
 - (void)makeDMGRW:(NSString *)dmgPath;

@@ -247,7 +247,7 @@
 			[[self stack] pushController:newController];
 			break;
 		case kSMSetBlocker:
-			[[SMPreferences sharedInstance] helperFixPerm];
+			[[SMGeneralMethods sharedInstance] helperFixPerm];
             [[SMHelper helperManager] toggleUpdate];
 			//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-toggleUpdate",@"0",@"0",nil]];
 			[[self list] reload];

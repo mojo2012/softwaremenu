@@ -35,8 +35,8 @@
 #pragma mark SCRIPTS
 +(BOOL)defaultScriptRunAsRoot;
 +(BOOL)defaultScriptWait;
-+(BOOL)setDefaultScriptRunAsRoot:(BOOL)inputBool;
-+(BOOL)setDefaultScriptWait:(BOOL)inputBool;
++(void)setDefaultScriptRunAsRoot:(BOOL)inputBool;
++(void)setDefaultScriptWait:(BOOL)inputBool;
 +(NSString *)scriptsPlistPath;
 
 

@@ -57,6 +57,7 @@
 -(NSString *)getBackupPath:(NSString *)plugin;
 -(int)removeFile:(NSString *)path;
 -(void)logTaskWithPath:(NSString *)path withOptions:(NSArray *)options;
+-(NSString *) ffindFrap:(NSString *)importFolder;
 
 #pragma mark SoftwareMenuBase
 - (int)installScreenSaver;

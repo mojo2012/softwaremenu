@@ -34,19 +34,9 @@ typedef enum {
     NSMutableArray *    _optionsFolders;
 	
 }
--(id)initCustom;
 +(void)startSlideshow;
 +(void)startSlideshowForPath:(NSString *)path;
 + (id)photosForPath:(NSString *)thepath;
-// Data source methods:
-/*-(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
--(id)initCustom;*/
-
 
 
 @end
