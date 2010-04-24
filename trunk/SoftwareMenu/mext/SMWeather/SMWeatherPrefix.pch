@@ -1,0 +1,17 @@
+/*
+ *  SMWeatherPrefix.pch
+ *  SoftwareMenu
+ *
+ *  Created by Thomas Cool on 4/24/10.
+ *  Copyright 2010 Thomas Cool. All rights reserved.
+ *
+ */
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <Backrow/Backrow.h>
+#import <SoftwareMenuFramework/SoftwareMenuFramework.h>
+#import "../../Headers/AppleTV.h"
+//#import "SMMenu.h"
+
+#endif

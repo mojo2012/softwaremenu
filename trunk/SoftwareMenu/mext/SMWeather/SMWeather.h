@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <BackRow/BackRow.h>
-#import "SMWeatherController.h"
+//#import <SoftwareMenuFramework/SoftwareMenuFramework.h>
 @protocol SMMextProtocol
 // For loading a control behind the main menu
 -(BRControl *)backgroundControl;
@@ -31,6 +31,10 @@
 
 @interface SMWeatherMext : NSObject<SMMextProtocol> {
 }
+//+(SMWeatherControl *)control;
+//+(void)reload;
++(NSDictionary *)loadDictionaryForCode:(int)code;
++(void)reload;
 -(BRControl *)backgroundControl;
 -(BRController *)controller;
 @end

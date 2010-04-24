@@ -64,7 +64,7 @@
     //        XMLATSTR(dict,elt,@"sunset");
     //    }
     val=[rootElt nodesForXPath:@"./rss/channel/item" error:nil];
-    NSLog(@"val: %@",val);
+    //NSLog(@"val: %@",val);
     if ([val count]!=0) {
         NSXMLElement *elt=[val objectAtIndex:0];
         val=[elt nodesForXPath:@"./yweather:condition" error:nil];
@@ -95,7 +95,7 @@
             [dict setObject:forecasts forKey:@"forecast"];
         }
     }
-    NSLog(@"dict: %@",dict);
+    //NSLog(@"dict: %@",dict);
     return dict;
 }
 @end
