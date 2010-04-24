@@ -528,7 +528,7 @@
 				}
 				else
 				{
-                    [self startSlideshow];
+                    [SMPhotosMenu startSlideshow];
 				}
 				break;
 			case kSMSSSettings:

@@ -39,4 +39,8 @@
 {
     [client sendMessage:@"Request Acknowledged"];
 }
+-(void)unsubscribeClient:(identifier identifier id SMDOClientProtocol)client
+{
+    
+}
 @end

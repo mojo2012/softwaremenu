@@ -8,7 +8,12 @@
 
 #import "SMDOSingleton.h"
 #import "SMDOServer.h"
-
+@interface NSHost (Private)
++(void)_fixNSHostLeak;
+@end
+@interface NSSocketPort (Private)
++(void)_fixNSSocketPortLeak;
+@end
 @implementation SMDOSingleton
 static SMDOSingleton *singleton = nil;
 

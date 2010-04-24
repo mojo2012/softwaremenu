@@ -11,18 +11,7 @@
 
 
 @implementation SMFolderBrowser
--(BOOL)usingTakeTwoDotThree
-{
-	if([(Class)NSClassFromString(@"BRController") instancesRespondToSelector:@selector(wasExhumed)])
-	{
-		return YES;
-	}
-	else
-	{
-		return NO;
-	}
-	
-}
+
 - (id) previewControlForItem: (long) item
 {
 //    if(item>=[_items count])
@@ -233,7 +222,7 @@
 
 - (id)itemForRow:(long)row					
 { 
-	BRTextMenuItemLayer *theitem = [_items objectAtIndex:row];
+//	BRTextMenuItemLayer *theitem = [_items objectAtIndex:row];
 //	if([[_paths objectAtIndex:row] isEqualToString:[SMGeneralMethods stringForKey:@"PhotoDirectory"]])
 //	{
 //		[theitem setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] selectedSettingImage], @"BRMenuIconImageKey",nil]];

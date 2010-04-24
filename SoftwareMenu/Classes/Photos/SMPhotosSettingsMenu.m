@@ -226,10 +226,10 @@
         {
             int i = nil;
             
-			id newController = [[SMFPasscodeController alloc] initWithTitle:BRLocalizedString(@"Set Delay",@"Spin Delay") 
-                                                            withDescription:BRLocalizedString(@"Please enter delay time between each spin (in secs)", @"Please enter delay time between each spin (in secs)")
-                                                                  withBoxes:3
-                                                               withDelegate:self];
+			id newController = [SMFPasscodeController passcodeWithTitle:BRLocalizedString(@"Set Delay",@"Spin Delay") 
+                                                        withDescription:BRLocalizedString(@"Please enter delay time between each spin (in secs)", @"Please enter delay time between each spin (in secs)")
+                                                              withBoxes:3
+                                                           withDelegate:self];
 			//[newController setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
 			//[newController setInitialValue:[SMPreferences screensaverSpinFrequency]];
             
@@ -256,12 +256,12 @@
 
 		case kSMSSSTimeOut:
 			randomV = NO;
-			id controllera = [[SMFPasscodeController alloc] initWithTitle:BRLocalizedString(@"Set Screensaver Time Out",@"Set Screensaver Time Out")
-															  withDescription:BRLocalizedString(@"Please enter a time in minutes (zero means never)",@"Please enter a time in minutes (zero means never)")
-																	withBoxes:3
-																	  withDelegate:self];
+			id controllera = [SMFPasscodeController passcodeWithTitle:BRLocalizedString(@"Set Screensaver Time Out",@"Set Screensaver Time Out")
+                                                      withDescription:BRLocalizedString(@"Please enter a time in minutes (zero means never)",@"Please enter a time in minutes (zero means never)")
+                                                            withBoxes:3
+                                                         withDelegate:self];
 			[controllera setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
-			[controllera setValue:[NSNumber numberWithInt:2] forKey:@"options"];
+			//[controllera setValue:[NSNumber numberWithInt:2] forKey:@"options"];
 			if([[BRSettingsFacade singleton] screenSaverTimeout]<0)
 				[controllera setInitialValue:0];
 			else

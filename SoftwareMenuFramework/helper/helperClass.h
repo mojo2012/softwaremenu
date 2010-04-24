@@ -15,7 +15,7 @@
 }
 - (int)hideFrap:(NSString *)path;
 - (int)showFrap:(NSString *)path;
-
+- (int)restartFinder;
 - (int)isWritable;
 - (BOOL)makeSystemWritable;
 - (void) makeSystemReadOnly;

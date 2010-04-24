@@ -70,6 +70,8 @@
 +(void)setScreensaverUseAppleProvider:(BOOL)arg;
 +(void)setScreensaverSpinFrequency:(int)freq;
 +(BOOL)strictApplianceInstallLimits;
++(BOOL)strictApplianceLowerInstallLimit;
++(BOOL)strictApplianceUpperInstallLimit;
 +(NSString *)stringForBool:(BOOL)arg;
 +(NSDictionary *)screensaverSlideshowPlaybackOptions;
 +(BOOL)customMainMenu;

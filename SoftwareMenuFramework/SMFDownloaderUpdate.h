@@ -48,11 +48,14 @@
 -(BRImage *)image;
 -(void)setLinks:(NSArray *)links;
 -(NSArray *)links;
--(void)layoutSubcontrols;
+//-(void)layoutSubcontrols;
 -(void)setBoxText:(NSString*)text;
 -(void)setText:(NSString *)text;
 -(void)addText:(NSString *)text;
 -(void)appendBoxText:(NSString *)append;
 -(NSArray *)paths;
 - (void)setCompleteFunction:(NSString *)function forObject:(id)object;
+
+-(void)setArrowForRect:(CGRect)frame;
+
 @end

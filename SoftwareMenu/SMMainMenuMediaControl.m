@@ -13,19 +13,22 @@
 -(void)returnInfo
 {
     
-    //[checkTimer release]
-    //NSLog(@"cool");
-    id a = [[[[BRApplicationStackManager singleton] stack] rootController] gimmeControl];
-    //id b = [a gimmeCurControl];
-    if([[SMGeneralMethods menuItemOptions]containsObject:[a _currentCategoryIdentifier]])
-    {
-        //NSLog(@"current: %@",[a _currentCategoryIdentifier]);
-        [self setDefaultImage:[self getImageForId:[a _currentCategoryIdentifier]]];
-        [self layoutSubcontrols];
-        _checkTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
-
-    }
 }
+//{
+//    
+//    //[checkTimer release]
+//    //NSLog(@"cool");
+//    id a = [[[[BRApplicationStackManager singleton] stack] rootController] gimmeControl];
+//    //id b = [a gimmeCurControl];
+//    if([[SMGeneralMethods menuItemOptions]containsObject:[a _currentCategoryIdentifier]])
+//    {
+//        //NSLog(@"current: %@",[a _currentCategoryIdentifier]);
+//        [self setDefaultImage:[self getImageForId:[a _currentCategoryIdentifier]]];
+//        [self layoutSubcontrols];
+//        _checkTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
+//
+//    }
+//}
 -(void)updateTime
 {
     [_checkTimer invalidate];

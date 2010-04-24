@@ -28,7 +28,7 @@
 -(void)itemSelected:(long)arg1
 {
     if([[_options objectAtIndex:arg1] respondsToSelector:@selector(invoke)])
-        [[_options objectAtIndex:arg1]invoke];
+        [(NSInvocation *)[_options objectAtIndex:arg1]invoke];
     [[self stack]popController];
 }
 @end

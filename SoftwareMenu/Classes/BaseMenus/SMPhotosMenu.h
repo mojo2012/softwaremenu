@@ -37,6 +37,7 @@ typedef enum {
 +(void)startSlideshow;
 +(void)startSlideshowForPath:(NSString *)path;
 + (id)photosForPath:(NSString *)thepath;
+-(void)loadFolders;
 
 
 @end

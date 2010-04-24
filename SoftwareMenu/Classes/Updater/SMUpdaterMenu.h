@@ -14,5 +14,5 @@
     NSMutableArray *_names;
     int sel_version;
 }
-
+-(id)getChoices:(NSString *)URL;
 @end

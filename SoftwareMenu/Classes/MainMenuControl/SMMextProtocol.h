@@ -21,6 +21,9 @@
 // Developer Name
 +(NSString *)developer;
 
+-(BRController *)ioptions;
+
+
 @optional
 -(BRController *)pluginOptions;
 

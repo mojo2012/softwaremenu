@@ -200,7 +200,8 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
     id fontObject = [theInfo valueForKey:@"BRFontName"];
     [fontDict setValue:sizeObject forKey:@"BRFontPointSize"];
     [fontDict setValue:fontObject forKey:@"BRFontName"];
-    [fontDict setObject:CGColorCreateFromNSColor(CGColorSpaceCreateDeviceRGB(), [NSColor blackColor] ) forKey:@"NSColor"];
+    CGColorRef a = CGColorCreateFromNSColor(CGColorSpaceCreateDeviceRGB(), [NSColor blackColor] );
+    [fontDict setObject:(NSColor *)a forKey:@"NSColor"];
     return [fontDict autorelease];
 }
 //-(id)imageForFrap:(NSString *)frapName

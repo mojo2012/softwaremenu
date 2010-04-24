@@ -27,6 +27,9 @@
 -(void)cancelDownload;
 -(void)deleteDownload;
 -(BOOL)beginDownload;
+-(void)startCheckMD5;
+-(void)preProcess;
+-(BOOL)checkmd5ForFile:(NSString *)path withExpectedmd5:(NSString *)md5;
 @end
 
 @implementation SMFDownloaderUpdate
@@ -312,7 +315,7 @@
     CGRect masterFrame= [self getMasterFrame];
     [_textControl setText:text withAttributes:[[BRThemeInfo sharedTheme] metadataTitleAttributes]];
     CGRect frame;
-    CGRect pbframe=[_progressBar frame];
+    //CGRect pbframe=[_progressBar frame];
     frame.origin.y=masterFrame.size.height*0.11f;
 //    frame.size.width=masterFrame.size.width*0.2f;
 //    frame.size.height=masterFrame.size.height*0.05f;
@@ -323,7 +326,7 @@
 }
 -(void)layoutTimeControl
 {
-    CGRect masterFrame= [self getMasterFrame];
+    //CGRect masterFrame= [self getMasterFrame];
     CGRect pbframe=[_progressBar frame];
     [_timeControl setText:@"        " withAttributes:[[SMFThemeInfo sharedTheme]centerJustifiedRedText]];
     CGRect frame;
@@ -653,7 +656,7 @@ willResumeWithResponse: (NSURLResponse *) response
         if([a respondsToSelector:@selector(invoke)])
         {
             NSLog(@"invoking");
-            [a invoke];
+            [(NSInvocation *)a invoke];
         }
         else
             [self process];

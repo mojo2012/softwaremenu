@@ -18,7 +18,5 @@
         NSMutableArray  *   _optionsFiles;
 		
 	}
--(id)initCustom;
--(BOOL)usingTakeTwoDotThree;	
 -(void)setPath:(NSString *)thePath;
 @end

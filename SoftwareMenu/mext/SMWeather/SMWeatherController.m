@@ -12,7 +12,7 @@
 #define BRLocalizedStringFromTable(key, tbl, comment)				[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:(tbl)]
 #define BRLocalizedStringFromTableInBundle(key, tbl, obj, comment)	[BRLocalizedStringManager appliance:(obj) localizedStringForKey:(key) inFile:(tbl)]
 @interface SMFPasscodeController
-
++ (SMFPasscodeController *)passcodeWithTitle:(NSString *)title withDescription:(NSString *)description withBoxes:(int)boxes withDelegate:(id)delegate;
 @end
 
 @implementation SMWeatherController
