@@ -55,7 +55,34 @@
         [self insertControl:[pc backgroundControl] atIndex:1];
         
     }
-
+    NSString *path2=[[[SMPreferences selectedExtension] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMSlideshow.mext"];
+    if(![path isEqualToString:@"None"] && [SMPreferences mainMenuBGImages] && [[NSFileManager defaultManager]fileExistsAtPath:path2] &&[SMPreferences mainMenuLoadPlugins])
+    {
+        /*
+         *  Load the Plugin
+         */
+        [_controlBundle release];
+        _controlBundle=[[NSBundle bundleWithPath:path2] retain];
+        [_controlBundle load];
+        id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc]init];
+        DLog(@"pc2: %@",pc);
+        /*
+         *  Insert the new background control near the bottom of the stack
+         */
+        DLog(@"bc2: %@",[pc backgroundControl]);
+        [self insertControl:[pc backgroundControl] atIndex:1];
+        
+    }
+    if(![path isEqualToString:@"None"] && [[NSFileManager defaultManager]fileExistsAtPath:path] &&[SMPreferences mainMenuLoadPlugins])
+    {
+        /*
+         *  Load the Plugin
+         */
+        [_controlBundle release];
+        _controlBundle=[[NSBundle bundleWithPath:path] retain];
+        [_controlBundle load];
+    }
+    
     //Overwrite the AppleTV Logo (allways done
     [_logo setImage:[[SMThemeInfo sharedTheme]softwareMenuImageTiny]];
     
@@ -108,19 +135,19 @@
 }
 
 
-//-(BOOL)brEventAction:(id)event;
-//{
-//    if([self parent]!=[[[self parent] stack] peekController])
-//        return NO;
-//    if ([event remoteAction]==kBREventRemoteActionMenu) {
-//        id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc] init];
-//        id controller=[pc controller];
-//        if(controller!=nil)
-//            [[[BRApplicationStackManager singleton]stack]pushController:controller];
-//        [controller release];
-//        return YES;
-//    }
-//    return [super brEventAction:event];
-//    
-//}
+-(BOOL)brEventAction:(id)event;
+{
+    if([self parent]!=[[[self parent] stack] peekController])
+        return NO;
+    if ([event remoteAction]==kBREventRemoteActionMenu) {
+        id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc] init];
+        id controller=[pc controller];
+        if(controller!=nil)
+            [[[BRApplicationStackManager singleton]stack]pushController:controller];
+        [controller release];
+        return YES;
+    }
+    return [super brEventAction:event];
+    
+}
 @end

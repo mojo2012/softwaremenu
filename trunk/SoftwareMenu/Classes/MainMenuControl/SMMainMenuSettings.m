@@ -5,6 +5,36 @@
 //  Created by Thomas Cool on 3/12/10.
 //  Copyright 2010 Thomas Cool. All rights reserved.
 //
+@interface BRControllerStack (Private)
+//-(NSMutableArray *)gimmeStack;
+-(void)customReplace:(BRController *)controller;
+@end
+@implementation BRControllerStack (Private)
+
+//-(NSMutableArray *)gimmeStack
+//{
+//	Class myClass = [self class];
+//	Ivar ret = class_getInstanceVariable(myClass,"_stack");
+//	
+//	return *(NSMutableArray * *)(((char *)self)+ret->ivar_offset);
+//}
+-(void)customReplace:(BRController *)controller
+{
+    int i,count=[_stack count];
+    for(i=0;i<count-1;i++)
+    {
+        id cont=[_stack lastObject];
+        [self _updateStackPathForPoppingController:cont];
+        [cont wasPopped];
+        [_stack removeLastObject];
+        [cont release];
+    }
+    //[_stack replaceObjectAtIndex:0 withObject:controller];
+    //[self _updateStackPathForPushingController:controller];
+    [self pushController:controller];
+}
+@end
+
 
 
 
@@ -24,6 +54,10 @@
     
     item = [BRTextMenuItemLayer menuItem];
     [item setTitle:BRLocalizedString(@"Black Edge Fade",@"Black Edge Fade")];
+    [_items addObject:item];
+    
+    item = [BRTextMenuItemLayer menuItem];
+    [item setTitle:BRLocalizedString(@"Slideshow Background",@"Slideshow Background")];
     [_items addObject:item];
     
     item =[BRTextMenuItemLayer folderMenuItem];
@@ -52,8 +86,11 @@
         case 2:
             ([SMPreferences mainMenuEdgeFade]?[item setRightJustifiedText:@"YES"]:[item setRightJustifiedText:@"NO"]);
             break;
-            
         case 3:
+            ([SMPreferences mainMenuBGImages]?[item setRightJustifiedText:@"YES"]:[item setRightJustifiedText:@"NO"]);
+            break;
+
+        case 4:
         {
             NSString *sel=[SMPreferences selectedExtension];
             if (sel==nil||[sel isEqualToString:@"None"]) {
@@ -99,12 +136,17 @@
         }
         case 3:
         {
+            [SMPreferences setMainMenuBGImages:![SMPreferences mainMenuBGImages]];
+            break;
+        }
+        case 4:
+        {
             id a =[[SMMainMenuSelection alloc]init];
             [[self stack]pushController:a];
             [a release];
             break;
         }
-        case 4:
+        case 5:
         {
             NSBundle *controlBundle = [[NSBundle bundleWithPath:[SMPreferences selectedExtension]]retain];
             NSLog(@"found Bundle");
@@ -132,15 +174,17 @@
 //            }
             break;
         }
-        case 5:
+        case 6:
         {
             if ([SMPreferences customMainMenu]) {
                 id newController = [[SMMainMenuController alloc]init];
-                [[[BRApplicationStackManager singleton] stack] replaceAllControllersWithController:newController];
+                [[[BRApplicationStackManager singleton] stack] customReplace:newController];
+                //[[[BRApplicationStackManager singleton] stack] replaceAllControllersWithController:newController];
             }
             else {
                 id newController = [[BRMainMenuController alloc]init];
-                [[[BRApplicationStackManager singleton] stack] replaceAllControllersWithController:newController];
+                [[[BRApplicationStackManager singleton] stack] customReplace:newController];
+                //[[[BRApplicationStackManager singleton] stack] replaceAllControllersWithController:newController];
             }
             break;
 
