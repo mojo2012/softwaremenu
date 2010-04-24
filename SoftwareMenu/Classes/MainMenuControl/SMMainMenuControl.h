@@ -16,5 +16,7 @@
 @interface SMMainMenuControl : BRMainMenuControl {
     NSBundle *_controlBundle;
 }
-
+-(BOOL)topGradientIsThere;
+-(void)hideTopGradient;
+-(void)showTopGradient;
 @end
