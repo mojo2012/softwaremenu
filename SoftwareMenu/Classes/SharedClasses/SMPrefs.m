@@ -400,6 +400,8 @@
 {
     [SMPreferences setString:extensionPath forKey:MM_PLUGIN_SELECTED];
 }
+
+#pragma mark Main Menu
 +(BOOL)mainMenuBlockPreview
 {
     return [SMPreferences boolForKey:MM_BLOCK_PREVIEW];
@@ -408,6 +410,7 @@
 {
     [SMPreferences setBool:state forKey:MM_BLOCK_PREVIEW];
 }
+
 +(void)setMainMenuEdgeFade:(BOOL)state
 {
     [SMPreferences setBool:state forKey:MM_EDGE_FADE];
@@ -416,6 +419,7 @@
 {
     return [SMPreferences boolForKey:MM_EDGE_FADE];
 }
+
 +(void)setMainMenuLoadPlugins:(BOOL)state
 {
     [SMPreferences setBool:!state forKey:MM_NOT_LOAD_PLUGINS];
@@ -424,4 +428,6 @@
 {
     return ![SMPreferences boolForKey:MM_NOT_LOAD_PLUGINS];
 }
+
+
 @end

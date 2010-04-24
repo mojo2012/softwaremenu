@@ -236,8 +236,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -299,7 +297,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>1</integer>
+									<integer>96</integer>
+									<integer>94</integer>
+									<integer>41</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -334,12 +334,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Helper.m</string>
+								<string>SimpleCocoaServer.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -347,11 +349,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Helper.m</string>
+										<string>SimpleCocoaServer.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD8E98FA1182B0D300421AB3</string>
+										<string>DD9FF41E1182C20B0087ACD8</string>
 										<key>history</key>
 										<array>
 											<string>DDE8603B10A39FC7002D2FB8</string>
@@ -629,11 +631,10 @@
 											<string>DD8E98F21182B0D300421AB3</string>
 											<string>DD8E98F31182B0D300421AB3</string>
 											<string>DD8E98F41182B0D300421AB3</string>
-											<string>DD8E98F51182B0D300421AB3</string>
-											<string>DD8E98F61182B0D300421AB3</string>
 											<string>DD8E98F71182B0D300421AB3</string>
-											<string>DD8E98F81182B0D300421AB3</string>
-											<string>DD8E98F91182B0D300421AB3</string>
+											<string>DD9FF40D1182C1D60087ACD8</string>
+											<string>DD9FF40E1182C1D60087ACD8</string>
+											<string>DD9FF40F1182C1D60087ACD8</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -645,14 +646,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1113, 525}}</string>
+								<string>{{0, 0}, {1113, 518}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 50 1440 828 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>525pt</string>
+							<string>518pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -665,14 +666,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 530}, {1113, 257}}</string>
+								<string>{{0, 523}, {1113, 264}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 50 1440 828 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>257pt</string>
+							<string>264pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -691,9 +692,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>DD8E98D81182490400421AB3</string>
+				<string>DD9FF4111182C1D60087ACD8</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>DD8E98D91182490400421AB3</string>
+				<string>DD9FF4121182C1D60087ACD8</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -831,6 +832,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>DD31AF0710A09683000F734A</string>
 		<string>/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SoftwareMenu.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -850,12 +852,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Helper.m</string>
+								<string>SimpleCocoaServer.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -872,8 +876,6 @@
 							<string>500pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -913,7 +915,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>DD31AF0710A09683000F734A</string>
-				<string>DD8E9801118244FE00421AB3</string>
+				<string>DD9FF4061182C1530087ACD8</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -926,7 +928,7 @@
 			<key>WindowToolGUID</key>
 			<string>DD31AF0710A09683000F734A</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
