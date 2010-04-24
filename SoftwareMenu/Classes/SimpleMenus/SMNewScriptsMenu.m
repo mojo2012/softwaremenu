@@ -404,8 +404,9 @@
 }
 -(void)wasExhumed
 {
-    NSLog(@"New Scripts Was Exhumed");
+    DLog(@"New Scripts Was Exhumed");
     [self everyLoad];
+    [self resetPreviewController];
     [self _updatePreview];
     //[[self list] reload];
 }

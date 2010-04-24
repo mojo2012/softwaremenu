@@ -19,3 +19,4 @@
 @interface NSMutableString (SoftwareMenuExtensions)
 - (void)replaceAllOccurancesOfString:(NSString *)search withString:(NSString *)replacement;
 @end
+

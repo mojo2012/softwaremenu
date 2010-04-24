@@ -95,7 +95,6 @@ static int _imageNb =0;
 -(void)updateImage
 {
     if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
-        NSLog(@"root");
         [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
         if (_imageNb==[_imagePaths count]) {
             _imageNb=0;
@@ -120,7 +119,6 @@ static int _imageNb =0;
         _lastFireDate=[NSDate date];
         [_lastFireDate retain];
         [self updateImage];
-        NSLog(@"upating after time: %lf",time);
         
     }
     else {

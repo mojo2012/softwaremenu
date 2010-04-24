@@ -16,6 +16,7 @@
 #import "Classes/SharedClasses/SMGeneralMethods.h"
 #import "Classes/Photos/SMImageReturns.h"
 #import "General/Extensions.h"
+#import "General/BackRowExtensions.h"
 #import "Classes/SharedClasses/SMPrefs.h"
 #import "Classes/SharedClasses/SimpleCocoaServer.h"
 #import "Classes/MainMenuControl/SMMainMenuControl.h"

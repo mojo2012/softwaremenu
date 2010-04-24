@@ -206,6 +206,10 @@
 {
     return [SMPreferences integerForKey:@"ScriptsPosition"];
 }
++(void)setMainMenuScriptsPosition:(int)position
+{
+    [SMPreferences setInteger:position forKey:@"ScriptsPosition"];
+}
 
 +(NSString *)trustedPlistPath
 {
@@ -384,22 +388,6 @@
 {
     return [NSDictionary dictionaryWithContentsOfFile:[path stringByAppendingPathComponent:@"Contents/Info.plist"]];
 }
-+(BOOL)customMainMenu
-{
-    return [SMPreferences boolForKey:CUSTOM_MAIN_MENU];
-}
-+(void)setCustomMainMenu:(BOOL)state
-{
-    [SMPreferences setBool:state forKey:CUSTOM_MAIN_MENU];
-}
-+(NSString *)selectedExtension
-{
-    return [SMPreferences stringForKey:MM_PLUGIN_SELECTED];
-}
-+(void)setSelectedExtension:(NSString *)extensionPath
-{
-    [SMPreferences setString:extensionPath forKey:MM_PLUGIN_SELECTED];
-}
 
 #pragma mark Main Menu
 +(BOOL)mainMenuBlockPreview
@@ -428,6 +416,34 @@
 {
     return ![SMPreferences boolForKey:MM_NOT_LOAD_PLUGINS];
 }
+
++(BOOL)customMainMenu
+{
+    return [SMPreferences boolForKey:CUSTOM_MAIN_MENU];
+}
++(void)setCustomMainMenu:(BOOL)state
+{
+    [SMPreferences setBool:state forKey:CUSTOM_MAIN_MENU];
+}
+
++(NSString *)selectedExtension
+{
+    return [SMPreferences stringForKey:MM_PLUGIN_SELECTED];
+}
++(void)setSelectedExtension:(NSString *)extensionPath
+{
+    [SMPreferences setString:extensionPath forKey:MM_PLUGIN_SELECTED];
+}
+
++(BOOL)mainMenuKeepGradient
+{
+    return [SMPreferences boolForKey:MM_KEEP_GRADIENT];
+}
++(void)setMainMenuKeepGradient:(BOOL)keep
+{
+    [SMPreferences setBool:keep forKey:MM_KEEP_GRADIENT];
+}
+
 
 
 @end

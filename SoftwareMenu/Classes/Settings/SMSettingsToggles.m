@@ -14,9 +14,9 @@
 {
     self = [super init];
     [self setListTitle:BRLocalizedString(@"Menu Items",@"Menu Items")];
-    _menuNames = [[SMGeneralMethods menuItemNames] mutableCopy];
+    _menuNames = [[SoftwareMenuBase menuItemNames] mutableCopy];
     //[_items retain];
-    _menuOptions = (NSArray *)[SMGeneralMethods menuItemOptions];
+    _menuOptions = (NSArray *)[SoftwareMenuBase menuItemOptions];
     [_menuOptions retain];
     _items = [[NSMutableArray alloc] init];
     int i;
