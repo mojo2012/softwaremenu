@@ -12,6 +12,7 @@
 @interface SMFInvocationCenteredMenuController : SMFCenteredMenuController {
 
 }
++(id)invocationsForObject:(id)target withSelectorVal:(NSString *)selectorString withArguments:(NSArray *)arguments;
 -(id)initWithTitles:(NSArray *)titles withInvocations:(NSArray *)invocations withTitle:(NSString *)title withDescription:(NSString *)description;
 
 @end

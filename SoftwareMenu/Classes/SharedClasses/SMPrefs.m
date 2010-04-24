@@ -390,6 +390,14 @@
 }
 
 #pragma mark Main Menu
++(BOOL)mainMenuBGImages
+{
+    return [SMPreferences boolForKey:@"mainMenuBGImages"];
+}
++(void)setMainMenuBGImages:(BOOL)images
+{
+    return [SMPreferences setBool:images forKey:@"mainMenuBGImages"];
+}
 +(BOOL)mainMenuBlockPreview
 {
     return [SMPreferences boolForKey:MM_BLOCK_PREVIEW];

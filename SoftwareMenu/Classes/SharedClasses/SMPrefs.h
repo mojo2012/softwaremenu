@@ -75,6 +75,10 @@
 +(BOOL)strictApplianceUpperInstallLimit;
 +(NSString *)stringForBool:(BOOL)arg;
 +(NSDictionary *)screensaverSlideshowPlaybackOptions;
+
+#pragma mark MAIN_MENU
++(BOOL)mainMenuBGImages;
++(void)setMainMenuBGImages:(BOOL)images;
 +(BOOL)customMainMenu;
 +(void)setCustomMainMenu:(BOOL)state;
 +(NSString *)selectedExtension;
