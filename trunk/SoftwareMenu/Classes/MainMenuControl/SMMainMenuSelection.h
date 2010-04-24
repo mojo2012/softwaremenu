@@ -10,7 +10,7 @@
 
 
 @interface SMMainMenuSelection : SMFMediaMenuController {
-
+    NSString *  _selectedPath;
 }
 
 @end

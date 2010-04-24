@@ -36,6 +36,16 @@
 
 @implementation SoftwareMenuBase
 static BOOL checkedSS = NO;
+
++(NSArray *)menuItemNames
+{
+    return [NSArray arrayWithObjects:@"3rd Party",@"Built-in",@"Scripts",@"Restart Finder",@"Frap Mover",@"Console",@"Tweaks",@"Photos",@"Main Menu Options",@"Upgrader",nil];
+}
++ (NSArray *)menuItemOptions
+{
+	return [NSArray arrayWithObjects:@"SMdownloadable",@"SMbuiltin",@"SMscripts",@"SMreboot",@"SMmover",@"SMconsole",@"SMtweaks",@"SMphotos",@"SMmainmenucontrol",@"SMUpgrader",nil];
+}
+
 + (NSString *) className
 {
     NSString * className = NSStringFromClass(self);
@@ -47,23 +57,16 @@ static BOOL checkedSS = NO;
    // }
 	//NSLog(@"SoftwareMenu");
 	//[SMGeneralMethods checkScreensaver];
-    [SMGeneralMethods helperFixPerm];
-    [SMGeneralMethods checkPhotoDirPath];
-	[SMGeneralMethods checkFolders];
+
     return className;
 }
 -(BOOL)previewError
 {
-    NSLog(@"previewError");
+    DLog(@"Asking for Root Controller");
     return NO;
 }
 
--(void)downloaderDone:(NSNotification *)userInfo
-{
-    NSLog(@"%@",[userInfo userInfo]);
-    NSLog(@"UpdaterDone");
-    [[[BRApplicationStackManager singleton] stack] pushController:[[SMPhotosMenu alloc] init]];
-}
+
 //-(id)init
 //{
 //    NSLog(@"init-");
@@ -146,32 +149,17 @@ static BOOL checkedSS = NO;
 //    
 //    return a;
 //}
--(id)getImageForId:(NSString *)idstr
-{
-    if ([idstr isEqualToString:@"SMsettings"])
-    {
-        return [[BRThemeInfo sharedTheme] gearImage];//[[SMThemeInfo sharedTheme] systemPrefsImage];
-    }
-    else if ([idstr isEqualToString:@"SMphotos"]) {
-        return [[BRThemeInfo sharedTheme] photosImage];
-    }
-    return [[SMThemeInfo sharedTheme] softwareMenuImage];
-}
 
--(BOOL)handleObjectSelection:(id)arg1 userInfo:(id)arg2
-{
-    NSLog(@"handleSelection");
-    NSLog(@"stack: %@",[[[BRApplicationStackManager singleton]stack] controllers]);
-    NSLog(@"stack: %@",[[[BRApplicationStackManager singleton]stack] rootController]);
-    NSLog(@"stack Controls: %@",[[[[BRApplicationStackManager singleton]stack] rootController] controls]);
-    return YES;
-}
--(BOOL)handlePlay:(id)arg1 userInfo:(id)arg2
-{
-    NSLog(@"handlePlay");
 
-    return YES;
-}
+//-(BOOL)handleObjectSelection:(id)arg1 userInfo:(id)arg2
+//{
+//    NSLog(@"handleSelection");
+//    NSLog(@"stack: %@",[[[BRApplicationStackManager singleton]stack] controllers]);
+//    NSLog(@"stack: %@",[[[BRApplicationStackManager singleton]stack] rootController]);
+//    NSLog(@"stack Controls: %@",[[[[BRApplicationStackManager singleton]stack] rootController] controls]);
+//    return YES;
+//}
+
 +(void)initialize
 {
     DLog(@"initializing Software Menu");
@@ -203,7 +191,7 @@ static BOOL checkedSS = NO;
         }
         else if([cur compare:ins]==NSOrderedSame){
 
-#ifdef FrameworkCopyOnSame
+#ifdef DEBUG
             copy=YES;
             DLog(@"Copying framework because debugging");
 #endif
@@ -218,6 +206,11 @@ static BOOL checkedSS = NO;
         
     }
     if (copy) {
+        DLog(@"Copying Framework");
+        if ([man fileExistsAtPath:lframework]) {
+            DLog(@"Removing Old Framework");
+            [man removeFileAtPath:lframework handler:nil];
+        }
         [man copyPath:frameworkPath
                toPath:lframework 
               handler:nil];
@@ -300,28 +293,6 @@ static BOOL checkedSS = NO;
 //}
 - (id)applianceCategories
 {
-//    NSLog(@"removable: %@",[[NSWorkspace sharedWorkspace] mountedRemovableMedia]);
-//    NSLog(@"local: %@",[[NSWorkspace sharedWorkspace] mountedLocalVolumePaths]);
-//    id  control = [[BRMediaParadeControl alloc] init];
-//    id proxies = [SMImageReturns imageProxiesForPath:[SMPreferences photoFolderPath]];
-//    NSLog(@"controls: %@",[[[[BRApplicationStackManager singleton]stack] peekController] controls]);
-//    NSLog(@"root : %@",[[[BRApplicationStackManager singleton]stack] rootController]);
-////    [[[[BRApplicationStackManager singleton]stack] peekController] addControl:control];
-////    [[[[BRApplicationStackManager singleton]stack] peekController] reloadMainMenu];
-//    [control setImageProxies:proxies];
-//    
-//    id obj = [[[[[BRApplicationStackManager singleton]stack] peekController] controls] objectAtIndex:0];
-//    [control setFrame:[obj frame]];
-//    [control setOpacity:0.3];
-//    if ([[obj controls] count]<11) {
-//        NSLog(@"controls count: %i",[[obj controls] count]);
-//        [obj insertControl:control atIndex:1];
-//    }
-//    
-//    NSLog(@"%@",[obj controls]);
-//
-//    [obj layoutSubcontrols];
-//    NSLog(@"%@",[obj controls]);
 
     if(!checkedSS)
     {
@@ -332,9 +303,17 @@ static BOOL checkedSS = NO;
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BRAppliancePreviewChangedNotification" object:self];
 	NSMutableArray *categories = [NSMutableArray array];
+    
+#ifdef DEBUG
+    /*
+     *  Debug Categories to test stuff
+     */
+    BRApplianceCategory *debugCat =[BRApplianceCategory categoryWithName:@"Debug1" identifier:@"Debug1" preferredOrder:0.1];
+    [categories addObject:debugCat];
+#endif
 	NSArray *prefKeys =[SMGeneralMethods getPrefKeys];
-	NSArray *theOptions =[SMGeneralMethods menuItemOptions];
-	NSArray *displayNames =[SMGeneralMethods menuItemNames];
+	NSArray *theOptions =[SoftwareMenuBase menuItemOptions];
+	NSArray *displayNames =[SoftwareMenuBase menuItemNames];
 	int i,counter;
 	i=[theOptions count];
 	for(counter=0;counter<i;counter++)
@@ -353,11 +332,11 @@ static BOOL checkedSS = NO;
 	}
 	if(![prefKeys containsObject:@"ScriptsPosition"])
 	{
-		[SMGeneralMethods setInteger:3	forKey:@"ScriptsPosition"];
+		[SMPreferences setMainMenuScriptsPosition:3];
 	}
-	if(![prefKeys containsObject:@"SMM"])
+	if(![prefKeys containsObject:@"HideScriptsMainMenu"])
 	{
-		[SMGeneralMethods setBool:NO forKey:@"SMM"];
+		[SMPreferences setShowScriptsOnMainMenu:NO];
 	}
 	
 	/************
@@ -611,6 +590,8 @@ shouldMakeNewConnection:(NSConnection *)conn
 //        int i =[server startListening];
 //        NSLog(@"server: %i",i);
     }
+    //[SMGeneralMethods helperFixPerm];
+    [SMGeneralMethods checkPhotoDirPath];
     // so we can clean up if the app quits
     [[SMGeneralMethods sharedInstance]SMHelperCheckPerm];
     if ([SMPreferences customMainMenu]) {
@@ -635,7 +616,8 @@ shouldMakeNewConnection:(NSConnection *)conn
     id rootController = [[[BRApplicationStackManager singleton]stack] rootController];
     if ([rootController isKindOfClass:[BRMainMenuController class]]) {
        // NSLog(@"finally,%i",t);
-        [[[BRApplicationStackManager singleton] stack] swapController:[[SMMainMenuController alloc]init]];
+        [[[BRApplicationStackManager singleton] stack] replaceAllControllersWithController:[[SMMainMenuController alloc]init]];
+        //[[[BRApplicationStackManager singleton] stack] swapController:[[SMMainMenuController alloc]init]];
     }
     else {
         t++;
@@ -659,12 +641,9 @@ shouldMakeNewConnection:(NSConnection *)conn
     //NSLog([[BRApplicationStackManager singleton] stack]);
 
 	id newController = nil;
-    if ([identifier isEqualToString:@"mainmenucontrol"]) {
-        //id control = [[[[[BRApplicationStackManager singleton]stack] rootController] controls] objectAtIndex:0];
-//        id newControl=[[SMMainMenuControl alloc] init];
-//        newController = [[SMMainMenuController alloc]init];
-//        [[[BRApplicationStackManager singleton] stack] swapController:newController];
-        return [[SMMainMenuSettings alloc]init];
+    
+    if([identifier isEqualToString:@"Debug1"])
+    {
     }
 	else if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
@@ -674,7 +653,7 @@ shouldMakeNewConnection:(NSConnection *)conn
 	}
 	else
 	{
-		int i = [[SMGeneralMethods menuItemOptions] indexOfObject:identifier];
+		int i = [[SoftwareMenuBase menuItemOptions] indexOfObject:identifier];
 		switch (i)
 		{
 			case 0:
@@ -709,6 +688,9 @@ shouldMakeNewConnection:(NSConnection *)conn
 				//[newController initCustom];
 				break;
             case 8:
+                newController = [[SMMainMenuSettings alloc]init];
+                break;
+            case 9:
                 newController = [[SMNewUpdaterProcess alloc] initForFolder:@"/Users/frontrow/Documents/ATV3.0.2/" withVersion:@"3.0.2"];
                 break;
 			default: 

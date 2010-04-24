@@ -21,14 +21,7 @@
 
 
 @implementation SMMainMenuControl
-//-(void)_previewUpdated:(id)arg1
-//{
-//    [super _previewUpdated:arg1];
-//}
-//-(void)_previewTimerFired:(id)arg1
-//{
-//    [super _previewTimerFired:arg1];
-//}
+
 -(BOOL)_previewColumnAtIndex:(long)arg1
 {
     if ([SMPreferences mainMenuBlockPreview]) {
@@ -37,84 +30,92 @@
     return [super _previewColumnAtIndex:arg1];
     
 }
+
 -(void)_reload
 {
     [super _reload];
-//    BOOL parade=TRUE;
-//    BOOL still=FALSE;
-//    BOOL player=FALSE;
+
     CGRect a;
     a.size=[BRWindow maxBounds];
     NSString *path=[SMPreferences selectedExtension];
     if(![path isEqualToString:@"None"] && [[NSFileManager defaultManager]fileExistsAtPath:path] &&[SMPreferences mainMenuLoadPlugins])
     {
+        /*
+         *  Load the Plugin
+         */
         [_controlBundle release];
         _controlBundle=[[NSBundle bundleWithPath:path] retain];
         [_controlBundle load];
         id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc]init];
+        DLog(@"pc: %@",pc);
+        /*
+         *  Insert the new background control near the bottom of the stack
+         */
+        DLog(@"bc: %@",[pc backgroundControl]);
         [self insertControl:[pc backgroundControl] atIndex:1];
-        //[[[BRApplicationStackManager singleton] stack] pushController:[BRController controllerWithContentControl:[pc backgroundControl]]];
         
     }
 
-    
-    
-    //changing Logo
-//    id image=[[BRImageControl alloc] init];
-//    a=[self frame];
-//    a.origin.x=a.origin.x+a.size.width*0.12;
-//    a.origin.y=a.origin.y+[BRWindow maxBounds].height*0.5;
-//    a.size.width=a.size.width*0.13;
-//    a.size.height=a.size.height*0.22;
-//    [image setImage:[[SMThemeInfo sharedTheme] softwareMenuImageTiny]];
-//    [image setFrame:a];
-//    [image setAutomaticDownsample:YES];
-//
-//    [_logo removeFromParent];
-//    [_logo release];
+    //Overwrite the AppleTV Logo (allways done
     [_logo setImage:[[SMThemeInfo sharedTheme]softwareMenuImageTiny]];
-//    [self insertControl:_logo atIndex:6];
-    [_topGradient removeFromParent];
-    //[_barGlow removeFromParent];
     
-//    [[[self controls] objectAtIndex:0] removeFromParent];
-//    [[[self controls] objectAtIndex:6] removeFromParent];
-    
-//    CGRect  frame=[[[self controls] objectAtIndex:4]frame];
-//    NSLog(@"frame of obj: %@, %lf, %lf",[[self controls] objectAtIndex:4],frame.size.width,frame.size.height);
-    //NSLog(@"controls in activated2: %@",[self controls]);
-    //NSLog(@"list controls widgetHidden: %@",([[[self controls] objectAtIndex:1] widgetHidden]?@"YES":@"NO"));
-    //[[[self controls] objectAtIndex:1]setWidgetHidden:YES];
-//    [[[self controls]objectAtIndex:1]setBottomMargin:0.0f];
-//    [[[self controls]objectAtIndex:1]setTopMargin:0.0f];
-    NSLog(@"edge fade: %lf",[[[[[self controls]objectAtIndex:1]controls]objectAtIndex:0]edgeFadePercentage]);
+    /*
+     *  Remove Gradient
+     */
+    if (![SMPreferences mainMenuKeepGradient]) {
+        DLog(@"Removing _topGradient: %@",_topGradient);
+        [_topGradient removeFromParent];
+    }
+
     if (![SMPreferences mainMenuEdgeFade]) {
+        DLog(@"Removing EdgeFade");
         [[[[[self controls]objectAtIndex:1]controls]objectAtIndex:0]setEdgeFadePercentage:0.0f];
     }
-    NSLog(@"edge fade: %lf",[[[[[self controls]objectAtIndex:1]controls]objectAtIndex:0]edgeFadePercentage]);
+    DLog(@"Controls: %@",[self controls]);
 
     
 }
-//-(void)_reload
-//{
-//    [super _reload];
-//}
--(BOOL)brEventAction:(id)event;
+-(BOOL)topGradientIsThere
 {
-    if([self parent]!=[[[self parent] stack] peekController])
-        return NO;
-    if ([event remoteAction]==kBREventRemoteActionMenu) {
-//        [[[BRApplicationStackManager singleton]stack]pushController:[[SMMainMenuPU alloc]init]];
-        id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc] init];
-        
-        id controller=[pc controller];
-        //[controller addControl:_logo];
-        if(controller!=nil)
-            [[[BRApplicationStackManager singleton]stack]pushController:controller];
-        [controller release];
+    if ([[self controls] containsObject:_topGradient]) 
+    {
+        DLog(@"TopGradient is Present");
         return YES;
     }
-    return [super brEventAction:event];
-    
+    DLog(@"TopGradient is Not Present");
+    return NO;
 }
+
+-(void)hideTopGradient
+{
+    if ([self topGradientIsThere]) 
+    {
+        DLog(@"Removing Top Gradient");
+        [_topGradient removeFromParent];
+    }
+}
+-(void)showTopGradient
+{
+    if (![self topGradientIsThere]) {
+        DLog(@"Adding Top Gradient");
+        [self insertControl:_topGradient atIndex:2];
+    }
+}
+
+
+//-(BOOL)brEventAction:(id)event;
+//{
+//    if([self parent]!=[[[self parent] stack] peekController])
+//        return NO;
+//    if ([event remoteAction]==kBREventRemoteActionMenu) {
+//        id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc] init];
+//        id controller=[pc controller];
+//        if(controller!=nil)
+//            [[[BRApplicationStackManager singleton]stack]pushController:controller];
+//        [controller release];
+//        return YES;
+//    }
+//    return [super brEventAction:event];
+//    
+//}
 @end

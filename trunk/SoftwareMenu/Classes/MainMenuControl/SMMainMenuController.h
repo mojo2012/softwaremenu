@@ -10,7 +10,7 @@
 
 
 @interface SMMainMenuController : BRMainMenuController {
-
+    int padding[32];
 }
-
+-(BOOL)SMMainMenu;
 @end

@@ -31,11 +31,12 @@
 }
 - (id) init;
 - (void) dealloc;
--(id)getImageForId:(NSString *)idstr;
+//- (id)getImageForId:(NSString *)idstr;
 + (NSString *) className;
 - (id)controllerForIdentifier:(id)fp8;
 - (id)applianceCategories;
-
++ (NSArray *)menuItemNames;
++ (NSArray *)menuItemOptions;
 
 //- (BRLayerController *) applianceControllerWithScene: (BRRenderScene *) scene;
 - (void) appStopping: (NSNotification *) note;

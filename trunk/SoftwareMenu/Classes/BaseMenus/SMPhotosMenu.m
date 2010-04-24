@@ -25,6 +25,61 @@
 @end
 
 @implementation SMPhotosMenu
++(void)startSlideshowForPath:(NSString *)path
+{
+    
+    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
+    
+    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
+    
+    NSArray *assets=[SMImageReturns mediaAssetsForPath:path];
+    
+    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"PhotoStore" predicate:_pred mediaTypes:_set];
+    int i;
+    for (i=0;i<[assets count];i++)
+    {
+        [store addObject:[assets objectAtIndex:i]];
+    }
+    
+    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
+    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
+    
+    SMPhotoBrowserController* controller4  = [SMPhotoBrowserController controllerForProvider:provider];
+    [controller4 setTitle:[[SMPreferences stringForKey:path] lastPathComponent]];
+    //[controller4 setColumnCount:2];
+    [controller4 removeSButton];
+    [[[BRApplicationStackManager singleton] stack] pushController:controller4];
+}
++(void)startSlideshow
+{
+    [SMPreferences setString:@"SlideShow" forKey:@"SlideShowType"];
+    
+    
+    
+    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
+    
+    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
+    
+    NSArray *assets=[SMImageReturns mediaAssetsForPath:[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY]];
+    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"Hello" predicate:_pred mediaTypes:_set];
+    int i =0;
+    for (i=0;i<[assets count];i++)
+    {
+        [store addObject:[assets objectAtIndex:i]];
+    }
+    
+    
+    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
+    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
+    
+    id controller4  = [SMPhotoBrowserController controllerForProvider:provider];
+    [controller4 setTitle:[[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY] lastPathComponent]];
+    [controller4 setColumnCount:2];
+    [controller4 removeSButton];
+    
+    [[[BRApplicationStackManager singleton] stack] pushController:controller4]; 
+}
+
 + (id)photosForPath:(NSString *)thepath
 {
 	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
@@ -63,26 +118,15 @@
 	}
 	return (NSArray *)photos;
 }
--(BOOL)usingTakeTwoDotThree
-{
-	if([(Class)NSClassFromString(@"BRController") instancesRespondToSelector:@selector(wasExhumed)])
-	{
-		return YES;
-	}
-	else
-	{
-		return NO;
-	}
-	
-}
+
 - (id)previewControlForItem:(long)arg1
 {
     if (arg1<[_items count]) {
-        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
         SMFBaseAsset *asset=[[SMFBaseAsset alloc] init];
         [asset setTitle:[[_items objectAtIndex:arg1] title]];
         [asset setSummary:[settingDescriptions objectAtIndex:arg1]];
         [asset setCoverArt:[[BRThemeInfo sharedTheme] photosImage]];
+        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
         [preview setAsset:asset];
         return preview;
         
@@ -90,7 +134,6 @@
     else if (arg1<([_itemsFavs count]+[_items count])) {
         int row=arg1-[_items count];
         
-        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
         SMFBaseAsset *asset=[[SMFBaseAsset alloc]init];
         [asset setTitle:[[_items objectAtIndex:row] title]];
         [asset setCoverArt:[SMPhotoPreview firstPhotoForPath:[_optionsFavs objectAtIndex:row]]];
@@ -101,16 +144,17 @@
 //        [asset setCoverArt:[SMPhotoPreview firstPhotoForPath:[_optionsFavs objectAtIndex:row]]];
 //        //[asset setSummary:];
 //        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
+        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
         [preview setAsset:asset];
         return preview;
     }
     else if (arg1<([_itemsFavs count]+[_items count]+[_itemsFolders count])) {
         int row=arg1-[_items count]-[_itemsFavs count];
-        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
         SMFBaseAsset *asset=[[SMFBaseAsset alloc] init];
         [asset setTitle:[[_itemsFolders objectAtIndex:row] title]];
         [asset setCoverArt:[[BRThemeInfo sharedTheme]photosImage]];
         //[asset setSummary:];
+        SMFMediaPreview *preview = [[SMFMediaPreview alloc]init];
         [preview setAsset:asset];
         return preview;
     }
@@ -413,60 +457,6 @@
 //	[[self list] addDividerAtIndex:[[_dividers valueForKey:@"Folders"]intValue] withLabel:@"Folders"];
 //	return self;
 //}
-+(void)startSlideshowForPath:(NSString *)path
-{
-    
-    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
-    
-    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
-    
-    NSArray *assets=[SMImageReturns mediaAssetsForPath:path];
-    
-    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"PhotoStore" predicate:_pred mediaTypes:_set];
-    int i;
-    for (i=0;i<[assets count];i++)
-    {
-        [store addObject:[assets objectAtIndex:i]];
-    }
-    
-    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
-    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
-    
-    SMPhotoBrowserController* controller4  = [SMPhotoBrowserController controllerForProvider:provider];
-    [controller4 setTitle:[[SMPreferences stringForKey:path] lastPathComponent]];
-    //[controller4 setColumnCount:2];
-    [controller4 removeSButton];
-    [[[BRApplicationStackManager singleton] stack] pushController:controller4];
-}
-+(void)startSlideshow
-{
-    [SMPreferences setString:@"SlideShow" forKey:@"SlideShowType"];
-    
-    
-    
-    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
-    
-    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
-    
-    NSArray *assets=[SMImageReturns mediaAssetsForPath:[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY]];
-    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"Hello" predicate:_pred mediaTypes:_set];
-    int i =0;
-    for (i=0;i<[assets count];i++)
-    {
-        [store addObject:[assets objectAtIndex:i]];
-    }
-    
-    
-    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
-    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
-    
-    id controller4  = [SMPhotoBrowserController controllerForProvider:provider];
-    [controller4 setTitle:[[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY] lastPathComponent]];
-    [controller4 setColumnCount:2];
-    [controller4 removeSButton];
-    
-    [[[BRApplicationStackManager singleton] stack] pushController:controller4]; 
-}
 -(void)itemSelected:(long)row
 {
 	NSString *theDir = nil;
