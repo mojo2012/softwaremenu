@@ -31,6 +31,6 @@
     NSMutableArray *_imagePaths;
     BRImage *_nextImage;
     NSDate *_lastFireDate;
-    BRControl *_control;
+    BRImageControl *_control;
 }
 @end
