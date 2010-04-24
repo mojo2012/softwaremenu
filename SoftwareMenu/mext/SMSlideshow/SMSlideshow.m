@@ -9,12 +9,13 @@
 #import "SMSlideshow.h"
 #define DEFAULT_IMAGES_PATH		@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/DefaultPhotos/"
 #define PHOTO_DIRECTORY_KEY		@"PhotoDirectory"
-#define myDomain                (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu"
+#define myDomain                (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.Slideshow"
+#define SoftwareMenuDomain      (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu"
 @interface ATVSettingsFacade
 @end
 @class SMPhotoCollectionProvider,SMImageReturns;
 @interface SMSlideshowMext (private)
-+ (NSString *)stringForKey:(NSString *)theKey;
++ (NSString *)stringForKey:(NSString *)theKey forDomain:(CFStringRef)domain;
 + (NSDictionary *)screensaverSlideshowPlaybackOptions;
 + (NSString *)photoFolderPath;
 + (NSArray *)imageProxiesForPath:(NSString *)path;
@@ -51,53 +52,25 @@ static int _imageNb =0;
     [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callU) userInfo:nil repeats:NO];
     return _control;
 }
-//-(BRControl *)backgroundControl
-//{
-//    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"PFC"];
-//    
-//    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
-//    
-//    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
-//    
-//    NSArray *assets=[SMImageReturns mediaAssetsForPath:path];
-//    
-//    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"PhotoStore" predicate:_pred mediaTypes:_set];
-//    int i;
-//    for (i=0;i<[assets count];i++)
-//    {
-//        [store addObject:[assets objectAtIndex:i]];
-//    }
-//    
-//    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
-//    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
-//    
-//    _control = [BRFullScreenPhotoController fullScreenPhotoControllerForProvider:provider startIndex:0];
-////    [_control _startSlideshow];
-////    NSLog(@"options: %@",[[ATVSettingsFacade singleton] slideshowScreensaverPlaybackOptions]);
-////    BRPhotoPlayer *player = [[BRPhotoPlayer alloc] init];
-////    [player setPlayerSpecificOptions:[[ATVSettingsFacade singleton]slideshowScreensaverPlaybackOptions]];
-////    [player setMuted:YES];
-////    [player setMediaAtIndex:0 inCollection:[[ATVSettingsFacade singleton] screenSaverCollection] error:nil];
-////    
-////    _control =[BRMediaPlayerController controllerForPlayer:player];
-//    [_control retain];
-//    
-//    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callN) userInfo:nil repeats:NO];
-//    return _control;
-//}
 
-//-(void)callN
-//{
-//    [(BRImageControl *)_control _nextSlide];
-//    [(BRImageControl *)_control _prefetchNextImage];
-//    //[_control _initiatePlayback];
-//}
 -(void)updateImage
 {
     if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
         [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
+        CGSize size = [(BRImageControl *)_control preferredFrameSize];
+        NSLog(@"width: %lf, height: %lf, aspectRatio: %lf",size.width,size.height,[(BRImageControl *)_control aspectRatio]);
         if (_imageNb==[_imagePaths count]) {
             _imageNb=0;
+        }
+        BOOL crop=TRUE;
+        if (crop && [_control aspectRatio]>1) {
+            CGSize maxBounds= [BRWindow maxBounds];
+            CGRect newFrame;
+            newFrame.size.width=maxBounds.width;
+            newFrame.size.height=newFrame.size.width/[_control aspectRatio];
+            newFrame.origin.x=0;
+            newFrame.origin.y=(maxBounds.height-newFrame.size.height)/2.0f;
+            [_control setFrame:newFrame];
         }
         [_control layoutSubcontrols];
 
@@ -190,16 +163,16 @@ static int _imageNb =0;
     return collection;
 }
 
-+ (NSString *)stringForKey:(NSString *)theKey
++ (NSString *)stringForKey:(NSString *)theKey forDomain:(CFStringRef)domain;
 {
 	CFPreferencesAppSynchronize(myDomain);
-	NSString * myString = (NSString *)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain);
+	NSString * myString = (NSString *)CFPreferencesCopyAppValue((CFStringRef)theKey, domain);
 	return (NSString *)myString;
 }
 
 +(NSString *)photoFolderPath
 {
-    NSString * path = [SMSlideshowMext stringForKey:PHOTO_DIRECTORY_KEY];
+    NSString * path = [SMSlideshowMext stringForKey:PHOTO_DIRECTORY_KEY forDomain:SoftwareMenuDomain];
     
     if (path == nil)
     {
