@@ -45,7 +45,27 @@ static SMWeatherControl *_control;
 -(void)callU
 {
     //[NSString stringWithContentsOfURL:<#(NSURL *)url#>]
+    NSURL *url=[NSURL URLWithString:@"http://weather.yahooapis.com/forecastrss?w=20169037&u=c"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
     NSString *data=[NSString stringWithContentsOfFile:@"/Users/frontrow/data.xml"];
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSXMLDocument *doc;
+    if (error!=nil) {
+        NSLog(@"error: %@",error);
+        doc=[[NSXMLDocument alloc]initWithXMLString:data options:NSXMLDocumentTidyXML error:nil];
+    }
+    else {
+        NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
+        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:responseEncoding];
+        //NSLog(@"documentString: %@",documentString);
+        doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
+        
+    }
+
+
+    
 //    NSError *error;
 //    NSString *data2=[NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://weather.yahooapis.com/forecastrss?w=2442047"]
 //                                         usedEncoding:NSUTF8StringEncoding 
@@ -64,11 +84,10 @@ static SMWeatherControl *_control;
 //    
 //    
 //    NSLog(@"b: %@",b);
-    NSXMLDocument *doc = [[NSXMLDocument alloc]initWithXMLString:data options:NSXMLDocumentTidyXML error:nil];
     NSDictionary *dict = [SMYahooWeather parseYahooRSS:doc];
-//    NSLog(@"dict: %@",dict);
+    //NSLog(@"dict: %@",dict);
     [_control setInfoDictionary:[NSDictionary dictionary]];
-    
+    [doc release];
     [_control setInfoDictionary:dict];
     [NSTimer scheduledTimerWithTimeInterval:1800 target:self selector:@selector(callU) userInfo:nil repeats:NO];
 }

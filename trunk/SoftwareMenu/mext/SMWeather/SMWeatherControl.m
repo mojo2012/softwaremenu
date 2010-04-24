@@ -524,7 +524,7 @@
     
     //_date=[[BRTextControl alloc]init];
     NSDate *rdate = [self parseDate:[_infoDict objectForKey:@"date"]];
-    [_date setText:[rdate descriptionWithCalendarFormat:@"%I:%m %p, %d-%m-%Y" timeZone:nil locale:nil]
+    [_date setText:[rdate descriptionWithCalendarFormat:@"%I:%m %p, %d-%m-%Y" timeZone:[NSTimeZone timeZoneWithName:@"Europe/Paris"] locale:nil]
     withAttributes:[[BRThemeInfo sharedTheme] menuTitleTextAttributes]];
     //oldFrame.size=[_date preferredFrameSize];
     [_date setFrame:oldFrame];
@@ -716,8 +716,10 @@
     }
     else {
         int sunrise=[self convertTimeToInt:[_infoDict objectForKey:@"sunrise"]];
-        int sunset=[self convertTimeToInt:[_infoDict objectForKey:@"sunrise"]];
-        int current=[[[NSDate date] descriptionWithCalendarFormat:@"%H%m" timeZone:nil locale:nil]intValue];
+        int sunset=[self convertTimeToInt:[_infoDict objectForKey:@"sunset"]];
+        //NSLog(@"known time zones: %@",[NSTimeZone knownTimeZoneNames]);
+        int current=[[[NSDate date] descriptionWithCalendarFormat:@"%H%M" timeZone:[NSTimeZone timeZoneWithName:@"Europe/Paris"] locale:nil]intValue];
+        NSLog(@"date: %@ ,sunrise %i, current %i, sunset %i",[NSDate date], sunrise,current,sunset);
         if (current>=sunrise && current<sunset) {
             code=[code stringByAppendingString:@"d"];
         }
