@@ -174,7 +174,7 @@
         {
             id controller = [SMFPasscodeController passcodeWithTitle:@"Yahoo Weather Code" 
                                                      withDescription:@"Please insert the appropriate yahoo weather code for the location you are looking for" 
-                                                           withBoxes:7 
+                                                           withBoxes:8 
                                                         withDelegate:self];
             _current=1;
             [[self stack] pushController:controller];
