@@ -60,6 +60,10 @@ typedef enum
 
 #define kSMFApplianceOrderKey   @"FRAppliancePreferedOrderValue"
 #define kSMFApplianceExtension  @"frappliance"
+/*
+ *  Extensions
+ */
+#import "BackRowExtensions.h"
 #import "SMFProgressBarMenuItem.h"
 #import "SMFPasscodeController.h"
 #import "SMFGlobalValues.h"

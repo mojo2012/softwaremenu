@@ -104,17 +104,17 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 
 -(id)greenGem
 {
-    //NSLog(@"%@, %@ %@",[self class],[NSBundle bundleForClass:[self class]],[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]);
+    NSLog(@"green gem %@, %@ %@",[self class],[NSBundle bundleForClass:[self class]],[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]);
 
-	return [BRImage imageWithPath:[[NSBundle bundleForClass:[SMFFolderBrowser class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]];
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]];
 }
 -(id)redGem
 {
-	return [BRImage imageWithPath:[[NSBundle bundleForClass:[SMFFolderBrowser class]] pathForResource:IMAGE_RED_GEM ofType:@"png"]];
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_RED_GEM ofType:@"png"]];
 }
 -(id)greyGem
 {
-	return [BRImage imageWithPath:[[NSBundle bundleForClass:[SMFFolderBrowser class]] pathForResource:IMAGE_GREY_GEM ofType:@"png"]];
+	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREY_GEM ofType:@"png"]];
 }
 
 

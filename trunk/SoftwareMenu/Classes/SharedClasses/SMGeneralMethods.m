@@ -186,14 +186,7 @@ static SMGeneralMethods *sharedInstance = nil;
 //{
 //	return [NSArray arrayWithObjects:BRLocalizedString(@"3rd Party Plugins",@"3rd Party Plugins"),BRLocalizedString(@"Manage Built-in",@"Manage Built-in"),BRLocalizedString(@"Scripts",@"Scripts"),BRLocalizedString(@"Restart Finder",@"Restart Finder"),BRLocalizedString(@"FrapMover",@"FrapMover"),BRLocalizedString(@"Console",@"Console"),BRLocalizedString(@"Tweaks",@"Tweaks"),BRLocalizedString(@"Photos",@"Photos"),nil];
 //}
-+(NSArray *)menuItemNames
-{
-    return [NSArray arrayWithObjects:@"3rd Party",@"Built-in",@"Scripts",@"Restart Finder",@"Frap Mover",@"Console",@"Tweaks",@"Photos",@"Upgrader",nil];
-}
-+ (NSArray *)menuItemOptions
-{
-	return [NSArray arrayWithObjects:@"SMdownloadable",@"SMbuiltin",@"SMscripts",@"SMreboot",@"SMmover",@"SMconsole",@"SMtweaks",@"SMphotos",@"SMUpgrader",nil];
-}
+
 + (NSArray *)arrayForKey:(NSString *)theKey
 {
 	NSArray  *myArray = [(NSArray *)CFPreferencesCopyAppValue((CFStringRef)theKey, myDomain) autorelease];

@@ -40,6 +40,7 @@
 +(NSString *)scriptsPlistPath;
 +(BOOL)showScriptsOnMainMenu;
 +(void)setShowScriptsOnMainMenu:(BOOL)show;
++(void)setMainMenuScriptsPosition:(int)position;
 +(int)mainMenuScriptsPosition;
 
 
@@ -84,5 +85,7 @@
 +(BOOL)mainMenuEdgeFade;
 +(void)setMainMenuLoadPlugins:(BOOL)state;
 +(BOOL)mainMenuLoadPlugins;
++(BOOL)mainMenuKeepGradient;
++(void)setMainMenuKeepGradient:(BOOL)keep;
 
 @end

@@ -48,8 +48,7 @@ typedef enum _SMMountTypes{
 + (void)terminateFinder;
 + (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSArray *)getPrefKeys;
-+ (NSArray *)menuItemOptions;
-+ (NSArray *)menuItemNames;
+
 + (NSArray *)builtinfrapsWithSettings:(BOOL)settings;
 + (int)convertDMG:(NSString *)initLocation toFormat:(NSString *)dmgFormat withOutputLocation:(NSString *)outputLocation;
 + (int)runHelperApp:(NSArray *)options;

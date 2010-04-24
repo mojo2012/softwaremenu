@@ -1531,6 +1531,8 @@
 		DD8E48681143447D00B6C2F8 /* SMUpdaterDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E48661143447D00B6C2F8 /* SMUpdaterDownload.m */; };
 		DD8E487B114344E300B6C2F8 /* SMUpdaterMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8E4879114344E300B6C2F8 /* SMUpdaterMenu.h */; };
 		DD8E487C114344E300B6C2F8 /* SMUpdaterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E487A114344E300B6C2F8 /* SMUpdaterMenu.m */; };
+		DD9FF9691182E3FA0087ACD8 /* BackRowExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD9FF9671182E3FA0087ACD8 /* BackRowExtensions.h */; };
+		DD9FF96A1182E3FA0087ACD8 /* BackRowExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9FF9681182E3FA0087ACD8 /* BackRowExtensions.m */; };
 		DDBD31D9117A189100186809 /* SapphireTVDirectory.h in Headers */ = {isa = PBXBuildFile; fileRef = DDBD31D8117A189100186809 /* SapphireTVDirectory.h */; };
 		DDBD31DB117A18A900186809 /* SapphireEntityDirectory.h in Headers */ = {isa = PBXBuildFile; fileRef = DDBD31DA117A18A900186809 /* SapphireEntityDirectory.h */; };
 		DDC31B9B116CE8F600FA71BE /* SMConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC31B99116CE8F600FA71BE /* SMConnection.h */; };
@@ -3321,6 +3323,8 @@
 		DD8E48661143447D00B6C2F8 /* SMUpdaterDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterDownload.m; sourceTree = "<group>"; };
 		DD8E4879114344E300B6C2F8 /* SMUpdaterMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterMenu.h; sourceTree = "<group>"; };
 		DD8E487A114344E300B6C2F8 /* SMUpdaterMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterMenu.m; sourceTree = "<group>"; };
+		DD9FF9671182E3FA0087ACD8 /* BackRowExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRowExtensions.h; sourceTree = "<group>"; };
+		DD9FF9681182E3FA0087ACD8 /* BackRowExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackRowExtensions.m; sourceTree = "<group>"; };
 		DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftwareMenuFramework.xcodeproj; path = ../SoftwareMenuFramework/SoftwareMenuFramework.xcodeproj; sourceTree = "<group>"; };
 		DDBD31D8117A189100186809 /* SapphireTVDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireTVDirectory.h; sourceTree = "<group>"; };
 		DDBD31DA117A18A900186809 /* SapphireEntityDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireEntityDirectory.h; sourceTree = "<group>"; };
@@ -5143,6 +5147,8 @@
 			children = (
 				DDEF340310A657F500ECD73A /* Extensions.h */,
 				DDEF340410A657F500ECD73A /* Extensions.m */,
+				DD9FF9671182E3FA0087ACD8 /* BackRowExtensions.h */,
+				DD9FF9681182E3FA0087ACD8 /* BackRowExtensions.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -7030,6 +7036,7 @@
 				DD67A3B0117F7406000B3C94 /* SMSettingsToggles.h in Headers */,
 				DD0DBB55117F7FB300C1B052 /* SMImageReturns.h in Headers */,
 				DDC6A95911815E1F0048A8C9 /* SMScriptOptions.h in Headers */,
+				DD9FF9691182E3FA0087ACD8 /* BackRowExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7551,6 +7558,7 @@
 				DD67A3B1117F7406000B3C94 /* SMSettingsToggles.m in Sources */,
 				DD0DBB56117F7FB300C1B052 /* SMImageReturns.m in Sources */,
 				DDC6A95A11815E1F0048A8C9 /* SMScriptOptions.m in Sources */,
+				DD9FF96A1182E3FA0087ACD8 /* BackRowExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,6 +34,7 @@
 #define MM_BLOCK_PREVIEW        @"MainMenuPreview"
 #define MM_EDGE_FADE            @"MainMenuEdgeFade"
 #define MM_NOT_LOAD_PLUGINS     @"MainMenuNotLoadPlugin"
+#define MM_KEEP_GRADIENT        @"MainMenuKeepGradient"
 
 //#define SCREEN_SAVER_SLIDESHOW  @"Screensaver_Slideshow"
 #define SCREEN_SAVER_SPIN_FREQ  @"Screensaver_Spin"

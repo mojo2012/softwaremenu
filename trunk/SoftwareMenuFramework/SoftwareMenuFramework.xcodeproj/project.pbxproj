@@ -30,6 +30,8 @@
 		DD8FA707113EF42F00B1189B /* SMFSharedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8FA705113EF42F00B1189B /* SMFSharedFunctions.m */; };
 		DD8FA7DE113F026600B1189B /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8FA7D8113F024800B1189B /* Helper.m */; };
 		DD8FA7DF113F026600B1189B /* helperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8FA7DA113F024800B1189B /* helperClass.m */; };
+		DD9FF9BE1182EE640087ACD8 /* BackRowExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD9FF9BC1182EE640087ACD8 /* BackRowExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD9FF9BF1182EE640087ACD8 /* BackRowExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9FF9BD1182EE640087ACD8 /* BackRowExtensions.m */; };
 		DDAC05DC113DDA810033C676 /* SMFMediaMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDAC05DA113DDA810033C676 /* SMFMediaMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDAC05DD113DDA810033C676 /* SMFMediaMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC05DB113DDA810033C676 /* SMFMediaMenuController.m */; };
 		DDB338B81134361B00B056B5 /* SMFPluginAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB338B61134361B00B056B5 /* SMFPluginAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,6 +127,8 @@
 		DD8FA7D8113F024800B1189B /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		DD8FA7D9113F024800B1189B /* helperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helperClass.h; sourceTree = "<group>"; };
 		DD8FA7DA113F024800B1189B /* helperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = helperClass.m; sourceTree = "<group>"; };
+		DD9FF9BC1182EE640087ACD8 /* BackRowExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRowExtensions.h; sourceTree = "<group>"; };
+		DD9FF9BD1182EE640087ACD8 /* BackRowExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackRowExtensions.m; sourceTree = "<group>"; };
 		DDAC05DA113DDA810033C676 /* SMFMediaMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFMediaMenuController.h; sourceTree = "<group>"; };
 		DDAC05DB113DDA810033C676 /* SMFMediaMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFMediaMenuController.m; sourceTree = "<group>"; };
 		DDB338B61134361B00B056B5 /* SMFPluginAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFPluginAsset.h; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				DDD032A61139962F0071788A /* SMFInvocationCenteredMenuController.m */,
 				DD24EE57113FFD4400541042 /* SMFSimpleDirectoryChooserController.h */,
 				DD24EE58113FFD4400541042 /* SMFSimpleDirectoryChooserController.m */,
+				DD9FF9BC1182EE640087ACD8 /* BackRowExtensions.h */,
+				DD9FF9BD1182EE640087ACD8 /* BackRowExtensions.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 				DDAC05DC113DDA810033C676 /* SMFMediaMenuController.h in Headers */,
 				DD8FA706113EF42F00B1189B /* SMFSharedFunctions.h in Headers */,
 				DD24EE68114004E800541042 /* SMFSimpleDirectoryChooserController.h in Headers */,
+				DD9FF9BE1182EE640087ACD8 /* BackRowExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +544,7 @@
 				DDAC05DD113DDA810033C676 /* SMFMediaMenuController.m in Sources */,
 				DD8FA707113EF42F00B1189B /* SMFSharedFunctions.m in Sources */,
 				DD24EE67114004E500541042 /* SMFSimpleDirectoryChooserController.m in Sources */,
+				DD9FF9BF1182EE640087ACD8 /* BackRowExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
