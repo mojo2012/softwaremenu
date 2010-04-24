@@ -28,6 +28,7 @@
 #import <Cocoa/Cocoa.h>
 @class SimpleCocoaConnection;
 
+
 //return values of startListening message
 enum SCSInit {
     SCSInitOK = 1,
