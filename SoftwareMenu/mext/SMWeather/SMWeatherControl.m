@@ -7,8 +7,11 @@
 //
 
 #import "SMWeatherControl.h"
+#import "SMYahooWeather.h"
+#import "SMWeatherController.h"
 #define bundleImag(name,ext)    [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]]pathForResource:(name) ofType:(ext)]]
 #define bundleResc(name,ext)    [[NSBundle bundleForClass:[self class]]pathForResource:(name) ofType:(ext)]
+#define OPACITY     0.6
 @implementation SMWeatherControl
 -(id)init
 {
@@ -47,7 +50,7 @@
     nframe.origin.x=masterFrame.origin.x+masterFrame.size.width*0.05f;
     nframe.origin.y=masterFrame.origin.y+masterFrame.size.height-nframe.size.height*1.3;
     [_city setFrame:nframe];
-    [_city setOpacity:0.3];
+    [_city setOpacity:OPACITY];
     [self addControl:_city];
     CGPoint topLeft=nframe.origin;
     topLeft.y=topLeft.y+nframe.size.height;
@@ -68,7 +71,7 @@
     nframe.origin.y=nframe.origin.y-[_region_country preferredFrameSize].height*1.1;
     nframe.size=[_region_country preferredFrameSize];
     [_region_country setFrame:nframe];
-    [_region_country setOpacity:0.3];
+    [_region_country setOpacity:OPACITY];
     [self addControl:_region_country];
     
     
@@ -76,7 +79,7 @@
     BRDividerControl *ctrl3 = [[BRDividerControl alloc] init];
     [ctrl3 setLineThickness:2];
     [ctrl3 setBrightness:1.0f];
-    [ctrl3 setOpacity:0.3];
+    [ctrl3 setOpacity:OPACITY];
     nframe.origin.y = nframe.origin.y-[ctrl3 recommendedHeight];//+[ctrl3 recommendedHeight];//[ctrl2 recommendedHeight]*2.f-nframe.size.height*0.1f-masterFrame.size.height*0.25f;
     nframe.origin.x = masterFrame.origin.x+masterFrame.size.width*0.05;
     nframe.size.width=masterFrame.size.width*0.9f;
@@ -96,7 +99,7 @@
     imgFrame.origin.x=([BRWindow maxBounds].width-imgFrame.size.width)/2.;
     imgFrame.origin.y=pt_two.y;
     [_centerImage setFrame:imgFrame];
-    [_centerImage setOpacity:0.3];
+    [_centerImage setOpacity:OPACITY];
     [self addControl:_centerImage];
     CGRect tframe=imgFrame;
     
@@ -114,7 +117,7 @@
 //    NSLog(@"temp pref frame: %lf %lf",[_temperature preferredFrameSize].width,[_temperature preferredFrameSize].height)
     tframe.origin.y=tframe.origin.y+(tframe.size.height-[_temperature preferredFrameSize].height)/2.f;
     tframe.size=[_temperature preferredFrameSize];
-    [_temperature setOpacity:0.3];
+    [_temperature setOpacity:OPACITY];
     [_temperature setFrame:tframe];
     [self addControl:_temperature];
     
@@ -130,7 +133,7 @@
     tframe.origin.x=tframe.origin.x+tframe.size.width*1.3;
     tframe.origin.y=tframe.origin.y+(tframe.size.height-[_date preferredFrameSize].height)/2.f;
     tframe.size=[_date preferredFrameSize];
-    [_date setOpacity:0.3];
+    [_date setOpacity:OPACITY];
     [_date setFrame:tframe];
     [self addControl:_date];
 
@@ -139,7 +142,7 @@
     [sunriseText setText:@"Sunrise:" withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     nframe.origin.y=nframe.origin.y-[sunriseText preferredFrameSize].height*1.f;
     nframe.size=[sunriseText preferredFrameSize];
-    [sunriseText setOpacity:0.3];
+    [sunriseText setOpacity:OPACITY];
     [sunriseText setFrame:nframe];
     [self addControl:sunriseText];
     CGPoint pt_three=nframe.origin;
@@ -150,7 +153,7 @@
     [_sunrise setText:@"???                    " withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     nframe.origin.x=nframe.origin.x+nframe.size.width*1.2f;
     nframe.size=[_sunrise preferredFrameSize];
-    [_sunrise setOpacity:0.3];
+    [_sunrise setOpacity:OPACITY];
     [_sunrise setFrame:nframe];
     [self addControl:_sunrise];
     
@@ -159,7 +162,7 @@
     nframe.origin=pt_three;
     nframe.origin.y=nframe.origin.y-[sunriseText preferredFrameSize].height*1.f;
     nframe.size=[sunriseText preferredFrameSize];
-    [sunriseText setOpacity:0.3];
+    [sunriseText setOpacity:OPACITY];
     [sunriseText setFrame:nframe];
     [self addControl:sunriseText];
     
@@ -170,7 +173,7 @@
     nframe.origin=[_sunrise frame].origin;
     nframe.origin.y=nframe.origin.y-[_sunset preferredFrameSize].height*1.1f;
     nframe.size=[_sunset preferredFrameSize];
-    [_sunset setOpacity:0.3];
+    [_sunset setOpacity:OPACITY];
     [_sunset setFrame:nframe];
     [self addControl:_sunset];
     
@@ -180,7 +183,7 @@
     BRTextControl *windControl = [[BRTextControl alloc]init];
     windControl = [[BRTextControl alloc]init];
     [windControl setText:@"Wind Direction:" withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
-    [windControl setOpacity:0.3f];
+    [windControl setOpacity:OPACITY];
     nframe.size=[windControl preferredFrameSize];
     [windControl setFrame:nframe];
     [self addControl:windControl];
@@ -195,14 +198,14 @@
     wframe.origin.x=wframe.origin.x+width;
     wframe.size=[_windDirection preferredFrameSize];
     [_windDirection setFrame:wframe];
-    [_windDirection setOpacity:0.3];
+    [_windDirection setOpacity:OPACITY];
     [self addControl:_windDirection];
     
     
     nframe.origin.y=nframe.origin.y-[windControl preferredFrameSize].height*1.f;
     windControl = [[BRTextControl alloc]init];
     [windControl setText:@"Wind Speed:" withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
-    [windControl setOpacity:0.3f];
+    [windControl setOpacity:OPACITY];
     nframe.size=[windControl preferredFrameSize];
     [windControl setFrame:nframe];
     [self addControl:windControl];
@@ -215,14 +218,14 @@
          withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     wframe.size=[_windSpeed preferredFrameSize];
     [_windSpeed setFrame:wframe];
-    [_windSpeed setOpacity:0.3];
+    [_windSpeed setOpacity:OPACITY];
     [self addControl:_windSpeed];
     
     
     nframe.origin.y=nframe.origin.y-[windControl preferredFrameSize].height*1.f;
     windControl = [[BRTextControl alloc]init];
     [windControl setText:@"Wind Chill:" withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
-    [windControl setOpacity:0.3f];
+    [windControl setOpacity:OPACITY];
     nframe.size=[windControl preferredFrameSize];
     [windControl setFrame:nframe];
     [self addControl:windControl];
@@ -235,7 +238,7 @@
          withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     wframe.size=[_windChill preferredFrameSize];
     [_windChill setFrame:wframe];
-    [_windChill setOpacity:0.3];
+    [_windChill setOpacity:OPACITY];
     [self addControl:_windChill];
     float lowestHeight = wframe.origin.y;
     
@@ -245,7 +248,7 @@
     BRTextControl *humidityControl = [[BRTextControl alloc]init];
     humidityControl = [[BRTextControl alloc]init];
     [humidityControl setText:@"Humidity:" withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
-    [humidityControl setOpacity:0.3f];
+    [humidityControl setOpacity:OPACITY];
     nframe.size=[humidityControl preferredFrameSize];
     [humidityControl setFrame:nframe];
     [self addControl:humidityControl];
@@ -261,13 +264,13 @@
     wframe.origin.x=wframe.origin.x+width;
     wframe.size=[_humidity preferredFrameSize];
     [_humidity setFrame:wframe];
-    [_humidity setOpacity:0.3];
+    [_humidity setOpacity:OPACITY];
     [self addControl:_humidity];    
     
     nframe.origin.y=nframe.origin.y-[windControl preferredFrameSize].height*1.f;
     windControl = [[BRTextControl alloc]init];
     [windControl setText:@"Pressure:" withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
-    [windControl setOpacity:0.3f];
+    [windControl setOpacity:OPACITY];
     nframe.size=[windControl preferredFrameSize];
     [windControl setFrame:nframe];
     [self addControl:windControl];
@@ -280,13 +283,13 @@
          withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     wframe.size=[_pressure preferredFrameSize];
     [_pressure setFrame:wframe];
-    [_pressure setOpacity:0.3];
+    [_pressure setOpacity:OPACITY];
     [self addControl:_pressure];
     
     ctrl3 = [[BRDividerControl alloc] init];
     [ctrl3 setLineThickness:2];
     [ctrl3 setBrightness:1.0f];
-    [ctrl3 setOpacity:0.3];
+    [ctrl3 setOpacity:OPACITY];
     [ctrl3 setLabel:@"Forecast"];
     nframe.origin.y = lowestHeight-[ctrl3 recommendedHeight];//+[ctrl3 recommendedHeight];//[ctrl2 recommendedHeight]*2.f-nframe.size.height*0.1f-masterFrame.size.height*0.25f;
     nframe.origin.x = masterFrame.origin.x+masterFrame.size.width*0.05;
@@ -304,7 +307,7 @@
              withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     nframe.origin.y=nframe.origin.y-[_forecastDate1 preferredFrameSize].height*1.f;
     nframe.size=[_forecastDate1 preferredFrameSize];
-    [_forecastDate1 setOpacity:0.3];
+    [_forecastDate1 setOpacity:OPACITY];
     [_forecastDate1 setFrame:nframe];
     [self addControl:_forecastDate1];
     CGPoint pt_five=nframe.origin;
@@ -315,7 +318,7 @@
     highFrame.origin=nframe.origin;
     highFrame.size=[high preferredFrameSize];
     highFrame.origin.x+=masterFrame.size.width*0.16;
-    [high setOpacity:0.3];
+    [high setOpacity:OPACITY];
     [high setFrame:highFrame];
     [self addControl:high];
     [high release];
@@ -327,7 +330,7 @@
              withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     tframe.size=[_forecastHigh1 preferredFrameSize];
     [_forecastHigh1 setFrame:tframe];
-    [_forecastHigh1 setOpacity:0.3];
+    [_forecastHigh1 setOpacity:OPACITY];
     [self addControl:_forecastHigh1];
     
 
@@ -341,7 +344,7 @@
     lowFrame.size=[low preferredFrameSize];
     lowFrame.origin.x+=masterFrame.size.width*0.16;
     lowFrame.origin.y-=[low preferredFrameSize].height;
-    [low setOpacity:0.3];
+    [low setOpacity:OPACITY];
     [low setFrame:lowFrame];
     [self addControl:low];
     [low release];
@@ -354,7 +357,7 @@
     imgFrame.origin.x=lowFrame.origin.x+masterFrame.size.width*0.1;
     imgFrame.origin.y=masterFrame.size.height*0.54;//lowFrame.origin.y-lowFrame.size.height;
     [_weatherImage1 setFrame:imgFrame];
-    [_weatherImage1 setOpacity:0.3];
+    [_weatherImage1 setOpacity:OPACITY];
     [self addControl:_weatherImage1];
     //NSLog(@"weather image1: %lf, %lf, %lf, %lf",imgFrame.size.height,imgFrame.size.width,imgFrame.origin.x,imgFrame.origin.y);
 
@@ -366,13 +369,13 @@
              withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     tframe.size=[_forecastLow1 preferredFrameSize];
     [_forecastLow1 setFrame:tframe];
-    [_forecastLow1 setOpacity:0.3];
+    [_forecastLow1 setOpacity:OPACITY];
     [self addControl:_forecastLow1];
     
     ctrl3 = [[BRDividerControl alloc]init];
     [ctrl3 setLineThickness:1];
     [ctrl3 setBrightness:1.0f];
-    [ctrl3 setOpacity:0.3f];
+    [ctrl3 setOpacity:OPACITY];
     CGRect dframe=nframe;
     dframe.origin.x=masterFrame.size.height*0.2;
     dframe.origin.y=masterFrame.size.width*0.24;
@@ -389,7 +392,7 @@
     nframe.origin.x=pt_five.x+masterFrame.size.width*0.45;
     nframe.origin.y=pt_five.y;
     nframe.size=[_forecastDate2 preferredFrameSize];
-    [_forecastDate2 setOpacity:0.3];
+    [_forecastDate2 setOpacity:OPACITY];
     [_forecastDate2 setFrame:nframe];
     [self addControl:_forecastDate2];
     
@@ -404,7 +407,7 @@
     highFrame.origin=nframe.origin;
     highFrame.size=[high preferredFrameSize];
     highFrame.origin.x+=masterFrame.size.width*0.16;
-    [high setOpacity:0.3];
+    [high setOpacity:OPACITY];
     [high setFrame:highFrame];
     [self addControl:high];
     [high release];
@@ -416,7 +419,7 @@
              withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     tframe.size=[_forecastHigh2 preferredFrameSize];
     [_forecastHigh2 setFrame:tframe];
-    [_forecastHigh2 setOpacity:0.3];
+    [_forecastHigh2 setOpacity:OPACITY];
     [self addControl:_forecastHigh2];
     
     
@@ -427,7 +430,7 @@
     lowFrame.size=[low preferredFrameSize];
     lowFrame.origin.x+=masterFrame.size.width*0.16;
     lowFrame.origin.y-=[low preferredFrameSize].height;
-    [low setOpacity:0.3];
+    [low setOpacity:OPACITY];
     [low setFrame:lowFrame];
     [self addControl:low];
     [low release];
@@ -441,7 +444,7 @@
     imgFrame.origin.x=lowFrame.origin.x+masterFrame.size.width*0.1;
     imgFrame.origin.y=masterFrame.size.height*0.54;
     [_weatherImage2 setFrame:imgFrame];
-    [_weatherImage2 setOpacity:0.3];
+    [_weatherImage2 setOpacity:OPACITY];
     [self addControl:_weatherImage2];
     
 //    tframe= highFrame;
@@ -451,7 +454,7 @@
             withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     tframe.size=[_forecastLow2 preferredFrameSize];
     [_forecastLow2 setFrame:tframe];
-    [_forecastLow2 setOpacity:0.3];
+    [_forecastLow2 setOpacity:OPACITY];
     [self addControl:_forecastLow2];
     
 
@@ -511,7 +514,7 @@
            withAttributes:[[BRThemeInfo sharedTheme] menuTitleTextAttributes]];
 //    oldFrame.origin.x=imgFrame.origin.x-[_temperature preferredFrameSize].width*1.3;
 //    oldFrame.size=[_temperature preferredFrameSize];
-    [_temperature setOpacity:0.3];
+    [_temperature setOpacity:OPACITY];
     [_temperature setFrame:oldFrame];
     [self addControl:_temperature];
     
@@ -523,8 +526,10 @@
     //[_date release];
     
     //_date=[[BRTextControl alloc]init];
+//    NSArray *timeZoneNames = [NSTimeZone knownTimeZoneNames];
+//    NSLog(@"timezones: %@",timeZoneNames);
     NSDate *rdate = [self parseDate:[_infoDict objectForKey:@"date"]];
-    [_date setText:[rdate descriptionWithCalendarFormat:@"%I:%m %p, %d-%m-%Y" timeZone:[NSTimeZone timeZoneWithName:@"Europe/Paris"] locale:nil]
+    [_date setText:[rdate descriptionWithCalendarFormat:@"%I:%M %p, %d-%m-%Y" timeZone:_timezone locale:nil]
     withAttributes:[[BRThemeInfo sharedTheme] menuTitleTextAttributes]];
     //oldFrame.size=[_date preferredFrameSize];
     [_date setFrame:oldFrame];
@@ -662,7 +667,7 @@
 //    imgFrame.origin.x=lowFrame.origin.x+masterFrame.size.width*0.1;
 //    imgFrame.origin.y=masterFrame.size.height*0.54;//lowFrame.origin.y-lowFrame.size.height;
 //    [_weatherImage1 setFrame:imgFrame];
-//    [_weatherImage1 setOpacity:0.3];
+//    [_weatherImage1 setOpacity:OPACITY];
     [self addControl:_weatherImage1];
     
     [_weatherImage2 removeFromParent];
@@ -673,7 +678,7 @@
 //    imgFrame.origin.x=lowFrame.origin.x+masterFrame.size.width*0.1;
 //    imgFrame.origin.y=masterFrame.size.height*0.54;
 //    [_weatherImage2 setFrame:imgFrame];
-//    [_weatherImage2 setOpacity:0.3];
+//    [_weatherImage2 setOpacity:OPACITY];
     [self addControl:_weatherImage2];
     
     
@@ -682,9 +687,40 @@
     
     
 }
-
+-(void)setTimeZones:(NSString *)tz
+{
+    if (_timezone!=nil) {
+        [_timezone release];
+        _timezone=nil;
+    }
+    if (tz==nil) {
+        return;
+    }
+    //NSLog(@"tz in control: %@",[NSTimeZone timeZoneWithName:tz]);
+    NSLog(@"time zone: %@",tz);
+    _timezone=[NSTimeZone timeZoneWithName:tz];
+    [_timezone retain];
+}
+-(NSTimeZone *)timeZone
+{
+    return _timezone;
+}
+-(void)reload
+{
+    //NSLog(@"reloading");
+    NSDictionary *dict=[SMWeatherMext loadDictionaryForCode:[SMWeatherController yWeatherCode]];
+    //NSLog(@"dict in reload: %@",dict);
+    [self setTimeZones:[SMWeatherController tzForCode:[SMWeatherController yWeatherCode]]];
+    //NSLog(@"after setting tz");
+    if (dict==nil) 
+        dict=[NSDictionary dictionary];
+    
+    [self setInfoDictionary:dict];
+    
+}
 -(void)setInfoDictionary:(NSDictionary *)infoDict
 {
+    
     [_infoDict release];
     _infoDict=[infoDict retain];
     [self checkInfoDict];
@@ -718,7 +754,7 @@
         int sunrise=[self convertTimeToInt:[_infoDict objectForKey:@"sunrise"]];
         int sunset=[self convertTimeToInt:[_infoDict objectForKey:@"sunset"]];
         //NSLog(@"known time zones: %@",[NSTimeZone knownTimeZoneNames]);
-        int current=[[[NSDate date] descriptionWithCalendarFormat:@"%H%M" timeZone:[NSTimeZone timeZoneWithName:@"Europe/Paris"] locale:nil]intValue];
+        int current=[[[NSDate date] descriptionWithCalendarFormat:@"%H%M" timeZone:_timezone locale:nil]intValue];
         NSLog(@"date: %@ ,sunrise %i, current %i, sunset %i",[NSDate date], sunrise,current,sunset);
         if (current>=sunrise && current<sunset) {
             code=[code stringByAppendingString:@"d"];
@@ -743,14 +779,18 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"hh:mm a"]; 
     NSDate *rdate=[formatter dateFromString:time];
-    return [[rdate descriptionWithCalendarFormat:@"%H%m" timeZone:nil locale:nil]intValue];
+    //NSLog(@"date: %@, %@, %@",time, rdate, [rdate descriptionWithCalendarFormat:@"%H%M" timeZone:_timezone locale:nil]);
+    return [[rdate descriptionWithCalendarFormat:@"%H%M" timeZone:nil locale:nil]intValue];
 }
 -(NSDate*)parseDate:(NSString *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"EEE, dd MMM yyyy hh:mm a zzz"];
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    [fmt setDateStyle:NSDateFormatterFullStyle];
+    [fmt setTimeStyle:NSDateFormatterFullStyle];
+    //NSDate *rdate2= [fmt dateFromString:date];
     NSDate *rdate = [formatter dateFromString:date];
-//    NSLog(@"rdate: %@",rdate);
     return rdate;
 }
 -(void)checkInfoDict
@@ -765,18 +805,18 @@
     {
         if(![keys containsObject:[expectedKeys objectAtIndex:i]])
         {
-            [dict setObject:@"???                          ." forKey:[expectedKeys objectAtIndex:i]];
+            [dict setObject:@"N/A                          ." forKey:[expectedKeys objectAtIndex:i]];
         }
     }
     if(![keys containsObject:@"forecast"])
     {
         NSDictionary *forecast = [NSDictionary dictionaryWithObjectsAndKeys:
                                   @"3201",@"code",
-                                  @"???                      .",@"date",
-                                  @"????",@"day",
-                                  @"???     .",@"high",
-                                  @"???     .",@"low",
-                                  @"???             .",@"text",nil];
+                                  @"N/A                      .",@"date",
+                                  @"N/A.",@"day",
+                                  @"N/A     .",@"high",
+                                  @"N/A     .",@"low",
+                                  @"N/A             .",@"text",nil];
         [dict setObject:[NSArray arrayWithObjects:forecast,forecast,nil] forKey:@"forecast"];
     }
     [_infoDict release];

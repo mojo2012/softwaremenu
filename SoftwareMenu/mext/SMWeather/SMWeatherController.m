@@ -7,13 +7,11 @@
 //
 
 #import "SMWeatherController.h"
-#define smweatherDomain  (CFStringRef)@"org.tomcool.SoftwareMenu.SMWeather"  
+#define smweatherDomain  (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.SMWeather" 
 #define BRLocalizedString(key, comment)								[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:nil]
 #define BRLocalizedStringFromTable(key, tbl, comment)				[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:(tbl)]
 #define BRLocalizedStringFromTableInBundle(key, tbl, obj, comment)	[BRLocalizedStringManager appliance:(obj) localizedStringForKey:(key) inFile:(tbl)]
-@interface SMFPasscodeController
-+ (SMFPasscodeController *)passcodeWithTitle:(NSString *)title withDescription:(NSString *)description withBoxes:(int)boxes withDelegate:(id)delegate;
-@end
+
 
 @implementation SMWeatherController
 - (float)heightForRow:(long)row				{ return 0.0f;}
@@ -51,6 +49,20 @@
     }
     return (NSArray *)myArray;
 }
++ (void)setDictionary:(NSDictionary *)inputDict forKey:(NSString *)theKey
+{
+	CFPreferencesSetAppValue((CFStringRef)theKey, (CFDictionaryRef)inputDict, smweatherDomain);
+	CFPreferencesAppSynchronize(smweatherDomain);
+	//CFRelease(inputDict);
+}
++ (NSDictionary *)dictionaryForKey:(NSString *)theKey
+{
+    NSDictionary  *myDictionary = [(NSDictionary *)CFPreferencesCopyAppValue((CFStringRef)theKey, smweatherDomain) autorelease];
+    if (myDictionary==nil) {
+        return [NSDictionary dictionary];
+    }
+    return (NSDictionary *)myDictionary;
+}
 +(NSString *)stringForKey:(NSString *)theKey
 {
     CFPreferencesAppSynchronize(smweatherDomain);
@@ -67,6 +79,59 @@
 {
 	CFPreferencesSetAppValue((CFStringRef)theKey, (CFNumberRef)[NSNumber numberWithBool:inputBool], smweatherDomain);
 	CFPreferencesAppSynchronize(smweatherDomain);
+}
++(NSDictionary *)Locations
+{
+    return [SMWeatherController dictionaryForKey:@"Locations"];
+}
++(void)setLocations:(NSDictionary *)locations
+{
+    [SMWeatherController setDictionary:locations forKey:@"Locations"];
+}
++(int)yWeatherCode
+{
+    int location=[SMWeatherController integerForKey:@"Location"];
+    if (location==nil) {
+        location=615702;
+    }
+    return location;
+}
++(NSString *)tzForCode:(int)code
+{
+    NSDictionary *locs = [[SMWeatherController Locations] objectForKey:[NSString stringWithFormat:@"%i",code,nil]];
+    if ([[locs allKeys] containsObject:@"timeZone"]) {
+        return [locs objectForKey:@"timeZone"]; 
+    }
+    return nil;
+    
+}
++(void)setYWeatherCode:(int)code
+{
+    [SMWeatherController setInteger:code forKey:@"Location"];
+}
++(void)setDefaultYWeatherCode
+{
+    [SMWeatherController setInteger:615702 forKey:@"Location"];
+}
++(int)refreshMinutes
+{
+    int time=[SMWeatherController integerForKey:@"Time"];
+    if (time==nil) {
+        time=60;
+    }
+    return time;
+}
++(void)setRefreshMinutes:(int)min
+{
+    [SMWeatherController setInteger:min forKey:@"Time"];
+}
++(BOOL)USUnits
+{
+    return [SMWeatherController boolForKey:@"USUnits"];
+}
++(void)setUSUnits:(BOOL)units
+{
+    [SMWeatherController setBool:units forKey:@"USUnits"];
 }
 - (id)init
 {
@@ -137,23 +202,17 @@
         BRTextMenuItemLayer *item = [_items objectAtIndex:row];
         switch (row) {
             case 0:
-                [item setRightJustifiedText:([SMWeatherController boolForKey:@"USUnits"]?@"Fahrenheit":@"Celsius")];
+                [item setRightJustifiedText:([SMWeatherController USUnits]?@"Fahrenheit":@"Celsius")];
                 break;
             case 1:
             {
-                int location=[SMWeatherController integerForKey:@"Location"];
-                if (location==nil) {
-                    location=615702;
-                }
+                int location=[SMWeatherController yWeatherCode];
                 [item setRightJustifiedText:[NSString stringWithFormat:@"%i", location]];
                 break;
             }
             case 2:
             {
-                int time=[SMWeatherController integerForKey:@"Time"];
-                if (time==nil) {
-                    time=60;
-                }
+                int time=[SMWeatherController refreshMinutes];
                 [item setRightJustifiedText:[NSString stringWithFormat:@"(%i minutes)",time,nil]];
                 break;
             }
@@ -209,10 +268,10 @@
 
     switch (_current) {
         case 1:
-            [SMWeatherController setInteger:[[sender stringValue]intValue] forKey:@"Location"];
+            [SMWeatherController setYWeatherCode:[[sender stringValue]intValue]];
             break;
         case 2:
-            [SMWeatherController setInteger:[[sender stringValue]intValue] forKey:@"Time"];
+            [SMWeatherController setRefreshMinutes:[[sender stringValue]intValue]];
             break;
         default:
             break;

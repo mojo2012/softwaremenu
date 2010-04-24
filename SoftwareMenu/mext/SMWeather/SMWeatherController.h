@@ -15,7 +15,16 @@
 	NSMutableArray *	_options;
     int                 _current;
 }
-
++(int)yWeatherCode;
++(void)setYWeatherCode:(int)code;
++(int)refreshMinutes;
++(void)setRefreshMinutes:(int)min;
++(BOOL)USUnits;
++(void)setUSUnits:(BOOL)units;
++(NSDictionary *)Locations;
++(void)setLocations:(NSDictionary *)locations;
++(void)setDefaultYWeatherCode;
++(NSString *)tzForCode:(int)code;
 -(float)heightForRow:(long)row;
 -(BOOL)rowSelectable:(long)row;
 -(long)itemCount;

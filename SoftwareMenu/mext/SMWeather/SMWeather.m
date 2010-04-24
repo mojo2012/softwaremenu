@@ -10,13 +10,68 @@
 #import <BackRow/BackRow.h>
 #import "SMYahooWeather.h"
 #import "SMWeatherControl.h"
+#import "SMWeatherController.h"
+#import "SMWeatherBaseController.h"
+#import "SMWeatherSelector.h"
 
 static SMWeatherControl *_control;
 
 @implementation SMWeatherMext
-
++(SMWeatherControl *)control
+{
+    if (_control==nil) {
+        _control=[[SMWeatherControl alloc]init];
+        [_control retain];
+        [_control retain];
+    }
+    
+        return _control;
+    
+}
++(void)reload
+{
+    NSLog(@"control: %@",_control);
+    if (_control==nil) {
+        return;
+    }
+    [_control retain];
+    [_control reload];
+    
+}
++(NSDictionary *)loadDictionaryForCode:(int)code
+{
+    BOOL us = [SMWeatherController USUnits];
+    NSURL *url;
+    if (us) {
+        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i",code,nil]];
+        
+    }
+    else
+        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i&u=c",code,nil]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSXMLDocument *doc;
+    if (error!=nil) {
+        NSLog(@"error: %@",error);
+        return [NSDictionary dictionary];
+    }
+    else {
+        NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
+        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:responseEncoding];
+        doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
+        
+    }
+    NSDictionary *dict = [SMYahooWeather parseYahooRSS:doc];
+    [doc release];
+    return dict;
+    
+}
 -(BRControl *)backgroundControl
 {
+
     if (_control==nil) {
         _control=[[SMWeatherControl alloc]init];
         [_control retain];
@@ -44,8 +99,16 @@ static SMWeatherControl *_control;
 }
 -(void)callU
 {
-    //[NSString stringWithContentsOfURL:<#(NSURL *)url#>]
-    NSURL *url=[NSURL URLWithString:@"http://weather.yahooapis.com/forecastrss?w=20169037&u=c"];
+    int code = [SMWeatherController yWeatherCode];
+    int time = [SMWeatherController refreshMinutes];
+    BOOL us = [SMWeatherController USUnits];
+    NSURL *url;
+    if (us) {
+        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i",code,nil]];
+    }
+    else
+        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i&u=c",code,nil]];
+             
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
 	NSURLResponse *response = nil;
     NSString *data=[NSString stringWithContentsOfFile:@"/Users/frontrow/data.xml"];
@@ -63,33 +126,12 @@ static SMWeatherControl *_control;
         doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
         
     }
-
-
-    
-//    NSError *error;
-//    NSString *data2=[NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://weather.yahooapis.com/forecastrss?w=2442047"]
-//                                         usedEncoding:NSUTF8StringEncoding 
-//                                                error:&error];
-//    NSLog(@"error: %@",error);
-//    //NSString *decodedString = [NSString stringWithUTF8String:[data2 cStringUsingEncoding:NSUnicodeStringEncoding]];
-//
-//    //    [data2 writeToFile:@"/Users/frontrow/hello.xml" atomically:YES];
-//    NSLog(@"data: %@",data2);
-//    NSXMLDocument* b=[NSXMLDocument alloc];
-//    
-//     [b initWithContentsOfURL:[NSURL URLWithString:@"http://weather.yahooapis.com/forecastrss?w=2442047"]
-//                                              options:NSXMLDocumentTidyXML 
-//                                                error:&error];
-//    [b setCharacterEncoding:@"UTF-8"];
-//    
-//    
-//    NSLog(@"b: %@",b);
     NSDictionary *dict = [SMYahooWeather parseYahooRSS:doc];
-    //NSLog(@"dict: %@",dict);
     [_control setInfoDictionary:[NSDictionary dictionary]];
     [doc release];
+    [_control setTimeZones:[SMWeatherController tzForCode:[SMWeatherController yWeatherCode]]];
     [_control setInfoDictionary:dict];
-    [NSTimer scheduledTimerWithTimeInterval:1800 target:self selector:@selector(callU) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:time*60 target:self selector:@selector(callU) userInfo:nil repeats:NO];
 }
 -(void)callU2
 {
@@ -103,7 +145,7 @@ static SMWeatherControl *_control;
 }
 -(BRController *)controller
 {
-    return nil;
+    return [[SMWeatherSelector alloc]init];
 }
 +(BOOL)hasPluginSpecificOptions
 {
@@ -118,7 +160,7 @@ static SMWeatherControl *_control;
 }
 -(BRController *)ioptions;
 {
-    id a =[[SMWeatherController alloc]init];
+    id a =[[SMWeatherBaseController alloc]init];
     return a;
 //    id a =[[SMWeatherSettings alloc] init];
 //    [[[BRApplicationStackManager singleton]stack]pushController:a];

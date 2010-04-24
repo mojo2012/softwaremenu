@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "SMWeather.h"
 
 @interface SMYahooWeather : NSObject {
 

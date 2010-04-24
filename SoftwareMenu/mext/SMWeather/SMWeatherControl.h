@@ -34,6 +34,7 @@
     BRTextControl   *_forecastLow1;
     BRTextControl   *_forecastLow2;
     BOOL             _firstLoad;
+    NSTimeZone      *_timezone;
 }
 -(void)setInfoDictionary:(NSDictionary *)infoDict;
 -(BRImage *)imageForCode:(NSString *)code;
@@ -43,5 +44,6 @@
 -(void)checkInfoDict;
 -(void)drawControls;
 -(void)drawControlsN;
-
+-(void)reload;
+-(void)setTimeZones:(NSString *)tz;
 @end
