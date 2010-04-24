@@ -69,9 +69,14 @@
 
     if (![SMPreferences mainMenuEdgeFade]) {
         DLog(@"Removing EdgeFade");
-        [[[[[self controls]objectAtIndex:1]controls]objectAtIndex:0]setEdgeFadePercentage:0.0f];
+            [[[_categoryList controls]objectAtIndex:0]setEdgeFadePercentage:0.0f];
+        //[_categoryList setSelectionLozengeStyle:3];
+
+
+        
     }
-    DLog(@"Controls: %@",[self controls]);
+     
+   // DLog(@"Controls: %@",[self controls]);
 
     
 }

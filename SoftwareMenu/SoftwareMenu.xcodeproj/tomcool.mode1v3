@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>DDB5325111830EDC00900EB4</string>
+						<string>DDB533B71183225200900EB4</string>
 						<key>history</key>
 						<array>
 							<string>DDB53227118306C700900EB4</string>
@@ -314,9 +314,9 @@
 								<string>089C166AFE841209C02AAC07</string>
 								<string>DDAC0587113DD7D60033C676</string>
 								<string>DD7F4F4510A0DDB800C5E31C</string>
-								<string>DD679762117F6FDC000B3C94</string>
 								<string>DDE0A86B114AC6C800CF9926</string>
 								<string>DDE0AD77114AD11B00CF9926</string>
+								<string>DDE0AD43114ACDC900CF9926</string>
 								<string>DD7F4F5310A0E33000C5E31C</string>
 								<string>DD7F4E8410A0BB2F00C5E31C</string>
 								<string>E2E41DF70ECD04D700D1697E</string>
@@ -339,14 +339,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>85</integer>
-									<integer>76</integer>
-									<integer>45</integer>
+									<integer>75</integer>
+									<integer>73</integer>
+									<integer>42</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 767}, {305, 769}}</string>
+							<string>{{0, 946}, {305, 769}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -376,12 +376,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SMMainMenuSelection.m</string>
+								<string>SMMainMenuControl.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -389,11 +391,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SMMainMenuSelection.m</string>
+										<string>SMMainMenuControl.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DDB5325011830EDC00900EB4</string>
+										<string>DDB533B61183225200900EB4</string>
 										<key>history</key>
 										<array>
 											<string>DDE8603B10A39FC7002D2FB8</string>
@@ -493,7 +495,6 @@
 											<string>DD33D9B211692323001547A0</string>
 											<string>DD33D9B611692323001547A0</string>
 											<string>DD33D9C611692323001547A0</string>
-											<string>DD33D9DE116924CE001547A0</string>
 											<string>DD33DB2D1169C756001547A0</string>
 											<string>DD33DB2E1169C756001547A0</string>
 											<string>DD33DB2F1169C756001547A0</string>
@@ -648,7 +649,6 @@
 											<string>DD9FF52B1182C3F10087ACD8</string>
 											<string>DD9FF9021182D7850087ACD8</string>
 											<string>DD9FF9041182D7850087ACD8</string>
-											<string>DD9FF90B1182D7850087ACD8</string>
 											<string>DD9FF91B1182D8190087ACD8</string>
 											<string>DD9FF91C1182D8190087ACD8</string>
 											<string>DD9FF9211182D8D80087ACD8</string>
@@ -663,8 +663,6 @@
 											<string>DD9FF9AC1182ECB20087ACD8</string>
 											<string>DD9FF9AD1182ECB20087ACD8</string>
 											<string>DD9FF9AF1182ECB20087ACD8</string>
-											<string>DD9FFA991182F3D10087ACD8</string>
-											<string>DD9FFA9A1182F3D10087ACD8</string>
 											<string>DD9FFA9B1182F3D10087ACD8</string>
 											<string>DD9FFA9D1182F3D10087ACD8</string>
 											<string>DD9FFAA01182F3D10087ACD8</string>
@@ -673,7 +671,6 @@
 											<string>DD9FFAA31182F3D10087ACD8</string>
 											<string>DDB52DEB1182F69000900EB4</string>
 											<string>DDB52DED1182F69000900EB4</string>
-											<string>DDB52E131182FB6B00900EB4</string>
 											<string>DDB52E1E118301E800900EB4</string>
 											<string>DDB5320E118305FD00900EB4</string>
 											<string>DDB53210118305FD00900EB4</string>
@@ -683,7 +680,6 @@
 											<string>DDB53218118305FD00900EB4</string>
 											<string>DDB5321A118305FD00900EB4</string>
 											<string>DDB5321B118305FD00900EB4</string>
-											<string>DDB5321C118305FD00900EB4</string>
 											<string>DDB5323211830B3500900EB4</string>
 											<string>DDB5323411830B3500900EB4</string>
 											<string>DDB5323511830B3500900EB4</string>
@@ -692,10 +688,20 @@
 											<string>DDB5323B11830B3500900EB4</string>
 											<string>DDB5323D11830B3500900EB4</string>
 											<string>DDB5323F11830B3500900EB4</string>
-											<string>DDB5324C11830EDC00900EB4</string>
-											<string>DDB5324D11830EDC00900EB4</string>
 											<string>DDB5324E11830EDC00900EB4</string>
-											<string>DDB5324F11830EDC00900EB4</string>
+											<string>DDB5326A1183138200900EB4</string>
+											<string>DDB5326C1183138200900EB4</string>
+											<string>DDB5326E1183138200900EB4</string>
+											<string>DDB532711183138200900EB4</string>
+											<string>DDB532721183138200900EB4</string>
+											<string>DDB5338F11831C9D00900EB4</string>
+											<string>DDB533AA1183216200900EB4</string>
+											<string>DDB533AB1183216200900EB4</string>
+											<string>DDB533AC1183216200900EB4</string>
+											<string>DDB533AE1183216200900EB4</string>
+											<string>DDB533AF1183216200900EB4</string>
+											<string>DDB533B01183216200900EB4</string>
+											<string>DDB533B11183216200900EB4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -893,6 +899,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>DD31AF0710A09683000F734A</string>
 		<string>DDB53225118306C700900EB4</string>
 		<string>/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SoftwareMenu.xcodeproj</string>
@@ -1097,13 +1104,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>DDBC1E45117E357E00C2CCA9</string>
+				<string>DDB532621183138100900EB4</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>DDBC1E46117E357E00C2CCA9</string>
-				<string>DDBC1E47117E357E00C2CCA9</string>
-				<string>DDBC1E48117E357E00C2CCA9</string>
-				<string>DDBC1E49117E357E00C2CCA9</string>
-				<string>DDBC1E4A117E357E00C2CCA9</string>
+				<string>DDB532631183138100900EB4</string>
+				<string>DDB532641183138100900EB4</string>
+				<string>DDB532651183138100900EB4</string>
+				<string>DDB532661183138100900EB4</string>
+				<string>DDB532671183138100900EB4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
