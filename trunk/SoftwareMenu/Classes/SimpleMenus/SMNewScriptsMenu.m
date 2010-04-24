@@ -36,6 +36,24 @@
     return [NSDictionary dictionary];
     
 }
++(NSArray *)scripts
+{
+    NSMutableArray *scripts=[[NSMutableArray alloc]init];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+	long i, count = [[fileManager directoryContentsAtPath:SCRIPTS_FOLDER] count];
+    BOOL python = [SMGeneralMethods pythonIsInstalled];
+	for ( i = 0; i < count; i++ )
+	{
+        
+		NSString *idStr = [[fileManager directoryContentsAtPath:SCRIPTS_FOLDER] objectAtIndex:i];
+		if([[idStr pathExtension] isEqualToString:@"sh"])
+            [scripts addObject:idStr];
+        if([[idStr pathExtension] isEqualToString:@"py"] && python)
+            [scripts addObject:idStr];
+    }
+    return scripts;
+    
+}
 +(NSDictionary *)defaultScriptOptions
 {
     return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -54,12 +72,12 @@
         [SMNewScriptsMenu runScript:path displayResult:NO];
     }
     NSDictionary *defaultD=[SMNewScriptsMenu defaultScriptOptions];
-    BOOL root=[defaultD objectForKey:ROOT_KEY];
+    BOOL root=[[defaultD objectForKey:ROOT_KEY] boolValue];
     if ([dict objectForKey:ROOT_KEY]!=nil) {
         root=[[dict objectForKey:ROOT_KEY] boolValue];
     }
     
-    BOOL display=[defaultD objectForKey:WAIT_KEY];
+    BOOL display=[[defaultD objectForKey:WAIT_KEY] boolValue];
     if ([dict objectForKey:WAIT_KEY]!=nil) {
         display=[[dict objectForKey:WAIT_KEY] boolValue];
     }

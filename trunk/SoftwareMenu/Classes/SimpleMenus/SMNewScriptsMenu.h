@@ -13,6 +13,7 @@
     NSMutableArray          *_scripts;
     NSMutableDictionary     *_scriptOptions;
 }
++(NSArray *)scripts;
 +(NSString *)scriptsPlistPath;
 +(NSString *)scriptsPath;
 +(NSDictionary *)scriptsOptions;

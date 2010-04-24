@@ -347,7 +347,7 @@
 
 - (NSString *) sourceText
 {
-    return ( [_sourceText text] );
+    return ( [[_sourceText attributedString]string] );
 }
 /*- (void)textDidChange:(id)fp8
 {

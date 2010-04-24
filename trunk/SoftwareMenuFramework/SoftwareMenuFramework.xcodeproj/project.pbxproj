@@ -583,8 +583,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
-					"\"$(SRCROOT)/../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
-					"\"$(SRCROOT)/../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SRCROOT)/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
 				);
 				FRAMEWORK_VERSION = A;

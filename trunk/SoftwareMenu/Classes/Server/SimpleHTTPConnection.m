@@ -77,7 +77,7 @@
     
     if ( [data length] == 0 ) {
         // NSFileHandle's way of telling us that the client closed the connection
-        [delegate closeConnection:self];
+        [delegate closeConnection:(SimpleCocoaConnection *) self];
     } else {
         [fileHandles readInBackgroundAndNotify];
         
@@ -100,7 +100,7 @@
             }
         } else {
             NSLog(@"Incomming message not a HTTP header, ignored.");
-            [delegate closeConnection:self];
+            [delegate closeConnection:(SimpleCocoaConnection *) self];
         }
     }
 }

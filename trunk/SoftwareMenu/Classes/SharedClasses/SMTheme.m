@@ -7,8 +7,6 @@
 //
 
 #import "SMTheme.h"
-
-@implementation SMThemeInfo
 static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef 
 											colorSpace, NSColor *color)
 {
@@ -20,6 +18,8 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 	
 	return CGColorCreate (colorSpace, components);
 }
+@implementation SMThemeInfo
+
 + (id)sharedTheme
 {
 	static SMThemeInfo *shared = nil;
@@ -306,7 +306,7 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
     id fontObject = [theInfo valueForKey:@"BRFontName"];
     [fontDict setValue:sizeObject forKey:@"BRFontPointSize"];
     [fontDict setValue:fontObject forKey:@"BRFontName"];
-    [fontDict setValue:CGColorCreateFromNSColor(CGColorSpaceCreateDeviceRGB(), [NSColor blackColor] ) forKey:@"NSColor"];
+    [fontDict setValue:(NSColor *)[self colorFromNSColor:[NSColor blackColor]] forKey:@"NSColor"];
     return [fontDict autorelease];
 }
 -(CGColorRef)colorFromNSColor:(NSColor *)color

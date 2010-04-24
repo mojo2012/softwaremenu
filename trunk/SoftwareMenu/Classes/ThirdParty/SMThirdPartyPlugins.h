@@ -17,11 +17,11 @@
 + (SMThirdPartyPlugins*)singleton;
 -(NSDictionary *)plugins;
 -(NSString *)loadPlugins;
--(void)setCheckImages:(BOOL)checkImages;
--(void)setUpdateImages:(BOOL)updateImages;
--(NSString *)logPath;
--(BOOL)updateImages;
--(BOOL)checkImages;
+//-(void)setCheckImages:(BOOL)checkImages;
+//-(void)setUpdateImages:(BOOL)updateImages;
+//-(NSString *)logPath;
+//-(BOOL)updateImages;
+//-(BOOL)checkImages;
 -(void)writeToLog:(NSString *)strLog;
 -(void)getImages:(NSDictionary *)TrustedDict;
 @end

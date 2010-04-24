@@ -26,8 +26,8 @@
 #import "Classes/MainMenuControl/SMMainMenuPU.h"
 #import "Classes/Server/SMConnection.h"
 #import "Classes/Server/SMHTTPServer.h"
-#import "Classes/DistributedObjects/SMDOSingleton.h"
-#import "Classes/DistributedObjects/SMDOServer.h"
+//#import "Classes/DistributedObjects/SMDOSingleton.h"
+//#import "Classes/DistributedObjects/SMDOServer.h"
 
 /*
  *  Importing for Third Party

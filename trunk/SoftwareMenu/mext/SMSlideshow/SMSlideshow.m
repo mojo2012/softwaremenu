@@ -24,23 +24,23 @@
 +(NSMutableArray *)loadImagePathsForPath:(NSString *)thepath;
 
 @end
-static BRImageControl *_control = nil;
 static int _imageNb =0;
 @implementation SMSlideshowMext
+//static BRImageControl *_control = nil;
 
 -(BRControl *)backgroundControl
 {
     if (_control == nil) {
         _control = [[BRImageControl alloc] init];
         [_control setAutoresizingMask:1];
-        [_control setAutomaticDownsample:TRUE];
+        [(BRImageControl *)_control setAutomaticDownsample:TRUE];
         [_control retain];
         [_control retain];
     }
     [self loadImagesPaths];
     if(_imageNb>[_imagePaths count])
         _imageNb=0;
-    [_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb]]];
+    [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb]]];
     CGRect a;
     a.size=[BRWindow maxBounds];
     [_control setFrame:a];
@@ -86,17 +86,17 @@ static int _imageNb =0;
 //    return _control;
 //}
 
--(void)callN
-{
-    [_control _nextSlide];
-    [_control _prefetchNextImage];
-    //[_control _initiatePlayback];
-}
+//-(void)callN
+//{
+//    [(BRImageControl *)_control _nextSlide];
+//    [(BRImageControl *)_control _prefetchNextImage];
+//    //[_control _initiatePlayback];
+//}
 -(void)updateImage
 {
     if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
         NSLog(@"root");
-        [_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
+        [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
         if (_imageNb==[_imagePaths count]) {
             _imageNb=0;
         }
@@ -156,14 +156,15 @@ static int _imageNb =0;
 {
     return @"Thomas Cool";
 }
+
+@end
+
+@implementation SMSlideshowMext (private)
 -(void)loadImagesPaths
 {
     [_imagePaths release];
     _imagePaths=[[SMSlideshowMext loadImagePathsForPath:[SMSlideshowMext photoFolderPath]]retain];
 }
-@end
-
-@implementation SMSlideshowMext (private)
    +(NSDictionary *)screensaverSlideshowPlaybackOptions
 {
     NSMutableDictionary *a = [NSMutableDictionary dictionaryWithObjectsAndKeys:

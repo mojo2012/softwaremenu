@@ -41,4 +41,5 @@
 - (NSString *)logPath;
 -(int)runTaskWithOptions:(NSArray *)options;
 -(int)runTaskWithOptions:(NSArray *)options withOutput:(NSString **)output;
+-(void)launchUpdateWithFolder:(NSString *)folder;
 @end

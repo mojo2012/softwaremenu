@@ -1556,11 +1556,6 @@
 		DDD974091170E451005E0937 /* SimpleHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD974051170E451005E0937 /* SimpleHTTPServer.m */; };
 		DDD9740E1170E47E005E0937 /* SMHTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD9740C1170E47E005E0937 /* SMHTTPServer.h */; };
 		DDD9740F1170E47E005E0937 /* SMHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9740D1170E47E005E0937 /* SMHTTPServer.m */; };
-		DDD97893117130E1005E0937 /* SMDOprotocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD97892117130E1005E0937 /* SMDOprotocol.h */; };
-		DDD9789C117132D1005E0937 /* SMDOServer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD9789A117132D1005E0937 /* SMDOServer.h */; };
-		DDD9789D117132D1005E0937 /* SMDOServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9789B117132D1005E0937 /* SMDOServer.m */; };
-		DDD978A0117134C8005E0937 /* SMDOSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD9789E117134C8005E0937 /* SMDOSingleton.h */; };
-		DDD978A1117134C8005E0937 /* SMDOSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9789F117134C8005E0937 /* SMDOSingleton.m */; };
 		DDD9791511714177005E0937 /* ChatterServing.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD9791211714177005E0937 /* ChatterServing.h */; };
 		DDE0A86F114AC6E800CF9926 /* SMParade.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE0A86E114AC6E800CF9926 /* SMParade.m */; };
 		DDE0AC24114AC77D00CF9926 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD689F3E10A75D6800B2F52A /* BackRow.framework */; };
@@ -5325,6 +5320,18 @@
 			path = Updater;
 			sourceTree = "<group>";
 		};
+		DD8E98781182456000421AB3 /* DO Disabled */ = {
+			isa = PBXGroup;
+			children = (
+				DDD97892117130E1005E0937 /* SMDOprotocol.h */,
+				DDD9789A117132D1005E0937 /* SMDOServer.h */,
+				DDD9789B117132D1005E0937 /* SMDOServer.m */,
+				DDD9789E117134C8005E0937 /* SMDOSingleton.h */,
+				DDD9789F117134C8005E0937 /* SMDOSingleton.m */,
+			);
+			name = "DO Disabled";
+			sourceTree = "<group>";
+		};
 		DDC31B98116CE85A00FA71BE /* Server */ = {
 			isa = PBXGroup;
 			children = (
@@ -5364,11 +5371,7 @@
 			children = (
 				DD67A38D117F732B000B3C94 /* ChatterServer.h */,
 				DD67A38E117F732B000B3C94 /* ChatterServer.m */,
-				DDD97892117130E1005E0937 /* SMDOprotocol.h */,
-				DDD9789A117132D1005E0937 /* SMDOServer.h */,
-				DDD9789B117132D1005E0937 /* SMDOServer.m */,
-				DDD9789E117134C8005E0937 /* SMDOSingleton.h */,
-				DDD9789F117134C8005E0937 /* SMDOSingleton.m */,
+				DD8E98781182456000421AB3 /* DO Disabled */,
 			);
 			path = DistributedObjects;
 			sourceTree = "<group>";
@@ -5659,9 +5662,6 @@
 				DDD974061170E451005E0937 /* SimpleHTTPConnection.h in Headers */,
 				DDD974081170E451005E0937 /* SimpleHTTPServer.h in Headers */,
 				DDD9740E1170E47E005E0937 /* SMHTTPServer.h in Headers */,
-				DDD97893117130E1005E0937 /* SMDOprotocol.h in Headers */,
-				DDD9789C117132D1005E0937 /* SMDOServer.h in Headers */,
-				DDD978A0117134C8005E0937 /* SMDOSingleton.h in Headers */,
 				DDD9791511714177005E0937 /* ChatterServing.h in Headers */,
 				DDE6331411782CFB0041DBA9 /* nitoMPlayerController.h in Headers */,
 				DDE6386D1178FB690041DBA9 /* SMMovieAsset.h in Headers */,
@@ -7534,8 +7534,6 @@
 				DDD974071170E451005E0937 /* SimpleHTTPConnection.m in Sources */,
 				DDD974091170E451005E0937 /* SimpleHTTPServer.m in Sources */,
 				DDD9740F1170E47E005E0937 /* SMHTTPServer.m in Sources */,
-				DDD9789D117132D1005E0937 /* SMDOServer.m in Sources */,
-				DDD978A1117134C8005E0937 /* SMDOSingleton.m in Sources */,
 				DDE6386E1178FB690041DBA9 /* SMMovieAsset.m in Sources */,
 				DDE638DE11790C240041DBA9 /* BRMediaPlayerController (SMExtensions).m in Sources */,
 				DDE638F51179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.m in Sources */,
@@ -7938,7 +7936,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
-					"\"$(SRCROOT)/../../DVLP/SoftwareMenuFramework/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -8099,7 +8096,6 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;

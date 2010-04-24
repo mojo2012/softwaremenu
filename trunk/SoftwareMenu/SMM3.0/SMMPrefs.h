@@ -41,5 +41,6 @@
 +(void)setPhotoFolderPath:(NSString *)path;
 +(long)screensaverSpinFrequency;
 +(NSString *)slideshowType;
++(NSString *)screensaverFolder;
 
 @end

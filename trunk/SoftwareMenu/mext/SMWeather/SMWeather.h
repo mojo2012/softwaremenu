@@ -21,6 +21,9 @@
 // Developer Name
 +(NSString *)developer;
 
+-(BRController *)ioptions;
+
+
 @optional
 -(BRController *)pluginOptions;
 
@@ -30,5 +33,4 @@
 }
 -(BRControl *)backgroundControl;
 -(BRController *)controller;
--(BRController *)ioptions;
 @end

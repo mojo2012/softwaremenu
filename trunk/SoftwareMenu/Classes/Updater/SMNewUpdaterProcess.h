@@ -41,7 +41,7 @@
 // stack callbacks
 - (void)moveFiles2:(BOOL)original_status;
 
-
+-(void)setArrowForRect:(CGRect)frame;
 
 
 - (NSMutableDictionary *)getOptions;

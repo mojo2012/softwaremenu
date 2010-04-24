@@ -204,7 +204,7 @@
 }
 +(int)mainMenuScriptsPosition
 {
-    [SMPreferences integerForKey:@"ScriptsPosition"];
+    return [SMPreferences integerForKey:@"ScriptsPosition"];
 }
 
 +(NSString *)trustedPlistPath

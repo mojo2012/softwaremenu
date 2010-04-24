@@ -159,7 +159,7 @@
 	NSLog(@"2");
 	if([man fileExistsAtPath:@"/Volumes/OSBoot 1/"] && update_status && !original_status)
 	{
-		NSTask *task8 = [[NSTask alloc] init];
+		//NSTask *task8 = [[NSTask alloc] init];
 		[self addText:@"Unmounting volume at /Volumes/OSBBoot 1/"];
 		//step;
 		//[self setNumber:step withSteps:numberOfSteps];

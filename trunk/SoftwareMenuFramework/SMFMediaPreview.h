@@ -26,13 +26,13 @@ typedef enum {
 }
 
 - (NSMutableDictionary *)getPluginMetaData;
-- (void)setUtilityData:(NSMutableDictionary *)newMeta;
+//- (void)setUtilityData:(NSMutableDictionary *)newMeta;
 - (id)coverArtForPath;
-- (void)setUtilityData:(NSMutableDictionary *)newMeta;
-- (void)setCustomMetaData:(NSMutableDictionary *)customMeta;
+//- (void)setUtilityData:(NSMutableDictionary *)newMeta;
+//- (void)setCustomMetaData:(NSMutableDictionary *)customMeta;
 - (void)setImage:(BRImage *)currentImage;
 - (void)setImagePath:(NSString *)path;
-- (void)setSimpleMetaDataWithTitle:(NSString *)title andSummary:(NSString *)summary;
+//- (void)setSimpleMetaDataWithTitle:(NSString *)title andSummary:(NSString *)summary;
 //- (void)setAssetMeta:(id)asset;
 
 @end

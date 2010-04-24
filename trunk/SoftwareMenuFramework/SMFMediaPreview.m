@@ -8,6 +8,7 @@
 
 
 #import <objc/objc-class.h>
+#import "SMFPluginAsset.h"
 @interface BRCoverArtImageLayer (compat)
 -(id)texture;
 @end
@@ -354,8 +355,13 @@ static NSSet *coverArtExtentions = nil;
 -(NSMutableDictionary *)getPluginMetaData
 {
 	BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
+    SMFPluginAsset *asset = (SMFPluginAsset *)[self asset];
+
 	[metaLayer setTitle:[[self asset] title]];
 	[metaLayer setSummary:[[self asset] mediaSummary]];
+    if (![asset respondsToSelector:@selector(onlineVersion)]) {
+        return [NSDictionary dictionary];
+    }
 	NSMutableArray *orderedArray = [NSMutableArray arrayWithObjects:nil];
 	NSMutableDictionary *metaData = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
 	NSString *value =nil;

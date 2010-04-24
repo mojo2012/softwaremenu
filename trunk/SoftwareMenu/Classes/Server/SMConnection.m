@@ -39,6 +39,11 @@ typedef enum _smRemoteTypes{
 #define kSMSSCRIPTS     @"Scripts"
 #define kSMSPHOTOS      @"Photos"
 #define MEXT_PATH   [ATV_PLUGIN_PATH stringByAppendingPathComponent:@"SoftwareMenu.frappliance/Contents/Mextensions/"]
+@interface SapphireMetaDataSupport
++(void)applyChangesFromContext:(NSManagedObjectContext *)moc;
+
+@end
+
 @class SapphireMetaDataSupport,SapphireMedia,SapphireVideoPlayerController,SapphireVideoPlayer,SapphireApplianceController,SapphireFileMetaData,SapphireMovieDirectory;
 @implementation SMConnection
 static SMConnection *singleton = nil;

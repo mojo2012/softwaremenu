@@ -17,6 +17,6 @@
 -(NSString *)developer;
 -(void)setInstalledVersion:(NSString *)installedVersion;
 -(NSString *)installedVersion;
--(void)setOnlineVersion;
+-(void)setOnlineVersion:(NSString *)onlineVersion;
 -(NSString *)onlineVersion;
 @end
