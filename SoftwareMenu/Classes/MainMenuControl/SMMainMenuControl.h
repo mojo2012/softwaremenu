@@ -12,6 +12,11 @@
 -(void)setWidgetHidden:(BOOL)hide;
 @end
 
+@interface BRApplianceColumnControl (SM)
+-(void)test;
+-(id)appliance;
+@end
+
 
 @interface SMMainMenuControl : BRMainMenuControl {
     NSBundle *_controlBundle;

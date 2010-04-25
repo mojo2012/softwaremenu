@@ -27,97 +27,21 @@
 @implementation SMPhotosMenu
 +(void)startSlideshowForPath:(NSString *)path
 {
-    
-    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
-    
-    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
-    
-    NSArray *assets=[SMImageReturns mediaAssetsForPath:path];
-    
-    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"PhotoStore" predicate:_pred mediaTypes:_set];
-    int i;
-    for (i=0;i<[assets count];i++)
-    {
-        [store addObject:[assets objectAtIndex:i]];
-    }
-    
+    BRDataStore *store = [SMFPhotoMethods dataStoreForPath:path];
     BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
     SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
     
-    SMPhotoBrowserController* controller4  = [SMPhotoBrowserController controllerForProvider:provider];
-    [controller4 setTitle:[[SMPreferences stringForKey:path] lastPathComponent]];
-    //[controller4 setColumnCount:2];
-    [controller4 removeSButton];
-    [[[BRApplicationStackManager singleton] stack] pushController:controller4];
+    SMPhotoBrowserController* pc  = [SMPhotoBrowserController controllerForProvider:provider];
+    [pc setTitle:[[SMPreferences stringForKey:path] lastPathComponent]];
+    //[pc removeSButton];
+    [[[BRApplicationStackManager singleton] stack] pushController:pc];
 }
 +(void)startSlideshow
 {
+    [SMPhotosMenu startSlideshowForPath:[SMPreferences photoFolderPath]];
     [SMPreferences setString:@"SlideShow" forKey:@"SlideShowType"];
-    
-    
-    
-    NSSet *_set = [NSSet setWithObject:[BRMediaType photo]];
-    
-    NSPredicate *_pred = [NSPredicate predicateWithFormat:@"mediaType == %@",[BRMediaType photo]];
-    
-    NSArray *assets=[SMImageReturns mediaAssetsForPath:[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY]];
-    BRDataStore *store = [[BRDataStore alloc] initWithEntityName:@"Hello" predicate:_pred mediaTypes:_set];
-    int i =0;
-    for (i=0;i<[assets count];i++)
-    {
-        [store addObject:[assets objectAtIndex:i]];
-    }
-    
-    
-    BRPhotoControlFactory* controlFactory = [BRPhotoControlFactory standardFactory];
-    SMPhotoCollectionProvider* provider    = [SMPhotoCollectionProvider providerWithDataStore:store controlFactory:controlFactory];//[[ATVSettingsFacade sharedInstance] providerForScreenSaver];//[collection provider];
-    
-    id controller4  = [SMPhotoBrowserController controllerForProvider:provider];
-    [controller4 setTitle:[[SMPreferences stringForKey:PHOTO_DIRECTORY_KEY] lastPathComponent]];
-    [controller4 setColumnCount:2];
-    [controller4 removeSButton];
-    
-    [[[BRApplicationStackManager singleton] stack] pushController:controller4]; 
 }
 
-+ (id)photosForPath:(NSString *)thepath
-{
-	NSArray *coverArtExtention = [[NSArray alloc] initWithObjects:
-								  @"jpg",
-								  @"JPG",
-								  @"jpeg",
-								  @"tif",
-								  @"tiff",
-								  @"png",
-								  @"gif",
-								  nil];
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
-	NSMutableArray *photos =[NSMutableArray arrayWithObjects:nil];
-	for ( i = 0; i < count; i++ )
-	{
-		NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
-		{
-			Class cls = NSClassFromString( @"BRPhotoMediaAsset" );
-			id asset = [[cls alloc] init];
-			//NSLog(@"%@",[thepath stringByAppendingPathComponent:idStr]);
-			[asset setFullURL:[thepath stringByAppendingPathComponent:idStr]];
-			[asset setThumbURL:[thepath stringByAppendingPathComponent:idStr]];
-			[asset setCoverArtURL:[thepath stringByAppendingPathComponent:idStr]];
-			//[asset setDateTaken:[NSDate dateWithString:@"2009-04-04T22:02:28Z"]];
-			[asset setIsLocal:YES];
-			[photos addObject:asset];
-            NSLog(@"path: %@",[thepath stringByAppendingPathComponent:idStr]);
-		}
-		else 
-		{
-			//NSLog(@"idStr not added: %@",idStr);
-		}
-		
-	}
-	return (NSArray *)photos;
-}
 
 - (id)previewControlForItem:(long)arg1
 {

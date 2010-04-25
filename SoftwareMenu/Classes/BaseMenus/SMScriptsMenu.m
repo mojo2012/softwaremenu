@@ -301,6 +301,7 @@
 	[[self list] addDividerAtIndex:builtinLoc withLabel:BRLocalizedString(@"Builtin Scripts",@"Builtin Folder")];
 	return self;
 }
+
 - (BOOL)brEventAction:(BREvent *)event
 {
 	int remoteAction =[event remoteAction];

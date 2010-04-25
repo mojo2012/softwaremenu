@@ -351,44 +351,22 @@
     [[self list] reload];
 
 }
-- (BOOL)brEventAction:(BREvent *)event
+-(void)leftActionForRow:(long)row
 {
-	int remoteAction =[event remoteAction];
-	
-	if ([(BRControllerStack *)[self stack] peekController] != self)
-	{
-		NSLog(@"not SMMenu");
-		return [super brEventAction:event];
-	}
-	
-	if([event value] == 0)
-		return [super brEventAction:event];
-	
-	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
-		remoteAction ++;
-	long row = [self getSelection];
-	
-	
-
-	switch (remoteAction)
-	{
-		case kBREventRemoteActionLeft:  // tap left
-            case kBREventRemoteActionRight:  // tap right
-			NSLog(@"tap left");
-            if (row>=[_items count]) 
-            {
-                row-=[_items count];
-                SMScriptOptions * scopt=[[SMScriptOptions alloc] initWithScriptName:[[_scripts objectAtIndex:row] title]];
-                [[self stack] pushController:scopt];
-            }
-            
-			
-			break;
-        default:
-            break;
-	}
-	return [super brEventAction:event];
+    DLog(@"Left Action");
+    if (row>=[_items count]) 
+    {
+        row-=[_items count];
+        SMScriptOptions * scopt=[[SMScriptOptions alloc] initWithScriptName:[[_scripts objectAtIndex:row] title]];
+        [[self stack] pushController:scopt];
+    }
 }
+-(void)rightActionForRow:(long)row
+{
+    DLog(@"Right Action");
+    [self leftActionForRow:row];
+}
+
 
 -(void)dealloc
 {
