@@ -35,7 +35,12 @@
         [self setLeftIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                image, @"BRMenuIconImageKey",nil]];
     }
-    
-    
+}
+@end
+
+@implementation NSFileManager (SMFExtensions)
++(NSArray *)directoryContentsAtPath:(NSString *)path
+{
+    return [[NSFileManager defaultManager] directoryContentsAtPath:path];
 }
 @end

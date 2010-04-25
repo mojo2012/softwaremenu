@@ -59,6 +59,71 @@
 		[selInv getReturnValue:&row];
 	return row;
 }
+-(void)leftActionForRow:(long)row
+{
+    
+}
+-(void)rightActionForRow:(long)row
+{
+    
+}
+-(BOOL)brEventAction:(BREvent *)event
+{
+	BREventRemoteAction remoteAction = [SMFCompatibilityMethods remoteActionForEvent:event];
+    if ([(BRControllerStack *)[self stack] peekController] != self)
+		remoteAction = 0;
+    
+    int itemCount = [[(BRListControl *)[self list] datasource] itemCount];
+    switch (remoteAction)
+    {	
+        case kBREventRemoteActionSwipeLeft:
+        case kBREventRemoteActionLeft:
+            [self leftActionForRow:[self getSelection]];
+            return YES;
+            break;
+        case kBREventRemoteActionSwipeRight:
+        case kBREventRemoteActionRight:
+            [self rightActionForRow:[self getSelection]];
+            return YES;
+            break;
+		case kBREventRemoteActionUp:
+		case kBREventRemoteActionHoldUp:
+			if([self getSelection] == 0 && [event value] == 1)
+			{
+				[self setSelection:itemCount-1];
+				return YES;
+			}
+			break;
+		case kBREventRemoteActionDown:
+		case kBREventRemoteActionHoldDown:
+			if([self getSelection] == itemCount-1 && [event value] == 1)
+			{
+				[self setSelection:0];
+				return YES;
+			}
+			break;
+    }
+	return [super brEventAction:event];
+}
+- (void)setSelection:(int)sel
+{
+	BRListControl *list = [self list];
+	NSMethodSignature *signature = [list methodSignatureForSelector:@selector(setSelection:)];
+	NSInvocation *selInv = [NSInvocation invocationWithMethodSignature:signature];
+	[selInv setSelector:@selector(setSelection:)];
+	if(strcmp([signature getArgumentTypeAtIndex:2], "l"))
+	{
+		double dvalue = sel;
+		[selInv setArgument:&dvalue atIndex:2];
+	}
+	else
+	{
+		long lvalue = sel;
+		[selInv setArgument:&lvalue atIndex:2];
+	}
+	[selInv invokeWithTarget:list];
+}
+
 -(void)controlWasActivated
 {
     if([self respondsToSelector:@selector(everyLoad)])

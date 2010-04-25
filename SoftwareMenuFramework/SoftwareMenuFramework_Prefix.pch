@@ -7,4 +7,5 @@
 #import <Backrow/Backrow.h>
 #import "AppleTV.h"
 #import "SoftwareMenuFramework.h"
+#import "../Shared/SMCommonHeader.h"
 #endif

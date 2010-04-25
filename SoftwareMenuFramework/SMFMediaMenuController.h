@@ -24,5 +24,16 @@
 -(int)getSelection;
 -(id)everyLoad;
 
+- (void)setSelection:(int)sel;
+/*
+ *  Action Called Every Time someone Presses on Left Arrow
+ */
+-(void)leftActionForRow:(long)row;
+
+/*
+ *  Action Called Every Time someone Presses on Right Arrow
+ */
+-(void)rightActionForRow:(long)row;
+
 
 @end
