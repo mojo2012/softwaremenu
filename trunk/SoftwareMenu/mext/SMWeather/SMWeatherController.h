@@ -9,28 +9,32 @@
 #import <Cocoa/Cocoa.h>
 #import "SMWeather.h"
 
-@interface SMWeatherController : BRMenuController {
-    int padding [48];
-	NSMutableArray *	_items;
-	NSMutableArray *	_options;
-    int                 _current;
+extern NSString *kWeatherDefaultKey;
+extern NSString *kWeatherWatchKey;
+extern NSString *kWeatherUSUnitsKey;
+extern NSString *kWeatherTimeZoneKey;
+extern NSString *kWeatherRemoveKey;
+extern NSString *kWeatherCityKey;
+
+@interface SMWeatherController : SMFCenteredMenuController {
+    int                     _code;
+    int                     _current;
+    NSMutableDictionary    *_location;
 }
+- (id)initWithCode:(int)code;
 +(int)yWeatherCode;
 +(void)setYWeatherCode:(int)code;
 +(int)refreshMinutes;
 +(void)setRefreshMinutes:(int)min;
++(BOOL)USUnitsForCode:(int)code;
 +(BOOL)USUnits;
 +(void)setUSUnits:(BOOL)units;
 +(NSDictionary *)Locations;
 +(void)setLocations:(NSDictionary *)locations;
 +(void)setDefaultYWeatherCode;
 +(NSString *)tzForCode:(int)code;
--(float)heightForRow:(long)row;
--(BOOL)rowSelectable:(long)row;
--(long)itemCount;
--(id)itemForRow:(long)row;
--(long)rowForTitle:(id)title;
--(id)titleForRow:(long)row;
--(int)getSelection;
--(id)everyLoad;
+
+-(void)setTimeZone:(NSString *)tz forCode:(NSNumber *)code;
+-(void)remove:(NSNumber *)code;
+-(void)save;
 @end

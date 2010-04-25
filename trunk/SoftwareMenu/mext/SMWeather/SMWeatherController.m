@@ -7,27 +7,17 @@
 //
 
 #import "SMWeatherController.h"
-#define smweatherDomain  (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.SMWeather" 
-#define BRLocalizedString(key, comment)								[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:nil]
-#define BRLocalizedStringFromTable(key, tbl, comment)				[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:(tbl)]
-#define BRLocalizedStringFromTableInBundle(key, tbl, obj, comment)	[BRLocalizedStringManager appliance:(obj) localizedStringForKey:(key) inFile:(tbl)]
 
+NSString *kWeatherDefaultKey=@"kWeatherDefaultKey";
+NSString *kWeatherWatchKey=@"kWeatherWatchKey";
+NSString *kWeatherUSUnitsKey=@"kWeatherUSUnitsKey";
+NSString *kWeatherTimeZoneKey=@"kWeatherTimeZoneKey";
+NSString *kWeatherRemoveKey=@"kWeatherRemoveKey";
+NSString *kWeatherCityKey=@"city";
 
 @implementation SMWeatherController
-- (float)heightForRow:(long)row				{ return 0.0f;}
-- (BOOL)rowSelectable:(long)row				{ return YES;}
-- (long)itemCount							{ return (long)[_items count];}
-//- (id)itemForRow:(long)row					{ return [_items objectAtIndex:row];}
-- (long)rowForTitle:(id)title				{ return (long)[_items indexOfObject:title];}
-- (id)titleForRow:(long)row					{ return [[_items objectAtIndex:row] title];}
-- (long)defaultIndex						{ return 0;}
-//- (id)previewControlForItem:(long)row
-//{
-//    BRImage * image = [[BRThemeInfo sharedTheme] appleTVIcon];
-//    BRImageAndSyncingPreviewController *preview = [[BRImageAndSyncingPreviewController alloc] init];
-//    [preview setImage:image];
-//	return preview;
-//}
+
+
 + (void)setInteger:(int)theInt forKey:(NSString *)theKey
 {
 	CFPreferencesSetAppValue((CFStringRef)theKey, (CFNumberRef)[NSNumber numberWithInt:theInt], smweatherDomain);
@@ -99,11 +89,11 @@
 +(NSString *)tzForCode:(int)code
 {
     NSDictionary *locs = [[SMWeatherController Locations] objectForKey:[NSString stringWithFormat:@"%i",code,nil]];
-    if ([[locs allKeys] containsObject:@"timeZone"]) {
-        return [locs objectForKey:@"timeZone"]; 
+    if ([[locs allKeys] containsObject:kWeatherTimeZoneKey]) {
+        DLog(@"Time Zone for code: %i is: %@",code,[locs objectForKey:kWeatherTimeZoneKey]);
+        return [locs objectForKey:kWeatherTimeZoneKey]; 
     }
     return nil;
-    
 }
 +(void)setYWeatherCode:(int)code
 {
@@ -125,6 +115,29 @@
 {
     [SMWeatherController setInteger:min forKey:@"Time"];
 }
++(BOOL)USUnitsForCode:(int)code
+{
+    NSString *scode = [NSString stringWithFormat:@"%i",code,nil];
+    NSDictionary *obj=[[SMWeatherController Locations] objectForKey:scode];
+    DLog(@"object: %@",obj);
+    DLog(@"%@, %@, %@",
+         [NSNumber numberWithBool:[[obj allKeys] containsObject:kWeatherDefaultKey]],
+         [NSNumber numberWithBool:![[obj objectForKey:kWeatherDefaultKey] boolValue]],
+         [NSNumber numberWithBool:[[obj allKeys] containsObject:kWeatherUSUnitsKey]]);
+    if (obj==nil) 
+        return NO;
+    if ([[obj allKeys] containsObject:kWeatherDefaultKey] && 
+        ![[obj objectForKey:kWeatherDefaultKey] boolValue] && 
+        [[obj allKeys] containsObject:kWeatherUSUnitsKey]) 
+    {
+        DLog(@"Use Custom Units for code: %i",code);
+        return [[obj objectForKey:kWeatherUSUnitsKey]boolValue];
+    }
+    else {
+        return [SMWeatherController USUnits];
+    }
+
+}
 +(BOOL)USUnits
 {
     return [SMWeatherController boolForKey:@"USUnits"];
@@ -133,61 +146,80 @@
 {
     [SMWeatherController setBool:units forKey:@"USUnits"];
 }
-- (id)init
+- (void)save
+{
+    NSString *scode = [NSString stringWithFormat:@"%i",_code,nil];
+    NSMutableDictionary *locations = [[SMWeatherController Locations]mutableCopy];
+    [locations setObject:_location forKey:scode];
+    [SMWeatherController setLocations:locations];
+}
+- (id)initWithCode:(int)code
 {
     self=[super init];
-    [self setListTitle:@"Weather Plugin Options"];
-    _items = [[NSMutableArray alloc]init];
-    _options = [[NSMutableArray alloc] init];
-    [self setUseCenteredLayout:YES];
+    NSString *scode = [NSString stringWithFormat:@"%i",code,nil];
+    _location = [[[SMWeatherController Locations] objectForKey:scode] mutableCopy];
+    
+    if (_location == nil) {
+        ALog(@"No Information Found for code: %i",code);
+        return nil;
+    }
+    [_location retain];
+    _code = code;
+    NSString *title = [_location objectForKey:kWeatherCityKey]; 
+    [self setListTitle:title];
+    NSArray *keys = [_location allKeys];
+    /*
+     *  Setting Defaults
+     */
+    if (![keys containsObject:kWeatherTimeZoneKey]) {
+        [_location setObject:@"Europe/Paris" forKey:kWeatherTimeZoneKey];
+    }
+    if (![keys containsObject:kWeatherUSUnitsKey]) {
+        [_location setObject:[NSNumber numberWithBool:NO] forKey:kWeatherUSUnitsKey];
+    }
+    if (![keys containsObject:kWeatherDefaultKey]) {
+        [_location setObject:[NSNumber numberWithBool:YES] forKey:kWeatherDefaultKey];
+    }
+    if (![keys containsObject:kWeatherWatchKey]) {
+        [_location setObject:[NSNumber numberWithBool:NO] forKey:kWeatherWatchKey];
+    }
+    /*
+     *  Saving
+     */
+    [self save];
+    /*
+     *  Setting UI
+     */
     BRTextMenuItemLayer * item = [BRTextMenuItemLayer menuItem];
-    [item setTitle:@"Units"];
+    [item setTitle:BRLocalizedString(@"Default Settings",@"Default Settings")];
     [_items addObject:item];
+    [_options addObject:kWeatherDefaultKey];
+    
+    item = [BRTextMenuItemLayer menuItem];
+    [item setTitle:BRLocalizedString(@"Units",@"Units")];
+    [_items addObject:item];
+    [_options addObject:kWeatherUSUnitsKey];
+    
+    item = [BRTextMenuItemLayer menuItem];
+    [item setTitle:BRLocalizedString(@"Time Mode",@"Time Mode")];
+    [_items addObject:item];
+    [_options addObject:kWeatherWatchKey];
     
     item = [BRTextMenuItemLayer folderMenuItem];
-    [item setTitle:@"Yahoo Weather Code"];
+    [item setTitle:BRLocalizedString(@"Time Zone",@"Time Zone")];
     [_items addObject:item];
-    
+    [_options addObject:kWeatherTimeZoneKey];
     
     item = [BRTextMenuItemLayer folderMenuItem];
-    [item setTitle:@"Refresh Time"];
+    [item setTitle:BRLocalizedString(@"Remove",@"Remove")];
     [_items addObject:item];
-    
-    item = [BRTextMenuItemLayer networkMenuItem];
-    [item setTitle:@"Test Settings"];
-    [_items addObject:item];
+    [_options addObject:kWeatherRemoveKey];
     
     [[self list] setDatasource:self];
     return self;
 }
-- (void)dealloc
-{
-	[_items release];
-	[_options release];
-	[super dealloc];
-}
--(id)everyLoad
-{
-    return self;
-}
--(int)getSelection
-{
-	BRListControl *list = [self list];
-	int row;
-	NSMethodSignature *signature = [list methodSignatureForSelector:@selector(selection)];
-	NSInvocation *selInv = [NSInvocation invocationWithMethodSignature:signature];
-	[selInv setSelector:@selector(selection)];
-	[selInv invokeWithTarget:list];
-	if([signature methodReturnLength] == 8)
-	{
-		double retDoub = 0;
-		[selInv getReturnValue:&retDoub];
-		row = retDoub;
-	}
-	else
-		[selInv getReturnValue:&row];
-	return row;
-}
+
+
 -(void)controlWasActivated
 {
     if([self respondsToSelector:@selector(everyLoad)])
@@ -196,86 +228,125 @@
 }
 -(id)itemForRow:(long)row
 {
-    //NSLog(@"row: %i %i",row,[_items count]);
     
     if (row<[_items count]) {
         BRTextMenuItemLayer *item = [_items objectAtIndex:row];
-        switch (row) {
-            case 0:
-                [item setRightJustifiedText:([SMWeatherController USUnits]?@"Fahrenheit":@"Celsius")];
-                break;
-            case 1:
-            {
-                int location=[SMWeatherController yWeatherCode];
-                [item setRightJustifiedText:[NSString stringWithFormat:@"%i", location]];
-                break;
-            }
-            case 2:
-            {
-                int time=[SMWeatherController refreshMinutes];
-                [item setRightJustifiedText:[NSString stringWithFormat:@"(%i minutes)",time,nil]];
-                break;
-            }
-            default:
-                break;
+        NSString *option=[_options  objectAtIndex:row];
+        if (option     == kWeatherTimeZoneKey) {
+            [item setRightJustifiedText:[_location objectForKey:kWeatherTimeZoneKey]];
+        }
+        else if(option == kWeatherDefaultKey)
+        {
+            [item setRightJustifiedText:([[_location objectForKey:kWeatherDefaultKey] boolValue]?@"YES":@"NO")];
+        }
+        else if(option == kWeatherUSUnitsKey)
+        {
+            [item setRightJustifiedText:([[_location objectForKey:kWeatherUSUnitsKey] boolValue]?@"Fahrenheit":@"Celsius")];
+        }
+        else if(option == kWeatherWatchKey)
+        {
+            [item setRightJustifiedText:([[_location objectForKey:kWeatherWatchKey] boolValue]?@"Watch Mode":@"Loaded Mode")];
+        }
+        else {
+            //DLog(@"%@\n%@\n%@\n%@\n%@",kWeatherTimeZoneKey,kWeatherDefaultKey,kWeatherUSUnitsKey,kWeatherWatchKey,kWeatherRemoveKey);
+            //DLog(@"current option: %@",option);
         }
         return item;
     }
     return nil;
 }
--(void)itemSelected:(long)arg1
+-(void)itemSelected:(long)row
 {
-    switch (arg1) {
-        case 0:
-            [SMWeatherController setBool:![SMWeatherController boolForKey:@"USUnits"] forKey:@"USUnits"];
-            break;
-        case 1:
-        {
-            id controller = [SMFPasscodeController passcodeWithTitle:@"Yahoo Weather Code" 
-                                                     withDescription:@"Please insert the appropriate yahoo weather code for the location you are looking for" 
-                                                           withBoxes:8 
-                                                        withDelegate:self];
-            _current=1;
-            [[self stack] pushController:controller];
-            break;
-        }
-
-        case 2:
-        {
-            id controller=[SMFPasscodeController passcodeWithTitle:@"Refresh Time" 
-                                     withDescription:@"Please set the refresh time in minutes" 
-                                           withBoxes:3 
-                                        withDelegate:self];
-            [[self stack] pushController:controller];
-            _current=2;
-            break;
-        }
-
-        default:
-            break;
+    if (row>=[_items count])
+        return;
+    NSString *option=[_options  objectAtIndex:row];
+    if (option == kWeatherDefaultKey) {
+        [_location setObject:[NSNumber numberWithBool:![[_location objectForKey:kWeatherDefaultKey]boolValue]] forKey:kWeatherDefaultKey];
+        [self save];
     }
-    [[self list] reload];
-}
-- (void)wasExhumedByPoppingController:(id)fp8	{[self wasExhumed];}
--(void)wasExhumed								{[[self list] reload];}
-- (void) textDidChange: (id) sender
-{
-	//Do Nothing Now
-}
-- (void) textDidEndEditing: (id) sender
-{
-    [[self stack] popController];
-
-    switch (_current) {
-        case 1:
-            [SMWeatherController setYWeatherCode:[[sender stringValue]intValue]];
-            break;
-        case 2:
-            [SMWeatherController setRefreshMinutes:[[sender stringValue]intValue]];
-            break;
-        default:
-            break;
+    else if(option == kWeatherUSUnitsKey)
+    {
+        [_location setObject:[NSNumber numberWithBool:![[_location objectForKey:kWeatherUSUnitsKey]boolValue]] forKey:kWeatherUSUnitsKey];
+        [self save];
     }
-	[[self list] reload];
+    else if(option == kWeatherWatchKey)
+    {
+        [_location setObject:[NSNumber numberWithBool:![[_location objectForKey:kWeatherWatchKey]boolValue]] forKey:kWeatherWatchKey];
+        [self save];
+    }
+    else if(option == kWeatherWatchKey)
+    {
+        [_location setObject:[NSNumber numberWithBool:![[_location objectForKey:kWeatherWatchKey]boolValue]] forKey:kWeatherWatchKey];
+        [self save];
+    }
+    else if(option == kWeatherTimeZoneKey)
+    {
+        NSArray *timeZones=[NSTimeZone knownTimeZoneNames];
+        NSMutableArray *invocations=[[NSMutableArray alloc] init];
+        int i,count=[timeZones count];
+        for(i=0;i<count;i++)
+        {
+            id anInvocation = [SMFInvocationCenteredMenuController invocationsForObject:self
+                                                                        withSelectorVal:@"setTimeZone:forCode:"
+                                                                          withArguments:[NSArray arrayWithObjects:[timeZones objectAtIndex:i],[NSNumber numberWithInt:_code],nil]];
+            [invocations addObject:anInvocation];
+        }
+        id a =[[SMFInvocationCenteredMenuController alloc]initWithTitles:timeZones
+                                                         withInvocations:invocations 
+                                                               withTitle:[NSString stringWithFormat:@"Select Time Zone for: %@",[_location objectForKey:kWeatherCityKey],nil] 
+                                                         withDescription:@"Please select a time zone"];
+        [[self stack]pushController:a];
+        [a release];
+    }
+    else if(option == kWeatherRemoveKey)
+    {
+        NSArray *titles=[NSArray arrayWithObjects:
+                         BRLocalizedString(@"Remove",@"Remove"),
+                         BRLocalizedString(@"Do Not Remove",@"Do Not Remove"),
+                         nil];
+        id anInvocation = [SMFInvocationCenteredMenuController invocationsForObject:self
+                                                                    withSelectorVal:@"remove:"
+                                                                      withArguments:[NSArray arrayWithObject:[NSNumber numberWithInt:_code]]];
+        NSArray *invocations = [NSMutableArray arrayWithObjects:anInvocation,@"b",nil];
+        id a= [[SMFInvocationCenteredMenuController alloc] initWithTitles:titles
+                                                          withInvocations:invocations
+                                                                withTitle:[NSString stringWithFormat:@"Remove %@?",[_location objectForKey:kWeatherCityKey],nil]
+                                                          withDescription:BRLocalizedString(@"This will permanently remove the selected city",@"This will permanently remove the selected city")];
+        
+        [[self stack] pushController:a];
+        [a release];  
+    }
+    
+    
+    [[self list]reload];
+}
+-(void)setTimeZone:(NSString *)tz forCode:(NSNumber *)code
+{
+    if (_location!=nil) {
+        [_location setObject:tz forKey:kWeatherTimeZoneKey];
+        [self save];
+        [[self list]reload];
+    }
+}
+-(void)remove:(NSNumber *)code
+{
+    NSMutableDictionary *locations = [[SMWeatherController Locations] mutableCopy];
+    [locations removeObjectForKey:[code stringValue]];
+    [SMWeatherController setLocations:locations];
+    if ([SMWeatherController yWeatherCode]==[code intValue]) {
+        NSArray *keys = [locations allKeys];
+        if ([keys count]==0) {
+            [SMWeatherController setDefaultYWeatherCode];
+        }
+        else {
+            [SMWeatherController setYWeatherCode:[[keys objectAtIndex:0] intValue]];
+        }
+    }
+    [[self stack]popController];
+}
+-(void)dealloc
+{
+    [_location release];
+    [super dealloc];
 }
 @end

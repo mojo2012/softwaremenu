@@ -51,7 +51,19 @@
     }
     [self setPrimaryInfoText:BRLocalizedString(@"Please Select a Location",@"Please Select a Location")];
     return self;
+}
+-(void)leftActionForRow:(long)row
+{
+    DLog(@"Left Action For Row Called");
+    id a = [[SMWeatherController alloc] initWithCode:[[_options objectAtIndex:row]intValue]];
+    [[self stack] pushController:a];
+    [a release];
     
+    
+}
+-(void)rightActionForRow:(long)row
+{
+    [self leftActionForRow:row];
 }
 -(void)itemSelected:(long)arg1
 {

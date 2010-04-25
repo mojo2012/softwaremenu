@@ -75,7 +75,7 @@
     for(i=0;i<count;i++)
     {
         item = [BRTextMenuItemLayer folderMenuItem];
-        NSString *location=[[_locations objectForKey:[keys objectAtIndex:i]] objectForKey:@"city"];
+        NSString *location=[[_locations objectForKey:[keys objectAtIndex:i]] objectForKey:kWeatherCityKey];
         if(location == nil)
             location = [NSString stringWithFormat:@"%i",[[[_locations objectForKey:[keys objectAtIndex:i]] objectForKey:@"code"]intValue]];
         if (location != nil) {
@@ -129,37 +129,13 @@
         [[self stack] pushController:controller];
     }
     else {
-        NSArray *timeZones=[NSTimeZone knownTimeZoneNames];
-        NSMutableArray *invocations=[[NSMutableArray alloc] init];
-        int i,count=[timeZones count];
-        for(i=0;i<count;i++)
-        {
-            id anInvocation = [SMFInvocationCenteredMenuController invocationsForObject:self
-                                                                        withSelectorVal:@"setTimeZone:forCode:"
-                                                                          withArguments:[NSArray arrayWithObjects:[timeZones objectAtIndex:i],[_options objectAtIndex:row],nil]];
-            [invocations addObject:anInvocation];
+        id a = [[SMWeatherController alloc] initWithCode:[[_options objectAtIndex:row]intValue]];
+        if (a!=nil) {
+            [[self stack] pushController:a];
         }
-        id a =[[SMFInvocationCenteredMenuController alloc]initWithTitles:timeZones
-                                                         withInvocations:invocations 
-                                                               withTitle:[NSString stringWithFormat:@"Select Time Zone for: %@",[[_items objectAtIndex:row]title],nil] 
-                                                         withDescription:@"Please select a time zone"];
-        [[self stack]pushController:a];
-        [a release];
-//        NSArray *titles=[NSArray arrayWithObjects:
-//                         BRLocalizedString(@"Remove",@"Remove"),
-//                         BRLocalizedString(@"Do Not Remove",@"Do Not Remove"),
-//                         nil];
-//        id anInvocation = [SMFInvocationCenteredMenuController invocationsForObject:self
-//                                                                    withSelectorVal:@"remove:"
-//                                                                      withArguments:[NSArray arrayWithObject:[_options objectAtIndex:row]]];
-//        NSArray *invocations = [NSMutableArray arrayWithObjects:anInvocation,@"b",nil];
-//        id a= [[SMFInvocationCenteredMenuController alloc] initWithTitles:titles
-//                                                          withInvocations:invocations
-//                                                                withTitle:BRLocalizedString(@"Remove?",@"Remove")
-//                                                          withDescription:BRLocalizedString(@"This will permanently remove the selected city",@"This will permanently remove the selected city")];
-//        
-//        [[self stack] pushController:a];
-//        [a release];
+        //[a release];
+
+
     }
 
     
@@ -182,7 +158,7 @@
             {
                 NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                           [NSNumber numberWithInt:code],@"code",
-                                          [dict objectForKey:@"city"],@"city",
+                                          [dict objectForKey:@"city"],kWeatherCityKey,
                                           nil];
                 [_locations setObject:infoDict forKey:[NSString stringWithFormat:@"%i",code,nil]];
                 [SMWeatherController setLocations:_locations];

@@ -12,6 +12,7 @@
 #import <Backrow/Backrow.h>
 #import <SoftwareMenuFramework/SoftwareMenuFramework.h>
 #import "../../Headers/AppleTV.h"
+#import "../../../Shared/SMCommonHeader.h"
 //#import "SMMenu.h"
 
 #endif

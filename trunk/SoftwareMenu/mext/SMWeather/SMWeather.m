@@ -30,7 +30,7 @@ static SMWeatherControl *_control;
 }
 +(void)reload
 {
-    NSLog(@"control: %@",_control);
+    //NSLog(@"control: %@",_control);
     if (_control==nil) {
         return;
     }
@@ -40,7 +40,10 @@ static SMWeatherControl *_control;
 }
 +(NSDictionary *)loadDictionaryForCode:(int)code
 {
-    BOOL us = [SMWeatherController USUnits];
+    return [SMWeatherMext loadDictionaryForCode:code usUnits:NO];
+}
++(NSDictionary *)loadDictionaryForCode:(int)code usUnits:(BOOL)us
+{
     NSURL *url;
     if (us) {
         url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i",code,nil]];
@@ -99,38 +102,36 @@ static SMWeatherControl *_control;
 }
 -(void)callU
 {
-    int code = [SMWeatherController yWeatherCode];
+//    int code = [SMWeatherController yWeatherCode];
     int time = [SMWeatherController refreshMinutes];
-    BOOL us = [SMWeatherController USUnits];
-    NSURL *url;
-    if (us) {
-        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i",code,nil]];
-    }
-    else
-        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i&u=c",code,nil]];
-             
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
-	NSURLResponse *response = nil;
-    NSString *data=[NSString stringWithContentsOfFile:@"/Users/frontrow/data.xml"];
-    NSError *error;
-	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSXMLDocument *doc;
-    if (error!=nil) {
-        NSLog(@"error: %@",error);
-        doc=[[NSXMLDocument alloc]initWithXMLString:data options:NSXMLDocumentTidyXML error:nil];
-    }
-    else {
-        NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
-        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:responseEncoding];
-        //NSLog(@"documentString: %@",documentString);
-        doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
-        
-    }
-    NSDictionary *dict = [SMYahooWeather parseYahooRSS:doc];
-    [_control setInfoDictionary:[NSDictionary dictionary]];
-    [doc release];
-    [_control setTimeZones:[SMWeatherController tzForCode:[SMWeatherController yWeatherCode]]];
-    [_control setInfoDictionary:dict];
+//    BOOL us = [SMWeatherController USUnits];
+//    NSURL *url;
+//    if (us) {
+//        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i",code,nil]];
+//    }
+//    else
+//        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i&u=c",code,nil]];
+//             
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+//	NSURLResponse *response = nil;
+//    NSString *data=[NSString stringWithContentsOfFile:@"/Users/frontrow/data.xml"];
+//    NSError *error;
+//	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//    NSXMLDocument *doc;
+//    if (error!=nil) {
+//        NSLog(@"error: %@",error);
+//        doc=[[NSXMLDocument alloc]initWithXMLString:data options:NSXMLDocumentTidyXML error:nil];
+//    }
+//    else {
+//        NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
+//        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:responseEncoding];
+//        //NSLog(@"documentString: %@",documentString);
+//        doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
+//        
+//    }
+//    NSDictionary *dict = [SMYahooWeather parseYahooRSS:doc];
+//    [_control setInfoDictionary:[NSDictionary dictionary]];
+    [_control reload];
     [NSTimer scheduledTimerWithTimeInterval:time*60 target:self selector:@selector(callU) userInfo:nil repeats:NO];
 }
 -(void)callU2

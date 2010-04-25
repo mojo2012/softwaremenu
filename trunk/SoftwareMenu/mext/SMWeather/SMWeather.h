@@ -34,6 +34,7 @@
 //+(SMWeatherControl *)control;
 //+(void)reload;
 +(NSDictionary *)loadDictionaryForCode:(int)code;
++(NSDictionary *)loadDictionaryForCode:(int)code usUnits:(BOOL)us;
 +(void)reload;
 -(BRControl *)backgroundControl;
 -(BRController *)controller;
