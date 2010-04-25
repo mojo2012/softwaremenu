@@ -707,10 +707,9 @@
 }
 -(void)reload
 {
-    //NSLog(@"reloading");
-    NSDictionary *dict=[SMWeatherMext loadDictionaryForCode:[SMWeatherController yWeatherCode]];
-    //NSLog(@"dict in reload: %@",dict);
-    [self setTimeZones:[SMWeatherController tzForCode:[SMWeatherController yWeatherCode]]];
+    int code = [SMWeatherController yWeatherCode];
+    NSDictionary *dict=[SMWeatherMext loadDictionaryForCode:code usUnits:[SMWeatherController USUnitsForCode:code]];
+    [self setTimeZones:[SMWeatherController tzForCode:code]];
     //NSLog(@"after setting tz");
     if (dict==nil) 
         dict=[NSDictionary dictionary];
