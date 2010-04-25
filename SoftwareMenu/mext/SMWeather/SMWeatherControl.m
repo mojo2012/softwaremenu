@@ -300,7 +300,7 @@
     [self addControl: ctrl3];
     CGPoint underForcast= nframe.origin;
     NSDictionary *forecast1=[[_infoDict objectForKey:@"forecast"] objectAtIndex:0];
-    NSDictionary *forecast2=[[_infoDict objectForKey:@"forecast"] objectAtIndex:1];
+   // NSDictionary *forecast2=[[_infoDict objectForKey:@"forecast"] objectAtIndex:1];
     
     _forecastDate1 = [[BRTextControl alloc]init];
     [_forecastDate1 setText:@"???                            " 
@@ -415,7 +415,7 @@
     tframe= highFrame;
     tframe.origin.x+=[high preferredFrameSize].width*1.1f;
     _forecastHigh2=[[BRTextControl alloc]init];
-    [_forecastHigh2 setText:[NSString stringWithFormat:@"%@°%@",[forecast2 objectForKey:@"high"],[_infoDict objectForKey:@"temperature"],nil]
+    [_forecastHigh2 setText:@"???                     "//[NSString stringWithFormat:@"%@°%@",[forecast2 objectForKey:@"high"],[_infoDict objectForKey:@"temperature"],nil]
              withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     tframe.size=[_forecastHigh2 preferredFrameSize];
     [_forecastHigh2 setFrame:tframe];
@@ -450,7 +450,7 @@
 //    tframe= highFrame;
     tframe.origin.y-=[high preferredFrameSize].height;
     _forecastLow2=[[BRTextControl alloc]init];
-    [_forecastLow2 setText:[NSString stringWithFormat:@"%@°%@",[forecast2 objectForKey:@"low"],[_infoDict objectForKey:@"temperature"],nil]
+    [_forecastLow2 setText:@"???                     "//[NSString stringWithFormat:@"%@°%@",[forecast2 objectForKey:@"low"],[_infoDict objectForKey:@"temperature"],nil]
             withAttributes:[[BRThemeInfo sharedTheme]metadataTitleAttributes]];
     tframe.size=[_forecastLow2 preferredFrameSize];
     [_forecastLow2 setFrame:tframe];

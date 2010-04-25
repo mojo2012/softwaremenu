@@ -236,6 +236,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,6 +278,7 @@
 								<string>DD679762117F6FDC000B3C94</string>
 								<string>DDE0A86B114AC6C800CF9926</string>
 								<string>DDE0AD77114AD11B00CF9926</string>
+								<string>DDE0AD43114ACDC900CF9926</string>
 								<string>DD7F4F5310A0E33000C5E31C</string>
 								<string>DD7F4E8410A0BB2F00C5E31C</string>
 								<string>E2E41DF70ECD04D700D1697E</string>
@@ -302,14 +305,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>64</integer>
-									<integer>50</integer>
-									<integer>48</integer>
-									<integer>0</integer>
+									<integer>180</integer>
+									<integer>172</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1456}, {305, 769}}</string>
+							<string>{{0, 2478}, {305, 769}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -339,14 +340,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SMNewScriptsMenu.m</string>
+								<string>SMWeatherController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -354,11 +353,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SMNewScriptsMenu.m</string>
+										<string>SMWeatherController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD02F5AC1184D3DA00B72CE9</string>
+										<string>DD02F7591184E0B200B72CE9</string>
 										<key>history</key>
 										<array>
 											<string>DDE8603B10A39FC7002D2FB8</string>
@@ -642,9 +641,7 @@
 											<string>DDF581E6118462E3007F89C9</string>
 											<string>DDF581F41184658E007F89C9</string>
 											<string>DDF581F811846646007F89C9</string>
-											<string>DDF581FA11846646007F89C9</string>
 											<string>DDF5825C11846F42007F89C9</string>
-											<string>DDF5825D11846F42007F89C9</string>
 											<string>DDF582E011847D82007F89C9</string>
 											<string>DDF582E111847D82007F89C9</string>
 											<string>DDF582E211847D82007F89C9</string>
@@ -656,8 +653,6 @@
 											<string>DDF582E911847D82007F89C9</string>
 											<string>DDF582EA11847D82007F89C9</string>
 											<string>DDF582EB11847D82007F89C9</string>
-											<string>DDF582EC11847D82007F89C9</string>
-											<string>DDF582ED11847D82007F89C9</string>
 											<string>DDF584C01184955C007F89C9</string>
 											<string>DDF584C11184955C007F89C9</string>
 											<string>DDF584C21184955C007F89C9</string>
@@ -770,7 +765,11 @@
 											<string>DD02F5A91184D3DA00B72CE9</string>
 											<string>DD02F5AA1184D3DA00B72CE9</string>
 											<string>DD02F5AB1184D3DA00B72CE9</string>
-											<string>DD02F5351184D3CE00B72CE9</string>
+											<string>DD02F7511184E05F00B72CE9</string>
+											<string>DD02F7521184E05F00B72CE9</string>
+											<string>DD02F7531184E05F00B72CE9</string>
+											<string>DD02F7541184E05F00B72CE9</string>
+											<string>DD02F7551184E05F00B72CE9</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -994,7 +993,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>SMWeatherController.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

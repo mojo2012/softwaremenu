@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = DDEF2D2C10A5D02300ECD73A /* loadUpdates */;
 		activeTarget = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
 		addToTargets = (
@@ -166,6 +166,18 @@
 			DD02F5AA1184D3DA00B72CE9 /* PBXTextBookmark */ = DD02F5AA1184D3DA00B72CE9 /* PBXTextBookmark */;
 			DD02F5AB1184D3DA00B72CE9 /* PBXTextBookmark */ = DD02F5AB1184D3DA00B72CE9 /* PBXTextBookmark */;
 			DD02F5AC1184D3DA00B72CE9 /* PBXTextBookmark */ = DD02F5AC1184D3DA00B72CE9 /* PBXTextBookmark */;
+			DD02F6C41184E00B00B72CE9 /* XCBuildMessageTextBookmark */ = DD02F6C41184E00B00B72CE9 /* XCBuildMessageTextBookmark */;
+			DD02F6C51184E00B00B72CE9 /* PBXTextBookmark */ = DD02F6C51184E00B00B72CE9 /* PBXTextBookmark */;
+			DD02F6C61184E00B00B72CE9 /* PBXTextBookmark */ = DD02F6C61184E00B00B72CE9 /* PBXTextBookmark */;
+			DD02F74D1184E04400B72CE9 /* PBXTextBookmark */ = DD02F74D1184E04400B72CE9 /* PBXTextBookmark */;
+			DD02F74E1184E04400B72CE9 /* PBXTextBookmark */ = DD02F74E1184E04400B72CE9 /* PBXTextBookmark */;
+			DD02F7511184E05F00B72CE9 /* PBXTextBookmark */ = DD02F7511184E05F00B72CE9 /* PBXTextBookmark */;
+			DD02F7521184E05F00B72CE9 /* PBXTextBookmark */ = DD02F7521184E05F00B72CE9 /* PBXTextBookmark */;
+			DD02F7531184E05F00B72CE9 /* PBXTextBookmark */ = DD02F7531184E05F00B72CE9 /* PBXTextBookmark */;
+			DD02F7541184E05F00B72CE9 /* PBXTextBookmark */ = DD02F7541184E05F00B72CE9 /* PBXTextBookmark */;
+			DD02F7551184E05F00B72CE9 /* XCBuildMessageTextBookmark */ = DD02F7551184E05F00B72CE9 /* XCBuildMessageTextBookmark */;
+			DD02F7561184E05F00B72CE9 /* PBXTextBookmark */ = DD02F7561184E05F00B72CE9 /* PBXTextBookmark */;
+			DD02F7591184E0B200B72CE9 /* PBXTextBookmark */ = DD02F7591184E0B200B72CE9 /* PBXTextBookmark */;
 			DD0E4BCA10C090DA008876B5 = DD0E4BCA10C090DA008876B5 /* PBXTextBookmark */;
 			DD13FBB310AA6CCB00972367 = DD13FBB310AA6CCB00972367 /* PBXTextBookmark */;
 			DD157792115291840014C98C = DD157792115291840014C98C /* PlistBookmark */;
@@ -1605,6 +1617,124 @@
 		vrLen = 1369;
 		vrLoc = 8943;
 	};
+	DD02F6C41184E00B00B72CE9 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Cannot find interface declaration for 'SMFCenteredMenuController', superclass of 'SMWeatherController'";
+		fRef = DDFB1CC91150306B000370FA /* SMWeatherController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	DD02F6C51184E00B00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDFB1CC91150306B000370FA /* SMWeatherController.h */;
+		name = "SMWeatherController.h: 19";
+		rLen = 0;
+		rLoc = 410;
+		rType = 0;
+		vrLen = 1010;
+		vrLoc = 29;
+	};
+	DD02F6C61184E00B00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */;
+		name = "SMNewScriptsMenu.m: 273";
+		rLen = 0;
+		rLoc = 9753;
+		rType = 0;
+		vrLen = 574;
+		vrLoc = 9522;
+	};
+	DD02F74D1184E04400B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDFB1CC91150306B000370FA /* SMWeatherController.h */;
+		name = "SMWeatherController.h: 19";
+		rLen = 0;
+		rLoc = 410;
+		rType = 0;
+		vrLen = 1010;
+		vrLoc = 29;
+	};
+	DD02F74E1184E04400B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */;
+		name = "SMNewScriptsMenu.m: 273";
+		rLen = 0;
+		rLoc = 9753;
+		rType = 0;
+		vrLen = 574;
+		vrLoc = 9522;
+	};
+	DD02F7511184E05F00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */;
+		name = "SMNewScriptsMenu.m: 354";
+		rLen = 33;
+		rLoc = 12483;
+		rType = 0;
+		vrLen = 849;
+		vrLoc = 12421;
+	};
+	DD02F7521184E05F00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDF57AFD118362FB007F89C9 /* SMWeatherSelector.h */;
+		name = "SMWeatherSelector.h: 12";
+		rLen = 25;
+		rLoc = 200;
+		rType = 0;
+		vrLen = 237;
+		vrLoc = 0;
+	};
+	DD02F7531184E05F00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDFB1CCA1150306B000370FA /* SMWeatherController.m */;
+		name = "SMWeatherController.m: 10";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 1227;
+		vrLoc = 0;
+	};
+	DD02F7541184E05F00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDF5AB9A114D18B0003831B9 /* SMWeatherControl.m */;
+		name = "SMWeatherControl.m: 303";
+		rLen = 0;
+		rLoc = 12372;
+		rType = 0;
+		vrLen = 2078;
+		vrLoc = 11284;
+	};
+	DD02F7551184E05F00B72CE9 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Cannot find interface declaration for 'SMFCenteredMenuController', superclass of 'SMWeatherController'";
+		fRef = DDFB1CC91150306B000370FA /* SMWeatherController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	DD02F7561184E05F00B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDFB1CC91150306B000370FA /* SMWeatherController.h */;
+		name = "SMWeatherController.h: 19";
+		rLen = 0;
+		rLoc = 410;
+		rType = 0;
+		vrLen = 1057;
+		vrLoc = 0;
+	};
+	DD02F7591184E0B200B72CE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DDFB1CC91150306B000370FA /* SMWeatherController.h */;
+		name = "SMWeatherController.h: 19";
+		rLen = 0;
+		rLoc = 410;
+		rType = 0;
+		vrLen = 1057;
+		vrLoc = 0;
+	};
 	DD0DBB53117F7FB300C1B052 /* SMImageReturns.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1052, 484}}";
@@ -1709,9 +1839,9 @@
 	};
 	DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1052, 5278}}";
-			sepNavSelRange = "{9865, 0}";
-			sepNavVisRange = "{8943, 1369}";
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 5174}}";
+			sepNavSelRange = "{9753, 0}";
+			sepNavVisRange = "{9522, 574}";
 		};
 	};
 	DD2426C111541FBA00CDCD20 /* SMHelper.h */ = {
@@ -5723,7 +5853,7 @@
 	};
 	DDF57AFD118362FB007F89C9 /* SMWeatherSelector.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1052, 461}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1052, 539}}";
 			sepNavSelRange = "{200, 25}";
 			sepNavVisRange = "{0, 237}";
 		};
@@ -6017,7 +6147,7 @@
 		fRef = DDF5AB9A114D18B0003831B9 /* SMWeatherControl.m */;
 		name = "SMWeatherControl.m: 709";
 		rLen = 0;
-		rLoc = 28449;
+		rLoc = 28509;
 		rType = 0;
 		vrLen = 912;
 		vrLoc = 28204;
@@ -6986,9 +7116,9 @@
 	};
 	DDF5AB9A114D18B0003831B9 /* SMWeatherControl.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1426, 11024}}";
-			sepNavSelRange = "{28449, 0}";
-			sepNavVisRange = "{28204, 912}";
+			sepNavIntBoundsRect = "{{0, 0}, {1244, 10530}}";
+			sepNavSelRange = "{12372, 0}";
+			sepNavVisRange = "{11284, 2078}";
 			sepNavWindowFrame = "{{15, 215}, {1420, 658}}";
 		};
 	};
@@ -7028,16 +7158,16 @@
 	};
 	DDFB1CC91150306B000370FA /* SMWeatherController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1052, 533}}";
-			sepNavSelRange = "{758, 0}";
-			sepNavVisRange = "{29, 1028}";
+			sepNavIntBoundsRect = "{{0, 0}, {1052, 539}}";
+			sepNavSelRange = "{410, 0}";
+			sepNavVisRange = "{0, 1057}";
 		};
 	};
 	DDFB1CCA1150306B000370FA /* SMWeatherController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1052, 4901}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1052, 4719}}";
 			sepNavSelRange = "{177, 0}";
-			sepNavVisRange = "{0, 1114}";
+			sepNavVisRange = "{0, 1227}";
 			sepNavWindowFrame = "{{15, 143}, {1246, 730}}";
 		};
 	};
