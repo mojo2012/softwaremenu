@@ -1597,6 +1597,178 @@
 		DDEF340610A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
 		DDEF340710A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
 		DDF57AFF118362FB007F89C9 /* SMWeatherSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF57AFE118362FB007F89C9 /* SMWeatherSelector.m */; };
+		DDF581A411844EA9007F89C9 /* SMCommonHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF581A311844EA9007F89C9 /* SMCommonHeader.h */; };
+		DDF5858C11849D88007F89C9 /* ArtworkURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E111849D88007F89C9 /* ArtworkURLProtocol.h */; };
+		DDF5858D11849D88007F89C9 /* ATVAirTunesManagerDelegate-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E211849D88007F89C9 /* ATVAirTunesManagerDelegate-Protocol.h */; };
+		DDF5858E11849D88007F89C9 /* ATVITunesDiskSpace-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E311849D88007F89C9 /* ATVITunesDiskSpace-Protocol.h */; };
+		DDF5858F11849D88007F89C9 /* ATVITunesTouchRemoteManager-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E411849D88007F89C9 /* ATVITunesTouchRemoteManager-Protocol.h */; };
+		DDF5859011849D88007F89C9 /* BookletResourceLoadDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E511849D88007F89C9 /* BookletResourceLoadDelegate.h */; };
+		DDF5859111849D88007F89C9 /* BookletURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E611849D88007F89C9 /* BookletURLProtocol.h */; };
+		DDF5859211849D88007F89C9 /* BRDeletable-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E711849D88007F89C9 /* BRDeletable-Protocol.h */; };
+		DDF5859311849D88007F89C9 /* BRDownload-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E811849D88007F89C9 /* BRDownload-Protocol.h */; };
+		DDF5859411849D88007F89C9 /* BREventResponder-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E911849D88007F89C9 /* BREventResponder-Protocol.h */; };
+		DDF5859511849D88007F89C9 /* BRImageProxy-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584EA11849D88007F89C9 /* BRImageProxy-Protocol.h */; };
+		DDF5859611849D88007F89C9 /* BRITunesUtilities-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584EB11849D88007F89C9 /* BRITunesUtilities-Protocol.h */; };
+		DDF5859711849D88007F89C9 /* BRMediaAsset-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584EC11849D88007F89C9 /* BRMediaAsset-Protocol.h */; };
+		DDF5859811849D88007F89C9 /* BRMediaAssetFacade-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584ED11849D88007F89C9 /* BRMediaAssetFacade-Protocol.h */; };
+		DDF5859911849D88007F89C9 /* BRMediaCollection-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584EE11849D88007F89C9 /* BRMediaCollection-Protocol.h */; };
+		DDF5859A11849D88007F89C9 /* BRMediaIdentityProtocol-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584EF11849D88007F89C9 /* BRMediaIdentityProtocol-Protocol.h */; };
+		DDF5859B11849D88007F89C9 /* BRMediaObject-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F011849D88007F89C9 /* BRMediaObject-Protocol.h */; };
+		DDF5859C11849D88007F89C9 /* BRMediaPlayer-CurrentPlaylist.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F111849D88007F89C9 /* BRMediaPlayer-CurrentPlaylist.h */; };
+		DDF5859D11849D88007F89C9 /* BRMediaType-MEMediaTypeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F211849D88007F89C9 /* BRMediaType-MEMediaTypeAdditions.h */; };
+		DDF5859E11849D88007F89C9 /* BRMenuListItemProvider-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F311849D88007F89C9 /* BRMenuListItemProvider-Protocol.h */; };
+		DDF5859F11849D88007F89C9 /* BRMusicStoreImageDecryptionAgent-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F411849D88007F89C9 /* BRMusicStoreImageDecryptionAgent-Protocol.h */; };
+		DDF585A011849D88007F89C9 /* BRRatingInfoDatabase-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F511849D88007F89C9 /* BRRatingInfoDatabase-Protocol.h */; };
+		DDF585A111849D88007F89C9 /* BRSyncProgressAgent-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F611849D88007F89C9 /* BRSyncProgressAgent-Protocol.h */; };
+		DDF585A211849D88007F89C9 /* BRTransientPlaybackRange-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F711849D88007F89C9 /* BRTransientPlaybackRange-Protocol.h */; };
+		DDF585A311849D88007F89C9 /* BRUnresolvedMediaProviderHandler-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F811849D88007F89C9 /* BRUnresolvedMediaProviderHandler-Protocol.h */; };
+		DDF585A411849D88007F89C9 /* BRVideoByteRangeRequester-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584F911849D88007F89C9 /* BRVideoByteRangeRequester-Protocol.h */; };
+		DDF585A511849D88007F89C9 /* BRVideoPlatformFilter-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584FA11849D88007F89C9 /* BRVideoPlatformFilter-Protocol.h */; };
+		DDF585A611849D88007F89C9 /* BRYTSigningAgent-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584FB11849D88007F89C9 /* BRYTSigningAgent-Protocol.h */; };
+		DDF585A711849D88007F89C9 /* CDStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584FC11849D88007F89C9 /* CDStructures.h */; };
+		DDF585A811849D88007F89C9 /* ChapterImageURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584FD11849D88007F89C9 /* ChapterImageURLProtocol.h */; };
+		DDF585A911849D88007F89C9 /* FETextEntryControlTest.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584FE11849D88007F89C9 /* FETextEntryControlTest.h */; };
+		DDF585AA11849D88007F89C9 /* HIDDeviceThreadConduit.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584FF11849D88007F89C9 /* HIDDeviceThreadConduit.h */; };
+		DDF585AB11849D88007F89C9 /* MEAirTunesAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850011849D88007F89C9 /* MEAirTunesAccount.h */; };
+		DDF585AC11849D88007F89C9 /* MEAirTunesImageProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850111849D88007F89C9 /* MEAirTunesImageProxy.h */; };
+		DDF585AD11849D88007F89C9 /* MEAirTunesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850211849D88007F89C9 /* MEAirTunesManager.h */; };
+		DDF585AE11849D88007F89C9 /* MEAirTunesMediaAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850311849D88007F89C9 /* MEAirTunesMediaAsset.h */; };
+		DDF585AF11849D88007F89C9 /* MEAirTunesMediaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850411849D88007F89C9 /* MEAirTunesMediaProvider.h */; };
+		DDF585B011849D88007F89C9 /* MEAirTunesPlayer-Notifications.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850511849D88007F89C9 /* MEAirTunesPlayer-Notifications.h */; };
+		DDF585B111849D88007F89C9 /* MEAirTunesPlayer-PlaybackControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850611849D88007F89C9 /* MEAirTunesPlayer-PlaybackControl.h */; };
+		DDF585B211849D88007F89C9 /* MEAirTunesPlayer-Rules.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850711849D88007F89C9 /* MEAirTunesPlayer-Rules.h */; };
+		DDF585B311849D88007F89C9 /* MEAirTunesPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850811849D88007F89C9 /* MEAirTunesPlayer.h */; };
+		DDF585B411849D88007F89C9 /* MEAssetExpirationMonitor-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850911849D88007F89C9 /* MEAssetExpirationMonitor-Private.h */; };
+		DDF585B511849D88007F89C9 /* MEAssetExpirationMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850A11849D88007F89C9 /* MEAssetExpirationMonitor.h */; };
+		DDF585B611849D88007F89C9 /* MEAutoRestartManager-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850B11849D88007F89C9 /* MEAutoRestartManager-Private.h */; };
+		DDF585B711849D88007F89C9 /* MEAutoRestartManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850C11849D88007F89C9 /* MEAutoRestartManager.h */; };
+		DDF585B811849D88007F89C9 /* MEAVPlayer-DRMTasks.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850D11849D88007F89C9 /* MEAVPlayer-DRMTasks.h */; };
+		DDF585B911849D88007F89C9 /* MEAVPlayer-iTunesPlayerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850E11849D88007F89C9 /* MEAVPlayer-iTunesPlayerControl.h */; };
+		DDF585BA11849D88007F89C9 /* MEAVPlayer-MessageHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5850F11849D88007F89C9 /* MEAVPlayer-MessageHandlers.h */; };
+		DDF585BB11849D88007F89C9 /* MEAVPlayer-PlaybackControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851011849D88007F89C9 /* MEAVPlayer-PlaybackControl.h */; };
+		DDF585BC11849D88007F89C9 /* MEAVPlayer-PlaylistManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851111849D88007F89C9 /* MEAVPlayer-PlaylistManagement.h */; };
+		DDF585BD11849D88007F89C9 /* MEAVPlayer-VideoPlayerControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851211849D88007F89C9 /* MEAVPlayer-VideoPlayerControl.h */; };
+		DDF585BE11849D88007F89C9 /* MEAVPlayer-VolumeControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851311849D88007F89C9 /* MEAVPlayer-VolumeControl.h */; };
+		DDF585BF11849D88007F89C9 /* MEAVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851411849D88007F89C9 /* MEAVPlayer.h */; };
+		DDF585C011849D88007F89C9 /* MEBootImageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851511849D88007F89C9 /* MEBootImageControl.h */; };
+		DDF585C111849D88007F89C9 /* MEBrowserTab-CocktailFinalization.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851611849D88007F89C9 /* MEBrowserTab-CocktailFinalization.h */; };
+		DDF585C211849D88007F89C9 /* MEBrowserTab-FrameLoadDelegateOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851711849D88007F89C9 /* MEBrowserTab-FrameLoadDelegateOverrides.h */; };
+		DDF585C311849D88007F89C9 /* MEBrowserTab-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851811849D88007F89C9 /* MEBrowserTab-Private.h */; };
+		DDF585C411849D88007F89C9 /* MEBrowserTab-WebPolicyDelegateOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851911849D88007F89C9 /* MEBrowserTab-WebPolicyDelegateOverrides.h */; };
+		DDF585C511849D88007F89C9 /* MEBrowserTab-WebResourceLoadDelegateOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851A11849D88007F89C9 /* MEBrowserTab-WebResourceLoadDelegateOverrides.h */; };
+		DDF585C611849D88007F89C9 /* MEBrowserTab.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851B11849D88007F89C9 /* MEBrowserTab.h */; };
+		DDF585C711849D88007F89C9 /* MEController-iTunesInitialization.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851C11849D88007F89C9 /* MEController-iTunesInitialization.h */; };
+		DDF585C811849D88007F89C9 /* MEController-Registration.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851D11849D88007F89C9 /* MEController-Registration.h */; };
+		DDF585C911849D88007F89C9 /* MEController-StartupSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851E11849D88007F89C9 /* MEController-StartupSequence.h */; };
+		DDF585CA11849D88007F89C9 /* MEController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5851F11849D88007F89C9 /* MEController.h */; };
+		DDF585CB11849D88007F89C9 /* MEDatabaseSyncDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852011849D88007F89C9 /* MEDatabaseSyncDialog.h */; };
+		DDF585CC11849D88007F89C9 /* MEDatabaseSyncDialogBoundingControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852111849D88007F89C9 /* MEDatabaseSyncDialogBoundingControl.h */; };
+		DDF585CD11849D88007F89C9 /* MEDownloadMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852211849D88007F89C9 /* MEDownloadMonitor.h */; };
+		DDF585CE11849D88007F89C9 /* MEIntroMovieAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852311849D88007F89C9 /* MEIntroMovieAsset.h */; };
+		DDF585CF11849D88007F89C9 /* MEIntroMovieController-Visuals.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852411849D88007F89C9 /* MEIntroMovieController-Visuals.h */; };
+		DDF585D011849D88007F89C9 /* MEIntroMovieController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852511849D88007F89C9 /* MEIntroMovieController.h */; };
+		DDF585D111849D88007F89C9 /* MEIPhotoMediaAsset-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852611849D88007F89C9 /* MEIPhotoMediaAsset-Private.h */; };
+		DDF585D211849D88007F89C9 /* MEIPhotoMediaAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852711849D88007F89C9 /* MEIPhotoMediaAsset.h */; };
+		DDF585D311849D88007F89C9 /* MEIPhotoMediaCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852811849D88007F89C9 /* MEIPhotoMediaCollection.h */; };
+		DDF585D411849D88007F89C9 /* MEIPhotoMediaProvider-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852911849D88007F89C9 /* MEIPhotoMediaProvider-Private.h */; };
+		DDF585D511849D88007F89C9 /* MEIPhotoMediaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852A11849D88007F89C9 /* MEIPhotoMediaProvider.h */; };
+		DDF585D611849D88007F89C9 /* MEIPhotoRemoteMediaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852B11849D88007F89C9 /* MEIPhotoRemoteMediaProvider.h */; };
+		DDF585D711849D88007F89C9 /* MEITunesAccount-Notifications.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852C11849D88007F89C9 /* MEITunesAccount-Notifications.h */; };
+		DDF585D811849D88007F89C9 /* MEITunesAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852D11849D88007F89C9 /* MEITunesAccount.h */; };
+		DDF585D911849D88007F89C9 /* MEITunesAlbum-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852E11849D88007F89C9 /* MEITunesAlbum-Private.h */; };
+		DDF585DA11849D88007F89C9 /* MEITunesAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5852F11849D88007F89C9 /* MEITunesAlbum.h */; };
+		DDF585DB11849D88007F89C9 /* MEITunesAlbumAssetEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853011849D88007F89C9 /* MEITunesAlbumAssetEnumerator.h */; };
+		DDF585DC11849D88007F89C9 /* MEITunesArtist-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853111849D88007F89C9 /* MEITunesArtist-Private.h */; };
+		DDF585DD11849D88007F89C9 /* MEITunesArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853211849D88007F89C9 /* MEITunesArtist.h */; };
+		DDF585DE11849D88007F89C9 /* MEITunesAssetDigitalExtraInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853311849D88007F89C9 /* MEITunesAssetDigitalExtraInfo.h */; };
+		DDF585DF11849D88007F89C9 /* MEITunesAssetExpiryInfo-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853411849D88007F89C9 /* MEITunesAssetExpiryInfo-Private.h */; };
+		DDF585E011849D88007F89C9 /* MEITunesAssetExpiryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853511849D88007F89C9 /* MEITunesAssetExpiryInfo.h */; };
+		DDF585E111849D88007F89C9 /* MEITunesBaseMediaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853611849D88007F89C9 /* MEITunesBaseMediaProvider.h */; };
+		DDF585E211849D88007F89C9 /* MEITunesCollectionGeniusInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853711849D88007F89C9 /* MEITunesCollectionGeniusInfo.h */; };
+		DDF585E311849D88007F89C9 /* MEITunesCollectionGeniusMixInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853811849D88007F89C9 /* MEITunesCollectionGeniusMixInfo.h */; };
+		DDF585E411849D88007F89C9 /* MEITunesContext-DatabaseModifications.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853911849D88007F89C9 /* MEITunesContext-DatabaseModifications.h */; };
+		DDF585E511849D88007F89C9 /* MEITunesContext-iTunesCleanup.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853A11849D88007F89C9 /* MEITunesContext-iTunesCleanup.h */; };
+		DDF585E611849D88007F89C9 /* MEITunesContext-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853B11849D88007F89C9 /* MEITunesContext-Private.h */; };
+		DDF585E711849D88007F89C9 /* MEITunesContext.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853C11849D88007F89C9 /* MEITunesContext.h */; };
+		DDF585E811849D88007F89C9 /* MEITunesDiskSpace.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853D11849D88007F89C9 /* MEITunesDiskSpace.h */; };
+		DDF585E911849D88007F89C9 /* MEITunesDownload-Artwork.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853E11849D88007F89C9 /* MEITunesDownload-Artwork.h */; };
+		DDF585EA11849D88007F89C9 /* MEITunesDownload-Notifications.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5853F11849D88007F89C9 /* MEITunesDownload-Notifications.h */; };
+		DDF585EB11849D88007F89C9 /* MEITunesDownload-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854011849D88007F89C9 /* MEITunesDownload-Private.h */; };
+		DDF585EC11849D88007F89C9 /* MEITunesDownload-Setting.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854111849D88007F89C9 /* MEITunesDownload-Setting.h */; };
+		DDF585ED11849D88007F89C9 /* MEITunesDownload-Updating.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854211849D88007F89C9 /* MEITunesDownload-Updating.h */; };
+		DDF585EE11849D88007F89C9 /* MEITunesDownload.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854311849D88007F89C9 /* MEITunesDownload.h */; };
+		DDF585EF11849D88007F89C9 /* MEITunesDownloadManager-NotificationHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854411849D88007F89C9 /* MEITunesDownloadManager-NotificationHandlers.h */; };
+		DDF585F011849D88007F89C9 /* MEITunesDownloadManager-UploadDiagnostics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854511849D88007F89C9 /* MEITunesDownloadManager-UploadDiagnostics.h */; };
+		DDF585F111849D88007F89C9 /* MEITunesDownloadManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854611849D88007F89C9 /* MEITunesDownloadManager.h */; };
+		DDF585F211849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnostics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854711849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnostics.h */; };
+		DDF585F311849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnosticsPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854811849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnosticsPrivate.h */; };
+		DDF585F411849D88007F89C9 /* MEITunesDownloadTestManager-NotificationHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854911849D88007F89C9 /* MEITunesDownloadTestManager-NotificationHandlers.h */; };
+		DDF585F511849D88007F89C9 /* MEITunesDownloadTestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854A11849D88007F89C9 /* MEITunesDownloadTestManager.h */; };
+		DDF585F611849D88007F89C9 /* MEITunesGeniusMixArtworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854B11849D88007F89C9 /* MEITunesGeniusMixArtworkInfo.h */; };
+		DDF585F711849D88007F89C9 /* MEITunesGeniusMixImageManager-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854C11849D88007F89C9 /* MEITunesGeniusMixImageManager-Private.h */; };
+		DDF585F811849D88007F89C9 /* MEITunesGeniusMixImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854D11849D88007F89C9 /* MEITunesGeniusMixImageManager.h */; };
+		DDF585F911849D88007F89C9 /* MEITunesInternetRadioGenreCollection-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854E11849D88007F89C9 /* MEITunesInternetRadioGenreCollection-Private.h */; };
+		DDF585FA11849D88007F89C9 /* MEITunesInternetRadioGenreCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5854F11849D88007F89C9 /* MEITunesInternetRadioGenreCollection.h */; };
+		DDF585FB11849D88007F89C9 /* MEITunesInternetRadioProvider-MEITunesMediaProviderOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855011849D88007F89C9 /* MEITunesInternetRadioProvider-MEITunesMediaProviderOverrides.h */; };
+		DDF585FC11849D88007F89C9 /* MEITunesInternetRadioProvider-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855111849D88007F89C9 /* MEITunesInternetRadioProvider-Private.h */; };
+		DDF585FD11849D88007F89C9 /* MEITunesInternetRadioProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855211849D88007F89C9 /* MEITunesInternetRadioProvider.h */; };
+		DDF585FE11849D88007F89C9 /* MEITunesInternetRadioStationAsset-PrimaryCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855311849D88007F89C9 /* MEITunesInternetRadioStationAsset-PrimaryCollection.h */; };
+		DDF585FF11849D88007F89C9 /* MEITunesInternetRadioStationAsset-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855411849D88007F89C9 /* MEITunesInternetRadioStationAsset-Private.h */; };
+		DDF5860011849D88007F89C9 /* MEITunesInternetRadioStationAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855511849D88007F89C9 /* MEITunesInternetRadioStationAsset.h */; };
+		DDF5860111849D88007F89C9 /* MEITunesLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855611849D88007F89C9 /* MEITunesLibrary.h */; };
+		DDF5860211849D88007F89C9 /* MEITunesMediaAsset-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855711849D88007F89C9 /* MEITunesMediaAsset-Private.h */; };
+		DDF5860311849D88007F89C9 /* MEITunesMediaAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855811849D88007F89C9 /* MEITunesMediaAsset.h */; };
+		DDF5860411849D88007F89C9 /* MEITunesMediaAssetFacade.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855911849D88007F89C9 /* MEITunesMediaAssetFacade.h */; };
+		DDF5860511849D88007F89C9 /* MEITunesMediaAssetImageProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855A11849D88007F89C9 /* MEITunesMediaAssetImageProxy.h */; };
+		DDF5860611849D88007F89C9 /* MEITunesMediaAssetVisitor-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855B11849D88007F89C9 /* MEITunesMediaAssetVisitor-Private.h */; };
+		DDF5860711849D88007F89C9 /* MEITunesMediaAssetVisitor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855C11849D88007F89C9 /* MEITunesMediaAssetVisitor.h */; };
+		DDF5860811849D88007F89C9 /* MEITunesMediaCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855D11849D88007F89C9 /* MEITunesMediaCollection.h */; };
+		DDF5860911849D88007F89C9 /* MEITunesMediaCollectionEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855E11849D88007F89C9 /* MEITunesMediaCollectionEditor.h */; };
+		DDF5860A11849D88007F89C9 /* MEITunesMediaCollectionImageProxy-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5855F11849D88007F89C9 /* MEITunesMediaCollectionImageProxy-Private.h */; };
+		DDF5860B11849D88007F89C9 /* MEITunesMediaCollectionImageProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856011849D88007F89C9 /* MEITunesMediaCollectionImageProxy.h */; };
+		DDF5860C11849D88007F89C9 /* MEITunesMediaProvider-MEITunesMediaProviderDatabaseModification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856111849D88007F89C9 /* MEITunesMediaProvider-MEITunesMediaProviderDatabaseModification.h */; };
+		DDF5860D11849D88007F89C9 /* MEITunesMediaProvider-Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856211849D88007F89C9 /* MEITunesMediaProvider-Protected.h */; };
+		DDF5860E11849D88007F89C9 /* MEITunesMediaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856311849D88007F89C9 /* MEITunesMediaProvider.h */; };
+		DDF5860F11849D88007F89C9 /* MEITunesPeriodicDatabaseSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856411849D88007F89C9 /* MEITunesPeriodicDatabaseSaver.h */; };
+		DDF5861011849D88007F89C9 /* MEITunesPlayerMessageHandler-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856511849D88007F89C9 /* MEITunesPlayerMessageHandler-Protocol.h */; };
+		DDF5861111849D88007F89C9 /* MEITunesPlaylist-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856611849D88007F89C9 /* MEITunesPlaylist-Private.h */; };
+		DDF5861211849D88007F89C9 /* MEITunesPlaylist.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856711849D88007F89C9 /* MEITunesPlaylist.h */; };
+		DDF5861311849D88007F89C9 /* MEITunesPodcastSubscriptionAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856811849D88007F89C9 /* MEITunesPodcastSubscriptionAsset.h */; };
+		DDF5861411849D88007F89C9 /* MEITunesPodcastSubscriptionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856911849D88007F89C9 /* MEITunesPodcastSubscriptionProvider.h */; };
+		DDF5861511849D88007F89C9 /* MEITunesRadioLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856A11849D88007F89C9 /* MEITunesRadioLibrary.h */; };
+		DDF5861611849D88007F89C9 /* MEITunesRemoteLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856B11849D88007F89C9 /* MEITunesRemoteLibrary.h */; };
+		DDF5861711849D88007F89C9 /* MEITunesRemoteMediaProvider-Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856C11849D88007F89C9 /* MEITunesRemoteMediaProvider-Protected.h */; };
+		DDF5861811849D88007F89C9 /* MEITunesRemoteMediaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856D11849D88007F89C9 /* MEITunesRemoteMediaProvider.h */; };
+		DDF5861911849D88007F89C9 /* MEITunesRentalProvider-ProtectedOverrides.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856E11849D88007F89C9 /* MEITunesRentalProvider-ProtectedOverrides.h */; };
+		DDF5861A11849D88007F89C9 /* MEITunesRentalProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5856F11849D88007F89C9 /* MEITunesRentalProvider.h */; };
+		DDF5861B11849D88007F89C9 /* MEITunesUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857011849D88007F89C9 /* MEITunesUtilities.h */; };
+		DDF5861C11849D88007F89C9 /* MEMediaAssetWithTransientPlaybackRange.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857111849D88007F89C9 /* MEMediaAssetWithTransientPlaybackRange.h */; };
+		DDF5861D11849D88007F89C9 /* MEMusicStoreImageDecryptionAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857211849D88007F89C9 /* MEMusicStoreImageDecryptionAgent.h */; };
+		DDF5861E11849D88007F89C9 /* MEPowerManagement-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857311849D88007F89C9 /* MEPowerManagement-Private.h */; };
+		DDF5861F11849D88007F89C9 /* MEPowerManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857411849D88007F89C9 /* MEPowerManagement.h */; };
+		DDF5862011849D88007F89C9 /* MEPowerManagementControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857511849D88007F89C9 /* MEPowerManagementControl.h */; };
+		DDF5862111849D88007F89C9 /* MERemotePairingHandler-Notification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857611849D88007F89C9 /* MERemotePairingHandler-Notification.h */; };
+		DDF5862211849D88007F89C9 /* MERemotePairingHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857711849D88007F89C9 /* MERemotePairingHandler.h */; };
+		DDF5862311849D88007F89C9 /* MESWUFailedFlashController-Updates.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857811849D88007F89C9 /* MESWUFailedFlashController-Updates.h */; };
+		DDF5862411849D88007F89C9 /* MESWUFailedFlashController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857911849D88007F89C9 /* MESWUFailedFlashController.h */; };
+		DDF5862511849D88007F89C9 /* MESyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857A11849D88007F89C9 /* MESyncEvent.h */; };
+		DDF5862611849D88007F89C9 /* MESyncProgressAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857B11849D88007F89C9 /* MESyncProgressAgent.h */; };
+		DDF5862711849D88007F89C9 /* MESyncState.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857C11849D88007F89C9 /* MESyncState.h */; };
+		DDF5862811849D88007F89C9 /* MESyncStateIdle.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857D11849D88007F89C9 /* MESyncStateIdle.h */; };
+		DDF5862911849D88007F89C9 /* MESyncStateSyncDB.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857E11849D88007F89C9 /* MESyncStateSyncDB.h */; };
+		DDF5862A11849D88007F89C9 /* METouchRemoteDecryptionAgent-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5857F11849D88007F89C9 /* METouchRemoteDecryptionAgent-Private.h */; };
+		DDF5862B11849D88007F89C9 /* METouchRemoteDecryptionAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858011849D88007F89C9 /* METouchRemoteDecryptionAgent.h */; };
+		DDF5862C11849D88007F89C9 /* METouchRemoteManager-Artwork.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858111849D88007F89C9 /* METouchRemoteManager-Artwork.h */; };
+		DDF5862D11849D88007F89C9 /* METouchRemoteManager-Notifications.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858211849D88007F89C9 /* METouchRemoteManager-Notifications.h */; };
+		DDF5862E11849D88007F89C9 /* METouchRemoteManager-Updates.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858311849D88007F89C9 /* METouchRemoteManager-Updates.h */; };
+		DDF5862F11849D88007F89C9 /* METouchRemoteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858411849D88007F89C9 /* METouchRemoteManager.h */; };
+		DDF5863011849D88007F89C9 /* MEWatchdog.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858511849D88007F89C9 /* MEWatchdog.h */; };
+		DDF5863111849D88007F89C9 /* MEYTSigningAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858611849D88007F89C9 /* MEYTSigningAgent.h */; };
+		DDF5863211849D88007F89C9 /* NSObject-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858711849D88007F89C9 /* NSObject-Protocol.h */; };
+		DDF5863311849D88007F89C9 /* NSString-iTunesAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858811849D88007F89C9 /* NSString-iTunesAdditions.h */; };
+		DDF5863411849D88007F89C9 /* NSURLProtocol-Registration.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858911849D88007F89C9 /* NSURLProtocol-Registration.h */; };
+		DDF5863511849D88007F89C9 /* ResourcesURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858A11849D88007F89C9 /* ResourcesURLProtocol.h */; };
+		DDF5863611849D88007F89C9 /* RUIRatingInfoDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5858B11849D88007F89C9 /* RUIRatingInfoDatabase.h */; };
 		DDF5AB9B114D18B0003831B9 /* SMWeatherControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AB9A114D18B0003831B9 /* SMWeatherControl.m */; };
 		DDF5AE3E114D8890003831B9 /* 3200.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AE24114D8890003831B9 /* 3200.png */; };
 		DDF5AEBC114E9BF6003831B9 /* 0d.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AE5A114E9BF5003831B9 /* 0d.png */; };
@@ -3405,6 +3577,179 @@
 		DDEF340410A657F500ECD73A /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
 		DDF57AFD118362FB007F89C9 /* SMWeatherSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWeatherSelector.h; sourceTree = "<group>"; };
 		DDF57AFE118362FB007F89C9 /* SMWeatherSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWeatherSelector.m; sourceTree = "<group>"; };
+		DDF581A311844EA9007F89C9 /* SMCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCommonHeader.h; path = ../Shared/SMCommonHeader.h; sourceTree = SOURCE_ROOT; };
+		DDF58271118471E6007F89C9 /* SMSlideshow.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSlideshow.pch; sourceTree = "<group>"; };
+		DDF584E111849D88007F89C9 /* ArtworkURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtworkURLProtocol.h; sourceTree = "<group>"; };
+		DDF584E211849D88007F89C9 /* ATVAirTunesManagerDelegate-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ATVAirTunesManagerDelegate-Protocol.h"; sourceTree = "<group>"; };
+		DDF584E311849D88007F89C9 /* ATVITunesDiskSpace-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ATVITunesDiskSpace-Protocol.h"; sourceTree = "<group>"; };
+		DDF584E411849D88007F89C9 /* ATVITunesTouchRemoteManager-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ATVITunesTouchRemoteManager-Protocol.h"; sourceTree = "<group>"; };
+		DDF584E511849D88007F89C9 /* BookletResourceLoadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookletResourceLoadDelegate.h; sourceTree = "<group>"; };
+		DDF584E611849D88007F89C9 /* BookletURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookletURLProtocol.h; sourceTree = "<group>"; };
+		DDF584E711849D88007F89C9 /* BRDeletable-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRDeletable-Protocol.h"; sourceTree = "<group>"; };
+		DDF584E811849D88007F89C9 /* BRDownload-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRDownload-Protocol.h"; sourceTree = "<group>"; };
+		DDF584E911849D88007F89C9 /* BREventResponder-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BREventResponder-Protocol.h"; sourceTree = "<group>"; };
+		DDF584EA11849D88007F89C9 /* BRImageProxy-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRImageProxy-Protocol.h"; sourceTree = "<group>"; };
+		DDF584EB11849D88007F89C9 /* BRITunesUtilities-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRITunesUtilities-Protocol.h"; sourceTree = "<group>"; };
+		DDF584EC11849D88007F89C9 /* BRMediaAsset-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaAsset-Protocol.h"; sourceTree = "<group>"; };
+		DDF584ED11849D88007F89C9 /* BRMediaAssetFacade-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaAssetFacade-Protocol.h"; sourceTree = "<group>"; };
+		DDF584EE11849D88007F89C9 /* BRMediaCollection-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaCollection-Protocol.h"; sourceTree = "<group>"; };
+		DDF584EF11849D88007F89C9 /* BRMediaIdentityProtocol-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaIdentityProtocol-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F011849D88007F89C9 /* BRMediaObject-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaObject-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F111849D88007F89C9 /* BRMediaPlayer-CurrentPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaPlayer-CurrentPlaylist.h"; sourceTree = "<group>"; };
+		DDF584F211849D88007F89C9 /* BRMediaType-MEMediaTypeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMediaType-MEMediaTypeAdditions.h"; sourceTree = "<group>"; };
+		DDF584F311849D88007F89C9 /* BRMenuListItemProvider-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMenuListItemProvider-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F411849D88007F89C9 /* BRMusicStoreImageDecryptionAgent-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRMusicStoreImageDecryptionAgent-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F511849D88007F89C9 /* BRRatingInfoDatabase-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRRatingInfoDatabase-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F611849D88007F89C9 /* BRSyncProgressAgent-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRSyncProgressAgent-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F711849D88007F89C9 /* BRTransientPlaybackRange-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRTransientPlaybackRange-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F811849D88007F89C9 /* BRUnresolvedMediaProviderHandler-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRUnresolvedMediaProviderHandler-Protocol.h"; sourceTree = "<group>"; };
+		DDF584F911849D88007F89C9 /* BRVideoByteRangeRequester-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRVideoByteRangeRequester-Protocol.h"; sourceTree = "<group>"; };
+		DDF584FA11849D88007F89C9 /* BRVideoPlatformFilter-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRVideoPlatformFilter-Protocol.h"; sourceTree = "<group>"; };
+		DDF584FB11849D88007F89C9 /* BRYTSigningAgent-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRYTSigningAgent-Protocol.h"; sourceTree = "<group>"; };
+		DDF584FC11849D88007F89C9 /* CDStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStructures.h; sourceTree = "<group>"; };
+		DDF584FD11849D88007F89C9 /* ChapterImageURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterImageURLProtocol.h; sourceTree = "<group>"; };
+		DDF584FE11849D88007F89C9 /* FETextEntryControlTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETextEntryControlTest.h; sourceTree = "<group>"; };
+		DDF584FF11849D88007F89C9 /* HIDDeviceThreadConduit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDDeviceThreadConduit.h; sourceTree = "<group>"; };
+		DDF5850011849D88007F89C9 /* MEAirTunesAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAirTunesAccount.h; sourceTree = "<group>"; };
+		DDF5850111849D88007F89C9 /* MEAirTunesImageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAirTunesImageProxy.h; sourceTree = "<group>"; };
+		DDF5850211849D88007F89C9 /* MEAirTunesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAirTunesManager.h; sourceTree = "<group>"; };
+		DDF5850311849D88007F89C9 /* MEAirTunesMediaAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAirTunesMediaAsset.h; sourceTree = "<group>"; };
+		DDF5850411849D88007F89C9 /* MEAirTunesMediaProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAirTunesMediaProvider.h; sourceTree = "<group>"; };
+		DDF5850511849D88007F89C9 /* MEAirTunesPlayer-Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAirTunesPlayer-Notifications.h"; sourceTree = "<group>"; };
+		DDF5850611849D88007F89C9 /* MEAirTunesPlayer-PlaybackControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAirTunesPlayer-PlaybackControl.h"; sourceTree = "<group>"; };
+		DDF5850711849D88007F89C9 /* MEAirTunesPlayer-Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAirTunesPlayer-Rules.h"; sourceTree = "<group>"; };
+		DDF5850811849D88007F89C9 /* MEAirTunesPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAirTunesPlayer.h; sourceTree = "<group>"; };
+		DDF5850911849D88007F89C9 /* MEAssetExpirationMonitor-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAssetExpirationMonitor-Private.h"; sourceTree = "<group>"; };
+		DDF5850A11849D88007F89C9 /* MEAssetExpirationMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAssetExpirationMonitor.h; sourceTree = "<group>"; };
+		DDF5850B11849D88007F89C9 /* MEAutoRestartManager-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAutoRestartManager-Private.h"; sourceTree = "<group>"; };
+		DDF5850C11849D88007F89C9 /* MEAutoRestartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAutoRestartManager.h; sourceTree = "<group>"; };
+		DDF5850D11849D88007F89C9 /* MEAVPlayer-DRMTasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-DRMTasks.h"; sourceTree = "<group>"; };
+		DDF5850E11849D88007F89C9 /* MEAVPlayer-iTunesPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-iTunesPlayerControl.h"; sourceTree = "<group>"; };
+		DDF5850F11849D88007F89C9 /* MEAVPlayer-MessageHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-MessageHandlers.h"; sourceTree = "<group>"; };
+		DDF5851011849D88007F89C9 /* MEAVPlayer-PlaybackControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-PlaybackControl.h"; sourceTree = "<group>"; };
+		DDF5851111849D88007F89C9 /* MEAVPlayer-PlaylistManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-PlaylistManagement.h"; sourceTree = "<group>"; };
+		DDF5851211849D88007F89C9 /* MEAVPlayer-VideoPlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-VideoPlayerControl.h"; sourceTree = "<group>"; };
+		DDF5851311849D88007F89C9 /* MEAVPlayer-VolumeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEAVPlayer-VolumeControl.h"; sourceTree = "<group>"; };
+		DDF5851411849D88007F89C9 /* MEAVPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEAVPlayer.h; sourceTree = "<group>"; };
+		DDF5851511849D88007F89C9 /* MEBootImageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEBootImageControl.h; sourceTree = "<group>"; };
+		DDF5851611849D88007F89C9 /* MEBrowserTab-CocktailFinalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEBrowserTab-CocktailFinalization.h"; sourceTree = "<group>"; };
+		DDF5851711849D88007F89C9 /* MEBrowserTab-FrameLoadDelegateOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEBrowserTab-FrameLoadDelegateOverrides.h"; sourceTree = "<group>"; };
+		DDF5851811849D88007F89C9 /* MEBrowserTab-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEBrowserTab-Private.h"; sourceTree = "<group>"; };
+		DDF5851911849D88007F89C9 /* MEBrowserTab-WebPolicyDelegateOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEBrowserTab-WebPolicyDelegateOverrides.h"; sourceTree = "<group>"; };
+		DDF5851A11849D88007F89C9 /* MEBrowserTab-WebResourceLoadDelegateOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEBrowserTab-WebResourceLoadDelegateOverrides.h"; sourceTree = "<group>"; };
+		DDF5851B11849D88007F89C9 /* MEBrowserTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEBrowserTab.h; sourceTree = "<group>"; };
+		DDF5851C11849D88007F89C9 /* MEController-iTunesInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEController-iTunesInitialization.h"; sourceTree = "<group>"; };
+		DDF5851D11849D88007F89C9 /* MEController-Registration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEController-Registration.h"; sourceTree = "<group>"; };
+		DDF5851E11849D88007F89C9 /* MEController-StartupSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEController-StartupSequence.h"; sourceTree = "<group>"; };
+		DDF5851F11849D88007F89C9 /* MEController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEController.h; sourceTree = "<group>"; };
+		DDF5852011849D88007F89C9 /* MEDatabaseSyncDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDatabaseSyncDialog.h; sourceTree = "<group>"; };
+		DDF5852111849D88007F89C9 /* MEDatabaseSyncDialogBoundingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDatabaseSyncDialogBoundingControl.h; sourceTree = "<group>"; };
+		DDF5852211849D88007F89C9 /* MEDownloadMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDownloadMonitor.h; sourceTree = "<group>"; };
+		DDF5852311849D88007F89C9 /* MEIntroMovieAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIntroMovieAsset.h; sourceTree = "<group>"; };
+		DDF5852411849D88007F89C9 /* MEIntroMovieController-Visuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEIntroMovieController-Visuals.h"; sourceTree = "<group>"; };
+		DDF5852511849D88007F89C9 /* MEIntroMovieController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIntroMovieController.h; sourceTree = "<group>"; };
+		DDF5852611849D88007F89C9 /* MEIPhotoMediaAsset-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEIPhotoMediaAsset-Private.h"; sourceTree = "<group>"; };
+		DDF5852711849D88007F89C9 /* MEIPhotoMediaAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIPhotoMediaAsset.h; sourceTree = "<group>"; };
+		DDF5852811849D88007F89C9 /* MEIPhotoMediaCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIPhotoMediaCollection.h; sourceTree = "<group>"; };
+		DDF5852911849D88007F89C9 /* MEIPhotoMediaProvider-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEIPhotoMediaProvider-Private.h"; sourceTree = "<group>"; };
+		DDF5852A11849D88007F89C9 /* MEIPhotoMediaProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIPhotoMediaProvider.h; sourceTree = "<group>"; };
+		DDF5852B11849D88007F89C9 /* MEIPhotoRemoteMediaProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIPhotoRemoteMediaProvider.h; sourceTree = "<group>"; };
+		DDF5852C11849D88007F89C9 /* MEITunesAccount-Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesAccount-Notifications.h"; sourceTree = "<group>"; };
+		DDF5852D11849D88007F89C9 /* MEITunesAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesAccount.h; sourceTree = "<group>"; };
+		DDF5852E11849D88007F89C9 /* MEITunesAlbum-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesAlbum-Private.h"; sourceTree = "<group>"; };
+		DDF5852F11849D88007F89C9 /* MEITunesAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesAlbum.h; sourceTree = "<group>"; };
+		DDF5853011849D88007F89C9 /* MEITunesAlbumAssetEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesAlbumAssetEnumerator.h; sourceTree = "<group>"; };
+		DDF5853111849D88007F89C9 /* MEITunesArtist-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesArtist-Private.h"; sourceTree = "<group>"; };
+		DDF5853211849D88007F89C9 /* MEITunesArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesArtist.h; sourceTree = "<group>"; };
+		DDF5853311849D88007F89C9 /* MEITunesAssetDigitalExtraInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesAssetDigitalExtraInfo.h; sourceTree = "<group>"; };
+		DDF5853411849D88007F89C9 /* MEITunesAssetExpiryInfo-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesAssetExpiryInfo-Private.h"; sourceTree = "<group>"; };
+		DDF5853511849D88007F89C9 /* MEITunesAssetExpiryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesAssetExpiryInfo.h; sourceTree = "<group>"; };
+		DDF5853611849D88007F89C9 /* MEITunesBaseMediaProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesBaseMediaProvider.h; sourceTree = "<group>"; };
+		DDF5853711849D88007F89C9 /* MEITunesCollectionGeniusInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesCollectionGeniusInfo.h; sourceTree = "<group>"; };
+		DDF5853811849D88007F89C9 /* MEITunesCollectionGeniusMixInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesCollectionGeniusMixInfo.h; sourceTree = "<group>"; };
+		DDF5853911849D88007F89C9 /* MEITunesContext-DatabaseModifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesContext-DatabaseModifications.h"; sourceTree = "<group>"; };
+		DDF5853A11849D88007F89C9 /* MEITunesContext-iTunesCleanup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesContext-iTunesCleanup.h"; sourceTree = "<group>"; };
+		DDF5853B11849D88007F89C9 /* MEITunesContext-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesContext-Private.h"; sourceTree = "<group>"; };
+		DDF5853C11849D88007F89C9 /* MEITunesContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesContext.h; sourceTree = "<group>"; };
+		DDF5853D11849D88007F89C9 /* MEITunesDiskSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesDiskSpace.h; sourceTree = "<group>"; };
+		DDF5853E11849D88007F89C9 /* MEITunesDownload-Artwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownload-Artwork.h"; sourceTree = "<group>"; };
+		DDF5853F11849D88007F89C9 /* MEITunesDownload-Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownload-Notifications.h"; sourceTree = "<group>"; };
+		DDF5854011849D88007F89C9 /* MEITunesDownload-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownload-Private.h"; sourceTree = "<group>"; };
+		DDF5854111849D88007F89C9 /* MEITunesDownload-Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownload-Setting.h"; sourceTree = "<group>"; };
+		DDF5854211849D88007F89C9 /* MEITunesDownload-Updating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownload-Updating.h"; sourceTree = "<group>"; };
+		DDF5854311849D88007F89C9 /* MEITunesDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesDownload.h; sourceTree = "<group>"; };
+		DDF5854411849D88007F89C9 /* MEITunesDownloadManager-NotificationHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownloadManager-NotificationHandlers.h"; sourceTree = "<group>"; };
+		DDF5854511849D88007F89C9 /* MEITunesDownloadManager-UploadDiagnostics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownloadManager-UploadDiagnostics.h"; sourceTree = "<group>"; };
+		DDF5854611849D88007F89C9 /* MEITunesDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesDownloadManager.h; sourceTree = "<group>"; };
+		DDF5854711849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnostics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownloadTestManager-NetworkDiagnostics.h"; sourceTree = "<group>"; };
+		DDF5854811849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnosticsPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownloadTestManager-NetworkDiagnosticsPrivate.h"; sourceTree = "<group>"; };
+		DDF5854911849D88007F89C9 /* MEITunesDownloadTestManager-NotificationHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesDownloadTestManager-NotificationHandlers.h"; sourceTree = "<group>"; };
+		DDF5854A11849D88007F89C9 /* MEITunesDownloadTestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesDownloadTestManager.h; sourceTree = "<group>"; };
+		DDF5854B11849D88007F89C9 /* MEITunesGeniusMixArtworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesGeniusMixArtworkInfo.h; sourceTree = "<group>"; };
+		DDF5854C11849D88007F89C9 /* MEITunesGeniusMixImageManager-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesGeniusMixImageManager-Private.h"; sourceTree = "<group>"; };
+		DDF5854D11849D88007F89C9 /* MEITunesGeniusMixImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesGeniusMixImageManager.h; sourceTree = "<group>"; };
+		DDF5854E11849D88007F89C9 /* MEITunesInternetRadioGenreCollection-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesInternetRadioGenreCollection-Private.h"; sourceTree = "<group>"; };
+		DDF5854F11849D88007F89C9 /* MEITunesInternetRadioGenreCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesInternetRadioGenreCollection.h; sourceTree = "<group>"; };
+		DDF5855011849D88007F89C9 /* MEITunesInternetRadioProvider-MEITunesMediaProviderOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesInternetRadioProvider-MEITunesMediaProviderOverrides.h"; sourceTree = "<group>"; };
+		DDF5855111849D88007F89C9 /* MEITunesInternetRadioProvider-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesInternetRadioProvider-Private.h"; sourceTree = "<group>"; };
+		DDF5855211849D88007F89C9 /* MEITunesInternetRadioProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesInternetRadioProvider.h; sourceTree = "<group>"; };
+		DDF5855311849D88007F89C9 /* MEITunesInternetRadioStationAsset-PrimaryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesInternetRadioStationAsset-PrimaryCollection.h"; sourceTree = "<group>"; };
+		DDF5855411849D88007F89C9 /* MEITunesInternetRadioStationAsset-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesInternetRadioStationAsset-Private.h"; sourceTree = "<group>"; };
+		DDF5855511849D88007F89C9 /* MEITunesInternetRadioStationAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesInternetRadioStationAsset.h; sourceTree = "<group>"; };
+		DDF5855611849D88007F89C9 /* MEITunesLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesLibrary.h; sourceTree = "<group>"; };
+		DDF5855711849D88007F89C9 /* MEITunesMediaAsset-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesMediaAsset-Private.h"; sourceTree = "<group>"; };
+		DDF5855811849D88007F89C9 /* MEITunesMediaAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaAsset.h; sourceTree = "<group>"; };
+		DDF5855911849D88007F89C9 /* MEITunesMediaAssetFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaAssetFacade.h; sourceTree = "<group>"; };
+		DDF5855A11849D88007F89C9 /* MEITunesMediaAssetImageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaAssetImageProxy.h; sourceTree = "<group>"; };
+		DDF5855B11849D88007F89C9 /* MEITunesMediaAssetVisitor-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesMediaAssetVisitor-Private.h"; sourceTree = "<group>"; };
+		DDF5855C11849D88007F89C9 /* MEITunesMediaAssetVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaAssetVisitor.h; sourceTree = "<group>"; };
+		DDF5855D11849D88007F89C9 /* MEITunesMediaCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaCollection.h; sourceTree = "<group>"; };
+		DDF5855E11849D88007F89C9 /* MEITunesMediaCollectionEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaCollectionEditor.h; sourceTree = "<group>"; };
+		DDF5855F11849D88007F89C9 /* MEITunesMediaCollectionImageProxy-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesMediaCollectionImageProxy-Private.h"; sourceTree = "<group>"; };
+		DDF5856011849D88007F89C9 /* MEITunesMediaCollectionImageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaCollectionImageProxy.h; sourceTree = "<group>"; };
+		DDF5856111849D88007F89C9 /* MEITunesMediaProvider-MEITunesMediaProviderDatabaseModification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesMediaProvider-MEITunesMediaProviderDatabaseModification.h"; sourceTree = "<group>"; };
+		DDF5856211849D88007F89C9 /* MEITunesMediaProvider-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesMediaProvider-Protected.h"; sourceTree = "<group>"; };
+		DDF5856311849D88007F89C9 /* MEITunesMediaProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesMediaProvider.h; sourceTree = "<group>"; };
+		DDF5856411849D88007F89C9 /* MEITunesPeriodicDatabaseSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesPeriodicDatabaseSaver.h; sourceTree = "<group>"; };
+		DDF5856511849D88007F89C9 /* MEITunesPlayerMessageHandler-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesPlayerMessageHandler-Protocol.h"; sourceTree = "<group>"; };
+		DDF5856611849D88007F89C9 /* MEITunesPlaylist-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesPlaylist-Private.h"; sourceTree = "<group>"; };
+		DDF5856711849D88007F89C9 /* MEITunesPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesPlaylist.h; sourceTree = "<group>"; };
+		DDF5856811849D88007F89C9 /* MEITunesPodcastSubscriptionAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesPodcastSubscriptionAsset.h; sourceTree = "<group>"; };
+		DDF5856911849D88007F89C9 /* MEITunesPodcastSubscriptionProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesPodcastSubscriptionProvider.h; sourceTree = "<group>"; };
+		DDF5856A11849D88007F89C9 /* MEITunesRadioLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesRadioLibrary.h; sourceTree = "<group>"; };
+		DDF5856B11849D88007F89C9 /* MEITunesRemoteLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesRemoteLibrary.h; sourceTree = "<group>"; };
+		DDF5856C11849D88007F89C9 /* MEITunesRemoteMediaProvider-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesRemoteMediaProvider-Protected.h"; sourceTree = "<group>"; };
+		DDF5856D11849D88007F89C9 /* MEITunesRemoteMediaProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesRemoteMediaProvider.h; sourceTree = "<group>"; };
+		DDF5856E11849D88007F89C9 /* MEITunesRentalProvider-ProtectedOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEITunesRentalProvider-ProtectedOverrides.h"; sourceTree = "<group>"; };
+		DDF5856F11849D88007F89C9 /* MEITunesRentalProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesRentalProvider.h; sourceTree = "<group>"; };
+		DDF5857011849D88007F89C9 /* MEITunesUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEITunesUtilities.h; sourceTree = "<group>"; };
+		DDF5857111849D88007F89C9 /* MEMediaAssetWithTransientPlaybackRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEMediaAssetWithTransientPlaybackRange.h; sourceTree = "<group>"; };
+		DDF5857211849D88007F89C9 /* MEMusicStoreImageDecryptionAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEMusicStoreImageDecryptionAgent.h; sourceTree = "<group>"; };
+		DDF5857311849D88007F89C9 /* MEPowerManagement-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MEPowerManagement-Private.h"; sourceTree = "<group>"; };
+		DDF5857411849D88007F89C9 /* MEPowerManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPowerManagement.h; sourceTree = "<group>"; };
+		DDF5857511849D88007F89C9 /* MEPowerManagementControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPowerManagementControl.h; sourceTree = "<group>"; };
+		DDF5857611849D88007F89C9 /* MERemotePairingHandler-Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MERemotePairingHandler-Notification.h"; sourceTree = "<group>"; };
+		DDF5857711849D88007F89C9 /* MERemotePairingHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MERemotePairingHandler.h; sourceTree = "<group>"; };
+		DDF5857811849D88007F89C9 /* MESWUFailedFlashController-Updates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MESWUFailedFlashController-Updates.h"; sourceTree = "<group>"; };
+		DDF5857911849D88007F89C9 /* MESWUFailedFlashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESWUFailedFlashController.h; sourceTree = "<group>"; };
+		DDF5857A11849D88007F89C9 /* MESyncEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESyncEvent.h; sourceTree = "<group>"; };
+		DDF5857B11849D88007F89C9 /* MESyncProgressAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESyncProgressAgent.h; sourceTree = "<group>"; };
+		DDF5857C11849D88007F89C9 /* MESyncState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESyncState.h; sourceTree = "<group>"; };
+		DDF5857D11849D88007F89C9 /* MESyncStateIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESyncStateIdle.h; sourceTree = "<group>"; };
+		DDF5857E11849D88007F89C9 /* MESyncStateSyncDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESyncStateSyncDB.h; sourceTree = "<group>"; };
+		DDF5857F11849D88007F89C9 /* METouchRemoteDecryptionAgent-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "METouchRemoteDecryptionAgent-Private.h"; sourceTree = "<group>"; };
+		DDF5858011849D88007F89C9 /* METouchRemoteDecryptionAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METouchRemoteDecryptionAgent.h; sourceTree = "<group>"; };
+		DDF5858111849D88007F89C9 /* METouchRemoteManager-Artwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "METouchRemoteManager-Artwork.h"; sourceTree = "<group>"; };
+		DDF5858211849D88007F89C9 /* METouchRemoteManager-Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "METouchRemoteManager-Notifications.h"; sourceTree = "<group>"; };
+		DDF5858311849D88007F89C9 /* METouchRemoteManager-Updates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "METouchRemoteManager-Updates.h"; sourceTree = "<group>"; };
+		DDF5858411849D88007F89C9 /* METouchRemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METouchRemoteManager.h; sourceTree = "<group>"; };
+		DDF5858511849D88007F89C9 /* MEWatchdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEWatchdog.h; sourceTree = "<group>"; };
+		DDF5858611849D88007F89C9 /* MEYTSigningAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEYTSigningAgent.h; sourceTree = "<group>"; };
+		DDF5858711849D88007F89C9 /* NSObject-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject-Protocol.h"; sourceTree = "<group>"; };
+		DDF5858811849D88007F89C9 /* NSString-iTunesAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-iTunesAdditions.h"; sourceTree = "<group>"; };
+		DDF5858911849D88007F89C9 /* NSURLProtocol-Registration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol-Registration.h"; sourceTree = "<group>"; };
+		DDF5858A11849D88007F89C9 /* ResourcesURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesURLProtocol.h; sourceTree = "<group>"; };
+		DDF5858B11849D88007F89C9 /* RUIRatingInfoDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUIRatingInfoDatabase.h; sourceTree = "<group>"; };
 		DDF5AB99114D18B0003831B9 /* SMWeatherControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWeatherControl.h; sourceTree = "<group>"; };
 		DDF5AB9A114D18B0003831B9 /* SMWeatherControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWeatherControl.m; sourceTree = "<group>"; };
 		DDF5AE24114D8890003831B9 /* 3200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3200.png; sourceTree = "<group>"; };
@@ -3604,10 +3949,12 @@
 		089C166AFE841209C02AAC07 /* QuDownloader */ = {
 			isa = PBXGroup;
 			children = (
+				DDF581A311844EA9007F89C9 /* SMCommonHeader.h */,
 				DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */,
 				DDC3FE8C1170A0C1008E529C /* CustomHeaderFiles */,
 				DD7F4F4510A0DDB800C5E31C /* Texts */,
 				DD689FD110A773E200B2F52A /* Controls */,
+				DDF584E011849D88007F89C9 /* Finder */,
 				DD679762117F6FDC000B3C94 /* Headers */,
 				DDE0A86B114AC6C800CF9926 /* mext */,
 				DD7F4F5310A0E33000C5E31C /* General */,
@@ -5439,6 +5786,7 @@
 			children = (
 				DDE0AD9E114AD18400CF9926 /* SMSlideshow.h */,
 				DDE0AD9F114AD18400CF9926 /* SMSlideshow.m */,
+				DDF58271118471E6007F89C9 /* SMSlideshow.pch */,
 			);
 			path = SMSlideshow;
 			sourceTree = "<group>";
@@ -5483,6 +5831,185 @@
 			);
 			name = "loadUpdates-bin";
 			path = loadUpdates;
+			sourceTree = "<group>";
+		};
+		DDF584E011849D88007F89C9 /* Finder */ = {
+			isa = PBXGroup;
+			children = (
+				DDF584E111849D88007F89C9 /* ArtworkURLProtocol.h */,
+				DDF584E211849D88007F89C9 /* ATVAirTunesManagerDelegate-Protocol.h */,
+				DDF584E311849D88007F89C9 /* ATVITunesDiskSpace-Protocol.h */,
+				DDF584E411849D88007F89C9 /* ATVITunesTouchRemoteManager-Protocol.h */,
+				DDF584E511849D88007F89C9 /* BookletResourceLoadDelegate.h */,
+				DDF584E611849D88007F89C9 /* BookletURLProtocol.h */,
+				DDF584E711849D88007F89C9 /* BRDeletable-Protocol.h */,
+				DDF584E811849D88007F89C9 /* BRDownload-Protocol.h */,
+				DDF584E911849D88007F89C9 /* BREventResponder-Protocol.h */,
+				DDF584EA11849D88007F89C9 /* BRImageProxy-Protocol.h */,
+				DDF584EB11849D88007F89C9 /* BRITunesUtilities-Protocol.h */,
+				DDF584EC11849D88007F89C9 /* BRMediaAsset-Protocol.h */,
+				DDF584ED11849D88007F89C9 /* BRMediaAssetFacade-Protocol.h */,
+				DDF584EE11849D88007F89C9 /* BRMediaCollection-Protocol.h */,
+				DDF584EF11849D88007F89C9 /* BRMediaIdentityProtocol-Protocol.h */,
+				DDF584F011849D88007F89C9 /* BRMediaObject-Protocol.h */,
+				DDF584F111849D88007F89C9 /* BRMediaPlayer-CurrentPlaylist.h */,
+				DDF584F211849D88007F89C9 /* BRMediaType-MEMediaTypeAdditions.h */,
+				DDF584F311849D88007F89C9 /* BRMenuListItemProvider-Protocol.h */,
+				DDF584F411849D88007F89C9 /* BRMusicStoreImageDecryptionAgent-Protocol.h */,
+				DDF584F511849D88007F89C9 /* BRRatingInfoDatabase-Protocol.h */,
+				DDF584F611849D88007F89C9 /* BRSyncProgressAgent-Protocol.h */,
+				DDF584F711849D88007F89C9 /* BRTransientPlaybackRange-Protocol.h */,
+				DDF584F811849D88007F89C9 /* BRUnresolvedMediaProviderHandler-Protocol.h */,
+				DDF584F911849D88007F89C9 /* BRVideoByteRangeRequester-Protocol.h */,
+				DDF584FA11849D88007F89C9 /* BRVideoPlatformFilter-Protocol.h */,
+				DDF584FB11849D88007F89C9 /* BRYTSigningAgent-Protocol.h */,
+				DDF584FC11849D88007F89C9 /* CDStructures.h */,
+				DDF584FD11849D88007F89C9 /* ChapterImageURLProtocol.h */,
+				DDF584FE11849D88007F89C9 /* FETextEntryControlTest.h */,
+				DDF584FF11849D88007F89C9 /* HIDDeviceThreadConduit.h */,
+				DDF5850011849D88007F89C9 /* MEAirTunesAccount.h */,
+				DDF5850111849D88007F89C9 /* MEAirTunesImageProxy.h */,
+				DDF5850211849D88007F89C9 /* MEAirTunesManager.h */,
+				DDF5850311849D88007F89C9 /* MEAirTunesMediaAsset.h */,
+				DDF5850411849D88007F89C9 /* MEAirTunesMediaProvider.h */,
+				DDF5850511849D88007F89C9 /* MEAirTunesPlayer-Notifications.h */,
+				DDF5850611849D88007F89C9 /* MEAirTunesPlayer-PlaybackControl.h */,
+				DDF5850711849D88007F89C9 /* MEAirTunesPlayer-Rules.h */,
+				DDF5850811849D88007F89C9 /* MEAirTunesPlayer.h */,
+				DDF5850911849D88007F89C9 /* MEAssetExpirationMonitor-Private.h */,
+				DDF5850A11849D88007F89C9 /* MEAssetExpirationMonitor.h */,
+				DDF5850B11849D88007F89C9 /* MEAutoRestartManager-Private.h */,
+				DDF5850C11849D88007F89C9 /* MEAutoRestartManager.h */,
+				DDF5850D11849D88007F89C9 /* MEAVPlayer-DRMTasks.h */,
+				DDF5850E11849D88007F89C9 /* MEAVPlayer-iTunesPlayerControl.h */,
+				DDF5850F11849D88007F89C9 /* MEAVPlayer-MessageHandlers.h */,
+				DDF5851011849D88007F89C9 /* MEAVPlayer-PlaybackControl.h */,
+				DDF5851111849D88007F89C9 /* MEAVPlayer-PlaylistManagement.h */,
+				DDF5851211849D88007F89C9 /* MEAVPlayer-VideoPlayerControl.h */,
+				DDF5851311849D88007F89C9 /* MEAVPlayer-VolumeControl.h */,
+				DDF5851411849D88007F89C9 /* MEAVPlayer.h */,
+				DDF5851511849D88007F89C9 /* MEBootImageControl.h */,
+				DDF5851611849D88007F89C9 /* MEBrowserTab-CocktailFinalization.h */,
+				DDF5851711849D88007F89C9 /* MEBrowserTab-FrameLoadDelegateOverrides.h */,
+				DDF5851811849D88007F89C9 /* MEBrowserTab-Private.h */,
+				DDF5851911849D88007F89C9 /* MEBrowserTab-WebPolicyDelegateOverrides.h */,
+				DDF5851A11849D88007F89C9 /* MEBrowserTab-WebResourceLoadDelegateOverrides.h */,
+				DDF5851B11849D88007F89C9 /* MEBrowserTab.h */,
+				DDF5851C11849D88007F89C9 /* MEController-iTunesInitialization.h */,
+				DDF5851D11849D88007F89C9 /* MEController-Registration.h */,
+				DDF5851E11849D88007F89C9 /* MEController-StartupSequence.h */,
+				DDF5851F11849D88007F89C9 /* MEController.h */,
+				DDF5852011849D88007F89C9 /* MEDatabaseSyncDialog.h */,
+				DDF5852111849D88007F89C9 /* MEDatabaseSyncDialogBoundingControl.h */,
+				DDF5852211849D88007F89C9 /* MEDownloadMonitor.h */,
+				DDF5852311849D88007F89C9 /* MEIntroMovieAsset.h */,
+				DDF5852411849D88007F89C9 /* MEIntroMovieController-Visuals.h */,
+				DDF5852511849D88007F89C9 /* MEIntroMovieController.h */,
+				DDF5852611849D88007F89C9 /* MEIPhotoMediaAsset-Private.h */,
+				DDF5852711849D88007F89C9 /* MEIPhotoMediaAsset.h */,
+				DDF5852811849D88007F89C9 /* MEIPhotoMediaCollection.h */,
+				DDF5852911849D88007F89C9 /* MEIPhotoMediaProvider-Private.h */,
+				DDF5852A11849D88007F89C9 /* MEIPhotoMediaProvider.h */,
+				DDF5852B11849D88007F89C9 /* MEIPhotoRemoteMediaProvider.h */,
+				DDF5852C11849D88007F89C9 /* MEITunesAccount-Notifications.h */,
+				DDF5852D11849D88007F89C9 /* MEITunesAccount.h */,
+				DDF5852E11849D88007F89C9 /* MEITunesAlbum-Private.h */,
+				DDF5852F11849D88007F89C9 /* MEITunesAlbum.h */,
+				DDF5853011849D88007F89C9 /* MEITunesAlbumAssetEnumerator.h */,
+				DDF5853111849D88007F89C9 /* MEITunesArtist-Private.h */,
+				DDF5853211849D88007F89C9 /* MEITunesArtist.h */,
+				DDF5853311849D88007F89C9 /* MEITunesAssetDigitalExtraInfo.h */,
+				DDF5853411849D88007F89C9 /* MEITunesAssetExpiryInfo-Private.h */,
+				DDF5853511849D88007F89C9 /* MEITunesAssetExpiryInfo.h */,
+				DDF5853611849D88007F89C9 /* MEITunesBaseMediaProvider.h */,
+				DDF5853711849D88007F89C9 /* MEITunesCollectionGeniusInfo.h */,
+				DDF5853811849D88007F89C9 /* MEITunesCollectionGeniusMixInfo.h */,
+				DDF5853911849D88007F89C9 /* MEITunesContext-DatabaseModifications.h */,
+				DDF5853A11849D88007F89C9 /* MEITunesContext-iTunesCleanup.h */,
+				DDF5853B11849D88007F89C9 /* MEITunesContext-Private.h */,
+				DDF5853C11849D88007F89C9 /* MEITunesContext.h */,
+				DDF5853D11849D88007F89C9 /* MEITunesDiskSpace.h */,
+				DDF5853E11849D88007F89C9 /* MEITunesDownload-Artwork.h */,
+				DDF5853F11849D88007F89C9 /* MEITunesDownload-Notifications.h */,
+				DDF5854011849D88007F89C9 /* MEITunesDownload-Private.h */,
+				DDF5854111849D88007F89C9 /* MEITunesDownload-Setting.h */,
+				DDF5854211849D88007F89C9 /* MEITunesDownload-Updating.h */,
+				DDF5854311849D88007F89C9 /* MEITunesDownload.h */,
+				DDF5854411849D88007F89C9 /* MEITunesDownloadManager-NotificationHandlers.h */,
+				DDF5854511849D88007F89C9 /* MEITunesDownloadManager-UploadDiagnostics.h */,
+				DDF5854611849D88007F89C9 /* MEITunesDownloadManager.h */,
+				DDF5854711849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnostics.h */,
+				DDF5854811849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnosticsPrivate.h */,
+				DDF5854911849D88007F89C9 /* MEITunesDownloadTestManager-NotificationHandlers.h */,
+				DDF5854A11849D88007F89C9 /* MEITunesDownloadTestManager.h */,
+				DDF5854B11849D88007F89C9 /* MEITunesGeniusMixArtworkInfo.h */,
+				DDF5854C11849D88007F89C9 /* MEITunesGeniusMixImageManager-Private.h */,
+				DDF5854D11849D88007F89C9 /* MEITunesGeniusMixImageManager.h */,
+				DDF5854E11849D88007F89C9 /* MEITunesInternetRadioGenreCollection-Private.h */,
+				DDF5854F11849D88007F89C9 /* MEITunesInternetRadioGenreCollection.h */,
+				DDF5855011849D88007F89C9 /* MEITunesInternetRadioProvider-MEITunesMediaProviderOverrides.h */,
+				DDF5855111849D88007F89C9 /* MEITunesInternetRadioProvider-Private.h */,
+				DDF5855211849D88007F89C9 /* MEITunesInternetRadioProvider.h */,
+				DDF5855311849D88007F89C9 /* MEITunesInternetRadioStationAsset-PrimaryCollection.h */,
+				DDF5855411849D88007F89C9 /* MEITunesInternetRadioStationAsset-Private.h */,
+				DDF5855511849D88007F89C9 /* MEITunesInternetRadioStationAsset.h */,
+				DDF5855611849D88007F89C9 /* MEITunesLibrary.h */,
+				DDF5855711849D88007F89C9 /* MEITunesMediaAsset-Private.h */,
+				DDF5855811849D88007F89C9 /* MEITunesMediaAsset.h */,
+				DDF5855911849D88007F89C9 /* MEITunesMediaAssetFacade.h */,
+				DDF5855A11849D88007F89C9 /* MEITunesMediaAssetImageProxy.h */,
+				DDF5855B11849D88007F89C9 /* MEITunesMediaAssetVisitor-Private.h */,
+				DDF5855C11849D88007F89C9 /* MEITunesMediaAssetVisitor.h */,
+				DDF5855D11849D88007F89C9 /* MEITunesMediaCollection.h */,
+				DDF5855E11849D88007F89C9 /* MEITunesMediaCollectionEditor.h */,
+				DDF5855F11849D88007F89C9 /* MEITunesMediaCollectionImageProxy-Private.h */,
+				DDF5856011849D88007F89C9 /* MEITunesMediaCollectionImageProxy.h */,
+				DDF5856111849D88007F89C9 /* MEITunesMediaProvider-MEITunesMediaProviderDatabaseModification.h */,
+				DDF5856211849D88007F89C9 /* MEITunesMediaProvider-Protected.h */,
+				DDF5856311849D88007F89C9 /* MEITunesMediaProvider.h */,
+				DDF5856411849D88007F89C9 /* MEITunesPeriodicDatabaseSaver.h */,
+				DDF5856511849D88007F89C9 /* MEITunesPlayerMessageHandler-Protocol.h */,
+				DDF5856611849D88007F89C9 /* MEITunesPlaylist-Private.h */,
+				DDF5856711849D88007F89C9 /* MEITunesPlaylist.h */,
+				DDF5856811849D88007F89C9 /* MEITunesPodcastSubscriptionAsset.h */,
+				DDF5856911849D88007F89C9 /* MEITunesPodcastSubscriptionProvider.h */,
+				DDF5856A11849D88007F89C9 /* MEITunesRadioLibrary.h */,
+				DDF5856B11849D88007F89C9 /* MEITunesRemoteLibrary.h */,
+				DDF5856C11849D88007F89C9 /* MEITunesRemoteMediaProvider-Protected.h */,
+				DDF5856D11849D88007F89C9 /* MEITunesRemoteMediaProvider.h */,
+				DDF5856E11849D88007F89C9 /* MEITunesRentalProvider-ProtectedOverrides.h */,
+				DDF5856F11849D88007F89C9 /* MEITunesRentalProvider.h */,
+				DDF5857011849D88007F89C9 /* MEITunesUtilities.h */,
+				DDF5857111849D88007F89C9 /* MEMediaAssetWithTransientPlaybackRange.h */,
+				DDF5857211849D88007F89C9 /* MEMusicStoreImageDecryptionAgent.h */,
+				DDF5857311849D88007F89C9 /* MEPowerManagement-Private.h */,
+				DDF5857411849D88007F89C9 /* MEPowerManagement.h */,
+				DDF5857511849D88007F89C9 /* MEPowerManagementControl.h */,
+				DDF5857611849D88007F89C9 /* MERemotePairingHandler-Notification.h */,
+				DDF5857711849D88007F89C9 /* MERemotePairingHandler.h */,
+				DDF5857811849D88007F89C9 /* MESWUFailedFlashController-Updates.h */,
+				DDF5857911849D88007F89C9 /* MESWUFailedFlashController.h */,
+				DDF5857A11849D88007F89C9 /* MESyncEvent.h */,
+				DDF5857B11849D88007F89C9 /* MESyncProgressAgent.h */,
+				DDF5857C11849D88007F89C9 /* MESyncState.h */,
+				DDF5857D11849D88007F89C9 /* MESyncStateIdle.h */,
+				DDF5857E11849D88007F89C9 /* MESyncStateSyncDB.h */,
+				DDF5857F11849D88007F89C9 /* METouchRemoteDecryptionAgent-Private.h */,
+				DDF5858011849D88007F89C9 /* METouchRemoteDecryptionAgent.h */,
+				DDF5858111849D88007F89C9 /* METouchRemoteManager-Artwork.h */,
+				DDF5858211849D88007F89C9 /* METouchRemoteManager-Notifications.h */,
+				DDF5858311849D88007F89C9 /* METouchRemoteManager-Updates.h */,
+				DDF5858411849D88007F89C9 /* METouchRemoteManager.h */,
+				DDF5858511849D88007F89C9 /* MEWatchdog.h */,
+				DDF5858611849D88007F89C9 /* MEYTSigningAgent.h */,
+				DDF5858711849D88007F89C9 /* NSObject-Protocol.h */,
+				DDF5858811849D88007F89C9 /* NSString-iTunesAdditions.h */,
+				DDF5858911849D88007F89C9 /* NSURLProtocol-Registration.h */,
+				DDF5858A11849D88007F89C9 /* ResourcesURLProtocol.h */,
+				DDF5858B11849D88007F89C9 /* RUIRatingInfoDatabase.h */,
+			);
+			name = Finder;
+			path = Headers/Finder;
 			sourceTree = "<group>";
 		};
 		DDF5ABD4114D249C003831B9 /* Resources */ = {
@@ -7053,6 +7580,178 @@
 				DDC6A95911815E1F0048A8C9 /* SMScriptOptions.h in Headers */,
 				DD9FF9691182E3FA0087ACD8 /* BackRowExtensions.h in Headers */,
 				DDB535AD118346FB00900EB4 /* SMWeatherPrefix.pch in Headers */,
+				DDF581A411844EA9007F89C9 /* SMCommonHeader.h in Headers */,
+				DDF5858C11849D88007F89C9 /* ArtworkURLProtocol.h in Headers */,
+				DDF5858D11849D88007F89C9 /* ATVAirTunesManagerDelegate-Protocol.h in Headers */,
+				DDF5858E11849D88007F89C9 /* ATVITunesDiskSpace-Protocol.h in Headers */,
+				DDF5858F11849D88007F89C9 /* ATVITunesTouchRemoteManager-Protocol.h in Headers */,
+				DDF5859011849D88007F89C9 /* BookletResourceLoadDelegate.h in Headers */,
+				DDF5859111849D88007F89C9 /* BookletURLProtocol.h in Headers */,
+				DDF5859211849D88007F89C9 /* BRDeletable-Protocol.h in Headers */,
+				DDF5859311849D88007F89C9 /* BRDownload-Protocol.h in Headers */,
+				DDF5859411849D88007F89C9 /* BREventResponder-Protocol.h in Headers */,
+				DDF5859511849D88007F89C9 /* BRImageProxy-Protocol.h in Headers */,
+				DDF5859611849D88007F89C9 /* BRITunesUtilities-Protocol.h in Headers */,
+				DDF5859711849D88007F89C9 /* BRMediaAsset-Protocol.h in Headers */,
+				DDF5859811849D88007F89C9 /* BRMediaAssetFacade-Protocol.h in Headers */,
+				DDF5859911849D88007F89C9 /* BRMediaCollection-Protocol.h in Headers */,
+				DDF5859A11849D88007F89C9 /* BRMediaIdentityProtocol-Protocol.h in Headers */,
+				DDF5859B11849D88007F89C9 /* BRMediaObject-Protocol.h in Headers */,
+				DDF5859C11849D88007F89C9 /* BRMediaPlayer-CurrentPlaylist.h in Headers */,
+				DDF5859D11849D88007F89C9 /* BRMediaType-MEMediaTypeAdditions.h in Headers */,
+				DDF5859E11849D88007F89C9 /* BRMenuListItemProvider-Protocol.h in Headers */,
+				DDF5859F11849D88007F89C9 /* BRMusicStoreImageDecryptionAgent-Protocol.h in Headers */,
+				DDF585A011849D88007F89C9 /* BRRatingInfoDatabase-Protocol.h in Headers */,
+				DDF585A111849D88007F89C9 /* BRSyncProgressAgent-Protocol.h in Headers */,
+				DDF585A211849D88007F89C9 /* BRTransientPlaybackRange-Protocol.h in Headers */,
+				DDF585A311849D88007F89C9 /* BRUnresolvedMediaProviderHandler-Protocol.h in Headers */,
+				DDF585A411849D88007F89C9 /* BRVideoByteRangeRequester-Protocol.h in Headers */,
+				DDF585A511849D88007F89C9 /* BRVideoPlatformFilter-Protocol.h in Headers */,
+				DDF585A611849D88007F89C9 /* BRYTSigningAgent-Protocol.h in Headers */,
+				DDF585A711849D88007F89C9 /* CDStructures.h in Headers */,
+				DDF585A811849D88007F89C9 /* ChapterImageURLProtocol.h in Headers */,
+				DDF585A911849D88007F89C9 /* FETextEntryControlTest.h in Headers */,
+				DDF585AA11849D88007F89C9 /* HIDDeviceThreadConduit.h in Headers */,
+				DDF585AB11849D88007F89C9 /* MEAirTunesAccount.h in Headers */,
+				DDF585AC11849D88007F89C9 /* MEAirTunesImageProxy.h in Headers */,
+				DDF585AD11849D88007F89C9 /* MEAirTunesManager.h in Headers */,
+				DDF585AE11849D88007F89C9 /* MEAirTunesMediaAsset.h in Headers */,
+				DDF585AF11849D88007F89C9 /* MEAirTunesMediaProvider.h in Headers */,
+				DDF585B011849D88007F89C9 /* MEAirTunesPlayer-Notifications.h in Headers */,
+				DDF585B111849D88007F89C9 /* MEAirTunesPlayer-PlaybackControl.h in Headers */,
+				DDF585B211849D88007F89C9 /* MEAirTunesPlayer-Rules.h in Headers */,
+				DDF585B311849D88007F89C9 /* MEAirTunesPlayer.h in Headers */,
+				DDF585B411849D88007F89C9 /* MEAssetExpirationMonitor-Private.h in Headers */,
+				DDF585B511849D88007F89C9 /* MEAssetExpirationMonitor.h in Headers */,
+				DDF585B611849D88007F89C9 /* MEAutoRestartManager-Private.h in Headers */,
+				DDF585B711849D88007F89C9 /* MEAutoRestartManager.h in Headers */,
+				DDF585B811849D88007F89C9 /* MEAVPlayer-DRMTasks.h in Headers */,
+				DDF585B911849D88007F89C9 /* MEAVPlayer-iTunesPlayerControl.h in Headers */,
+				DDF585BA11849D88007F89C9 /* MEAVPlayer-MessageHandlers.h in Headers */,
+				DDF585BB11849D88007F89C9 /* MEAVPlayer-PlaybackControl.h in Headers */,
+				DDF585BC11849D88007F89C9 /* MEAVPlayer-PlaylistManagement.h in Headers */,
+				DDF585BD11849D88007F89C9 /* MEAVPlayer-VideoPlayerControl.h in Headers */,
+				DDF585BE11849D88007F89C9 /* MEAVPlayer-VolumeControl.h in Headers */,
+				DDF585BF11849D88007F89C9 /* MEAVPlayer.h in Headers */,
+				DDF585C011849D88007F89C9 /* MEBootImageControl.h in Headers */,
+				DDF585C111849D88007F89C9 /* MEBrowserTab-CocktailFinalization.h in Headers */,
+				DDF585C211849D88007F89C9 /* MEBrowserTab-FrameLoadDelegateOverrides.h in Headers */,
+				DDF585C311849D88007F89C9 /* MEBrowserTab-Private.h in Headers */,
+				DDF585C411849D88007F89C9 /* MEBrowserTab-WebPolicyDelegateOverrides.h in Headers */,
+				DDF585C511849D88007F89C9 /* MEBrowserTab-WebResourceLoadDelegateOverrides.h in Headers */,
+				DDF585C611849D88007F89C9 /* MEBrowserTab.h in Headers */,
+				DDF585C711849D88007F89C9 /* MEController-iTunesInitialization.h in Headers */,
+				DDF585C811849D88007F89C9 /* MEController-Registration.h in Headers */,
+				DDF585C911849D88007F89C9 /* MEController-StartupSequence.h in Headers */,
+				DDF585CA11849D88007F89C9 /* MEController.h in Headers */,
+				DDF585CB11849D88007F89C9 /* MEDatabaseSyncDialog.h in Headers */,
+				DDF585CC11849D88007F89C9 /* MEDatabaseSyncDialogBoundingControl.h in Headers */,
+				DDF585CD11849D88007F89C9 /* MEDownloadMonitor.h in Headers */,
+				DDF585CE11849D88007F89C9 /* MEIntroMovieAsset.h in Headers */,
+				DDF585CF11849D88007F89C9 /* MEIntroMovieController-Visuals.h in Headers */,
+				DDF585D011849D88007F89C9 /* MEIntroMovieController.h in Headers */,
+				DDF585D111849D88007F89C9 /* MEIPhotoMediaAsset-Private.h in Headers */,
+				DDF585D211849D88007F89C9 /* MEIPhotoMediaAsset.h in Headers */,
+				DDF585D311849D88007F89C9 /* MEIPhotoMediaCollection.h in Headers */,
+				DDF585D411849D88007F89C9 /* MEIPhotoMediaProvider-Private.h in Headers */,
+				DDF585D511849D88007F89C9 /* MEIPhotoMediaProvider.h in Headers */,
+				DDF585D611849D88007F89C9 /* MEIPhotoRemoteMediaProvider.h in Headers */,
+				DDF585D711849D88007F89C9 /* MEITunesAccount-Notifications.h in Headers */,
+				DDF585D811849D88007F89C9 /* MEITunesAccount.h in Headers */,
+				DDF585D911849D88007F89C9 /* MEITunesAlbum-Private.h in Headers */,
+				DDF585DA11849D88007F89C9 /* MEITunesAlbum.h in Headers */,
+				DDF585DB11849D88007F89C9 /* MEITunesAlbumAssetEnumerator.h in Headers */,
+				DDF585DC11849D88007F89C9 /* MEITunesArtist-Private.h in Headers */,
+				DDF585DD11849D88007F89C9 /* MEITunesArtist.h in Headers */,
+				DDF585DE11849D88007F89C9 /* MEITunesAssetDigitalExtraInfo.h in Headers */,
+				DDF585DF11849D88007F89C9 /* MEITunesAssetExpiryInfo-Private.h in Headers */,
+				DDF585E011849D88007F89C9 /* MEITunesAssetExpiryInfo.h in Headers */,
+				DDF585E111849D88007F89C9 /* MEITunesBaseMediaProvider.h in Headers */,
+				DDF585E211849D88007F89C9 /* MEITunesCollectionGeniusInfo.h in Headers */,
+				DDF585E311849D88007F89C9 /* MEITunesCollectionGeniusMixInfo.h in Headers */,
+				DDF585E411849D88007F89C9 /* MEITunesContext-DatabaseModifications.h in Headers */,
+				DDF585E511849D88007F89C9 /* MEITunesContext-iTunesCleanup.h in Headers */,
+				DDF585E611849D88007F89C9 /* MEITunesContext-Private.h in Headers */,
+				DDF585E711849D88007F89C9 /* MEITunesContext.h in Headers */,
+				DDF585E811849D88007F89C9 /* MEITunesDiskSpace.h in Headers */,
+				DDF585E911849D88007F89C9 /* MEITunesDownload-Artwork.h in Headers */,
+				DDF585EA11849D88007F89C9 /* MEITunesDownload-Notifications.h in Headers */,
+				DDF585EB11849D88007F89C9 /* MEITunesDownload-Private.h in Headers */,
+				DDF585EC11849D88007F89C9 /* MEITunesDownload-Setting.h in Headers */,
+				DDF585ED11849D88007F89C9 /* MEITunesDownload-Updating.h in Headers */,
+				DDF585EE11849D88007F89C9 /* MEITunesDownload.h in Headers */,
+				DDF585EF11849D88007F89C9 /* MEITunesDownloadManager-NotificationHandlers.h in Headers */,
+				DDF585F011849D88007F89C9 /* MEITunesDownloadManager-UploadDiagnostics.h in Headers */,
+				DDF585F111849D88007F89C9 /* MEITunesDownloadManager.h in Headers */,
+				DDF585F211849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnostics.h in Headers */,
+				DDF585F311849D88007F89C9 /* MEITunesDownloadTestManager-NetworkDiagnosticsPrivate.h in Headers */,
+				DDF585F411849D88007F89C9 /* MEITunesDownloadTestManager-NotificationHandlers.h in Headers */,
+				DDF585F511849D88007F89C9 /* MEITunesDownloadTestManager.h in Headers */,
+				DDF585F611849D88007F89C9 /* MEITunesGeniusMixArtworkInfo.h in Headers */,
+				DDF585F711849D88007F89C9 /* MEITunesGeniusMixImageManager-Private.h in Headers */,
+				DDF585F811849D88007F89C9 /* MEITunesGeniusMixImageManager.h in Headers */,
+				DDF585F911849D88007F89C9 /* MEITunesInternetRadioGenreCollection-Private.h in Headers */,
+				DDF585FA11849D88007F89C9 /* MEITunesInternetRadioGenreCollection.h in Headers */,
+				DDF585FB11849D88007F89C9 /* MEITunesInternetRadioProvider-MEITunesMediaProviderOverrides.h in Headers */,
+				DDF585FC11849D88007F89C9 /* MEITunesInternetRadioProvider-Private.h in Headers */,
+				DDF585FD11849D88007F89C9 /* MEITunesInternetRadioProvider.h in Headers */,
+				DDF585FE11849D88007F89C9 /* MEITunesInternetRadioStationAsset-PrimaryCollection.h in Headers */,
+				DDF585FF11849D88007F89C9 /* MEITunesInternetRadioStationAsset-Private.h in Headers */,
+				DDF5860011849D88007F89C9 /* MEITunesInternetRadioStationAsset.h in Headers */,
+				DDF5860111849D88007F89C9 /* MEITunesLibrary.h in Headers */,
+				DDF5860211849D88007F89C9 /* MEITunesMediaAsset-Private.h in Headers */,
+				DDF5860311849D88007F89C9 /* MEITunesMediaAsset.h in Headers */,
+				DDF5860411849D88007F89C9 /* MEITunesMediaAssetFacade.h in Headers */,
+				DDF5860511849D88007F89C9 /* MEITunesMediaAssetImageProxy.h in Headers */,
+				DDF5860611849D88007F89C9 /* MEITunesMediaAssetVisitor-Private.h in Headers */,
+				DDF5860711849D88007F89C9 /* MEITunesMediaAssetVisitor.h in Headers */,
+				DDF5860811849D88007F89C9 /* MEITunesMediaCollection.h in Headers */,
+				DDF5860911849D88007F89C9 /* MEITunesMediaCollectionEditor.h in Headers */,
+				DDF5860A11849D88007F89C9 /* MEITunesMediaCollectionImageProxy-Private.h in Headers */,
+				DDF5860B11849D88007F89C9 /* MEITunesMediaCollectionImageProxy.h in Headers */,
+				DDF5860C11849D88007F89C9 /* MEITunesMediaProvider-MEITunesMediaProviderDatabaseModification.h in Headers */,
+				DDF5860D11849D88007F89C9 /* MEITunesMediaProvider-Protected.h in Headers */,
+				DDF5860E11849D88007F89C9 /* MEITunesMediaProvider.h in Headers */,
+				DDF5860F11849D88007F89C9 /* MEITunesPeriodicDatabaseSaver.h in Headers */,
+				DDF5861011849D88007F89C9 /* MEITunesPlayerMessageHandler-Protocol.h in Headers */,
+				DDF5861111849D88007F89C9 /* MEITunesPlaylist-Private.h in Headers */,
+				DDF5861211849D88007F89C9 /* MEITunesPlaylist.h in Headers */,
+				DDF5861311849D88007F89C9 /* MEITunesPodcastSubscriptionAsset.h in Headers */,
+				DDF5861411849D88007F89C9 /* MEITunesPodcastSubscriptionProvider.h in Headers */,
+				DDF5861511849D88007F89C9 /* MEITunesRadioLibrary.h in Headers */,
+				DDF5861611849D88007F89C9 /* MEITunesRemoteLibrary.h in Headers */,
+				DDF5861711849D88007F89C9 /* MEITunesRemoteMediaProvider-Protected.h in Headers */,
+				DDF5861811849D88007F89C9 /* MEITunesRemoteMediaProvider.h in Headers */,
+				DDF5861911849D88007F89C9 /* MEITunesRentalProvider-ProtectedOverrides.h in Headers */,
+				DDF5861A11849D88007F89C9 /* MEITunesRentalProvider.h in Headers */,
+				DDF5861B11849D88007F89C9 /* MEITunesUtilities.h in Headers */,
+				DDF5861C11849D88007F89C9 /* MEMediaAssetWithTransientPlaybackRange.h in Headers */,
+				DDF5861D11849D88007F89C9 /* MEMusicStoreImageDecryptionAgent.h in Headers */,
+				DDF5861E11849D88007F89C9 /* MEPowerManagement-Private.h in Headers */,
+				DDF5861F11849D88007F89C9 /* MEPowerManagement.h in Headers */,
+				DDF5862011849D88007F89C9 /* MEPowerManagementControl.h in Headers */,
+				DDF5862111849D88007F89C9 /* MERemotePairingHandler-Notification.h in Headers */,
+				DDF5862211849D88007F89C9 /* MERemotePairingHandler.h in Headers */,
+				DDF5862311849D88007F89C9 /* MESWUFailedFlashController-Updates.h in Headers */,
+				DDF5862411849D88007F89C9 /* MESWUFailedFlashController.h in Headers */,
+				DDF5862511849D88007F89C9 /* MESyncEvent.h in Headers */,
+				DDF5862611849D88007F89C9 /* MESyncProgressAgent.h in Headers */,
+				DDF5862711849D88007F89C9 /* MESyncState.h in Headers */,
+				DDF5862811849D88007F89C9 /* MESyncStateIdle.h in Headers */,
+				DDF5862911849D88007F89C9 /* MESyncStateSyncDB.h in Headers */,
+				DDF5862A11849D88007F89C9 /* METouchRemoteDecryptionAgent-Private.h in Headers */,
+				DDF5862B11849D88007F89C9 /* METouchRemoteDecryptionAgent.h in Headers */,
+				DDF5862C11849D88007F89C9 /* METouchRemoteManager-Artwork.h in Headers */,
+				DDF5862D11849D88007F89C9 /* METouchRemoteManager-Notifications.h in Headers */,
+				DDF5862E11849D88007F89C9 /* METouchRemoteManager-Updates.h in Headers */,
+				DDF5862F11849D88007F89C9 /* METouchRemoteManager.h in Headers */,
+				DDF5863011849D88007F89C9 /* MEWatchdog.h in Headers */,
+				DDF5863111849D88007F89C9 /* MEYTSigningAgent.h in Headers */,
+				DDF5863211849D88007F89C9 /* NSObject-Protocol.h in Headers */,
+				DDF5863311849D88007F89C9 /* NSString-iTunesAdditions.h in Headers */,
+				DDF5863411849D88007F89C9 /* NSURLProtocol-Registration.h in Headers */,
+				DDF5863511849D88007F89C9 /* ResourcesURLProtocol.h in Headers */,
+				DDF5863611849D88007F89C9 /* RUIRatingInfoDatabase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7972,6 +8671,7 @@
 				GCC_PREFIX_HEADER = mext/SMWeather/SMWeatherPrefix.pch;
 				INFOPLIST_FILE = "SMWeather-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
@@ -8027,7 +8727,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = mext/SMSlideshow/SMSlideshow.pch;
 				INFOPLIST_FILE = "SMSlideshow-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (

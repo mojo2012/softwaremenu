@@ -25,14 +25,12 @@
 @interface BRParentalControl
 @end
 
-@interface SMDistributedMessagesReceiver : NSObject <SMDOServerProtocol>
-{
-	SoftwareMenuBase *controller;
-	NSConnection				*rescanConnection;
-}
 
-- (id)initWithController:(SoftwareMenuBase *)cont;
-@end
+
+
+
+static NSString *initialMessage = nil;
+static NSString *initialMessageType = nil;
 
 @implementation SoftwareMenuBase
 static BOOL checkedSS = NO;
@@ -49,15 +47,7 @@ static BOOL checkedSS = NO;
 + (NSString *) className
 {
     NSString * className = NSStringFromClass(self);
-   // NSRange range = [[BRBacktracingException backtrace] rangeOfString: @"_loadApplianceAtPath:"];
-   // if ( range.location != NSNotFound )
-   // {
-       // BRLog(@"[%@ className] called for whitelist check; returning MOVAppliance instead", className);
         className = @"MOVAppliance"; 
-   // }
-	//NSLog(@"SoftwareMenu");
-	//[SMGeneralMethods checkScreensaver];
-
     return className;
 }
 -(BOOL)previewError
@@ -66,12 +56,6 @@ static BOOL checkedSS = NO;
     return NO;
 }
 
-
-//-(id)init
-//{
-//    NSLog(@"init-");
-//    return [super init];
-//}
 /*-(id)previewControlForIdentifier:(id)arg1
 {
     //checkTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
@@ -151,91 +135,16 @@ static BOOL checkedSS = NO;
 //}
 
 
-//-(BOOL)handleObjectSelection:(id)arg1 userInfo:(id)arg2
-//{
-//    NSLog(@"handleSelection");
-//    NSLog(@"stack: %@",[[[BRApplicationStackManager singleton]stack] controllers]);
-//    NSLog(@"stack: %@",[[[BRApplicationStackManager singleton]stack] rootController]);
-//    NSLog(@"stack Controls: %@",[[[[BRApplicationStackManager singleton]stack] rootController] controls]);
-//    return YES;
-//}
-
 +(void)initialize
 {
-    DLog(@"initializing Software Menu");
-    NSString *frameworkPath=[[[NSBundle bundleForClass:[self class]] bundlePath]
-                             stringByAppendingPathComponent:@"Contents/Frameworks/SoftwareMenuFramework.framework"];
-    
-    NSBundle *framework=[NSBundle bundleWithPath:frameworkPath];
-    
-    NSString *lframeworks=[NSHomeDirectory() stringByAppendingPathComponent:@"Library/Frameworks"];
-    NSString *lframework=[lframeworks stringByAppendingPathComponent:@"SoftwareMenuFramework.framework"];
-    NSFileManager *man = [NSFileManager defaultManager];
-    if (![man fileExistsAtPath:lframeworks]) {
-        [man createDirectoryAtPath:lframeworks attributes:nil];
-    }
-    BOOL copy=NO;
-    if (![man fileExistsAtPath:lframework]) {
-        copy=YES;
-        ALog(@"Software Menu Framework is not installed");
-    }
-    else {
-        
-        NSDictionary *vDict=[framework infoDictionary];
-        NSString *cur=[[[NSBundle bundleWithPath:lframework]infoDictionary] objectForKey:@"CFBundleVersion"];
-        NSString *ins=[vDict objectForKey:@"CFBundleVersion"];
-        if ([cur compare:ins]==NSOrderedAscending) {
-            ALog(@"Software Menu Framework needs to be updated");
-            [man removeFileAtPath:lframework handler:nil];
-            copy=YES;            
-        }
-        else if([cur compare:ins]==NSOrderedSame){
-
-#ifdef DEBUG
-            copy=YES;
-            DLog(@"Copying framework because debugging");
-#endif
-            ALog(@"Software Menu Framework is Up to Date");
-        }
-        else {
-            DLog(@"Installed is higher that what Plugin is carrying");
-        }
-
-        
-        
-        
-    }
-    if (copy) {
-        DLog(@"Copying Framework");
-        if ([man fileExistsAtPath:lframework]) {
-            DLog(@"Removing Old Framework");
-            [man removeFileAtPath:lframework handler:nil];
-        }
-        [man copyPath:frameworkPath
-               toPath:lframework 
-              handler:nil];
-    }
-    
-    
-    
-    
-
-//    NSNumber *cur=[[[NSBundle bundleWithPath:lframework]infoDictionary] objectForKey:@"CFBundleVersion"];
-    if ([[NSBundle bundleWithPath:lframework] isLoaded]) {
-        DLog(@"bundle is already loaded");
-    }
-    else {
-        DLog(@"wasn't loaded yet");
-    }
-
-    if([[NSBundle bundleWithPath:lframework] load])
-        ALog(@"Software Menu Framework loaded");
-    else
+    ALog(@"initializing Software Menu");
+    NSString *myBundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
+    if(!loadSMFramework(myBundlePath))
     {
-        ALog(@"Error, framework failed to load\nAborting.");
-        //exit(1);
+        initialMessage = BRLocalizedString(@"Error loading SoftwareMenu Framework.  Continuing is not recomended", @"Error string for loading software menu framework");
+		initialMessageType = BRLocalizedString(@"Error", @"Error");
+        ALog(@"Error in Loading SoftwareMenuFramework");
     }
-    
 }
 -(BOOL)_isCategoryWithIdentifier:(id)arg1 memberOfMusicStoreCollection:(id)arg2
 {
@@ -570,8 +479,9 @@ shouldMakeNewConnection:(NSConnection *)conn
 }
 - (id) init
 {
-	
-
+//    NSLog(@"kSMFApplianceOrderValue: %@",kBlaBla);
+    ALog(@"beginning of init");
+    DLog(@"Debug beginning of init");
     if ( [super init] == nil )
         return ( nil );
 	
@@ -703,8 +613,15 @@ shouldMakeNewConnection:(NSConnection *)conn
 
 	return nil;
 }
+-(BOOL)EmergencyWarningText
+{
+    return TRUE;
+}
 -(id)previewErrorText
 {
+    if ([self EmergencyWarningText]) {
+        return @"Updates Available";
+    }
     return @"LOLZ";
 }
 

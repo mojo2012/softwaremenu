@@ -18,6 +18,18 @@
 }
 
 @end
+@implementation BRApplianceColumnControl (SM)
+-(void)test
+{
+    NSLog(@"appliance: %@",_appliance);
+    NSLog(@"label: %@",_applianceLabel);
+    NSLog(@"preview: %@",_preview);
+}
+-(id)appliance
+{
+    return _appliance;
+}
+@end
 
 
 @implementation SMMainMenuControl
@@ -28,8 +40,25 @@
         return NO;
     }
     return [super _previewColumnAtIndex:arg1];
-    
 }
+/*-(void)_previewTimerFired:(id)arg1
+{
+    NSLog(@"_columns: %@",_columns);
+    int i,goodColumn=-1;
+    for(i=0;i<[_columns count];i++)
+    {
+        //[(BRApplianceColumnControl *)[_columns objectAtIndex:i] appliance];
+        if ([[(BRApplianceColumnControl *)[_columns objectAtIndex:i] appliance] isKindOfClass:[SoftwareMenuBase class]]) 
+        {
+            goodColumn=i;
+        }
+    }
+    if (goodColumn!=-1) {
+        NSLog(@"goodColumns: %i",goodColumn);
+        [super _previewColumnAtIndex:goodColumn];
+    }
+    [super _previewTimerFired:arg1];
+}*/
 
 -(void)_reload
 {
