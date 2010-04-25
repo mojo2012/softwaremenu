@@ -84,6 +84,12 @@
 		DDECBC8B111A376400448929 /* notfound.png in Resources */ = {isa = PBXBuildFile; fileRef = DDECBC8A111A376400448929 /* notfound.png */; };
 		DDECBE8F111B1D2C00448929 /* SMFBaseAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = DDECBE8D111B1D2C00448929 /* SMFBaseAsset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDECBE90111B1D2C00448929 /* SMFBaseAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = DDECBE8E111B1D2C00448929 /* SMFBaseAsset.m */; };
+		DDF5820D118467A0007F89C9 /* SMFCompatibilityMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5820B118467A0007F89C9 /* SMFCompatibilityMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDF5820E118467A0007F89C9 /* SMFCompatibilityMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5820C118467A0007F89C9 /* SMFCompatibilityMethods.m */; };
+		DDF5828011847290007F89C9 /* SMFPhotoMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5827E11847290007F89C9 /* SMFPhotoMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDF5828111847290007F89C9 /* SMFPhotoMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5827F11847290007F89C9 /* SMFPhotoMethods.m */; };
+		DDF5829F11847A6A007F89C9 /* SMFStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5829D11847A6A007F89C9 /* SMFStrings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDF582A011847A6A007F89C9 /* SMFStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5829E11847A6A007F89C9 /* SMFStrings.m */; };
 		DDFE30D71130861800EDDF0D /* SMFPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFE30D51130861800EDDF0D /* SMFPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDFE30D81130861800EDDF0D /* SMFPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFE30D61130861800EDDF0D /* SMFPreferences.m */; };
 /* End PBXBuildFile section */
@@ -183,6 +189,12 @@
 		DDECBC8A111A376400448929 /* notfound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notfound.png; sourceTree = "<group>"; };
 		DDECBE8D111B1D2C00448929 /* SMFBaseAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFBaseAsset.h; sourceTree = "<group>"; };
 		DDECBE8E111B1D2C00448929 /* SMFBaseAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFBaseAsset.m; sourceTree = "<group>"; };
+		DDF5820B118467A0007F89C9 /* SMFCompatibilityMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFCompatibilityMethods.h; sourceTree = "<group>"; };
+		DDF5820C118467A0007F89C9 /* SMFCompatibilityMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFCompatibilityMethods.m; sourceTree = "<group>"; };
+		DDF5827E11847290007F89C9 /* SMFPhotoMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFPhotoMethods.h; sourceTree = "<group>"; };
+		DDF5827F11847290007F89C9 /* SMFPhotoMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFPhotoMethods.m; sourceTree = "<group>"; };
+		DDF5829D11847A6A007F89C9 /* SMFStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFStrings.h; sourceTree = "<group>"; };
+		DDF5829E11847A6A007F89C9 /* SMFStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFStrings.m; sourceTree = "<group>"; };
 		DDFE30D51130861800EDDF0D /* SMFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFPreferences.h; sourceTree = "<group>"; };
 		DDFE30D61130861800EDDF0D /* SMFPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFPreferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,7 +306,6 @@
 				DDECB91F1118ED0200448929 /* SMFMedia.m */,
 				DDECB9451119942600448929 /* SMFTogglesMenu.h */,
 				DDECB9461119942600448929 /* SMFTogglesMenu.m */,
-				DDECB94D1119962100448929 /* SMFDefines.h */,
 				DDECB9CA1119A39F00448929 /* SMFSharedMethods.h */,
 				DDECB9CB1119A39F00448929 /* SMFSharedMethods.m */,
 				DDECB9CE1119A4C200448929 /* AGProcess.h */,
@@ -323,6 +334,12 @@
 				DD24EE58113FFD4400541042 /* SMFSimpleDirectoryChooserController.m */,
 				DD9FF9BC1182EE640087ACD8 /* BackRowExtensions.h */,
 				DD9FF9BD1182EE640087ACD8 /* BackRowExtensions.m */,
+				DDF5820B118467A0007F89C9 /* SMFCompatibilityMethods.h */,
+				DDF5820C118467A0007F89C9 /* SMFCompatibilityMethods.m */,
+				DDF5827E11847290007F89C9 /* SMFPhotoMethods.h */,
+				DDF5827F11847290007F89C9 /* SMFPhotoMethods.m */,
+				DDF5829D11847A6A007F89C9 /* SMFStrings.h */,
+				DDF5829E11847A6A007F89C9 /* SMFStrings.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -349,6 +366,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DDECB94D1119962100448929 /* SMFDefines.h */,
 				DDECB7BB1118DB4500448929 /* AppleTV.h */,
 				DDECB7BC1118DB4500448929 /* BackRow.h */,
 				32DBCF5E0370ADEE00C91783 /* SoftwareMenuFramework_Prefix.pch */,
@@ -426,6 +444,9 @@
 				DD8FA706113EF42F00B1189B /* SMFSharedFunctions.h in Headers */,
 				DD24EE68114004E800541042 /* SMFSimpleDirectoryChooserController.h in Headers */,
 				DD9FF9BE1182EE640087ACD8 /* BackRowExtensions.h in Headers */,
+				DDF5820D118467A0007F89C9 /* SMFCompatibilityMethods.h in Headers */,
+				DDF5828011847290007F89C9 /* SMFPhotoMethods.h in Headers */,
+				DDF5829F11847A6A007F89C9 /* SMFStrings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +566,9 @@
 				DD8FA707113EF42F00B1189B /* SMFSharedFunctions.m in Sources */,
 				DD24EE67114004E500541042 /* SMFSimpleDirectoryChooserController.m in Sources */,
 				DD9FF9BF1182EE640087ACD8 /* BackRowExtensions.m in Sources */,
+				DDF5820E118467A0007F89C9 /* SMFCompatibilityMethods.m in Sources */,
+				DDF5828111847290007F89C9 /* SMFPhotoMethods.m in Sources */,
+				DDF582A011847A6A007F89C9 /* SMFStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
