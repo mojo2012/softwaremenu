@@ -701,24 +701,89 @@
     _timezone=[NSTimeZone timeZoneWithName:tz];
     [_timezone retain];
 }
+-(void)loadUsDictionaryForCode:(NSNumber *)code
+{
+    NSAutoreleasePool *newpool = [[NSAutoreleasePool alloc] init];
+    NSDictionary *dict=[self loadDictionaryForCode:[code intValue] usUnits:YES];
+    [self performSelectorOnMainThread:@selector(setInfoDictionary:) withObject:dict waitUntilDone:NO];
+    [newpool drain];
+}
+-(void)loadEuDictionaryForCode:(NSNumber *)code
+{
+    NSAutoreleasePool *newpool = [[NSAutoreleasePool alloc] init];
+    
+    NSDictionary *dict=[self loadDictionaryForCode:[code intValue] usUnits:NO];
+    [self performSelectorOnMainThread:@selector(setInfoDictionary:) withObject:dict waitUntilDone:NO];
+    [newpool drain];
+}
+-(NSDictionary *)loadDictionaryForCode:(int)code usUnits:(BOOL)us
+{
+    NSURL *url;
+    if (us) {
+        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i",code,nil]];
+        
+    }
+    else
+        url=[NSURL URLWithString:[NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%i&u=c",code,nil]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSXMLDocument *doc;
+    if (error!=nil) {
+        NSLog(@"error: %@",error);
+        return [NSDictionary dictionary];
+    }
+    else {
+        NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
+        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:responseEncoding];
+        doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
+        
+    }
+    NSDictionary *dict = [SMYahooWeather parseYahooRSS:doc];
+    [doc release];
+    return dict;
+    
+}
+
 -(NSTimeZone *)timeZone
 {
     return _timezone;
 }
+
 -(void)reload
 {
     int code = [SMWeatherController yWeatherCode];
-    NSDictionary *dict=[SMWeatherMext loadDictionaryForCode:code usUnits:[SMWeatherController USUnitsForCode:code]];
-    [self setTimeZones:[SMWeatherController tzForCode:code]];
-    //NSLog(@"after setting tz");
-    if (dict==nil) 
-        dict=[NSDictionary dictionary];
     
-    [self setInfoDictionary:dict];
+
+
+    DLog(@"time: %@",[NSDate date]);
+    if ([SMWeatherController USUnitsForCode:code]) {
+        [NSThread detachNewThreadSelector:@selector(loadUsDictionaryForCode:) toTarget:self withObject:[NSNumber numberWithInt:code]];
+    }
+    else {
+        [NSThread detachNewThreadSelector:@selector(loadEuDictionaryForCode:) toTarget:self withObject:[NSNumber numberWithInt:code]];
+    }
+
     
+
+//    NSDictionary *dict=[SMWeatherMext loadDictionaryForCode:code usUnits:[SMWeatherController USUnitsForCode:code]];
+    
+//    [self setTimeZones:[SMWeatherController tzForCode:code]];
+//    //NSLog(@"after setting tz");
+//    if (dict==nil) 
+//        dict=[NSDictionary dictionary];
+//    
+//    [self setInfoDictionary:dict];
+//    
 }
 -(void)setInfoDictionary:(NSDictionary *)infoDict
 {
+    DLog(@"time2: %@",[NSDate date]);
+    [self setTimeZones:[SMWeatherController tzForCode:[SMWeatherController yWeatherCode]]];
+    if (infoDict==nil) 
+        infoDict=[NSDictionary dictionary];
     
     [_infoDict release];
     _infoDict=[infoDict retain];
