@@ -8,15 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface SMThirdPartyPlugins : NSObject {
     NSDictionary  * _updates;
     BOOL            _updateImages;
     BOOL            _checkImages;
+    id              _delegate;
+    BOOL            _locking;
 }
 + (SMThirdPartyPlugins*)singleton;
 -(NSDictionary *)plugins;
 -(NSString *)loadPlugins;
+-(void)setDelegate:(id)delegate;
+-(id)delegate;
+-(id)fetchURL:(NSString *)url;
 //-(void)setCheckImages:(BOOL)checkImages;
 //-(void)setUpdateImages:(BOOL)updateImages;
 //-(NSString *)logPath;
@@ -24,4 +28,5 @@
 //-(BOOL)checkImages;
 -(void)writeToLog:(NSString *)strLog;
 -(void)getImages:(NSDictionary *)TrustedDict;
+-(void)performThreadedPluginFetch;
 @end

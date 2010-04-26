@@ -6,7 +6,11 @@
 //  Copyright 2010 Thomas Cool. All rights reserved.
 //
 
+#import "SMThirdPartyPlugins.h"
+@interface SMThirdPartyPlugins (Private)
+-(void)_threadedFetch;
 
+@end
 
 @implementation SMThirdPartyPlugins
 static SMThirdPartyPlugins *singleton = nil;
@@ -20,12 +24,42 @@ static SMThirdPartyPlugins *singleton = nil;
     }
     return singleton;
 }
+-(id)init
+{
+    self = [super init];
+    _locking=NO;
+    _updateImages=YES;
+    _checkImages=YES;
+    return self;
+}
+-(id)delegate
+{
+    return _delegate;
+}
+-(void)performThreadedPluginFetch
+{
+    [NSThread detachNewThreadSelector:@selector(_threadedFetch) toTarget:self withObject:nil];
+}
 
+-(void)setDelegate:(id)delegate
+{
+    if (delegate==nil) {
+        [_delegate release];
+        _delegate=nil;
+    }
+    if ([delegate respondsToSelector:@selector(textShouldPrint:)]) {
+        if (_delegate!=nil) {
+            [_delegate release];
+            _delegate=nil;
+        }
+        _delegate=[delegate retain];
+    }
+    
+}
 + (id)allocWithZone:(NSZone *)zone
 {
     return [[self singleton] retain];
 }
-
 - (id)copyWithZone:(NSZone *)zone
 {
     return self;
@@ -55,16 +89,81 @@ static SMThirdPartyPlugins *singleton = nil;
     NSDictionary *a = [NSDictionary dictionaryWithContentsOfFile:[SMPreferences trustedPlistPath]];
     return a;
 }
+/*-(NSDictionary *)fetchURL:(NSString *)urlString
+{
+    NSURL *url=[NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+
+    if (error!=nil) {
+        ALog(@"Fetching: %@ returned an error: %@",url,error);
+        [error release];
+        return [NSDictionary dictionary];
+    }
+    else {
+        
+               
+        NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
+        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:responseEncoding];
+        
+        NSData* plistData = [documentString dataUsingEncoding:NSUTF8StringEncoding];
+        NSPropertyListFormat format;
+        NSString *errorString;
+        NSDictionary* plist = [NSPropertyListSerialization propertyListFromData:plistData 
+                                                               mutabilityOption:NSPropertyListImmutable 
+                                                                         format:&format 
+                                                               errorDescription:&errorString];
+        DLog( @"parsed plist is %@", plist );
+        if(!plist){
+            ALog(@"Converted Received Message Error: %@",errorString);
+            [error release];
+        }
+        [documentString release];
+        return plist;
+        //doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
+        
+    }
+    
+}*/
+-(id)fetchURL:(NSString *)urlString
+{
+    
+    NSURL *url=[NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (error!=nil) {
+        NSLog(@"error: %@",error);
+        return nil;
+    }
+    else {
+        NSPropertyListFormat format;
+        NSString *errorString;
+        NSDictionary* plist = [NSPropertyListSerialization propertyListFromData:documentData 
+                                                               mutabilityOption:NSPropertyListImmutable 
+                                                                         format:&format 
+                                                               errorDescription:&errorString];
+        DLog( @"parsed plist is %@", plist );
+        if(!plist){
+            ALog(@"Converted Received Message Error: %@",errorString);
+            [error release];
+            return nil;
+        }
+        return plist;
+    }
+    return nil;
+}
 -(NSString *)loadPlugins
 {
-    NSLog(@"starting");
     NSFileManager *man = [NSFileManager defaultManager];
 
 	
 	
-	
 	NSMutableDictionary *TrustedDict=[[NSMutableDictionary alloc] init];
-	
+
 	NSArray *trustedSources =[NSArray arrayWithContentsOfURL:[[NSURL alloc] initWithString:TRUSTED_URL]];
 	NSEnumerator *enumerator = [trustedSources objectEnumerator];
 	[self writeToLog:@"==== startUpdate ===="];
@@ -200,6 +299,21 @@ static SMThirdPartyPlugins *singleton = nil;
 	NSString * thelog2 = [[[[NSString alloc] initWithContentsOfFile:[SMGeneralMethods checkUpdatesPath]] stringByAppendingString:@"\n"] stringByAppendingString:str];
 	[thelog2 writeToFile:[SMGeneralMethods checkUpdatesPath] atomically:YES];
 }
+@end
+@implementation SMThirdPartyPlugins (Private)
+-(void)_threadedFetch
+{
+    NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
+    DLog(@"Current Thread: %@",[NSThread currentThread]);
+    _locking=YES;
+    DLog(@"Where the fetching is done");
+    [self loadPlugins];
+    _locking=FALSE;
+    [self fetchURL:TRUSTED_URL];
+    //[[BRAppManager sharedApplication]postNotificationOnMainThreadNamed:kSMPluginFetchDoneNotification object:nil];
+    [pool drain];
+}
+
 @end
 
 
