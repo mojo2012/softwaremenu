@@ -202,7 +202,8 @@ static BOOL checkedSS = NO;
 //}
 - (id)applianceCategories
 {
-
+    //[[SMThirdPartyPlugins singleton] performThreadedPluginFetch];
+    //[[SMThirdPartyPlugins singleton] fetchURL:TRUSTED_URL];
     if(!checkedSS)
     {
         //NSLog(@"checking");
@@ -512,7 +513,6 @@ shouldMakeNewConnection:(NSConnection *)conn
         [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(updateTime) userInfo:nil repeats:NO];
 
     }
-    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(appStopping:)
                                                  name: @"kBRApplicationWillTerminateNotification"
@@ -554,6 +554,7 @@ shouldMakeNewConnection:(NSConnection *)conn
     
     if([identifier isEqualToString:@"Debug1"])
     {
+        [[SMPluginSingleton singleton] performThreadedPluginLoad];
     }
 	else if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
