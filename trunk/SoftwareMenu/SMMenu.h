@@ -3,6 +3,10 @@
 #import "Headers/Finder/METouchRemoteManager.h"
 #import "Headers/Finder/MEAVPlayer.h"
 /*
+ *  Importing Singletons
+ */
+#import "Classes/ThirdParty/SMPluginSingleton.h"
+/*
  *  Importing SharedClasses
  */
 #import "Classes/DistributedObjects/ChatterServer.h"
