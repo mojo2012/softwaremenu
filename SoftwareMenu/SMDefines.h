@@ -71,7 +71,12 @@
 #define LAYER_DISPLAY				@"layer_display"
 #define LAYER_INT					@"layer_integer"
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
-#define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
+
+#ifdef DEBUG
+    #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
+#else
+    #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
+#endif
 #define SCRIPTS_PLIST               @"com.apple.frontrow.SoftwareMenu.Scripts.plist"
 #define TRUSTED_PLIST               @"com.apple.frontrow.SoftwareMenu.Trusted.plist"
 #define PLUGINS						@"plugins"

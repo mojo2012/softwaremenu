@@ -1596,6 +1596,8 @@
 		DDEF340510A657F500ECD73A /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEF340310A657F500ECD73A /* Extensions.h */; };
 		DDEF340610A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
 		DDEF340710A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
+		DDF53DD411862F650083B6F8 /* SMPluginSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF53DD211862F650083B6F8 /* SMPluginSingleton.h */; };
+		DDF53DD511862F650083B6F8 /* SMPluginSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF53DD311862F650083B6F8 /* SMPluginSingleton.m */; };
 		DDF57AFF118362FB007F89C9 /* SMWeatherSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF57AFE118362FB007F89C9 /* SMWeatherSelector.m */; };
 		DDF581A411844EA9007F89C9 /* SMCommonHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF581A311844EA9007F89C9 /* SMCommonHeader.h */; };
 		DDF5858C11849D88007F89C9 /* ArtworkURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF584E111849D88007F89C9 /* ArtworkURLProtocol.h */; };
@@ -3575,6 +3577,8 @@
 		DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loadUpdatesDownloadClass.m; sourceTree = "<group>"; };
 		DDEF340310A657F500ECD73A /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
 		DDEF340410A657F500ECD73A /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
+		DDF53DD211862F650083B6F8 /* SMPluginSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPluginSingleton.h; sourceTree = "<group>"; };
+		DDF53DD311862F650083B6F8 /* SMPluginSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPluginSingleton.m; sourceTree = "<group>"; };
 		DDF57AFD118362FB007F89C9 /* SMWeatherSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWeatherSelector.h; sourceTree = "<group>"; };
 		DDF57AFE118362FB007F89C9 /* SMWeatherSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWeatherSelector.m; sourceTree = "<group>"; };
 		DDF581A311844EA9007F89C9 /* SMCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCommonHeader.h; path = ../Shared/SMCommonHeader.h; sourceTree = SOURCE_ROOT; };
@@ -5583,6 +5587,8 @@
 		DD8E465C1142EC1E00B6C2F8 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				DDF53DD211862F650083B6F8 /* SMPluginSingleton.h */,
+				DDF53DD311862F650083B6F8 /* SMPluginSingleton.m */,
 				DD8E47F21143410A00B6C2F8 /* SMApplianceDictionary.h */,
 				DD8E47F31143410A00B6C2F8 /* SMApplianceDictionary.m */,
 				DD8E47D111433FCC00B6C2F8 /* SMApplianceInstaller (downloaderDelegate).h */,
@@ -7752,6 +7758,7 @@
 				DDF5863411849D88007F89C9 /* NSURLProtocol-Registration.h in Headers */,
 				DDF5863511849D88007F89C9 /* ResourcesURLProtocol.h in Headers */,
 				DDF5863611849D88007F89C9 /* RUIRatingInfoDatabase.h in Headers */,
+				DDF53DD411862F650083B6F8 /* SMPluginSingleton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8274,6 +8281,7 @@
 				DD0DBB56117F7FB300C1B052 /* SMImageReturns.m in Sources */,
 				DDC6A95A11815E1F0048A8C9 /* SMScriptOptions.m in Sources */,
 				DD9FF96A1182E3FA0087ACD8 /* BackRowExtensions.m in Sources */,
+				DDF53DD511862F650083B6F8 /* SMPluginSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
