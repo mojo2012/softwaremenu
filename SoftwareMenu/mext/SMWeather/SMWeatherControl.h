@@ -46,4 +46,7 @@
 -(void)drawControlsN;
 -(void)reload;
 -(void)setTimeZones:(NSString *)tz;
+-(void)loadUsDictionaryForCode:(NSNumber *)code;
+-(void)loadEuDictionaryForCode:(NSNumber *)code;
+-(NSDictionary *)loadDictionaryForCode:(int)code usUnits:(BOOL)us;
 @end
