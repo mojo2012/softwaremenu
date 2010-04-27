@@ -58,7 +58,7 @@ static int _imageNb =0;
     if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
         [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
         CGSize size = [(BRImageControl *)_control preferredFrameSize];
-        NSLog(@"width: %lf, height: %lf, aspectRatio: %lf",size.width,size.height,[(BRImageControl *)_control aspectRatio]);
+        //NSLog(@"width: %lf, height: %lf, aspectRatio: %lf",size.width,size.height,[(BRImageControl *)_control aspectRatio]);
         if (_imageNb==[_imagePaths count]) {
             _imageNb=0;
         }
