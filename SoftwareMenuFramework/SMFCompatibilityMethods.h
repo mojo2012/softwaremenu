@@ -64,5 +64,6 @@ typedef enum {
 + (BOOL)usingTakeTwoDotTwo;
 + (BOOL)usingTakeTwoDotThree;
 + (BOOL)usingTakeTwoDotFour;
++ (BOOL)usingTakeThree;
 + (int)remoteActionForEvent:(BREvent *)event;
 @end

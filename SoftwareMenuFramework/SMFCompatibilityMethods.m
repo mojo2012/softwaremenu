@@ -118,6 +118,10 @@ static BOOL usingATypeOfTakeThree = NO;
 {
 	return atvVersion >= SMFFrontrowRowCompatATVVersion2Dot4;
 }
++ (BOOL)usingTakeThree
+{
+    return usingATypeOfTakeThree;
+}
 + (int)remoteActionForEvent:(BREvent *)event
 {
 	if(atvVersion >= SMFFrontrowRowCompatATVVersion302)
