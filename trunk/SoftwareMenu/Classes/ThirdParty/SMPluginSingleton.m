@@ -42,8 +42,10 @@ static SMPluginSingleton *singleton = nil;
     _locking=NO;
     _updateImages=YES;
     _checkImages=YES;
+    NSLog(@"singleton init");
     NSDate *date = [SMPreferences lastCheckedDate];
-    if (date=nil) {
+    if (date==nil) {
+        DLog(@"never auto run before");
         [self timerRun];
 
     }
@@ -51,16 +53,19 @@ static SMPluginSingleton *singleton = nil;
         double dif = [[NSDate date] timeIntervalSinceDate:date];
         double hdif=dif/(3600.f);
         if (hdif>6.f) {
+            DLog(@"More than 6 hours");
             [self timerRun];
         }
         else if((6.f*3600.f-dif)<=0.0f)
         {
+            DLog(@"More than 6 hours too");
             [self timerRun];
         }
         
         else{
-            
-            
+            double v = 6.f*3600.f-dif;
+            //DLog(@"values: %ld %ld,date: %@, cur: %@",(double)3600*(double)6,v,date,[NSDate date]);
+            DLog(@"Checking in : %lf seconds",(6.f*3600.f-dif));
             _checkTimer=[NSTimer scheduledTimerWithTimeInterval:(6.f*3600.f-dif)
                                              target:self 
                                            selector:@selector(timerRun) 
