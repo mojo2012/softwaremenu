@@ -451,7 +451,15 @@
 {
     [SMPreferences setBool:keep forKey:MM_KEEP_GRADIENT];
 }
-
+#pragma mark PLUGINS
++(NSDate *)lastCheckedDate
+{
+    return [SMPreferences dateForKey:@"PluginCheckDate"];
+}
++(void)setLastCheckedDate
+{
+    [SMPreferences setDate:[NSDate date] forKey:@"PluginCheckDate"];
+}
 
 
 @end

@@ -204,13 +204,7 @@ static BOOL checkedSS = NO;
 {
     //[[SMThirdPartyPlugins singleton] performThreadedPluginFetch];
     //[[SMThirdPartyPlugins singleton] fetchURL:TRUSTED_URL];
-    if(!checkedSS)
-    {
-        //NSLog(@"checking");
-        [SMGeneralMethods helperFixPerm];
-        [SMGeneralMethods checkScreensaver];
-        checkedSS = YES;
-    }
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BRAppliancePreviewChangedNotification" object:self];
 	NSMutableArray *categories = [NSMutableArray array];
     
@@ -481,13 +475,25 @@ shouldMakeNewConnection:(NSConnection *)conn
 - (id) init
 {
 //    NSLog(@"kSMFApplianceOrderValue: %@",kBlaBla);
-    ALog(@"beginning of init");
-    DLog(@"Debug beginning of init");
+
     if ( [super init] == nil )
         return ( nil );
 	
     t=0;
+    if(!checkedSS)
+    {
+        //NSLog(@"checking");
+        [SMGeneralMethods helperFixPerm];
+        [SMGeneralMethods checkScreensaver];
+        checkedSS = YES;
+    }
     [[SMGeneralMethods sharedInstance] checkFolders];
+    
+    /*
+     *  Store Plugin Singleton in memory
+     */
+    [SMPluginSingleton singleton];
+    
     if(TRUE)
     {
         [self startChatter];
@@ -554,7 +560,11 @@ shouldMakeNewConnection:(NSConnection *)conn
     
     if([identifier isEqualToString:@"Debug1"])
     {
+        id controller = [[SMFSpinnerMenu alloc]initWithTitle:@"" text:@"Loading Updates"];
+        [[SMPluginSingleton singleton] setDelegate:controller];
+
         [[SMPluginSingleton singleton] performThreadedPluginLoad];
+        return controller;
     }
 	else if([[identifier pathExtension] isEqualToString:@"sh"])
 	{
