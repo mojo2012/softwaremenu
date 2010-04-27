@@ -697,7 +697,7 @@
         return;
     }
     //NSLog(@"tz in control: %@",[NSTimeZone timeZoneWithName:tz]);
-    NSLog(@"time zone: %@",tz);
+    //NSLog(@"time zone: %@",tz);
     _timezone=[NSTimeZone timeZoneWithName:tz];
     [_timezone retain];
 }
@@ -758,7 +758,7 @@
     
 
 
-    DLog(@"time: %@",[NSDate date]);
+    //DLog(@"time: %@",[NSDate date]);
     if ([SMWeatherController USUnitsForCode:code]) {
         [NSThread detachNewThreadSelector:@selector(loadUsDictionaryForCode:) toTarget:self withObject:[NSNumber numberWithInt:code]];
     }
@@ -780,7 +780,7 @@
 }
 -(void)setInfoDictionary:(NSDictionary *)infoDict
 {
-    DLog(@"time2: %@",[NSDate date]);
+    //DLog(@"time2: %@",[NSDate date]);
     [self setTimeZones:[SMWeatherController tzForCode:[SMWeatherController yWeatherCode]]];
     if (infoDict==nil) 
         infoDict=[NSDictionary dictionary];
@@ -819,7 +819,7 @@
         int sunset=[self convertTimeToInt:[_infoDict objectForKey:@"sunset"]];
         //NSLog(@"known time zones: %@",[NSTimeZone knownTimeZoneNames]);
         int current=[[[NSDate date] descriptionWithCalendarFormat:@"%H%M" timeZone:_timezone locale:nil]intValue];
-        NSLog(@"date: %@ ,sunrise %i, current %i, sunset %i",[NSDate date], sunrise,current,sunset);
+        //NSLog(@"date: %@ ,sunrise %i, current %i, sunset %i",[NSDate date], sunrise,current,sunset);
         if (current>=sunrise && current<sunset) {
             code=[code stringByAppendingString:@"d"];
         }

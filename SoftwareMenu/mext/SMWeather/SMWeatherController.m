@@ -90,7 +90,7 @@ NSString *kWeatherCityKey=@"city";
 {
     NSDictionary *locs = [[SMWeatherController Locations] objectForKey:[NSString stringWithFormat:@"%i",code,nil]];
     if ([[locs allKeys] containsObject:kWeatherTimeZoneKey]) {
-        DLog(@"Time Zone for code: %i is: %@",code,[locs objectForKey:kWeatherTimeZoneKey]);
+        //DLog(@"Time Zone for code: %i is: %@",code,[locs objectForKey:kWeatherTimeZoneKey]);
         return [locs objectForKey:kWeatherTimeZoneKey]; 
     }
     return nil;
@@ -119,18 +119,18 @@ NSString *kWeatherCityKey=@"city";
 {
     NSString *scode = [NSString stringWithFormat:@"%i",code,nil];
     NSDictionary *obj=[[SMWeatherController Locations] objectForKey:scode];
-    DLog(@"object: %@",obj);
-    DLog(@"%@, %@, %@",
-         [NSNumber numberWithBool:[[obj allKeys] containsObject:kWeatherDefaultKey]],
-         [NSNumber numberWithBool:![[obj objectForKey:kWeatherDefaultKey] boolValue]],
-         [NSNumber numberWithBool:[[obj allKeys] containsObject:kWeatherUSUnitsKey]]);
+    //DLog(@"object: %@",obj);
+    //DLog(@"%@, %@, %@",
+//         [NSNumber numberWithBool:[[obj allKeys] containsObject:kWeatherDefaultKey]],
+//         [NSNumber numberWithBool:![[obj objectForKey:kWeatherDefaultKey] boolValue]],
+//         [NSNumber numberWithBool:[[obj allKeys] containsObject:kWeatherUSUnitsKey]]);
     if (obj==nil) 
         return NO;
     if ([[obj allKeys] containsObject:kWeatherDefaultKey] && 
         ![[obj objectForKey:kWeatherDefaultKey] boolValue] && 
         [[obj allKeys] containsObject:kWeatherUSUnitsKey]) 
     {
-        DLog(@"Use Custom Units for code: %i",code);
+        //DLog(@"Use Custom Units for code: %i",code);
         return [[obj objectForKey:kWeatherUSUnitsKey]boolValue];
     }
     else {
