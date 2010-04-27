@@ -222,4 +222,5 @@ static inline BOOL loadSMFramework(NSString *frapPath)
 #import "SMFController.h"
 #import "SMFDownloaderUpdate.h"
 #import "SMFInvocationCenteredMenuController.h"
+#import "SMFSpinnerMenu.h"
 
