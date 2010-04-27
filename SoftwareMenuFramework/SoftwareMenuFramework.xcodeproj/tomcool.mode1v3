@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>DD83EB6D118761400085620A</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>BRScrollingTextControl.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>DD83EB6E118761400085620A</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>BRScrollingTextControl.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>DD83EB8D1187641F0085620A</string>
-						<key>history</key>
-						<array>
-							<string>DD83EB6F118761400085620A</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {1246, 689}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>130 38 1246 730 0 0 1440 878 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -326,13 +285,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>64</integer>
+									<integer>57</integer>
 									<integer>6</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {321, 769}}</string>
+							<string>{{0, 588}, {321, 769}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -369,7 +328,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SMFSpinnerMenu.m</string>
+								<string>SMFCompatibilityMethods.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -377,11 +336,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SMFSpinnerMenu.m</string>
+										<string>SMFCompatibilityMethods.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD83EB8C1187641F0085620A</string>
+										<string>DD83ED8A118781460085620A</string>
 										<key>history</key>
 										<array>
 											<string>DDECB99D11199F1100448929</string>
@@ -476,10 +435,8 @@
 											<string>DDF5826A11847075007F89C9</string>
 											<string>DDF5826B11847075007F89C9</string>
 											<string>DDF5826C11847075007F89C9</string>
-											<string>DDF582C111847D23007F89C9</string>
 											<string>DDF582C211847D23007F89C9</string>
 											<string>DDF582C311847D23007F89C9</string>
-											<string>DDF582C411847D23007F89C9</string>
 											<string>DDF582C511847D23007F89C9</string>
 											<string>DDF582C711847D23007F89C9</string>
 											<string>DDF582C811847D23007F89C9</string>
@@ -502,7 +459,9 @@
 											<string>DD83EB7F118762910085620A</string>
 											<string>DD83EB81118762910085620A</string>
 											<string>DD83EB82118762910085620A</string>
-											<string>DD83EB83118762910085620A</string>
+											<string>DD83ED85118781450085620A</string>
+											<string>DD83ED86118781450085620A</string>
+											<string>DD83ED87118781450085620A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -514,14 +473,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1020, 412}}</string>
+								<string>{{0, 0}, {1020, 744}}</string>
 								<key>RubberWindowFrame</key>
 								<string>87 50 1363 828 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>412pt</string>
+							<string>744pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -534,14 +493,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 417}, {1020, 370}}</string>
+								<string>{{0, 749}, {1020, 38}}</string>
 								<key>RubberWindowFrame</key>
 								<string>87 50 1363 828 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>370pt</string>
+							<string>38pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -702,7 +661,6 @@
 	<array>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>DDECB7A61118DA4D00448929</string>
-		<string>DD83EB6D118761400085620A</string>
 		<string>/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenuFramework/SoftwareMenuFramework.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
