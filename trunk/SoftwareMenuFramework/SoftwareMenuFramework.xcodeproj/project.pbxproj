@@ -40,6 +40,8 @@
 		DDD032A81139962F0071788A /* SMFInvocationCenteredMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD032A61139962F0071788A /* SMFInvocationCenteredMenuController.m */; };
 		DDD0344B1139C86F0071788A /* SMFDownloaderUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD034491139C86F0071788A /* SMFDownloaderUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDD0344C1139C86F0071788A /* SMFDownloaderUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0344A1139C86F0071788A /* SMFDownloaderUpdate.m */; };
+		DDE7238E118738D800860DEC /* SMFSpinnerMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE7238C118738D800860DEC /* SMFSpinnerMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE7238F118738D800860DEC /* SMFSpinnerMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE7238D118738D800860DEC /* SMFSpinnerMenu.m */; };
 		DDE8C72911393E78000EC58F /* SMFProgressBarMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE8C72711393E78000EC58F /* SMFProgressBarMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE8C72A11393E78000EC58F /* SMFProgressBarMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8C72811393E78000EC58F /* SMFProgressBarMenuItem.m */; };
 		DDECB7B51118DAC700448929 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDECB7B41118DAC700448929 /* BackRow.framework */; };
@@ -143,6 +145,8 @@
 		DDD032A61139962F0071788A /* SMFInvocationCenteredMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFInvocationCenteredMenuController.m; sourceTree = "<group>"; };
 		DDD034491139C86F0071788A /* SMFDownloaderUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFDownloaderUpdate.h; sourceTree = "<group>"; };
 		DDD0344A1139C86F0071788A /* SMFDownloaderUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFDownloaderUpdate.m; sourceTree = "<group>"; };
+		DDE7238C118738D800860DEC /* SMFSpinnerMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFSpinnerMenu.h; sourceTree = "<group>"; };
+		DDE7238D118738D800860DEC /* SMFSpinnerMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFSpinnerMenu.m; sourceTree = "<group>"; };
 		DDE8C72711393E78000EC58F /* SMFProgressBarMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFProgressBarMenuItem.h; sourceTree = "<group>"; };
 		DDE8C72811393E78000EC58F /* SMFProgressBarMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFProgressBarMenuItem.m; sourceTree = "<group>"; };
 		DDECB7B41118DAC700448929 /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = System/Library/PrivateFrameworks/BackRow.framework; sourceTree = SDKROOT; };
@@ -340,6 +344,8 @@
 				DDF5827F11847290007F89C9 /* SMFPhotoMethods.m */,
 				DDF5829D11847A6A007F89C9 /* SMFStrings.h */,
 				DDF5829E11847A6A007F89C9 /* SMFStrings.m */,
+				DDE7238C118738D800860DEC /* SMFSpinnerMenu.h */,
+				DDE7238D118738D800860DEC /* SMFSpinnerMenu.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -447,6 +453,7 @@
 				DDF5820D118467A0007F89C9 /* SMFCompatibilityMethods.h in Headers */,
 				DDF5828011847290007F89C9 /* SMFPhotoMethods.h in Headers */,
 				DDF5829F11847A6A007F89C9 /* SMFStrings.h in Headers */,
+				DDE7238E118738D800860DEC /* SMFSpinnerMenu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +576,7 @@
 				DDF5820E118467A0007F89C9 /* SMFCompatibilityMethods.m in Sources */,
 				DDF5828111847290007F89C9 /* SMFPhotoMethods.m in Sources */,
 				DDF582A011847A6A007F89C9 /* SMFStrings.m in Sources */,
+				DDE7238F118738D800860DEC /* SMFSpinnerMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
