@@ -7,8 +7,11 @@
 //
 
 #import "SMPluginSingleton.h"
-
+NSString * kSMPluginOverwrites=@"http://tomcool.org/SoftwareMenu/overwrites.plist";
 NSString * kSMPluginFetchDoneNotification=@"kSMPluginFetchDoneNotification";
+NSString * kSMMinOverWrite=@"minOverWrite";
+NSString * kSMMaxOverWrite=@"maxOverWrite";
+NSString * kSMURLOverWrite=@"url";
 @interface SMPluginSingleton (Private)
 -(void)_threadedLoad;
 
@@ -39,8 +42,50 @@ static SMPluginSingleton *singleton = nil;
     _locking=NO;
     _updateImages=YES;
     _checkImages=YES;
+    NSDate *date = [SMPreferences lastCheckedDate];
+    if (date=nil) {
+        [self timerRun];
+
+    }
+    else {
+        double dif = [[NSDate date] timeIntervalSinceDate:date];
+        double hdif=dif/(3600.f);
+        if (hdif>6.f) {
+            [self timerRun];
+        }
+        else if((6.f*3600.f-dif)<=0.0f)
+        {
+            [self timerRun];
+        }
+        
+        else{
+            
+            
+            _checkTimer=[NSTimer scheduledTimerWithTimeInterval:(6.f*3600.f-dif)
+                                             target:self 
+                                           selector:@selector(timerRun) 
+                                           userInfo:nil 
+                                            repeats:NO]; 
+        }
+
+    }
+    
     return self;
     
+}
+- (void)timerRun
+{
+    if (_checkTimer!=nil) {
+        [_checkTimer invalidate];
+    }
+    DLog(@"performing Plugin Check: %@",[NSDate date]);
+    [SMPreferences setLastCheckedDate];
+    [self performThreadedPluginLoad];
+    _checkTimer=[NSTimer scheduledTimerWithTimeInterval:(6.f*3600.0f)
+                                     target:self 
+                                   selector:@selector(timerRun) 
+                                   userInfo:nil 
+                                    repeats:NO]; 
 }
 - (id)retain
 {
@@ -67,7 +112,7 @@ static SMPluginSingleton *singleton = nil;
         [_delegate release];
         _delegate=nil;
     }
-    if ([delegate respondsToSelector:@selector(textShouldPrint:)]) {
+    if ([delegate respondsToSelector:@selector(textDidChange:)]) {
         if (_delegate!=nil) {
             [_delegate release];
             _delegate=nil;
@@ -78,10 +123,25 @@ static SMPluginSingleton *singleton = nil;
 }
 -(void)postDelegateMessage:(NSString *)message
 {
-    DLog(@"message: %@",message);
+    [self postDelegateMessage:message end:NO];
+}
+-(void)postDelegateMessage:(NSString *)message end:(BOOL)end
+{
+    //DLog(@"message: %@",message);
     [self writeToLog:message];
-    if ([_delegate respondsToSelector:@selector(textDidEndEditing:)]) {
-        [_delegate textDidEndEditing:message];
+    //DLog(@"delegate: %@",_delegate);
+    if ([_delegate respondsToSelector:@selector(textDidChange:)]) {
+        if (end) {
+            //DLog(@"Sending Message End to Delegate");
+            [_delegate textDidEndEditing:message];
+            [_delegate release];
+            _delegate=nil;
+        }
+        else {
+            //DLog(@"Sending Message to Delegate");
+            [_delegate textDidChange:message];
+        }
+        
     }
 }
 -(id)delegate
@@ -101,7 +161,7 @@ static SMPluginSingleton *singleton = nil;
     NSError *error;
 	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if (error!=nil) {
-        NSLog(@"error: %@",error);
+        ALog(@"error: %@",error);
         return nil;
     }
     else {
@@ -111,7 +171,7 @@ static SMPluginSingleton *singleton = nil;
                                                                mutabilityOption:NSPropertyListImmutable 
                                                                          format:&format 
                                                                errorDescription:&errorString];
-        DLog( @"parsed plist is %@", plist );
+        //DLog( @"parsed plist is %@", plist );
         if(!plist){
             ALog(@"Converted Received Message Error: %@",errorString);
             [error release];
@@ -130,6 +190,7 @@ static SMPluginSingleton *singleton = nil;
 }
 -(NSString *)saveLog
 {
+    [self postDelegateMessage:@"Finished" end:YES];
     if (_log!=nil) {
         [_log writeToFile:[SMGeneralMethods checkUpdatesPath] atomically:YES];
         NSString *tl=[_log copy];
@@ -144,6 +205,7 @@ static SMPluginSingleton *singleton = nil;
     if (!_locking) {
         _locking=TRUE;
         NSString *log;
+        [self loadOverwrites];
         [self loadPluginsWithLog:&log];
         _locking=FALSE;
             return log;
@@ -163,10 +225,36 @@ static SMPluginSingleton *singleton = nil;
         
         [self postDelegateMessage:@"Parsing Sources"];
         int i,count = [(NSArray *)returnObject count];
+        //DLog(@"Overwrites: %@",_overwrites);
+
+        NSArray *oKeys=[_overwrites allKeys];
+                //DLog(@"Keys: %@",oKeys);
         for(i=0;i<count;i++)
         {
             NSString *url = [[returnObject objectAtIndex:i] objectForKey:@"theURL"];
-            [self postDelegateMessage:[NSString stringWithFormat:@"Parsing: %@",url,nil]];
+            if (_overwrites!=nil) {
+                if ([oKeys containsObject:url]) {
+                    //DLog(@"Maybe Overwriting: %@",url);
+                    NSDictionary *obj=[_overwrites objectForKey:url];
+                    NSArray *keys=[obj allKeys];
+                    SMFFrontrowRowCompatATVVersion currentVersion=[SMFCompatibilityMethods atvVersion];
+                    SMFFrontrowRowCompatATVVersion minOver=0;
+                    SMFFrontrowRowCompatATVVersion maxOver=400;
+                    if ([keys containsObject:kSMMinOverWrite]) {
+                        minOver=(SMFFrontrowRowCompatATVVersion)[[obj objectForKey:kSMMinOverWrite]intValue];
+                    }
+                    if ([keys containsObject:kSMMaxOverWrite]) {
+                        maxOver=(SMFFrontrowRowCompatATVVersion)[[obj objectForKey:kSMMaxOverWrite]intValue];
+                    }
+                    //DLog(@"min %i, current: %i, max: %i",minOver,currentVersion,maxOver);
+                    if (currentVersion<=maxOver && currentVersion>=minOver) {
+                        //DLog(@"Overwriting: %@",url);
+                        url = [obj objectForKey:kSMURLOverWrite];
+                    }
+                }
+            }
+            //NSString *name= [[returnObject objectAtIndex:i] objectForKey:@"theName"];
+            [self postDelegateMessage:[NSString stringWithFormat:@"Fetching: %@",url,nil]];
             id lreturnObject = [self fetchURL:url];
             if ([lreturnObject respondsToSelector:@selector(objectForKey:)]) {
                 if ([url isEqualToString:@"http://nitosoft.com/version.plist"]) 
@@ -207,11 +295,15 @@ static SMPluginSingleton *singleton = nil;
     }
     else {
         [self postDelegateMessage:@"Error, Expected an Array"];
-        DLog(@"Expected the Array but got something else");
+        //DLog(@"Expected the Array but got something else");
     }
     if (log!=nil) {
         *log=[self saveLog];
     }
+    else {
+        [self postDelegateMessage:@"Finished Updating" end:YES];
+    }
+
     DLog(@"Success At Updating Plists");
     return sources;
 }
@@ -249,6 +341,18 @@ static SMPluginSingleton *singleton = nil;
         }
     }
 }
+-(void)loadOverwrites
+{
+    id overwrites= [self fetchURL:kSMPluginOverwrites];
+    NSLog(@"overwrites: %@\nurl: %@",overwrites,kSMPluginOverwrites);
+    if ([overwrites respondsToSelector:@selector(objectForKey:)]) {
+        if (_overwrites!=nil) {
+            [_overwrites release];
+            _overwrites=nil;
+        }
+        _overwrites=[overwrites retain];
+    }
+}
 -(NSData *)fetchData:(NSString *)urlString
 {
     NSURL *url=[NSURL URLWithString:urlString];
@@ -271,7 +375,8 @@ static SMPluginSingleton *singleton = nil;
     
     if (!_locking) {
         _locking=YES;
-        DLog(@"Where the fetching is done");
+        [self loadOverwrites];
+        //DLog(@"Where the fetching is done");
         [self loadPluginsWithLog:nil];
         _locking=FALSE;
     }
