@@ -92,4 +92,7 @@
 +(BOOL)mainMenuKeepGradient;
 +(void)setMainMenuKeepGradient:(BOOL)keep;
 
+#pragma mark PLUGINS
++(NSDate *)lastCheckedDate;
++(void)setLastCheckedDate;
 @end
