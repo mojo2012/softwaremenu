@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+extern NSString * kSMPluginOverwrites;
 extern NSString * kSMPluginFetchDoneNotification;
+extern NSString * kSMMinOverWrite;
+extern NSString * kSMMaxOverWrite;
+extern NSString * kSMURLOverWrite;
 
 @interface SMPluginSingleton : NSObject {
     NSDictionary  * _updates;
@@ -17,8 +20,13 @@ extern NSString * kSMPluginFetchDoneNotification;
     id              _delegate;
     BOOL            _locking;
     NSMutableString*_log;
+    NSDictionary *  _overwrites;
+    NSTimer *       _checkTimer;
 }
 + (SMPluginSingleton*)singleton;
+- (void)postDelegateMessage:(NSString *)message end:(BOOL)end;
+- (void)setDelegate:(id)delegate;
+- (id)delegate;
 - (id)fetchURL:(NSString *)urlString;
 - (void)writeToLog:(NSString *)message;
 - (NSString *)saveLog;
@@ -27,4 +35,6 @@ extern NSString * kSMPluginFetchDoneNotification;
 - (void)performThreadedPluginLoad;
 - (void)getImages:(NSDictionary *)TrustedDict;
 - (NSData *)fetchData:(NSString *)urlString;
+- (void)timerRun;
+- (void)loadOverwrites;
 @end

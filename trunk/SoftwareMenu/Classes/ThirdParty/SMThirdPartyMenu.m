@@ -198,6 +198,7 @@ typedef enum _TPMenuTypes
 {
     if(fp8<[_items count])
     {
+        
         switch([[_options objectAtIndex:fp8] intValue])
         {
             case kSMCheck:
@@ -207,7 +208,12 @@ typedef enum _TPMenuTypes
 //                [self writeToLog:@"Initializing Update"];
 //                [self startUpdate];
 //                NSLog(@"check");
-                [[SMThirdPartyPlugins singleton]loadPlugins];
+            
+                id controller = [[SMFSpinnerMenu alloc]initWithTitle:@"" text:@"Loading Updates"];
+                [[SMPluginSingleton singleton] setDelegate:controller];
+                [[self stack] pushController:controller];
+                [controller release];
+                [[SMPluginSingleton singleton] performThreadedPluginLoad];
                 break;
             }
             case kSMRestart:
