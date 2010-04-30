@@ -12,11 +12,218 @@
 #include <stdio.h>
 #include <stdlib.h>
 #import "AGProcess.h"
+#import "../General/Extensions.h"
+
 #define FRAP_PATH					@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/"
 #define BAK_PATH					@"/Users/frontrow/Documents/Backups/"
-#define ISString(string,compareString) [string isEqualToString:compareString]
 
 @implementation smToolHelper
+#pragma mark Misc Methods
+- (int)switchService:(NSString *)service on:(BOOL)on
+{
+    NSString *launchCtl = [NSString stringWithFormat:@"/bin/launchctl %@ -w /System/Library/LaunchDaemons/%@.plist",
+                           (on?@"load":@"unload"),
+                           service];
+    chdir( "/" );
+    setuid( 0 );
+    setgid( 0 );
+    int result = system( [launchCtl UTF8String] );
+    if(result)
+        DLog(@"failed to switch service: %@, to state: %d, result: %d",service,on,result);
+    if (ISString(service,@"com.atvMod.dropbear")) {
+        AGProcess *dp = [AGProcess processForCommand:@"dropbear"];
+		if (dp != nil)
+			[dp terminate];
+    }
+    return result;
+}
+
+- (int)toggleSSH:(BOOL)on
+{
+	NSString *sshType = @"ssh";
+	if ( [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/bin/dropbear"] )
+		sshType = @"com.atvMod.dropbear";
+    return[self switchService:sshType on:on];
+}
+
+-(int) EnableAppleShareServer
+{
+    // change /etc/hostconfig
+    NSMutableString * hostconfig = [NSMutableString stringWithContentsOfFile: @"/etc/hostconfig"];
+    if ( hostconfig == nil )
+    {
+        /*ATVErrorLog( @"Failed to load hostconfig file" );
+         PostNSError( EIO, NSPOSIXErrorDomain,
+         LocalizedError(@"HostconfigOpenFailed", @"Unable to read /etc/hostconfig"),
+         nil );*/
+		DLog(@"Failed To Load hostconfig");
+        return ( 1 );
+    }
+	
+    if ( [hostconfig replaceOccurrencesOfString: @"AFPSERVER=-NO-"
+                                     withString: @"AFPSERVER=-YES-"
+                                        options: 0
+                                          range: NSMakeRange(0, [hostconfig length])] == 0 )
+    {
+        // is it already set ?
+        NSRange range = [hostconfig rangeOfString: @"AFPSERVER=-YES-"];
+        if ( range.location == NSNotFound )
+        {
+            DLog( @"AFP Server hostconfig entry not found, adding..." );
+            [hostconfig insertString: @"AFPSERVER=-YES-\n" atIndex: 0];
+        }
+        else
+        {
+            DLog( @"AFP Server already enabled" );
+            return ( 1 );     // don't write file or start server
+        }
+    }
+	
+    if ( [hostconfig writeToFile: @"/etc/hostconfig" atomically: YES] == NO )
+    {
+        //ATVErrorLog( @"Failed to write hostconfig" );
+        /* PostNSError( EIO, NSPOSIXErrorDomain,
+         LocalizedError(@"HostconfigWriteFailed", @"Unable to write /etc/hostconfig"),
+         nil );*/
+		DLog(@"Cannot write Hostconfig");
+    }
+	
+    system( "/usr/sbin/AppleFileServer" );  // this one daemonizes itself
+	
+    return ( 0 );
+}
+-( int) DisableAppleShareServer
+{
+    NSMutableString * hostconfig = [NSMutableString stringWithContentsOfFile: @"/etc/hostconfig"];
+    if ( hostconfig == nil )
+    {
+        /*ATVErrorLog( @"Failed to load hostconfig file" );
+         PostNSError( EIO, NSPOSIXErrorDomain,
+         LocalizedError(@"HostconfigOpenFailed", @"Unable to read /etc/hostconfig"),
+         nil );*/
+		DLog(@"Cannot load hostconfig");
+        return ( 1 );
+    }
+	
+    if ( [hostconfig replaceOccurrencesOfString: @"AFPSERVER=-YES-"
+                                     withString: @"AFPSERVER=-NO-"
+                                        options: 0
+                                          range: NSMakeRange(0, [hostconfig length])] == 0 )
+    {
+        DLog( @"AFP Server already stopped, or not configured" );
+        return ( 1 );
+    }
+	
+    if ( [hostconfig writeToFile: @"/etc/hostconfig" atomically: YES] == NO )
+    {
+        /*ATVErrorLog( @"Failed to write hostconfig" );
+         PostNSError( EIO, NSPOSIXErrorDomain,
+         LocalizedError(@"HostconfigWriteFailed", @"Unable to write /etc/hostconfig"),
+         nil );*/
+		DLog(@"cannot write hostconfig");
+    }
+	
+    NSString * pidString = [NSString stringWithContentsOfFile: @"/var/run/AppleFileServer.pid"];
+    pid_t procID = (pid_t) [pidString intValue];
+    DLog( @"Killing AFP server, process ID '%d'", (int) procID );
+	
+    if ( procID > 0 )
+        kill( procID, SIGTERM );
+	
+    return ( 0 );
+}
+-(int)toggleRowmote:(BOOL)on
+{
+	AGProcess *argAgent = [AGProcess processForCommand:@"RowmoteHelperATV"];
+	if (argAgent != nil && !on)
+		[argAgent terminate];
+	if(argAgent ==nil && on)
+		[NSTask launchedTaskWithLaunchPath:@"/System/Library/CoreServices/Finder.app/Contents/PlugIns/RowmoteHelperATV.frappliance/Contents/Resources/RowmoteHelperATV" arguments:[NSArray arrayWithObjects:nil]];
+	return 0;
+}
+- (int)toggleVNC:(BOOL)on
+{
+    int result;
+    NSArray *args;
+    
+    if(!on)
+	{
+		AGProcess *argAgent = [AGProcess processForCommand:@"AppleVNCServer"];
+		if (argAgent != nil)
+			[argAgent terminate];
+        args=[NSArray arrayWithObject:@"-deactivate"];        
+    }
+    else
+        args=[NSArray arrayWithObject:@"-activate"];
+    NSTask *afp = [[NSTask alloc]init];
+    [afp setArguments:args];
+    [afp setLaunchPath:@"/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart"];
+    [afp launch];
+    [afp waitUntilExit];
+    result = [afp terminationStatus];
+    if (on)
+        [NSTask launchedTaskWithLaunchPath:@"/System/Library/CoreServices/RemoteManagement/AppleVNCServer.bundle/Contents/MacOS/AppleVNCServer" arguments:[NSArray arrayWithObjects:@"&",nil]];
+    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 1];
+    [NSThread sleepUntilDate:future];
+    return result;
+	
+}
+- (int)toggleBlockUpdates:(BOOL)on
+{
+	NSMutableString *hosts = [[NSMutableString alloc] initWithContentsOfFile:@"/etc/hosts"];
+	NSMutableArray *hostArray = [[NSMutableArray alloc] initWithArray:[hosts componentsSeparatedByString:@"\n"]];
+	int i;
+	for (i = 0; i < [hostArray count]; i++)
+	{
+		NSString *currentItem = [hostArray objectAtIndex:i];
+		currentItem = [currentItem stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		NSArray *items = [currentItem componentsSeparatedByString:@" "];
+		if ([items containsObject:@"mesu.apple.com"])
+		{
+			[hostArray removeObjectAtIndex:i];
+		}
+	}
+	if (on == YES)
+	{
+		[hostArray addObject:@"127.0.0.1       mesu.apple.com"];
+	}
+	NSMutableString *thePl = [[NSMutableString alloc] initWithString:[hostArray componentsJoinedByString:@"\n"]];
+	[thePl writeToFile:@"/etc/hosts" atomically:YES];
+	[hostArray release];
+	[hosts release];
+	[thePl release];
+	NSTask *task7 =[[NSTask alloc] init];
+	[task7 setLaunchPath:@"/usr/sbin/lookupd"];
+	[task7 setArguments:[NSArray arrayWithObjects:@"-flushcache",nil]];
+	[task7 launch];
+	[task7 waitUntilExit];
+	return 0;
+}
+- (int)toggleTweak:(SMTweak)tw on:(BOOL)on
+{
+	int result = 0;
+
+	
+	
+	if(tw==kSMTweakVNC)
+		result=[self toggleVNC:on];
+	else if(tw==kSMTweakFTP)
+		result=[self switchService:@"ftp" on:on];
+	else if(tw=kSMTweakSSH)
+		result=[self toggleSSH:on];
+	else if(tw==kSMTweakAFP)
+		result=(on?[self EnableAppleShareServer]:[self DisableAppleShareServer]);
+	else if(tw==kSMTweakRowmote)
+		result=[self toggleRowmote:on];
+    else if(tw==kSMTweakUpdates)
+        result=[self toggleBlockUpdates:on];
+	else if(tw==kSMTweakReadWrite)
+    {
+        DLog(@"Read Write Toggle is not here");
+    }
+	return result;
+}
+
 #pragma mark Class Management
 - (NSString *)runPath {
     return [[runPath retain] autorelease];
@@ -872,6 +1079,84 @@
     return 0;
 }
 #pragma mark Software Menu
+-(int)installPython:(NSString *)file toVolume:(NSString *)targetVolume
+{
+    NSFileManager *man = [NSFileManager defaultManager];
+    if ([man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Frameworks/Python.Framework"]]) {
+        [man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Frameworks/Python.Framework"] handler:nil];
+    }
+    if (![man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks"]]) {
+        [man constructPath:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks"]];
+    }
+    else if([man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks/Python.Framework"]])
+    {
+        [man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks/Python.Framework"] handler:nil];
+    }
+    if (ISString([file pathExtension],@"tgz")) {
+        int i = [self extractGZip:file toLocation:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks/"]];
+        
+        if (i!=0) 
+        {
+            return i;
+        }
+    }
+    else if (ISString([file pathExtension],@"dmg"))
+    {
+        [man createDirectoryAtPath:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks/Python.Framework"]
+                        attributes:nil];
+        SMHLogIt(@"Using dmg");
+        NSString *volume=[self mountImage:file];
+        NSString *archive= [volume stringByAppendingPathComponent:@"Python.mpkg/Contents/Packages/PythonFramework-2.6.pkg/Contents/Archive.pax.gz"];
+        SMHLogIt(@"Launching Task");
+        
+        NSTask *tarTask = [[NSTask alloc] init];
+        [tarTask setLaunchPath:@"/bin/pax"];
+        [tarTask setArguments:[NSArray arrayWithObjects:@"-rzf", archive, @".", nil]];
+        [tarTask setCurrentDirectoryPath:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks/Python.Framework"]];
+        //        [tarTask setStandardError:nullOut];
+        //        [tarTask setStandardOutput:nullOut];
+        [tarTask launch];
+        [tarTask waitUntilExit];
+        int z=[tarTask terminationStatus];
+        if (z!=0)
+        {
+            SMHLogIt(@"Error with Task");
+            return 10;
+        }
+    }
+
+
+    [man createSymbolicLinkAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Frameworks/Python.Framework"] 
+                      pathContent:[targetVolume stringByAppendingPathComponent:@"mnt/Scratch/Library/Frameworks/Python.Framework"]];
+    if([man fileExistsAtPath:@"/usr/bin/python"])
+        [man removeFileAtPath:@"/usr/bin/python" handler:nil];
+    if([man fileExistsAtPath:@"/usr/bin/python2.6"])
+        [man removeFileAtPath:@"/usr/bin/python2.6" handler:nil];
+    [man createSymbolicLinkAtPath:@"/usr/bin/python" pathContent:@"/Library/Frameworks/Python.Framework/Versions/2.6/bin/python"];
+    [man createSymbolicLinkAtPath:@"/usr/bin/python2.6" pathContent:@"/Library/Frameworks/Python.Framework/Versions/2.6/bin/python2.6"];
+    return 0;
+}
+-(int)installPerian:(NSString *)dmg toVolume:(NSString *)targetVolume
+{
+    NSFileManager *man = [NSFileManager defaultManager];
+    if (![man fileExistsAtPath:dmg]||![[dmg pathExtension] isEqualToString:@"dmg"])
+        return 20;
+    NSString *volume=[self mountImage:dmg];
+    
+	if([man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/A52Codec.component"]])
+		[man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/A52Codec.component"] handler:nil];
+	if([man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/Perian.component"]])
+		[man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/Perian.component"] handler:nil];
+	if([man fileExistsAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/AC3MovieImport.component"]])
+		[man removeFileAtPath:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/AC3MovieImport.component"] handler:nil];
+	int i=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/Perian.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/"]];
+	int ii=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/QuickTime/AC3MovieImport.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Quicktime/"]];
+	int iii=[self unZip:[volume stringByAppendingPathComponent:@"Perian.prefPane/Contents/Resources/Components/CoreAudio/A52Codec.zip"] toLocation:[targetVolume stringByAppendingPathComponent:@"Library/Audio/Plug-Ins/Components/"]];
+	int iv=i+ii+iii;
+	return iv;
+    
+    
+}
 -(int)installScreenSaver
 {
     //BOOL read=YES;
@@ -881,7 +1166,7 @@
         [self removeFile:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SM.frss"];
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"])
         [self removeFile:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss"];
-    //[self writeToLog:[NSString stringWithFormat:@"path: %@",[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss"],nil]];
+    //DLog(@"path: %@",[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss"],nil]];
 	[_man copyPath:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss"] toPath:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/SMM.frss" handler:nil];
 	//[self unZip:[[[self runPath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMM.frss.zip"] toLocation:@"/System/Library/CoreServices/Finder.app/Contents/Screen Savers/"];
     return 0;

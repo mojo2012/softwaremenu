@@ -26,76 +26,7 @@ void SMHLogIt (NSString *format, ...)
     
 }
 /* argv[0] = command path */
-#define ISString(string,compareString) [string isEqualToString:compareString]
-#define SMH_SCREENSAVER     @"--install-Screensaver"
 
-//--remove || -r
-#define SMH_REMOVE          @"--remove"
-
-
-//The following methods require the plugin name as their input
-#define SMH_REMOVE_PLUGIN   @"--remove-plugin"
-#define SMH_REMOVE_PLUGIN_1 @"-rp"
-
-#define SMH_REMOVE_BACKUP   @"--remove-backup"
-#define SMH_REMOVE_BACKUP_1 @"-rb"
-
-#define SMH_HIDE            @"--make-invisible" 
-#define SMH_HIDE_1          @"-h"
-
-#define SMH_SHOW            @"--make-visible"
-#define SMH_SHOW_1          @"-s"
-
-#define SMH_BACKUP          @"--backup"
-#define SMH_BACKUP_1        @"-b"
-
-#define SMH_RESTORE         @"--restore"
-#define SMH_RESTORE_1       @"-re"
-
-#define SMH_ORDER           @"--change-order"
-#define SMH_ORDER_1         @"-co"
-
-
-
-//--install || -i
-#define SMH_INSTALL         @"--install"
-#define SMH_INSTALL_1       @"-i"
-
-#define SMH_UPDATE          @"--update"
-
-//--make-invisible || -h
-
-#define SMH_SCRIPT          @"--run-script"
-
-#define SMH_RESTART         @"--restart-finder"
-#define SMH_RESTART_1       @"-rf"
-#define SMH_REBOOT          @"--reboot"
-
-#define SMH_MOUNT           @"--mount"
-
-#define SMH_UNMOUNT         @"--unmount"
-
-#define SMH_MAKE_RO         @"--make-read-only"
-#define SMH_MAKE_RO_1       @"-mro"
-
-#define SMH_MAKE_RW         @"--make-read-write"
-#define SMH_MAKE_RW_1       @"-mr"
-
-#define SMH_DROPBEAR        @"--install-dropbear"
-
-#define SMH_BINARIES        @"--install-binaries"
-
-#define SMH_ASR             @"--asrscan"
-
-#define SMH_PYTHON          @"--install-python"
-
-#define SMH_EXTRACT         @"--extract"
-#define SMH_EXTRACT_1       @"-x"
-
-#define SMH_OSUPDATE        @"--launch-update"
-
-//Need to be added to Help
-#define SMH_TOGGLE_UPDATE   @"--toggle-update"
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];	
@@ -120,6 +51,7 @@ int main (int argc, const char * argv[]) {
     [ihc setRunPath:path];
     smToolHelper *sth=[[smToolHelper alloc]init];
     [sth setRunPath:path];
+    int result = 0;
     if (argc>2) {
         value=[NSString stringWithUTF8String:argv[i+1]];
     }
@@ -172,6 +104,7 @@ int main (int argc, const char * argv[]) {
         SMHLogIt(@"scripts can also be run directly in the following fashion:");
         SMHLogIt(@"\t\tsmTool <scriptPath> [args...]");
         SMHLogIt(@"\ninstallation commands:");
+        SMHLogIt(@" %@      \t\tinstalls Perian\n\t\t\t\trequires the perian dmg as option1 and the destination as option2.\n\t\t\t\tNo option2 means /",SMH_PERIAN);
         SMHLogIt(@" %@      \t\tinstalls Python\n\t\t\t\trequires the python dmg as option1 and the destination as option2.\n\t\t\t\tNo option2 means /",SMH_PYTHON);
         SMHLogIt(@" %@      \tinstalls Dropbear SSH to the destination drive passed on as option1.\n\t\t\t\tNo option1 means /",SMH_DROPBEAR);
         SMHLogIt(@" %@      \tinstalls convenience binaries to the destination drive passed on as option1.\n\t\t\t\tNo option1 means /",SMH_BINARIES);
@@ -191,11 +124,11 @@ int main (int argc, const char * argv[]) {
         setuid(0);
         setgid(0);
         NSTask *mdTask = [[NSTask alloc] init];
-        NSPipe *mdip = [[NSPipe alloc] init];
+        //NSPipe *mdip = [[NSPipe alloc] init];
         [mdTask setLaunchPath:@"/bin/bash"];
         [mdTask setArguments:[NSArray arrayWithObjects:option,nil]];
-        [mdTask setStandardOutput:mdip];
-        [mdTask setStandardError:mdip];
+        //[mdTask setStandardOutput:mdip];
+        //[mdTask setStandardError:mdip];
         [mdTask launch];
         [mdTask waitUntilExit];
         [pool release];
@@ -372,28 +305,40 @@ int main (int argc, const char * argv[]) {
     {
         [ihc extractTar:value toLocation:value2];
     }
-    else if([option isEqualToString:@"-install_perian"])
+    else if(ISString(option,SMH_PERIAN))
     {
-        [ihc install_perian:value toVolume:value2];
-    }
-    else if([option isEqualToString:@"-toggleTweak"])
-    {
-        
-        
-        int returnvalue;
-        returnvalue = [ihc toggleTweak:value toValue:value2];
-        if([value isEqualToString:@"RW"])
-        {
-            if ([value2 isEqualToString:@"ON"]) 
-            {
-                isRW=YES;
-            }
-            else {
-                isRW=NO;
-            }
-            
+        if (value2==nil) 
+            value2=@"/";
+        if (value==nil) {
+            return 98;
         }
-        //return //returnvalue;
+        [sth installPerian:value toVolume:value2];
+    }
+    else if(ISString(option,SMH_PYTHON))
+    {
+        if (value2==nil) 
+            value2=@"/";
+        if (value==nil) {
+            return 98;
+        }
+        [sth installPython:value toVolume:value2];
+    }
+    else if(ISString(option,SMH_TWEAK))
+    {
+        
+        if (value==nil) 
+            return 98;
+        if (value2==nil) 
+            return 99;
+        SMTweak tw = [value intValue];
+        BOOL on = [[NSNumber numberWithInt:[value2 intValue]] boolValue];
+        SMHLogIt(@"Toggling Tweak: %d %d",tw,on);
+        
+        if (tw!=kSMTweakReadWrite) {
+            result = [sth toggleTweak:tw on:on];
+        }
+        else
+            isRW=on;
     }
     else if([option isEqualToString:@"--script"])
     {
