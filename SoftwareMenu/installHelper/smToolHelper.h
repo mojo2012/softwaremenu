@@ -7,11 +7,21 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "../../Shared/SMCommonHeader.h"
 
 @interface smToolHelper : NSObject {
     NSString *runPath;
 }
+#pragma mark Misc Methods
+- (int)switchService:(NSString *)services on:(BOOL)on;
+- (int)toggleVNC:(BOOL)on;
+- (int)toggleSSH:(BOOL)on;
+- (int)toggleRowmote:(BOOL)on;
+- (int)EnableAppleShareServer;
+- (int)DisableAppleShareServer;
+- (int)toggleBlockUpdates:(BOOL)on;
+- (int)toggleTweak:(SMTweak)tw on:(BOOL)on;
+
 #pragma mark Class Management
 - (NSString *)runPath;
 - (void)setRunPath:(NSString *)value;
@@ -60,6 +70,8 @@
 -(NSString *) ffindFrap:(NSString *)importFolder;
 
 #pragma mark SoftwareMenuBase
-- (int)installScreenSaver;
+-(int)installPython:(NSString *)file toVolume:(NSString *)targetVolume;
+-(int)installPerian:(NSString *)dmg toVolume:(NSString *)targetVolume;
+-(int)installScreenSaver;
 -(int)installDropbearToDrive:(NSString *)drive;
 @end
