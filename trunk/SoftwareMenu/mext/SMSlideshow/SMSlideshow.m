@@ -57,7 +57,7 @@ static int _imageNb =0;
 {
     if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
         [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
-        CGSize size = [(BRImageControl *)_control preferredFrameSize];
+        //CGSize size = [(BRImageControl *)_control preferredFrameSize];
         //NSLog(@"width: %lf, height: %lf, aspectRatio: %lf",size.width,size.height,[(BRImageControl *)_control aspectRatio]);
         if (_imageNb==[_imagePaths count]) {
             _imageNb=0;
@@ -109,19 +109,20 @@ static int _imageNb =0;
 }
 -(BRController *)controller
 {
-    BRPhotoPlayer *player = [[BRPhotoPlayer alloc] init];
-    [player setPlayerSpecificOptions:[SMSlideshowMext screensaverSlideshowPlaybackOptions]];
-    id collection;
-    collection = [SMSlideshowMext photoCollectionForPath:[SMSlideshowMext photoFolderPath]];
-    [player setMuted:YES];
-    [player setMediaAtIndex:_imageNb inCollection:collection error:nil];
-    BRController *control= [BRMediaPlayerController controllerForPlayer:player];
-    CGRect a;
-    
-    a.size=[BRWindow maxBounds];
-    [control setFrame:a];
-    [control setOpacity:0.3];
-    return control;
+//    BRPhotoPlayer *player = [[BRPhotoPlayer alloc] init];
+//    [player setPlayerSpecificOptions:[SMSlideshowMext screensaverSlideshowPlaybackOptions]];
+//    id collection;
+//    collection = [SMSlideshowMext photoCollectionForPath:[SMSlideshowMext photoFolderPath]];
+//    [player setMuted:YES];
+//    [player setMediaAtIndex:_imageNb inCollection:collection error:nil];
+//    BRController *control= [BRMediaPlayerController controllerForPlayer:player];
+//    CGRect a;
+//    
+//    a.size=[BRWindow maxBounds];
+//    [control setFrame:a];
+//    [control setOpacity:0.3];
+//    return control;
+    return nil;
 }
 +(NSString *)developer
 {
