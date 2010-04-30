@@ -602,6 +602,73 @@ static SMGeneralMethods *sharedInstance = nil;
     }
 }
 #pragma mark NETWORK
+-(NSData *)fetchData:(NSString *)urlString
+{
+    NSURL *url=[NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (error!=nil) {
+        NSLog(@"error: %@",error);
+        return nil;
+    }
+    return documentData;
+}
+-(id)fetchPlist:(NSString *)urlString
+{
+    NSURL *url=[NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (error!=nil) {
+        return nil;
+    }
+    else {
+        NSPropertyListFormat format;
+        NSString *errorString;
+        NSDictionary* plist = [NSPropertyListSerialization propertyListFromData:documentData 
+                                                               mutabilityOption:NSPropertyListImmutable 
+                                                                         format:&format 
+                                                               errorDescription:&errorString];
+        if(!plist){
+            ALog(@"Converted Received Message Error: %@",errorString);
+            [error release];
+            return nil;
+        }
+        return plist;
+    }
+    return nil;
+}
+-(NSXMLDocument *)fetchXMLDocument:(NSString *)urlString
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
+	NSURLResponse *response = nil;
+    NSError *error;
+	NSData *documentData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSXMLDocument *doc;
+    if (error!=nil) {
+        NSLog(@"error: %@",error);
+        return [NSDictionary dictionary];
+    }
+    else {
+        NSStringEncoding nsEncoding = NSUTF8StringEncoding; // default to UTF-8
+        NSString *encoding = [response textEncodingName];
+        if (encoding) {
+            CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)encoding);
+            if (cfEncoding != kCFStringEncodingInvalidId) {
+                nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
+            }
+        }
+        //NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)[response textEncodingName]));
+        NSString *documentString = [[NSString alloc] initWithData:documentData encoding:nsEncoding];
+        doc=[[NSXMLDocument alloc]initWithXMLString:documentString options:NSXMLDocumentTidyXML error:nil];
+    }
+    return doc;
+}
+
 - (NSArray *)availableBonjourMounts;
 {
     return services; 

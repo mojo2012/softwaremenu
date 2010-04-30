@@ -1,5 +1,5 @@
 #import <BackRow/BackRow.h>
-
+#import "../Shared/SMCommonHeader.h"
 #import "Headers/Finder/METouchRemoteManager.h"
 #import "Headers/Finder/MEAVPlayer.h"
 /*
@@ -74,7 +74,7 @@
 /*
  *  Importing Base Menus
  */
-
+#import "SMInstallations.h"
 #import "Classes/BaseMenus/SMBuiltInMenu.h"
 #import "Classes/BaseMenus/SMTweaks.h"
 #import "Classes/BaseMenus/SMScriptsMenu.h"

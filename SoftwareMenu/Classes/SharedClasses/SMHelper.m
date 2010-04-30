@@ -7,67 +7,7 @@
 //
 
 #import "SMHelper.h"
-#define SMH_SCREENSAVER     @"--install-Screensaver"
-#define SMH_REMOVE_PLUGIN   @"--remove-plugin"
-#define SMH_REMOVE_PLUGIN_1 @"-rp"
 
-#define SMH_REMOVE_BACKUP   @"--remove-backup"
-#define SMH_REMOVE_BACKUP_1 @"-rb"
-
-#define SMH_HIDE            @"--make-invisible" 
-#define SMH_HIDE_1          @"-h"
-
-#define SMH_SHOW            @"--make-visible"
-#define SMH_SHOW_1          @"-s"
-
-#define SMH_BACKUP          @"--backup"
-#define SMH_BACKUP_1        @"-b"
-
-#define SMH_RESTORE         @"--restore"
-#define SMH_RESTORE_1       @"-re"
-
-#define SMH_ORDER           @"--change-order"
-#define SMH_ORDER_1         @"-co"
-
-
-
-//--install || -i
-#define SMH_INSTALL         @"--install"
-#define SMH_INSTALL_1       @"-i"
-
-#define SMH_UPDATE          @"--update"
-
-//--make-invisible || -h
-
-#define SMH_SCRIPT          @"--run-script"
-
-#define SMH_RESTART         @"--restart-finder"
-#define SMH_RESTART_1       @"-rf"
-#define SMH_REBOOT          @"--reboot"
-
-#define SMH_MOUNT           @"--mount"
-
-#define SMH_UNMOUNT         @"--unmount"
-
-#define SMH_MAKE_RO         @"--make-read-only"
-#define SMH_MAKE_RO_1       @"-mro"
-
-#define SMH_MAKE_RW         @"--make-read-write"
-#define SMH_MAKE_RW_1       @"-mr"
-
-#define SMH_DROPBEAR        @"--install-dropbear"
-
-#define SMH_BINARIES        @"--install-binaries"
-
-#define SMH_ASR             @"--asrscan"
-
-#define SMH_PYTHON          @"--install-python"
-
-#define SMH_EXTRACT         @"--extract"
-#define SMH_EXTRACT_1       @"-x"
-
-#define SMH_OSUPDATE        @"--launch-update"
-#define SMH_TOGGLE_UPDATE   @"--toggle-update"
 
 
 @implementation SMHelper
@@ -114,7 +54,11 @@ static SMHelper *singleton = nil;
 {
     NSArray *options=[NSArray arrayWithObjects:SMH_TOGGLE_UPDATE,nil];
     [self runTaskWithOptions:options];
-
+}
+-(void)toggleTweak:(SMTweak)tw on:(BOOL)on
+{
+    NSArray *options=[NSArray arrayWithObjects:SMH_TWEAK,[[NSNumber numberWithInt:tw] stringValue],[[NSNumber numberWithBool:on]stringValue],nil];
+    [self runTaskWithOptions:options];
 }
 -(void)installScreensaver
 {
@@ -227,6 +171,11 @@ static SMHelper *singleton = nil;
 -(void)installPython:(NSString *)dmgPath
 {
     NSArray *options=[NSArray arrayWithObjects:SMH_PYTHON,dmgPath,nil];
+    [self runTaskWithOptions:options];
+}
+-(void)installPerian:(NSString *)dmgPath
+{
+    NSArray *options=[NSArray arrayWithObjects:SMH_PERIAN,dmgPath,nil];
     [self runTaskWithOptions:options];
 }
 -(void)extractFile:(NSString *)file toPath:(NSString *)path

@@ -73,7 +73,7 @@
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
 
 #ifdef DEBUG
-    #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
+    #define TRUSTED_URL					@"http://www.tomcool.org/SoftwareMenu/TrustedDebug.plist"
 #else
     #define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
 #endif

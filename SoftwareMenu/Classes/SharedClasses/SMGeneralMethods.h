@@ -56,6 +56,9 @@ typedef enum _SMMountTypes{
 + (SMGeneralMethods *)sharedInstance;
 
 #pragma mark NETWORK_SHIT
+- (NSData *)fetchData:(NSString *)urlString;
+- (id)fetchPlist:(NSString *)urlString;
+- (NSXMLDocument *)fetchXMLDocument:(NSString *)urlString;
 - (BOOL)mountManualPointWithDictionary:(NSDictionary *)theDict;
 - (BOOL)mountManualPointWithDictionary:(NSDictionary *)theDict returnString:(NSString * *)rstring;
 - (BOOL)mountManualPointWithDictionary:(NSDictionary *)theDict softLink:(BOOL)link returnString:(NSString * *)rstring;

@@ -15,6 +15,7 @@
 }
 + (SMHelper*)helperManager;
 -(void)toggleUpdate;
+-(void)toggleTweak:(SMTweak)tw on:(BOOL)on;
 -(void)installScreensaver;
 -(void)installWithFile:(NSString *)path;
 -(void)makeVisible:(NSString *)plugin;
@@ -36,6 +37,7 @@
 -(void)addDropbearToDrive:(NSString *)drive;
 -(void)addBinariesToDrive:(NSString *)drive;
 -(void)installPython:(NSString *)dmgPath;
+-(void)installPerian:(NSString *)dmgPath;
 -(void)extractFile:(NSString *)file toPath:(NSString *)path;
 - (NSFileHandle *)logHandle;
 - (NSString *)logPath;
