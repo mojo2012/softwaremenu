@@ -24,7 +24,7 @@
 
 #define IMAGES_FOLDER				[@"~/Library/Application Support/SoftwareMenu/Images" stringByExpandingTildeInPath]
 #define UPDATE_URL					@"http://web.me.com/tomcool420/SoftwareMenu/updates.plist"
-#define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
+//#define TRUSTED_URL					@"http://web.me.com/tomcool420/Trusted2.plist"
 
 #define UPDATES_AVAILABLE           @"Updates_Availables"
 
@@ -221,6 +221,8 @@ static inline BOOL loadSMFramework(NSString *frapPath)
 #import "SMFBaseAsset.h"
 #import "SMFController.h"
 #import "SMFDownloaderUpdate.h"
+#import "SMFDelegatedDownloader.h"
+
 #import "SMFInvocationCenteredMenuController.h"
 #import "SMFSpinnerMenu.h"
 

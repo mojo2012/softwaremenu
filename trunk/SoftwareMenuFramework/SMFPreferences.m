@@ -169,7 +169,7 @@ const NSString * kSMFBla= @"hey";
 }
 +(NSString *)trustedPlistURL
 {
-    return TRUSTED_URL;
+    return nil;
 }
 +(NSString *)stringForBool:(BOOL)arg
 {
