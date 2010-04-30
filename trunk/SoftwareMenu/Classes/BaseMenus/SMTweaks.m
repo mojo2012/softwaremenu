@@ -32,13 +32,13 @@
 		{
 			case kSMTwRestart:
 				imageName = [settingNames objectAtIndex:item];
-			case kSMTwToggle:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:6];
-				break;
+//			case kSMTwToggle:
+//				imageName = [[settingNames objectAtIndex:item] substringFromIndex:6];
+//				break;
 			case kSMTwDownloadRowmote:
 				//[meta setDev:[_rowmoteDict valueForKey:@"Developer"]];
 
-				[meta setTitle:[@"Rekeased: " stringByAppendingString:[[_rowmoteDict valueForKey:@"ReleaseDate"] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil]]];
+				[meta setTitle:[@"Released: " stringByAppendingString:[[_rowmoteDict valueForKey:@"ReleaseDate"] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil]]];
 				[meta setSummary:[_rowmoteDict valueForKey:@"ShortDescription"]];
 				//[meta setOnlineVersion:[_rowmoteDict valueForKey:@"displayVersion"]];
 			case kSMTwDownload:
@@ -101,16 +101,16 @@
 					@"restartFinder",
 					@"reloadList",
 //					@"fixSapphire",
-					@"toggleRW",
-					@"toggleDropbear",
-					@"toggleRowmote",
-					@"toggleAFP",
-					@"toggleVNC",
-					@"toggleFTP",
-					@"installDropbear",
+					[NSNumber numberWithInt:kSMTweakReadWrite],
+					[NSNumber numberWithInt:kSMTweakSSH],
+					[NSNumber numberWithInt:kSMTweakRowmote],
+					[NSNumber numberWithInt:kSMTweakAFP],
+					[NSNumber numberWithInt:kSMTweakVNC],
+					[NSNumber numberWithInt:kSMTweakFTP],
+//					@"installDropbear",
 //					@"downloadRowmote",
 //					@"downloadPerian",
-                    @"installbinaries",
+//                    @"installbinaries",
 					nil];
 	settingDisplays = [[NSMutableArray alloc] initWithObjects:
 					   BRLocalizedString(@"Restart Finder",@"Restart Finder"),
@@ -122,10 +122,10 @@
 					   BRLocalizedString(@"AFP toggle",@"AFP toggle"),
 					   BRLocalizedString(@"VNC toggle",@"VNC toggle"),
 					   BRLocalizedString(@"FTP toggle",@"FTP toggle"),
-					   BRLocalizedString(@"Install Dropbear SSH",@"Install Dropbear SSH"),
+//					   BRLocalizedString(@"Install Dropbear SSH",@"Install Dropbear SSH"),
 //					   BRLocalizedString(@"Install Rowmote",@"Install Rowmote"),
 //					   BRLocalizedString(@"Install Perian",@"Install Perian"),
-                       BRLocalizedString(@"Install Binaries",@"Install binaries"),
+//                       BRLocalizedString(@"Install Binaries",@"Install binaries"),
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
 						   @"Restarts the Finder, necessary after install of Perian or Rowmote",
@@ -137,10 +137,10 @@
 						   @"Toggle AFP server",
 						   @"Toggle VNC server",
 						   @"Toggle FTP server",
-						   @"Install Dropbear (will Fix SSH in case you somehow broke it) - Does not work yet",
+//						   @"Install Dropbear (will Fix SSH in case you somehow broke it) - Does not work yet",
 //						   @"Install Rowmote Helper Program for AppleTV                (www.rowmote.com - needs the iphone/ipod program rowmote)",
 //						   @"Will download and Install Perian",
-                           @"Installs some binaries to make life easier such as: killall, some compression programs (gunzip, bzip2)",
+//                           @"Installs some binaries to make life easier such as: killall, some compression programs (gunzip, bzip2)",
 						   nil];
 	/*settingType = [[NSMutableArray alloc] initWithObjects:
 				   @"Fix",
@@ -164,10 +164,10 @@
 						 [NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:2],
 						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:3],
+//						 [NSNumber numberWithInt:3],
 //						 [NSNumber numberWithInt:5],
 //						 [NSNumber numberWithInt:4],
-                         [NSNumber numberWithInt:6],
+//                         [NSNumber numberWithInt:6],
 						 nil];
 	
 	
@@ -199,75 +199,31 @@
 
 -(void)itemSelected:(long)row
 {
-	NSMutableArray * args = [[NSMutableArray alloc] initWithObjects:nil];
-	NSMutableDictionary *dlDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
-	NSString *a=nil;
-	NSLog(@"option selected: %@",[settingDisplays objectAtIndex:row]);
+	DLog(@"option selected: %@",[settingDisplays objectAtIndex:row]);
 	if(![[self itemForRow:row] dimmed])
 	{
 		
 		switch([[settingNumberType objectAtIndex:row]intValue])
 		{
 			case kSMTwRestart:
-				a=nil;
-				AGProcess *killFinder = [AGProcess processForCommand:@"Finder"];
-				[killFinder terminate];
-				break;
+                [[SMHelper helperManager]restartFinder];
+                break;
 			case kSMTwToggle:
-				NSLog(@"toggle");
-				[args addObject:@"-toggleTweak"];
-				[args addObject:[[settingNames objectAtIndex:row] substringFromIndex:6]];
-				if([self getToggleRightText:[settingNames objectAtIndex:row]])
-				{
-					[args addObject:@"OFF"];
-					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
-					{
-						[SMGeneralMethods setBool:YES forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
-					}
-				}
-				else
-				{
-					[args addObject:@"ON"];
-					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleVNC"])
-					{
-						[self VNCFix];
-					}
-					if([[settingNames objectAtIndex:row] isEqualToString:@"toggleRowmote"])
-					{
-						[SMGeneralMethods setBool:NO forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
-					}
-				}
-				
-				[SMGeneralMethods runHelperApp:args];
-				break;
-			case kSMTwDownloadRowmote:
-#pragma mark  Downloader needs to be looked at
-				NSLog(@"Rowmote");
-				SMDownloaderTweaks *rowmoteDownloader = [[SMDownloaderTweaks alloc] init];
-				[dlDict setValue:[_rowmoteDict valueForKey:@"URL"] forKey:@"url"];
-				[dlDict setValue:[NSString stringWithFormat:@"Rowmote Helper Version %@",[_rowmoteDict valueForKey:@"Version"],nil] forKey:@"name"];
-				[dlDict setValue:[NSString stringWithFormat:@"Downloading Rowmote Version: %@\nfromURL: %@",[_rowmoteDict valueForKey:@"Version"],[_rowmoteDict valueForKey:@"URL"]] forKey:@"downloadtext"];
-				//[rowmoteDownloader setInformationDict:dlDict];
-				[[self stack]pushController:rowmoteDownloader];
-				break;
-			case kSMTwDownloadPerian:
-				NSLog(@"Perian");
-				SMDownloaderTweaks *perianDownloader = [[SMDownloaderTweaks alloc] init];
-				[dlDict setValue:[_rowmoteDict valueForKey:@"perianDownloadLink"] forKey:@"url"];
-				[dlDict setValue:[NSString stringWithFormat:@"Perian Version %@(%@)",[_rowmoteDict valueForKey:@"perianDisplayVersion"],[_rowmoteDict valueForKey:@"perianVersion"], nil] forKey:@"name"];
-				[dlDict setValue:[NSString stringWithFormat:@"Downloading Rowmote Version: %@\nfromURL: %@",[_rowmoteDict valueForKey:@"perianDisplayVersion"],[_rowmoteDict valueForKey:@"perianDownloadLink"]] forKey:@"downloadtext"];
-				//[perianDownloader setInformationDict:dlDict];
-				[[self stack]pushController:perianDownloader];
-				break;
-			case kSMTwFix:
-				[_man removeFileAtPath:@"/Users/frontrow/Library/Application Support/Sapphire/metaData.plist" handler:nil];
-				break;
+            {
+                SMTweak tw = [[settingNames objectAtIndex:row] intValue];
+                BOOL cur = [self getToggleTweak:tw];
+                if (tw==kSMTweakRowmote) {
+                    [SMGeneralMethods setBool:!cur forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
+                }
+                if (cur && tw==kSMTweakVNC) {
+                    [self VNCFix];
+                }
+                [[SMHelper helperManager] toggleTweak:tw on:!cur];
+                break;
+            }
 			case kSMTwReload:
 				[[self list] reload];
 				break;
-
-				
-				
 		} 
 
 		
@@ -277,52 +233,29 @@
 }
 - (id)itemForRow:(long)row					
 { 
-	NSString *LocalVersion = nil;
-	NSString *title = [settingNames objectAtIndex:row];
 	//BOOL setDimmed=NO;
 
 	BRTextMenuItemLayer *item = [BRTextMenuItemLayer menuItem];
-	BOOL result = NO;
 
 	switch([[settingNumberType objectAtIndex:row] intValue])
 	{
 		case kSMTwToggle:
-			result = ![self getToggleDimmed:title];
-			[item setDimmed:result];
-		
-			if(![item dimmed])
-			{
-				NSString *rightText = @"OFF";
-				BOOL isActive = NO;
-				[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];
-				if([self getToggleRightText:title])
-				{
-					rightText=@"ON";
-					isActive = YES;
-					[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];
-
-				}
-				//[item setRightJustifiedText:rightText];
-				[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],[NSNumber numberWithBool:isActive],nil] forKey:title];
-			}
-			else
-			{
-				[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greyGem], @"BRMenuIconImageKey",nil]];
-				[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:result],nil] forKey:title];
-			}
-			break;
-		case kSMTwDownloadRowmote:
-			LocalVersion = nil;
-			LocalVersion = [self getRowmoteVersion];
-			if([LocalVersion compare:[_rowmoteDict valueForKey:@"Version"]]==NSOrderedAscending)		
-						{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"displayVersion"]];}
-			else 		{[item setDimmed:YES];}
-			break;
-		case kSMTwDownloadPerian:
-			LocalVersion = [self getPerianVersion];
-			if([LocalVersion compare:[_rowmoteDict valueForKey:@"perianDisplayVersion"]]==NSOrderedAscending)		{[item setRightJustifiedText:[_rowmoteDict valueForKey:@"perianDisplayVersion"]];}
-			else		{[item setDimmed:YES];}
-			break;
+        {
+            SMTweak tw = [[settingNames objectAtIndex:row]intValue];
+            BOOL dimmed = [self getToggleDimmed:tw];
+            [item setDimmed:dimmed];
+            if (!dimmed) {
+                [item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];
+                if ([self getToggleTweak:tw]) {
+                    [item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greenGem], @"BRMenuIconImageKey",nil]];
+                }
+                //[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:dimmed],[NSNumber numberWithBool:isActive],nil] forKey:title];
+            }
+            else
+                [item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] greyGem], @"BRMenuIconImageKey",nil]];
+            //[_infoDict setObject:[NSArray arrayWithObjects:[NSNumber numberWithBool:dimmed],nil] forKey:title];
+            break;
+        }
 		case kSMTwInstall:
 			[item setDimmed:YES];
 			break;
@@ -502,64 +435,63 @@ return result;
 		result = YES;
 	return result;
 }
--(BOOL)getToggleRightText:(NSString *)title
+-(BOOL)getToggleTweak:(SMTweak)tw
 {
 	BOOL result = NO;
-	if([title isEqualToString:@"toggleRW"])
+	if(tw==kSMTweakReadWrite)
 	{
 		result=[self isRW];
 	}
-	else if([title isEqualToString:@"toggleFTP"])
+	else if(tw==kSMTweakFTP)
 	{
 		result = [self serviceIsRunning:@"ftp"];
 	}
-	else if([title isEqualToString:@"toggleDropbear"])
+	else if(tw==kSMTweakSSH)
 	{
 		result = [self sshStatus];
 	}
-	else if([title isEqualToString:@"toggleRowmote"])
+	else if(tw==kSMTweakRowmote)
 	{
 		result = [self RowmoteIsRunning];
 	}
-	else if([title isEqualToString:@"toggleAFP"])
+	else if(tw=kSMTweakAFP)
 	{
 		result = [self AFPIsRunning];
 	}
-	else if([title isEqualToString:@"toggleVNC"])
+	else if(tw=kSMTweakVNC)
 	{
-
 		result = [self VNCIsRunning];
 	}
 	return result;
 }
--(BOOL)getToggleDimmed:(NSString *)title //NO means it is Not
+-(BOOL)getToggleDimmed:(SMTweak)tw //NO means it is Not
 {
 	BOOL result = NO;
-	if([title isEqualToString:@"toggleRW"])
+	if(tw==kSMTweakReadWrite)
 	{
 		result=YES;
 	}
-	else if([title isEqualToString:@"toggleDropbear"])
+	else if(tw==kSMTweakSSH)
 	{
 		result = [self dropbearIsInstalled];
 	}
-	else if([title isEqualToString:@"toggleRowmote"])
+	else if(tw==kSMTweakRowmote)
 	{
 		result = [self RowmoteIsInstalled];
 	}
-	else if([title isEqualToString:@"toggleAFP"])
+	else if(tw==kSMTweakAFP)
 	{
 		result = [self AFPIsInstalled];
 	}
-	else if([title isEqualToString:@"toggleFTP"])
+	else if(tw==kSMTweakFTP)
 	{
 		result = [self FTPIsInstalled];
 	}
-	else if([title isEqualToString:@"toggleVNC"])
+	else if(tw==kSMTweakVNC)
 	{
 		result = [self VNCIsInstalled];
 	}
-	return result;		
+	return !result;		
 }
 -(int)VNCFix
 {
@@ -585,29 +517,3 @@ return result;
 @end
 
 
-@implementation SMDownloaderTweaks
-
--(void) processdownload
-{
-	if([[_outputPath pathExtension] isEqualToString:@"dmg"])
-	{
-		NSArray *arguments =[NSArray arrayWithObjects:@"-install_perian",_outputPath,@"/",nil];
-		[SMGeneralMethods runHelperApp:arguments];
-	}
-	else if([[_outputPath pathExtension] isEqualToString:@"tgz"] || [[_outputPath pathExtension] isEqualToString:@"tar.gz"])
-	{
-		NSArray *arguments =[NSArray arrayWithObjects:@"-installTGZ",_outputPath,@"/",nil];
-		[SMGeneralMethods runHelperApp:arguments];
-	}
-	[self appendBoxText:@"Please Restart the Finder for changes to take effect"];
-	if([SMGeneralMethods boolForKey:@"ARF"])
-	{
-		AGProcess * FinderProcess = [AGProcess processForCommand:@"Finder"];
-		[FinderProcess terminate];
-	}
-	[[self stack] popController];
-
-}
-
-
-@end

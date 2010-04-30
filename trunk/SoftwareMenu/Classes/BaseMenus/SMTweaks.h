@@ -20,6 +20,7 @@ typedef enum {
 	kSMTwReload	=6,
 
 } TweakType;
+
 @interface SMTweaks : SMFMediaMenuController {
 	NSMutableArray *	settingNames;
 	NSMutableArray *	settingDisplays;
@@ -42,8 +43,8 @@ typedef enum {
 -(BOOL)AFPIsInstalled;
 //-(BOOL)dropbearIsRunning;
 -(BOOL)dropbearIsInstalled;
--(BOOL)getToggleDimmed:(NSString *)title;
--(BOOL)getToggleRightText:(NSString *)title;
+-(BOOL)getToggleTweak:(SMTweak)tw;
+-(BOOL)getToggleDimmed:(SMTweak)tw;
 
 -(int)VNCFix;
 -(NSString *)getRowmoteVersion;
@@ -56,14 +57,5 @@ typedef enum {
 
 
 @end
-
-@interface SMDownloaderTweaks : SMFDownloaderUpdate 
-{
-	
-}
--(void)processdownload;
-
-@end
-
 
 
