@@ -23,6 +23,8 @@
 		DD675ADD1132BEE5009E27BF /* SMFCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = DD675ADB1132BEE5009E27BF /* SMFCompat.m */; };
 		DD675FAD1132F8BC009E27BF /* SMFGlobalValues.h in Headers */ = {isa = PBXBuildFile; fileRef = DD675FAB1132F8BC009E27BF /* SMFGlobalValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD675FAE1132F8BC009E27BF /* SMFGlobalValues.m in Sources */ = {isa = PBXBuildFile; fileRef = DD675FAC1132F8BC009E27BF /* SMFGlobalValues.m */; };
+		DD6D9C2F1188BCCD0061EF67 /* SMFDelegatedDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6D9C2D1188BCCD0061EF67 /* SMFDelegatedDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD6D9C301188BCCD0061EF67 /* SMFDelegatedDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D9C2E1188BCCD0061EF67 /* SMFDelegatedDownloader.m */; };
 		DD83F38E1135DBF600A18586 /* SMFPasscodeController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD83F38C1135DBF600A18586 /* SMFPasscodeController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD83F38F1135DBF600A18586 /* SMFPasscodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD83F38D1135DBF600A18586 /* SMFPasscodeController.m */; };
 		DD8E4823114342A400B6C2F8 /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E4822114342A400B6C2F8 /* Extensions.m */; };
@@ -125,6 +127,8 @@
 		DD675ADB1132BEE5009E27BF /* SMFCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFCompat.m; sourceTree = "<group>"; };
 		DD675FAB1132F8BC009E27BF /* SMFGlobalValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFGlobalValues.h; sourceTree = "<group>"; };
 		DD675FAC1132F8BC009E27BF /* SMFGlobalValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFGlobalValues.m; sourceTree = "<group>"; };
+		DD6D9C2D1188BCCD0061EF67 /* SMFDelegatedDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFDelegatedDownloader.h; sourceTree = "<group>"; };
+		DD6D9C2E1188BCCD0061EF67 /* SMFDelegatedDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFDelegatedDownloader.m; sourceTree = "<group>"; };
 		DD83F38C1135DBF600A18586 /* SMFPasscodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFPasscodeController.h; sourceTree = "<group>"; };
 		DD83F38D1135DBF600A18586 /* SMFPasscodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFPasscodeController.m; sourceTree = "<group>"; };
 		DD8E4821114342A400B6C2F8 /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 				DDF5829E11847A6A007F89C9 /* SMFStrings.m */,
 				DDE7238C118738D800860DEC /* SMFSpinnerMenu.h */,
 				DDE7238D118738D800860DEC /* SMFSpinnerMenu.m */,
+				DD6D9C2D1188BCCD0061EF67 /* SMFDelegatedDownloader.h */,
+				DD6D9C2E1188BCCD0061EF67 /* SMFDelegatedDownloader.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				DDF5828011847290007F89C9 /* SMFPhotoMethods.h in Headers */,
 				DDF5829F11847A6A007F89C9 /* SMFStrings.h in Headers */,
 				DDE7238E118738D800860DEC /* SMFSpinnerMenu.h in Headers */,
+				DD6D9C2F1188BCCD0061EF67 /* SMFDelegatedDownloader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +584,7 @@
 				DDF5828111847290007F89C9 /* SMFPhotoMethods.m in Sources */,
 				DDF582A011847A6A007F89C9 /* SMFStrings.m in Sources */,
 				DDE7238F118738D800860DEC /* SMFSpinnerMenu.m in Sources */,
+				DD6D9C301188BCCD0061EF67 /* SMFDelegatedDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

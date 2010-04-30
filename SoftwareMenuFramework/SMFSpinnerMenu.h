@@ -10,7 +10,7 @@
 
 
 @interface SMFSpinnerMenu :  BRTextWithSpinnerController {
-    BRAutoScrollingTextControl *    _ctrl;
+    int padding[32];
 }
 -(void)textDidChange:(NSString *)string;
 -(void)textDidEndEditing:(NSString *)string;
