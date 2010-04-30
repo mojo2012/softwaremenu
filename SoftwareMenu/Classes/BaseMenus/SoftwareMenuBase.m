@@ -560,10 +560,12 @@ shouldMakeNewConnection:(NSConnection *)conn
     
     if([identifier isEqualToString:@"Debug1"])
     {
-        id controller = [[SMFSpinnerMenu alloc]initWithTitle:@"" text:@"Loading Updates"];
-        [[SMPluginSingleton singleton] setDelegate:controller];
-
-        [[SMPluginSingleton singleton] performThreadedPluginLoad];
+//        id controller = [[SMFSpinnerMenu alloc]initWithTitle:@"" text:@"Loading Updates"];
+//        [[SMPluginSingleton singleton] setDelegate:controller];
+//
+//        [[SMPluginSingleton singleton] performThreadedPluginLoad];
+//        return controller;
+        id controller = [[SMInstallations alloc]init];
         return controller;
     }
 	else if([[identifier pathExtension] isEqualToString:@"sh"])
