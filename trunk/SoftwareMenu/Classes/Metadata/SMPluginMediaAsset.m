@@ -36,11 +36,22 @@
         return [_applianceDict formatedReleaseDate];
     return [_applianceDict name];
 }
+-(id)coverArt
+{
+    if (!_image) {
+        return [[SMThemeInfo sharedTheme] packageImage];
+    }
+    return _image;
+}
 -(NSDictionary *)orderedDictionary
 {
     NSMutableArray *keys = [[NSMutableArray alloc]init];
     NSMutableArray *objects=[[NSMutableArray alloc]init];
-    if ([_applianceDict onlineVersionString]) {
+    if ([_applianceDict displayVersion]) {
+        [keys addObject:@"OnlineVersion"];
+        [objects addObject:[_applianceDict displayVersion]];
+    }
+    else if ([_applianceDict onlineVersionString]) {
         [keys addObject:@"OnlineVersion"];
         [objects addObject:[_applianceDict onlineVersionString]];
     }
