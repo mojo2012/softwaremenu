@@ -1455,6 +1455,8 @@
 		DD689F3F10A75D6800B2F52A /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD689F3E10A75D6800B2F52A /* BackRow.framework */; };
 		DD68A1C610A7C3F300B2F52A /* SMMainMenuMediaControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */; };
 		DD68A1C710A7C3F300B2F52A /* SMMainMenuMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */; };
+		DD6D9C481188BED30061EF67 /* SMInstallations.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6D9C461188BED30061EF67 /* SMInstallations.h */; };
+		DD6D9C491188BED30061EF67 /* SMInstallations.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D9C471188BED30061EF67 /* SMInstallations.m */; };
 		DD7F50E410A12B5A00C5E31C /* AFP.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7F50C010A12B5A00C5E31C /* AFP.png */; };
 		DD7F50E510A12B5A00C5E31C /* applescript.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7F50C110A12B5A00C5E31C /* applescript.png */; };
 		DD7F50E610A12B5A00C5E31C /* ATVFiles.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7F50C210A12B5A00C5E31C /* ATVFiles.png */; };
@@ -1922,6 +1924,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = DD8FA7BB113F01B700B1189B;
 			remoteInfo = helper;
+		};
+		DD6D9DFB118B79AB0061EF67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* SoftwareMenuFramework */;
+			remoteInfo = SoftwareMenuFramework;
 		};
 		DDE0AC2D114ACA8000CF9926 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3420,6 +3429,9 @@
 		DD689F3E10A75D6800B2F52A /* BackRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BackRow.framework; path = System/Library/PrivateFrameworks/BackRow.framework; sourceTree = SDKROOT; };
 		DD68A1C410A7C3F300B2F52A /* SMMainMenuMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainMenuMediaControl.h; sourceTree = "<group>"; };
 		DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainMenuMediaControl.m; sourceTree = "<group>"; };
+		DD6D9C461188BED30061EF67 /* SMInstallations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInstallations.h; sourceTree = "<group>"; };
+		DD6D9C471188BED30061EF67 /* SMInstallations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallations.m; sourceTree = "<group>"; };
+		DD6D9D77118B75730061EF67 /* installHelper.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installHelper.pch; sourceTree = "<group>"; };
 		DD7F4E8510A0BB3C00C5E31C /* smv.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = smv.sh; path = "/Volumes/frontrow-1/smv.sh"; sourceTree = "<absolute>"; };
 		DD7F4F4610A0DDB800C5E31C /* AppleTV.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppleTV.txt; sourceTree = "<group>"; };
 		DD7F4FAD10A0EF1E00C5E31C /* Slideshow.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Slideshow.txt; sourceTree = "<group>"; };
@@ -5601,6 +5613,8 @@
 				DD8E46661142EC9000B6C2F8 /* SMThirdPartyPlugins.m */,
 				DD33D8C71159E105001547A0 /* SMThirdPartyArchiveMenu.h */,
 				DD33D8C81159E105001547A0 /* SMThirdPartyArchiveMenu.m */,
+				DD6D9C461188BED30061EF67 /* SMInstallations.h */,
+				DD6D9C471188BED30061EF67 /* SMInstallations.m */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -6155,6 +6169,7 @@
 				DD24274611550A9300CDCD20 /* smToolHelper.m */,
 				E2A35FF00EAE030700FB6FD7 /* installHelperClass.h */,
 				E2A35FF10EAE030700FB6FD7 /* installHelperClass.m */,
+				DD6D9D77118B75730061EF67 /* installHelper.pch */,
 			);
 			path = installHelper;
 			sourceTree = "<group>";
@@ -7759,6 +7774,7 @@
 				DDF5863511849D88007F89C9 /* ResourcesURLProtocol.h in Headers */,
 				DDF5863611849D88007F89C9 /* RUIRatingInfoDatabase.h in Headers */,
 				DDF53DD411862F650083B6F8 /* SMPluginSingleton.h in Headers */,
+				DD6D9C481188BED30061EF67 /* SMInstallations.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7822,6 +7838,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DD6D9DFC118B79AB0061EF67 /* PBXTargetDependency */,
 			);
 			name = SMWeather;
 			productName = SMWeather;
@@ -8282,6 +8299,7 @@
 				DDC6A95A11815E1F0048A8C9 /* SMScriptOptions.m in Sources */,
 				DD9FF96A1182E3FA0087ACD8 /* BackRowExtensions.m in Sources */,
 				DDF53DD511862F650083B6F8 /* SMPluginSingleton.m in Sources */,
+				DD6D9C491188BED30061EF67 /* SMInstallations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8361,6 +8379,11 @@
 			isa = PBXTargetDependency;
 			target = 8D5B49AC048680CD000E48DA /* SoftwareMenu */;
 			targetProxy = DD1B22C3118216AA0087EA6B /* PBXContainerItemProxy */;
+		};
+		DD6D9DFC118B79AB0061EF67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SoftwareMenuFramework;
+			targetProxy = DD6D9DFB118B79AB0061EF67 /* PBXContainerItemProxy */;
 		};
 		DDE0AC2E114ACA8000CF9926 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8926,7 +8949,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = installHelper/installHelper.pch;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
