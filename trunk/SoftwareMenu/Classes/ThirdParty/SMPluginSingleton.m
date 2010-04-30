@@ -63,7 +63,7 @@ static SMPluginSingleton *singleton = nil;
         }
         
         else{
-            double v = 6.f*3600.f-dif;
+            //double v = 6.f*3600.f-dif;
             //DLog(@"values: %ld %ld,date: %@, cur: %@",(double)3600*(double)6,v,date,[NSDate date]);
             DLog(@"Checking in : %lf seconds",(6.f*3600.f-dif));
             _checkTimer=[NSTimer scheduledTimerWithTimeInterval:(6.f*3600.f-dif)
@@ -114,12 +114,12 @@ static SMPluginSingleton *singleton = nil;
 -(void)setDelegate:(id)delegate
 {
     if (delegate==nil) {
-        [_delegate release];
+        //[_delegate release];
         _delegate=nil;
     }
     if ([delegate respondsToSelector:@selector(textDidChange:)]) {
         if (_delegate!=nil) {
-            [_delegate release];
+            //[_delegate release];
             _delegate=nil;
         }
         _delegate=[delegate retain];
@@ -139,7 +139,7 @@ static SMPluginSingleton *singleton = nil;
         if (end) {
             //DLog(@"Sending Message End to Delegate");
             [_delegate textDidEndEditing:message];
-            [_delegate release];
+            //[_delegate release];
             _delegate=nil;
         }
         else {
@@ -148,6 +148,13 @@ static SMPluginSingleton *singleton = nil;
         }
         
     }
+    else {
+        id ctrl = [[[BRApplicationStackManager singleton]stack] peekController];
+        if ([ctrl respondsToSelector:@selector(label)] && [[ctrl label] isEqualToString:@"lupdates"]) {
+            [[[BRApplicationStackManager singleton]stack]popController];
+        }
+    }
+
 }
 -(id)delegate
 {
@@ -159,7 +166,7 @@ static SMPluginSingleton *singleton = nil;
 }
 -(id)fetchURL:(NSString *)urlString
 {
-    
+    DLog(@"URL: %@",urlString);
     NSURL *url=[NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
 	NSURLResponse *response = nil;
@@ -176,7 +183,7 @@ static SMPluginSingleton *singleton = nil;
                                                                mutabilityOption:NSPropertyListImmutable 
                                                                          format:&format 
                                                                errorDescription:&errorString];
-        //DLog( @"parsed plist is %@", plist );
+        DLog( @"parsed plist is %@", plist );
         if(!plist){
             ALog(@"Converted Received Message Error: %@",errorString);
             [error release];
@@ -205,6 +212,7 @@ static SMPluginSingleton *singleton = nil;
     }
     return nil;
 }
+
 -(NSString *)loadPlugins
 {
     if (!_locking) {
@@ -225,6 +233,8 @@ static SMPluginSingleton *singleton = nil;
     NSMutableDictionary *sources = [[NSMutableDictionary alloc]init];
     [self postDelegateMessage:[NSString stringWithFormat:BRLocalizedString(@"Downloading Sources From: %@",@"Downloading Sources From: %@"),TRUSTED_URL,nil]];
     id returnObject = [self fetchURL:TRUSTED_URL];
+    ALog(@"Sources Fetched from : %@",TRUSTED_URL);
+    DLog(@"Bla: %@",returnObject);
     if (returnObject!=nil && [returnObject respondsToSelector:@selector(objectAtIndex:)]) 
     {
         
@@ -258,10 +268,14 @@ static SMPluginSingleton *singleton = nil;
                     }
                 }
             }
-            //NSString *name= [[returnObject objectAtIndex:i] objectForKey:@"theName"];
+            NSString *name= [[returnObject objectAtIndex:i] objectForKey:@"name"];
             [self postDelegateMessage:[NSString stringWithFormat:@"Fetching: %@",url,nil]];
             id lreturnObject = [self fetchURL:url];
-            if ([lreturnObject respondsToSelector:@selector(objectForKey:)]) {
+            if ([lreturnObject respondsToSelector:@selector(objectForKey:)]) 
+            {
+                if ([lreturnObject objectForKey:@"name"]!=nil) {
+                    lreturnObject = [NSDictionary dictionaryWithObject:lreturnObject forKey:name];
+                }
                 if ([url isEqualToString:@"http://nitosoft.com/version.plist"]) 
                 {
                     NSMutableDictionary *nitoDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
