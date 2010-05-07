@@ -8,32 +8,6 @@
 #define BRImageD(key)        [BRImage imageWithPath:(key)]
 #import <Foundation/Foundation.h>	
 #define IMAGE_SM_SHELF      @"shelff"
-#define IMAGE_SM			@"softwaremenu"
-#define IMAGE_INFO			@"info"
-#define IMAGE_INTERNET		@"internet"
-#define IMAGE_POWER			@"power"
-#define IMAGE_REFRESH		@"refresh"
-#define IMAGE_STANDBY		@"standby"
-#define IMAGE_TRASH_EMPTY	@"trashempty"
-#define IMAGE_WEB			@"web"
-#define	IMAGE_HARDDISK		@"RW"
-#define IMAGE_AFP			@"AFP"
-#define	IMAGE_FTP			@"FTP"
-#define IMAGE_VNC			@"VNC"
-#define IMAGE_SYS_PREFS		@"sysprefs"
-#define IMAGE_SCRIPT		@"script"
-#define IMAGE_TIME_MACHINE	@"timemachine"
-#define	IMAGE_PERIAN		@"Perian"
-#define IMAGE_PACKAGE		@"package"
-#define IMAGE_FOLDER		@"folderIcon"
-#define IMAGE_PHOTO_HELP	@"RemotePhotos"
-#define IMAGE_GREEN_GEM		@"green"
-#define	IMAGE_RED_GEM		@"red"
-#define IMAGE_GREY_GEM		@"grey"
-#define IMAGE_TRUSTED       @"trusted"
-#define IMAGE_TESTED        @"tested"
-#define IMAGE_BUNDLE        @"bundle"
-#define IMAGE_SM_TINY       @"sm_tiny"
 @interface SMThemeInfo : NSObject{
 	
 }
@@ -44,6 +18,7 @@
 -(id)softwareMenuImageTiny;
 -(id)softwareMenuImageShelf;
 -(id)softwareMenuImage;
+-(id)tinySMImage;
 -(id)greenGem;
 -(id)redGem;
 -(id)greyGem;
@@ -61,6 +36,7 @@
 -(id)AFPImage;
 -(id)FTPImage;
 -(id)VNCImage;
+-(id)SSHImage;
 
 //GeneralImages
 -(id)systemPrefsImage;

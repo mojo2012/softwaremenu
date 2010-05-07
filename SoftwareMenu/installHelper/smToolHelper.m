@@ -48,6 +48,7 @@
 
 -(int) EnableAppleShareServer
 {
+    SMHLogIt(@"Enabling AFP");
     // change /etc/hostconfig
     NSMutableString * hostconfig = [NSMutableString stringWithContentsOfFile: @"/etc/hostconfig"];
     if ( hostconfig == nil )
@@ -94,6 +95,7 @@
 }
 -( int) DisableAppleShareServer
 {
+    SMHLogIt(@"Disabling AFP");
     NSMutableString * hostconfig = [NSMutableString stringWithContentsOfFile: @"/etc/hostconfig"];
     if ( hostconfig == nil )
     {
@@ -170,6 +172,7 @@
 }
 - (int)toggleBlockUpdates:(BOOL)on
 {
+    DLog(@"Turning Updates: %d",on);
 	NSMutableString *hosts = [[NSMutableString alloc] initWithContentsOfFile:@"/etc/hosts"];
 	NSMutableArray *hostArray = [[NSMutableArray alloc] initWithArray:[hosts componentsSeparatedByString:@"\n"]];
 	int i;
@@ -202,17 +205,21 @@
 - (int)toggleTweak:(SMTweak)tw on:(BOOL)on
 {
 	int result = 0;
-
+    SMHLogIt(@"Toggling Tweak: %d %d",tw,on);
+    SMHLogIt(@"AFP Tweak: %d",kSMTweakAFP);
 	
 	
 	if(tw==kSMTweakVNC)
 		result=[self toggleVNC:on];
 	else if(tw==kSMTweakFTP)
 		result=[self switchService:@"ftp" on:on];
-	else if(tw=kSMTweakSSH)
+	else if(tw==kSMTweakSSH)
 		result=[self toggleSSH:on];
 	else if(tw==kSMTweakAFP)
-		result=(on?[self EnableAppleShareServer]:[self DisableAppleShareServer]);
+    {
+        SMHLogIt(@"In AFP");
+        result = (on?[self EnableAppleShareServer]:[self DisableAppleShareServer]);
+    }
 	else if(tw==kSMTweakRowmote)
 		result=[self toggleRowmote:on];
     else if(tw==kSMTweakUpdates)

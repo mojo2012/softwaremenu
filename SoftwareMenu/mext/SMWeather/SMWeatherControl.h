@@ -9,6 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "SMWeather.h"
 
+NSString *const kCAMediaTimingFunctionEaseIn;
+NSString *const kCATransitionPush;
+NSString *const kCATransitionFromRight;
+NSString *const kCATransitionFade;
 
 @interface SMWeatherControl : BRControl {
     BRTextControl   *_city;
@@ -36,6 +40,8 @@
     BOOL             _firstLoad;
     NSTimeZone      *_timezone;
 }
+-(void)hideall;
+-(void)showall;
 -(void)setInfoDictionary:(NSDictionary *)infoDict;
 -(BRImage *)imageForCode:(NSString *)code;
 -(BRImage *)imageForCode:(NSString *)code forForecast:(BOOL)forecast;

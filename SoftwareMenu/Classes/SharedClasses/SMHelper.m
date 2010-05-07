@@ -190,6 +190,7 @@ static SMHelper *singleton = nil;
 }
 -(int)runTaskWithOptions:(NSArray *)options
 {
+    DLog(@"Helper Options: %@",options);
 	NSString *helperLaunchPath= [[NSBundle bundleForClass:[self class]] pathForResource:@"installHelper" ofType:@""];
 	if(![[NSFileManager defaultManager] fileExistsAtPath:helperLaunchPath])
 		NSLog(@"the helper does not exist..... what did you do?");

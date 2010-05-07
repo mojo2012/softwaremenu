@@ -5,7 +5,9 @@
 //  Created by Thomas Cool on 3/14/10.
 //  Copyright 2010 Thomas Cool. All rights reserved.
 //
-
+//#import "../../Headers/PrivateHeaders/CATransition.h"
+#import <QuartzCore/CATransition.h>
+//#import "../../Headers/PrivateHeaders/CAMediaTimingFunction.h"
 #import "SMWeatherControl.h"
 #import "SMYahooWeather.h"
 #import "SMWeatherController.h"
@@ -27,6 +29,73 @@
 //-(void)controlWasActivated
 //{
 //    [self drawControls];
+//}
+//-(id)actionForKey:(id)arg1
+//{
+//    DLog(@"WAction FOr Key: %@",arg1);
+//    return [super actionForKey:arg1];
+//}
+//-(id)actionForLayer:(id)arg1 forKey:(id)arg2
+//{
+//    srand(time(NULL));
+//    int rV = rand()%4;
+//    id a = [super actionForLayer:arg1 forKey:arg2];
+//    if ([arg2 isEqualToString:@"sublayers"]) {
+//        CATransition *transition=[CATransition animation];
+//        [transition setType:@"fade"];
+//        switch (rV) {
+//            case 0:
+//                [transition setSubtype:@"fromLeft"];
+//                break;
+//            case 1:
+//                [transition setSubtype:@"fromRight"];
+//                break;
+//            case 2:
+//                [transition setSubtype:@"fromTop"];
+//                break;
+//            case 3:
+//                [transition setSubtype:@"fromBottom"];
+//                break;
+//            default:
+//                [transition setSubtype:@"fromLeft"];
+//                break;
+//        }
+//        //[transition setSubtype:@"fromLeft"];
+//        [transition setDuration:1.0];
+//        return transition;
+//
+//        //if ([arg1 isHidden]) {
+////            theAnimation = [[CATransition alloc] init];
+////            theAnimation.duration = 1.0;
+////            theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+////            theAnimation.type = kCATransitionFade;
+//////            theAnimation.fromValue=[NSNumber numberWithFloat:[_bg opacity]];
+//////            
+//////            theAnimation.toValue=[NSNumber numberWithFloat:0.0];
+//////theAnimation.subtype = kCATransitionFromRight;
+////            return theAnimation;
+////        }
+//    }
+//    DLog(@"WAction ForLayer:%@ ForKey:%@, return: %@",arg1,arg2,a);
+//    
+//    return a;
+//}
+//- (id<CAAction>)actionForLayer:(CALayer *)theLayer
+//                        forKey:(NSString *)theKey
+//{
+//    CATransition *theAnimation=nil;
+//    
+//    if ([theKey isEqualToString:@"hidden"])
+//    {
+//        DLog(@"Creating A Trinsition")
+//        theAnimation = [[CATransition alloc] init];
+//        theAnimation.duration = 1.0;
+//        theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+//        theAnimation.type = kCATransitionPush;
+//        theAnimation.subtype = kCATransitionFromRight;
+//    }
+//    
+//    return theAnimation;
 //}
 -(void)drawControls;
 {
@@ -715,6 +784,24 @@
     NSDictionary *dict=[self loadDictionaryForCode:[code intValue] usUnits:NO];
     [self performSelectorOnMainThread:@selector(setInfoDictionary:) withObject:dict waitUntilDone:NO];
     [newpool drain];
+}
+-(void)hideall
+{
+    NSArray *controls = [self controls];
+    int i,count=[controls count];
+    for(i-0;i<count;i++)
+    {
+        [[controls objectAtIndex:i] setHidden:YES];
+    }
+}
+-(void)showall
+{
+    NSArray *controls = [self controls];
+    int i,count=[controls count];
+    for(i-0;i<count;i++)
+    {
+        [[controls objectAtIndex:i] setHidden:NO];
+    }
 }
 -(NSDictionary *)loadDictionaryForCode:(int)code usUnits:(BOOL)us
 {

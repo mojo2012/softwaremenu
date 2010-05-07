@@ -10,8 +10,20 @@
 #include <sys/param.h>
 #include <sys/mount.h>
 #include <stdio.h>
- 
+typedef enum _SMTweakType{
+	
+	kSMTwDownload= 9,
+	kSMTwRestart=0,
+	kSMTwFix = 1,
+	kSMTwToggle= 2,
+	kSMTwInstall = 3,
+	kSMTwDownloadPerian = 4,
+	kSMTwDownloadRowmote = 5,
+	kSMTwReload	=6,
+    
+} SMTweakType;
 @implementation SMTweaks
+
 - (id) previewControlForItem: (long) item
 {
     // If subclassing BRMediaMenuController, this function is called when the selection cursor
@@ -25,33 +37,35 @@
 		SMFBaseAsset	*meta = [[SMFBaseAsset alloc] init];
 		[meta setCoverArt:kSMDefaultImage];
 		[meta setTitle:[[_items objectAtIndex:item] title]];
-		NSString *imageName = nil;		
 		[meta setSummary:[settingDescriptions objectAtIndex:item]];	
 
 		switch([[settingNumberType objectAtIndex:item] intValue])
 		{
 			case kSMTwRestart:
-				imageName = [settingNames objectAtIndex:item];
-//			case kSMTwToggle:
-//				imageName = [[settingNames objectAtIndex:item] substringFromIndex:6];
-//				break;
-			case kSMTwDownloadRowmote:
-				//[meta setDev:[_rowmoteDict valueForKey:@"Developer"]];
+				[meta setCoverArt:[[SMThemeInfo sharedTheme] powerImage]];
+                break;
+            case kSMTwToggle:
+            {
+                SMTweak tw = [[settingNames objectAtIndex:item] intValue];
+                if (tw==kSMTweakAFP) 
+                    [meta setCoverArt:[[SMThemeInfo sharedTheme]AFPImage]];
+                else if(tw==kSMTweakFTP)
+                    [meta setCoverArt:[[SMThemeInfo sharedTheme]FTPImage]];
+                else if(tw==kSMTweakReadWrite)
+                    [meta setCoverArt:[[SMThemeInfo sharedTheme]hardDiskImage]];
+                else if(tw==kSMTweakSSH)
+                    [meta setCoverArt:[[SMThemeInfo sharedTheme]SSHImage]];
+                else if(tw==kSMTweakVNC)
+                    [meta setCoverArt:[[SMThemeInfo sharedTheme]VNCImage]];
+                else if(tw==kSMTweakUpdates)
+                    [meta setCoverArt:[BRImage imageWithPath:@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/Downloads.png"]];
+                
+                break; 
+            }
 
-				[meta setTitle:[@"Released: " stringByAppendingString:[[_rowmoteDict valueForKey:@"ReleaseDate"] descriptionWithCalendarFormat:@"%Y-%m-%d" timeZone:nil locale:nil]]];
-				[meta setSummary:[_rowmoteDict valueForKey:@"ShortDescription"]];
-				//[meta setOnlineVersion:[_rowmoteDict valueForKey:@"displayVersion"]];
-			case kSMTwDownload:
-			case kSMTwDownloadPerian:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:8];
-				break;
 
-			case kSMTwFix:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:3];
-				break;
-			case kSMTwInstall:
-				imageName = [[settingNames objectAtIndex:item] substringFromIndex:7];
-				break;
+
+	
 			case kSMTwReload:
 				[meta setCoverArt:[[SMThemeInfo sharedTheme] refreshImage]];
 				break;
@@ -74,17 +88,12 @@
 		return previewtoo;
 	}
 }
--(void)getDict;
-{
-	_infoDict=[NSMutableDictionary dictionaryWithContentsOfURL:(NSURL *)[BASE_URL stringByAppendingString:@"tweaks.plist"]];
-	[_infoDict retain];
-}
+
 -(id)init
 {
 	self=[super init];
 	[[SMGeneralMethods sharedInstance] helperFixPerm];
 	[SMGeneralMethods checkFolders];
-	_rowmoteDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
 //	[_rowmoteDict addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:@"http://rowmote.com/rowmote-atv-version.plist"]]];
 //	NSMutableDictionary *nitoUpdatesDict = [NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:@"http://nitosoft.com/version.plist"]];
 //	if(nitoUpdatesDict != nil)
@@ -107,6 +116,7 @@
 					[NSNumber numberWithInt:kSMTweakAFP],
 					[NSNumber numberWithInt:kSMTweakVNC],
 					[NSNumber numberWithInt:kSMTweakFTP],
+                    [NSNumber numberWithInt:kSMTweakUpdates],
 //					@"installDropbear",
 //					@"downloadRowmote",
 //					@"downloadPerian",
@@ -122,48 +132,41 @@
 					   BRLocalizedString(@"AFP toggle",@"AFP toggle"),
 					   BRLocalizedString(@"VNC toggle",@"VNC toggle"),
 					   BRLocalizedString(@"FTP toggle",@"FTP toggle"),
+                       BRLocalizedString(@"Updates toggle",@"Updates toggle"),
 //					   BRLocalizedString(@"Install Dropbear SSH",@"Install Dropbear SSH"),
 //					   BRLocalizedString(@"Install Rowmote",@"Install Rowmote"),
 //					   BRLocalizedString(@"Install Perian",@"Install Perian"),
 //                       BRLocalizedString(@"Install Binaries",@"Install binaries"),
 					   nil];
 	settingDescriptions = [[NSMutableArray alloc] initWithObjects:
-						   @"Restarts the Finder, necessary after install of Perian or Rowmote",
+						   @"Restarts the Finder",
 						   @"Refreshes the List because sometimes changes can take a while to be taken into effect",
 //						   @"Deletes the Sapphire Metadata, which can cause a problem after upgrade",
 						   @"Changes the disk status from Read-Write to Read-Only",
-						   @"Turn SSH On/Off -- If dropbear is installed, it will using that is what you are using",
+						   @"Turn SSH On/Off -- If dropbear is installed, it will assume that you are using it",
 						   @"Toggle Rowmote ON/OFF",
 						   @"Toggle AFP server",
 						   @"Toggle VNC server",
 						   @"Toggle FTP server",
+                           @"Toggle access to the apple update server (mesu.apple.com)",
 //						   @"Install Dropbear (will Fix SSH in case you somehow broke it) - Does not work yet",
 //						   @"Install Rowmote Helper Program for AppleTV                (www.rowmote.com - needs the iphone/ipod program rowmote)",
 //						   @"Will download and Install Perian",
 //                           @"Installs some binaries to make life easier such as: killall, some compression programs (gunzip, bzip2)",
 						   nil];
-	/*settingType = [[NSMutableArray alloc] initWithObjects:
-				   @"Fix",
-				   @"toggle",
-				   @"toggle",
-				   @"toggle",
-				   @"toggle",
-				   @"toggle",
-				   @"toggle",
-				   @"install",
-				   @"Download",
-				   @"Download",
-				   nil];*/
+
 	settingNumberType = [[NSMutableArray alloc] initWithObjects:
-						 [NSNumber numberWithInt:0],
-						 [NSNumber numberWithInt:6],
+						 [NSNumber numberWithInt:kSMTwRestart],
+						 [NSNumber numberWithInt:kSMTwReload],
 //						 [NSNumber numberWithInt:1],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
-						 [NSNumber numberWithInt:2],
+						 [NSNumber numberWithInt:kSMTwToggle],
+						 [NSNumber numberWithInt:kSMTwToggle],
+						 [NSNumber numberWithInt:kSMTwToggle],
+						 [NSNumber numberWithInt:kSMTwToggle],
+						 [NSNumber numberWithInt:kSMTwToggle],
+						 [NSNumber numberWithInt:kSMTwToggle],
+                         [NSNumber numberWithInt:kSMTwToggle],
+                         [NSNumber numberWithInt:kSMTwToggle],
 //						 [NSNumber numberWithInt:3],
 //						 [NSNumber numberWithInt:5],
 //						 [NSNumber numberWithInt:4],
@@ -172,7 +175,6 @@
 	
 	
 	_options = [[NSMutableArray alloc] initWithObjects:nil];
-	_infoDict= [[NSMutableDictionary alloc] initWithObjectsAndKeys:nil];
 	_man = [NSFileManager defaultManager];
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
 	
@@ -190,16 +192,13 @@
 	}
 	id list = [self list];
 	[list setDatasource: self];
-	[[self list] addDividerAtIndex:8 withLabel:BRLocalizedString(@"Installs",@"Installs")];
-	[[self list] addDividerAtIndex:0 withLabel:BRLocalizedString(@"Restart Finder",@"Restart Finder")];
-	[[self list] addDividerAtIndex:2 withLabel:@"Toggles"];
+	[[self list] addDividerAtIndex:2 withLabel:BRLocalizedString(@"Toggles",@"Toggles")];
 	
 	return self;
 }
 
 -(void)itemSelected:(long)row
 {
-	DLog(@"option selected: %@",[settingDisplays objectAtIndex:row]);
 	if(![[self itemForRow:row] dimmed])
 	{
 		
@@ -212,13 +211,19 @@
             {
                 SMTweak tw = [[settingNames objectAtIndex:row] intValue];
                 BOOL cur = [self getToggleTweak:tw];
-                if (tw==kSMTweakRowmote) {
-                    [SMGeneralMethods setBool:!cur forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
-                }
-                if (cur && tw==kSMTweakVNC) {
-                    [self VNCFix];
-                }
-                [[SMHelper helperManager] toggleTweak:tw on:!cur];
+//                if (tw==kSMTweakBlocker) {
+//                    DLog(@"tweak status");
+//                    [[SMHelper helperManager] toggleUpdate];
+//                }
+//                else {
+                    if (tw==kSMTweakRowmote) {
+                        [SMGeneralMethods setBool:!cur forKey:@"DisableRowmote" forDomain:ROWMOTE_DOMAIN_KEY];
+                    }
+                    if (cur && tw==kSMTweakVNC) {
+                        [self VNCFix];
+                    }
+                    [[SMHelper helperManager] toggleTweak:tw on:!cur];
+//                }
                 break;
             }
 			case kSMTwReload:
@@ -230,6 +235,15 @@
 	}
 		
 	[[self list] reload];
+}
+-(void)dealloc
+{
+    [_man release];
+    [settingNames release];
+    [settingDisplays release];
+    [settingDescriptions release];
+    [settingNumberType release];
+    [super dealloc];
 }
 - (id)itemForRow:(long)row					
 { 
@@ -454,14 +468,18 @@ return result;
 	{
 		result = [self RowmoteIsRunning];
 	}
-	else if(tw=kSMTweakAFP)
+	else if(tw==kSMTweakAFP)
 	{
 		result = [self AFPIsRunning];
 	}
-	else if(tw=kSMTweakVNC)
+	else if(tw==kSMTweakVNC)
 	{
 		result = [self VNCIsRunning];
 	}
+    else if(tw==kSMTweakUpdates)
+    {
+        result = [[SMGeneralMethods sharedInstance] checkblocker];
+    }
 	return result;
 }
 -(BOOL)getToggleDimmed:(SMTweak)tw //NO means it is Not
@@ -491,6 +509,10 @@ return result;
 	{
 		result = [self VNCIsInstalled];
 	}
+    else {
+        result = YES;
+    }
+
 	return !result;		
 }
 -(int)VNCFix
