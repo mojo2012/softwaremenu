@@ -21,6 +21,21 @@ static NSArray *coverArtExtention=nil;
                        @"gif",
                        nil];
 }
++(NSArray *)photoPathsForPath:(id)path
+{
+    NSArray *contents = [NSFileManager directoryContentsAtPath:path];
+	long i, count = [contents count];	
+	NSMutableArray *files =[NSMutableArray array];
+	for ( i = 0; i < count; i++ )
+	{
+		NSString *idStr = [contents objectAtIndex:i];
+		if([coverArtExtention containsObject:[[idStr pathExtension] lowercaseString]])
+        {
+            [files addObject:[path stringByAppendingPathComponent:idStr]];
+        }
+    }
+    return files;
+}
 +(NSArray *)mediaAssetsForPath:(id)path
 {
 

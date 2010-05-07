@@ -86,8 +86,8 @@
 }
 -(void)addText:(NSString *)text
 {
-//    NSLog(@"text: %@",text);
-//    NSLog(@"textcontrols: %@",_textControls);
+//    DLog(@"text: %@",text);
+//    DLog(@"textcontrols: %@",_textControls);
     CGRect masterFrame = [self getMasterFrame];
     CGRect frame;
     BRTextControl *textC = [[BRTextControl alloc] init];
@@ -447,11 +447,11 @@
 - (void) download: (NSURLDownload *) download
 decideDestinationWithSuggestedFilename: (NSString *) filename
 {
-    NSLog(@"1");
+    DLog(@"1");
     [_outputPath release];
     _outputPath = [SMFDownloaderUpdate outputPathForURLString:[_files objectAtIndex:_current]];
     [_outputPath retain];
-    NSLog(@"outputPath: %@",_outputPath);
+    DLog(@"outputPath: %@",_outputPath);
     [[NSFileManager defaultManager] createDirectoryAtPath: [_outputPath stringByDeletingLastPathComponent]
                                                attributes: nil];
     if (!_forceDestination) {
@@ -469,7 +469,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
 {
     //[self storeResumeData];
 	
-    NSLog( @"Download encountered error '%d'", [error code]);//,
+    DLog( @"Download encountered error '%d'", [error code]);//,
     // [error localizedDescription] );
 	
     // show an alert for the returned error (hopefully it has nice
@@ -483,7 +483,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
     _gotLength += (long long) length;
     float percentage = 0.0f;
 	
-    //NSLog( @"Got %u bytes, %lld total", length, _gotLength );
+    //DLog( @"Got %u bytes, %lld total", length, _gotLength );
 	
     // we'll handle the case where the NSURLResponse didn't include the
     // size of the source file
@@ -496,10 +496,10 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
     }
     else if((double)[[NSDate date] timeIntervalSinceDate:_lastUpdate]>(double)2)
     {
-        //NSLog(@"startime: %@",_startTime);
+        //DLog(@"startime: %@",_startTime);
         double x= (double)_gotLength/(double)_totalLength;
         double a = ((double)1.0f -x)/x*[[NSDate date] timeIntervalSinceDate:_startTime];///x;
-        NSLog(@"time left: %lf",a);
+        DLog(@"time left: %lf",a);
         [_timeControl setText:[NSString stringWithFormat:@"%i seconds left",(int)a,nil] withAttributes:[[SMFThemeInfo sharedTheme] centerJustifiedRedText]];
        // _lastUpdate=[NSDate date];
         [_lastUpdate release];
@@ -517,7 +517,7 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
     _totalLength = 0;
     _gotLength = 0;
 	
-    //NSLog( @"Got response for new download, length = %lld", [response expectedContentLength] );
+    //DLog( @"Got response for new download, length = %lld", [response expectedContentLength] );
 	
     if ( [response expectedContentLength] != NSURLResponseUnknownLength )
     {
@@ -534,13 +534,13 @@ decideDestinationWithSuggestedFilename: (NSString *) filename
 - (BOOL) download: (NSURLDownload *) download
 shouldDecodeSourceDataOfMIMEType: (NSString *) encodingType
 {
-    NSLog( @"Asked to decode data of MIME type '%@'", encodingType );
+    DLog( @"Asked to decode data of MIME type '%@'", encodingType );
 	
     // we'll allow decoding only if it won't interfere with resumption
     if ( [encodingType isEqualToString: @"application/gzip"] )
 	{
 		return ( NO );
-		NSLog(@"gzip encoding");
+		DLog(@"gzip encoding");
 	}
 	if([encodingType isEqualToString:@"application/x-gzip"])
 	{
@@ -562,7 +562,7 @@ willResumeWithResponse: (NSURLResponse *) response
     // the total here seems to be the amount *remaining*, not the
     // complete total
 	
-    //NSLog( @"Resumed download at byte %lld, remaining is %lld",
+    //DLog( @"Resumed download at byte %lld, remaining is %lld",
     // _gotLength, [response expectedContentLength] );
 	
     if ( [response expectedContentLength] != NSURLResponseUnknownLength )
@@ -616,7 +616,7 @@ willResumeWithResponse: (NSURLResponse *) response
 -(BOOL)checkmd5ForFile:(NSString *)path withExpectedmd5:(NSString *)md5
 {
     
-    //NSLog(@"%@ %s", self, _cmd);
+    //DLog(@"%@ %s", self, _cmd);
     NSTask *mdTask = [[NSTask alloc] init];
     NSPipe *mdip = [[NSPipe alloc] init];
     NSString *fullPath = path;
@@ -633,13 +633,13 @@ willResumeWithResponse: (NSURLResponse *) response
     NSString *temp = [[NSString alloc] initWithData:outData encoding:NSASCIIStringEncoding];
     temp = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     //int theTerm = [mdTask terminationStatus];
-    //NSLog(@"md5: %@", temp);
-    NSLog(@"file: %@",path);
-    NSLog(@"expected md5: %@",md5);
-    NSLog(@"returned md5: %@",temp);
+    //DLog(@"md5: %@", temp);
+    DLog(@"file: %@",path);
+    DLog(@"expected md5: %@",md5);
+    DLog(@"returned md5: %@",temp);
     if ([temp isEqualToString:md5])
     {
-        //NSLog(@"file at %@ is OK", path);
+        //DLog(@"file at %@ is OK", path);
         return YES;
         
     }
@@ -648,14 +648,14 @@ willResumeWithResponse: (NSURLResponse *) response
 }
 -(void)preProcess
 {
-    NSLog(@"preprocess");
+    DLog(@"preprocess");
     id a;
     if (_completeObject!=nil && _completeFunction!=nil) {
         a=[SMFSharedFunctions invocationsForObject:_completeObject withSelectorVal:_completeFunction withArguments:[self paths]];
-        NSLog(@"a:%@",a);
+        DLog(@"a:%@",a);
         if([a respondsToSelector:@selector(invoke)])
         {
-            NSLog(@"invoking");
+            DLog(@"invoking");
             [(NSInvocation *)a invoke];
         }
         else
