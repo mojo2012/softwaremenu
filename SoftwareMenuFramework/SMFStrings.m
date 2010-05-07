@@ -12,4 +12,4 @@
 NSString *kSMFDefaultPhotoPath=     @"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/DefaultPhotos/";
 
 
-NSString *kSMFApplianceOrderValue=  @"FRAppliancePreferedOrderValue";
+NSString *const kSMFApplianceOrderValue=  @"FRAppliancePreferedOrderValue";

@@ -11,6 +11,7 @@
 
 }
 +(NSArray *)mediaAssetsForPath:(id)path;
++(NSArray *)photoPathsForPath:(id)path;
 +(NSArray *)imageProxiesForPath:(NSString *)path;
 +(NSMutableArray *)loadImagePathsForPath:(NSString *)path;
 +(id)firstPhotoForPath:(NSString *)path;

@@ -12,4 +12,4 @@ extern NSString *kSMFDefaultPhotoPath;
 /*
  *  Frappliance Strings;
  */
-extern NSString *kSMFApplianceOrderValue;
+extern NSString *const kSMFApplianceOrderValue;
