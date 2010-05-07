@@ -7,6 +7,34 @@
 //
 
 #import "SMTheme.h"
+#define IMAGE_SM_SHELF      @"shelff"
+#define IMAGE_SM			@"softwaremenu"
+#define IMAGE_INFO			@"info"
+#define IMAGE_INTERNET		@"internet"
+#define IMAGE_POWER			@"power"
+#define IMAGE_REFRESH		@"refresh"
+#define IMAGE_STANDBY		@"standby"
+#define IMAGE_TRASH_EMPTY	@"trashempty"
+#define IMAGE_WEB			@"web"
+#define	IMAGE_HARDDISK		@"RW"
+#define IMAGE_AFP			@"AFP"
+#define	IMAGE_FTP			@"FTP"
+#define IMAGE_VNC			@"VNC"
+#define IMAGE_SYS_PREFS		@"sysprefs"
+#define IMAGE_SCRIPT		@"script"
+#define IMAGE_TIME_MACHINE	@"timemachine"
+#define	IMAGE_PERIAN		@"Perian"
+#define IMAGE_PACKAGE		@"package"
+#define IMAGE_FOLDER		@"folderIcon"
+#define IMAGE_PHOTO_HELP	@"RemotePhotos"
+#define IMAGE_GREEN_GEM		@"green"
+#define	IMAGE_RED_GEM		@"red"
+#define IMAGE_GREY_GEM		@"grey"
+#define IMAGE_TRUSTED       @"trusted"
+#define IMAGE_TESTED        @"tested"
+#define IMAGE_BUNDLE        @"bundle"
+#define IMAGE_SM_TINY       @"sm_tiny"
+#define IMAGE_SSH           @"ssh"
 static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef 
 											colorSpace, NSColor *color)
 {
@@ -31,6 +59,10 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 + (SMThemeInfo *)sharedInstance
 {
     return [[self alloc] init];
+}
+-(id)tinySMImage
+{
+    return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM_TINY ofType:@"png"]];
 }
 -(id)softwareMenuImageShelf
 {	
@@ -88,6 +120,10 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 -(id)VNCImage
 {
 	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_VNC ofType:@"png"]] ;
+}
+-(id)SSHImage
+{
+    return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SSH ofType:@"png"]] ;
 }
 -(id)systemPrefsImage
 {

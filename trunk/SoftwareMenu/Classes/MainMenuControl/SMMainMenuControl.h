@@ -17,9 +17,12 @@
 -(id)appliance;
 @end
 
-
+NSString *const kCATransactionAnimationDuration;
+NSString *const kCAMediaTimingFunctionEaseIn;
 @interface SMMainMenuControl : BRMainMenuControl {
     NSBundle *_controlBundle;
+    BRControl *_ctrl;
+    BRControl *_bg;
 }
 -(BOOL)topGradientIsThere;
 -(void)hideTopGradient;

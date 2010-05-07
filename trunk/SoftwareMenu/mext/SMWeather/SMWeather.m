@@ -17,6 +17,7 @@
 static SMWeatherControl *_control;
 
 @implementation SMWeatherMext
+
 +(SMWeatherControl *)control
 {
     if (_control==nil) {
@@ -99,6 +100,10 @@ static SMWeatherControl *_control;
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(callU) userInfo:nil repeats:NO];
     return _control;
 
+}
+-(void)hide
+{
+    [_control hideall];
 }
 -(void)callU
 {

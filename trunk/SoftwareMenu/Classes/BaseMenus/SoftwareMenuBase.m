@@ -560,13 +560,35 @@ shouldMakeNewConnection:(NSConnection *)conn
     
     if([identifier isEqualToString:@"Debug1"])
     {
+        id ctrller = [[[BRApplicationStackManager singleton]stack] peekController];
+        ALog(@"ctrller: %@",ctrller);
+        if ([ctrller isKindOfClass:[SMMainMenuController class]]) {
+            ALog(@"controls: %@",[ctrller controls]);
+            id ctrl = [[ctrller controls] objectAtIndex:0];
+            ALog(@"ctrl: %@",ctrl);
+            if ([ctrl respondsToSelector:@selector(backgroundControl)]) {
+                ALog(@"responds");
+                id bg = [ctrl backgroundControl];
+                if ([bg respondsToSelector:@selector(hideall)]) {
+                    DLog(@"can hide");
+//                    [bg hideall];
+                    if([bg isHidden])
+                        [bg setHidden:NO];
+                    else
+                        [bg setHidden:YES];
+                }
+            }
+        }
+//        id controller = [[BRAlertController alloc]initWithType:0 titled:kSMFApplianceOrderValue primaryText:kSMFApplianceOrderValue secondaryText:@"ba"];
+        
 //        id controller = [[SMFSpinnerMenu alloc]initWithTitle:@"" text:@"Loading Updates"];
 //        [[SMPluginSingleton singleton] setDelegate:controller];
 //
 //        [[SMPluginSingleton singleton] performThreadedPluginLoad];
 //        return controller;
-        id controller = [[SMInstallations alloc]init];
-        return controller;
+//        id controller = [[SMInstallations alloc]init];
+//        return controller;
+        return nil;
     }
 	else if([[identifier pathExtension] isEqualToString:@"sh"])
 	{

@@ -6,8 +6,17 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-
-#import "BackRowUtilstwo.h"
+typedef enum _kSMSettingType{
+	kSMSetSMInfo = -1,
+	kSMSetInfo = 0,
+	kSMSetToggle = 1,
+	kSMSetYNToggle = 2,
+	kSMSetSPos = 3,
+	kSMSetBlocker = 4,
+	kSMSetUpdater = 5,
+	kSMSetUntrusted = 6,
+	
+} SMSettingType;
 
 //#typedef enum {       FILE_CLASS_UTILITY= -2} FileClass;
 #define META_TITLE_KEY                                  @"Title"
@@ -39,7 +48,6 @@
 -(id)init
 {
 
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"BRAppliancePreviewChangedNotification" object:@"BRAppliancePreviewChangedNotification"];
 	self = [super init];
 	[self setListIcon:[[BRThemeInfo sharedTheme] gearImage] horizontalOffset:0.5f kerningFactor:0.2f];
 	_items = [[NSMutableArray alloc] initWithObjects:nil];
@@ -215,49 +223,22 @@
 	//BOOL isDir;
 	switch([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
 	{
-		case kSMSetInfo:
-			//Used as new menu test bed
-			/*newController = [[SoftwarePasscodeController alloc] init];
-			NSLog(@"afterinit");
-			[newController setTitle:@"hello"];
-			NSLog(@"afterTitle");
-			[newController setDescription:@"hello"];
-			NSLog(@"afterdesc");
-			[newController setNumberOfBoxes:5];
-			//[newController drawSelf];
-			NSLog(@"afterboxes");
-			[[self stack] pushController:newController];*/
-//			newController = [[SoftwarePasscodeController alloc] initWithTitle:@"hello"
-//															  withDescription:@"to you too" 
-//																	withBoxes:4
-//																	  withKey:@"weird"];	
-			//[self setCustomRotationTime];
-			/*newController = [[SMScreenSaverMenu alloc] init];
-			[newController initCustom];*/
-//			[[self stack] pushController:newController];
-			break;
+
 		case kSMSetToggle:
 		case kSMSetYNToggle:
 			[SMPreferences switchBoolforKey:[[_options objectAtIndex:row] valueForKey:LAYER_NAME]];
 			[[self list] reload];
 			break;
-			break;
-		case kSMSetUpdater:
-			newController = [[SMUpdaterMenu alloc] init];
-			//[newController initCustom];
-			[[self stack] pushController:newController];
-			break;
+//		case kSMSetUpdater:
+//			newController = [[SMUpdaterMenu alloc] init];
+//			[[self stack] pushController:newController];
+//			break;
 		case kSMSetBlocker:
 			[[SMGeneralMethods sharedInstance] helperFixPerm];
             [[SMHelper helperManager] toggleUpdate];
 			//[SMGeneralMethods runHelperApp:[NSArray arrayWithObjects:@"-toggleUpdate",@"0",@"0",nil]];
 			[[self list] reload];
 			break;
-//		case kSMSetUntrusted:
-//			newController = [[SoftwareManual alloc] init];
-//			[newController initWithIdentifier:nil];
-//			[[self stack] pushController:newController];
-//            break;
         case 35:
             newController = [[SMSettingsToggles alloc] init];
             [[self stack] pushController:newController];
@@ -267,93 +248,25 @@
 
 	
 }
-- (BOOL)brEventAction:(BREvent *)event
+-(void)leftActionForRow:(long)row
 {
-
-	int remoteAction =[event remoteAction];
-	
-	if ([(BRControllerStack *)[self stack] peekController] != self)
-		return [super brEventAction:event];
-	
-	if([event value] ==0)
-		return [super brEventAction:event];
-	
-	if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] && remoteAction>1)
-		remoteAction ++;
-	int i;
-	long row = [self getSelection];
-
-	//NSMutableArray *theoptions = [_options objectAtIndex:selitem];
-	
-	switch (remoteAction)
-	{
-		case kSMRemoteUp:
-		case 65676:  // tap up
-			//NSLog(@"up");
-			break;
-		case kSMRemoteDown:
-		case 65677:  // tap down
-			//NSLog(@"down");
-			break;
-		case 65675:  // tap left
-		case kSMRemoteLeft:
-			//NSLog(@"left");
-			//if(![[SMGeneralMethods sharedInstance] usingTakeTwoDotThree] || lastFilterChangeDate == nil || [lastFilterChangeDate timeIntervalSinceNow] < -0.4f)
-			//{
-			//[lastFilterChangeDate release];
-			//lastFilterChangeDate = [[NSDate date] retain];
-			switch ([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
-			{
-				case kSMSetSPos:
-					i=[SMPreferences integerForKey:@"ScriptsPosition"];
-					if(i>0)		{[SMPreferences setInteger:i-1 forKey:@"ScriptsPosition"];}
-					[[self list] reload];
-					break;
-			}
-			//}
-			break;
-		case 65674: //tap right
-		case kSMRemoteRight:
-			switch ([[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue])
-			{
-				case kSMSetSPos:
-					i=[SMPreferences integerForKey:@"ScriptsPosition"];
-					if(i<5)		{[SMPreferences setInteger:i+1 forKey:@"ScriptsPosition"];}
-					[[self list] reload];
-					break;
-			}
-			
-			break;
-		case kSMRemotePlay:
-		case 65673:  // tap play
-			NSLog(@"play");
-			break;
-			
-	}
-	
-	
-	return [super brEventAction:event];
+    SMSettingType i = [[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue];
+    if (i==kSMSetSPos) {
+        int j=[SMPreferences mainMenuScriptsPosition];
+        if(j>0)		{[SMPreferences setMainMenuScriptsPosition:j-1];}
+        [[self list] reload];
+    }
+}
+-(void)rightActionForRow:(long)row
+{
+    SMSettingType i = [[[_options objectAtIndex:row] valueForKey:LAYER_TYPE] intValue];
+    if (i==kSMSetSPos) {
+        int j=[SMPreferences mainMenuScriptsPosition];
+        if(j<5)		{[SMPreferences setMainMenuScriptsPosition:j+1];}
+        [[self list] reload];
+    }
 }
 
-
-- (int)getSelection
-{
-	BRListControl *list = [self list];
-	int row;
-	NSMethodSignature *signature = [list methodSignatureForSelector:@selector(selection)];
-	NSInvocation *selInv = [NSInvocation invocationWithMethodSignature:signature];
-	[selInv setSelector:@selector(selection)];
-	[selInv invokeWithTarget:list];
-	if([signature methodReturnLength] == 8)
-	{
-		double retDoub = 0;
-		[selInv getReturnValue:&retDoub];
-		row = retDoub;
-	}
-	else
-		[selInv getReturnValue:&row];
-	return row;
-}
 
 
 
@@ -381,10 +294,10 @@
 			else																						{[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[SMThemeInfo sharedTheme] redGem], @"BRMenuIconImageKey",nil]];}
 			break;
 		case kSMSetSPos:
-			if(![SMPreferences boolForKey:@"SMM"])			{[item setDimmed:YES];}
+			if(![SMPreferences showScriptsOnMainMenu])			{[item setDimmed:YES];}
 			else												{[item setDimmed:NO];}
 			int j=0;
-			j=[SMPreferences integerForKey:@"ScriptsPosition"];
+			j=[SMPreferences mainMenuScriptsPosition];
 			[item setRightIconInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[BRThemeInfo sharedTheme] airportImageForSignalStrength:j], @"BRMenuIconImageKey",nil]];
 			break;
 		case kSMSetBlocker:
@@ -397,153 +310,5 @@
 	}
 return [_items objectAtIndex:row]; 
 }
-- (void)wasExhumed	{[[self list] reload];}
-- (void)wasExhumedByPoppingController:(id)fp8
-{
-	[[self list] reload];      
-}
 
-/*- (void)setCustomRotationTime
-{
-	//NSString *timeScale = [slideShowEditor currentTimeUnits];
-	BRController *timeController = [[BRController alloc] init];
-	id theTheme = [BRThemeInfo sharedTheme];
-	BRHeaderControl *theHeader = [[BRHeaderControl alloc] init];
-	[timeController addControl:theHeader];
-	[theHeader setTitle:@"Rotation Duration"];
-	BRTextControl *firstTextControl = [[BRTextControl alloc] init];
-	[timeController addControl:firstTextControl];
-	[firstTextControl setText:[NSString stringWithFormat:BRLocalizedString(@"Enter a number in seconds", @"enter duration"),nil] withAttributes:[[BRThemeInfo sharedTheme] promptTextAttributes]];
-	[theHeader setIcon:[[BRThemeInfo sharedTheme] photoSettingsImage] horizontalOffset:0.5f kerningFactor:0.2f];
-	
-	//NSString *atvVersion = [nitoTVAppliance appleTVVersion];
-	NSRect master ;
-	//NSLog(@"atvVersion: %@", atvVersion);
-	if ([[SMGeneralMethods sharedInstance] usingTakeTwoDotThree]){
-		//NSLog(@"2.3");
-		master  = [[self parent] frame];
-	} else {
-		master = [self frame];
-	}
-    
-	NSRect frame = master;
-	
-	frame.origin.y = frame.size.height * 0.60;
-	
-	
-	// position it near the top of the screen (remember, origin is
-    // lower-left)
-    frame.origin.y = frame.size.height * 0.82f;
-    frame.size.height = [theTheme listIconHeight];
-    [theHeader setFrame: frame];
-	id timeControls = nil;
-		timeControls = [[BRPasscodeEntryControl alloc] initWithNumDigits:4 userEditable:YES hideDigits:NO];
-	
-	
-	[timeController addControl:timeControls];
-	CGDirectDisplayID display = [[BRDisplayManager sharedInstance] display];
-	NSRect testFrame;
-	NSRect firstFrame;
-	
-	firstFrame.size = [firstTextControl renderedSize];
-    firstFrame.origin.y = master.origin.y + (master.size.height * 0.72f);
-    firstFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 2.42f);
-	[firstTextControl setFrame: firstFrame];
-	
-	NSSize frameSize;
-	
-	frameSize.width = CGDisplayPixelsWide( display );
-    frameSize.height = CGDisplayPixelsHigh( display );
-
-	
-	if (![self is1080i])
-	{
-		testFrame.size = [timeControls preferredSizeFromScreenSize:frameSize];
-	} else {
-		//NSLog(@"is 1080i, should do 1080 by 720");
-		testFrame.size = [timeControls preferredSizeFromScreenSize:[self sizeFor1080i]];
-	}
-	
-	
-    testFrame.origin.y = master.origin.y + (master.size.height * 0.40f);
-    testFrame.origin.x = NSMinX(master) + (NSMaxX(master) * 1.0f/ 3.62f);
-	//[firstTextControl setFrame: testFrame];
-	[timeControls setFrame:testFrame];
-	//[timeControls setInitialPasscode:[slideShowEditor convertedTime]];
-	
-	//id timeControls = [timeController editor];
-	//NSLog(@"timeControls: %@ delegate: %@", timeControls, [timeControls delegate]);
-	
-	
-	//id timeController = [BRController controllerWithContentControl:timeControls];
-	[timeControls setDelegate:self];
-	//[timeControls _layoutUI];
-	[[self stack] pushController:timeController];
-	//NSLog(@"timeControls: %@ delegate: %@", timeControls, [timeControls delegate]);
-}
-- (BOOL)is1080i
-{
-	NSString *displayUIString = [BRDisplayManager currentDisplayModeUIString];
-	//NSLog(@"displayUIString: %@", displayUIString);
-	NSArray *displayCom = [displayUIString componentsSeparatedByString:@" "];
-	NSString *shortString = [displayCom objectAtIndex:0];
-	if ([shortString isEqualToString:@"1080i"])
-		return YES;
-	else
-		return NO;
-}
-
-- (NSSize)sizeFor1080i
-{
-	
-	NSSize currentSize;
-	currentSize.width = 1280.0f;
-	currentSize.height = 720.0f;
-	
-	
-	return currentSize;
-}
-- (void) textDidChange: (id<BRTextContainer>) sender
-{
-	 NSLog(@"text did change");
-}
-
-- (void) textDidEndEditing: (id) sender
-{
-	/*int timeUnits = [nitoTVAppliance integerForKey:@"timeUnits"];
-	int unitConverter = 1;
-	
-	switch (timeUnits) {
-			
-		case 1: //seconds
-			
-			unitConverter = 1;
-			
-			break;
-			
-	    case 2: //minutes
-			
-			unitConverter = 60;
-			
-			break;
-			
-		case 3: //hours
-			
-			unitConverter = 3600;
-			break;
-			
-	}
-	int newDuration = ([[sender stringValue] intValue] * unitConverter);
-	
-	//NSLog(@"newDuration: %i", newDuration);
-	[[BRSettingsFacade singleton] setSlideshowSecondsPerSlide:newDuration];
-	[[self list] reload];
-	[[self stack] popController];
-	[[self list] reload];
-	//NSLog(@"check it: %i", [[BRSettingsFacade singleton] slideshowSecondsPerSlide]);
-	[[self stack] popController];
-	[SMGeneralMethods setInteger:[[sender stringValue] intValue] forKey:PHOTO_SPIN_FREQUENCY];
-	NSLog(@"here is what was entered: %@",[sender stringValue]);
-	
-}*/
 @end

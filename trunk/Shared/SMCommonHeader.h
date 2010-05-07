@@ -35,6 +35,7 @@ typedef enum _SMTeak {
     kSMTweakVNC,
     kSMTweakFTP,
     kSMTweakUpdates,
+//    kSMTweakBlocker,
 }   SMTweak;
 
 

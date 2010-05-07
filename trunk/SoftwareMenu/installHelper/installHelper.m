@@ -332,7 +332,6 @@ int main (int argc, const char * argv[]) {
             return 99;
         SMTweak tw = [value intValue];
         BOOL on = [[NSNumber numberWithInt:[value2 intValue]] boolValue];
-        SMHLogIt(@"Toggling Tweak: %d %d",tw,on);
         
         if (tw!=kSMTweakReadWrite) {
             result = [sth toggleTweak:tw on:on];
