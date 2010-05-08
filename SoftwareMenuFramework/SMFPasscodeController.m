@@ -239,7 +239,13 @@
      *  Initial Value
      */
     if (self.initialValue!=0) {
-        NSString *str=[NSString stringWithFormat:@"%i",self.initialValue,nil];
+        
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setFormatterBehavior: NSNumberFormatterBehavior10_4];
+        [numberFormatter setFormatWidth: self.boxes];
+        [numberFormatter setPaddingCharacter: @"0"]; 
+        NSNumber *four = [NSNumber numberWithInt:self.initialValue];
+        NSString * str =[numberFormatter stringFromNumber:four];
         [entryControl setInitialPasscode:str];
     }
     
@@ -261,7 +267,7 @@
 		frame.size = [entryControl preferredSizeFromScreenSize:[SMFCompatibilityMethods sizeFor1080i]];
 	}
     frame.origin.y = master.origin.y + (master.size.height * 0.40f);
-	frame.origin.x = master.origin.x +(master.origin.x+master.size.width)*0.5f-frame.size.width*((float)self.boxes*0.5f)/((float)self.boxes*0.6f);
+	frame.origin.x = (master.size.width)*0.5f-frame.size.width*((float)self.boxes*0.5f)/((float)self.boxes+0.6f);
     [entryControl setFrame:frame];
     
     

@@ -36,6 +36,7 @@
 + (int)latestSavedValue;
 
 
+
 #pragma mark Setter Methods
 - (void)setTitle:(NSString *)arg1;
 - (NSString *)title;
