@@ -1,11 +1,11 @@
 //
-//  QuDownloadController.m
-//  QuDownloader
+//  SMFPasscodeController.m
+//  SMFramework
 //
-//  Created by Alan Quatermain on 19/04/07.
-//  Copyright 2007 AwkwardTV. All rights reserved.
+//  Created by Thomas on 4/19/09.
+//  Copyright 2010 Thomas Cool. All rights reserved.
 //
-// Updated by nito 08-20-08 - works in 2.x
+//  Entry Control frame position by nito
 
 
 @interface BRControl (SMFCompat)
