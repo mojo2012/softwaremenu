@@ -161,5 +161,23 @@ static BOOL usingATypeOfTakeThree = NO;
     return 0;
 	
 }
++ (BOOL)using1080i
+{
+	NSString *displayUIString = [BRDisplayManager currentDisplayModeUIString];
+	NSArray *displayCom = [displayUIString componentsSeparatedByString:@" "];
+	NSString *shortString = [displayCom objectAtIndex:0];
+	if ([shortString isEqualToString:@"1080i"])
+		return YES;
+	else
+		return NO;
+}
 
++ (CGSize)sizeFor1080i
+{
+	
+	CGSize currentSize;
+	currentSize.width = 1280.0f;
+	currentSize.height = 720.0f;
+	return currentSize;
+}
 @end
