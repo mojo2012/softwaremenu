@@ -21,10 +21,7 @@
 @interface SMFPasscodeController : BRController
 {
 	int							padding[16];
-	BRPasscodeEntryControl *	_entryControl;
-
-	BRTextControl *				_firstText;
-	BRImage				*		icon;
+	BRImage  *                  icon;
     id                          delegate;
     NSString *                  title;
     NSString *                  description;
