@@ -8,9 +8,6 @@
 //  Entry Control frame position by nito
 
 
-@interface BRControl (SMFCompat)
--(CGRect)frame;
-@end
 
 @interface SMFPasscodeController (Private)
 -(void)_drawSelf;
@@ -22,14 +19,7 @@
 {
     return [SMFPreferences integerForKey:@"defaultReturn"];
 }
-- (id) init {
-    if ( [super init] == nil )
-        return ( nil );
-	self = [super init];
-	_firstText = [[BRTextControl alloc] init];
 
-    return ( self );
-}
 +(SMFPasscodeController *)passcodeWithTitle:(NSString *)t 
                             withDescription:(NSString *)desc 
                                   withBoxes:(int)b
@@ -215,7 +205,7 @@
     if(self.icon)
 		[header setIcon:self.icon horizontalOffset:0.5f kerningFactor:0.2f];
     CGRect frame = CGRectMake(master.origin.x, 
-                              frame.size.height * 0.82f, 
+                              master.size.height * 0.82f, 
                               master.size.width, 
                               [[BRThemeInfo sharedTheme] listIconHeight]);
     [header setFrame:frame];
@@ -230,7 +220,7 @@
 	[descriptionText setText:[NSString stringWithFormat:self.description] 
               withAttributes:[[BRThemeInfo sharedTheme] promptTextAttributes]];
 	
-	frame.size = [_firstText renderedSize];
+	frame.size = [descriptionText renderedSize];
     frame.origin.y = master.origin.y + (master.size.height * 0.72f);
 	frame.origin.x = (master.origin.x+master.size.width)*0.5f-frame.size.width*0.5f+master.origin.x;
 	[descriptionText setFrame: frame];
