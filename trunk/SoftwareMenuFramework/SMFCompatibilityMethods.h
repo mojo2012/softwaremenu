@@ -66,4 +66,9 @@ typedef enum {
 + (BOOL)usingTakeTwoDotFour;
 + (BOOL)usingTakeThree;
 + (int)remoteActionForEvent:(BREvent *)event;
+/*
+ *  Some Display Methods
+ */
++ (BOOL)using1080i;
++ (CGSize)sizeFor1080i;
 @end
