@@ -78,12 +78,14 @@
     {	
         case kBREventRemoteActionSwipeLeft:
         case kBREventRemoteActionLeft:
-            [self leftActionForRow:[self getSelection]];
+            if([event value] == 1)
+                [self leftActionForRow:[self getSelection]];
             return YES;
             break;
         case kBREventRemoteActionSwipeRight:
         case kBREventRemoteActionRight:
-            [self rightActionForRow:[self getSelection]];
+            if([event value] == 1)
+                [self rightActionForRow:[self getSelection]];
             return YES;
             break;
 		case kBREventRemoteActionUp:
