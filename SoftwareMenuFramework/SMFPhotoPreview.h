@@ -6,7 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-
+#import "SoftwareMenuFramework.h"
 @interface SMFPhotoPreview : SMFMediaMenuController 	{
 	NSString *	name;
 	NSString *	path;

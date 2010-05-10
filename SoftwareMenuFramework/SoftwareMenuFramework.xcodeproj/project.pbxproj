@@ -15,6 +15,10 @@
 		DD0DBB0D117F7E1100C1B052 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB09117F7E1100C1B052 /* iPhotoAccess.framework */; };
 		DD24EE67114004E500541042 /* SMFSimpleDirectoryChooserController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24EE58113FFD4400541042 /* SMFSimpleDirectoryChooserController.m */; };
 		DD24EE68114004E800541042 /* SMFSimpleDirectoryChooserController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD24EE57113FFD4400541042 /* SMFSimpleDirectoryChooserController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD2873B21195E6DE00F6AB22 /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2873B01195E6DE00F6AB22 /* Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD2873B31195E6DE00F6AB22 /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2873B11195E6DE00F6AB22 /* Extensions.m */; };
+		DD2873B91195E6F600F6AB22 /* NSArray-SMFExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2873B71195E6F600F6AB22 /* NSArray-SMFExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD2873BA1195E6F600F6AB22 /* NSArray-SMFExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2873B81195E6F600F6AB22 /* NSArray-SMFExtensions.m */; };
 		DD2ED7C5111D75C30007E031 /* SMFController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2ED7C3111D75C30007E031 /* SMFController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD2ED7C6111D75C30007E031 /* SMFController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2ED7C4111D75C30007E031 /* SMFController.m */; };
 		DD43302111369E8D00C66670 /* SMFCenteredMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD43301F11369E8D00C66670 /* SMFCenteredMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,9 +29,9 @@
 		DD675FAE1132F8BC009E27BF /* SMFGlobalValues.m in Sources */ = {isa = PBXBuildFile; fileRef = DD675FAC1132F8BC009E27BF /* SMFGlobalValues.m */; };
 		DD6D9C2F1188BCCD0061EF67 /* SMFDelegatedDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6D9C2D1188BCCD0061EF67 /* SMFDelegatedDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD6D9C301188BCCD0061EF67 /* SMFDelegatedDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D9C2E1188BCCD0061EF67 /* SMFDelegatedDownloader.m */; };
+		DD7538FE119759FE007965C3 /* CoreGraphicsFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7538FD119759FE007965C3 /* CoreGraphicsFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD83F38E1135DBF600A18586 /* SMFPasscodeController.h in Headers */ = {isa = PBXBuildFile; fileRef = DD83F38C1135DBF600A18586 /* SMFPasscodeController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD83F38F1135DBF600A18586 /* SMFPasscodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD83F38D1135DBF600A18586 /* SMFPasscodeController.m */; };
-		DD8E4823114342A400B6C2F8 /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E4822114342A400B6C2F8 /* Extensions.m */; };
 		DD8FA706113EF42F00B1189B /* SMFSharedFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8FA704113EF42F00B1189B /* SMFSharedFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD8FA707113EF42F00B1189B /* SMFSharedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8FA705113EF42F00B1189B /* SMFSharedFunctions.m */; };
 		DD8FA7DE113F026600B1189B /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8FA7D8113F024800B1189B /* Helper.m */; };
@@ -119,6 +123,10 @@
 		DD0DBB09117F7E1100C1B052 /* iPhotoAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iPhotoAccess.framework; path = "../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks/iPhotoAccess.framework"; sourceTree = SOURCE_ROOT; };
 		DD24EE57113FFD4400541042 /* SMFSimpleDirectoryChooserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFSimpleDirectoryChooserController.h; sourceTree = "<group>"; };
 		DD24EE58113FFD4400541042 /* SMFSimpleDirectoryChooserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFSimpleDirectoryChooserController.m; sourceTree = "<group>"; };
+		DD2873B01195E6DE00F6AB22 /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
+		DD2873B11195E6DE00F6AB22 /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
+		DD2873B71195E6F600F6AB22 /* NSArray-SMFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray-SMFExtensions.h"; sourceTree = "<group>"; };
+		DD2873B81195E6F600F6AB22 /* NSArray-SMFExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray-SMFExtensions.m"; sourceTree = "<group>"; };
 		DD2ED7C3111D75C30007E031 /* SMFController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFController.h; sourceTree = "<group>"; };
 		DD2ED7C4111D75C30007E031 /* SMFController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFController.m; sourceTree = "<group>"; };
 		DD43301F11369E8D00C66670 /* SMFCenteredMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFCenteredMenuController.h; sourceTree = "<group>"; };
@@ -129,10 +137,9 @@
 		DD675FAC1132F8BC009E27BF /* SMFGlobalValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFGlobalValues.m; sourceTree = "<group>"; };
 		DD6D9C2D1188BCCD0061EF67 /* SMFDelegatedDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFDelegatedDownloader.h; sourceTree = "<group>"; };
 		DD6D9C2E1188BCCD0061EF67 /* SMFDelegatedDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFDelegatedDownloader.m; sourceTree = "<group>"; };
+		DD7538FD119759FE007965C3 /* CoreGraphicsFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsFunctions.h; sourceTree = "<group>"; };
 		DD83F38C1135DBF600A18586 /* SMFPasscodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFPasscodeController.h; sourceTree = "<group>"; };
 		DD83F38D1135DBF600A18586 /* SMFPasscodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFPasscodeController.m; sourceTree = "<group>"; };
-		DD8E4821114342A400B6C2F8 /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
-		DD8E4822114342A400B6C2F8 /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
 		DD8FA704113EF42F00B1189B /* SMFSharedFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMFSharedFunctions.h; sourceTree = "<group>"; };
 		DD8FA705113EF42F00B1189B /* SMFSharedFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMFSharedFunctions.m; sourceTree = "<group>"; };
 		DD8FA7BB113F01B700B1189B /* helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = helper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,7 +250,7 @@
 		0867D691FE84028FC02AAC07 /* SoftwareMenuFramework */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E481A1143429600B6C2F8 /* Extensions */,
+				DD2873941195E6C800F6AB22 /* Extensions */,
 				DD8FA7C9113F021300B1189B /* helper */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -378,6 +385,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DD7538FD119759FE007965C3 /* CoreGraphicsFunctions.h */,
 				DDECB94D1119962100448929 /* SMFDefines.h */,
 				DDECB7BB1118DB4500448929 /* AppleTV.h */,
 				DDECB7BC1118DB4500448929 /* BackRow.h */,
@@ -387,11 +395,13 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		DD8E481A1143429600B6C2F8 /* Extensions */ = {
+		DD2873941195E6C800F6AB22 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DD8E4821114342A400B6C2F8 /* Extensions.h */,
-				DD8E4822114342A400B6C2F8 /* Extensions.m */,
+				DD2873B01195E6DE00F6AB22 /* Extensions.h */,
+				DD2873B11195E6DE00F6AB22 /* Extensions.m */,
+				DD2873B71195E6F600F6AB22 /* NSArray-SMFExtensions.h */,
+				DD2873B81195E6F600F6AB22 /* NSArray-SMFExtensions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -461,6 +471,9 @@
 				DDF5829F11847A6A007F89C9 /* SMFStrings.h in Headers */,
 				DDE7238E118738D800860DEC /* SMFSpinnerMenu.h in Headers */,
 				DD6D9C2F1188BCCD0061EF67 /* SMFDelegatedDownloader.h in Headers */,
+				DD2873B21195E6DE00F6AB22 /* Extensions.h in Headers */,
+				DD2873B91195E6F600F6AB22 /* NSArray-SMFExtensions.h in Headers */,
+				DD7538FE119759FE007965C3 /* CoreGraphicsFunctions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +598,8 @@
 				DDF582A011847A6A007F89C9 /* SMFStrings.m in Sources */,
 				DDE7238F118738D800860DEC /* SMFSpinnerMenu.m in Sources */,
 				DD6D9C301188BCCD0061EF67 /* SMFDelegatedDownloader.m in Sources */,
+				DD2873B31195E6DE00F6AB22 /* Extensions.m in Sources */,
+				DD2873BA1195E6F600F6AB22 /* NSArray-SMFExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,7 +609,6 @@
 			files = (
 				DD8FA7DE113F026600B1189B /* Helper.m in Sources */,
 				DD8FA7DF113F026600B1189B /* helperClass.m in Sources */,
-				DD8E4823114342A400B6C2F8 /* Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

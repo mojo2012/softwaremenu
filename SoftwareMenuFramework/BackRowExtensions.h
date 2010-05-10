@@ -15,6 +15,3 @@
 -(void)setLeftIcon:(BRImage *)image;
 @end
 
-@interface NSFileManager (SMFExtensions)
-+(NSArray *)directoryContentsAtPath:(NSString *)path;
-@end

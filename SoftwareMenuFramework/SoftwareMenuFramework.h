@@ -196,10 +196,13 @@ static inline BOOL loadSMFramework(NSString *frapPath)
 #import "SMFStrings.h"
 #import "SMFCompatibilityMethods.h"
 #import "SMFPhotoMethods.h"
+#import "CoreGraphicsFunctions.h"
 /*
  *  Extensions
  */
 #import "BackRowExtensions.h"
+#import "Extensions.h"
+#import "NSArray-SMFExtensions.h"
 #import "SMFProgressBarMenuItem.h"
 #import "SMFPasscodeController.h"
 #import "SMFGlobalValues.h"

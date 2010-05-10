@@ -6,6 +6,28 @@
 //  Copyright 2010 Thomas Cool. All rights reserved.
 //
 //CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef colorSpace, NSColor *color);
+#define IMAGE_INFO			@"info"
+
+#define IMAGE_POWER			@"power"
+#define IMAGE_REFRESH		@"refresh"
+#define IMAGE_STANDBY		@"standby"
+#define IMAGE_TRASH_EMPTY	@"trashempty"
+#define IMAGE_WEB			@"web"
+#define	IMAGE_HARDDISK		@"RW"
+#define IMAGE_AFP			@"AFP"
+#define	IMAGE_FTP			@"FTP"
+#define IMAGE_VNC			@"VNC"
+#define IMAGE_SYS_PREFS		@"sysprefs"
+#define IMAGE_SCRIPT		@"script"
+#define IMAGE_NOT_FOUND     @"notfound"
+
+#define IMAGE_PACKAGE		@"package"
+#define IMAGE_FOLDER		@"folderIcon"
+#define IMAGE_GREEN_GEM		@"green"
+#define	IMAGE_RED_GEM		@"red"
+#define IMAGE_GREY_GEM		@"grey"
+#define IMAGE_TRUSTED       @"trusted"
+#define IMAGE_TESTED        @"tested"
 static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef 
 											colorSpace, NSColor *color)
 {
@@ -88,7 +110,6 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SCRIPT ofType:@"png"]] ;
 }
 
-
 -(id)packageImage
 {	
 	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_PACKAGE ofType:@"png"]];
@@ -104,8 +125,6 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 
 -(id)greenGem
 {
-    NSLog(@"green gem %@, %@ %@",[self class],[NSBundle bundleForClass:[self class]],[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]);
-
 	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_GREEN_GEM ofType:@"png"]];
 }
 -(id)redGem

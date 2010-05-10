@@ -190,12 +190,10 @@
      *  Getting the Master Frame
      */
     CGRect master ;
-	if ([SMFCompatibilityMethods usingTakeTwoDotThree]){
-        BRControl *parent = [self parent];
-		master  = [parent frame];
-	} else {
+	if ([SMFCompatibilityMethods usingTakeTwoDotThree])
+		master  = [(BRControl *)[self parent] frame];
+    else
 		master = [self frame];
-	}
     
     /*
      *  Drawing the Header

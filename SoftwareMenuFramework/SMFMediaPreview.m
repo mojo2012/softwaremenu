@@ -101,18 +101,7 @@ static NSSet *coverArtExtentions = nil;
 //	[self setAsset:asset];
 //
 //}
-//- (void)setCustomMetaData:(NSMutableDictionary *)customMeta
-//{
-//    MetaDataType=kMetaTypeCustom;
-//    [meta release];
-//    meta=[customMeta retain];
-//    if(_asset==nil)
-//    {
-//        SMFMedia *asset = [SMFMedia alloc];
-//        [self setAsset:asset]; 
-//    }
-//
-//}
+
 - (void)setImage:(BRImage *)currentImage
 {
     [image release];
@@ -133,31 +122,7 @@ static NSSet *coverArtExtentions = nil;
     }
     
 }
-//- (void)setPluginMetaData:(NSMutableDictionary *)customMeta
-//{
-//    MetaDataType=kMetaTypePlugin;
-//    [meta release];
-//	SMFMedia *asset  =[[SMFMedia alloc] initB];
-//    if([[customMeta allKeys] containsObject:METADATA_IMAGE_URL])
-//        [asset setImagePath:[customMeta valueForKey:METADATA_IMAGE_URL]];
-//    [self setAsset:asset];
-//}
-//- (void)setSimpleMetaDataWithTitle:(NSString *)title andSummary:(NSString *)summary
-//{
-//    MetaDataType=kMetaTypeSimple;
-//    NSLog(@" %@ %@",title,summary);
-//    if (title!=nil)
-//        [meta setObject:title forKey:METADATA_TITLE];
-//    if (summary!=nil)
-//        [meta setObject:summary forKey:METADATA_SUMMARY];
-//    //[self setAsset:[SMFMedia alloc]];
-//    if (_asset==nil) {
-//        [self setAsset:[[SMFMedia alloc]initB]];
-//        
-//    }
-//    
-////    [self _updateMetadataLayer];
-//}
+
 - (void)setAsset:(id)asset
 {
     //NSLog(@"assetMeta: %@",asset);
@@ -185,9 +150,6 @@ static NSSet *coverArtExtentions = nil;
     image=[_asset coverArt];
     if (image!=nil)
         return image;
-    //NSLog(@"covertArtForPath");
-//    if([[NSFileManager defaultManager] fileExistsAtPath:[meta valueForKey:METADATA_IMAGE_URL]])
-//		return [BRImage imageWithPath:[meta valueForKey:METADATA_IMAGE_URL]];
 	return [[SMFThemeInfo sharedTheme] notFoundImage];
 }
 
@@ -205,58 +167,6 @@ static NSSet *coverArtExtentions = nil;
     
 	
 }
-//- (void) populateMovieMetadataWith:(NSMutableDictionary*)allMeta
-//{
-//	/* Get the movie title */
-//	NSString *value=nil;
-//	value = [allMeta objectForKey:METADATA_TITLE];
-//	BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
-//	
-//	/*Get the release date*/
-//	NSDate *releaseDate = [allMeta objectForKey:@"ReleaseDate"];
-//	if(releaseDate != nil)
-//	{
-//		NSDateFormatter *format = [[NSDateFormatter alloc] init];
-//		[format setDateStyle:NSDateFormatterLongStyle];
-//		[format setTimeZone:NSDateFormatterNoStyle];
-//		value = [NSString stringWithFormat:@"Released: %@",[format stringFromDate:releaseDate]];
-//		[allMeta removeObjectForKey:@"ReleaseDate"];
-//		[allMeta removeObjectForKey:@"Name"];
-//	}
-//    
-//	/* No release date, sub in the movie title */
-//	[metaLayer setTitle:value];
-//	
-//	/* Display Online Version */
-//	value = nil;
-//	value = [allMeta objectForKey:@"OnlineVersion"];
-//	if(value != nil)
-//		[allMeta setObject:value forKey:@"Online"];
-//	
-//	/* Display Installed Version */
-//	value = nil;
-//	value = [allMeta objectForKey:@"InstalledVersion"];
-//	if(value != nil)
-//		[allMeta setObject:value forKey:@"InstalledVersion"];
-//	
-//	/*Get the movie plot*/
-//	value=nil;
-//	value = [allMeta objectForKey:@"ShortDescription"];
-//	if(value != nil)
-//		[metaLayer setSummary:value];
-//	
-//	NSArray *values=nil;
-//
-//	values=nil;
-//	value=[NSString string];
-//	value=[allMeta objectForKey:@"Developer"];
-//	if(values!=nil)
-//	{
-//		[allMeta setObject:value forKey:@"Developer"];
-//	}
-//
-//	value=nil ;
-//}
 
 - (void)_populateMetadata
 {
@@ -278,43 +188,6 @@ static NSSet *coverArtExtentions = nil;
     //NSLog(@"doPopulation");
     BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
     switch (MetaDataType) {
-        case kMetaTypeCustom:
-        {
-            [metaLayer setTitle:[meta objectForKey:METADATA_TITLE]];
-            [metaLayer setSummary:[meta objectForKey:METADATA_SUMMARY]];
-            if ([[meta allKeys] containsObject:METADATA_CUSTOM_KEYS] && [[meta allKeys] containsObject:METADATA_CUSTOM_OBJECTS]) {
-                [metaLayer setMetadata:[meta objectForKey:METADATA_CUSTOM_OBJECTS] withLabels:[meta objectForKey:METADATA_CUSTOM_KEYS]];
-            }
-            break;  
-        }
-        case kMetaTypePlugin:
-        {
-            NSMutableDictionary *allMeta=[self getPluginMetaData];
-            NSMutableArray *order = [allMeta valueForKey:METADATA_CUSTOM_KEYS];
-            NSMutableArray *values = [NSMutableArray array];
-            NSMutableArray *keys = [NSMutableArray array];
-            
-            NSEnumerator *keyEnum = [order objectEnumerator];
-            NSString *key = nil;
-            while((key = [keyEnum nextObject]) != nil)
-            {
-                NSString *value = [allMeta objectForKey:key];
-                if(value != nil)
-                {
-                    [values addObject:value];
-                    [keys addObject:key];
-                }
-            }
-            [metaLayer setMetadata:values withLabels:keys];
-            
-            break;
-        }
-        case kMetaTypeSimple:
-        {
-            [metaLayer setTitle:[meta objectForKey:METADATA_TITLE]];
-            [metaLayer setSummary:[meta objectForKey:METADATA_SUMMARY]];
-            break;
-        }
         case kMetaTypeAsset:
         {
             id asset = [self asset];
@@ -351,47 +224,6 @@ static NSSet *coverArtExtentions = nil;
 - (BOOL)_assetHasMetadata
 {
 	return YES;
-}
--(NSMutableDictionary *)getPluginMetaData
-{
-	BRMetadataControl *metaLayer = [self gimmieMetadataLayer];
-    SMFPluginAsset *asset = (SMFPluginAsset *)[self asset];
-
-	[metaLayer setTitle:[[self asset] title]];
-	[metaLayer setSummary:[[self asset] mediaSummary]];
-    if (![asset respondsToSelector:@selector(onlineVersion)]) {
-        return [NSDictionary dictionary];
-    }
-	NSMutableArray *orderedArray = [NSMutableArray arrayWithObjects:nil];
-	NSMutableDictionary *metaData = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
-	NSString *value =nil;
-	/*Check for Online Version Number*/
-	value = [[self asset] onlineVersion];
-	if(value != nil)
-	{
-		[metaData setValue:value forKey:@"Online" ];
-		[orderedArray addObject:@"Online"];
-	}
-	value = nil;
-	
-	/*Check for Installed Version Number*/
-	value = [[self asset] installedVersion];
-	if(value != nil)
-	{
-		[metaData setValue:value forKey:@"Installed"];
-		[orderedArray addObject:@"Installed"];
-	}
-	value = nil;
-	
-	/*Check for Developer Key*/
-	value = [[self asset] developer];
-	if(value != nil)
-	{
-		[metaData setValue:value forKey:@"Developer"];
-		[orderedArray addObject:@"Developer"];
-	}
-	[metaData setValue:orderedArray forKey:METADATA_CUSTOM_KEYS];
-	return metaData;
 }
 
 @end
