@@ -111,6 +111,10 @@ typedef enum {
 -(void)setTargetOpacity:(float)opacity;
 -(float)targetOpacity;
 
+-(void)setAutoRotateEffect:(BOOL)ar;
+-(BOOL)autoRotateEffect;
+
+
 /*
  *
  */
@@ -127,6 +131,7 @@ typedef enum {
  *  Method that should be called to manually advance slideshow
  */
 - (void)advanceSlideshow:(NSTimer *)timer;
+- (void)advanceSlideshow:(NSTimer *)timer force:(BOOL)force;
 @end
 NSString *const kCAMediaTimingFunctionEaseIn;
 @interface SMSlideshowMext : NSObject <SMMextProtocol>{

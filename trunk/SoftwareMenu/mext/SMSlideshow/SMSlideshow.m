@@ -77,6 +77,11 @@
     }
     [_control setTargetOpacity:[SMSSettings opacity]];
     [_control setTransitionDuration:[SMSSettings transitionDuration]];
+    [_control setTransitionStyle:[SMSSettings transitionStyle]];
+    [_control setImageDuration:(NSTimeInterval)[SMSSettings imageDuration]];
+    [_control setRandomOrder:[SMSSettings randomizeOrder]];
+    [_control setAutoRotateEffect:[SMSSettings autoRotateTransitions]];
+    
    // [_control setTransitionEffect:[SMSSettings transitionEffect]];
     [_control setFolder:[SMSSettings imageFolder]];
 
@@ -237,6 +242,14 @@
     [self updateSubviewsTransition];
     return self;
 }
+-(void)setAutoRotateEffect:(BOOL)ar
+{
+    autoRotateEffect=ar;
+}
+-(BOOL)autoRotateEffect
+{
+    return autoRotateEffect;
+}
 - (NSTimeInterval)slideshowInterval {
     return slideshowInterval;
 }
@@ -244,31 +257,37 @@
     if (slideshowTimer == nil && [self slideshowInterval] > 0.0) {
         // Schedule an ordinary NSTimer that will invoke -advanceSlideshow: at regular intervals, each time we need to advance to the next slide.
         slideshowTimer = [[NSTimer scheduledTimerWithTimeInterval:[self slideshowInterval] target:self selector:@selector(advanceSlideshow:) userInfo:nil repeats:YES] retain];
+        [self advanceSlideshow:slideshowTimer force:TRUE];
     }
 }
 
-- (void)advanceSlideshow:(NSTimer *)timer {
-    
+-(void)advanceSlideshow:(NSTimer *)timer force:(BOOL)force
+{
     int count = [_fileListing count];
     BOOL isVisible=NO;
     BOOL done=NO;
     id parent=[self parent];
-    while (done==FALSE) {
-        if (parent) 
-        {
-            if ([parent isKindOfClass:[BRController class]]) {
-                if ([parent topOfStack])                
-                    isVisible=TRUE;
-                done=TRUE;
-            }
-            else if([parent isKindOfClass:[BRControl class]])
-            {
-                parent=[parent parent];
-            }
-        }
-        else
-            done=TRUE;
+    if (force) {
+        done=TRUE;
+        isVisible=TRUE;
     }
+    else
+        while (done==FALSE) {
+            if (parent) 
+            {
+                if ([parent isKindOfClass:[BRController class]]) {
+                    if ([parent topOfStack])                
+                        isVisible=TRUE;
+                    done=TRUE;
+                }
+                else if([parent isKindOfClass:[BRControl class]])
+                {
+                    parent=[parent parent];
+                }
+            }
+            else
+                done=TRUE;
+        }
     if (_fileListing != nil && count > 0 && isVisible) {
         // Find the next Asset in the slideshow.
         int startIndex = currentImagePath ? [_fileListing indexOfObject:currentImagePath] : 0;
@@ -287,11 +306,16 @@
             
             currentImagePath = [asset retain];
             return;
-        
-        index = (index + 1) % count;
+            
+            index = (index + 1) % count;
         }
         
     }
+
+}
+- (void)advanceSlideshow:(NSTimer *)timer {
+    
+    [self advanceSlideshow:timer force:FALSE];
 }
 - (void)stopSlideshowTimer {
     if (slideshowTimer != nil) {
@@ -409,6 +433,7 @@
 -(void)setTransitionStyle:(SlideshowTransitionStyle)st
 {
     transitionStyle=st;
+    [self updateSubviewsTransition];
 }
 -(SlideshowTransitionStyle)transitionStyle
 {
@@ -424,8 +449,9 @@
 //    DLog(@"Current: %@, Old: %@",curImage,oldImage);
     if(autoRotateEffect)
     {
-        transitionStyle=((transitionStyle +1) %NumberOfSlideshowViewTransitionStyles);
-        [self updateSubviewsTransition];
+        //transitionStyle=((transitionStyle +1) %NumberOfSlideshowViewTransitionStyles);
+        [self setTransitionStyle:((transitionStyle +1) %NumberOfSlideshowViewTransitionStyles)];
+        //[self updateSubviewsTransition];
     }
     //[self setTransitionStyle:(([self transitionStyle] + 1) % NumberOfSlideshowTransitionStyles)];
 //    [self setImage:image];
