@@ -7,17 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "SMSlideshow.h"
 
 @interface SMSSettings : SMFMediaMenuController {
 
 }
 +(float)transitionDuration;
-+(NSString *)transitionEffect;
 +(int)imageDuration;
 +(float)opacity;
 +(NSString *)imageFolder;
 +(BOOL)randomizeOrder;
++(BOOL)autoRotateTransitions;
 
 -(void)dirSelected:(NSString *)dir;
++(SlideshowTransitionStyle)transitionStyle;
++(void)setTransitionStyle:(SlideshowTransitionStyle)style;
 @end

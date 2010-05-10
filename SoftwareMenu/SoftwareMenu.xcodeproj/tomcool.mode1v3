@@ -305,13 +305,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>158</integer>
-									<integer>157</integer>
+									<integer>41</integer>
+									<integer>40</integer>
+									<integer>39</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 2509}, {305, 769}}</string>
+							<string>{{0, 220}, {305, 769}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -346,7 +347,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SMMenu.h</string>
+								<string>SMSlideshow.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -354,11 +355,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SMMenu.h</string>
+										<string>SMSlideshow.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD9B573911988D9E0064D17B</string>
+										<string>DD9B57801198A7030064D17B</string>
 										<key>history</key>
 										<array>
 											<string>DDE8603B10A39FC7002D2FB8</string>
@@ -843,7 +844,6 @@
 											<string>DD2874541195FCE200F6AB22</string>
 											<string>DD2874551195FCE200F6AB22</string>
 											<string>DD2874561195FCE200F6AB22</string>
-											<string>DD9ADA4E119609B300D12669</string>
 											<string>DD9ADA6511960D4B00D12669</string>
 											<string>DD9ADA891196163400D12669</string>
 											<string>DD9ADA8A1196163400D12669</string>
@@ -870,7 +870,6 @@
 											<string>DD64E1F8119704A1001DC759</string>
 											<string>DD64E1F9119704A1001DC759</string>
 											<string>DD7536A7119733A9007965C3</string>
-											<string>DD7536A8119733A9007965C3</string>
 											<string>DD7536E8119735F1007965C3</string>
 											<string>DD7538A911974E7D007965C3</string>
 											<string>DD7538AA11974E7D007965C3</string>
@@ -894,12 +893,14 @@
 											<string>DD7538BC11974E7D007965C3</string>
 											<string>DD75391D11975BEA007965C3</string>
 											<string>DD75392711975D01007965C3</string>
-											<string>DD75397F11981428007965C3</string>
-											<string>DD753F2211983894007965C3</string>
 											<string>DD753F2311983894007965C3</string>
 											<string>DD9B573711988D9E0064D17B</string>
 											<string>DD9B573811988D9E0064D17B</string>
-											<string>DD9B573111988D940064D17B</string>
+											<string>DD9B577B1198A7030064D17B</string>
+											<string>DD9B577C1198A7030064D17B</string>
+											<string>DD9B577D1198A7030064D17B</string>
+											<string>DD9B577E1198A7030064D17B</string>
+											<string>DD9B577F1198A7030064D17B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -1097,6 +1098,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>DD31AF0710A09683000F734A</string>
 		<string>/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SoftwareMenu.xcodeproj</string>
@@ -1301,13 +1303,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>DD7536AC119733A9007965C3</string>
+				<string>DD9B57811198A7030064D17B</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>DD7536AD119733A9007965C3</string>
-				<string>DD7536AE119733A9007965C3</string>
-				<string>DD7536AF119733A9007965C3</string>
-				<string>DD7536B0119733A9007965C3</string>
-				<string>DD7536B1119733A9007965C3</string>
+				<string>DD9B57821198A7030064D17B</string>
+				<string>DD9B57831198A7030064D17B</string>
+				<string>DD9B57841198A7030064D17B</string>
+				<string>DD9B57851198A7030064D17B</string>
+				<string>DD9B57861198A7030064D17B</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
