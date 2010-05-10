@@ -236,6 +236,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -303,14 +305,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>83</integer>
-									<integer>69</integer>
-									<integer>67</integer>
+									<integer>158</integer>
+									<integer>157</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1015}, {305, 769}}</string>
+							<string>{{0, 2509}, {305, 769}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -340,14 +341,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SoftwareMenuBase.m</string>
+								<string>SMMenu.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -355,11 +354,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SoftwareMenuBase.m</string>
+										<string>SMMenu.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD9B572C11988BC40064D17B</string>
+										<string>DD9B573911988D9E0064D17B</string>
 										<key>history</key>
 										<array>
 											<string>DDE8603B10A39FC7002D2FB8</string>
@@ -732,7 +731,6 @@
 											<string>DD6D9D26118B65CC0061EF67</string>
 											<string>DD6D9D4C118B6C570061EF67</string>
 											<string>DD6D9D6B118B74880061EF67</string>
-											<string>DD6D9E1F118B7E8A0061EF67</string>
 											<string>DD6D9E21118B7E8A0061EF67</string>
 											<string>DD6D9E22118B7E8A0061EF67</string>
 											<string>DD6D9E25118B7E8A0061EF67</string>
@@ -899,7 +897,9 @@
 											<string>DD75397F11981428007965C3</string>
 											<string>DD753F2211983894007965C3</string>
 											<string>DD753F2311983894007965C3</string>
-											<string>DD9B572B11988BC40064D17B</string>
+											<string>DD9B573711988D9E0064D17B</string>
+											<string>DD9B573811988D9E0064D17B</string>
+											<string>DD9B573111988D940064D17B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -1097,6 +1097,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>DD31AF0710A09683000F734A</string>
 		<string>/Users/tomcool/DVLP/SVN/softwaremenu/trunk/SoftwareMenu/SoftwareMenu.xcodeproj</string>
 	</array>
@@ -1333,12 +1334,14 @@
 							<key>Dock</key>
 							<array>
 								<dict>
+									<key>BecomeActive</key>
+									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string></string>
+										<string>SMMenu.h</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -1359,8 +1362,6 @@
 							<string>304pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1396,8 +1397,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>DD7538DA11975302007965C3</string>
-				<string>DD7538DB11975302007965C3</string>
+				<string>DD9B573311988D940064D17B</string>
+				<string>DD9B573411988D940064D17B</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
