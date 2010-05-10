@@ -11,6 +11,7 @@
 
 @interface NSFileManager (SMFExtensions)
 - (BOOL)constructPath:(NSString *)proposedPath;
++(NSArray *)directoryContentsAtPath:(NSString *)path;
 @end
 
 @interface NSString (SMFExtensions)

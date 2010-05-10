@@ -15,7 +15,7 @@
     NSString *_folder;
     NSFileManager *_man;
 }
-
+-(id)initWithFolder:(NSString *)folder delegate:(id)delegate topFolder:(NSString *)topFolder;
 - (void) textDidChange: (id) sender;
 - (void) textDidEndEditing: (id) sender;
 

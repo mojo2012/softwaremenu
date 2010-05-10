@@ -18,6 +18,7 @@ typedef enum _kSMFDirChooser
 -(id)initWithFolder:(NSString *)folder delegate:(id)delegate topFolder:(NSString *)topFolder
 {
     self=[super init];
+    [self setListTitle:[folder lastPathComponent]];
     _man=[NSFileManager defaultManager];
     BOOL isDir=NO;
     BOOL isDirToo=NO;
@@ -57,7 +58,7 @@ typedef enum _kSMFDirChooser
     {
         isDir = NO;
         NSString *file = [files objectAtIndex:i];
-        NSLog(file);
+        //NSLog(file);
         if ([_man fileExistsAtPath:[_folder stringByAppendingPathComponent:file]isDirectory:&isDir]&&isDir) {
             a=[BRTextMenuItemLayer folderMenuItem];
             [a setTitle:file];
@@ -92,8 +93,9 @@ typedef enum _kSMFDirChooser
                                                                     topFolder:_topFolder];
             [_topFolder release];
             [_delegate release];
-            [[self stack]popController];
-            [[self stack]pushController:a];
+            [[self stack] swapController:a];
+//            [[self stack]popController];
+//            [[self stack]pushController:a];
             [a release];
             break;
         }
@@ -105,8 +107,9 @@ typedef enum _kSMFDirChooser
                                                                     topFolder:_topFolder];
             [_topFolder release];
             [_delegate release];
-            [[self stack]popController];
-            [[self stack]pushController:a];
+            [[self stack]swapController:a];
+//            [[self stack]popController];
+//            [[self stack]pushController:a];
             [a release];
         }
         default:

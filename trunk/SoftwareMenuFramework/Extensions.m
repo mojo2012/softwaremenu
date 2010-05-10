@@ -10,6 +10,10 @@
 
 
 @implementation NSFileManager (SMFExtensions)
++(NSArray *)directoryContentsAtPath:(NSString *)path
+{
+    return [[NSFileManager defaultManager] directoryContentsAtPath:path];
+}
 - (BOOL)constructPath:(NSString *)proposedPath
 {
     BOOL isDir ;

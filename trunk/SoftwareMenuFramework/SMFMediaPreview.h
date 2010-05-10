@@ -15,17 +15,17 @@ typedef enum {
     kMetaTypeCustom=1,
     kMetaTypeSimple=2,
     kMetaTypeAsset=3,
-} metatypes;
+} SMMetaType;
 
 @interface SMFMediaPreview : BRMetadataPreviewControl{
 	int		padding[32];		
 	NSMutableDictionary			*meta;
-    int                         MetaDataType;
+    SMMetaType                  MetaDataType;
     BRImage                     *image;
     id                          *_assetCustom;
 }
 
-- (NSMutableDictionary *)getPluginMetaData;
+//- (NSMutableDictionary *)getPluginMetaData;
 //- (void)setUtilityData:(NSMutableDictionary *)newMeta;
 - (id)coverArtForPath;
 //- (void)setUtilityData:(NSMutableDictionary *)newMeta;
