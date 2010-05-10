@@ -8,57 +8,65 @@
 
 #import <Cocoa/Cocoa.h>
 #import <BackRow/BackRow.h>
-@protocol SMMextProtocol
-// For loading a control behind the main menu
--(BRControl *)backgroundControl;
-// For loading a controller on menu press
--(BRController *)controller;
-// Check if plugin has custom settings menu
--(BOOL)hasPluginSpecificOptions;
-// Summary for plugin
-+(NSString *)pluginSummary;
-// Developer Name
-+(NSString *)developer;
 
-
-@optional
--(BRController *)options;
-
-@end
 @interface SMImageControl : BRImageControl
 {
     int padding[32];
 }
 
 @end
-
+@class CIImage;
+typedef enum {
+    // Core Animation's four built-in transition types
+    SlideshowViewFadeTransitionStyle,
+    SlideshowViewMoveInTransitionStyle,
+    SlideshowViewPushTransitionStyle,
+    SlideshowViewRevealTransitionStyle,
+    
+    // Core Image's standard set of transition filters
+    SlideshowViewCopyMachineTransitionStyle,
+    SlideshowViewDisintegrateWithMaskTransitionStyle,
+    SlideshowViewDissolveTransitionStyle,
+    SlideshowViewFlashTransitionStyle,
+    SlideshowViewModTransitionStyle,
+    SlideshowViewPageCurlTransitionStyle,
+    SlideshowViewRippleTransitionStyle,
+    SlideshowViewSwipeTransitionStyle,
+    
+    NumberOfSlideshowViewTransitionStyles
+} SlideshowTransitionStyle;
 @interface SMSlideshowControl : BRControl
 {
     int padding[32];
     float           targetOpacity;
     BOOL            random;
     BOOL            useTimer;
+    BOOL            crop;
     unsigned int    timerTime;
     float           transitionDuration;
     unsigned int    currentImage;
-    BRImage         *img;
+    BRImage         *nextImage;
     BRImageControl  *curImage;
     BRImageControl  *oldImage;
     NSArray         *_fileListing;
-    NSArray         *_orderArray;
+    NSTimeInterval  slideshowInterval;
+    NSTimer         *slideshowTimer;
+    NSString        *currentImagePath;
+    BOOL            autoRotateEffect;
+    CIImage         *inputShadingImage;         // an environment-map image that the transition filter may use in generating the transition effect
+    CIImage         *inputMaskImage;            // a mask image that the transition filter may use in generating the transition effect
+    SlideshowTransitionStyle transitionStyle;
     
 }
-/*
- *  Displays Next Image in list
- */
--(void)nextImage;
--(void)updateCurrentImage;
 
 /*
  *  ImageTime
  */
--(void)setImageDuration:(unsigned int)imageDuration;
--(unsigned int)imageDuration;
+-(void)setImageDuration:(NSTimeInterval)imageDuration;
+-(NSTimeInterval)imageDuration;
+
+-(void)setTransitionStyle:(SlideshowTransitionStyle)st;
+-(SlideshowTransitionStyle)transitionStyle;
 
 /*
  *  Should the timer be used
@@ -79,11 +87,6 @@
 -(void)setRandomOrder:(BOOL)randomOrder;
 -(BOOL)randomOrder;
 
-/*
- *  Set Next Image (should only be called when initializing;
- */
--(void)setImage:(BRImage *)image;
--(BRImage *)image;
 
 
 /*
@@ -108,11 +111,28 @@
 -(void)setTargetOpacity:(float)opacity;
 -(float)targetOpacity;
 
+/*
+ *
+ */
+- (void)updateSubviewsTransition;
+/*
+ *  Starts Slideshow
+ */
+- (void)startSlideshowTimer;
+/*
+ *  Stops Slideshow
+ */
+- (void)stopSlideshowTimer;
+/*
+ *  Method that should be called to manually advance slideshow
+ */
+- (void)advanceSlideshow:(NSTimer *)timer;
 @end
 NSString *const kCAMediaTimingFunctionEaseIn;
 @interface SMSlideshowMext : NSObject <SMMextProtocol>{
 //    BRImageControl *_control;
 //    int _imageNb;
+    
     NSMutableArray *_imagePaths;
     BRImage *_nextImage;
     NSDate *_lastFireDate;

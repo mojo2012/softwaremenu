@@ -535,12 +535,14 @@
                // NSLog(@"remove");
                 //[self _handleSelectionWithCode:@"-r"];
                 [[SMHelper helperManager] removePlugin:[_information name]];
+                [self setupButtons];
 
             }
             else if([_backupButton isFocused] && [_backupButton isEnabled])
             {
                // NSLog(@"backup is Focused");
                 [[SMHelper helperManager]backupPlugin:[_information name]];
+                [self setupButtons];
                 //[self _handleSelectionWithCode:@"-backup"];
 
             }
@@ -550,10 +552,12 @@
                 {
                     //[self _handleSelectionWithCode:@"--make-invisible"];
                     [[SMHelper helperManager] makeInvisible:[_information name]];
+                    [self setupButtons];
                 }
                 else {
                     //[self _handleSelectionWithCode:@"--make-visible"];
                     [[SMHelper helperManager] makeVisible:[_information name]];
+                    [self setupButtons];
                 }
 
             }
@@ -562,6 +566,7 @@
                // NSLog(@"remove backup");
                 //[self _handleSelectionWithCode:@"-rb"];
                 [[SMHelper helperManager] removeBackup:[_information name]];
+                [self setupButtons];
 
             }
             else if([_restoreButton isFocused] && [_restoreButton isEnabled])
@@ -569,6 +574,7 @@
                // NSLog(@"resotre backup");
                 //[self _handleSelectionWithCode:@"-restore"];
                 [[SMHelper helperManager]restorePlugin:[_information name]];
+                [self setupButtons];
 
             }
             else if([_licenseButton isFocused])

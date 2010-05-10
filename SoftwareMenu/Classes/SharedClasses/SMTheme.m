@@ -60,6 +60,17 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 {
     return [[self alloc] init];
 }
+-(NSArray *)allowedImageExtensions
+{
+    return [NSArray arrayWithObjects:
+            @"png",
+            @"jpeg",
+            @"tif",
+            @"tiff",
+            @"jpg",
+            @"gif",
+            nil];
+}
 -(id)tinySMImage
 {
     return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM_TINY ofType:@"png"]];
@@ -266,12 +277,36 @@ static CGColorRef CGColorCreateFromNSColor (CGColorSpaceRef
 -(id)testedImage {
 	return [BRImage imageWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_TESTED ofType:@"png"]] ;
 }
+-(NSString *)getImagePathForFrapName:(NSString *)Name
+{
+    Name=[Name stringByDeletingPathExtension];
+    if([Name isEqualToString:@"SoftwareMenu"])
+        return [[NSBundle bundleForClass:[self class]] pathForResource:IMAGE_SM_SHELF ofType:@"png"];
+	NSFileManager *man =[NSFileManager defaultManager];
+	NSString *filepath = nil;
+	NSArray *imageExtensions = [self allowedImageExtensions];
+	NSEnumerator *objEnum = [imageExtensions objectEnumerator];
+	id obj;
+	while((obj = [objEnum nextObject]) != nil) 
+	{
+		filepath=[[SMPreferences ImagesPath] stringByAppendingPathComponent:[Name stringByAppendingPathExtension:obj]];
+        //NSLog(@"filepath: %@",filepath);
+		if([man fileExistsAtPath:filepath])
+		{
+			return (filepath);
+		}
+	}
+	return filepath;
+}
 -(id)imageForFrap:(NSString *)frapName
 {
     if ([frapName isEqualToString:@"SoftwareMenu"])
         return [self softwareMenuImageShelf];
-    
-    return [BRImage imageWithPath:[SMGeneralMethods getImagePath:frapName]];
+    id a =[BRImage imageWithPath:[self getImagePathForFrapName:frapName]];
+    if (a==nil) {
+        a=[self packageImage];
+    }
+    return a;
 }
 - (id)leftJustifiedParagraphTextAttributes
 {

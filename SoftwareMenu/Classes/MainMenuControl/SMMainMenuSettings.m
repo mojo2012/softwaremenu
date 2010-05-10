@@ -147,14 +147,18 @@
         }
         case 5:
         {
-            NSBundle *controlBundle = [[NSBundle bundleWithPath:[SMPreferences selectedExtension]]retain];
-            NSLog(@"found Bundle");
+            NSBundle *controlBundle = [NSBundle bundleWithPath:[SMPreferences selectedExtension]];
             [controlBundle load];
-            id<SMMextProtocol> pc=[[[controlBundle principalClass] alloc]init];
-            NSLog(@"loaded principal class");
-            NSLog(@"control: %@",[pc backgroundControl]);
-            NSLog(@"controller: %@",[pc ioptions]);
-            [[self stack]pushController:[pc ioptions]];
+            id pc=[controlBundle principalClass];
+            if ([pc conformsToProtocol:@protocol(SMMextProtocol)])
+            {
+                DLog(@"Conforms to Protocol");
+                if ([pc hasPluginSpecificOptions]) {
+                    [[self stack]pushController:[pc pluginOptions]];
+                }
+            }
+            
+            
             
 //            if (![bundle isLoaded]) {
 //                [bundle load];

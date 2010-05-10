@@ -19,7 +19,8 @@
 #define smhlogit
 #endif
 
-#define smweatherDomain  (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.SMWeather" 
+#define smweatherDomain     (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.SMWeather"
+#define smslideshowDomain   (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.SMSlideshow"
 #define BRLocalizedString(key, comment)								[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:nil]
 #define BRLocalizedStringFromTable(key, tbl, comment)				[BRLocalizedStringManager appliance:self localizedStringForKey:(key) inFile:(tbl)]
 #define BRLocalizedStringFromTableInBundle(key, tbl, obj, comment)	[BRLocalizedStringManager appliance:(obj) localizedStringForKey:(key) inFile:(tbl)]
@@ -37,8 +38,25 @@ typedef enum _SMTeak {
     kSMTweakUpdates,
 //    kSMTweakBlocker,
 }   SMTweak;
+@class BRControl,BRController;
+@protocol SMMextProtocol
+// For loading a control behind the main menu
+-(BRControl *)backgroundControl;
+// For loading a controller on menu press
+-(BRController *)controller;
+// Check if plugin has custom settings menu
++(BOOL)hasPluginSpecificOptions;
+// Summary for plugin
++(NSString *)pluginSummary;
+// Developer Name
++(NSString *)developer;
 
 
+
+@optional
++(BRController *)pluginOptions;
+
+@end
 
 
 /*

@@ -39,18 +39,18 @@
 
 @implementation SMMainMenuControl
 
--(id)actionForKey:(id)arg1
-{
-    DLog(@"Action FOr Key: %@",arg1);
-    return [super actionForKey:arg1];
-}
--(id)actionForLayer:(id)arg1 forKey:(id)arg2
-{
-    id a = [super actionForLayer:arg1 forKey:arg2];
-    DLog(@"Action ForLayer:%@ ForKey:%@, return: %@",arg1,arg2,a);
-    
-    return a;
-}
+//-(id)actionForKey:(id)arg1
+//{
+//    DLog(@"Action FOr Key: %@",arg1);
+//    return [super actionForKey:arg1];
+//}
+//-(id)actionForLayer:(id)arg1 forKey:(id)arg2
+//{
+//    id a = [super actionForLayer:arg1 forKey:arg2];
+//    DLog(@"Action ForLayer:%@ ForKey:%@, return: %@",arg1,arg2,a);
+//    
+//    return a;
+//}
 -(BOOL)_previewColumnAtIndex:(long)arg1
 {
    // DLog(@"actionse: %@",[self actions]);
@@ -98,7 +98,7 @@
         _controlBundle=[[NSBundle bundleWithPath:path] retain];
         [_controlBundle load];
         id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc]init];
-        DLog(@"pc: %@",pc);
+        //DLog(@"pc: %@",pc);
         /*
          *  Insert the new background control near the bottom of the stack
          */
@@ -107,12 +107,12 @@
             _ctrl=nil;
         }
         _ctrl = [[pc backgroundControl] retain];
-        DLog(@"bc: %@",[pc backgroundControl]);
+        //DLog(@"bc: %@",[pc backgroundControl]);
         [self insertControl:_ctrl atIndex:1];
         
     }
     NSString *path2=[[[SMPreferences selectedExtension] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"SMSlideshow.mext"];
-    if(![path isEqualToString:@"None"] && [SMPreferences mainMenuBGImages] && [[NSFileManager defaultManager]fileExistsAtPath:path2] &&[SMPreferences mainMenuLoadPlugins])
+    if(![path isEqualToString:path2] && [SMPreferences mainMenuBGImages] && [[NSFileManager defaultManager]fileExistsAtPath:path2] &&[SMPreferences mainMenuLoadPlugins])
     {
         /*
          *  Load the Plugin
@@ -121,7 +121,7 @@
         _controlBundle=[[NSBundle bundleWithPath:path2] retain];
         [_controlBundle load];
         id<SMMextProtocol> pc=[[[_controlBundle principalClass] alloc]init];
-        DLog(@"pc2: %@",pc);
+        //DLog(@"pc2: %@",pc);
         /*
          *  Insert the new background control near the bottom of the stack
          */
@@ -165,7 +165,7 @@
         
     }
      
-   // DLog(@"Controls: %@",[self controls]);
+    //DLog(@"Controls: %@",[self controls]);
    // DLog(@"actions: %@",[[self layer] animationKeys]);
 
     
