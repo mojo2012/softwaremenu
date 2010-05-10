@@ -26,7 +26,7 @@
 #import "Classes/MainMenuControl/SMMainMenuControl.h"
 #import "Classes/MainMenuControl/SMMainMenuController.h"
 #import "Classes/MainMenuControl/SMMainMenuSettings.h"
-#import "Classes/MainMenuControl/SMMextProtocol.h"
+//#import "Classes/MainMenuControl/SMMextProtocol.h"
 #import "Classes/MainMenuControl/SMMainMenuSelection.h"
 #import "Classes/MainMenuControl/SMMainMenuPU.h"
 #import "Classes/Server/SMConnection.h"

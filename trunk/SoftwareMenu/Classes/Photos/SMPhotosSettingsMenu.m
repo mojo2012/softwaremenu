@@ -193,9 +193,7 @@
 }
 -(void)itemSelected:(long)row
 {
-	BOOL randomV =NO;
-    //NSLog(@"itemSelected");
-	//NSString *usedString = nil;
+
 	switch([[settingNumberType objectAtIndex:row] intValue])
 	{
             
@@ -205,7 +203,6 @@
 		case kSMSSSType:
         {
             NSString *a = [SMPreferences slideshowType];
-            //NSLog(@"aa: %@",a);
             if([a isEqualToString:@"Floating"])
 			{
 				[SMPreferences setString:@"Parade" forKey:@"ScreensaverType"];
@@ -224,17 +221,16 @@
 			
 		case kSMSSSRotation:
         {
-            int i = nil;
+
             
 			id newController = [SMFPasscodeController passcodeWithTitle:BRLocalizedString(@"Set Delay",@"Spin Delay") 
                                                         withDescription:BRLocalizedString(@"Please enter delay time between each spin (in secs)", @"Please enter delay time between each spin (in secs)")
                                                               withBoxes:3
                                                            withDelegate:self];
-			//[newController setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
-			//[newController setInitialValue:[SMPreferences screensaverSpinFrequency]];
+			[newController setIcon:[[BRThemeInfo sharedTheme] photosImage]];
+			[newController setInitialValue:[SMPreferences screensaverSpinFrequency]];
             
 			[[self stack] pushController:newController];
-			i = [SMPreferences integerForKey:PHOTO_SPIN_FREQUENCY];
 			break;
         }
 			
@@ -255,12 +251,12 @@
 			
 
 		case kSMSSSTimeOut:
-			randomV = NO;
-			id controllera = [SMFPasscodeController passcodeWithTitle:BRLocalizedString(@"Set Screensaver Time Out",@"Set Screensaver Time Out")
+        {
+            id controllera = [SMFPasscodeController passcodeWithTitle:BRLocalizedString(@"Set Screensaver Time Out",@"Set Screensaver Time Out")
                                                       withDescription:BRLocalizedString(@"Please enter a time in minutes (zero means never)",@"Please enter a time in minutes (zero means never)")
                                                             withBoxes:3
                                                          withDelegate:self];
-			[controllera setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
+			[controllera setIcon:[[BRThemeInfo sharedTheme] photosImage]];
 			//[controllera setValue:[NSNumber numberWithInt:2] forKey:@"options"];
 			if([[BRSettingsFacade singleton] screenSaverTimeout]<0)
 				[controllera setInitialValue:0];
@@ -268,25 +264,25 @@
 				[controllera setInitialValue:[[BRSettingsFacade singleton] screenSaverTimeout]];
 			[[self stack] pushController:controllera];
             break;
+        }
 		case kSMSSSFDefaults:
-			randomV = NO;
 			[SMPreferences setInteger:60 forKey:PHOTO_SPIN_FREQUENCY];
 			break;
         case kSMSSSTransition:
-            randomV = NO;
+        {
             SMPhotosTransitionPreferences *TranMenu = [SMPhotosTransitionPreferences slideshowTransitionPreferences];
-            //[menu initCustom];
             [[self stack] pushController:TranMenu];
             break;
+        }
         case kSMSSSPlaylist:
-            randomV = NO;
+        {
             SMPlaylistSelection *a = [[SMPlaylistSelection alloc] init];
             //SMSlideShowPlaylistPreferences *PlayMenu = [[SMSlideShowPlaylistPreferences alloc] init];
             //[menu initCustom];
             [[self stack] pushController:a];
             break;
+        }
         case kSMSSSPAZ:
-            randomV=NO;
             if([[BRSettingsFacade singleton] slideshowPanAndZoom])
             {
                 [[BRSettingsFacade singleton] setSlideshowPanAndZoom:NO];
@@ -296,7 +292,6 @@
             }
             break;
         case kSMSSSPlayMusic:
-            randomV=NO;
             if([SMPreferences playsMusicInSlideShow])
             {
                 [SMPreferences setPlaysMusicInSlideShow:NO];
@@ -308,7 +303,6 @@
             
             
         case kSMSSSShuffleMusic:
-            randomV=NO;
             if([[BRSettingsFacade singleton] slideshowShuffleMusic])
             {
                 [[BRSettingsFacade singleton] setSlideshowShuffleMusic:NO];
@@ -318,7 +312,6 @@
             }
             break;
         case kSMSSSRepeat:
-            randomV=NO;
             if([[BRSettingsFacade singleton] slideshowRepeat])
             {
                 [[BRSettingsFacade singleton] setSlideshowRepeat:NO];
@@ -328,7 +321,6 @@
             }
             break;
         case kSMSSSShufflePhotos:
-            randomV=NO;
             if([[BRSettingsFacade singleton] slideshowShufflePhotos])
             {
                 [[BRSettingsFacade singleton] setSlideshowShufflePhotos:NO];

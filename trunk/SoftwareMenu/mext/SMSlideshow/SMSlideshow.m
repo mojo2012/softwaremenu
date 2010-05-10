@@ -10,8 +10,13 @@
 #import <QuartzCore/CAMediaTimingFunctionBuiltin.h>
 #import <QuartzCore/CIFilter.h>
 #import <QuartzCore/CATransition.h>
+#import <QuartzCore/CIFilter.h>
+#import <QuartzCore/CIVector.h>
+#import <QuartzCore/CIImage.h>
 #import <SoftwareMenuFramework/SoftwareMenuFramework.h>
 #import "SMSlideshow.h"
+#import "SMSSettings.h"
+#import <SoftwareMenuFramework/CoreGraphicsFunctions.h>
 #define DEFAULT_IMAGES_PATH		@"/System/Library/PrivateFrameworks/AppleTV.framework/Resources/DefaultPhotos/"
 #define PHOTO_DIRECTORY_KEY		@"PhotoDirectory"
 #define myDomain                (CFStringRef)@"com.apple.frontrow.appliance.SoftwareMenu.Slideshow"
@@ -49,10 +54,18 @@
 //static int _imageNb =0;
 @implementation SMSlideshowMext
 //static BRImageControl *_control = nil;
-
++(BRController *)pluginOptions;
+{
+    return [[SMSSettings alloc]init];
+}
++(BOOL)hasPluginSpecificOptions
+{
+    return YES;
+}
 -(BRControl *)backgroundControl
 {
     if (_control == nil) {
+        NSLog(@"creating new slideshow");
         _control = [[SMSlideshowControl alloc] init];
         [_control setAutoresizingMask:1];
         //[(BRImageControl *)_control setAutomaticDownsample:TRUE];
@@ -62,58 +75,58 @@
 //        CATransition *llayer = [CATransition animation];
 //        [llayer setType:kCATransitionFade];
     }
-    [_control setFolder:[SMSlideshowMext photoFolderPath]];
-    [self loadImagesPaths];
-//    if(_imageNb>[_imagePaths count])
-//        _imageNb=0;
-//    [(BRImageControl *)_control setImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb]]];
+    [_control setTargetOpacity:[SMSSettings opacity]];
+    [_control setTransitionDuration:[SMSSettings transitionDuration]];
+   // [_control setTransitionEffect:[SMSSettings transitionEffect]];
+    [_control setFolder:[SMSSettings imageFolder]];
+
     CGRect a;
     a.size=[BRWindow maxBounds];
     [_control setFrame:a];
-    //[_control setOpacity:0.3];
+    [_control startSlideshowTimer];
     _lastFireDate=[NSDate date];
     [_lastFireDate retain];
     //NSLog(@"%@",_lastFireDate);
-    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callU) userInfo:nil repeats:NO];
+    //[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callU) userInfo:nil repeats:NO];
     return _control;
 }
 
--(void)updateImage
-{
-
-    if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
-        [_control nextImage];
-//        [(SMSlideshowControl *)_control setCurrentImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
-//        //CGSize size = [(BRImageControl *)_control preferredFrameSize];
-//        //NSLog(@"width: %lf, height: %lf, aspectRatio: %lf",size.width,size.height,[(BRImageControl *)_control aspectRatio]);
-//        if (_imageNb==[_imagePaths count]) {
-//            _imageNb=0;
-//        }
-        //BOOL crop=TRUE;
-//        if (crop && [_control aspectRatio]>1) {
-//            CGSize maxBounds= [BRWindow maxBounds];
-//            CGRect newFrame;
-//            newFrame.size.width=maxBounds.width;
-//            newFrame.size.height=newFrame.size.width/[_control aspectRatio];
-//            newFrame.origin.x=0;
-//            newFrame.origin.y=(maxBounds.height-newFrame.size.height)/2.0f;
-//            [_control setFrame:newFrame];
-//        }
-//        [_control layoutSubcontrols];
-//        CALayer *layer = [_control layer];
-//        ALog(@"layer: %@",layer);
-//        NSLog(@"nslayer: %@",layer);
-//        DLog(@"delegate: %@ self: %@" ,[layer delegate],_control);
-//        DLog(@"Contents: %@",[layer contents]);
-//        DLog(@"actions: %@",[_control actions]);
-        //NSLog(@"%@",_lastFireDate);
-        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callU) userInfo:nil repeats:NO];
-    }
-    else {
-//        NSLog(@"not top controller");
-    }
-
-}
+//-(void)updateImage
+//{
+//
+//    if ([[_control parent] parent]==[[[BRApplicationStackManager singleton]stack]peekController]) {
+//        [_control nextImage];
+////        [(SMSlideshowControl *)_control setCurrentImage:[BRImage imageWithPath:[_imagePaths objectAtIndex:_imageNb++]]];
+////        //CGSize size = [(BRImageControl *)_control preferredFrameSize];
+////        //NSLog(@"width: %lf, height: %lf, aspectRatio: %lf",size.width,size.height,[(BRImageControl *)_control aspectRatio]);
+////        if (_imageNb==[_imagePaths count]) {
+////            _imageNb=0;
+////        }
+//        //BOOL crop=TRUE;
+////        if (crop && [_control aspectRatio]>1) {
+////            CGSize maxBounds= [BRWindow maxBounds];
+////            CGRect newFrame;
+////            newFrame.size.width=maxBounds.width;
+////            newFrame.size.height=newFrame.size.width/[_control aspectRatio];
+////            newFrame.origin.x=0;
+////            newFrame.origin.y=(maxBounds.height-newFrame.size.height)/2.0f;
+////            [_control setFrame:newFrame];
+////        }
+////        [_control layoutSubcontrols];
+////        CALayer *layer = [_control layer];
+////        ALog(@"layer: %@",layer);
+////        NSLog(@"nslayer: %@",layer);
+////        DLog(@"delegate: %@ self: %@" ,[layer delegate],_control);
+////        DLog(@"Contents: %@",[layer contents]);
+////        DLog(@"actions: %@",[_control actions]);
+//        //NSLog(@"%@",_lastFireDate);
+//        [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(callU) userInfo:nil repeats:NO];
+//    }
+//    else {
+////        NSLog(@"not top controller");
+//    }
+//
+//}
 -(void)callU
 {
    // NSLog(@"_laSTFire: %@",_lastFireDate);
@@ -123,7 +136,7 @@
         [_lastFireDate release];
         _lastFireDate=[NSDate date];
         [_lastFireDate retain];
-        [self updateImage];
+        //[self updateImage];
         
     }
     else {
@@ -141,6 +154,7 @@
 }
 -(BRController *)controller
 {
+    id controller = [BRController controllerWithContentControl:[[[SMSlideshowMext alloc] init] backgroundControl]];
 //    BRPhotoPlayer *player = [[BRPhotoPlayer alloc] init];
 //    [player setPlayerSpecificOptions:[SMSlideshowMext screensaverSlideshowPlaybackOptions]];
 //    id collection;
@@ -154,7 +168,7 @@
 //    [control setFrame:a];
 //    [control setOpacity:0.3];
 //    return control;
-    return nil;
+    return controller;
 }
 +(NSString *)developer
 {
@@ -198,43 +212,130 @@
 -(id)init
 {
     self=[super init];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSData *shadingBitmapData = [NSData dataWithContentsOfFile:[bundle pathForResource:@"restrictedshine" ofType:@"tiff"]];
+    NSBitmapImageRep *shadingBitmap = [[[NSBitmapImageRep alloc] initWithData:shadingBitmapData] autorelease];
+    inputShadingImage = [[CIImage alloc] initWithBitmapImageRep:shadingBitmap];
+    
+    // Preload mask bitmap to use in transitions.
+    NSData *maskBitmapData = [NSData dataWithContentsOfFile:[bundle pathForResource:@"transitionmask" ofType:@"jpg"]];
+    NSBitmapImageRep *maskBitmap = [[[NSBitmapImageRep alloc] initWithData:maskBitmapData] autorelease];
+    inputMaskImage = [[CIImage alloc] initWithBitmapImageRep:maskBitmap];
+
     targetOpacity=0.3f;
     useTimer=YES;
     random=NO;
+    autoRotateEffect=TRUE;
     timerTime=30;
     transitionDuration=2.5;
+    transitionStyle=SlideshowViewModTransitionStyle;
     _fileListing=[[NSArray alloc] init];
-    _orderArray=[[NSArray alloc] init];
+//    _orderArray=[[NSArray alloc] init];
     currentImage=0;
+    slideshowInterval=10.0f;
+    [self updateSubviewsTransition];
     return self;
 }
--(void)nextImage
-{
-    int count = [_fileListing count];
-    if (count!=0) {
-        if (currentImage>=count-1) {
-            currentImage=0;
-        }
-        else 
-        {
-            currentImage++;
-        }
-        [self setCurrentImage:[BRImage imageWithPath:[_fileListing objectAtIndex:currentImage]]];
-
+- (NSTimeInterval)slideshowInterval {
+    return slideshowInterval;
+}
+- (void)startSlideshowTimer {
+    if (slideshowTimer == nil && [self slideshowInterval] > 0.0) {
+        // Schedule an ordinary NSTimer that will invoke -advanceSlideshow: at regular intervals, each time we need to advance to the next slide.
+        slideshowTimer = [[NSTimer scheduledTimerWithTimeInterval:[self slideshowInterval] target:self selector:@selector(advanceSlideshow:) userInfo:nil repeats:YES] retain];
     }
 }
--(void)updateCurrentImage
-{
+
+- (void)advanceSlideshow:(NSTimer *)timer {
+    
     int count = [_fileListing count];
-    if (count!=0) {
-        if (currentImage>=count) {
-            currentImage=0;
+    BOOL isVisible=NO;
+    BOOL done=NO;
+    id parent=[self parent];
+    while (done==FALSE) {
+        if (parent) 
+        {
+            if ([parent isKindOfClass:[BRController class]]) {
+                if ([parent topOfStack])                
+                    isVisible=TRUE;
+                done=TRUE;
+            }
+            else if([parent isKindOfClass:[BRControl class]])
+            {
+                parent=[parent parent];
+            }
         }
-        [self setCurrentImage:[BRImage imageWithPath:[_fileListing objectAtIndex:currentImage]]];
+        else
+            done=TRUE;
+    }
+    if (_fileListing != nil && count > 0 && isVisible) {
+        // Find the next Asset in the slideshow.
+        int startIndex = currentImagePath ? [_fileListing indexOfObject:currentImagePath] : 0;
+        int index = (startIndex + 1) % count;
+        while (index != startIndex) {
+            NSString *asset = [_fileListing objectAtIndex:index];
+            
+            // Load the full-size image.
+            BRImage *image = [BRImage imageWithPath:asset];
+            
+            // Ask our SlideshowView to transition to the image.
+            [self setCurrentImage:image];
+            
+            // Remember which slide we're now displaying.
+            [currentImagePath release];
+            
+            currentImagePath = [asset retain];
+            return;
+        
+        index = (index + 1) % count;
+        }
         
     }
-    
 }
+- (void)stopSlideshowTimer {
+    if (slideshowTimer != nil) {
+        // Cancel and release the slideshow advance timer.
+        [slideshowTimer invalidate];
+        [slideshowTimer release];
+        slideshowTimer = nil;
+    }
+}
+- (void)setSlideshowInterval:(NSTimeInterval)newSlideshowInterval {
+    if (slideshowInterval != newSlideshowInterval) {
+        // Stop the slideshow, change the interval as requested, and then restart the slideshow (if it was running already).
+        [self stopSlideshowTimer];
+        slideshowInterval = newSlideshowInterval;
+        if (slideshowInterval > 0.0) {
+            [self startSlideshowTimer];
+        }
+    }
+}
+//-(void)nextImage
+//{
+//    int count = [_fileListing count];
+//    if (count!=0) {
+//        if (currentImage>=count-1) {
+//            currentImage=0;
+//        }
+//        else 
+//        {
+//            currentImage++;
+//        }
+//        NSLog(@"nextImage: %@, loaded: %d",nextImage,loaded);
+//        if (loaded && nextImage!=nil) {
+//            ALog(@"NEXT image gg");
+//            [self setCurrentImage:nextImage];
+//        }
+//        else
+//        {
+//            [self setCurrentImage:[BRImage imageWithPath:[_fileListing objectAtIndex:currentImage]]];
+//        }
+//        
+//
+//    }
+//}
+
 -(void)setFolder:(NSString *)folder
 {
     BOOL isDir;
@@ -249,20 +350,26 @@
         [_fileListing release];
         _fileListing=nil;
     }
-    _fileListing=[[files copy] retain];
-    [self updateCurrentImage];
+    if (!random) {
+        _fileListing = [[files sortedArrayUsingSelector:@selector(compare:)] retain];
+    }
+    else {
+        _fileListing = [[files shuffled]retain];
+    }
+
+    //_fileListing=[[files copy] retain];
 }
 -(NSArray *)files
 {
     return _fileListing;
 }
--(void)setImageDuration:(unsigned int)imageDuration
+-(void)setImageDuration:(NSTimeInterval)imageDuration
 {
-    timerTime=imageDuration;
+    slideshowInterval=(NSTimeInterval)imageDuration;
 }
--(unsigned int)imageDuration
+-(NSTimeInterval)imageDuration
 {
-    return timerTime;
+    return slideshowInterval;
 }
 -(void)setUseTimer:(BOOL)use
 {
@@ -299,41 +406,44 @@
 {
     return targetOpacity;
 }
--(void)setImage:(BRImage *)image;
+-(void)setTransitionStyle:(SlideshowTransitionStyle)st
 {
-    if (img!=nil) {
-        [img release];
-        img=nil;
-    }
-    img=[image retain];
+    transitionStyle=st;
 }
--(BRImage *)image
+-(SlideshowTransitionStyle)transitionStyle
 {
-    return img;
+    return transitionStyle;
 }
--(void)controlWasActivated
-{
-    [super controlWasActivated];
-    [self setCurrentImage:img];
-}
+
+
+
+
+
 -(void)setCurrentImage:(BRImage *)image
 {
 //    DLog(@"Current: %@, Old: %@",curImage,oldImage);
-    [self setImage:image];
-    BOOL crop=TRUE;
-    if(img!=nil)
+    if(autoRotateEffect)
+    {
+        transitionStyle=((transitionStyle +1) %NumberOfSlideshowViewTransitionStyles);
+        [self updateSubviewsTransition];
+    }
+    //[self setTransitionStyle:(([self transitionStyle] + 1) % NumberOfSlideshowTransitionStyles)];
+//    [self setImage:image];
+    crop=TRUE;
+    if(image!=nil)
     {
         if (curImage!=nil) {
-            [[curImage layer] removeAllAnimations];
+            //[[curImage layer] removeAllAnimations];
             if (oldImage!=nil) {
-                [oldImage removeFromParent];
+                //[oldImage removeFromParent];
                 [oldImage release];
                 oldImage=nil;
             }
             oldImage=curImage;
         }
         curImage=[[BRImageControl alloc] init];
-        [curImage setImage:img];
+        [curImage setAutomaticDownsample:YES];
+        [curImage setImage:image];
         if (crop && [curImage aspectRatio]>1) {
             CGSize maxBounds= [BRWindow maxBounds];
             CGRect newFrame;
@@ -341,6 +451,15 @@
             newFrame.size.height=newFrame.size.width/[curImage aspectRatio];
             newFrame.origin.x=0;
             newFrame.origin.y=(maxBounds.height-newFrame.size.height)/2.0f;
+            [curImage setFrame:newFrame];
+        }
+        else {
+            CGSize maxBounds= [BRWindow maxBounds];
+            CGRect newFrame;
+            newFrame.size.height=maxBounds.height;
+            newFrame.size.width=newFrame.size.height*[curImage aspectRatio];
+            newFrame.origin.x=(maxBounds.width-newFrame.size.width)/2.0f;
+            newFrame.origin.y=0;
             [curImage setFrame:newFrame];
         }
         [curImage setOpacity:targetOpacity];
@@ -351,171 +470,137 @@
             [self addControl:curImage];
         }
        if (oldImage!=nil) {
-            /*CABasicAnimation *oldAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
-            oldAnimation.duration=0.25f;
-            oldAnimation.fromValue=[NSNumber numberWithFloat:targetOpacity];
-            oldAnimation.toValue=[NSNumber numberWithFloat:0.0f];
-            oldAnimation.repeatCount=1;
-            oldAnimation.autoreverses=NO;
-            [oldImage addAnimation:oldAnimation forKey:@"animateOpacity"];*/
+
            [oldImage removeFromParent];
-           //oldImage.opacity=0.0f;
-            //[oldImage setOpacity:0.0f];
+           [oldImage release];
+           oldImage=nil;
+
+
+        }
+        
+
+        
+        
+        
+    }
+
+        
+
+}
+
+
+- (void)updateSubviewsTransition {
+    CGRect rect = [BRWindow interfaceFrame];
+    NSString *transitionType = nil;
+    CIFilter *transitionFilter = nil;
+    CIFilter *maskScalingFilter = nil;
+    CGRect maskExtent;
+//     NSLog(@"inputShading: %@, backing: %@",inputShadingImage,inputMaskImage);
+    // Map our transitionStyle to one of Core Animation's four built-in CATransition types, or an appropriately instantiated and configured Core Image CIFilter.  (The code used to construct the CIFilters here is very similar to that in the "Reducer" code sample from WWDC 2005.  See http://developer.apple.com/samplecode/Reducer/ )
+    switch (transitionStyle) {
+        case SlideshowViewFadeTransitionStyle:
+            transitionType = @"fade";
+            break;
             
-            /*CABasicAnimation *theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
-            theAnimation.duration=self.transitionDuration;
-            theAnimation.fromValue=[NSNumber numberWithFloat:0.0f];
-            theAnimation.toValue=[NSNumber numberWithFloat:targetOpacity];
-            theAnimation.repeatCount=1;
-            theAnimation.autoreverses=NO;
-            [curImage addAnimation:theAnimation forKey:@"animateOpacity"];
-            [curImage setOpacity:targetOpacity];
-//            [curImage setOpacity:0.5f];
-//            CATransition *transition=[CATransition animation];
-//            transition.duration=self.transitionDuration;
-//            [transition setType:@"moveIn"];
-//            [transition setSubtype:@"fromLeft"];
-//            transition.autoreverses=NO;
-//            [curImage addAnimation:transition forKey:@"moveIn"];
-        }
-        else {
-            [curImage setOpacity:targetOpacity];*/
-        }
-        
-        
-//        CIFilter *filter = [CIFilter filterWithName:@"CIBloom"];
-//        
-//        [filter setDefaults];
-//        
-//        [filter setValue:[NSNumber numberWithFloat:5.0] forKey:@"inputRadius"];
-//        
-//        
-//        
-//        // name the filter so we can use the keypath to animate the inputIntensity
-//        
-//        // attribute of the filter
-//        
-//        [filter setName:@"pulseFilter"];
-//        
-//        
-//        
-//        // set the filter to the selection layer's filters
-//        
-//        [[curImage layer] setFilters:[NSArray arrayWithObject:filter]];
-//        
-//        
-//        
-//        // create the animation that will handle the pulsing.
-//        
-//        CABasicAnimation* pulseAnimation = [CABasicAnimation animation];
-//        
-//        
-//        
-//        // the attribute we want to animate is the inputIntensity
-//        
-//        // of the pulseFilter
-//        
-//        pulseAnimation.keyPath = @"filters.pulseFilter.inputIntensity";
-//        
-//        
-//        
-//        // we want it to animate from the value 0 to 1
-//        
-//        pulseAnimation.fromValue = [NSNumber numberWithFloat: 0.0];
-//        
-//        pulseAnimation.toValue = [NSNumber numberWithFloat: 1.5];
-//        
-//        
-//        
-//        // over one a one second duration, and run an infinite
-//        
-//        // number of times
-//        
-//        pulseAnimation.duration = 1.0;
-//        
-//        pulseAnimation.repeatCount = 3.0f;
-//        
-//        
-//        
-//        // we want it to fade on, and fade off, so it needs to
-//        
-//        // automatically autoreverse.. this causes the intensity
-//        
-//        // input to go from 0 to 1 to 0
-//        
-//        pulseAnimation.autoreverses = YES;
-//        
-//        
-//        
-//        // use a timing curve of easy in, easy out..
-//        //DLog(@"name: %@",kCAMediaTimingFunctionEaseIn);
-//        //pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName: @"easeIn"];
-//        
-//        
-//        
-//        // add the animation to the selection layer. This causes
-//        
-//        // it to begin animating. We'll use pulseAnimation as the
-//        
-//        // animation key name
-//        
-//        [[curImage layer] addAnimation:pulseAnimation forKey:@"pulseAnimation"];
+        case SlideshowViewMoveInTransitionStyle:
+            transitionType = @"moveIn";
+            break;
+            
+        case SlideshowViewPushTransitionStyle:
+            transitionType = @"push";
+            break;
+            
+        case SlideshowViewRevealTransitionStyle:
+            transitionType = @"reveal";
+            break;
+            
+        case SlideshowViewCopyMachineTransitionStyle:
+            transitionFilter = [[CIFilter filterWithName:@"CICopyMachineTransition"] retain];
+            [transitionFilter setDefaults];
+            [transitionFilter setValue:[CIVector vectorWithX:rect.origin.x Y:rect.origin.y Z:rect.size.width W:rect.size.height] forKey:@"inputExtent"];
+            break;
+            
+        case SlideshowViewDisintegrateWithMaskTransitionStyle:
+            transitionFilter = [[CIFilter filterWithName:@"CIDisintegrateWithMaskTransition"] retain];
+            [transitionFilter setDefaults];
+            
+            // Scale our mask image to match the transition area size, and set the scaled result as the "inputMaskImage" to the transitionFilter.
+            maskScalingFilter = [CIFilter filterWithName:@"CILanczosScaleTransform"];
+            [maskScalingFilter setDefaults];
+            maskExtent = [inputMaskImage extent];
+            float xScale = rect.size.width / maskExtent.size.width;
+            float yScale = rect.size.height / maskExtent.size.height;
+            [maskScalingFilter setValue:[NSNumber numberWithFloat:yScale] forKey:@"inputScale"];
+            [maskScalingFilter setValue:[NSNumber numberWithFloat:xScale / yScale] forKey:@"inputAspectRatio"];
+            [maskScalingFilter setValue:inputMaskImage forKey:@"inputImage"];
+            
+            [transitionFilter setValue:[maskScalingFilter valueForKey:@"outputImage"] forKey:@"inputMaskImage"];
+            break;
+            
+        case SlideshowViewDissolveTransitionStyle:
+            transitionFilter = [[CIFilter filterWithName:@"CIDissolveTransition"] retain];
+            [transitionFilter setDefaults];
+            break;
+            
+        case SlideshowViewFlashTransitionStyle:
+            transitionFilter = [[CIFilter filterWithName:@"CIFlashTransition"] retain];
+            [transitionFilter setDefaults];
+            [transitionFilter setValue:[CIVector vectorWithX:CGMidX(rect) Y:CGMidY(rect)] forKey:@"inputCenter"];
+            [transitionFilter setValue:[CIVector vectorWithX:rect.origin.x Y:rect.origin.y Z:rect.size.width W:rect.size.height] forKey:@"inputExtent"];
+            break;
+            
+        case SlideshowViewModTransitionStyle:
+            transitionFilter = [[CIFilter filterWithName:@"CIModTransition"] retain];
+            [transitionFilter setDefaults];
+            [transitionFilter setValue:[CIVector vectorWithX:CGMidX(rect) Y:CGMidY(rect)] forKey:@"inputCenter"];
+            NSLog(@"originx %lf y: %lf w: %lf, h: %lf, midX: %lf, midY: %lf",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height,CGMidX(rect),CGMidY(rect));
 
-        
-        
-        
-        
-    }
-
-    
-        
-
-}
--(id)actionForLayer:(id)arg1 forKey:(id)arg2
-{
-    //DLog(@"Slideshwo WAction ForLayer:%@ ForKey:%@",arg1,arg2);
-
-    srand(time(NULL));
-    int rV = rand()%4;
-    id a = [super actionForLayer:arg1 forKey:arg2];
-    if ([arg2 isEqualToString:@"sublayers"]) {
-        CATransition *transition=[CATransition animation];
-        [transition setType:@"fade"];
-        switch (rV) {
-            case 0:
-                [transition setSubtype:@"fromLeft"];
-                break;
-            case 1:
-                [transition setSubtype:@"fromRight"];
-                break;
-            case 2:
-                [transition setSubtype:@"fromTop"];
-                break;
-            case 3:
-                [transition setSubtype:@"fromBottom"];
-                break;
-            default:
-                [transition setSubtype:@"fromLeft"];
-                break;
-        }
-        //[transition setSubtype:@"fromLeft"];
-        [transition setDuration:transitionDuration];
-        return transition;
-
-        //if ([arg1 isHidden]) {
-//            theAnimation = [[CATransition alloc] init];
-//            theAnimation.duration = 1.0;
-//            theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-//            theAnimation.type = kCATransitionFade;
-////            theAnimation.fromValue=[NSNumber numberWithFloat:[_bg opacity]];
-////            
-////            theAnimation.toValue=[NSNumber numberWithFloat:0.0];
-////theAnimation.subtype = kCATransitionFromRight;
-//            return theAnimation;
-//        }
+            break;
+            
+        case SlideshowViewPageCurlTransitionStyle:
+           
+            transitionFilter = [[CIFilter filterWithName:@"CIPageCurlTransition"] retain];
+            [transitionFilter setDefaults];
+            [transitionFilter setValue:[NSNumber numberWithFloat:-M_PI_4] forKey:@"inputAngle"];
+            [transitionFilter setValue:inputShadingImage forKey:@"inputShadingImage"];
+            [transitionFilter setValue:inputShadingImage forKey:@"inputBacksideImage"];
+            [transitionFilter setValue:[CIVector vectorWithX:rect.origin.x Y:rect.origin.y Z:rect.size.width W:rect.size.height] forKey:@"inputExtent"];
+            break;
+            
+        case SlideshowViewSwipeTransitionStyle:
+            transitionFilter = [[CIFilter filterWithName:@"CISwipeTransition"] retain];
+            [transitionFilter setDefaults];
+            break;
+            
+        case SlideshowViewRippleTransitionStyle:
+        default:
+            transitionFilter = [[CIFilter filterWithName:@"CIRippleTransition"] retain];
+            [transitionFilter setDefaults];
+            [transitionFilter setValue:[CIVector vectorWithX:(rect.origin.x+rect.size.width/2) Y:(rect.origin.y+rect.size.height/2)] forKey:@"inputCenter"];
+            [transitionFilter setValue:[CIVector vectorWithX:rect.origin.x Y:rect.origin.y Z:rect.size.width W:rect.size.height] forKey:@"inputExtent"];
+            [transitionFilter setValue:inputShadingImage forKey:@"inputShadingImage"];
+            break;
     }
     
-    return a;
+    // Construct a new CATransition that describes the transition effect we want.
+    CATransition *transition = [CATransition animation];
+    if (transitionFilter) {
+        // We want to build a CIFilter-based CATransition.  When an CATransition's "filter" property is set, the CATransition's "type" and "subtype" properties are ignored, so we don't need to bother setting them.
+        [transition setFilter:transitionFilter];
+    } else {
+        // We want to specify one of Core Animation's built-in transitions.
+        [transition setType:transitionType];
+        [transition setSubtype:@"fromLeft"];
+    }
+//    NSLog(@"transitionStyle: %i, transition: %@\nfilter: %@, type: %@",transitionStyle,transition,transitionFilter,transitionType);
+    // Specify an explicit duration for the transition.
+    [transition setDuration:self.transitionDuration];
+    
+    // Associate the CATransition we've just built with the "subviews" key for this SlideshowView instance, so that when we swap ImageView instances in our -transitionToImage: method below (via -replaceSubview:with:).
+    [self setActions:[NSDictionary dictionaryWithObject:transition forKey:@"sublayers"]];
+    //[self setAnimations:[NSDictionary dictionaryWithObject:transition forKey:@"sublayers"]];
 }
+
 @end
+
 

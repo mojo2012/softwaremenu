@@ -14,6 +14,7 @@
 
 #import "SoftwareMenuBase.h"
 #import "../DistributedObjects/SMDOprotocol.h"
+//#import <XADMaster/XADArchive.h>
 @interface NSHost (Private)
 +(void)_fixNSHostLeak;
 @end
@@ -270,84 +271,13 @@ static BOOL checkedSS = NO;
             }
         }
     }
-//	if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/settings.plist" stringByExpandingTildeInPath]] && [SMGeneralMethods boolForKey:@"SMM"])
-//	{
-//		if([[NSFileManager defaultManager] fileExistsAtPath:[@"~/Library/Application Support/SoftwareMenu/scriptsprefs.plist" stringByExpandingTildeInPath]])
-//		{
-//			//NSLog(@"ok trying");
-//			NSFileManager *fileManager = [NSFileManager defaultManager];
-//			NSString *thepath = @"/Users/frontrow/Documents/scripts/";
-//			long i, count = [[fileManager directoryContentsAtPath:thepath] count];	
-//			for ( i = 0; i < count; i++ )
-//			{
-//				NSString *idStr = [[fileManager directoryContentsAtPath:thepath] objectAtIndex:i];
-//				//NSLog(@"%@",idStr);
-//				//NSLog(@"%@", [idStr pathExtension]);
-//				if([[idStr pathExtension] isEqualToString:@"sh"])
-//				{
-//					//NSLog(@"onBoot: %@", [[scripts valueForKey:idStr] valueForKey:@"onBoot"]);
-//					if([[[scripts valueForKey:idStr] valueForKey:@"onBoot"] boolValue])
-//					{
-//						//long n=nil;
-//						int jtwo=[SMGeneralMethods integerForKey:@"ScriptsPosition"];
-//						BRApplianceCategory *category3 =[BRApplianceCategory categoryWithName:idStr
-//																				   identifier:idStr
-//																			   preferredOrder:jtwo];
-//						[categories addObject:category3];
-//					}
-//				}
-//			}
-//			
-//		}
-//	}
-	
-	/*if (![[show_hide valueForKey:@"builtin"] isEqualToString:@"Hidden"])
-	{
-	BRApplianceCategory *category3 =[BRApplianceCategory categoryWithName:@"Manage Built-in"
-															  identifier:@"builtin"
-														  preferredOrder:2.5];
-	[categories addObject:category3];
-	}
-	if (![[show_hide valueForKey:@"scripts"] isEqualToString:@"Hidden"])
-	{
-	BRApplianceCategory *category4 =[BRApplianceCategory categoryWithName:@"Scripts"
-															   identifier:@"scripts"
-														   preferredOrder:3.5];
-	[categories addObject:category4];
-	}
-	if (![[show_hide valueForKey:@"reset"] isEqualToString:@"Hidden"])
-	{
-	BRApplianceCategory *category5 =[BRApplianceCategory categoryWithName:@"Restart Finder"
-															   identifier:@"reboot"
-														   preferredOrder:4.5];
-	[categories addObject:category5];
-	}
-	
-	if (![[show_hide valueForKey:@"mover"] isEqualToString:@"Hidden"])
-	{
-		BRApplianceCategory *category7 =[BRApplianceCategory categoryWithName:@"FrapMover"
-																   identifier:@"mover"
-															   preferredOrder:6.5];
-		[categories addObject:category7];
-	}*/
-	/*BRApplianceCategory *category6 =[BRApplianceCategory categoryWithName:@"Update2"identifier:@"update2" preferredOrder:4];
-	[categories addObject:category6];*/
+
 	[_scripts retain];
-    BRApplianceCategory *category7 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"MainMenuControl",@"MainMenuControl")
-															   identifier:@"mainmenucontrol"
-														   preferredOrder:12];
-	[categories addObject:category7];
+
 	BRApplianceCategory *category6 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"Settings",@"Settings")
 															   identifier:@"SMsettings"
 														   preferredOrder:12];
 	[categories addObject:category6];
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:[ATV_PLUGIN_PATH stringByAppendingPathComponent:@"Sapphire.frappliance"]])
-//    {
-//        BRApplianceCategory *category7 =[BRApplianceCategory categoryWithName:BRLocalizedString(@"nitoTV",@"nitoTV")
-//                                                                   identifier:@"nitoTV.frap"
-//                                                               preferredOrder:11];
-//        [categories addObject:category7];
-//    }
 		return categories;
 	
 }
@@ -475,7 +405,6 @@ shouldMakeNewConnection:(NSConnection *)conn
 - (id) init
 {
 //    NSLog(@"kSMFApplianceOrderValue: %@",kBlaBla);
-
     if ( [super init] == nil )
         return ( nil );
 	
@@ -579,6 +508,9 @@ shouldMakeNewConnection:(NSConnection *)conn
                 }
             }
         }
+//        XADArchive *arch = [[XADArchive alloc]initWithFile:@"/Users/frontrow/tmp/nitoTV.tar"];
+//        NSLog(@"arch: %@",arch);
+//        [arch extractTo:@"/Users/frontrow/bla"];
 //        id controller = [[BRAlertController alloc]initWithType:0 titled:kSMFApplianceOrderValue primaryText:kSMFApplianceOrderValue secondaryText:@"ba"];
         
 //        id controller = [[SMFSpinnerMenu alloc]initWithTitle:@"" text:@"Loading Updates"];

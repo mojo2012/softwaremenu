@@ -311,8 +311,7 @@
                                                                withDescription:BRLocalizedString(@"Please enter a time in minutes (zero means never)",@"Please enter a time in minutes (zero means never)")
                                                                      withBoxes:3
                                                                        withDelegate:self];
-			[controller setBRImage:[[BRThemeInfo sharedTheme] photosImage]];
-			[controller setValue:[NSNumber numberWithInt:2] forKey:@"options"];
+			[controller setIcon:[[BRThemeInfo sharedTheme] photosImage]];
 			if([[BRSettingsFacade singleton] screenSaverTimeout]<0)
 				[controller setInitialValue:0];
 			else

@@ -570,7 +570,7 @@ static SMGeneralMethods *sharedInstance = nil;
 	}
 	return filepath;
 }
-+(void)terminateFinder
++(void)autoTerminateFinder
 {
 	if([SMGeneralMethods boolForKey:@"ARF"])
 	{

@@ -40,18 +40,17 @@
 		DD0DBB57117F7FB300C1B052 /* SMImageReturns.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0DBB54117F7FB300C1B052 /* SMImageReturns.m */; };
 		DD0DBB62117F800A00C1B052 /* AppleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB61117F800A00C1B052 /* AppleTV.framework */; };
 		DD0DBB64117F800A00C1B052 /* iPhotoAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB63117F800A00C1B052 /* iPhotoAccess.framework */; };
-		DD13FB3610AA65FE00972367 /* AGProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A18D0F8AD1CA007B8BAB /* AGProcess.m */; };
 		DD1B22D4118218400087EA6B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = DD1B22D3118218400087EA6B /* LICENSE.txt */; };
 		DD2426BD1152A22000CDCD20 /* SMNewScriptsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2426BB1152A22000CDCD20 /* SMNewScriptsMenu.h */; };
 		DD2426BE1152A22000CDCD20 /* SMNewScriptsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2426BC1152A22000CDCD20 /* SMNewScriptsMenu.m */; };
 		DD2426C311541FBA00CDCD20 /* SMHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = DD2426C111541FBA00CDCD20 /* SMHelper.h */; };
 		DD2426C411541FBA00CDCD20 /* SMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2426C211541FBA00CDCD20 /* SMHelper.m */; };
 		DD2427801155130C00CDCD20 /* smToolHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DD24274611550A9300CDCD20 /* smToolHelper.m */; };
+		DD28737B1195E40200F6AB22 /* SMSSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = DD28737A1195E40200F6AB22 /* SMSSettings.m */; };
 		DD33D8C91159E105001547A0 /* SMThirdPartyArchiveMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD33D8C71159E105001547A0 /* SMThirdPartyArchiveMenu.h */; };
 		DD33D8CA1159E105001547A0 /* SMThirdPartyArchiveMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD33D8C81159E105001547A0 /* SMThirdPartyArchiveMenu.m */; };
 		DD33D8F21168FA60001547A0 /* SimpleCocoaServer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD33D8F01168FA60001547A0 /* SimpleCocoaServer.h */; };
 		DD33D8F31168FA60001547A0 /* SimpleCocoaServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD33D8F11168FA60001547A0 /* SimpleCocoaServer.m */; };
-		DD41EB77118F613E0010FBAF /* ssh.png in Resources */ = {isa = PBXBuildFile; fileRef = DD41EB76118F613E0010FBAF /* ssh.png */; };
 		DD50CC3C10AB3E17009CDF6B /* SMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = DD50CC3B10AB3E17009CDF6B /* SMDefines.h */; };
 		DD55958A114955C8000ACE39 /* BackRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD689F3E10A75D6800B2F52A /* BackRow.framework */; };
 		DD5C0B041191F836000D2942 /* SoftwareMenuFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB40117F7EFD00C1B052 /* SoftwareMenuFramework.framework */; };
@@ -1462,6 +1461,10 @@
 		DD68A1C710A7C3F300B2F52A /* SMMainMenuMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD68A1C510A7C3F300B2F52A /* SMMainMenuMediaControl.m */; };
 		DD6D9C481188BED30061EF67 /* SMInstallations.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6D9C461188BED30061EF67 /* SMInstallations.h */; };
 		DD6D9C491188BED30061EF67 /* SMInstallations.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6D9C471188BED30061EF67 /* SMInstallations.m */; };
+		DD7536E1119735C4007965C3 /* restrictedshine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DD7536DF119735C4007965C3 /* restrictedshine.tiff */; };
+		DD7536E2119735C4007965C3 /* transitionmask.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD7536E0119735C4007965C3 /* transitionmask.jpg */; };
+		DD753A5411983600007965C3 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD753A5311983600007965C3 /* XADMaster.framework */; };
+		DD753E3F11983635007965C3 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD753E3E11983635007965C3 /* UniversalDetector.framework */; };
 		DD7F50E410A12B5A00C5E31C /* AFP.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7F50C010A12B5A00C5E31C /* AFP.png */; };
 		DD7F50E510A12B5A00C5E31C /* applescript.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7F50C110A12B5A00C5E31C /* applescript.png */; };
 		DD7F50E610A12B5A00C5E31C /* ATVFiles.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7F50C210A12B5A00C5E31C /* ATVFiles.png */; };
@@ -1538,6 +1541,7 @@
 		DD8E48681143447D00B6C2F8 /* SMUpdaterDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E48661143447D00B6C2F8 /* SMUpdaterDownload.m */; };
 		DD8E487B114344E300B6C2F8 /* SMUpdaterMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8E4879114344E300B6C2F8 /* SMUpdaterMenu.h */; };
 		DD8E487C114344E300B6C2F8 /* SMUpdaterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8E487A114344E300B6C2F8 /* SMUpdaterMenu.m */; };
+		DD9B572E11988C240064D17B /* ssh.png in Resources */ = {isa = PBXBuildFile; fileRef = DD9B572D11988C240064D17B /* ssh.png */; };
 		DD9FF9691182E3FA0087ACD8 /* BackRowExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DD9FF9671182E3FA0087ACD8 /* BackRowExtensions.h */; };
 		DD9FF96A1182E3FA0087ACD8 /* BackRowExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9FF9681182E3FA0087ACD8 /* BackRowExtensions.m */; };
 		DDB53593118342D400900EB4 /* SoftwareMenuFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0DBB40117F7EFD00C1B052 /* SoftwareMenuFramework.framework */; };
@@ -1598,11 +1602,8 @@
 		DDE638DE11790C240041DBA9 /* BRMediaPlayerController (SMExtensions).m in Sources */ = {isa = PBXBuildFile; fileRef = DDE638DC11790C240041DBA9 /* BRMediaPlayerController (SMExtensions).m */; };
 		DDE638F41179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE638F21179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.h */; };
 		DDE638F51179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE638F31179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.m */; };
-		DDEF2D5010A5D0AD00ECD73A /* loadUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF2D4F10A5D0AD00ECD73A /* loadUpdates.m */; };
-		DDEF2D5310A5D1C500ECD73A /* loadUpdatesDownloadClass.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */; };
 		DDEF340510A657F500ECD73A /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEF340310A657F500ECD73A /* Extensions.h */; };
 		DDEF340610A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
-		DDEF340710A657F500ECD73A /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEF340410A657F500ECD73A /* Extensions.m */; };
 		DDF53DD411862F650083B6F8 /* SMPluginSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF53DD211862F650083B6F8 /* SMPluginSingleton.h */; };
 		DDF53DD511862F650083B6F8 /* SMPluginSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF53DD311862F650083B6F8 /* SMPluginSingleton.m */; };
 		DDF57AFF118362FB007F89C9 /* SMWeatherSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF57AFE118362FB007F89C9 /* SMWeatherSelector.m */; };
@@ -1934,7 +1935,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* SoftwareMenuFramework */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = SoftwareMenuFramework;
 		};
 		DD6D9DFB118B79AB0061EF67 /* PBXContainerItemProxy */ = {
@@ -2031,11 +2032,12 @@
 		DD2426C211541FBA00CDCD20 /* SMHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHelper.m; sourceTree = "<group>"; };
 		DD24274511550A9300CDCD20 /* smToolHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smToolHelper.h; sourceTree = "<group>"; };
 		DD24274611550A9300CDCD20 /* smToolHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = smToolHelper.m; sourceTree = "<group>"; };
+		DD2873791195E40200F6AB22 /* SMSSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSSettings.h; sourceTree = "<group>"; };
+		DD28737A1195E40200F6AB22 /* SMSSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSSettings.m; sourceTree = "<group>"; };
 		DD33D8C71159E105001547A0 /* SMThirdPartyArchiveMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMThirdPartyArchiveMenu.h; sourceTree = "<group>"; };
 		DD33D8C81159E105001547A0 /* SMThirdPartyArchiveMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMThirdPartyArchiveMenu.m; sourceTree = "<group>"; };
 		DD33D8F01168FA60001547A0 /* SimpleCocoaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCocoaServer.h; sourceTree = "<group>"; };
 		DD33D8F11168FA60001547A0 /* SimpleCocoaServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCocoaServer.m; sourceTree = "<group>"; };
-		DD41EB76118F613E0010FBAF /* ssh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ssh.png; path = ../../../../../Desktop/ssh.png; sourceTree = SOURCE_ROOT; };
 		DD50CC3B10AB3E17009CDF6B /* SMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDefines.h; path = ../SMDefines.h; sourceTree = "<group>"; };
 		DD50CE0710ACED03009CDF6B /* SMM.frss-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SMM.frss-Info.plist"; path = "../SMM.frss-Info.plist"; sourceTree = "<group>"; };
 		DD50D32D10AD09CE009CDF6B /* SMM.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMM.pch; path = ../SMM.pch; sourceTree = "<group>"; };
@@ -3849,6 +3851,10 @@
 		DD6D9C461188BED30061EF67 /* SMInstallations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInstallations.h; sourceTree = "<group>"; };
 		DD6D9C471188BED30061EF67 /* SMInstallations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInstallations.m; sourceTree = "<group>"; };
 		DD6D9D77118B75730061EF67 /* installHelper.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installHelper.pch; sourceTree = "<group>"; };
+		DD7536DF119735C4007965C3 /* restrictedshine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = restrictedshine.tiff; sourceTree = "<group>"; };
+		DD7536E0119735C4007965C3 /* transitionmask.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = transitionmask.jpg; sourceTree = "<group>"; };
+		DD753A5311983600007965C3 /* XADMaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XADMaster.framework; sourceTree = "<group>"; };
+		DD753E3E11983635007965C3 /* UniversalDetector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UniversalDetector.framework; sourceTree = "<group>"; };
 		DD7F4E8510A0BB3C00C5E31C /* smv.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = smv.sh; path = "/Volumes/frontrow-1/smv.sh"; sourceTree = "<absolute>"; };
 		DD7F4F4610A0DDB800C5E31C /* AppleTV.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppleTV.txt; sourceTree = "<group>"; };
 		DD7F4FAD10A0EF1E00C5E31C /* Slideshow.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Slideshow.txt; sourceTree = "<group>"; };
@@ -3930,6 +3936,7 @@
 		DD8E48661143447D00B6C2F8 /* SMUpdaterDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterDownload.m; sourceTree = "<group>"; };
 		DD8E4879114344E300B6C2F8 /* SMUpdaterMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUpdaterMenu.h; sourceTree = "<group>"; };
 		DD8E487A114344E300B6C2F8 /* SMUpdaterMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUpdaterMenu.m; sourceTree = "<group>"; };
+		DD9B572D11988C240064D17B /* ssh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ssh.png; sourceTree = "<group>"; };
 		DD9FF9671182E3FA0087ACD8 /* BackRowExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackRowExtensions.h; sourceTree = "<group>"; };
 		DD9FF9681182E3FA0087ACD8 /* BackRowExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackRowExtensions.m; sourceTree = "<group>"; };
 		DDAC0587113DD7D60033C676 /* SoftwareMenuFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftwareMenuFramework.xcodeproj; path = ../SoftwareMenuFramework/SoftwareMenuFramework.xcodeproj; sourceTree = "<group>"; };
@@ -4000,7 +4007,6 @@
 		DDE638F21179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BRDescriptionOverlayControl-SMExt.h"; sourceTree = "<group>"; };
 		DDE638F31179135F0041DBA9 /* BRDescriptionOverlayControl-SMExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BRDescriptionOverlayControl-SMExt.m"; sourceTree = "<group>"; };
 		DDECB00311189F5600448929 /* SoftwareMenuMenus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoftwareMenuMenus-Info.plist"; sourceTree = "<group>"; };
-		DDEF2D2B10A5D02300ECD73A /* loadUpdates */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = loadUpdates; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDEF2D4F10A5D0AD00ECD73A /* loadUpdates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loadUpdates.m; sourceTree = "<group>"; };
 		DDEF2D5110A5D1C500ECD73A /* loadUpdatesDownloadClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadUpdatesDownloadClass.h; sourceTree = "<group>"; };
 		DDEF2D5210A5D1C500ECD73A /* loadUpdatesDownloadClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loadUpdatesDownloadClass.m; sourceTree = "<group>"; };
@@ -4326,6 +4332,8 @@
 				DD0DBB62117F800A00C1B052 /* AppleTV.framework in Frameworks */,
 				DD0DBB64117F800A00C1B052 /* iPhotoAccess.framework in Frameworks */,
 				DD5C131511946C21000D2942 /* QuartzCore.framework in Frameworks */,
+				DD753A5411983600007965C3 /* XADMaster.framework in Frameworks */,
+				DD753E3F11983635007965C3 /* UniversalDetector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4354,13 +4362,6 @@
 				DDE0AD9D114AD17300CF9926 /* BackRow.framework in Frameworks */,
 				DD5C0B041191F836000D2942 /* SoftwareMenuFramework.framework in Frameworks */,
 				DD5C14F0119471A1000D2942 /* QuartzCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DDEF2D2910A5D02300ECD73A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4422,7 +4423,9 @@
 		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				DD753A5311983600007965C3 /* XADMaster.framework */,
 				E20791A60F85C714005327E7 /* Foundation.framework */,
+				DD753E3E11983635007965C3 /* UniversalDetector.framework */,
 				DD689F3E10A75D6800B2F52A /* BackRow.framework */,
 				DD0DBB40117F7EFD00C1B052 /* SoftwareMenuFramework.framework */,
 				DD0DBB61117F800A00C1B052 /* AppleTV.framework */,
@@ -4479,7 +4482,6 @@
 			children = (
 				8D5B49B6048680CD000E48DA /* SoftwareMenu.frappliance */,
 				E2A35FE80EAE02B900FB6FD7 /* installHelper */,
-				DDEF2D2B10A5D02300ECD73A /* loadUpdates */,
 				DDFD7D8A10AE3E2B00990214 /* SMM.frss */,
 				DDE0A85A114AC65D00CF9926 /* SMParade.mext */,
 				DDE0AD4A114ACDE600CF9926 /* SMWeather.mext */,
@@ -6363,7 +6365,9 @@
 		DD7F50BF10A12B5A00C5E31C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				DD41EB76118F613E0010FBAF /* ssh.png */,
+				DD9B572D11988C240064D17B /* ssh.png */,
+				DD7536DF119735C4007965C3 /* restrictedshine.tiff */,
+				DD7536E0119735C4007965C3 /* transitionmask.jpg */,
 				DDE0B1EB114BDEC500CF9926 /* sm_tiny.png */,
 				DDE0B05C114BAD6500CF9926 /* bundle.png */,
 				DDD4F8DB10BB4D4B00E1D61B /* tested.png */,
@@ -6642,6 +6646,8 @@
 				DDE0AD9E114AD18400CF9926 /* SMSlideshow.h */,
 				DDE0AD9F114AD18400CF9926 /* SMSlideshow.m */,
 				DDF58271118471E6007F89C9 /* SMSlideshow.pch */,
+				DD2873791195E40200F6AB22 /* SMSSettings.h */,
+				DD28737A1195E40200F6AB22 /* SMSSettings.m */,
 			);
 			path = SMSlideshow;
 			sourceTree = "<group>";
@@ -8698,22 +8704,6 @@
 			productReference = DDE0AD7E114AD12F00CF9926 /* SMSlideshow.mext */;
 			productType = "com.apple.product-type.bundle";
 		};
-		DDEF2D2A10A5D02300ECD73A /* loadUpdates */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DDEF2D4810A5D05300ECD73A /* Build configuration list for PBXNativeTarget "loadUpdates" */;
-			buildPhases = (
-				DDEF2D2810A5D02300ECD73A /* Sources */,
-				DDEF2D2910A5D02300ECD73A /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = loadUpdates;
-			productName = loadUpdates;
-			productReference = DDEF2D2B10A5D02300ECD73A /* loadUpdates */;
-			productType = "com.apple.product-type.tool";
-		};
 		DDFD7D8910AE3E2B00990214 /* SMM3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDFD7DBB10AE3E2C00990214 /* Build configuration list for PBXNativeTarget "SMM3" */;
@@ -8790,7 +8780,6 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* SoftwareMenu */,
 				E2A35FE70EAE02B900FB6FD7 /* installHelper */,
-				DDEF2D2A10A5D02300ECD73A /* loadUpdates */,
 				DDFD7D8910AE3E2B00990214 /* SMM3 */,
 				DDE0A859114AC65D00CF9926 /* SMParade */,
 				DDE0AD49114ACDE600CF9926 /* SMWeather */,
@@ -8898,7 +8887,7 @@
 				DD67962F117F5EDB000B3C94 /* Show.sh in Resources */,
 				DD679630117F5EDB000B3C94 /* untv.sh in Resources */,
 				DD1B22D4118218400087EA6B /* LICENSE.txt in Resources */,
-				DD41EB77118F613E0010FBAF /* ssh.png in Resources */,
+				DD9B572E11988C240064D17B /* ssh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9019,6 +9008,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD7536E1119735C4007965C3 /* restrictedshine.tiff in Resources */,
+				DD7536E2119735C4007965C3 /* transitionmask.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9167,17 +9158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE0ADA2114AD1D900CF9926 /* SMSlideshow.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DDEF2D2810A5D02300ECD73A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DDEF2D5010A5D0AD00ECD73A /* loadUpdates.m in Sources */,
-				DDEF2D5310A5D1C500ECD73A /* loadUpdatesDownloadClass.m in Sources */,
-				DDEF340710A657F500ECD73A /* Extensions.m in Sources */,
-				DD13FB3610AA65FE00972367 /* AGProcess.m in Sources */,
+				DD28737B1195E40200F6AB22 /* SMSSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9326,6 +9307,7 @@
 					"\"$(SRCROOT)/../SoftwareMenuFramework/build/Debug\"",
 					"\"$(SRCROOT)/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SRCROOT)/../../../../../Desktop\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -9358,6 +9340,7 @@
 					"\"$(SRCROOT)/../SoftwareMenuFramework/build/Debug\"",
 					"\"$(SRCROOT)/../../../../../Desktop/TV stuff/TV Frameworks/3.0 FrameWorks\"",
 					"\"$(SRCROOT)/../../../../../Desktop\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -9652,54 +9635,6 @@
 			};
 			name = Release;
 		};
-		DDEF2D2D10A5D02400ECD73A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = loadUpdates;
-				SYMROOT = ../build;
-			};
-			name = Debug;
-		};
-		DDEF2D2E10A5D02400ECD73A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = loadUpdates;
-				SYMROOT = ../build;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		DDFD7DB910AE3E2C00990214 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -9877,15 +9812,6 @@
 			buildConfigurations = (
 				DDE0AD80114AD13000CF9926 /* Debug */,
 				DDE0AD81114AD13000CF9926 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DDEF2D4810A5D05300ECD73A /* Build configuration list for PBXNativeTarget "loadUpdates" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DDEF2D2D10A5D02400ECD73A /* Debug */,
-				DDEF2D2E10A5D02400ECD73A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

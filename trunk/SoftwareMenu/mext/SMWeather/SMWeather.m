@@ -159,10 +159,8 @@ static SMWeatherControl *_control;
 }
 +(BRController *)pluginOptions;
 {
-    id a =[[SMWeatherController alloc]init];
-    return a;
-//    id a =[[SMWeatherSettings alloc] init];
-//    return [a retain];
+    //id a =[[SMWeatherController alloc]init];
+    return [[SMWeatherBaseController alloc]init];
 }
 -(BRController *)ioptions;
 {

@@ -52,6 +52,7 @@
 //ApplianceControllerImage
 -(id)trustedImage;
 -(id)testedImage;
+-(NSString *)getImagePathForFrapName:(NSString *)Name;
 -(id)imageForFrap:(NSString *)frapName;
 -(id)leftJustifiedTitleTextAttributess;
 -(id)centerJustifiedRedText;

@@ -45,7 +45,7 @@ typedef enum _SMMountTypes{
 + (void)checkFolders;
 - (void)checkFolders;
 + (void)checkScreensaver;
-+ (void)terminateFinder;
++ (void)autoTerminateFinder;
 + (NSArray *)arrayForKey:(NSString *)theKey;
 + (NSArray *)getPrefKeys;
 
